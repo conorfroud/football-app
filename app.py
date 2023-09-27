@@ -106,18 +106,7 @@ def about_tab(df1):
     
     percentiles_df = selected_df[columns]
     percentiles_df = percentiles_df.melt(id_vars="player_name", var_name="Percentile Type", value_name="Percentile")
-
-
-    def get_bar_color(percentile):
-     if percentile > 75:
-        return '#00CD00'  # Green
-     elif percentile > 60:
-        return '#ADFF2F'
-     elif percentile > 30:
-        return '#FFA500'  # Orange
-     else:
-        return '#FF5733'  # Red
-
+    
     # Load the Roboto font
     font_path = "/Users/conorfroud/Downloads/Roboto/Roboto-Bold.ttf"  # Replace with the actual path to the Roboto font
     prop = font_manager.FontProperties(fname=font_path)
@@ -129,7 +118,6 @@ def about_tab(df1):
     # Set the background color
     #fig.patch.set_facecolor("#F5F5F5")
     #ax.set_facecolor("#F5F5F5")
-    colors = [get_bar_color(p) for p in percentiles_df["Percentile"]]
     ax.barh(percentiles_df["Percentile Type"], percentiles_df["Percentile"], color="#7EC0EE")
     ax.set_xlabel("League Average", fontproperties=prop1)
     ax.set_ylabel("Percentile Type", fontproperties=prop1)
