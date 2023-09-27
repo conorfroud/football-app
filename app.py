@@ -13,6 +13,7 @@ from scipy import stats
 import plotly.graph_objs as go
 from matplotlib_venn import venn3
 
+st.set_page_config(layout="wide")
 
 pd.set_option("display.width", None)  # None means no width limit
 
