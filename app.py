@@ -203,7 +203,7 @@ def scatter_plot(df):
     threshold = st.sidebar.slider('Label Threshold', min_value=0.1, max_value=5.0, value=2.0)
 
 # Create a scatter plot using Plotly with the filtered data
-    fig = px.scatter(filtered_df, x=x_variable, y=y_variable, hover_name="player_name", hover_data=["competition_name"])
+    fig = px.scatter(filtered_df, x=x_variable, y=y_variable, hover_data={'x_variable':False})
 
 # Customize the marker color and size
     fig.update_traces(
@@ -217,6 +217,8 @@ def scatter_plot(df):
 
     fig.add_trace(
      go.Scatter(
+        x=outliers[x_variable],
+        y=outliers[y_variable],
         text=outliers['player_name'],
         customdata=outliers[['player_name', 'competition_name']],
         mode='text',
