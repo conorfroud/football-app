@@ -189,7 +189,7 @@ def scatter_plot(df):
 # Sidebar for filtering by league (allow only one league to be selected)
     
 # Filter data based on user-selected positions, players, minutes played, and league
-    filtered_df = df[(df['primary_position'].isin(selected_positions) | (len(selected_positions) == 0)) & 
+    filtered_df = df[(df['position_1'].isin(selected_positions) | (len(selected_positions) == 0)) & 
                  #(df['player_name'].isin(selected_players) | (len(selected_players) == 0)) &
                  (df['minutes'] >= selected_minutes[0]) &
                  (df['minutes'] <= selected_minutes[1]) &
