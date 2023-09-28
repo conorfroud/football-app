@@ -217,8 +217,6 @@ def scatter_plot(df):
 
     fig.add_trace(
      go.Scatter(
-        x=outliers[x_variable],
-        y=outliers[y_variable],
         text=outliers['player_name'],
         customdata=outliers[['player_name', 'competition_name']],
         mode='text',
