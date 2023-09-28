@@ -115,7 +115,7 @@ def about_tab(df1):
     prop1 = font_manager.FontProperties(fname=font_path1)
 
     # Create a bar plot
-    fig, ax = plt.subplots(figsize=(16, 10))
+    fig, ax = plt.subplots(figsize=(12, 8))
     # Set the background color
     #fig.patch.set_facecolor("#F5F5F5")
     #ax.set_facecolor("#F5F5F5")
