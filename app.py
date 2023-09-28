@@ -176,7 +176,7 @@ selected_tab = st.sidebar.radio("Navigation", ["Stoke Score", "Player Profile", 
 
 # Based on the selected tab, display the corresponding content
 if selected_tab == "Stoke Score":
-    main_tab(df)
+    main_tab(df2)
 #if selected_tab == "Player Profile":
     #about_tab(df1)  # Pass the DataFrame to the about_tab function
 elif selected_tab == "Scatter Plot":
