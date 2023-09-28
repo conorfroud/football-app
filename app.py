@@ -231,7 +231,7 @@ def scatter_plot(df):
     st.plotly_chart(fig)
 
 # Load the DataFrame
-#df = pd.read_csv("belgiumdata.csv")
+df = pd.read_csv("belgiumdata.csv")
 df1 = pd.read_csv("playerdata.csv")
 df2 = pd.read_csv("full_back_scores2.csv")
 
