@@ -206,7 +206,10 @@ def scatter_plot(df):
     fig = px.scatter(filtered_df, x=x_variable, y=y_variable)
 
 # Customize the marker color and size
-    fig.update_traces(marker=dict(size=12, color='#7EC0EE'))
+    fig.update_traces(
+    marker=dict(size=12, color='#7EC0EE'),
+    hovertemplate='%{text}<br>%{x_variable}: %{x}<br>%{y_variable}: %{y}<br>Player: %{text}<br>Competition: %{customdata[0]}'
+)
 
 # Set the plot size
     fig.update_layout(width=800, height=600)
