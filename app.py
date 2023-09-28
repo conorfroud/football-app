@@ -19,65 +19,25 @@ pd.set_option("display.width", None)  # None means no width limit
 
 # Create a function for each tab's content
 
-def main_tab(df):
+def main_tab(df2):
 
-    st.sidebar.header("Please Filter Here")
-    score_type = st.sidebar.selectbox(
-        "Choose Positional Template:",
-        ("Striker Score", "Midfield Score")
-    )
+   # Create a list of league options
+   league_options = df2['League'].unique()
 
-    #league = st.sidebar.multiselect(
-       # "Select the League:",
-        #options=df["Team"].unique(),
-        #default=df["Team"].unique()
-   #)
+   # Create a list of score type options
+   score_type_options = df2['Score Type'].unique()
 
-    #position = st.sidebar.selectbox(
-       # "Select the Position:",
-        #options=df["Position"].unique(),
-        #index=0  # Set the default index to the first position
-    #)
+   # Add a sidebar dropdown box for leagues
+   selected_league = st.sidebar.selectbox("Select a League", league_options)
 
-    #df_selection = df.query(
-       # "Team == @league & Position == @position"
-    #)
+   # Add a sidebar dropdown box for score types
+   selected_score_type = st.sidebar.selectbox("Select a Score Type", score_type_options)
 
-    #selected_columns = ["Player Name", "Position", "Team"]  # Always include these columns
-    
-    #if score_type == "Striker Score":
-        #selected_columns.append("Striker Score")
-        #sorted_column = "Striker Score"
-    #elif score_type == "Midfield Score":
-        #selected_columns.append("Midfield Score")
-        #sorted_column = "Midfield Score"
+   # Filter the DataFrame based on the selected league and score type
+   filtered_df = df2[(df2['League'] == selected_league) & (df2['Score Type'] == selected_score_type)]
 
-    #df_selection = df_selection.sort_values(by=sorted_column, ascending=False)
-    #selected_df = df_selection[selected_columns]
-
-    # Create a bar chart of top 10 players based on the selected score
-    #st.subheader(f"Stoke City Score")
-    #top_10_players = df_selection.nlargest(10, sorted_column)
-    #fig = px.bar(
-        #top_10_players,
-       # x="Player Name",
-        #y=sorted_column,
-        #title=f"Top 10 Players by {score_type}",
-        #labels={"Player Name": "Player", sorted_column: "Score"}
-   # )
-    
-    # Add score annotations over each bar
-    #for index, row in top_10_players.iterrows():
-        #fig.add_annotation(
-           # x=row["Player Name"],
-           # y=row[sorted_column] + 2,  # Adjust y position for annotation
-           # text=str(row[sorted_column]),
-           # showarrow=False,
-           # font=dict(size=10)
-      #  )
-
-    #st.plotly_chart(fig)
-    #st.dataframe(selected_df, width=1500, height=500, hide_index=1)
+   # Display the filtered DataFrame
+   st.table(filtered_df)
 
 def about_tab(df1):
     #st.title("Player Profile")
@@ -209,16 +169,16 @@ def about_tab(df1):
 # Load the DataFrame
 #df = pd.read_csv("/Users/conorfroud/untitled.csv")
 df1 = pd.read_csv("playerdata.csv")
-#df1 = pd.read_csv("/Users/conorfroud/Downloads/Striker Percentile Scores - Sheet1 2.csv")
+df2 = pd.read_csv("full_back_scores2.csv")
 
 # Create the navigation menu in the sidebar
-selected_tab = st.sidebar.radio("Navigation", ["Player Profile", "Scatter Plot"])
+selected_tab = st.sidebar.radio("Navigation", ["Stoke Score", "Player Profile", "Scatter Plot"])
 
 # Based on the selected tab, display the corresponding content
-#if selected_tab == "Stoke Score":
-    #main_tab(df)
-if selected_tab == "Player Profile":
-    about_tab(df1)  # Pass the DataFrame to the about_tab function
+if selected_tab == "Stoke Score":
+    main_tab(df)
+#if selected_tab == "Player Profile":
+    #about_tab(df1)  # Pass the DataFrame to the about_tab function
 elif selected_tab == "Scatter Plot":
     scatter_plot(df)
 #elif selected_tab == "Venn Diagram":
