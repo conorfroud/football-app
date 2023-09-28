@@ -207,9 +207,7 @@ def scatter_plot(df):
 
 # Customize the marker color and size
     fig.update_traces(
-    marker=dict(size=12, color='#7EC0EE'),
-    hovertemplate='%{text}<br>%{x_variable}: %{x}<br>%{y_variable}: %{y}<br>Player: %{text}<br>Competition: %{customdata[0]}'
-)
+    marker=dict(size=12, color='#7EC0EE'))
 
 # Set the plot size
     fig.update_layout(width=800, height=600)
@@ -222,6 +220,7 @@ def scatter_plot(df):
         x=outliers[x_variable],
         y=outliers[y_variable],
         text=outliers['player_name'],
+        customdata=outliers[['player_name', 'competition_name']],
         mode='text',
         showlegend=False,
         textposition='top center'
