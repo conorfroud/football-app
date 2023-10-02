@@ -178,6 +178,11 @@ def scatter_plot(df):
 
     selected_league = st.sidebar.selectbox('Select League', df['competition_name'].unique())
 
+    # Sidebar for filtering by age
+    min_age = int(df['age'].min())
+    max_age = int(df['age'].max())
+    selected_age_range = st.sidebar.slider('Select Age Range', min_value=min_age, max_value=max_age, value=(min_age, max_age))
+
 # Create a multi-select dropdown for selecting players
     #selected_players = st.sidebar.multiselect('Select Players', df['player_name'])
 
@@ -193,7 +198,9 @@ def scatter_plot(df):
                  #(df['player_name'].isin(selected_players) | (len(selected_players) == 0)) &
                  (df['minutes'] >= selected_minutes[0]) &
                  (df['minutes'] <= selected_minutes[1]) &
-                 (df['competition_name'] == selected_league)]
+                 (df['competition_name'] == selected_league) &
+                 (df['age'] >= selected_age_range[0]) &
+                 (df['age'] <= selected_age_range[1])]
 
 # Calculate Z-scores for the variables
     filtered_df['z_x'] = (filtered_df[x_variable] - filtered_df[x_variable].mean()) / filtered_df[x_variable].std()
