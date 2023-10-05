@@ -242,7 +242,7 @@ def scatter_plot(df):
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
 df1 = pd.read_csv("playerdata.csv")
-df2 = pd.read_csv("full_back_scores2.csv")
+df2 = pd.read_csv("championshipscores.csv")
 
 # Create the navigation menu in the sidebar
 selected_tab = st.sidebar.radio("Navigation", ["Stoke Score", "Scatter Plot"])
