@@ -20,10 +20,7 @@ pd.set_option("display.width", None)  # None means no width limit
 # Create a function for each tab's content
 
 def main_tab(df2):
-
-import streamlit as st
-
-def main_tab(df2):
+    
     # Create a list of league options
     league_options = df2['League'].unique()
 
