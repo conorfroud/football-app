@@ -21,23 +21,30 @@ pd.set_option("display.width", None)  # None means no width limit
 
 def main_tab(df2):
 
-   # Create a list of league options
-   league_options = df2['League'].unique()
+    # Create a list of league options
+    league_options = df2['League'].unique()
 
-   # Create a list of score type options
-   score_type_options = df2['Score Type'].unique()
+    # Create a list of score type options
+    score_type_options = df2['Score Type'].unique()
 
-   # Add a sidebar dropdown box for leagues
-   selected_league = st.sidebar.selectbox("Select a League", league_options)
+    # Add a sidebar dropdown box for leagues
+    selected_league = st.sidebar.selectbox("Select a League", league_options)
 
-   # Add a sidebar dropdown box for score types
-   selected_score_type = st.sidebar.selectbox("Select a Score Type", score_type_options)
+    # Add a sidebar dropdown box for score types
+    selected_score_type = st.sidebar.selectbox("Select a Score Type", score_type_options)
 
-   # Filter the DataFrame based on the selected league and score type
-   filtered_df = df2[(df2['League'] == selected_league) & (df2['Score Type'] == selected_score_type)]
+    # Add a slider for selecting the age range
+    min_age = st.sidebar.slider("Minimum Age", min_value=df2['Age'].min(), max_value=df2['Age'].max())
+    max_age = st.sidebar.slider("Maximum Age", min_value=df2['Age'].min(), max_value=df2['Age'].max())
 
-   # Display the filtered DataFrame
-   st.table(filtered_df)
+    # Filter the DataFrame based on the selected league, score type, and age range
+    filtered_df = df2[(df2['League'] == selected_league) &
+                      (df2['Score Type'] == selected_score_type) &
+                      (df2['Age'] >= min_age) &
+                      (df2['Age'] <= max_age)]
+
+    # Display the filtered DataFrame
+    st.table(filtered_df)
 
 def about_tab(df1):
     #st.title("Player Profile")
