@@ -21,36 +21,57 @@ pd.set_option("display.width", None)  # None means no width limit
 
 def main_tab(df2):
 
-# Create a list of league options
-   league_options = df2['League'].unique()
+import streamlit as st
 
-# Create a list of score type options
-   score_type_options = df2['Score Type'].unique()
+def main_tab(df2):
+    # Create a list of league options
+    league_options = df2['League'].unique()
 
-# Add a sidebar dropdown box for leagues
-   selected_league = st.sidebar.selectbox("Select a League", league_options)
+    # Create a list of score type options
+    score_type_options = df2['Score Type'].unique()
 
-# Add a sidebar dropdown box for score types
-   selected_score_type = st.sidebar.selectbox("Select a Score Type", score_type_options)
+    # Get the minimum and maximum age values from the DataFrame
+    min_age = int(df2['Age'].min())
+    max_age = int(df2['Age'].max())
 
-# Get the minimum and maximum age values from the DataFrame
-   min_age = int(df2['Age'].min())
-   max_age = int(df2['Age'].max())
+    # Get the minimum and maximum contract expiry values from the DataFrame
+    min_contract_expiry = int(df2['contract_expiry'].min())
+    max_contract_expiry = int(df2['contract_expiry'].max())
 
-# Add a slider for selecting the age range
-   age_range = st.sidebar.slider("Select Age Range", min_value=min_age, max_value=max_age, value=(min_age, max_age))
+    # Get the minimum and maximum player market value (in euros) from the DataFrame
+    min_player_market_value = int(df2['player_market_value_euro'].min())
+    max_player_market_value = int(df2['player_market_value_euro'].max())
 
-# Filter the DataFrame based on the selected league, score type, and age range
-   filtered_df = df2[(df2['League'] == selected_league) &
-                  (df2['Score Type'] == selected_score_type) &
-                  (df2['Age'] >= age_range[0]) &
-                  (df2['Age'] <= age_range[1])]
+    # Add a sidebar dropdown box for leagues
+    selected_league = st.sidebar.selectbox("Select a League", league_options)
 
-# Specify the columns you want to display in the final table
-   selected_columns = ['Player Name', 'Age', 'Team', 'League', 'Position', 'Score Type', 'Stoke Score', 'contract_expiry', 'player_market_value_euro']
+    # Add a sidebar dropdown box for score types
+    selected_score_type = st.sidebar.selectbox("Select a Score Type", score_type_options)
 
-# Display the filtered DataFrame with selected columns
-   st.table(filtered_df[selected_columns])
+    # Add a slider for selecting the age range
+    age_range = st.sidebar.slider("Select Age Range", min_value=min_age, max_value=max_age, value=(min_age, max_age))
+
+    # Add a slider for selecting the contract expiry range
+    contract_expiry_range = st.sidebar.slider("Select Contract Expiry Range", min_value=min_contract_expiry, max_value=max_contract_expiry, value=(min_contract_expiry, max_contract_expiry))
+
+    # Add a slider for selecting the player market value (in euros) range
+    player_market_value_range = st.sidebar.slider("Select Player Market Value Range (Euro)", min_value=min_player_market_value, max_value=max_player_market_value, value=(min_player_market_value, max_player_market_value))
+
+    # Filter the DataFrame based on the selected filters
+    filtered_df = df2[(df2['League'] == selected_league) &
+                    (df2['Score Type'] == selected_score_type) &
+                    (df2['Age'] >= age_range[0]) &
+                    (df2['Age'] <= age_range[1]) &
+                    (df2['contract_expiry'] >= contract_expiry_range[0]) &
+                    (df2['contract_expiry'] <= contract_expiry_range[1]) &
+                    (df2['player_market_value_euro'] >= player_market_value_range[0]) &
+                    (df2['player_market_value_euro'] <= player_market_value_range[1])]
+
+    # Specify the columns you want to display in the final table
+    selected_columns = ['Player Name', 'Age', 'Team', 'League', 'Position', 'Score Type', 'Stoke Score', 'contract_expiry', 'player_market_value_euro']
+
+    # Display the filtered DataFrame with selected columns
+    st.table(filtered_df[selected_columns])
 
 def about_tab(df1):
     #st.title("Player Profile")
