@@ -32,7 +32,7 @@ def main_tab(df2):
     max_age = int(df2['Age'].max())
 
     # Get the minimum and maximum contract expiry values from the DataFrame
-    min_contract_expiry = int(df2['contract_expiry'].min())
+    min_contract_expiry = 2023
     max_contract_expiry = int(df2['contract_expiry'].max())
 
     # Get the minimum and maximum player market value (in euros) from the DataFrame
