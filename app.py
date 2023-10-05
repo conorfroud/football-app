@@ -46,22 +46,12 @@ def main_tab(df2):
 
     # Add a slider for selecting the age range
     age_range = st.sidebar.slider("Select Age Range", min_value=min_age, max_value=max_age, value=(min_age, max_age))
-
-    # Add a slider for selecting the contract expiry range
-    contract_expiry_range = st.sidebar.slider("Select Contract Expiry Range", min_value=min_contract_expiry, max_value=max_contract_expiry, value=(min_contract_expiry, max_contract_expiry))
-
-    # Add a slider for selecting the player market value (in euros) range
-    player_market_value_range = st.sidebar.slider("Select Player Market Value Range (Euro)", min_value=min_player_market_value, max_value=max_player_market_value, value=(min_player_market_value, max_player_market_value))
-
+    
     # Filter the DataFrame based on the selected filters
     filtered_df = df2[(df2['League'] == selected_league) &
                     (df2['Score Type'] == selected_score_type) &
                     (df2['Age'] >= age_range[0]) &
-                    (df2['Age'] <= age_range[1]) &
-                    (df2['contract_expiry'] >= contract_expiry_range[0]) &
-                    (df2['contract_expiry'] <= contract_expiry_range[1]) &
-                    (df2['player_market_value_euro'] >= player_market_value_range[0]) &
-                    (df2['player_market_value_euro'] <= player_market_value_range[1])]
+                    (df2['Age'] <= age_range[1])]
 
     # Specify the columns you want to display in the final table
     selected_columns = ['Player Name', 'Age', 'Team', 'League', 'Position', 'Score Type', 'Stoke Score', 'contract_expiry', 'player_market_value_euro']
