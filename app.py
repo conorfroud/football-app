@@ -22,35 +22,35 @@ pd.set_option("display.width", None)  # None means no width limit
 def main_tab(df2):
 
 # Create a list of league options
-league_options = df2['League'].unique()
+   league_options = df2['League'].unique()
 
 # Create a list of score type options
-score_type_options = df2['Score Type'].unique()
+   score_type_options = df2['Score Type'].unique()
 
 # Add a sidebar dropdown box for leagues
-selected_league = st.sidebar.selectbox("Select a League", league_options)
+   selected_league = st.sidebar.selectbox("Select a League", league_options)
 
 # Add a sidebar dropdown box for score types
-selected_score_type = st.sidebar.selectbox("Select a Score Type", score_type_options)
+   selected_score_type = st.sidebar.selectbox("Select a Score Type", score_type_options)
 
 # Get the minimum and maximum age values from the DataFrame
-min_age = int(df2['Age'].min())
-max_age = int(df2['Age'].max())
+   min_age = int(df2['Age'].min())
+   max_age = int(df2['Age'].max())
 
 # Add a slider for selecting the age range
-age_range = st.sidebar.slider("Select Age Range", min_value=min_age, max_value=max_age, value=(min_age, max_age))
+   age_range = st.sidebar.slider("Select Age Range", min_value=min_age, max_value=max_age, value=(min_age, max_age))
 
 # Filter the DataFrame based on the selected league, score type, and age range
-filtered_df = df2[(df2['League'] == selected_league) &
+   filtered_df = df2[(df2['League'] == selected_league) &
                   (df2['Score Type'] == selected_score_type) &
                   (df2['Age'] >= age_range[0]) &
                   (df2['Age'] <= age_range[1])]
 
 # Specify the columns you want to display in the final table
-selected_columns = ['Player Name', 'Age', 'Team', 'League', 'Position', 'Score Type' 'Stoke Score']
+   selected_columns = ['Player Name', 'Age', 'Team', 'League', 'Position', 'Score Type' 'Stoke Score']
 
 # Display the filtered DataFrame with selected columns
-st.table(filtered_df[selected_columns])
+   st.table(filtered_df[selected_columns])
 
 def about_tab(df1):
     #st.title("Player Profile")
