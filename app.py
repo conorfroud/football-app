@@ -33,15 +33,18 @@ def main_tab(df2):
     # Add a sidebar dropdown box for score types
     selected_score_type = st.sidebar.selectbox("Select a Score Type", score_type_options)
 
+    # Get the minimum and maximum age values from the DataFrame
+    min_age = int(df2['Age'].min())
+    max_age = int(df2['Age'].max())
+
     # Add a slider for selecting the age range
-    min_age = st.sidebar.slider("Minimum Age", min_value=df2['Age'].min(), max_value=df2['Age'].max())
-    max_age = st.sidebar.slider("Maximum Age", min_value=df2['Age'].min(), max_value=df2['Age'].max())
+    age_range = st.sidebar.slider("Select Age Range", min_value=min_age, max_value=max_age, value=(min_age, max_age))
 
     # Filter the DataFrame based on the selected league, score type, and age range
     filtered_df = df2[(df2['League'] == selected_league) &
                       (df2['Score Type'] == selected_score_type) &
-                      (df2['Age'] >= min_age) &
-                      (df2['Age'] <= max_age)]
+                      (df2['Age'] >= age_range[0]) &
+                      (df2['Age'] <= age_range[1])]
 
     # Display the filtered DataFrame
     st.table(filtered_df)
