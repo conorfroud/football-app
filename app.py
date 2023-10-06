@@ -59,10 +59,10 @@ def main_tab(df2):
                     (df2['Score Type'] == selected_score_type) &
                     (df2['Age'] >= age_range[0]) &
                     (df2['Age'] <= age_range[1]) &
-                    (df2['contract_expiry'] >= contract_expiry_range[0]) &
-                    (df2['contract_expiry'] <= contract_expiry_range[1]) &
-                    (df2['player_market_value_euro'] >= player_market_value_range[0]) &
-                    (df2['player_market_value_euro'] <= player_market_value_range[1])]
+                    (df2['Contract expires'] >= contract_expiry_range[0]) &
+                    (df2['Contract expires'] <= contract_expiry_range[1]) &
+                    (df2['Market value (millions)'] >= player_market_value_range[0]) &
+                    (df2['Market value (millions)'] <= player_market_value_range[1])]
 
     # Specify the columns you want to display in the final table
     selected_columns = ['Player Name', 'Age', 'Team', 'League', 'Position', 'Score Type', 'Stoke Score', 'Contract expires', 'Market value (millions)']
