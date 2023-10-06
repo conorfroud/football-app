@@ -20,7 +20,6 @@ pd.set_option("display.width", None)  # None means no width limit
 # Create a function for each tab's content
 
 def main_tab(df2):
-
     # Create a list of league options
     league_options = df2['League'].unique()
 
@@ -31,9 +30,8 @@ def main_tab(df2):
     min_age = int(df2['Age'].min())
     max_age = int(df2['Age'].max())
 
-    # Get the minimum and maximum contract expiry values from the DataFrame
-    min_contract_expiry = int(df2['Contract expires'].min())
-    max_contract_expiry = int(df2['Contract expires'].max())
+    # Get the unique contract expiry years from the DataFrame
+    contract_expiry_years = sorted(df2['Contract expires'].unique())
 
     # Get the minimum and maximum player market value (in euros) from the DataFrame
     min_player_market_value = int(df2['Market value (millions)'].min())
@@ -48,8 +46,8 @@ def main_tab(df2):
     # Add a slider for selecting the age range
     age_range = st.sidebar.slider("Select Age Range", min_value=min_age, max_value=max_age, value=(min_age, max_age))
 
-    # Add a slider for selecting the contract expiry range
-    contract_expiry_range = st.sidebar.slider("Select Contract Expiry Range", min_value=min_contract_expiry, max_value=max_contract_expiry, value=(min_contract_expiry, max_contract_expiry))
+    # Add a dropdown box for selecting the contract expiry year
+    selected_contract_expiry_year = st.sidebar.selectbox("Select Contract Expiry Year", contract_expiry_years)
 
     # Add a slider for selecting the player market value (in euros) range
     player_market_value_range = st.sidebar.slider("Select Player Market Value Range (Euro)", min_value=min_player_market_value, max_value=max_player_market_value, value=(min_player_market_value, max_player_market_value))
@@ -59,8 +57,7 @@ def main_tab(df2):
                     (df2['Score Type'] == selected_score_type) &
                     (df2['Age'] >= age_range[0]) &
                     (df2['Age'] <= age_range[1]) &
-                    (df2['Contract expires'] >= contract_expiry_range[0]) &
-                    (df2['Contract expires'] <= contract_expiry_range[1]) &
+                    (df2['Contract expires'] == selected_contract_expiry_year) &
                     (df2['Market value (millions)'] >= player_market_value_range[0]) &
                     (df2['Market value (millions)'] <= player_market_value_range[1])]
 
