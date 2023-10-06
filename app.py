@@ -20,6 +20,7 @@ pd.set_option("display.width", None)  # None means no width limit
 # Create a function for each tab's content
 
 def main_tab(df2):
+
     # Create a list of league options
     league_options = df2['League'].unique()
 
@@ -46,8 +47,8 @@ def main_tab(df2):
     # Add a slider for selecting the age range
     age_range = st.sidebar.slider("Select Age Range", min_value=min_age, max_value=max_age, value=(min_age, max_age))
 
-    # Add a dropdown box for selecting the contract expiry year
-    selected_contract_expiry_year = st.sidebar.selectbox("Select Contract Expiry Year", contract_expiry_years)
+    # Add a multiselect box for selecting contract expiry years
+    selected_contract_expiry_years = st.sidebar.multiselect("Select Contract Expiry Years", contract_expiry_years)
 
     # Add a slider for selecting the player market value (in euros) range
     player_market_value_range = st.sidebar.slider("Select Player Market Value Range (Euro)", min_value=min_player_market_value, max_value=max_player_market_value, value=(min_player_market_value, max_player_market_value))
@@ -57,7 +58,7 @@ def main_tab(df2):
                     (df2['Score Type'] == selected_score_type) &
                     (df2['Age'] >= age_range[0]) &
                     (df2['Age'] <= age_range[1]) &
-                    (df2['Contract expires'] == selected_contract_expiry_year) &
+                    (df2['Contract expires'].isin(selected_contract_expiry_years)) &
                     (df2['Market value (millions)'] >= player_market_value_range[0]) &
                     (df2['Market value (millions)'] <= player_market_value_range[1])]
 
@@ -66,6 +67,10 @@ def main_tab(df2):
 
     # Display the filtered DataFrame with selected columns
     st.table(filtered_df[selected_columns])
+
+
+
+
 
     #league = st.sidebar.multiselect(
        # "Select the League:",
