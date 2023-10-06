@@ -4,7 +4,6 @@ import plotly.express as px
 import matplotlib.pyplot as plt
 from matplotlib import font_manager
 import numpy as np
-from mplsoccer import PyPizza, FontManager
 from highlight_text import fig_text
 import streamlit as st
 import matplotlib.pyplot as plt
