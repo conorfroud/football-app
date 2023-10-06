@@ -1,6 +1,5 @@
 import pandas as pd
 import streamlit as st
-from st_aggrid import AgGrid
 import plotly.express as px
 import matplotlib.pyplot as plt
 from mplsoccer import Pitch
