@@ -1,0 +1,1275 @@
+,Player Name,Age,Team,League,Position,Score Type,Stoke Score,player_season_np_xg_90 Percentile,player_season_npg_90 Percentile,player_season_np_shots_90 Percentile,player_season_op_xa_90 Percentile,player_season_op_key_passes_90 Percentile,player_season_obv_dribble_carry_90 Percentile,player_season_aerial_wins_90 Percentile,player_season_aerial_ratio Percentile,player_season_padj_pressures_90 Percentile,player_season_pressure_regains_90 Percentile,player_season_touches_inside_box_90 Percentile,player_season_obv_shot_90 Percentile,Market value,Market value (millions),Contract expires
+0,Ryan Hardie,26,Plymouth Argyle,Championship,Centre Forward,Striker,97.17,81.0,83.0,94.0,57.0,79.0,68.0,70.0,68.0,21.0,30.0,81.0,57.0,600000,0.6,2026
+1,Aaron Anthony Connolly,23,Hull City,Championship,Left Centre Forward,Striker,90.24,96.0,94.0,87.0,91.0,55.0,45.0,4.0,9.0,60.0,38.0,89.0,94.0,4000000,4.0,2024
+5,Che Adams,27,Southampton,Championship,Centre Forward,Striker,88.91,87.0,89.0,60.0,98.0,94.0,94.0,9.0,9.0,89.0,74.0,62.0,98.0,22000000,22.0,2024
+7,Haji Wright,25,Coventry City,Championship,Left Centre Forward,Striker,86.75,94.0,64.0,98.0,55.0,47.0,91.0,68.0,55.0,83.0,6.0,94.0,15.0,6000000,6.0,2027
+8,André Filipe Cunha Vidigal,25,Stoke City,Championship,Right Centre Forward,Striker,84.88,83.0,96.0,96.0,72.0,70.0,55.0,15.0,13.0,51.0,68.0,96.0,100.0,1000000,1.0,2026
+9,Adam Armstrong,26,Southampton,Championship,Centre Forward,Striker,81.65,34.0,77.0,74.0,47.0,62.0,79.0,21.0,91.0,72.0,85.0,87.0,53.0,12000000,12.0,2025
+10,Joshua Sargent,23,Norwich City,Championship,Left Centre Forward,Striker,81.6,100.0,100.0,89.0,64.0,64.0,85.0,47.0,79.0,64.0,66.0,74.0,79.0,12000000,12.0,2025
+11,Vakoun Issouf Bayo,26,Watford,Championship,Centre Forward,Striker,80.64,89.0,53.0,70.0,70.0,89.0,81.0,49.0,51.0,70.0,79.0,66.0,17.0,4000000,4.0,2027
+12,George Hirst,24,Ipswich Town,Championship,Centre Forward,Striker,80.34,74.0,57.0,91.0,53.0,77.0,62.0,79.0,96.0,38.0,77.0,91.0,11.0,800000,0.8,2027
+13,Emmanuel Latte Lath,24,Middlesbrough,Championship,Centre Forward,Striker,78.93,98.0,79.0,100.0,6.0,30.0,100.0,23.0,87.0,81.0,70.0,100.0,89.0,1500000,1.5,2027
+14,Brandon Thomas-Asante,24,West Bromwich Albion,Championship,Centre Forward,Striker,75.62,66.0,51.0,62.0,77.0,36.0,89.0,11.0,4.0,47.0,34.0,68.0,21.0,1000000,1.0,2025
+15,Nahki Wells,33,Bristol City,Championship,Centre Forward,Striker,72.53,85.0,55.0,72.0,68.0,60.0,57.0,40.0,19.0,87.0,96.0,45.0,47.0,700000,0.7,2025
+16,Matt Godden,32,Coventry City,Championship,Right Centre Forward,Striker,72.28,64.0,74.0,64.0,36.0,19.0,17.0,45.0,57.0,36.0,28.0,77.0,66.0,500000,0.5,2025
+17,Georginio Rutter,21,Leeds United,Championship,Centre Forward,Striker,69.31,45.0,36.0,49.0,100.0,100.0,64.0,51.0,61.0,94.0,72.0,21.0,55.0,22000000,22.0,2028
+18,Harry Paul Leonard,20,Blackburn Rovers,Championship,Centre Forward,Striker,68.73,70.0,70.0,43.0,79.0,91.0,53.0,34.0,40.0,77.0,94.0,79.0,28.0,150000,0.15,2027
+19,Kelechi Promise Iheanacho,27,Leicester City,Championship,Centre Forward,Striker,68.03,79.0,30.0,83.0,96.0,98.0,34.0,2.0,2.0,85.0,60.0,98.0,74.0,17000000,17.0,2024
+20,Delano Burgzorg,24,Huddersfield Town,Championship,Right Centre Forward,Striker,66.92,11.0,68.0,53.0,89.0,85.0,87.0,13.0,9.0,15.0,83.0,83.0,26.0,2000000,2.0,2024
+21,Ike Ugbo,25,Cardiff City,Championship,Centre Forward,Striker,66.88,91.0,72.0,34.0,40.0,15.0,51.0,55.0,45.0,43.0,32.0,43.0,43.0,4000000,4.0,2024
+22,Adam Uche Idah,22,Norwich City,Championship,Centre Forward,Striker,66.81,77.0,85.0,57.0,87.0,40.0,32.0,17.0,32.0,68.0,4.0,30.0,85.0,2000000,2.0,2028
+23,Kevin Nisbet,26,Millwall,Championship,Centre Forward,Striker,64.8,57.0,47.0,68.0,51.0,49.0,30.0,77.0,64.0,13.0,11.0,57.0,36.0,2000000,2.0,2026
+24,Ellis Simms,22,Coventry City,Championship,Left Centre Forward,Striker,63.51,60.0,62.0,85.0,13.0,6.0,60.0,43.0,26.0,49.0,36.0,53.0,96.0,4000000,4.0,2027
+25,Liam Delap,20,Hull City,Championship,Right Centre Forward,Striker,62.66,26.0,49.0,45.0,81.0,96.0,83.0,19.0,40.0,53.0,26.0,19.0,64.0,5000000,5.0,2024
+26,Jobe Bellingham,18,Sunderland,Championship,Centre Forward,Striker,62.45,28.0,34.0,28.0,60.0,45.0,77.0,53.0,81.0,91.0,89.0,26.0,72.0,3000000,3.0,0
+27,Wesley Moraes Ferreira da Silva,26,Stoke City,Championship,Centre Forward,Striker,61.54,30.0,10.0,47.0,83.0,87.0,47.0,91.0,72.0,57.0,9.0,72.0,34.0,3000000,3.0,2024
+28,Ozan Tufan,28,Hull City,Championship,Left Centre Forward,Striker,60.74,68.0,98.0,81.0,15.0,38.0,49.0,28.0,98.0,98.0,87.0,55.0,91.0,3200000,3.2,2025
+29,Jerry Yates,26,Swansea City,Championship,Right Centre Forward,Striker,60.07,53.0,66.0,9.0,38.0,28.0,72.0,30.0,23.0,74.0,45.0,23.0,68.0,4000000,4.0,2026
+30,Jamie Vardy,36,Leicester City,Championship,Centre Forward,Striker,59.09,23.0,60.0,32.0,74.0,57.0,43.0,62.0,91.0,55.0,47.0,60.0,38.0,4000000,4.0,2024
+31,Harry Cornick,28,Bristol City,Championship,Left Centre Forward,Striker,55.43,49.0,45.0,36.0,32.0,72.0,66.0,72.0,21.0,100.0,91.0,51.0,62.0,1200000,1.2,2026
+32,Sinclair Armstrong,20,Queens Park Rangers,Championship,Centre Forward,Striker,55.16,36.0,21.0,23.0,85.0,51.0,74.0,32.0,30.0,6.0,21.0,15.0,45.0,800000,0.8,2024
+33,Will Keane,30,Preston North End,Championship,Centre Forward,Striker,54.35,62.0,81.0,30.0,28.0,4.0,4.0,60.0,28.0,26.0,19.0,47.0,81.0,1000000,1.0,2025
+34,Mileta Rajovic,24,Watford,Championship,Centre Forward,Striker,54.15,43.0,87.0,26.0,19.0,43.0,6.0,66.0,74.0,32.0,23.0,70.0,77.0,350000,0.35,2028
+35,Kion Etete,21,Cardiff City,Championship,Centre Forward,Striker,49.84,32.0,91.0,51.0,23.0,66.0,26.0,83.0,91.0,62.0,100.0,38.0,83.0,1000000,1.0,2025
+36,Joël Piroe,24,Swansea City,Championship,Right Centre Forward,Striker,48.52,72.0,10.0,79.0,11.0,13.0,96.0,64.0,53.0,45.0,2.0,32.0,4.0,600000,0.6,2027
+37,Jordan Hugill,31,Rotherham United,Championship,Centre Forward,Striker,47.54,6.0,43.0,6.0,66.0,17.0,23.0,100.0,66.0,2.0,17.0,4.0,70.0,700000,0.7,2026
+38,Lyndon Dykes,27,Queens Park Rangers,Championship,Centre Forward,Striker,45.7,21.0,26.0,38.0,9.0,23.0,40.0,98.0,83.0,11.0,43.0,49.0,40.0,3000000,3.0,2026
+39,Josh Coburn,20,Middlesbrough,Championship,Centre Forward,Striker,44.04,13.0,32.0,4.0,94.0,83.0,19.0,81.0,70.0,66.0,81.0,28.0,51.0,700000,0.7,2027
+40,Mason Burstow,20,Sunderland,Championship,Centre Forward,Striker,42.83,15.0,10.0,19.0,45.0,68.0,98.0,38.0,36.0,96.0,98.0,40.0,19.0,12000000,12.0,2024
+41,Tom Bradshaw,31,Millwall,Championship,Right Centre Forward,Striker,41.72,19.0,28.0,15.0,17.0,53.0,15.0,85.0,34.0,40.0,51.0,64.0,60.0,900000,0.9,2023
+42,Danny Ward,32,Huddersfield Town,Championship,Centre Forward,Striker,40.39,40.0,10.0,77.0,4.0,9.0,9.0,89.0,49.0,9.0,15.0,85.0,2.0,700000,0.7,2025
+43,Danny Ward,32,Huddersfield Town,Championship,Centre Forward,Striker,40.39,40.0,10.0,77.0,4.0,9.0,9.0,89.0,49.0,9.0,15.0,85.0,2.0,700000,0.7,2025
+44,Scott Hogan,31,Birmingham City,Championship,Centre Forward,Striker,38.91,55.0,19.0,40.0,34.0,32.0,38.0,26.0,17.0,28.0,55.0,9.0,23.0,1400000,1.4,2024
+45,Yakou Meïté,27,Cardiff City,Championship,Centre Forward,Striker,37.93,38.0,10.0,66.0,30.0,21.0,36.0,96.0,100.0,34.0,62.0,6.0,9.0,1500000,1.5,2025
+46,Milutin Osmajić,24,Preston North End,Championship,Centre Forward,Striker,36.73,47.0,38.0,11.0,49.0,26.0,21.0,36.0,15.0,17.0,13.0,2.0,87.0,1500000,1.5,0
+47,Kian Shay Harratt,21,Huddersfield Town,Championship,Left Centre Forward,Striker,35.46,51.0,10.0,55.0,43.0,81.0,13.0,94.0,85.0,4.0,53.0,34.0,6.0,6000000,6.0,2026
+48,Michael Smith,31,Sheffield Wednesday,Championship,Centre Forward,Striker,33.95,9.0,40.0,13.0,26.0,11.0,11.0,87.0,61.0,30.0,40.0,36.0,49.0,700000,0.7,2025
+49,Jamie Paterson,31,Swansea City,Championship,Left Centre Forward,Striker,33.92,4.0,10.0,21.0,62.0,74.0,70.0,6.0,40.0,79.0,49.0,17.0,13.0,600000,0.6,2024
+50,Lee Gregory,35,Sheffield Wednesday,Championship,Centre Forward,Striker,27.46,17.0,23.0,17.0,2.0,2.0,28.0,57.0,77.0,23.0,64.0,13.0,32.0,250000,0.25,2024
+51,Ashley Fletcher,28,Sheffield Wednesday,Championship,Centre Forward,Striker,17.83,2.0,10.0,2.0,21.0,34.0,2.0,74.0,47.0,19.0,57.0,11.0,30.0,800000,0.8,2024
+52,Morgan Whittaker,22,Plymouth Argyle,Championship,Right Wing,Winger,88.42,,,,,,71.0,,,,,,,1000000,1.0,2027
+53,Jack Clarke,22,Sunderland,Championship,Left Wing,Winger,87.38,,,,,,100.0,,,,,,,12000000,12.0,2026
+54,Stephy Alvaro Mavididi,25,Leicester City,Championship,Left Wing,Winger,81.51,,,,,,95.0,,,,,,,8000000,8.0,2028
+55,Nathan Broadhead,25,Ipswich Town,Championship,Left Wing,Winger,81.15,,,,,,36.0,,,,,,,700000,0.7,2026
+56,Crysencio Summerville,21,Leeds United,Championship,Right Wing,Winger,79.93,,,,,,80.0,,,,,,,12000000,12.0,2026
+57,Ollie Tanner,21,Cardiff City,Championship,Right Wing,Winger,74.72,,,,,,97.0,,,,,,,1000000,1.0,2027
+58,Jon Rowe,20,Norwich City,Championship,Left Wing,Winger,73.1,,,,,,61.0,,,,,,,500000,0.5,2024
+60,Omari Giraud-Hutchinson,19,Ipswich Town,Championship,Left Wing,Winger,70.95,,,,,,86.0,,,,,,,1000000,1.0,2024
+61,Siriki Dembélé,27,Birmingham City,Championship,Left Wing,Winger,70.6,,,,,,73.0,,,,,,,2500000,2.5,2026
+62,Isaiah Jones,24,Middlesbrough,Championship,Right Wing,Winger,67.73,,,,,,88.0,,,,,,,3500000,3.5,2025
+63,Yaser Esneider Asprilla Martínez,19,Watford,Championship,Right Wing,Winger,66.46,,,,,,81.0,,,,,,,3000000,3.0,2026
+64,Samuel John Bell,21,Bristol City,Championship,Left Wing,Winger,65.91,,,,,,25.0,,,,,,,1200000,1.2,2025
+70,Matheus Martins Silva dos Santos,20,Watford,Championship,Left Wing,Winger,65.88,,,,,,75.0,,,,,,,7000000,7.0,2024
+71,Patrick Roberts,26,Sunderland,Championship,Right Wing,Winger,62.35,,,,,,69.0,,,,,,,3200000,3.2,2024
+72,Josh Koroma,24,Huddersfield Town,Championship,Left Wing,Winger,61.93,,,,,,63.0,,,,,,,1200000,1.2,2025
+73,Bali Mumba,21,Plymouth Argyle,Championship,Left Wing,Winger,59.78,,,,,,83.0,,,,,,,900000,0.9,2027
+74,Daniel James,25,Leeds United,Championship,Left Wing,Winger,58.98,,,,,,76.0,,,,,,,13000000,13.0,2026
+75,Ryan Hedges,28,Blackburn Rovers,Championship,Right Wing,Winger,58.77,,,,,,85.0,,,,,,,1500000,1.5,2025
+76,Marcus Forss,24,Middlesbrough,Championship,Right Wing,Winger,58.33,,,,,,44.0,,,,,,,3500000,3.5,2026
+77,Mark Sykes,26,Bristol City,Championship,Right Wing,Winger,57.97,,,,,,34.0,,,,,,,1200000,1.2,2025
+78,Wes Burns,28,Ipswich Town,Championship,Right Wing,Winger,56.14,,,,,,39.0,,,,,,,900000,0.9,2025
+79,Degnand Wilfried Gnonto,19,Leeds United,Championship,Left Wing,Winger,55.77,,,,,,93.0,,,,,,,18000000,18.0,2027
+80,Christian Fassnacht,29,Norwich City,Championship,Right Wing,Winger,54.22,,,,,,20.0,,,,,,,2500000,2.5,2025
+81,Abdoullah Ba,20,Sunderland,Championship,Right Wing,Winger,54.06,,,,,,46.0,,,,,,,2000000,2.0,2027
+82,Abdul Fatawu Issahaku,19,Leicester City,Championship,Right Wing,Winger,53.94,,,,,,58.0,,,,,,,5000000,5.0,2024
+83,Keshi Anderson,28,Birmingham City,Championship,Left Wing,Winger,53.24,,,,,,92.0,,,,,,,300000,0.3,2024
+84,Karlan Ahearne-Grant,26,Cardiff City,Championship,Left Wing,Winger,53.11,,,,,,53.0,,,,,,,4500000,4.5,2024
+85,Riley McGree,24,Middlesbrough,Championship,Left Wing,Winger,52.74,,,,,,47.0,,,,,,,4000000,4.0,2025
+86,Samuel Silvera,22,Middlesbrough,Championship,Left Wing,Winger,50.82,,,,,,42.0,,,,,,,300000,0.3,2026
+89,Sorba Thomas,24,Huddersfield Town,Championship,Right Wing,Winger,50.64,,,,,,29.0,,,,,,,6000000,6.0,2026
+90,Tyrhys Dolan,21,Blackburn Rovers,Championship,Left Wing,Winger,49.93,,,,,,37.0,,,,,,,6000000,6.0,2024
+91,Samuel Edozie,20,Southampton,Championship,Left Wing,Winger,49.6,,,,,,64.0,,,,,,,7000000,7.0,2027
+92,Jeremy Leonel Sarmiento Morante,21,West Bromwich Albion,Championship,Left Wing,Winger,49.57,,,,,,54.0,,,,,,,5000000,5.0,2024
+93,Onel Lázaro Hernández Mayea,30,Norwich City,Championship,Left Midfielder,Winger,48.8,,,,,,98.0,,,,,,,1000000,1.0,2025
+94,Kasey McAteer,21,Leicester City,Championship,Right Wing,Winger,48.11,,,,,,31.0,,,,,,,250000,0.25,2025
+95,Giorgi Chakvetadze,24,Watford,Championship,Left Wing,Winger,48.1,,,,,,90.0,,,,,,,2200000,2.2,2024
+96,Ilias Chair,25,Queens Park Rangers,Championship,Left Wing,Winger,47.58,,,,,,59.0,,,,,,,10000000,10.0,2025
+97,Liam Cullen,24,Swansea City,Championship,Right Midfielder,Winger,47.34,,,,,,3.0,,,,,,,1200000,1.2,2024
+98,Kamaldeen Sulemana,21,Southampton,Championship,Left Wing,Winger,46.38,,,,,,78.0,,,,,,,22000000,22.0,2027
+99,Przemysław Płacheta,25,Norwich City,Championship,Left Midfielder,Winger,46.31,,,,,,56.0,,,,,,,1800000,1.8,0
+100,Tyrese Campbell,23,Stoke City,Championship,Left Wing,Winger,44.4,,,,,,68.0,,,,,,,3000000,3.0,2024
+101,Scott Twine,24,Hull City,Championship,Left Midfielder,Winger,40.02,,,,,,66.0,,,,,,,2800000,2.8,2024
+102,Josh Bowler,24,Cardiff City,Championship,Right Wing,Winger,39.04,,,,,,49.0,,,,,,,1800000,1.8,2024
+103,Nathan Tella,24,Southampton,Championship,Right Wing,Winger,38.91,,,,,,51.0,,,,,,,15000000,15.0,2026
+108,Jamal Lowe,29,Swansea City,Championship,Left Midfielder,Winger,38.1,,,,,,14.0,,,,,,,1500000,1.5,2024
+109,Anthony Musaba,22,Sheffield Wednesday,Championship,Left Wing,Winger,36.41,,,,,,2.0,,,,,,,900000,0.9,0
+110,Thomas Christopher Ince,31,Watford,Championship,Right Wing,Winger,35.82,,,,,,15.0,,,,,,,1500000,1.5,2025
+116,Mehdi Pascal Marcel Léris,25,Stoke City,Championship,Right Wing,Winger,35.82,,,,,,8.0,,,,,,,2200000,2.2,2026
+117,Dilan Kumar Markanday,22,Blackburn Rovers,Championship,Right Wing,Winger,34.26,,,,,,17.0,,,,,,,400000,0.4,2025
+118,Romain Esse,18,Millwall,Championship,Right Wing,Winger,33.61,,,,,,27.0,,,,,,,3500000,3.5,2026
+119,Fred Onyedinma,26,Rotherham United,Championship,Left Wing,Winger,32.28,,,,,,5.0,,,,,,,500000,0.5,2024
+120,Josh Windass,29,Sheffield Wednesday,Championship,Left Wing,Winger,31.26,,,,,,32.0,,,,,,,600000,0.6,2024
+121,Ryan Fraser,29,Southampton,Championship,Left Wing,Winger,27.14,,,,,,41.0,,,,,,,8000000,8.0,2024
+122,Andre Green,25,Rotherham United,Championship,Right Wing,Winger,26.05,,,,,,12.0,,,,,,,750000,0.75,2025
+123,Oliver Cooper,23,Swansea City,Championship,Left Midfielder,Winger,24.89,,,,,,24.0,,,,,,,3200000,3.2,2027
+124,Jed Wallace,29,West Bromwich Albion,Championship,Right Wing,Winger,23.94,,,,,,7.0,,,,,,,4500000,4.5,2026
+125,Callum Wright,23,Plymouth Argyle,Championship,Left Wing,Winger,22.96,,,,,,22.0,,,,,,,500000,0.5,2026
+126,John Buckley,23,Sheffield Wednesday,Championship,Left Wing,Winger,22.32,,,,,,10.0,,,,,,,3000000,3.0,2024
+127,Oliver Burke,26,Birmingham City,Championship,Right Wing,Winger,19.66,,,,,,19.0,,,,,,,2500000,2.5,2024
+128,Koji Miyoshi,26,Birmingham City,Championship,Centre Attacking Midfielder,Attacking Midfield,84.95,,,,,,,,,,,,,2500000,2.5,2025
+129,Duane Holmes,28,Preston North End,Championship,Right Attacking Midfielder,Attacking Midfield,79.07,,,,,,,,,,,,,1800000,1.8,2025
+130,Samuel Szmodics,28,Blackburn Rovers,Championship,Centre Attacking Midfielder,Attacking Midfield,73.89,,,,,,,,,,,,,2000000,2.0,2025
+133,Finn Azaz,23,Plymouth Argyle,Championship,Left Centre Midfielder,Attacking Midfield,72.99,,,,,,,,,,,,,700000,0.7,2024
+134,Zian Flemming,25,Millwall,Championship,Centre Attacking Midfielder,Attacking Midfield,69.56,,,,,,,,,,,,,4200000,4.2,0
+135,Luke Cundle,21,Plymouth Argyle,Championship,Right Centre Midfielder,Attacking Midfield,64.49,,,,,,,,,,,,,3000000,3.0,2024
+136,Jay Stansfield,20,Birmingham City,Championship,Centre Attacking Midfielder,Attacking Midfield,63.69,,,,,,,,,,,,,1200000,1.2,2024
+137,Kasey Palmer,26,Coventry City,Championship,Centre Attacking Midfielder,Attacking Midfield,63.41,,,,,,,,,,,,,1200000,1.2,2025
+138,Keshi Anderson,28,Birmingham City,Championship,Left Wing,Attacking Midfield,62.05,,,,,,,,,,,,,300000,0.3,2024
+139,John Swift,28,West Bromwich Albion,Championship,Centre Attacking Midfielder,Attacking Midfield,61.96,,,,,,,,,,,,,5000000,5.0,2025
+140,Morgan Rogers,21,Middlesbrough,Championship,Centre Attacking Midfielder,Attacking Midfield,61.96,,,,,,,,,,,,,1800000,1.8,2027
+141,Ilias Chair,25,Queens Park Rangers,Championship,Left Wing,Attacking Midfield,61.43,,,,,,,,,,,,,10000000,10.0,2025
+142,Alex Pritchard,30,Sunderland,Championship,Left Centre Midfielder,Attacking Midfield,58.66,,,,,,,,,,,,,1800000,1.8,2024
+143,Duncan Watmore,29,Millwall,Championship,Left Attacking Midfielder,Attacking Midfield,57.89,,,,,,,,,,,,,1000000,1.0,0
+144,Adama Traoré,28,Hull City,Championship,Centre Attacking Midfielder,Attacking Midfield,53.6,,,,,,,,,,,,,3000000,3.0,2024
+145,Conor Chaplin,26,Ipswich Town,Championship,Centre Attacking Midfielder,Attacking Midfield,53.06,,,,,,,,,,,,,1500000,1.5,2026
+146,Scott Twine,24,Hull City,Championship,Left Midfielder,Attacking Midfield,52.37,,,,,,,,,,,,,2800000,2.8,2024
+147,Mads Frøkjær-Jensen,24,Preston North End,Championship,Left Attacking Midfielder,Attacking Midfield,51.01,,,,,,,,,,,,,800000,0.8,2027
+148,Jobe Bellingham,18,Sunderland,Championship,Centre Forward,Attacking Midfield,49.61,,,,,,,,,,,,,3000000,3.0,0
+149,Bradley Dack,29,Sunderland,Championship,Centre Attacking Midfielder,Attacking Midfield,48.95,,,,,,,,,,,,,1800000,1.8,2024
+150,Hakeem Odofin,25,Rotherham United,Championship,Centre Attacking Midfielder,Attacking Midfield,48.47,,,,,,,,,,,,,500000,0.5,2024
+151,Aaron Ramsey,32,Cardiff City,Championship,Centre Attacking Midfielder,Attacking Midfield,46.89,,,,,,,,,,,,,3000000,3.0,2025
+152,Josh Windass,29,Sheffield Wednesday,Championship,Left Wing,Attacking Midfield,44.03,,,,,,,,,,,,,600000,0.6,2024
+153,Matty Crooks,29,Middlesbrough,Championship,Centre Attacking Midfielder,Attacking Midfield,43.97,,,,,,,,,,,,,1500000,1.5,2025
+157,Jason Knight,22,Bristol City,Championship,Right Centre Midfielder,Attacking Midfield,43.77,,,,,,,,,,,,,4000000,4.0,2027
+158,Joël Piroe,24,Leeds United,Championship,Centre Attacking Midfielder,Attacking Midfield,43.64,,,,,,,,,,,,,600000,0.6,2027
+159,Carlos Miguel Ribeiro Dias,30,Rotherham United,Championship,Centre Attacking Midfielder,Attacking Midfield,41.44,,,,,,,,,,,,,600000,0.6,2027
+160,Brahima Diarra,20,Huddersfield Town,Championship,Centre Attacking Midfielder,Attacking Midfield,38.96,,,,,,,,,,,,,6000000,6.0,2024
+161,Ben Wiles,24,Huddersfield Town,Championship,Left Centre Midfielder,Attacking Midfield,33.25,,,,,,,,,,,,,2200000,2.2,2026
+162,Andre Green,25,Rotherham United,Championship,Right Wing,Attacking Midfield,32.65,,,,,,,,,,,,,750000,0.75,2025
+163,John Buckley,23,Sheffield Wednesday,Championship,Left Wing,Attacking Midfield,32.05,,,,,,,,,,,,,3000000,3.0,2024
+164,Alan James Browne,28,Preston North End,Championship,Right Defensive Midfielder,Attacking Midfield,32.02,,,,,,,,,,,,,3200000,3.2,2024
+174,Joël Piroe,24,Swansea City,Championship,Right Centre Forward,Attacking Midfield,32.0,,,,,,,,,,,,,600000,0.6,2027
+175,Jamie Paterson,31,Swansea City,Championship,Left Centre Forward,Attacking Midfield,31.9,,,,,,,,,,,,,600000,0.6,2024
+176,Tatsuhiro Sakamoto,26,Coventry City,Championship,Right Wing Back,Attacking Midfield,29.66,,,,,,,,,,,,,1200000,1.2,2026
+177,Ashley Barnes,33,Norwich City,Championship,Centre Attacking Midfielder,Attacking Midfield,26.33,,,,,,,,,,,,,1000000,1.0,2025
+178,Lyndon Dykes,27,Queens Park Rangers,Championship,Centre Forward,Attacking Midfield,23.77,,,,,,,,,,,,,3000000,3.0,2026
+179,Chris Anthony Willock,25,Queens Park Rangers,Championship,Right Attacking Midfielder,Attacking Midfield,23.65,,,,,,,,,,,,,2800000,2.8,2024
+183,Lee Gregory,35,Sheffield Wednesday,Championship,Centre Forward,Attacking Midfield,19.19,,,,,,,,,,,,,250000,0.25,2024
+184,Kiernan Dewsbury-Hall,25,Leicester City,Championship,Left Centre Midfielder,Central Midfield,93.56,,,,,,,,,50.0,,,,25000000,25.0,2027
+185,Finn Azaz,23,Plymouth Argyle,Championship,Left Centre Midfielder,Central Midfield,74.86,,,,,,,,,53.0,,,,700000,0.7,2024
+186,William Anthony Patrick Smallbone,23,Southampton,Championship,Right Centre Midfielder,Central Midfield,68.27,,,,,,,,,76.0,,,,3500000,3.5,2026
+195,Jack Rudoni,22,Huddersfield Town,Championship,Left Defensive Midfielder,Central Midfield,67.35,,,,,,,,,29.0,,,,3000000,3.0,2026
+196,Onyinye Wilfred Ndidi,26,Leicester City,Championship,Right Centre Midfielder,Central Midfield,66.41,,,,,,,,,85.0,,,,32000000,32.0,2024
+197,Daniel Johnson,30,Stoke City,Championship,Left Centre Midfielder,Central Midfield,65.89,,,,,,,,,59.0,,,,900000,0.9,2025
+198,Alex Pritchard,30,Sunderland,Championship,Left Centre Midfielder,Central Midfield,64.4,,,,,,,,,47.0,,,,1800000,1.8,2024
+199,John Swift,28,West Bromwich Albion,Championship,Centre Attacking Midfielder,Central Midfield,64.02,,,,,,,,,15.0,,,,5000000,5.0,2025
+200,Josh Laurent,28,Stoke City,Championship,Right Centre Midfielder,Central Midfield,56.67,,,,,,,,,82.0,,,,2000000,2.0,2025
+201,Luke Cundle,21,Plymouth Argyle,Championship,Right Centre Midfielder,Central Midfield,56.12,,,,,,,,,35.0,,,,3000000,3.0,2024
+202,Charlie Patino,19,Swansea City,Championship,Left Centre Midfielder,Central Midfield,56.1,,,,,,,,,68.0,,,,12000000,12.0,2024
+203,Jason Knight,22,Bristol City,Championship,Right Centre Midfielder,Central Midfield,54.08,,,,,,,,,79.0,,,,4000000,4.0,2027
+204,Adam Randell,23,Plymouth Argyle,Championship,Right Centre Midfielder,Central Midfield,53.13,,,,,,,,,21.0,,,,500000,0.5,2026
+205,Alex Mowatt,28,West Bromwich Albion,Championship,Left Defensive Midfielder,Central Midfield,52.75,,,,,,,,,24.0,,,,3500000,3.5,2024
+206,Yasin Abbas Ayari,20,Coventry City,Championship,Centre Attacking Midfielder,Central Midfield,52.72,,,,,,,,,88.0,,,,4000000,4.0,2024
+207,Adam Armstrong,26,Southampton,Championship,Centre Forward,Central Midfield,52.36,,,,,,,,,74.0,,,,12000000,12.0,2025
+208,Giorgi Chakvetadze,24,Watford,Championship,Left Wing,Central Midfield,49.33,,,,,,,,,71.0,,,,2200000,2.2,2024
+209,Stuart Armstrong,31,Southampton,Championship,Left Centre Midfielder,Central Midfield,48.88,,,,,,,,,32.0,,,,12000000,12.0,2024
+210,Carlos Alcaraz,20,Southampton,Championship,Left Centre Midfielder,Central Midfield,48.18,,,,,,,,,94.0,,,,12000000,12.0,2027
+211,Ayotomiwa Dele-Bashiru,24,Watford,Championship,Left Centre Midfielder,Central Midfield,45.97,,,,,,,,,65.0,,,,1500000,1.5,2025
+212,Joe Williams,26,Bristol City,Championship,Left Centre Midfielder,Central Midfield,42.07,,,,,,,,,56.0,,,,1200000,1.2,2024
+213,Wouter Burger,22,Stoke City,Championship,Left Centre Midfielder,Central Midfield,39.51,,,,,,,,,97.0,,,,4500000,4.5,2027
+214,Ismael Koné,21,Watford,Championship,Left Centre Midfielder,Central Midfield,37.31,,,,,,,,,18.0,,,,6000000,6.0,2027
+215,Oliver Rathbone,25,Rotherham United,Championship,Right Defensive Midfielder,Central Midfield,37.03,,,,,,,,,9.0,,,,1500000,1.5,2024
+216,Oliver Cooper,23,Swansea City,Championship,Left Midfielder,Central Midfield,36.92,,,,,,,,,100.0,,,,3200000,3.2,2027
+217,Joe Ralls,29,Cardiff City,Championship,Left Centre Midfielder,Central Midfield,34.03,,,,,,,,,26.0,,,,1800000,1.8,2024
+218,Flynn Downes,24,Southampton,Championship,Centre Defensive Midfielder,Central Midfield,32.05,,,,,,,,,41.0,,,,8000000,8.0,2024
+219,Ben Wiles,24,Huddersfield Town,Championship,Left Centre Midfielder,Central Midfield,29.91,,,,,,,,,3.0,,,,2200000,2.2,2026
+220,Ryan Wintle,26,Cardiff City,Championship,Right Centre Midfielder,Central Midfield,26.45,,,,,,,,,6.0,,,,3800000,3.8,2026
+221,Allan Campbell,25,Millwall,Championship,Right Defensive Midfielder,Central Midfield,23.88,,,,,,,,,91.0,,,,3000000,3.0,2024
+222,Chris Anthony Willock,25,Queens Park Rangers,Championship,Right Attacking Midfielder,Central Midfield,23.55,,,,,,,,,62.0,,,,2800000,2.8,2024
+226,Jayson Molumby,24,West Bromwich Albion,Championship,Right Defensive Midfielder,Central Midfield,23.04,,,,,,,,,38.0,,,,3200000,3.2,2025
+227,Jay Fulton,29,Swansea City,Championship,Right Centre Midfielder,Central Midfield,21.29,,,,,,,,,44.0,,,,1200000,1.2,2026
+228,Sam Clucas,33,Rotherham United,Championship,Left Centre Midfielder,Central Midfield,20.68,,,,,,,,,12.0,,,,400000,0.4,2024
+229,Ethan Ampadu,23,Leeds United,Championship,Left Defensive Midfielder,Defensive Midfield,65.4,,,,,,,,,,,,,9000000,9.0,2027
+230,Josh Laurent,28,Stoke City,Championship,Right Centre Midfielder,Defensive Midfield,62.9,,,,,,,,,,,,,2000000,2.0,2025
+231,Sam Morsy,32,Ipswich Town,Championship,Right Defensive Midfielder,Defensive Midfield,62.41,,,,,,,,,,,,,1000000,1.0,2024
+241,Kenneth McLean,31,Norwich City,Championship,Left Defensive Midfielder,Defensive Midfield,59.37,,,,,,,,,,,,,1200000,1.2,2025
+243,Adam Wharton,19,Blackburn Rovers,Championship,Left Defensive Midfielder,Defensive Midfield,58.13,,,,,,,,,,,,,2500000,2.5,2027
+244,William Anthony Patrick Smallbone,23,Southampton,Championship,Right Centre Midfielder,Defensive Midfield,55.18,,,,,,,,,,,,,3500000,3.5,2026
+253,Jean Michaël Seri,32,Hull City,Championship,Left Defensive Midfielder,Defensive Midfield,54.49,,,,,,,,,,,,,1500000,1.5,2025
+254,Gabriel Davi Gomes Sara,24,Norwich City,Championship,Right Defensive Midfielder,Defensive Midfield,54.41,,,,,,,,,,,,,12000000,12.0,2026
+255,Massimo Luongo,31,Ipswich Town,Championship,Left Defensive Midfielder,Defensive Midfield,50.88,,,,,,,,,,,,,350000,0.35,2024
+256,Archie Gray,17,Leeds United,Championship,Right Defensive Midfielder,Defensive Midfield,50.44,,,,,,,,,,,,,200000,0.2,2025
+257,Ben Sheaf,25,Coventry City,Championship,Left Defensive Midfielder,Defensive Midfield,50.03,,,,,,,,,,,,,3800000,3.8,2026
+258,Liam Kelly,33,Coventry City,Championship,Left Defensive Midfielder,Defensive Midfield,46.85,,,,,,,,,,,,,600000,0.6,2024
+259,Flynn Downes,24,Southampton,Championship,Centre Defensive Midfielder,Defensive Midfield,46.35,,,,,,,,,,,,,8000000,8.0,2024
+260,Alistair McCann,23,Preston North End,Championship,Right Defensive Midfielder,Defensive Midfield,46.1,,,,,,,,,,,,,2800000,2.8,2025
+261,Shea Charles,19,Southampton,Championship,Centre Defensive Midfielder,Defensive Midfield,45.54,,,,,,,,,,,,,15000000,15.0,2027
+262,Lewis Travis,25,Blackburn Rovers,Championship,Right Defensive Midfielder,Defensive Midfield,44.27,,,,,,,,,,,,,5000000,5.0,2026
+263,Charlie Patino,19,Swansea City,Championship,Left Centre Midfielder,Defensive Midfield,43.89,,,,,,,,,,,,,12000000,12.0,2024
+264,Alex Mowatt,28,West Bromwich Albion,Championship,Left Defensive Midfielder,Defensive Midfield,42.4,,,,,,,,,,,,,3500000,3.5,2024
+265,Jonathan Hogg,34,Huddersfield Town,Championship,Centre Defensive Midfielder,Defensive Midfield,42.14,,,,,,,,,,,,,250000,0.25,2024
+266,Lewis O'Brien,24,Middlesbrough,Championship,Left Back,Defensive Midfield,41.93,,,,,,,,,,,,,8000000,8.0,2024
+267,Pierre Ekwah Elimby,21,Sunderland,Championship,Left Defensive Midfielder,Defensive Midfield,41.24,,,,,,,,,,,,,350000,0.35,2027
+268,Jordan Thompson,26,Stoke City,Championship,Centre Defensive Midfielder,Defensive Midfield,40.14,,,,,,,,,,,,,900000,0.9,2024
+269,Jay Fulton,29,Swansea City,Championship,Right Centre Midfielder,Defensive Midfield,39.69,,,,,,,,,,,,,1200000,1.2,2026
+270,Ben Pearson,28,Stoke City,Championship,Centre Defensive Midfielder,Defensive Midfield,39.07,,,,,,,,,,,,,2200000,2.2,2027
+271,Matty James,32,Bristol City,Championship,Centre Defensive Midfielder,Defensive Midfield,38.3,,,,,,,,,,,,,800000,0.8,2024
+272,Francisco Sierralta Carvallo,26,Watford,Championship,Centre Defensive Midfielder,Defensive Midfield,37.63,,,,,,,,,,,,,1200000,1.2,2027
+273,Yasin Abbas Ayari,20,Coventry City,Championship,Centre Attacking Midfielder,Defensive Midfield,37.25,,,,,,,,,,,,,4000000,4.0,2024
+274,Josh Eccles,23,Coventry City,Championship,Right Defensive Midfielder,Defensive Midfield,37.17,,,,,,,,,,,,,2000000,2.0,2027
+275,Ivan Šunjić,26,Birmingham City,Championship,Right Defensive Midfielder,Defensive Midfield,37.16,,,,,,,,,,,,,4000000,4.0,2024
+276,Daniel Neil,21,Sunderland,Championship,Centre Defensive Midfielder,Defensive Midfield,36.59,,,,,,,,,,,,,4500000,4.5,2026
+284,Okay Yokuşlu,29,West Bromwich Albion,Championship,Left Defensive Midfielder,Defensive Midfield,36.21,,,,,,,,,,,,,3000000,3.0,2025
+285,Christ Joël Junior Tiéhi,25,Rotherham United,Championship,Left Defensive Midfielder,Defensive Midfield,34.69,,,,,,,,,,,,,1000000,1.0,2026
+288,Krystian Bielik,25,Birmingham City,Championship,Right Defensive Midfielder,Defensive Midfield,34.38,,,,,,,,,,,,,2800000,2.8,2026
+289,Regan Slater,24,Hull City,Championship,Right Defensive Midfielder,Defensive Midfield,33.37,,,,,,,,,,,,,3500000,3.5,2026
+290,Ryan Ledson,26,Preston North End,Championship,Left Defensive Midfielder,Defensive Midfield,33.19,,,,,,,,,,,,,1500000,1.5,2025
+291,Emmanouil Siopis,29,Cardiff City,Championship,Right Defensive Midfielder,Defensive Midfield,32.69,,,,,,,,,,,,,5500000,5.5,2026
+292,Hayden Hackney,21,Middlesbrough,Championship,Left Defensive Midfielder,Defensive Midfield,32.17,,,,,,,,,,,,,2500000,2.5,2027
+293,Matt Grimes,28,Swansea City,Championship,Left Defensive Midfielder,Defensive Midfield,32.15,,,,,,,,,,,,,7000000,7.0,2027
+294,Joe Rankin-Costello,24,Blackburn Rovers,Championship,Right Back,Defensive Midfield,32.07,,,,,,,,,,,,,1200000,1.2,2027
+295,Taylor Gardner-Hickman,21,Bristol City,Championship,Right Back,Defensive Midfield,31.3,,,,,,,,,,,,,1500000,1.5,2024
+296,Sam Field,25,Queens Park Rangers,Championship,Left Defensive Midfielder,Defensive Midfield,31.27,,,,,,,,,,,,,3500000,3.5,2024
+297,George Saville,30,Millwall,Championship,Left Defensive Midfielder,Defensive Midfield,30.86,,,,,,,,,,,,,2500000,2.5,2024
+298,Harry Winks,27,Leicester City,Championship,Centre Defensive Midfielder,Defensive Midfield,30.72,,,,,,,,,,,,,12000000,12.0,2026
+299,Casper De Norre,26,Millwall,Championship,Left Defensive Midfielder,Defensive Midfield,30.38,,,,,,,,,,,,,2000000,2.0,2026
+300,Jonathan Howson,35,Middlesbrough,Championship,Right Defensive Midfielder,Defensive Midfield,30.31,,,,,,,,,,,,,250000,0.25,2024
+301,Joe Williams,26,Bristol City,Championship,Left Centre Midfielder,Defensive Midfield,28.07,,,,,,,,,,,,,1200000,1.2,2024
+302,George Byers,27,Sheffield Wednesday,Championship,Right Defensive Midfielder,Defensive Midfield,27.61,,,,,,,,,,,,,450000,0.45,2024
+303,Allan Campbell,25,Millwall,Championship,Right Defensive Midfielder,Defensive Midfield,27.59,,,,,,,,,,,,,3000000,3.0,2024
+304,Jordan Houghton,27,Plymouth Argyle,Championship,Centre Defensive Midfielder,Defensive Midfield,26.71,,,,,,,,,,,,,350000,0.35,2025
+305,Joe Ralls,29,Cardiff City,Championship,Left Centre Midfielder,Defensive Midfield,25.93,,,,,,,,,,,,,1800000,1.8,2024
+306,Andre Leon Dozzell,24,Queens Park Rangers,Championship,Right Defensive Midfielder,Defensive Midfield,25.92,,,,,,,,,,,,,1200000,1.2,2024
+307,Barry Bannan,33,Sheffield Wednesday,Championship,Left Defensive Midfielder,Defensive Midfield,22.95,,,,,,,,,,,,,500000,0.5,2024
+308,Alan James Browne,28,Preston North End,Championship,Right Defensive Midfielder,Defensive Midfield,21.67,,,,,,,,,,,,,3200000,3.2,2024
+318,Adam Randell,23,Plymouth Argyle,Championship,Right Centre Midfielder,Defensive Midfield,21.45,,,,,,,,,,,,,500000,0.5,2026
+319,Ryan Wintle,26,Cardiff City,Championship,Right Centre Midfielder,Defensive Midfield,21.12,,,,,,,,,,,,,3800000,3.8,2026
+320,Billy Mitchell,22,Millwall,Championship,Right Defensive Midfielder,Defensive Midfield,21.03,,,,,,,,,,,,,4500000,4.5,0
+321,Tyler Morton,20,Hull City,Championship,Right Defensive Midfielder,Defensive Midfield,18.13,,,,,,,,,,,,,7000000,7.0,2024
+322,Carlos Miguel Ribeiro Dias,30,Rotherham United,Championship,Centre Attacking Midfielder,Defensive Midfield,18.08,,,,,,,,,,,,,600000,0.6,2027
+323,Jack Rudoni,22,Huddersfield Town,Championship,Left Defensive Midfielder,Defensive Midfield,17.84,,,,,,,,,,,,,3000000,3.0,2026
+324,Sam Clucas,33,Rotherham United,Championship,Left Centre Midfielder,Defensive Midfield,16.88,,,,,,,,,,,,,400000,0.4,2024
+325,Jayson Molumby,24,West Bromwich Albion,Championship,Right Defensive Midfielder,Defensive Midfield,16.23,,,,,,,,,,,,,3200000,3.2,2025
+326,Yuta Nakayama,26,Huddersfield Town,Championship,Left Centre Back,Defensive Midfield,15.94,,,,,,,,,,,,,1500000,1.5,2024
+327,Oliver Rathbone,25,Rotherham United,Championship,Right Defensive Midfielder,Defensive Midfield,15.5,,,,,,,,,,,,,1500000,1.5,2024
+328,Jack Colback,33,Queens Park Rangers,Championship,Left Defensive Midfielder,Defensive Midfield,14.47,,,,,,,,,,,,,800000,0.8,2025
+329,Tyreeq Bakinson,24,Sheffield Wednesday,Championship,Left Defensive Midfielder,Defensive Midfield,12.61,,,,,,,,,,,,,700000,0.7,2024
+330,Will Vaulks,30,Sheffield Wednesday,Championship,Left Defensive Midfielder,Defensive Midfield,11.54,,,,,,,,,,,,,1500000,1.5,2024
+331,Jeff Hendrick,31,Sheffield Wednesday,Championship,Right Defensive Midfielder,Defensive Midfield,9.63,,,,,,,,,,,,,1500000,1.5,2024
+332,Jack Stacey,27,Norwich City,Championship,Right Back,Right Back,92.63,,,,,,,,,,,,,3000000,3.0,2026
+333,Josh Key,23,Swansea City,Championship,Right Back,Right Back,91.0,,,,,,,,,,,,,500000,0.5,2026
+334,Ricardo Domingos Barbosa Pereira,30,Leicester City,Championship,Right Back,Right Back,88.33,,,,,,,,,,,,,12000000,12.0,2026
+335,Kyle Walker-Peters,26,Southampton,Championship,Right Back,Right Back,84.1,,,,,,,,,,,,,25000000,25.0,2025
+336,Jeremy Ngakia,23,Watford,Championship,Right Back,Right Back,79.44,,,,,,,,,,,,,2200000,2.2,2024
+337,Trai Hume,21,Sunderland,Championship,Right Back,Right Back,79.21,,,,,,,,,,,,,1800000,1.8,2027
+338,Callum Brittain,25,Blackburn Rovers,Championship,Right Back,Right Back,77.23,,,,,,,,,,,,,2000000,2.0,2026
+339,Milan van Ewijk,23,Coventry City,Championship,Right Wing Back,Right Back,72.65,,,,,,,,,,,,,5000000,5.0,2027
+340,Perry Ng,27,Cardiff City,Championship,Right Back,Right Back,68.55,,,,,,,,,,,,,3800000,3.8,2026
+341,Lynden Gooch,27,Stoke City,Championship,Right Wing Back,Right Back,68.22,,,,,,,,,,,,,1200000,1.2,2025
+342,Ki-Jana Hoever,21,Stoke City,Championship,Right Back,Right Back,67.54,,,,,,,,,,,,,3500000,3.5,2024
+343,Paul Smyth,26,Queens Park Rangers,Championship,Right Wing Back,Right Back,67.41,,,,,,,,,,,,,300000,0.3,2026
+344,Thomas Edwards,24,Huddersfield Town,Championship,Right Back,Right Back,62.75,,,,,,,,,,,,,6000000,6.0,2025
+351,Cody Drameh,21,Birmingham City,Championship,Right Back,Right Back,62.74,,,,,,,,,,,,,3500000,3.5,2024
+352,Joe Rankin-Costello,24,Blackburn Rovers,Championship,Right Back,Right Back,62.71,,,,,,,,,,,,,1200000,1.2,2027
+353,Luke Ayling,32,Leeds United,Championship,Right Back,Right Back,62.56,,,,,,,,,,,,,2000000,2.0,2024
+354,Brad Potts,29,Preston North End,Championship,Right Wing Back,Right Back,59.83,,,,,,,,,,,,,1800000,1.8,2026
+355,Lewie Coyle,27,Hull City,Championship,Right Back,Right Back,59.1,,,,,,,,,,,,,800000,0.8,2026
+356,Joe Edwards,32,Plymouth Argyle,Championship,Right Back,Right Back,57.08,,,,,,,,,,,,,350000,0.35,2025
+357,Taylor Gardner-Hickman,21,Bristol City,Championship,Right Back,Right Back,56.01,,,,,,,,,,,,,1500000,1.5,2024
+358,Ben Jackson,22,Huddersfield Town,Championship,Right Wing Back,Right Back,53.22,,,,,,,,,,,,,300000,0.3,2024
+359,Ryan Andrews,19,Watford,Championship,Right Back,Right Back,52.73,,,,,,,,,,,,,8000000,8.0,2024
+360,Jaden Philogene-Bidace,21,Hull City,Championship,Right Wing Back,Right Back,52.72,,,,,,,,,,,,,2800000,2.8,2026
+361,Cyrus Christie,31,Hull City,Championship,Right Back,Right Back,52.19,,,,,,,,,,,,,1000000,1.0,2024
+362,Brandon Williams,23,Ipswich Town,Championship,Right Back,Right Back,51.44,,,,,,,,,,,,,10000000,10.0,2024
+363,Rav van den Berg,19,Middlesbrough,Championship,Right Back,Right Back,51.14,,,,,,,,,,,,,200000,0.2,2027
+364,Juninho Bacuna,26,Birmingham City,Championship,Right Back,Right Back,50.19,,,,,,,,,,,,,5000000,5.0,2025
+365,George Tanner,23,Bristol City,Championship,Right Back,Right Back,44.79,,,,,,,,,,,,,1000000,1.0,2026
+366,Brooke Norton-Cuffy,19,Millwall,Championship,Right Wing Back,Right Back,40.14,,,,,,,,,,,,,2000000,2.0,2024
+367,Harrison Ashby,21,Swansea City,Championship,Right Wing Back,Right Back,40.1,,,,,,,,,,,,,1000000,1.0,2024
+368,Harrison Clarke,22,Ipswich Town,Championship,Right Back,Right Back,39.84,,,,,,,,,,,,,600000,0.6,2024
+374,Dexter Lembikisa,19,Rotherham United,Championship,Right Back,Right Back,39.67,,,,,,,,,,,,,600000,0.6,2024
+375,Darnell Furlong,27,West Bromwich Albion,Championship,Right Wing Back,Right Back,37.17,,,,,,,,,,,,,3500000,3.5,2025
+376,Tatsuhiro Sakamoto,26,Coventry City,Championship,Right Wing Back,Right Back,36.0,,,,,,,,,,,,,1200000,1.2,2026
+377,Callum Paterson,28,Sheffield Wednesday,Championship,Right Wing Back,Right Back,34.79,,,,,,,,,,,,,900000,0.9,2025
+378,Paddy McNair,28,Middlesbrough,Championship,Right Back,Right Back,30.41,,,,,,,,,,,,,4500000,4.5,2024
+379,Pol Valentín Sancho,26,Sheffield Wednesday,Championship,Right Wing Back,Right Back,29.64,,,,,,,,,,,,,300000,0.3,2025
+380,Danny McNamara,24,Millwall,Championship,Right Wing Back,Right Back,15.92,,,,,,,,,,,,,3500000,3.5,2024
+381,Callum Doyle,20,Leicester City,Championship,Left Back,Left Back,84.2,,,,,,,,,,,,,5000000,5.0,2024
+382,Dimitris Giannoulis,27,Norwich City,Championship,Left Back,Left Back,83.79,,,,,,,,,,,,,3500000,3.5,2024
+383,Leif Davis,23,Ipswich Town,Championship,Left Back,Left Back,79.66,,,,,,,,,,,,,1000000,1.0,2025
+384,Conor Townsend,30,West Bromwich Albion,Championship,Left Wing Back,Left Back,76.94,,,,,,,,,,,,,2000000,2.0,2025
+385,Samuel Mark Byram,30,Leeds United,Championship,Left Back,Left Back,75.17,,,,,,,,,,,,,1000000,1.0,2024
+391,Cameron Pring,25,Bristol City,Championship,Left Back,Left Back,75.08,,,,,,,,,,,,,1000000,1.0,2026
+392,Rúben Gonçalo Silva Nascimento Vinagre,24,Hull City,Championship,Left Back,Left Back,74.1,,,,,,,,,,,,,5000000,5.0,2024
+393,Kaine Kesler-Hayden,20,Plymouth Argyle,Championship,Left Back,Left Back,70.91,,,,,,,,,,,,,1500000,1.5,2024
+394,Ken Sema,30,Watford,Championship,Left Back,Left Back,68.88,,,,,,,,,,,,,2500000,2.5,2025
+395,Enda Stevens,33,Stoke City,Championship,Left Back,Left Back,68.6,,,,,,,,,,,,,600000,0.6,2024
+396,Harry Pickering,24,Blackburn Rovers,Championship,Left Back,Left Back,63.59,,,,,,,,,,,,,4800000,4.8,2025
+397,Niall Huggins,22,Sunderland,Championship,Left Back,Left Back,62.73,,,,,,,,,,,,,200000,0.2,2025
+398,Liam Millar,24,Preston North End,Championship,Left Wing Back,Left Back,61.04,,,,,,,,,,,,,1700000,1.7,2024
+399,Josh Ruffles,29,Huddersfield Town,Championship,Left Back,Left Back,58.39,,,,,,,,,,,,,400000,0.4,2025
+413,Ryan Longman,22,Millwall,Championship,Left Wing Back,Left Back,58.09,,,,,,,,,,,,,2500000,2.5,2024
+414,Ryan Manning,27,Southampton,Championship,Left Back,Left Back,57.44,,,,,,,,,,,,,2500000,2.5,2027
+415,Jamilu Collins,29,Cardiff City,Championship,Left Back,Left Back,57.09,,,,,,,,,,,,,800000,0.8,2024
+416,Jamie Shackleton,23,Leeds United,Championship,Left Back,Left Back,56.78,,,,,,,,,,,,,2000000,2.0,2024
+417,Lukas Ahlefeld Engel,24,Middlesbrough,Championship,Left Back,Left Back,55.23,,,,,,,,,,,,,700000,0.7,2027
+418,James Justin,25,Leicester City,Championship,Left Back,Left Back,55.07,,,,,,,,,,,,,25000000,25.0,2026
+419,Lee Buchanan,22,Birmingham City,Championship,Left Back,Left Back,54.51,,,,,,,,,,,,,3500000,3.5,2028
+420,Dennis Cirkin,21,Sunderland,Championship,Left Back,Left Back,52.92,,,,,,,,,,,,,2200000,2.2,2026
+421,Jay Dasilva,25,Coventry City,Championship,Left Wing Back,Left Back,51.1,,,,,,,,,,,,,2200000,2.2,2027
+422,Jamal Lewis,25,Watford,Championship,Left Back,Left Back,49.08,,,,,,,,,,,,,8000000,8.0,2024
+423,Joe Bryan,30,Millwall,Championship,Left Wing Back,Left Back,48.6,,,,,,,,,,,,,3000000,3.0,2027
+424,Lewis O'Brien,24,Middlesbrough,Championship,Left Back,Left Back,47.24,,,,,,,,,,,,,8000000,8.0,2024
+425,Robert Brady,31,Preston North End,Championship,Left Wing Back,Left Back,46.07,,,,,,,,,,,,,600000,0.6,2025
+426,Matt Phillips,32,West Bromwich Albion,Championship,Left Wing Back,Left Back,45.11,,,,,,,,,,,,,800000,0.8,2024
+427,Jaheim Headley,22,Huddersfield Town,Championship,Left Wing Back,Left Back,44.92,,,,,,,,,,,,,300000,0.3,2024
+428,Kian Andrew Best,18,Preston North End,Championship,Left Wing Back,Left Back,44.52,,,,,,,,,,,,,1000000,1.0,2025
+429,Juan Antonio Delgado Baeza,30,Sheffield Wednesday,Championship,Left Wing Back,Left Back,42.86,,,,,,,,,,,,,1000000,1.0,2025
+430,Mbule Longelo Emmanuel,22,Birmingham City,Championship,Left Back,Left Back,41.33,,,,,,,,,,,,,1000000,1.0,2026
+431,Callum O''Dowda,28,Cardiff City,Championship,Left Back,Left Back,39.57,,,,,,,,,,,,,2500000,2.5,2025
+432,Bashir Humphreys,20,Swansea City,Championship,Left Back,Left Back,37.37,,,,,,,,,,,,,1000000,1.0,2024
+433,Kenneth Paal,26,Queens Park Rangers,Championship,Left Wing Back,Left Back,34.76,,,,,,,,,,,,,2800000,2.8,2025
+434,Cohen Bramall,27,Rotherham United,Championship,Left Back,Left Back,30.16,,,,,,,,,,,,,600000,0.6,2025
+435,James Morris,21,Watford,Championship,Left Back,Left Back,26.04,,,,,,,,,,,,,800000,0.8,2026
+436,Josh Tymon,24,Swansea City,Championship,Left Back,Left Back,25.99,,,,,,,,,,,,,3000000,3.0,2026
+437,Wesley Hoedt,29,Watford,Championship,Left Centre Back,Centre Back,81.26,,,,,,,,,,,,,2000000,2.0,2025
+438,Ben Wilmot,23,Stoke City,Championship,Left Centre Back,Centre Back,79.06,,,,,,,,,,,,,6000000,6.0,2026
+439,Hayden Carter,23,Blackburn Rovers,Championship,Right Centre Back,Centre Back,73.76,,,,,,,,,,,,,2000000,2.0,2027
+440,Ryan Porteous,24,Watford,Championship,Right Centre Back,Centre Back,73.15,,,,,,,,,,,,,2500000,2.5,2027
+441,Daniel Ballard,24,Sunderland,Championship,Right Centre Back,Centre Back,71.57,,,,,,,,,,,,,2500000,2.5,2027
+442,Darragh Lenihan,29,Middlesbrough,Championship,Left Centre Back,Centre Back,70.87,,,,,,,,,,,,,4000000,4.0,2026
+443,Wout Faes,25,Leicester City,Championship,Right Centre Back,Centre Back,68.57,,,,,,,,,,,,,20000000,20.0,2027
+444,Kal Naismith,31,Bristol City,Championship,Left Centre Back,Centre Back,67.97,,,,,,,,,,,,,900000,0.9,2025
+445,Harry Darling,24,Swansea City,Championship,Right Centre Back,Centre Back,66.69,,,,,,,,,,,,,1800000,1.8,2025
+446,Joël Latibeaudiere,23,Coventry City,Championship,Left Centre Back,Centre Back,66.3,,,,,,,,,,,,,1000000,1.0,2027
+447,Dominic Hyam,27,Blackburn Rovers,Championship,Left Centre Back,Centre Back,65.32,,,,,,,,,,,,,5000000,5.0,2025
+448,Jannik Vestergaard,31,Leicester City,Championship,Left Centre Back,Centre Back,65.02,,,,,,,,,,,,,5000000,5.0,2024
+449,Shane Duffy,31,Norwich City,Championship,Right Centre Back,Centre Back,64.56,,,,,,,,,,,,,2500000,2.5,2026
+450,Ben Gibson,30,Norwich City,Championship,Left Centre Back,Centre Back,64.47,,,,,,,,,,,,,2000000,2.0,2024
+451,Benjamin Cabango,23,Swansea City,Championship,Right Centre Back,Centre Back,63.84,,,,,,,,,,,,,13000000,13.0,2025
+452,Dael Fry,26,Middlesbrough,Championship,Right Centre Back,Centre Back,62.65,,,,,,,,,,,,,4500000,4.5,2026
+453,Jan Bednarek,27,Southampton,Championship,Right Centre Back,Centre Back,61.63,,,,,,,,,,,,,14000000,14.0,2025
+454,Pascal Struijk,24,Leeds United,Championship,Left Centre Back,Centre Back,61.06,,,,,,,,,,,,,20000000,20.0,2027
+455,Matthew Pearson,30,Huddersfield Town,Championship,Right Centre Back,Centre Back,60.71,,,,,,,,,,,,,1800000,1.8,2027
+457,Jacob Greaves,23,Hull City,Championship,Left Centre Back,Centre Back,60.03,,,,,,,,,,,,,11000000,11.0,2026
+458,Luke O''Nien,28,Sunderland,Championship,Left Centre Back,Centre Back,59.53,,,,,,,,,,,,,1200000,1.2,2026
+459,Cameron Burgess,27,Ipswich Town,Championship,Left Centre Back,Centre Back,59.01,,,,,,,,,,,,,500000,0.5,2024
+460,Michael Rose,27,Stoke City,Championship,Right Centre Back,Centre Back,58.9,,,,,,,,,,,,,500000,0.5,2025
+461,Luke Woolfenden,24,Ipswich Town,Championship,Right Centre Back,Centre Back,57.19,,,,,,,,,,,,,700000,0.7,2024
+462,Alfie Jones,25,Hull City,Championship,Right Centre Back,Centre Back,56.28,,,,,,,,,,,,,2500000,2.5,2026
+463,Robert Joseph Andrew Dickie,27,Bristol City,Championship,Right Centre Back,Centre Back,53.93,,,,,,,,,,,,,3000000,3.0,2025
+466,Luke McNally,24,Stoke City,Championship,Right Centre Back,Centre Back,53.56,,,,,,,,,,,,,900000,0.9,2024
+467,Kyle John McFadzean,36,Coventry City,Championship,Centre Back,Centre Back,53.34,,,,,,,,,,,,,500000,0.5,2024
+472,Michał Helik,28,Huddersfield Town,Championship,Centre Back,Centre Back,52.87,,,,,,,,,,,,,3000000,3.0,2025
+473,Murray Wallace,30,Millwall,Championship,Left Centre Back,Centre Back,52.48,,,,,,,,,,,,,1500000,1.5,0
+474,Erik Pieters,35,West Bromwich Albion,Championship,Left Centre Back,Centre Back,51.07,,,,,,,,,,,,,350000,0.35,2024
+475,Dimitrios Goutas,29,Cardiff City,Championship,Right Centre Back,Centre Back,50.46,,,,,,,,,,,,,3000000,3.0,2025
+476,Andrew Hughes,31,Preston North End,Championship,Left Centre Back,Centre Back,49.01,,,,,,,,,,,,,1000000,1.0,2024
+477,Luis Thomas Binks,22,Coventry City,Championship,Left Centre Back,Centre Back,47.0,,,,,,,,,,,,,450000,0.45,2024
+482,Sean McLoughlin,26,Hull City,Championship,Left Centre Back,Centre Back,46.42,,,,,,,,,,,,,1000000,1.0,2026
+483,Nathan Wood-Gordon,21,Swansea City,Championship,Left Centre Back,Centre Back,46.28,,,,,,,,,,,,,5000000,5.0,2024
+484,Ryan Leonard,31,Millwall,Championship,Right Centre Back,Centre Back,46.16,,,,,,,,,,,,,300000,0.3,2023
+485,Mark McGuinness,22,Cardiff City,Championship,Left Centre Back,Centre Back,45.14,,,,,,,,,,,,,4000000,4.0,2027
+486,Kevin Long,33,Birmingham City,Championship,Left Centre Back,Centre Back,44.94,,,,,,,,,,,,,500000,0.5,2024
+487,Bobby Thomas,22,Coventry City,Championship,Right Centre Back,Centre Back,44.18,,,,,,,,,,,,,450000,0.45,2027
+488,Cédric Kipré,26,West Bromwich Albion,Championship,Centre Back,Centre Back,44.06,,,,,,,,,,,,,2200000,2.2,2024
+489,Liam Cooper,32,Leeds United,Championship,Left Centre Back,Centre Back,44.01,,,,,,,,,,,,,5000000,5.0,2024
+490,Jordan Storey,26,Preston North End,Championship,Right Centre Back,Centre Back,43.99,,,,,,,,,,,,,3800000,3.8,2025
+491,Zak Vyner,26,Bristol City,Championship,Right Centre Back,Centre Back,42.64,,,,,,,,,,,,,2500000,2.5,2026
+492,Liam Lindsay,27,Preston North End,Championship,Centre Back,Centre Back,42.33,,,,,,,,,,,,,1500000,1.5,2025
+493,Dan Scarr,28,Plymouth Argyle,Championship,Right Centre Back,Centre Back,42.21,,,,,,,,,,,,,300000,0.3,2025
+494,Jack Stephens,29,Southampton,Championship,Left Centre Back,Centre Back,41.46,,,,,,,,,,,,,5000000,5.0,2025
+495,Joe Rodon,25,Leeds United,Championship,Right Centre Back,Centre Back,41.02,,,,,,,,,,,,,8000000,8.0,2024
+496,Oluwasemilogo Adesewo Ibidapo Ajayi,29,West Bromwich Albion,Championship,Right Centre Back,Centre Back,40.91,,,,,,,,,,,,,2500000,2.5,2025
+497,Julio José Pleguezuelo Selva,26,Plymouth Argyle,Championship,Right Centre Back,Centre Back,39.44,,,,,,,,,,,,,1100000,1.1,2025
+498,Akin Famewo,24,Sheffield Wednesday,Championship,Left Centre Back,Centre Back,38.19,,,,,,,,,,,,,300000,0.3,2025
+499,Osman Kakay,26,Queens Park Rangers,Championship,Right Centre Back,Centre Back,38.17,,,,,,,,,,,,,400000,0.4,2024
+500,Shaun Hutchinson,32,Millwall,Championship,Right Centre Back,Centre Back,37.97,,,,,,,,,,,,,700000,0.7,2023
+501,Dion Sanderson,23,Birmingham City,Championship,Right Centre Back,Centre Back,37.9,,,,,,,,,,,,,4000000,4.0,2027
+502,Taylor Harwood-Bellis,21,Southampton,Championship,Right Centre Back,Centre Back,37.56,,,,,,,,,,,,,20000000,20.0,2024
+503,Jake Cooper,28,Millwall,Championship,Left Centre Back,Centre Back,37.0,,,,,,,,,,,,,3500000,3.5,2024
+504,Steve Cook,32,Queens Park Rangers,Championship,Centre Back,Centre Back,35.76,,,,,,,,,,,,,3000000,3.0,2025
+505,Yuta Nakayama,26,Huddersfield Town,Championship,Left Centre Back,Centre Back,28.04,,,,,,,,,,,,,1500000,1.5,2024
+506,Cameron Humphreys,25,Rotherham United,Championship,Right Centre Back,Centre Back,26.31,,,,,,,,,,,,,1500000,1.5,2026
+507,Cameron Humphreys,25,Rotherham United,Championship,Right Centre Back,Centre Back,26.31,,,,,,,,,,,,,1500000,1.5,2025
+508,Lewis Jack Gibson,23,Plymouth Argyle,Championship,Left Centre Back,Centre Back,25.37,,,,,,,,,,,,,500000,0.5,0
+518,Tyler Blackett,29,Rotherham United,Championship,Left Centre Back,Centre Back,23.83,,,,,,,,,,,,,1000000,1.0,2024
+519,Di''Shon Bernard,22,Sheffield Wednesday,Championship,Right Centre Back,Centre Back,22.97,,,,,,,,,,,,,2500000,2.5,2024
+520,Kyle Bartley,32,West Bromwich Albion,Championship,Centre Back,Centre Back,20.94,,,,,,,,,,,,,600000,0.6,2023
+521,Liam Palmer,32,Sheffield Wednesday,Championship,Right Centre Back,Centre Back,20.59,,,,,,,,,,,,,300000,0.3,2024
+522,Bambo Diaby,25,Sheffield Wednesday,Championship,Centre Back,Centre Back,19.24,,,,,,,,,,,,,400000,0.4,0
+523,Dominic Iorfa,28,Sheffield Wednesday,Championship,Right Centre Back,Centre Back,18.1,,,,,,,,,,,,,400000,0.4,2024
+524,Jake-Liam Clarke-Salter,26,Queens Park Rangers,Championship,Left Centre Back,Centre Back,16.45,,,,,,,,,,,,,2000000,2.0,2026
+536,Morgan Fox,30,Queens Park Rangers,Championship,Left Centre Back,Centre Back,14.89,,,,,,,,,,,,,700000,0.7,2025
+537,Jack Whatmough,27,Preston North End,Championship,Centre Back,Centre Back,14.76,,,,,,,,,,,,,1200000,1.2,2026
+0,Makhtar Gueye,25,RWDM,Jupiler Pro League,Centre Forward,Striker,87.95,85.0,94.0,48.0,88.0,42.0,73.0,100.0,94.0,24.0,24.0,36.0,55.0,1400000,1.4,2024
+1,Mohamed El Amine Amoura,23,Union Saint-Gilloise,Jupiler Pro League,Left Centre Forward,Striker,84.58,94.0,100.0,100.0,82.0,79.0,97.0,36.0,18.0,42.0,33.0,88.0,67.0,1000000,1.0,2025
+2,Vincent Janssen,29,Antwerp,Jupiler Pro League,Centre Forward,Striker,82.89,67.0,91.0,42.0,45.0,64.0,61.0,33.0,50.0,79.0,67.0,85.0,88.0,8000000,8.0,2026
+3,Gift Emmanuel Orban,21,Gent,Jupiler Pro League,Left Centre Forward,Striker,78.62,64.0,73.0,88.0,97.0,58.0,64.0,39.0,67.0,33.0,9.0,64.0,79.0,0,0.0,0
+4,Igor Thiago Nascimento Rodrigues,22,Club Brugge,Jupiler Pro League,Centre Forward,Striker,77.78,76.0,67.0,18.0,85.0,82.0,27.0,79.0,85.0,100.0,88.0,76.0,61.0,1000000,1.0,2025
+5,Wilfried Kanga,25,Standard Liège,Jupiler Pro League,Left Centre Forward,Striker,75.73,79.0,76.0,76.0,48.0,39.0,6.0,85.0,88.0,12.0,6.0,79.0,73.0,3000000,3.0,2026
+6,Toluwalase Emmanuel  Arokodare,22,KRC Genk,Jupiler Pro League,Centre Forward,Striker,75.66,100.0,85.0,97.0,33.0,45.0,55.0,97.0,100.0,58.0,21.0,100.0,3.0,3500000,3.5,2027
+7,Ahoueke Denkey,22,Cercle Brugge,Jupiler Pro League,Centre Forward,Striker,75.39,73.0,79.0,91.0,18.0,24.0,3.0,88.0,39.0,36.0,45.0,94.0,36.0,3000000,3.0,2026
+8,Dennis Yerai Eckert Ayensa,26,Union Saint-Gilloise,Jupiler Pro League,Centre Forward,Striker,72.3,61.0,70.0,67.0,58.0,55.0,52.0,52.0,73.0,73.0,76.0,82.0,85.0,450000,0.45,2025
+9,Tarik Tissoudali,30,Gent,Jupiler Pro League,Right Centre Forward,Striker,69.31,97.0,52.0,64.0,73.0,94.0,82.0,18.0,21.0,45.0,30.0,97.0,30.0,6500000,6.5,2026
+10,Isaac Nuhu,22,AS Eupen,Jupiler Pro League,Right Centre Forward,Striker,67.06,33.0,33.0,82.0,94.0,70.0,85.0,15.0,24.0,18.0,48.0,27.0,33.0,800000,0.8,2025
+11,Hugo Cuypers,26,Gent,Jupiler Pro League,Left Centre Forward,Striker,66.69,42.0,36.0,33.0,76.0,18.0,48.0,76.0,79.0,64.0,58.0,73.0,12.0,8000000,8.0,2026
+12,Mickaël Biron,26,RWDM,Jupiler Pro League,Centre Forward,Striker,63.89,55.0,30.0,61.0,42.0,33.0,76.0,3.0,3.0,30.0,52.0,48.0,70.0,1200000,1.2,2025
+13,Kasper Dolberg,26,RSC Anderlecht,Jupiler Pro League,Centre Forward,Striker,61.7,70.0,82.0,15.0,64.0,67.0,24.0,42.0,76.0,48.0,85.0,15.0,100.0,9000000,9.0,2024
+14,Oday Dabbagh,24,Sporting Charleroi,Jupiler Pro League,Centre Forward,Striker,61.51,15.0,42.0,9.0,67.0,61.0,58.0,67.0,61.0,88.0,91.0,52.0,82.0,1500000,1.5,0
+15,Youssouph Mamadou Badji,21,Sporting Charleroi,Jupiler Pro League,Right Centre Forward,Striker,61.36,58.0,11.0,79.0,30.0,48.0,67.0,94.0,91.0,52.0,39.0,67.0,27.0,1500000,1.5,2024
+16,Luis Vázquez,22,RSC Anderlecht,Jupiler Pro League,Centre Forward,Striker,59.54,88.0,61.0,73.0,39.0,91.0,39.0,24.0,15.0,91.0,36.0,91.0,91.0,2500000,2.5,2026
+17,Isaak Davies,22,Kortrijk,Jupiler Pro League,Centre Forward,Striker,56.46,39.0,88.0,12.0,9.0,9.0,94.0,58.0,33.0,39.0,12.0,33.0,97.0,800000,0.8,2025
+18,Gustaf Nilsson,26,Union Saint-Gilloise,Jupiler Pro League,Right Centre Forward,Striker,55.36,27.0,39.0,52.0,70.0,52.0,36.0,82.0,55.0,76.0,61.0,70.0,52.0,1500000,1.5,2025
+19,Regan Charles-Cook,26,AS Eupen,Jupiler Pro League,Left Centre Forward,Striker,53.05,12.0,58.0,6.0,52.0,36.0,91.0,30.0,12.0,6.0,15.0,6.0,94.0,800000,0.8,2025
+20,Nachon Nsingi,22,OH Leuven,Jupiler Pro League,Centre Forward,Striker,49.0,52.0,11.0,85.0,91.0,97.0,79.0,9.0,6.0,3.0,42.0,12.0,58.0,0,0.0,0
+21,Jonatan Braut-Brunes,23,OH Leuven,Jupiler Pro League,Centre Forward,Striker,48.91,82.0,48.0,45.0,55.0,27.0,30.0,73.0,82.0,27.0,70.0,18.0,39.0,500000,0.5,2025
+22,Alfred Finnbogason,34,AS Eupen,Jupiler Pro League,Centre Forward,Striker,46.18,9.0,24.0,30.0,100.0,76.0,42.0,64.0,67.0,21.0,64.0,21.0,24.0,400000,0.4,2024
+23,Andi Avdi Zeqiri,24,KRC Genk,Jupiler Pro League,Centre Forward,Striker,46.06,91.0,64.0,94.0,3.0,3.0,15.0,55.0,30.0,61.0,100.0,61.0,15.0,3500000,3.5,2024
+24,Lucas Stassin,18,Westerlo,Jupiler Pro League,Left Centre Forward,Striker,46.04,36.0,97.0,27.0,21.0,21.0,9.0,21.0,36.0,67.0,82.0,42.0,76.0,0,0.0,0
+25,Felipe Nicolás Avenatti Dovillabichus,30,Kortrijk,Jupiler Pro League,Centre Forward,Striker,43.55,45.0,21.0,36.0,12.0,12.0,18.0,91.0,97.0,9.0,3.0,45.0,45.0,700000,0.7,2024
+26,Nathaniel Opoku,22,OH Leuven,Jupiler Pro League,Centre Forward,Striker,42.37,3.0,11.0,3.0,61.0,100.0,100.0,27.0,42.0,85.0,55.0,30.0,64.0,0,0.0,0
+27,Matija Frigan,20,Westerlo,Jupiler Pro League,Right Centre Forward,Striker,41.63,30.0,55.0,39.0,15.0,15.0,70.0,6.0,9.0,15.0,18.0,9.0,48.0,0,0.0,0
+28,Fatih Kaya,23,Sint-Truiden,Jupiler Pro League,Centre Forward,Striker,41.34,21.0,11.0,70.0,27.0,85.0,33.0,61.0,50.0,94.0,79.0,55.0,6.0,300000,0.3,0
+29,Yira Collins Sor,23,KRC Genk,Jupiler Pro League,Centre Forward,Striker,40.62,18.0,11.0,55.0,79.0,73.0,21.0,70.0,58.0,97.0,73.0,58.0,9.0,4000000,4.0,2027
+30,Lion Lauberbach,25,Mechelen,Jupiler Pro League,Centre Forward,Striker,39.42,48.0,27.0,24.0,24.0,30.0,12.0,45.0,45.0,55.0,27.0,39.0,18.0,450000,0.45,0
+31,Yusuke Matsuo,26,Westerlo,Jupiler Pro League,Left Centre Forward,Striker,34.5,6.0,11.0,21.0,36.0,88.0,88.0,12.0,27.0,70.0,97.0,3.0,42.0,800000,0.8,2025
+32,Denis Mihai Drăguş,24,Standard Liège,Jupiler Pro League,Left Centre Forward,Striker,34.47,24.0,45.0,58.0,6.0,6.0,45.0,48.0,67.0,82.0,94.0,24.0,21.0,2000000,2.0,2024
+33,Antonio Nusa,18,Club Brugge,Jupiler Pro League,Left Wing,Winger,91.45,,,,,,96.0,,,,,,,4500000,4.5,2027
+34,Andreas Skov Olsen,23,Club Brugge,Jupiler Pro League,Right Wing,Winger,87.49,,,,,,75.0,,,,,,,17000000,17.0,2026
+35,Alieu Fadera,21,KRC Genk,Jupiler Pro League,Left Wing,Winger,80.18,,,,,,100.0,,,,,,,2000000,2.0,2025
+36,Joseph Paintsil,25,KRC Genk,Jupiler Pro League,Right Wing,Winger,74.48,,,,,,71.0,,,,,,,9000000,9.0,2026
+37,Francis Amuzu,24,RSC Anderlecht,Jupiler Pro League,Left Wing,Winger,71.85,,,,,,83.0,,,,,,,4500000,4.5,2025
+38,Philip Zinckernagel,28,Club Brugge,Jupiler Pro League,Left Wing,Winger,67.81,,,,,,58.0,,,,,,,3500000,3.5,2024
+39,Christopher Bonsu Baah,18,KRC Genk,Jupiler Pro League,Right Wing,Winger,63.69,,,,,,92.0,,,,,,,0,0.0,0
+40,Arbnor Muja,24,Antwerp,Jupiler Pro League,Left Wing,Winger,59.94,,,,,,79.0,,,,,,,1500000,1.5,2025
+41,Oluwaseyi Babajide Ojo,26,Kortrijk,Jupiler Pro League,Right Wing,Winger,57.3,,,,,,62.0,,,,,,,1800000,1.8,2024
+42,Jarne Steuckers,21,Sint-Truiden,Jupiler Pro League,Right Wing,Winger,55.31,,,,,,46.0,,,,,,,475000,0.475,0
+43,Nikola Storm,29,Mechelen,Jupiler Pro League,Left Wing,Winger,50.99,,,,,,67.0,,,,,,,3000000,3.0,2026
+44,Anders Dreyer,25,RSC Anderlecht,Jupiler Pro League,Right Wing,Winger,50.46,,,,,,42.0,,,,,,,9000000,9.0,2027
+45,Jacob Axel Per Ondrejka,21,Antwerp,Jupiler Pro League,Left Wing,Winger,47.73,,,,,,38.0,,,,,,,1200000,1.2,2023
+46,Patrick Pflücke,26,Mechelen,Jupiler Pro League,Left Midfielder,Winger,46.15,,,,,,12.0,,,,,,,700000,0.7,2024
+47,Michel Ange Balikwisha,22,Antwerp,Jupiler Pro League,Left Wing,Winger,43.13,,,,,,54.0,,,,,,,5500000,5.5,2026
+48,Massimo Bruno,30,Kortrijk,Jupiler Pro League,Left Wing,Winger,41.86,,,,,,33.0,,,,,,,450000,0.45,2025
+49,Gyrano Kerk,27,Antwerp,Jupiler Pro League,Right Wing,Winger,41.18,,,,,,21.0,,,,,,,4000000,4.0,2025
+50,Geoffry Hairemans,31,Mechelen,Jupiler Pro League,Right Wing,Winger,39.88,,,,,,17.0,,,,,,,750000,0.75,2025
+51,Dylan Mbayo,21,Kortrijk,Jupiler Pro League,Right Midfielder,Winger,38.3,,,,,,88.0,,,,,,,600000,0.6,2026
+52,Thomas Van den Keybus,22,Westerlo,Jupiler Pro League,Right Midfielder,Winger,36.62,,,,,,50.0,,,,,,,800000,0.8,2025
+53,Luca Oyen,20,KRC Genk,Jupiler Pro League,Left Wing,Winger,34.5,,,,,,4.0,,,,,,,4000000,4.0,2027
+54,Niklo Dailly,21,RWDM,Jupiler Pro League,Right Wing,Winger,18.78,,,,,,29.0,,,,,,,50000,0.05,2025
+55,Alexis Flips,23,RSC Anderlecht,Jupiler Pro League,Right Wing,Winger,17.67,,,,,,25.0,,,,,,,5000000,5.0,2024
+56,Nacer Chadli,34,Westerlo,Jupiler Pro League,Left Midfielder,Winger,9.86,,,,,,8.0,,,,,,,2500000,2.5,2024
+57,Aboubakary Koita,25,Sint-Truiden,Jupiler Pro League,Left Centre Midfielder,Attacking Midfield,79.29,,,,,,,,,,,,,600000,0.6,2025
+58,Bilal El Khannous,19,KRC Genk,Jupiler Pro League,Centre Attacking Midfielder,Attacking Midfield,75.93,,,,,,,,,,,,,0,0.0,0
+59,Hans Vanaken,31,Club Brugge,Jupiler Pro League,Centre Attacking Midfielder,Attacking Midfield,71.05,,,,,,,,,,,,,12000000,12.0,2027
+60,Cameron Puertas Castro,25,Union Saint-Gilloise,Jupiler Pro League,Left Centre Midfielder,Attacking Midfield,68.45,,,,,,,,,,,,,4200000,4.2,2024
+61,Abdelkahar Kadri,23,Kortrijk,Jupiler Pro League,Centre Attacking Midfielder,Attacking Midfield,67.46,,,,,,,,,,,,,1800000,1.8,2026
+62,Philip Zinckernagel,28,Club Brugge,Jupiler Pro League,Left Wing,Attacking Midfield,62.88,,,,,,,,,,,,,3500000,3.5,2024
+63,Jón Dagur Þorsteinsson,24,OH Leuven,Jupiler Pro League,Left Attacking Midfielder,Attacking Midfield,61.92,,,,,,,,,,,,,2500000,2.5,2025
+64,Christopher Bonsu Baah,18,KRC Genk,Jupiler Pro League,Right Wing,Attacking Midfield,60.78,,,,,,,,,,,,,0,0.0,0
+65,Isaac Nuhu,22,AS Eupen,Jupiler Pro League,Right Centre Forward,Attacking Midfield,59.63,,,,,,,,,,,,,800000,0.8,2025
+66,Hyeon-seok Hong,24,Gent,Jupiler Pro League,Centre Attacking Midfielder,Attacking Midfield,56.59,,,,,,,,,,,,,4000000,4.0,2025
+67,Youssef Maziz,25,OH Leuven,Jupiler Pro League,Right Attacking Midfielder,Attacking Midfield,55.07,,,,,,,,,,,,,1500000,1.5,2024
+68,Jarne Steuckers,21,Sint-Truiden,Jupiler Pro League,Right Wing,Attacking Midfield,53.76,,,,,,,,,,,,,475000,0.475,0
+69,Xavier Mercier,34,RWDM,Jupiler Pro League,Centre Attacking Midfielder,Attacking Midfield,52.67,,,,,,,,,,,,,750000,0.75,2025
+70,Andrew Hjulsager,28,Gent,Jupiler Pro League,Centre Attacking Midfielder,Attacking Midfield,52.67,,,,,,,,,,,,,2000000,2.0,2025
+71,Yann Gboho,22,Cercle Brugge,Jupiler Pro League,Left Attacking Midfielder,Attacking Midfield,49.06,,,,,,,,,,,,,2000000,2.0,2025
+72,Geoffry Hairemans,31,Mechelen,Jupiler Pro League,Right Wing,Attacking Midfield,49.05,,,,,,,,,,,,,750000,0.75,2025
+73,Jacob Axel Per Ondrejka,21,Antwerp,Jupiler Pro League,Left Wing,Attacking Midfield,48.29,,,,,,,,,,,,,1200000,1.2,2023
+74,Jurgen Ekkelenkamp,23,Antwerp,Jupiler Pro League,Centre Attacking Midfielder,Attacking Midfield,47.49,,,,,,,,,,,,,5500000,5.5,2026
+75,Parfait Guiagon,22,Sporting Charleroi,Jupiler Pro League,Right Attacking Midfielder,Attacking Midfield,47.0,,,,,,,,,,,,,1400000,1.4,2025
+76,Kamal Sowah,23,Standard Liège,Jupiler Pro League,Centre Attacking Midfielder,Attacking Midfield,46.98,,,,,,,,,,,,,4000000,4.0,2025
+77,Miloš Pantović,27,AS Eupen,Jupiler Pro League,Right Defensive Midfielder,Attacking Midfield,42.24,,,,,,,,,,,,,1800000,1.8,0
+78,William Balikwisha,24,Standard Liège,Jupiler Pro League,Right Centre Midfielder,Attacking Midfield,40.83,,,,,,,,,,,,,3500000,3.5,2025
+79,Ryotaro Ito,25,Sint-Truiden,Jupiler Pro League,Centre Attacking Midfielder,Attacking Midfield,40.82,,,,,,,,,,,,,850000,0.85,2024
+80,Youssouph Mamadou Badji,21,Sporting Charleroi,Jupiler Pro League,Right Centre Forward,Attacking Midfield,36.44,,,,,,,,,,,,,1500000,1.5,2024
+81,Alan Steve Minda García,20,Cercle Brugge,Jupiler Pro League,Left Attacking Midfielder,Attacking Midfield,33.06,,,,,,,,,,,,,600000,0.6,0
+82,Thibo Somers,24,Cercle Brugge,Jupiler Pro League,Right Attacking Midfielder,Attacking Midfield,32.58,,,,,,,,,,,,,1500000,1.5,2026
+83,Mathias Rasmussen,25,Union Saint-Gilloise,Jupiler Pro League,Right Attacking Midfielder,Attacking Midfield,32.23,,,,,,,,,,,,,900000,0.9,2024
+84,Ezechiel Banzuzi,18,OH Leuven,Jupiler Pro League,Right Centre Midfielder,Attacking Midfield,25.09,,,,,,,,,,,,,0,0.0,2024
+85,Kerim Mrabti,29,Mechelen,Jupiler Pro League,Centre Attacking Midfielder,Attacking Midfield,24.09,,,,,,,,,,,,,3000000,3.0,2026
+86,Daan Heymans,24,Sporting Charleroi,Jupiler Pro League,Right Centre Midfielder,Attacking Midfield,23.98,,,,,,,,,,,,,1500000,1.5,2025
+87,Alexis Flips,23,RSC Anderlecht,Jupiler Pro League,Right Wing,Attacking Midfield,18.02,,,,,,,,,,,,,5000000,5.0,2024
+88,Bilal El Khannous,19,KRC Genk,Jupiler Pro League,Centre Attacking Midfielder,Central Midfield,81.85,,,,,,,,,46.0,,,,0,0.0,0
+89,Aboubakary Koita,25,Sint-Truiden,Jupiler Pro League,Left Centre Midfielder,Central Midfield,80.93,,,,,,,,,38.0,,,,600000,0.6,2025
+90,Cameron Puertas Castro,25,Union Saint-Gilloise,Jupiler Pro League,Left Centre Midfielder,Central Midfield,80.92,,,,,,,,,100.0,,,,4200000,4.2,2024
+91,Adem Zorgane,23,Sporting Charleroi,Jupiler Pro League,Left Defensive Midfielder,Central Midfield,74.89,,,,,,,,,75.0,,,,6000000,6.0,2027
+92,Jean Thierry Lazare Amani,25,Union Saint-Gilloise,Jupiler Pro League,Right Centre Midfielder,Central Midfield,62.41,,,,,,,,,83.0,,,,4000000,4.0,2025
+93,Théo Leoni,23,RSC Anderlecht,Jupiler Pro League,Right Centre Midfielder,Central Midfield,58.68,,,,,,,,,79.0,,,,800000,0.8,2026
+94,Jarne Steuckers,21,Sint-Truiden,Jupiler Pro League,Right Wing,Central Midfield,58.24,,,,,,,,,25.0,,,,475000,0.475,0
+95,Jurgen Ekkelenkamp,23,Antwerp,Jupiler Pro League,Centre Attacking Midfielder,Central Midfield,55.78,,,,,,,,,96.0,,,,5500000,5.5,2026
+96,Hugo Vetlesen,23,Club Brugge,Jupiler Pro League,Right Defensive Midfielder,Central Midfield,50.42,,,,,,,,,88.0,,,,4500000,4.5,2025
+97,William Balikwisha,24,Standard Liège,Jupiler Pro League,Right Centre Midfielder,Central Midfield,48.52,,,,,,,,,21.0,,,,3500000,3.5,2025
+98,Isaac Price,20,Standard Liège,Jupiler Pro League,Left Centre Midfielder,Central Midfield,45.35,,,,,,,,,71.0,,,,400000,0.4,0
+99,Arthur Vermeeren,18,Antwerp,Jupiler Pro League,Right Defensive Midfielder,Central Midfield,43.88,,,,,,,,,92.0,,,,0,0.0,0
+100,Hayao Kawabe,28,Standard Liège,Jupiler Pro League,Right Centre Midfielder,Central Midfield,43.05,,,,,,,,,62.0,,,,2000000,2.0,2025
+101,Miloš Pantović,27,AS Eupen,Jupiler Pro League,Right Defensive Midfielder,Central Midfield,41.64,,,,,,,,,17.0,,,,1800000,1.8,0
+102,Patrik Hrošovský,31,KRC Genk,Jupiler Pro League,Left Defensive Midfielder,Central Midfield,38.68,,,,,,,,,33.0,,,,4000000,4.0,2025
+103,Mathias Rasmussen,25,Union Saint-Gilloise,Jupiler Pro League,Right Attacking Midfielder,Central Midfield,38.1,,,,,,,,,8.0,,,,900000,0.9,2024
+104,Noah Sadiki,18,Union Saint-Gilloise,Jupiler Pro League,Right Defensive Midfielder,Central Midfield,37.13,,,,,,,,,50.0,,,,0,0.0,0
+105,Sofian Kiyine,26,OH Leuven,Jupiler Pro League,Left Defensive Midfielder,Central Midfield,35.96,,,,,,,,,42.0,,,,2000000,2.0,2026
+106,Ezechiel Banzuzi,18,OH Leuven,Jupiler Pro League,Right Centre Midfielder,Central Midfield,33.33,,,,,,,,,54.0,,,,0,0.0,2024
+107,Jérôme Deom,24,AS Eupen,Jupiler Pro League,Left Centre Midfielder,Central Midfield,32.45,,,,,,,,,12.0,,,,400000,0.4,2024
+108,Mats Rits,30,RSC Anderlecht,Jupiler Pro League,Right Centre Midfielder,Central Midfield,30.74,,,,,,,,,58.0,,,,5000000,5.0,2024
+109,Daan Heymans,24,Sporting Charleroi,Jupiler Pro League,Right Centre Midfielder,Central Midfield,29.87,,,,,,,,,4.0,,,,1500000,1.5,2025
+110,Thomas Delaney,32,RSC Anderlecht,Jupiler Pro League,Left Centre Midfielder,Central Midfield,29.02,,,,,,,,,29.0,,,,3000000,3.0,2025
+111,Brandon Baiye,22,AS Eupen,Jupiler Pro League,Right Centre Midfielder,Central Midfield,21.79,,,,,,,,,67.0,,,,500000,0.5,2025
+112,Charles Vanhoutte,25,Union Saint-Gilloise,Jupiler Pro League,Centre Defensive Midfielder,Defensive Midfield,55.59,,,,,,,,,,,,,700000,0.7,0
+113,Adem Zorgane,23,Sporting Charleroi,Jupiler Pro League,Left Defensive Midfielder,Defensive Midfield,51.62,,,,,,,,,,,,,6000000,6.0,2027
+114,Mathias Delorge-Knieper,19,Sint-Truiden,Jupiler Pro League,Centre Defensive Midfielder,Defensive Midfield,51.57,,,,,,,,,,,,,250000,0.25,0
+115,Siebe Schrijvers,27,OH Leuven,Jupiler Pro League,Left Defensive Midfielder,Defensive Midfield,50.27,,,,,,,,,,,,,1800000,1.8,2027
+116,Théo Leoni,23,RSC Anderlecht,Jupiler Pro League,Right Centre Midfielder,Defensive Midfield,49.08,,,,,,,,,,,,,800000,0.8,2026
+117,Marco Ilaimaharitra,28,Sporting Charleroi,Jupiler Pro League,Right Defensive Midfielder,Defensive Midfield,48.86,,,,,,,,,,,,,2000000,2.0,2024
+118,Arthur Vermeeren,18,Antwerp,Jupiler Pro League,Right Defensive Midfielder,Defensive Midfield,47.96,,,,,,,,,,,,,0,0.0,0
+119,Raphael Onyedika,22,Club Brugge,Jupiler Pro League,Left Defensive Midfielder,Defensive Midfield,47.23,,,,,,,,,,,,,10000000,10.0,2027
+120,Mandela Keita,21,Antwerp,Jupiler Pro League,Left Defensive Midfielder,Defensive Midfield,45.77,,,,,,,,,,,,,3500000,3.5,2025
+121,Mandela Keita,21,Antwerp,Jupiler Pro League,Left Defensive Midfielder,Defensive Midfield,45.77,,,,,,,,,,,,,0,0.0,0
+122,Alhassan Yusuf,23,Antwerp,Jupiler Pro League,Centre Defensive Midfielder,Defensive Midfield,43.41,,,,,,,,,,,,,6000000,6.0,2025
+123,Amadou Diawara,26,RSC Anderlecht,Jupiler Pro League,Centre Defensive Midfielder,Defensive Midfield,43.09,,,,,,,,,,,,,2500000,2.5,2025
+124,Pierre Dwomoh,19,RWDM,Jupiler Pro League,Right Defensive Midfielder,Defensive Midfield,42.03,,,,,,,,,,,,,1000000,1.0,2024
+125,Jean Thierry Lazare Amani,25,Union Saint-Gilloise,Jupiler Pro League,Right Centre Midfielder,Defensive Midfield,41.91,,,,,,,,,,,,,4000000,4.0,2025
+126,Aiden O'Neill,25,Standard Liège,Jupiler Pro League,Centre Defensive Midfielder,Defensive Midfield,41.34,,,,,,,,,,,,,750000,0.75,0
+127,Lukas Van Eenoo,32,Westerlo,Jupiler Pro League,Left Defensive Midfielder,Defensive Midfield,40.48,,,,,,,,,,,,,450000,0.45,2025
+128,Nayel Mehssatou Sepúlveda,21,Kortrijk,Jupiler Pro League,Right Back,Defensive Midfield,40.26,,,,,,,,,,,,,0,0.0,0
+129,Leonardo Adelino da Silva Lopes,24,Cercle Brugge,Jupiler Pro League,Right Defensive Midfielder,Defensive Midfield,40.07,,,,,,,,,,,,,2000000,2.0,2024
+130,Ngal'ayel Mukau,18,Mechelen,Jupiler Pro League,Right Defensive Midfielder,Defensive Midfield,38.26,,,,,,,,,,,,,0,0.0,0
+131,Aziz Outtara Mohammed,22,KRC Genk,Jupiler Pro League,Right Defensive Midfielder,Defensive Midfield,36.95,,,,,,,,,,,,,1000000,1.0,2026
+132,Mory Konaté,29,Mechelen,Jupiler Pro League,Right Defensive Midfielder,Defensive Midfield,36.61,,,,,,,,,,,,,1000000,1.0,0
+133,Noah Sadiki,18,Union Saint-Gilloise,Jupiler Pro League,Right Defensive Midfielder,Defensive Midfield,36.37,,,,,,,,,,,,,0,0.0,0
+134,Ryota Morioka,32,Sporting Charleroi,Jupiler Pro League,Centre Defensive Midfielder,Defensive Midfield,35.45,,,,,,,,,,,,,1200000,1.2,2024
+135,Hannes Van der Bruggen,30,Cercle Brugge,Jupiler Pro League,Left Defensive Midfielder,Defensive Midfield,34.64,,,,,,,,,,,,,650000,0.65,2024
+136,Hugo Vetlesen,23,Club Brugge,Jupiler Pro League,Right Defensive Midfielder,Defensive Midfield,33.87,,,,,,,,,,,,,4500000,4.5,2025
+137,Brandon Baiye,22,AS Eupen,Jupiler Pro League,Right Centre Midfielder,Defensive Midfield,32.77,,,,,,,,,,,,,500000,0.5,2025
+138,Isaac Price,20,Standard Liège,Jupiler Pro League,Left Centre Midfielder,Defensive Midfield,32.2,,,,,,,,,,,,,400000,0.4,0
+139,Sven Kums,35,Gent,Jupiler Pro League,Right Defensive Midfielder,Defensive Midfield,31.72,,,,,,,,,,,,,600000,0.6,2024
+140,Matías Alejandro Galarza,21,KRC Genk,Jupiler Pro League,Left Defensive Midfielder,Defensive Midfield,29.57,,,,,,,,,,,,,0,0.0,2026
+141,Abu Francis,22,Cercle Brugge,Jupiler Pro League,Right Defensive Midfielder,Defensive Midfield,29.0,,,,,,,,,,,,,900000,0.9,2025
+142,Lynnt Audoor,19,Kortrijk,Jupiler Pro League,Left Defensive Midfielder,Defensive Midfield,28.58,,,,,,,,,,,,,800000,0.8,2025
+143,Patrik Hrošovský,31,KRC Genk,Jupiler Pro League,Left Defensive Midfielder,Defensive Midfield,27.87,,,,,,,,,,,,,4000000,4.0,2025
+144,Abdoulaye Sissako,25,Kortrijk,Jupiler Pro League,Left Defensive Midfielder,Defensive Midfield,27.1,,,,,,,,,,,,,750000,0.75,2024
+145,Nicolas Martin Hautorp Madsen,23,Westerlo,Jupiler Pro League,Right Defensive Midfielder,Defensive Midfield,26.36,,,,,,,,,,,,,1200000,1.2,2026
+146,Rob Schoofs,29,Mechelen,Jupiler Pro League,Left Defensive Midfielder,Defensive Midfield,21.86,,,,,,,,,,,,,2500000,2.5,2027
+147,Mathias Fixelles,27,Westerlo,Jupiler Pro League,Right Defensive Midfielder,Defensive Midfield,21.58,,,,,,,,,,,,,600000,0.6,2026
+148,Alexis De Sart,26,RWDM,Jupiler Pro League,Left Defensive Midfielder,Defensive Midfield,21.14,,,,,,,,,,,,,900000,0.9,2024
+149,Shuto Abe,25,RWDM,Jupiler Pro League,Left Defensive Midfielder,Defensive Midfield,20.34,,,,,,,,,,,,,900000,0.9,2024
+150,Boris Lambert,23,AS Eupen,Jupiler Pro League,Centre Defensive Midfielder,Defensive Midfield,19.72,,,,,,,,,,,,,1200000,1.2,2027
+151,Joren Dom,33,OH Leuven,Jupiler Pro League,Right Defensive Midfielder,Defensive Midfield,15.28,,,,,,,,,,,,,300000,0.3,2024
+152,Bryan Heynen,26,KRC Genk,Jupiler Pro League,Right Defensive Midfielder,Defensive Midfield,14.48,,,,,,,,,,,,,11000000,11.0,2026
+153,Florian Miguel,27,OH Leuven,Jupiler Pro League,Left Centre Back,Defensive Midfield,13.49,,,,,,,,,,,,,1800000,1.8,0
+154,Serhii Sydorchuk,32,Westerlo,Jupiler Pro League,Left Defensive Midfielder,Defensive Midfield,12.39,,,,,,,,,,,,,4000000,4.0,2025
+155,Nacer Chadli,34,Westerlo,Jupiler Pro League,Left Midfielder,Defensive Midfield,12.06,,,,,,,,,,,,,2500000,2.5,2024
+156,Kerim Mrabti,29,Mechelen,Jupiler Pro League,Centre Attacking Midfielder,Defensive Midfield,10.95,,,,,,,,,,,,,3000000,3.0,2026
+157,Ryotaro Ito,25,Sint-Truiden,Jupiler Pro League,Centre Attacking Midfielder,Defensive Midfield,9.93,,,,,,,,,,,,,850000,0.85,2024
+158,Jelle Bataille,24,Antwerp,Jupiler Pro League,Right Back,Right Back,94.24,,,,,,,,,,,,,1800000,1.8,2025
+159,Daniel Muñoz Mejía,27,KRC Genk,Jupiler Pro League,Right Back,Right Back,77.94,,,,,,,,,,,,,9000000,9.0,2024
+160,Kyriani Sabbe,18,Club Brugge,Jupiler Pro League,Right Back,Right Back,69.45,,,,,,,,,,,,,1000000,1.0,2025
+161,Rafik Belghali,21,Mechelen,Jupiler Pro League,Right Back,Right Back,68.38,,,,,,,,,,,,,700000,0.7,2024
+162,Junior Marsoni Sambu Mansoni,27,RWDM,Jupiler Pro League,Right Wing Back,Right Back,65.48,,,,,,,,,,,,,400000,0.4,0
+163,Marlon Fossey,25,Standard Liège,Jupiler Pro League,Right Wing Back,Right Back,63.76,,,,,,,,,,,,,2000000,2.0,2027
+164,Daiki Hashioka,24,Sint-Truiden,Jupiler Pro League,Right Wing Back,Right Back,63.57,,,,,,,,,,,,,1500000,1.5,0
+165,Žan Rogelj,23,Sporting Charleroi,Jupiler Pro League,Right Wing Back,Right Back,61.11,,,,,,,,,,,,,700000,0.7,0
+166,Louis Patris,22,RSC Anderlecht,Jupiler Pro League,Right Back,Right Back,61.02,,,,,,,,,,,,,2000000,2.0,2027
+167,Nayel Mehssatou Sepúlveda,21,Kortrijk,Jupiler Pro League,Right Back,Right Back,60.8,,,,,,,,,,,,,0,0.0,0
+168,Alessio Castro-Montes,26,Union Saint-Gilloise,Jupiler Pro League,Right Wing Back,Right Back,60.18,,,,,,,,,,,,,4200000,4.2,2024
+169,Killian Sardella,21,RSC Anderlecht,Jupiler Pro League,Right Back,Right Back,59.88,,,,,,,,,,,,,2000000,2.0,2025
+170,Hugo Siquet,21,Cercle Brugge,Jupiler Pro League,Right Wing Back,Right Back,55.65,,,,,,,,,,,,,3000000,3.0,2026
+171,Casper Terho,20,Union Saint-Gilloise,Jupiler Pro League,Right Wing Back,Right Back,53.26,,,,,,,,,,,,,400000,0.4,2026
+172,Matisse Samoise,21,Gent,Jupiler Pro League,Right Wing Back,Right Back,50.73,,,,,,,,,,,,,4000000,4.0,2025
+173,Edisson Jordanov,30,Westerlo,Jupiler Pro League,Right Back,Right Back,49.98,,,,,,,,,,,,,600000,0.6,2025
+174,Sandy Walsh,28,Mechelen,Jupiler Pro League,Right Back,Right Back,49.6,,,,,,,,,,,,,2000000,2.0,2025
+175,Gary Magnée,23,AS Eupen,Jupiler Pro League,Right Wing Back,Right Back,46.98,,,,,,,,,,,,,800000,0.8,2027
+176,Zakaria El Ouahdi,21,RWDM,Jupiler Pro League,Right Wing Back,Right Back,45.51,,,,,,,,,,,,,800000,0.8,2025
+177,Ritchie De Laet,34,Antwerp,Jupiler Pro League,Right Back,Right Back,44.73,,,,,,,,,,,,,700000,0.7,2024
+178,Richie Sagrado Sebastiao,19,OH Leuven,Jupiler Pro League,Right Back,Right Back,43.1,,,,,,,,,,,,,0,0.0,0
+179,Bryan Reynolds,22,Westerlo,Jupiler Pro League,Right Back,Right Back,38.25,,,,,,,,,,,,,2500000,2.5,2025
+180,Tajon Buchanan,24,Club Brugge,Jupiler Pro League,Right Back,Right Back,37.27,,,,,,,,,,,,,12000000,12.0,2025
+181,Thibault Vlietinck,26,OH Leuven,Jupiler Pro League,Right Wing Back,Right Back,30.25,,,,,,,,,,,,,350000,0.35,2026
+182,Maxim De Cuyper,22,Club Brugge,Jupiler Pro League,Left Back,Left Back,83.48,,,,,,,,,,,,,4500000,4.5,2025
+183,Moussa N''Diaye,21,RSC Anderlecht,Jupiler Pro League,Left Back,Left Back,80.92,,,,,,,,,,,,,1500000,1.5,2027
+184,Daam Foulon,24,Mechelen,Jupiler Pro League,Left Back,Left Back,80.13,,,,,,,,,,,,,900000,0.9,0
+185,Eric Junior Bocat,24,Sint-Truiden,Jupiler Pro League,Left Wing Back,Left Back,78.54,,,,,,,,,,,,,600000,0.6,0
+186,Dion De Neve,22,Kortrijk,Jupiler Pro League,Left Back,Left Back,74.52,,,,,,,,,,,,,0,0.0,2025
+187,Loïc Lapoussin,27,Union Saint-Gilloise,Jupiler Pro League,Left Wing Back,Left Back,73.69,,,,,,,,,,,,,3000000,3.0,2025
+188,Olivier Deman,23,Cercle Brugge,Jupiler Pro League,Left Wing Back,Left Back,73.19,,,,,,,,,,,,,1600000,1.6,2024
+189,Joris Kayembe Ditu,29,KRC Genk,Jupiler Pro League,Left Back,Left Back,64.43,,,,,,,,,,,,,2200000,2.2,0
+190,Isaac Mbenza,27,Sporting Charleroi,Jupiler Pro League,Left Wing Back,Left Back,61.42,,,,,,,,,,,,,2200000,2.2,2026
+191,Malick Martin Fofana,18,Gent,Jupiler Pro League,Left Wing Back,Left Back,58.77,,,,,,,,,,,,,0,0.0,2024
+192,Ludwig Augustinsson,29,RSC Anderlecht,Jupiler Pro League,Left Back,Left Back,57.83,,,,,,,,,,,,,3000000,3.0,2025
+193,Gerardo Daniel Arteaga Zamora,25,KRC Genk,Jupiler Pro League,Left Back,Left Back,50.22,,,,,,,,,,,,,7000000,7.0,0
+194,Vetle Winger Dragsnes,29,Sporting Charleroi,Jupiler Pro League,Left Wing Back,Left Back,49.88,,,,,,,,,,,,,650000,0.65,2023
+195,Tuur Rommens,20,Westerlo,Jupiler Pro League,Left Back,Left Back,47.62,,,,,,,,,,,,,0,0.0,2024
+196,Hamza Mendyl,25,OH Leuven,Jupiler Pro League,Left Wing Back,Left Back,45.98,,,,,,,,,,,,,800000,0.8,2025
+197,Archie Brown,21,Gent,Jupiler Pro League,Left Wing Back,Left Back,45.23,,,,,,,,,,,,,350000,0.35,2025
+198,Owen Wijndal,23,Antwerp,Jupiler Pro League,Left Back,Left Back,41.83,,,,,,,,,,,,,10000000,10.0,2027
+199,Jordan Semedo Varela,20,Cercle Brugge,Jupiler Pro League,Left Wing Back,Left Back,39.54,,,,,,,,,,,,,0,0.0,0
+200,Jordan Bos,20,Westerlo,Jupiler Pro League,Left Back,Left Back,38.9,,,,,,,,,,,,,0,0.0,0
+201,Yentl Van Genechten,23,AS Eupen,Jupiler Pro League,Left Wing Back,Left Back,35.32,,,,,,,,,,,,,500000,0.5,2025
+202,Abner Felipe Souza de Almeida,27,RWDM,Jupiler Pro League,Left Wing Back,Left Back,29.86,,,,,,,,,,,,,500000,0.5,0
+203,Aron Dønnum,25,Standard Liège,Jupiler Pro League,Left Wing Back,Left Back,29.02,,,,,,,,,,,,,10000000,10.0,2025
+204,Toby Alderweireld,34,Antwerp,Jupiler Pro League,Right Centre Back,Centre Back,78.85,,,,,,,,,,,,,4000000,4.0,2025
+205,Brandon Mechele,30,Club Brugge,Jupiler Pro League,Right Centre Back,Centre Back,71.32,,,,,,,,,,,,,5000000,5.0,2025
+206,Jordi Vanlerberghe,27,Mechelen,Jupiler Pro League,Right Centre Back,Centre Back,71.21,,,,,,,,,,,,,1200000,1.2,2024
+207,Kevin Mac Allister,25,Union Saint-Gilloise,Jupiler Pro League,Right Centre Back,Centre Back,69.01,,,,,,,,,,,,,3200000,3.2,2024
+208,Koki Machida,26,Union Saint-Gilloise,Jupiler Pro League,Left Centre Back,Centre Back,67.57,,,,,,,,,,,,,1500000,1.5,0
+209,Christian Burgess,31,Union Saint-Gilloise,Jupiler Pro League,Centre Back,Centre Back,67.35,,,,,,,,,,,,,1500000,1.5,2025
+210,Zinho Vanheusden,24,Standard Liège,Jupiler Pro League,Right Centre Back,Centre Back,66.72,,,,,,,,,,,,,6000000,6.0,2026
+211,Nathan Ngoy,20,Standard Liège,Jupiler Pro League,Left Centre Back,Centre Back,58.8,,,,,,,,,,,,,600000,0.6,2026
+212,Carlos Eccehomo Cuesta Figueroa,24,KRC Genk,Jupiler Pro League,Right Centre Back,Centre Back,57.91,,,,,,,,,,,,,8000000,8.0,2026
+213,Christiaan Ravych,21,Cercle Brugge,Jupiler Pro League,Centre Back,Centre Back,57.53,,,,,,,,,,,,,0,0.0,0
+214,Jesper Daland,23,Cercle Brugge,Jupiler Pro League,Left Centre Back,Centre Back,55.77,,,,,,,,,,,,,2000000,2.0,2025
+215,Mujaid Sadick Aliu,23,KRC Genk,Jupiler Pro League,Left Centre Back,Centre Back,54.9,,,,,,,,,,,,,3000000,3.0,2025
+216,Federico Ricca Rostagnol,28,OH Leuven,Jupiler Pro League,Left Centre Back,Centre Back,52.86,,,,,,,,,,,,,1800000,1.8,2025
+217,Jordan Torunarigha,26,Gent,Jupiler Pro League,Left Centre Back,Centre Back,50.73,,,,,,,,,,,,,5000000,5.0,2025
+218,Damien Marcq,34,Sporting Charleroi,Jupiler Pro League,Centre Back,Centre Back,50.63,,,,,,,,,,,,,250000,0.25,2024
+219,Ewoud Pletinckx,22,OH Leuven,Jupiler Pro League,Right Centre Back,Centre Back,49.73,,,,,,,,,,,,,1500000,1.5,2026
+220,Zeno Debast,19,RSC Anderlecht,Jupiler Pro League,Right Centre Back,Centre Back,49.43,,,,,,,,,,,,,10000000,10.0,2025
+221,Stelios Andreou,21,Sporting Charleroi,Jupiler Pro League,Left Centre Back,Centre Back,49.33,,,,,,,,,,,,,2000000,2.0,2026
+222,Ravil Tagir,20,Westerlo,Jupiler Pro League,Left Centre Back,Centre Back,49.02,,,,,,,,,,,,,1600000,1.6,2025
+223,Jorne Spileers,18,Club Brugge,Jupiler Pro League,Left Centre Back,Centre Back,48.84,,,,,,,,,,,,,800000,0.8,2026
+224,Tsuyoshi Watanabe,26,Gent,Jupiler Pro League,Centre Back,Centre Back,48.8,,,,,,,,,,,,,1000000,1.0,2025
+225,Matte Smets,19,Sint-Truiden,Jupiler Pro League,Centre Back,Centre Back,47.46,,,,,,,,,,,,,0,0.0,0
+226,Jan Vertonghen,36,RSC Anderlecht,Jupiler Pro League,Left Centre Back,Centre Back,46.86,,,,,,,,,,,,,1800000,1.8,2024
+227,Jason Davidson,32,AS Eupen,Jupiler Pro League,Left Centre Back,Centre Back,45.38,,,,,,,,,,,,,500000,0.5,2024
+228,Bruno Godeau,31,Sint-Truiden,Jupiler Pro League,Left Centre Back,Centre Back,44.3,,,,,,,,,,,,,500000,0.5,0
+229,Jonas Bager,27,Sporting Charleroi,Jupiler Pro League,Right Centre Back,Centre Back,43.98,,,,,,,,,,,,,1000000,1.0,2024
+230,Merveille Bope Bokadi,27,Standard Liège,Jupiler Pro League,Centre Back,Centre Back,43.5,,,,,,,,,,,,,3000000,3.0,0
+231,Ismaël Kandouss,25,Gent,Jupiler Pro League,Right Centre Back,Centre Back,43.12,,,,,,,,,,,,,1700000,1.7,2024
+232,Boris Popović,23,Cercle Brugge,Jupiler Pro League,Right Centre Back,Centre Back,41.33,,,,,,,,,,,,,1500000,1.5,2025
+233,Soumaïla Coulibaly,19,Antwerp,Jupiler Pro League,Left Centre Back,Centre Back,40.86,,,,,,,,,,,,,0,0.0,2026
+234,Florian Le Joncour,28,RWDM,Jupiler Pro League,Left Centre Back,Centre Back,40.69,,,,,,,,,,,,,500000,0.5,2024
+235,William Klaus,29,RWDM,Jupiler Pro League,Right Centre Back,Centre Back,40.17,,,,,,,,,,,,,300000,0.3,2024
+236,Martin Wasinski,19,Kortrijk,Jupiler Pro League,Left Centre Back,Centre Back,37.33,,,,,,,,,,,,,700000,0.7,2024
+237,Roman Neustädter,35,Westerlo,Jupiler Pro League,Right Centre Back,Centre Back,37.2,,,,,,,,,,,,,300000,0.3,2024
+238,Mark McKenzie,24,KRC Genk,Jupiler Pro League,Left Centre Back,Centre Back,37.19,,,,,,,,,,,,,7000000,7.0,2025
+239,Joël Marcel Schingtienne,21,OH Leuven,Jupiler Pro League,Right Centre Back,Centre Back,37.06,,,,,,,,,,,,,0,0.0,0
+240,João Pedro Eira Antunes da Silva,24,Kortrijk,Jupiler Pro League,Centre Back,Centre Back,34.83,,,,,,,,,,,,,550000,0.55,2025
+241,Rein Van Helden,21,Sint-Truiden,Jupiler Pro League,Right Centre Back,Centre Back,34.21,,,,,,,,,,,,,0,0.0,0
+242,Stefan Knežević,26,Sporting Charleroi,Jupiler Pro League,Left Centre Back,Centre Back,33.71,,,,,,,,,,,,,800000,0.8,2024
+243,Mark Rene Mampassi,20,Kortrijk,Jupiler Pro League,Right Centre Back,Centre Back,33.01,,,,,,,,,,,,,1200000,1.2,2026
+244,Zeno Van Den Bosch,20,Antwerp,Jupiler Pro League,Left Centre Back,Centre Back,32.9,,,,,,,,,,,,,400000,0.4,2025
+245,Luis Geovanny Segovia Vega,25,RWDM,Jupiler Pro League,Centre Back,Centre Back,31.61,,,,,,,,,,,,,1500000,1.5,2025
+246,Elias Cobbaut,25,Mechelen,Jupiler Pro League,Left Centre Back,Centre Back,31.3,,,,,,,,,,,,,2700000,2.7,0
+247,Guðlaugur Victor Pálsson,32,AS Eupen,Jupiler Pro League,Centre Back,Centre Back,31.25,,,,,,,,,,,,,400000,0.4,2024
+248,David Robert Bates,27,Mechelen,Jupiler Pro League,Centre Back,Centre Back,31.22,,,,,,,,,,,,,650000,0.65,2025
+249,Emin Bayram,20,Westerlo,Jupiler Pro League,Right Centre Back,Centre Back,31.2,,,,,,,,,,,,,1400000,1.4,2026
+250,Jonathan Steve Heris,33,RWDM,Jupiler Pro League,Right Centre Back,Centre Back,29.6,,,,,,,,,,,,,250000,0.25,2024
+251,Pietro Perdichizzi,30,Westerlo,Jupiler Pro League,Left Centre Back,Centre Back,28.26,,,,,,,,,,,,,400000,0.4,2024
+252,Fedde Leysen,20,Union Saint-Gilloise,Jupiler Pro League,Left Centre Back,Centre Back,28.23,,,,,,,,,,,,,475000,0.475,0
+253,Aleksandar Radovanović,29,Kortrijk,Jupiler Pro League,Left Centre Back,Centre Back,27.48,,,,,,,,,,,,,550000,0.55,2024
+254,Rune Paeshuyse,21,AS Eupen,Jupiler Pro League,Right Centre Back,Centre Back,24.22,,,,,,,,,,,,,0,0.0,0
+255,Mehdi Boukamir,19,Sporting Charleroi,Jupiler Pro League,Right Centre Back,Centre Back,23.97,,,,,,,,,,,,,0,0.0,0
+256,Florian Miguel,27,OH Leuven,Jupiler Pro League,Left Centre Back,Centre Back,16.86,,,,,,,,,,,,,1800000,1.8,0
+0,Viktor Gyökeres,25,Sporting CP,Primeira Liga,Centre Forward,Striker,97.44,67.0,70.0,74.0,85.0,70.0,93.0,59.0,67.0,81.0,70.0,96.0,93.0,13000000,13.0,2024
+1,Simon Bokote Banza,27,Sporting Braga,Primeira Liga,Centre Forward,Striker,89.22,100.0,96.0,96.0,74.0,67.0,15.0,89.0,78.0,85.0,78.0,100.0,96.0,7000000,7.0,2027
+2,Antonio Martínez López,26,FC Porto,Primeira Liga,Right Centre Forward,Striker,83.05,96.0,81.0,81.0,56.0,41.0,100.0,67.0,93.0,56.0,63.0,93.0,78.0,7000000,7.0,2027
+3,Róbert Boženík,23,Boavista,Primeira Liga,Centre Forward,Striker,82.68,85.0,89.0,85.0,100.0,59.0,59.0,11.0,15.0,48.0,89.0,48.0,59.0,1000000,1.0,2024
+4,Petar Musa,25,Benfica,Primeira Liga,Centre Forward,Striker,74.04,93.0,93.0,89.0,7.0,15.0,89.0,26.0,54.0,100.0,100.0,89.0,67.0,5000000,5.0,2027
+5,Héctor Hernández Marrero,28,Chaves,Primeira Liga,Centre Forward,Striker,72.23,74.0,59.0,63.0,63.0,37.0,63.0,52.0,74.0,22.0,33.0,37.0,37.0,800000,0.8,0
+6,Laurindo Dilson Maria Aurélio,23,Gil Vicente,Primeira Liga,Centre Forward,Striker,71.06,89.0,85.0,59.0,15.0,11.0,48.0,81.0,81.0,19.0,30.0,78.0,89.0,250000,0.25,2024
+7,Samuel Emmanuel Essende Mbongu,25,Vizela,Primeira Liga,Centre Forward,Striker,71.0,44.0,74.0,67.0,26.0,22.0,44.0,93.0,85.0,7.0,19.0,74.0,44.0,600000,0.6,2025
+8,Clayton Fernandes Silva,24,Casa Pia AC,Primeira Liga,Centre Forward,Striker,70.26,63.0,78.0,100.0,44.0,78.0,74.0,41.0,33.0,70.0,96.0,59.0,15.0,600000,0.6,2026
+9,André Oliveira Silva,26,Vitória Guimarães,Primeira Liga,Centre Forward,Striker,67.47,78.0,41.0,78.0,96.0,81.0,11.0,48.0,44.0,52.0,44.0,67.0,26.0,2000000,2.0,2026
+10,Cristo Ramón González Pérez,25,FC Arouca,Primeira Liga,Right Centre Forward,Striker,66.38,52.0,63.0,93.0,41.0,52.0,85.0,4.0,4.0,33.0,48.0,41.0,48.0,1500000,1.5,2024
+11,Ronaldo Rodrigues Tavares,26,Estrela Amadora,Primeira Liga,Centre Forward,Striker,65.9,81.0,30.0,56.0,67.0,100.0,37.0,100.0,100.0,63.0,85.0,70.0,7.0,200000,0.2,2024
+12,Mehdi Taremi,31,FC Porto,Primeira Liga,Left Centre Forward,Striker,60.88,22.0,22.0,19.0,48.0,63.0,96.0,63.0,89.0,93.0,93.0,63.0,30.0,20000000,20.0,2024
+13,Alejandro José Marqués Méndez,23,Estoril,Primeira Liga,Centre Forward,Striker,60.88,70.0,100.0,70.0,33.0,48.0,4.0,78.0,39.0,44.0,22.0,81.0,100.0,500000,0.5,2024
+14,Rui Pedro Silva Costa,27,SC Farense,Primeira Liga,Centre Forward,Striker,55.88,26.0,67.0,41.0,70.0,74.0,70.0,56.0,54.0,15.0,26.0,22.0,33.0,550000,0.55,2024
+15,Abel Ruiz Ortega,23,Sporting Braga,Primeira Liga,Centre Forward,Striker,53.75,33.0,9.0,30.0,89.0,85.0,78.0,7.0,7.0,74.0,81.0,85.0,22.0,8000000,8.0,2025
+16,Jhonder Leonel Cádiz Fernández,28,Famalicão,Primeira Liga,Centre Forward,Striker,50.0,30.0,52.0,48.0,19.0,26.0,33.0,96.0,96.0,4.0,4.0,26.0,70.0,1500000,1.5,0
+17,Bruno Duarte da Silva,27,SC Farense,Primeira Liga,Centre Forward,Striker,49.45,7.0,37.0,15.0,78.0,93.0,56.0,70.0,30.0,30.0,67.0,33.0,74.0,1500000,1.5,0
+18,Cassiano Dias Moreira,34,Estoril,Primeira Liga,Centre Forward,Striker,47.38,41.0,33.0,44.0,81.0,33.0,22.0,37.0,22.0,78.0,15.0,52.0,19.0,200000,0.2,2024
+19,Paulo Victor Ferreira de Jesus,22,Chaves,Primeira Liga,Centre Forward,Striker,44.8,19.0,26.0,37.0,22.0,30.0,81.0,15.0,26.0,67.0,37.0,44.0,56.0,450000,0.45,2024
+20,André Luis Silva de Aguiar,29,Moreirense,Primeira Liga,Centre Forward,Striker,43.54,37.0,19.0,33.0,52.0,44.0,26.0,85.0,70.0,11.0,59.0,19.0,11.0,425000,0.425,2024
+21,Ronie Edmundo Carrillo Morales,27,Portimonense,Primeira Liga,Centre Forward,Striker,43.38,15.0,56.0,11.0,93.0,96.0,19.0,44.0,54.0,41.0,74.0,11.0,52.0,350000,0.35,2023
+22,Rafael Sebastián Mújica García,24,FC Arouca,Primeira Liga,Centre Forward,Striker,43.11,56.0,48.0,52.0,11.0,7.0,30.0,22.0,19.0,59.0,41.0,30.0,63.0,600000,0.6,2024
+23,Arthur Mendonça Cabral,25,Benfica,Primeira Liga,Centre Forward,Striker,37.29,59.0,9.0,26.0,59.0,89.0,7.0,30.0,39.0,96.0,52.0,56.0,81.0,14000000,14.0,2026
+24,Henrique Pereira Araújo,21,Famalicão,Primeira Liga,Centre Forward,Striker,30.27,4.0,9.0,4.0,37.0,56.0,67.0,74.0,54.0,26.0,11.0,7.0,41.0,4500000,4.5,2027
+25,Roko Baturina,23,Gil Vicente,Primeira Liga,Centre Forward,Striker,29.12,11.0,44.0,7.0,30.0,19.0,41.0,19.0,11.0,37.0,7.0,4.0,85.0,400000,0.4,2024
+26,Leonardo Acevedo Ruiz,27,Rio Ave,Primeira Liga,Centre Forward,Striker,28.41,48.0,9.0,22.0,4.0,4.0,52.0,33.0,63.0,89.0,56.0,15.0,4.0,400000,0.4,2024
+27,David Neres Campos,26,Benfica,Primeira Liga,Left Wing,Winger,80.76,,,,,,90.0,,,,,,,22000000,22.0,2027
+28,João Pedro Gomes Camacho,29,Moreirense,Primeira Liga,Left Midfielder,Winger,80.09,,,,,,82.0,,,,,,,425000,0.425,2024
+29,Ángel Fabián Di María Hernández,35,Benfica,Primeira Liga,Right Wing,Winger,76.17,,,,,,40.0,,,,,,,10000000,10.0,0
+30,Mohamed Elbachir Belloumi,21,SC Farense,Primeira Liga,Right Midfielder,Winger,73.89,,,,,,88.0,,,,,,,300000,0.3,0
+31,Marcus Edwards,24,Sporting CP,Primeira Liga,Right Wing,Winger,73.73,,,,,,100.0,,,,,,,25000000,25.0,2026
+32,Álvaro Djaló Dias Fernandes,24,Sporting Braga,Primeira Liga,Right Wing,Winger,73.7,,,,,,38.0,,,,,,,1500000,1.5,2027
+33,Hélio Sandro Oliveira Alves Varela,21,Portimonense,Primeira Liga,Left Wing,Winger,66.69,,,,,,80.0,,,,,,,0,0.0,0
+34,Ricardo Jorge Luz Horta,29,Sporting Braga,Primeira Liga,Right Wing,Winger,65.69,,,,,,5.0,,,,,,,20000000,20.0,2028
+35,João Pedro Ferreira Silva,24,Vitória Guimarães,Primeira Liga,Right Wing,Winger,64.16,,,,,,45.0,,,,,,,500000,0.5,0
+36,Armindo Tué Na Bangna,28,Sporting Braga,Primeira Liga,Left Wing,Winger,61.6,,,,,,95.0,,,,,,,6000000,6.0,2027
+37,Tiago Fontoura Fonseca Morais,20,Boavista,Primeira Liga,Left Wing,Winger,61.05,,,,,,72.0,,,,,,,450000,0.45,2026
+38,Rafik Guitane,24,Estoril,Primeira Liga,Right Wing,Winger,59.34,,,,,,85.0,,,,,,,1500000,1.5,2024
+39,João Paulo Dias Fernandes,30,Sporting CP,Primeira Liga,Left Wing,Winger,58.03,,,,,,30.0,,,,,,,0,0.0,0
+40,Nuno Gonçalo Rocha Moreira,24,Vizela,Primeira Liga,Right Wing,Winger,56.35,,,,,,35.0,,,,,,,700000,0.7,2024
+41,Leandro Mário Baldé Sanca,23,Chaves,Primeira Liga,Left Wing,Winger,56.34,,,,,,62.0,,,,,,,400000,0.4,2024
+42,Ronald Pereira Martins,22,Estrela Amadora,Primeira Liga,Left Wing,Winger,56.34,,,,,,65.0,,,,,,,250000,0.25,0
+43,Pedro António Pereira Gonçalves,25,Sporting CP,Primeira Liga,Left Wing,Winger,55.93,,,,,,28.0,,,,,,,0,0.0,0
+44,Felix Alexandre Andrade Sanches Correia,22,Gil Vicente,Primeira Liga,Left Wing,Winger,53.17,,,,,,92.0,,,,,,,1200000,1.2,2025
+45,Salvador José Milhazes Agra,31,Boavista,Primeira Liga,Right Wing,Winger,52.48,,,,,,32.0,,,,,,,500000,0.5,2024
+46,Wenderson Rodrigues do Nascimento Galeno,25,FC Porto,Primeira Liga,Left Midfielder,Winger,52.25,,,,,,78.0,,,,,,,20000000,20.0,2027
+47,Leonardo Rodrigues Lima,25,Estrela Amadora,Primeira Liga,Left Wing,Winger,48.55,,,,,,60.0,,,,,,,500000,0.5,2025
+48,Óscar Aranda Subiela,21,Famalicão,Primeira Liga,Left Wing,Winger,46.93,,,,,,75.0,,,,,,,400000,0.4,0
+49,Saviour Amunde Godwin,27,Casa Pia AC,Primeira Liga,Left Wing,Winger,45.98,,,,,,98.0,,,,,,,1500000,1.5,2024
+50,Bernardo Martins Sousa,23,Chaves,Primeira Liga,Right Wing,Winger,45.43,,,,,,25.0,,,,,,,2000000,2.0,2025
+51,João Mário Naval da Costa Eduardo,30,Benfica,Primeira Liga,Left Wing,Winger,44.83,,,,,,2.0,,,,,,,16000000,16.0,2027
+52,João Mário Naval da Costa Eduardo,30,Benfica,Primeira Liga,Left Wing,Winger,44.83,,,,,,2.0,,,,,,,14000000,14.0,2026
+53,Sylvester Jasper,22,Portimonense,Primeira Liga,Right Wing,Winger,43.77,,,,,,22.0,,,,,,,250000,0.25,0
+54,Marco Andre Silva Lopes Matias,34,SC Farense,Primeira Liga,Left Midfielder,Winger,40.62,,,,,,42.0,,,,,,,125000,0.125,0
+55,Jorge Samuel Figueiredo Fernandes,27,Rio Ave,Primeira Liga,Right Wing,Winger,39.25,,,,,,50.0,,,,,,,1500000,1.5,2025
+56,Heriberto Moreno Borges Tavares,26,Estoril,Primeira Liga,Left Wing,Winger,38.99,,,,,,68.0,,,,,,,800000,0.8,2024
+57,Emmanuel Okyere Boateng,27,Rio Ave,Primeira Liga,Left Wing,Winger,38.36,,,,,,58.0,,,,,,,700000,0.7,2024
+58,David Remeseiro Salgueiro,29,FC Arouca,Primeira Liga,Right Midfielder,Winger,37.31,,,,,,70.0,,,,,,,250000,0.25,2025
+59,Matías Rafael Lacava González,20,Vizela,Primeira Liga,Left Wing,Winger,37.26,,,,,,15.0,,,,,,,300000,0.3,2023
+60,José Manuel Silva Oliveira,32,Rio Ave,Primeira Liga,Right Wing,Winger,36.85,,,,,,20.0,,,,,,,100000,0.1,0
+61,José Luis Rodríguez Francis,25,Famalicão,Primeira Liga,Left Wing,Winger,35.45,,,,,,48.0,,,,,,,1500000,1.5,2026
+62,Marlon Douglas de Sales Silva,26,Gil Vicente,Primeira Liga,Left Wing,Winger,34.34,,,,,,52.0,,,,,,,350000,0.35,2025
+63,Kobamelo Kodisang,24,Moreirense,Primeira Liga,Right Wing,Winger,28.01,,,,,,8.0,,,,,,,900000,0.9,2024
+64,Bruno Miguel Ponces Lourenço,25,Boavista,Primeira Liga,Right Midfielder,Winger,26.87,,,,,,12.0,,,,,,,600000,0.6,2025
+65,Yuki Soma,26,Casa Pia AC,Primeira Liga,Right Wing,Winger,24.19,,,,,,55.0,,,,,,,1200000,1.2,2024
+66,Fernando Andrade dos Santos,30,Casa Pia AC,Primeira Liga,Left Wing,Winger,23.74,,,,,,18.0,,,,,,,800000,0.8,0
+67,Rildo Gonçalves de Amorim Filho,23,Portimonense,Primeira Liga,Right Wing,Winger,20.77,,,,,,10.0,,,,,,,1000000,1.0,2027
+68,Rafael Alexandre Fernandes Ferreira da Silva,30,Benfica,Primeira Liga,Centre Attacking Midfielder,Attacking Midfield,88.44,,,,,,,,,,,,,0,0.0,0
+69,Alan de Souza Guimarães,23,Moreirense,Primeira Liga,Centre Attacking Midfielder,Attacking Midfield,69.92,,,,,,,,,,,,,450000,0.45,2023
+70,Marcus Edwards,24,Sporting CP,Primeira Liga,Right Wing,Attacking Midfield,69.91,,,,,,,,,,,,,25000000,25.0,2026
+71,Luís Miguel Afonso Fernandes,34,Sporting Braga,Primeira Liga,Centre Attacking Midfielder,Attacking Midfield,66.45,,,,,,,,,,,,,3500000,3.5,2024
+72,Álvaro Djaló Dias Fernandes,24,Sporting Braga,Primeira Liga,Right Wing,Attacking Midfield,66.07,,,,,,,,,,,,,1500000,1.5,2027
+73,Rodrigo Zalazar Martínez,24,Sporting Braga,Primeira Liga,Left Defensive Midfielder,Attacking Midfield,48.58,,,,,,,,,,,,,3500000,3.5,2026
+74,Bruno Alberto Langa,25,Chaves,Primeira Liga,Left Back,Attacking Midfield,46.17,,,,,,,,,,,,,700000,0.7,2026
+75,Héctor Hernández Marrero,28,Chaves,Primeira Liga,Centre Forward,Attacking Midfield,46.17,,,,,,,,,,,,,800000,0.8,0
+76,Kanya Fujimoto,24,Gil Vicente,Primeira Liga,Centre Attacking Midfielder,Attacking Midfield,40.22,,,,,,,,,,,,,2000000,2.0,2025
+77,Abel Ruiz Ortega,23,Sporting Braga,Primeira Liga,Centre Forward,Attacking Midfield,38.98,,,,,,,,,,,,,8000000,8.0,2025
+78,Carlos Vinicius Santos de Jesus,29,Portimonense,Primeira Liga,Centre Attacking Midfielder,Attacking Midfield,34.65,,,,,,,,,,,,,500000,0.5,2025
+79,Diogo Andre Santos Nascimento,20,Vizela,Primeira Liga,Centre Attacking Midfielder,Attacking Midfield,29.75,,,,,,,,,,,,,0,0.0,0
+80,Sebastián Pérez Cardona,30,Boavista,Primeira Liga,Centre Defensive Midfielder,Attacking Midfield,29.49,,,,,,,,,,,,,1500000,1.5,2025
+81,Otso Liimatta,19,Famalicão,Primeira Liga,Centre Attacking Midfielder,Attacking Midfield,15.72,,,,,,,,,,,,,400000,0.4,2024
+82,Fábio Samuel Amorim Silva,27,Vizela,Primeira Liga,Right Centre Midfielder,Central Midfield,77.6,,,,,,,,,85.0,,,,500000,0.5,2024
+83,João Miguel Vieira Freitas Silva Marques,21,Estoril,Primeira Liga,Left Centre Midfielder,Central Midfield,70.21,,,,,,,,,77.0,,,,300000,0.3,2026
+84,Mattheus Andrade Gama de Oliveira,29,SC Farense,Primeira Liga,Left Centre Midfielder,Central Midfield,62.69,,,,,,,,,23.0,,,,250000,0.25,0
+85,Zaydou Youssouf,24,Famalicão,Primeira Liga,Right Defensive Midfielder,Central Midfield,52.71,,,,,,,,,15.0,,,,3000000,3.0,2026
+86,Martim Carvalho Neto,20,Gil Vicente,Primeira Liga,Left Defensive Midfielder,Central Midfield,52.67,,,,,,,,,100.0,,,,1500000,1.5,2028
+87,Óscar Aranda Subiela,21,Famalicão,Primeira Liga,Left Wing,Central Midfield,47.25,,,,,,,,,8.0,,,,400000,0.4,0
+88,Miguel Silva Reisinho,24,Boavista,Primeira Liga,Left Centre Midfielder,Central Midfield,45.62,,,,,,,,,92.0,,,,200000,0.2,2025
+89,Ilija Vukotić,24,Boavista,Primeira Liga,Right Centre Midfielder,Central Midfield,44.5,,,,,,,,,31.0,,,,400000,0.4,2025
+90,Gaïus Makouta,26,Boavista,Primeira Liga,Left Centre Midfielder,Central Midfield,44.3,,,,,,,,,69.0,,,,2000000,2.0,2024
+91,Fabrício Isidoro Fonseca de Jesus,31,SC Farense,Primeira Liga,Right Centre Midfielder,Central Midfield,39.38,,,,,,,,,54.0,,,,150000,0.15,2024
+92,Diogo Andre Santos Nascimento,20,Vizela,Primeira Liga,Centre Attacking Midfielder,Central Midfield,29.83,,,,,,,,,38.0,,,,0,0.0,0
+93,Alexandre Miguel Barros Soares,32,Estoril,Primeira Liga,Right Centre Midfielder,Central Midfield,25.33,,,,,,,,,62.0,,,,350000,0.35,2024
+94,Mirko Topić,22,Famalicão,Primeira Liga,Left Defensive Midfielder,Central Midfield,20.26,,,,,,,,,46.0,,,,1500000,1.5,2024
+95,Stephen Antunes Eustáquio,26,FC Porto,Primeira Liga,Left Defensive Midfielder,Defensive Midfield,52.86,,,,,,,,,,,,,10000000,10.0,2027
+96,João Neves,19,Benfica,Primeira Liga,Right Defensive Midfielder,Defensive Midfield,51.48,,,,,,,,,,,,,0,0.0,0
+97,Almoatasembellah Ali Mohamed Elmusrati,27,Sporting Braga,Primeira Liga,Right Defensive Midfielder,Defensive Midfield,48.94,,,,,,,,,,,,,16000000,16.0,2026
+98,Hidemasa Morita,28,Sporting CP,Primeira Liga,Left Defensive Midfielder,Defensive Midfield,48.21,,,,,,,,,,,,,10000000,10.0,2026
+99,Pedro Miguel Amorim Pereira Silva,35,Gil Vicente,Primeira Liga,Left Defensive Midfielder,Defensive Midfield,47.35,,,,,,,,,,,,,500000,0.5,2026
+100,Orkun Kökçü,22,Benfica,Primeira Liga,Left Defensive Midfielder,Defensive Midfield,46.25,,,,,,,,,,,,,30000000,30.0,2025
+101,Manuel Jorge Silva,22,Vitória Guimarães,Primeira Liga,Centre Back,Defensive Midfield,45.67,,,,,,,,,,,,,2000000,2.0,2026
+102,Gonçalo Baptista Franco,22,Moreirense,Primeira Liga,Right Defensive Midfielder,Defensive Midfield,43.92,,,,,,,,,,,,,800000,0.8,2025
+103,Roman Mory Diaman Gbane,22,Gil Vicente,Primeira Liga,Right Defensive Midfielder,Defensive Midfield,42.93,,,,,,,,,,,,,800000,0.8,2024
+104,Morten Hjulmand,24,Sporting CP,Primeira Liga,Right Defensive Midfielder,Defensive Midfield,41.95,,,,,,,,,,,,,12000000,12.0,2024
+105,Aleksandar Busnić,25,Vizela,Primeira Liga,Right Defensive Midfielder,Defensive Midfield,41.7,,,,,,,,,,,,,700000,0.7,2024
+106,Sebastián Pérez Cardona,30,Boavista,Primeira Liga,Centre Defensive Midfielder,Defensive Midfield,40.45,,,,,,,,,,,,,1500000,1.5,2025
+107,Florentino Ibrain Morris Luís,24,Benfica,Primeira Liga,Right Defensive Midfielder,Defensive Midfield,40.03,,,,,,,,,,,,,20000000,20.0,2027
+108,Fábio Samuel Amorim Silva,27,Vizela,Primeira Liga,Right Centre Midfielder,Defensive Midfield,39.35,,,,,,,,,,,,,500000,0.5,2024
+109,Pablo Roberto dos Santos Barbosa,23,Casa Pia AC,Primeira Liga,Left Defensive Midfielder,Defensive Midfield,39.14,,,,,,,,,,,,,200000,0.2,2023
+110,Pedro António Pereira Gonçalves,25,Sporting CP,Primeira Liga,Left Wing,Defensive Midfield,39.02,,,,,,,,,,,,,0,0.0,0
+111,Aloísio de Souza Genézio,27,Estrela Amadora,Primeira Liga,Right Defensive Midfielder,Defensive Midfield,38.13,,,,,,,,,,,,,350000,0.35,0
+112,Maxime Dominguez,27,Gil Vicente,Primeira Liga,Centre Attacking Midfielder,Defensive Midfield,37.93,,,,,,,,,,,,,400000,0.4,0
+113,Cláudio Falcão Santos,29,SC Farense,Primeira Liga,Right Defensive Midfielder,Defensive Midfield,36.29,,,,,,,,,,,,,350000,0.35,2024
+114,David Martins Simão,33,FC Arouca,Primeira Liga,Left Defensive Midfielder,Defensive Midfield,33.94,,,,,,,,,,,,,250000,0.25,2025
+115,Ricardo Martins Guimarães,27,Chaves,Primeira Liga,Right Defensive Midfielder,Defensive Midfield,33.01,,,,,,,,,,,,,700000,0.7,2026
+116,Tom Lacoux,21,Famalicão,Primeira Liga,Left Defensive Midfielder,Defensive Midfield,32.18,,,,,,,,,,,,,1500000,1.5,2025
+117,Tiago Rafael Maia da Silva,30,Vitória Guimarães,Primeira Liga,Right Defensive Midfielder,Defensive Midfield,31.49,,,,,,,,,,,,,1500000,1.5,2026
+118,Gaïus Makouta,26,Boavista,Primeira Liga,Left Centre Midfielder,Defensive Midfield,31.26,,,,,,,,,,,,,2000000,2.0,2024
+119,Jordan William Holsgrove,24,Estoril,Primeira Liga,Centre Defensive Midfielder,Defensive Midfield,30.62,,,,,,,,,,,,,500000,0.5,2025
+120,Rodrigo Zalazar Martínez,24,Sporting Braga,Primeira Liga,Left Defensive Midfielder,Defensive Midfield,30.39,,,,,,,,,,,,,3500000,3.5,2026
+121,Amine Oudrhiri Idrissi,30,Rio Ave,Primeira Liga,Right Defensive Midfielder,Defensive Midfield,30.21,,,,,,,,,,,,,350000,0.35,0
+122,Nicolás González Iglesias,21,FC Porto,Primeira Liga,Right Defensive Midfielder,Defensive Midfield,30.15,,,,,,,,,,,,,10000000,10.0,2026
+123,Martim Carvalho Neto,20,Gil Vicente,Primeira Liga,Left Defensive Midfielder,Defensive Midfield,29.11,,,,,,,,,,,,,1500000,1.5,2028
+124,Daniel Filipe Bandeira e Silva,23,Vitória Guimarães,Primeira Liga,Left Defensive Midfielder,Defensive Midfield,28.1,,,,,,,,,,,,,2000000,2.0,2026
+125,Vitor Carvalho Vieira,26,Sporting Braga,Primeira Liga,Left Defensive Midfielder,Defensive Midfield,27.82,,,,,,,,,,,,,1500000,1.5,2024
+126,Morlaye Sylla,25,FC Arouca,Primeira Liga,Right Defensive Midfielder,Defensive Midfield,27.44,,,,,,,,,,,,,700000,0.7,2025
+127,Miguel Silva Reisinho,24,Boavista,Primeira Liga,Left Centre Midfielder,Defensive Midfield,27.04,,,,,,,,,,,,,200000,0.2,2025
+128,Rafael Guillermo Bustamante Cantillo,24,Vizela,Primeira Liga,Left Defensive Midfielder,Defensive Midfield,26.7,,,,,,,,,,,,,400000,0.4,0
+129,Tomás Romano Pereira Santos Händel,22,Vitória Guimarães,Primeira Liga,Right Defensive Midfielder,Defensive Midfield,26.66,,,,,,,,,,,,,2500000,2.5,2026
+130,Mirko Topić,22,Famalicão,Primeira Liga,Left Defensive Midfielder,Defensive Midfield,26.24,,,,,,,,,,,,,1500000,1.5,2024
+131,Benedito Mambuene Mukendi,21,Casa Pia AC,Primeira Liga,Left Defensive Midfielder,Defensive Midfield,26.09,,,,,,,,,,,,,250000,0.25,2025
+132,Gonçalo Rosa Gonçalves Pereira Rodrigues,26,Rio Ave,Primeira Liga,Left Defensive Midfielder,Defensive Midfield,25.75,,,,,,,,,,,,,300000,0.3,2024
+133,José Carlos Natário Ferreira,21,Vitória Guimarães,Primeira Liga,Right Back,Defensive Midfield,25.22,,,,,,,,,,,,,800000,0.8,2024
+134,Maurício José da Silveira Júnior,34,Portimonense,Primeira Liga,Right Defensive Midfielder,Defensive Midfield,24.76,,,,,,,,,,,,,300000,0.3,2024
+135,Ilija Vukotić,24,Boavista,Primeira Liga,Right Centre Midfielder,Defensive Midfield,24.43,,,,,,,,,,,,,400000,0.4,2025
+136,Dener Gomes Clemente,31,Portimonense,Primeira Liga,Right Defensive Midfielder,Defensive Midfield,23.8,,,,,,,,,,,,,900000,0.9,0
+137,Alexandre Miguel Barros Soares,32,Estoril,Primeira Liga,Right Centre Midfielder,Defensive Midfield,23.5,,,,,,,,,,,,,350000,0.35,2024
+138,Alan Varela,22,FC Porto,Primeira Liga,Right Defensive Midfielder,Defensive Midfield,23.41,,,,,,,,,,,,,10000000,10.0,2026
+139,João Pedro Salazar da Graça,28,Rio Ave,Primeira Liga,Left Defensive Midfielder,Defensive Midfield,22.81,,,,,,,,,,,,,400000,0.4,2024
+140,Kelechi Nwakali,25,Chaves,Primeira Liga,Left Defensive Midfielder,Defensive Midfield,21.88,,,,,,,,,,,,,800000,0.8,2024
+141,Leonardo Cordeiro de Lima Silva,28,Estrela Amadora,Primeira Liga,Right Defensive Midfielder,Defensive Midfield,21.36,,,,,,,,,,,,,350000,0.35,0
+142,Paulo Estrela Moreira Alves,24,Portimonense,Primeira Liga,Left Defensive Midfielder,Defensive Midfield,21.33,,,,,,,,,,,,,500000,0.5,2026
+143,Mattheus Andrade Gama de Oliveira,29,SC Farense,Primeira Liga,Left Centre Midfielder,Defensive Midfield,20.27,,,,,,,,,,,,,250000,0.25,0
+144,Zaydou Youssouf,24,Famalicão,Primeira Liga,Right Defensive Midfielder,Defensive Midfield,19.91,,,,,,,,,,,,,3000000,3.0,2026
+145,Angelo Pelegrinelli Neto,32,Casa Pia AC,Primeira Liga,Right Defensive Midfielder,Defensive Midfield,16.73,,,,,,,,,,,,,250000,0.25,2025
+146,Carlos Vinicius Santos de Jesus,29,Portimonense,Primeira Liga,Centre Attacking Midfielder,Defensive Midfield,13.94,,,,,,,,,,,,,500000,0.5,2025
+147,Luís Miguel Afonso Fernandes,34,Sporting Braga,Primeira Liga,Centre Attacking Midfielder,Defensive Midfield,12.53,,,,,,,,,,,,,3500000,3.5,2024
+148,Lawrence Ofori,25,Moreirense,Primeira Liga,Left Defensive Midfielder,Defensive Midfield,9.97,,,,,,,,,,,,,275000,0.275,2024
+149,Gustavo Enrique Giordano Amaro Assunção da Silva,23,Famalicão,Primeira Liga,Left Defensive Midfielder,Defensive Midfield,8.34,,,,,,,,,,,,,3000000,3.0,2025
+150,Pedro Jorge Gonçalves Malheiro,22,Boavista,Primeira Liga,Right Back,Right Back,82.97,,,,,,,,,,,,,0,0.0,0
+151,Tomás Costa Silva,23,Vizela,Primeira Liga,Right Back,Right Back,77.91,,,,,,,,,,,,,500000,0.5,2024
+152,Bruno Miguel Boialvo Gaspar,30,Vitória Guimarães,Primeira Liga,Right Wing Back,Right Back,76.96,,,,,,,,,,,,,500000,0.5,2026
+153,Igor Marques Paciencia Cardoso,24,Portimonense,Primeira Liga,Right Wing Back,Right Back,73.12,,,,,,,,,,,,,200000,0.2,2024
+154,Alexander Hartmann Bah,25,Benfica,Primeira Liga,Right Back,Right Back,69.36,,,,,,,,,,,,,8000000,8.0,2027
+155,Eduardo Gabriel Aquino Cossa,26,FC Porto,Primeira Liga,Right Back,Right Back,67.03,,,,,,,,,,,,,22000000,22.0,2027
+156,Geny Cipriano Catamo,22,Sporting CP,Primeira Liga,Right Wing Back,Right Back,66.53,,,,,,,,,,,,,800000,0.8,2025
+157,João Pedro Loureiro da Costa,23,Rio Ave,Primeira Liga,Right Wing Back,Right Back,62.49,,,,,,,,,,,,,400000,0.4,2024
+158,Víctor Gómez Perea,23,Sporting Braga,Primeira Liga,Right Back,Right Back,61.2,,,,,,,,,,,,,4000000,4.0,2025
+159,Ricardo Sousa Esgaio,30,Sporting CP,Primeira Liga,Right Wing Back,Right Back,60.54,,,,,,,,,,,,,3500000,3.5,2026
+160,José Carlos Teixeira Lopes Reis Gonçalves,25,Gil Vicente,Primeira Liga,Right Back,Right Back,59.23,,,,,,,,,,,,,1000000,1.0,2024
+161,José Carlos Teixeira Lopes Reis Gonçalves,25,Gil Vicente,Primeira Liga,Right Back,Right Back,59.23,,,,,,,,,,,,,800000,0.8,2024
+162,Fabiano Josué de Souza Silva,23,Moreirense,Primeira Liga,Right Back,Right Back,58.17,,,,,,,,,,,,,3000000,3.0,2024
+163,Rodrigo Martins Gomes,20,Estoril,Primeira Liga,Right Wing Back,Right Back,56.88,,,,,,,,,,,,,3000000,3.0,2026
+164,Martín Aguirregabiria Padilla,27,Famalicão,Primeira Liga,Right Back,Right Back,56.69,,,,,,,,,,,,,2000000,2.0,2025
+165,João Pedro Araújo Correia,27,Chaves,Primeira Liga,Right Back,Right Back,55.49,,,,,,,,,,,,,600000,0.6,0
+166,Bogdan Milovanov,25,FC Arouca,Primeira Liga,Right Wing Back,Right Back,47.38,,,,,,,,,,,,,500000,0.5,2024
+167,José Carlos Natário Ferreira,21,Vitória Guimarães,Primeira Liga,Right Back,Right Back,44.22,,,,,,,,,,,,,800000,0.8,2024
+168,Tiago Alexandre Sousa Esgaio,28,FC Arouca,Primeira Liga,Right Back,Right Back,43.47,,,,,,,,,,,,,700000,0.7,2024
+169,Gaizka Larrazabal Goikoetxea,25,Casa Pia AC,Primeira Liga,Right Wing Back,Right Back,41.48,,,,,,,,,,,,,600000,0.6,0
+170,João Mário Neto Lopes,23,FC Porto,Primeira Liga,Right Back,Right Back,40.88,,,,,,,,,,,,,16000000,16.0,2027
+171,João Mário Neto Lopes,23,FC Porto,Primeira Liga,Right Back,Right Back,40.88,,,,,,,,,,,,,14000000,14.0,2026
+172,Hevertton Ciriaco Santos,22,Estrela Amadora,Primeira Liga,Right Wing Back,Right Back,40.88,,,,,,,,,,,,,250000,0.25,2024
+173,David Samuel Custódio Lima,23,SC Farense,Primeira Liga,Right Back,Right Back,36.51,,,,,,,,,,,,,2000000,2.0,2027
+174,Alfonso Trezza Hernández,24,FC Arouca,Primeira Liga,Right Wing Back,Right Back,30.0,,,,,,,,,,,,,900000,0.9,2023
+175,Gonçalo Moura Oliveira,19,Portimonense,Primeira Liga,Right Back,Right Back,27.71,,,,,,,,,,,,,0,0.0,0
+176,Volnei Feltes,23,Estoril,Primeira Liga,Right Back,Right Back,22.7,,,,,,,,,,,,,500000,0.5,0
+177,Gonçalo Faria Costa,23,Portimonense,Primeira Liga,Left Wing Back,Left Back,83.97,,,,,,,,,,,,,0,0.0,0
+178,Leonardo Daniel Ulineia Buta,21,Gil Vicente,Primeira Liga,Left Back,Left Back,72.03,,,,,,,,,,,,,0,0.0,0
+179,Fredrik Aursnes,27,Benfica,Primeira Liga,Left Back,Left Back,69.08,,,,,,,,,,,,,16000000,16.0,2027
+180,Nuno Miguel Gomes dos Santos,28,Sporting CP,Primeira Liga,Left Wing Back,Left Back,68.29,,,,,,,,,,,,,12000000,12.0,2027
+181,Nuno Miguel Gomes dos Santos,28,Sporting CP,Primeira Liga,Left Wing Back,Left Back,68.29,,,,,,,,,,,,,2500000,2.5,2024
+182,Cristian Alexis Borja González,30,Sporting Braga,Primeira Liga,Left Back,Left Back,68.07,,,,,,,,,,,,,2000000,2.0,2025
+183,Tiago Filipe Alves Araújo,22,Estoril,Primeira Liga,Left Back,Left Back,64.81,,,,,,,,,,,,,350000,0.35,2025
+184,Sopuruchukwu Bruno Onyemaechi,24,Boavista,Primeira Liga,Left Back,Left Back,64.48,,,,,,,,,,,,,1000000,1.0,2024
+185,Matheus Pereira de Souza,22,Vizela,Primeira Liga,Left Back,Left Back,64.3,,,,,,,,,,,,,400000,0.4,2025
+186,Wendell Nascimento Borges,30,FC Porto,Primeira Liga,Left Back,Left Back,62.09,,,,,,,,,,,,,2000000,2.0,2027
+187,Weverson Moreira da Costa,23,FC Arouca,Primeira Liga,Left Wing Back,Left Back,56.94,,,,,,,,,,,,,900000,0.9,2025
+188,Matheus Reis de Lima,28,Sporting CP,Primeira Liga,Left Wing Back,Left Back,56.89,,,,,,,,,,,,,8000000,8.0,2025
+189,Nélson Conceição da Luz,25,Vitória Guimarães,Primeira Liga,Left Wing Back,Left Back,54.52,,,,,,,,,,,,,1000000,1.0,2025
+190,Bruno Alberto Langa,25,Chaves,Primeira Liga,Left Back,Left Back,54.24,,,,,,,,,,,,,700000,0.7,2026
+191,Afonso Manuel Abreu de Freitas,23,Vitória Guimarães,Primeira Liga,Left Wing Back,Left Back,50.51,,,,,,,,,,,,,1000000,1.0,2025
+192,Pedro Miguel Santos Amador,24,Moreirense,Primeira Liga,Left Back,Left Back,50.39,,,,,,,,,,,,,375000,0.375,2024
+193,Francisco Sampaio Moura,24,Famalicão,Primeira Liga,Left Back,Left Back,48.81,,,,,,,,,,,,,3000000,3.0,2026
+194,João Carlos Silva Reis,31,Estrela Amadora,Primeira Liga,Left Wing Back,Left Back,48.34,,,,,,,,,,,,,200000,0.2,0
+195,João Carlos Araújo Fonseca Silva,34,SC Farense,Primeira Liga,Left Back,Left Back,47.64,,,,,,,,,,,,,650000,0.65,2024
+196,Fábio Ronaldo Costa Conceição,22,Rio Ave,Primeira Liga,Left Wing Back,Left Back,46.04,,,,,,,,,,,,,800000,0.8,2026
+197,Adrián Marín Gómez,26,Sporting Braga,Primeira Liga,Left Back,Left Back,44.45,,,,,,,,,,,,,4000000,4.0,2025
+198,Leonardo Filipe Cruz Lelo,23,Casa Pia AC,Primeira Liga,Left Wing Back,Left Back,30.76,,,,,,,,,,,,,1500000,1.5,2025
+199,Godfried Ayesu Owusu Frimpong,24,Moreirense,Primeira Liga,Left Back,Left Back,30.58,,,,,,,,,,,,,550000,0.55,2025
+200,Sandro Plínio Rosa Cruz,22,Chaves,Primeira Liga,Left Back,Left Back,22.75,,,,,,,,,,,,,400000,0.4,2024
+201,Nicolás Hernán Otamendi,35,Benfica,Primeira Liga,Left Centre Back,Centre Back,73.52,,,,,,,,,,,,,3000000,3.0,2025
+202,Jorge Filipe Oliveira Fernandes,26,Vitória Guimarães,Primeira Liga,Right Centre Back,Centre Back,71.58,,,,,,,,,,,,,1500000,1.5,2025
+203,Gonçalo Bernardo Inácio,22,Sporting CP,Primeira Liga,Left Centre Back,Centre Back,68.25,,,,,,,,,,,,,25000000,25.0,2027
+204,Kialonda Gaspar,26,Estrela Amadora,Primeira Liga,Right Centre Back,Centre Back,66.55,,,,,,,,,,,,,0,0.0,0
+205,Sebastián Coates Nión,32,Sporting CP,Primeira Liga,Centre Back,Centre Back,66.5,,,,,,,,,,,,,6000000,6.0,2024
+206,Manuel Jorge Silva,22,Vitória Guimarães,Primeira Liga,Centre Back,Centre Back,65.14,,,,,,,,,,,,,2000000,2.0,2026
+207,António João Pereira Albuquerque Tavares Silva,19,Benfica,Primeira Liga,Right Centre Back,Centre Back,64.56,,,,,,,,,,,,,0,0.0,0
+208,Aderllan Leandro de Jesus Santos,34,Rio Ave,Primeira Liga,Centre Back,Centre Back,56.95,,,,,,,,,,,,,300000,0.3,0
+209,Ivan Marcano Sierra,36,FC Porto,Primeira Liga,Left Centre Back,Centre Back,56.69,,,,,,,,,,,,,500000,0.5,2025
+210,Gabriel Pereira Magalhães dos Santos,23,Gil Vicente,Primeira Liga,Right Centre Back,Centre Back,56.01,,,,,,,,,,,,,500000,0.5,2026
+211,Ousmane Diomande,19,Sporting CP,Primeira Liga,Right Centre Back,Centre Back,54.39,,,,,,,,,,,,,0,0.0,0
+212,Mikel Villanueva Álvarez,30,Vitória Guimarães,Primeira Liga,Left Centre Back,Centre Back,51.29,,,,,,,,,,,,,1500000,1.5,2025
+213,Paulo André Rodrigues de Oliveira,31,Sporting Braga,Primeira Liga,Right Centre Back,Centre Back,49.03,,,,,,,,,,,,,3500000,3.5,2025
+214,Fábio Rafael Rodrigues Cardoso,29,FC Porto,Primeira Liga,Right Centre Back,Centre Back,48.06,,,,,,,,,,,,,4000000,4.0,2026
+215,Sávio Antônio Alves,28,Rio Ave,Primeira Liga,Left Centre Back,Centre Back,46.86,,,,,,,,,,,,,250000,0.25,2025
+216,Filipe Bem Relvas Vito Oliveira,24,Portimonense,Primeira Liga,Left Centre Back,Centre Back,45.86,,,,,,,,,,,,,2000000,2.0,2026
+217,Sikou Niakaté,24,Sporting Braga,Primeira Liga,Left Centre Back,Centre Back,45.6,,,,,,,,,,,,,3000000,3.0,2025
+218,Erick Cathriel Cabaco Almada,28,Estoril,Primeira Liga,Left Centre Back,Centre Back,45.54,,,,,,,,,,,,,1000000,1.0,2024
+219,Josué Humberto Gonçalves Leal Sá,31,Rio Ave,Primeira Liga,Left Centre Back,Centre Back,45.39,,,,,,,,,,,,,700000,0.7,2024
+220,Ygor Nogueira de Paula,28,Chaves,Primeira Liga,Left Centre Back,Centre Back,44.49,,,,,,,,,,,,,900000,0.9,0
+221,Chidozie Collins Awaziem,26,Boavista,Primeira Liga,Right Centre Back,Centre Back,44.39,,,,,,,,,,,,,3500000,3.5,2025
+222,Serdar Saatçı,20,Sporting Braga,Primeira Liga,Left Centre Back,Centre Back,44.11,,,,,,,,,,,,,1500000,1.5,2027
+223,Nermin Zolotić,30,Casa Pia AC,Primeira Liga,Left Centre Back,Centre Back,42.93,,,,,,,,,,,,,500000,0.5,2025
+224,Anderson de Jesus Santos,28,Vizela,Primeira Liga,Left Centre Back,Centre Back,42.67,,,,,,,,,,,,,800000,0.8,2024
+225,Rafael Tavares Gomes Fernandes,21,FC Arouca,Primeira Liga,Right Centre Back,Centre Back,42.66,,,,,,,,,,,,,0,0.0,0
+226,Gonçalo Filipe Oliveira Silva,32,SC Farense,Primeira Liga,Right Centre Back,Centre Back,41.39,,,,,,,,,,,,,250000,0.25,0
+227,José Miguel da Rocha Fonte,39,Sporting Braga,Primeira Liga,Right Centre Back,Centre Back,41.06,,,,,,,,,,,,,700000,0.7,0
+228,Marcelo dos Santos Ferreira,34,Moreirense,Primeira Liga,Right Centre Back,Centre Back,39.92,,,,,,,,,,,,,200000,0.2,0
+229,Ruben Miguel Marques dos Santos Fernandes,37,Gil Vicente,Primeira Liga,Left Centre Back,Centre Back,39.07,,,,,,,,,,,,,100000,0.1,0
+230,Johnstone Omurwa,25,Estrela Amadora,Primeira Liga,Right Centre Back,Centre Back,35.6,,,,,,,,,,,,,0,0.0,0
+231,David Mota Veiga Teixeira Carmo,24,FC Porto,Primeira Liga,Left Centre Back,Centre Back,34.95,,,,,,,,,,,,,16000000,16.0,2027
+232,Bruno Ricardo Valdez Wilson,26,Vizela,Primeira Liga,Right Centre Back,Centre Back,34.23,,,,,,,,,,,,,900000,0.9,2024
+233,Hugo Miguel Almeida Costa Lopes,36,Estrela Amadora,Primeira Liga,Centre Back,Centre Back,33.86,,,,,,,,,,,,,50000,0.05,0
+234,Vasco Herculano Salgado Cunha Mango Fernandes,36,Casa Pia AC,Primeira Liga,Centre Back,Centre Back,32.68,,,,,,,,,,,,,100000,0.1,2024
+235,Renato Pantalon,25,Rio Ave,Primeira Liga,Right Centre Back,Centre Back,32.07,,,,,,,,,,,,,475000,0.475,2024
+236,Bernardo Maria Morais Cardoso Vital,22,Estoril,Primeira Liga,Right Centre Back,Centre Back,30.7,,,,,,,,,,,,,800000,0.8,2025
+237,Otavio Ataide da Silva,21,Famalicão,Primeira Liga,Left Centre Back,Centre Back,30.29,,,,,,,,,,,,,30000000,30.0,2025
+238,Otavio Ataide da Silva,21,Famalicão,Primeira Liga,Left Centre Back,Centre Back,30.29,,,,,,,,,,,,,100000,0.1,0
+239,Pedro Miguel Costa Álvaro,23,Estoril,Primeira Liga,Right Centre Back,Centre Back,29.78,,,,,,,,,,,,,900000,0.9,2025
+240,Fernando Lopes dos Santos Varela,35,Casa Pia AC,Primeira Liga,Right Centre Back,Centre Back,29.75,,,,,,,,,,,,,300000,0.3,2024
+241,Joeliton Lima Santos,30,Estrela Amadora,Primeira Liga,Left Centre Back,Centre Back,29.59,,,,,,,,,,,,,250000,0.25,2024
+242,Rodrigo Abascal Barros,29,Boavista,Primeira Liga,Left Centre Back,Centre Back,29.52,,,,,,,,,,,,,800000,0.8,2025
+243,João Victor Tornich,20,Portimonense,Primeira Liga,Centre Back,Centre Back,29.25,,,,,,,,,,,,,8000000,8.0,2027
+244,Riccieli Eduardo da Silva Junior,25,Famalicão,Primeira Liga,Right Centre Back,Centre Back,28.93,,,,,,,,,,,,,2000000,2.0,2027
+245,Filipe Miguel Neves Ferreira,33,Boavista,Primeira Liga,Left Centre Back,Centre Back,28.83,,,,,,,,,,,,,300000,0.3,2024
+246,Pedro Henrique de Oliveira Correia,26,Portimonense,Primeira Liga,Right Centre Back,Centre Back,28.08,,,,,,,,,,,,,900000,0.9,2025
+247,Francisco Javier Montero Rubio,24,FC Arouca,Primeira Liga,Left Centre Back,Centre Back,26.61,,,,,,,,,,,,,2000000,2.0,2025
+248,Steven de Sousa Vitoria,36,Chaves,Primeira Liga,Centre Back,Centre Back,25.91,,,,,,,,,,,,,100000,0.1,0
+249,Eliaquim Mangala,32,Estoril,Primeira Liga,Left Centre Back,Centre Back,25.22,,,,,,,,,,,,,700000,0.7,0
+250,Bruno Miguel Ferreira Rodrigues,22,Chaves,Primeira Liga,Right Centre Back,Centre Back,23.74,,,,,,,,,,,,,2000000,2.0,2025
+251,Jóbson de Brito Gonzaga,29,Moreirense,Primeira Liga,Left Centre Back,Centre Back,23.19,,,,,,,,,,,,,300000,0.3,0
+252,Nino Galović,31,FC Arouca,Primeira Liga,Centre Back,Centre Back,20.95,,,,,,,,,,,,,700000,0.7,2025
+253,Artur Jorge Marques Amorim,29,SC Farense,Primeira Liga,Left Centre Back,Centre Back,18.9,,,,,,,,,,,,,800000,0.8,2024
+254,Zach Muscat,30,SC Farense,Primeira Liga,Left Centre Back,Centre Back,16.08,,,,,,,,,,,,,400000,0.4,2024
+0,Evangelos Pavlidis,24,AZ Alkmaar,Eredivisie,Centre Forward,Striker,105.18,96.0,96.0,96.0,74.0,78.0,100.0,22.0,30.0,96.0,70.0,100.0,96.0,12000000,12.0,2025
+1,Santiago Tomás Giménez,22,Feyenoord,Eredivisie,Centre Forward,Striker,101.68,100.0,100.0,100.0,83.0,83.0,91.0,30.0,48.0,70.0,48.0,96.0,52.0,9000000,9.0,2027
+2,Luuk de Jong,33,PSV Eindhoven,Eredivisie,Centre Forward,Striker,95.85,78.0,74.0,91.0,91.0,100.0,70.0,78.0,78.0,91.0,74.0,91.0,78.0,4000000,4.0,2025
+3,Brian Brobbey,21,Ajax,Eredivisie,Centre Forward,Striker,83.84,91.0,61.0,74.0,87.0,91.0,87.0,52.0,100.0,35.0,35.0,87.0,17.0,13000000,13.0,2027
+4,Rajiv van La Parra,32,Almere City,Eredivisie,Left Centre Forward,Striker,78.35,74.0,35.0,52.0,96.0,48.0,78.0,65.0,61.0,83.0,91.0,57.0,57.0,300000,0.3,2024
+5,Manfred Ugalde,21,Twente,Eredivisie,Centre Forward,Striker,76.37,70.0,17.0,87.0,100.0,96.0,83.0,48.0,43.0,100.0,100.0,83.0,43.0,800000,0.8,2025
+6,Nikolas Agrafiotis,23,Excelsior,Eredivisie,Centre Forward,Striker,72.73,65.0,87.0,83.0,61.0,65.0,13.0,96.0,74.0,74.0,61.0,65.0,87.0,250000,0.25,2024
+7,Ricky van Wolfswinkel,34,Twente,Eredivisie,Centre Forward,Striker,66.79,57.0,83.0,39.0,48.0,87.0,65.0,70.0,57.0,87.0,96.0,52.0,83.0,800000,0.8,2024
+8,Thomas Robinet,27,Almere City,Eredivisie,Centre Forward,Striker,64.83,83.0,52.0,48.0,39.0,39.0,26.0,91.0,70.0,26.0,30.0,43.0,65.0,450000,0.45,2026
+9,Tobias Lauritsen,26,Sparta Rotterdam,Eredivisie,Centre Forward,Striker,61.48,30.0,57.0,70.0,35.0,52.0,30.0,100.0,96.0,43.0,39.0,78.0,39.0,2000000,2.0,2025
+10,Ferdy Druijf,25,PEC Zwolle,Eredivisie,Left Centre Forward,Striker,57.24,52.0,17.0,57.0,65.0,35.0,22.0,83.0,87.0,48.0,22.0,70.0,13.0,1500000,1.5,2025
+11,Robert Mühren,34,FC Volendam,Eredivisie,Centre Forward,Striker,51.91,61.0,70.0,61.0,7.0,7.0,43.0,35.0,39.0,13.0,78.0,61.0,91.0,600000,0.6,2024
+12,Lequincio Zeefuik,18,FC Volendam,Eredivisie,Centre Forward,Striker,49.18,9.0,17.0,43.0,78.0,61.0,96.0,87.0,91.0,52.0,83.0,30.0,9.0,200000,0.2,2024
+13,Mohamed Sankoh,19,Heracles Almelo,Eredivisie,Centre Forward,Striker,48.72,87.0,48.0,78.0,17.0,17.0,9.0,57.0,52.0,78.0,57.0,74.0,4.0,800000,0.8,2026
+14,Sylla Sow,27,Go Ahead Eagles,Eredivisie,Centre Forward,Striker,46.19,48.0,91.0,13.0,30.0,70.0,52.0,9.0,9.0,17.0,13.0,35.0,100.0,300000,0.3,2024
+15,Victor Edvardsen,27,Go Ahead Eagles,Eredivisie,Centre Forward,Striker,42.93,17.0,17.0,35.0,57.0,43.0,74.0,39.0,13.0,39.0,65.0,22.0,22.0,800000,0.8,2025
+16,Charles-Andreas Brym,25,Sparta Rotterdam,Eredivisie,Centre Forward,Striker,41.52,22.0,78.0,22.0,43.0,22.0,48.0,26.0,26.0,61.0,87.0,26.0,70.0,325000,0.325,2025
+17,Ion Nicolăescu,25,SC Heerenveen,Eredivisie,Centre Forward,Striker,41.29,39.0,43.0,65.0,7.0,7.0,39.0,17.0,17.0,57.0,4.0,48.0,61.0,1000000,1.0,2024
+18,Mats Seuntjens,31,FC Utrecht,Eredivisie,Centre Forward,Striker,40.55,26.0,17.0,17.0,70.0,57.0,61.0,13.0,35.0,4.0,26.0,9.0,35.0,1200000,1.2,0
+19,Mario Engels,29,Heracles Almelo,Eredivisie,Centre Forward,Striker,40.52,43.0,39.0,30.0,26.0,30.0,57.0,4.0,4.0,22.0,43.0,17.0,74.0,450000,0.45,2025
+20,Michiel Kramer,34,RKC Waalwijk,Eredivisie,Centre Forward,Striker,37.81,35.0,17.0,9.0,52.0,74.0,4.0,74.0,83.0,9.0,9.0,39.0,30.0,375000,0.375,2025
+21,Koki Ogawa,26,NEC,Eredivisie,Centre Forward,Striker,29.94,4.0,65.0,4.0,13.0,13.0,35.0,43.0,22.0,65.0,52.0,4.0,48.0,1200000,1.2,2024
+22,Saïd Hamulic,22,Vitesse,Eredivisie,Centre Forward,Striker,26.48,13.0,17.0,26.0,22.0,26.0,17.0,61.0,65.0,30.0,17.0,13.0,26.0,1500000,1.5,2027
+23,Noa Lang,24,PSV Eindhoven,Eredivisie,Left Wing,Winger,85.46,,,,,,97.0,,,,,,,15000000,15.0,2025
+24,Myron van Brederode,20,AZ Alkmaar,Eredivisie,Left Wing,Winger,73.26,,,,,,79.0,,,,,,,2000000,2.0,2027
+25,Johan Bakayoko,20,PSV Eindhoven,Eredivisie,Right Wing,Winger,72.58,,,,,,82.0,,,,,,,9000000,9.0,2026
+26,Igor Guilherme Barbosa da Paixão,23,Feyenoord,Eredivisie,Left Wing,Winger,71.1,,,,,,45.0,,,,,,,6000000,6.0,2027
+27,Yankuba Minteh,19,Feyenoord,Eredivisie,Right Wing,Winger,70.6,,,,,,100.0,,,,,,,0,0.0,0
+28,Michel Vlap,26,Twente,Eredivisie,Left Wing,Winger,66.77,,,,,,42.0,,,,,,,2000000,2.0,2025
+29,Emil Hansson,25,Heracles Almelo,Eredivisie,Left Wing,Winger,65.27,,,,,,71.0,,,,,,,1300000,1.3,2024
+30,Sontje Hansen,21,NEC,Eredivisie,Left Wing,Winger,63.39,,,,,,74.0,,,,,,,750000,0.75,0
+31,Koki Saito,22,Sparta Rotterdam,Eredivisie,Left Wing,Winger,63.07,,,,,,37.0,,,,,,,1300000,1.3,2025
+32,Osame Sahraoui,22,SC Heerenveen,Eredivisie,Left Wing,Winger,62.7,,,,,,63.0,,,,,,,3500000,3.5,2026
+33,Couhaib Driouech,21,Excelsior,Eredivisie,Left Midfielder,Winger,62.48,,,,,,61.0,,,,,,,450000,0.45,2025
+34,Younes Namli,29,PEC Zwolle,Eredivisie,Right Midfielder,Winger,60.08,,,,,,89.0,,,,,,,1200000,1.2,0
+35,Bryan Limbombe,22,Heracles Almelo,Eredivisie,Right Wing,Winger,58.82,,,,,,95.0,,,,,,,700000,0.7,2024
+36,Denilho Cleonise,21,RKC Waalwijk,Eredivisie,Right Wing,Winger,57.61,,,,,,87.0,,,,,,,400000,0.4,0
+37,Tijanni Noslin,24,Fortuna Sittard,Eredivisie,Left Wing,Winger,55.05,,,,,,92.0,,,,,,,450000,0.45,2026
+38,Oliver Valaker Edvardsen,24,Go Ahead Eagles,Eredivisie,Left Wing,Winger,54.63,,,,,,68.0,,,,,,,800000,0.8,2025
+39,Steven Bergwijn,25,Ajax,Eredivisie,Left Wing,Winger,52.96,,,,,,8.0,,,,,,,24000000,24.0,2027
+40,Million Manhoef,21,Vitesse,Eredivisie,Right Wing,Winger,50.92,,,,,,53.0,,,,,,,1800000,1.8,2025
+41,Iñigo Córdoba Kerejeta,26,Fortuna Sittard,Eredivisie,Left Wing,Winger,49.21,,,,,,58.0,,,,,,,2500000,2.5,2024
+42,Mayckel Lahdo,20,AZ Alkmaar,Eredivisie,Right Wing,Winger,49.2,,,,,,76.0,,,,,,,1300000,1.3,2027
+43,Daan Rots,22,Twente,Eredivisie,Right Wing,Winger,48.5,,,,,,24.0,,,,,,,700000,0.7,2025
+44,Zakaria Bakkali,27,RKC Waalwijk,Eredivisie,Left Wing,Winger,45.7,,,,,,66.0,,,,,,,350000,0.35,2024
+45,Omobolaji Habeeb Adekanye,24,Go Ahead Eagles,Eredivisie,Right Wing,Winger,44.04,,,,,,26.0,,,,,,,800000,0.8,2024
+46,Jakob Breum,19,Go Ahead Eagles,Eredivisie,Left Wing,Winger,42.91,,,,,,84.0,,,,,,,450000,0.45,2026
+47,Bilal Ould-Chikh,26,FC Volendam,Eredivisie,Right Wing,Winger,41.56,,,,,,34.0,,,,,,,350000,0.35,2025
+48,Lazaros Lamprou,25,Excelsior,Eredivisie,Left Wing,Winger,39.97,,,,,,11.0,,,,,,,700000,0.7,2024
+49,Marouan Azarkan,21,FC Utrecht,Eredivisie,Right Wing,Winger,39.94,,,,,,39.0,,,,,,,1500000,1.5,2024
+50,Derensili Sanches Fernandes,22,Excelsior,Eredivisie,Right Midfielder,Winger,38.49,,,,,,29.0,,,,,,,275000,0.275,2024
+51,Ole ter Haar Romeny,23,FC Utrecht,Eredivisie,Right Wing,Winger,37.63,,,,,,55.0,,,,,,,750000,0.75,0
+52,Eliano Reijnders,22,PEC Zwolle,Eredivisie,Left Midfielder,Winger,37.54,,,,,,21.0,,,,,,,400000,0.4,2025
+53,Amine Boutrah,22,Vitesse,Eredivisie,Left Wing,Winger,36.67,,,,,,50.0,,,,,,,700000,0.7,0
+54,Vito van Crooij,27,Sparta Rotterdam,Eredivisie,Right Wing,Winger,34.33,,,,,,5.0,,,,,,,1500000,1.5,2024
+55,Garang Kuol,19,FC Volendam,Eredivisie,Left Wing,Winger,30.75,,,,,,16.0,,,,,,,0,0.0,2026
+56,Ché Nunnely,24,SC Heerenveen,Eredivisie,Right Wing,Winger,29.39,,,,,,32.0,,,,,,,700000,0.7,2025
+57,Gyan de Regt,21,Vitesse,Eredivisie,Left Midfielder,Winger,29.14,,,,,,3.0,,,,,,,0,0.0,0
+58,Pelle Clement,27,Sparta Rotterdam,Eredivisie,Right Wing,Winger,29.11,,,,,,13.0,,,,,,,700000,0.7,0
+59,Carlos Borges,19,Ajax,Eredivisie,Left Wing,Winger,26.73,,,,,,47.0,,,,,,,0,0.0,2024
+60,Lars Olden Larsen,25,NEC,Eredivisie,Left Wing,Winger,16.21,,,,,,18.0,,,,,,,700000,0.7,2025
+61,Alen Halilović,27,Fortuna Sittard,Eredivisie,Centre Attacking Midfielder,Attacking Midfield,75.22,,,,,,,,,,,,,300000,0.3,2024
+62,Sem Steijn,21,Twente,Eredivisie,Centre Attacking Midfielder,Attacking Midfield,68.8,,,,,,,,,,,,,925000,0.925,2025
+63,Arno Verschueren,26,Sparta Rotterdam,Eredivisie,Centre Attacking Midfielder,Attacking Midfield,65.3,,,,,,,,,,,,,2000000,2.0,2025
+64,Calvin Stengs,24,Feyenoord,Eredivisie,Centre Attacking Midfielder,Attacking Midfield,64.91,,,,,,,,,,,,,11000000,11.0,2026
+65,Magnus Mattsson,24,NEC,Eredivisie,Centre Attacking Midfielder,Attacking Midfield,63.7,,,,,,,,,,,,,650000,0.65,2024
+66,Younes Namli,29,PEC Zwolle,Eredivisie,Right Midfielder,Attacking Midfield,63.02,,,,,,,,,,,,,1200000,1.2,0
+67,David Min,24,RKC Waalwijk,Eredivisie,Centre Attacking Midfielder,Attacking Midfield,54.31,,,,,,,,,,,,,225000,0.225,2025
+68,Willum Þór Willumsson,24,Go Ahead Eagles,Eredivisie,Centre Attacking Midfielder,Attacking Midfield,53.3,,,,,,,,,,,,,900000,0.9,2024
+69,Thomas Bruns,31,Heracles Almelo,Eredivisie,Centre Attacking Midfielder,Attacking Midfield,53.21,,,,,,,,,,,,,400000,0.4,2025
+70,Lequincio Zeefuik,18,FC Volendam,Eredivisie,Centre Forward,Attacking Midfield,52.53,,,,,,,,,,,,,200000,0.2,2024
+71,Lazaros Lamprou,25,Excelsior,Eredivisie,Left Wing,Attacking Midfield,45.62,,,,,,,,,,,,,700000,0.7,2024
+72,Ricky van Wolfswinkel,34,Twente,Eredivisie,Centre Forward,Attacking Midfield,45.31,,,,,,,,,,,,,800000,0.8,2024
+73,Roberto González Bayón,22,NEC,Eredivisie,Centre Attacking Midfielder,Attacking Midfield,45.16,,,,,,,,,,,,,2000000,2.0,2024
+74,Lennart Thy,31,PEC Zwolle,Eredivisie,Centre Attacking Midfielder,Attacking Midfield,43.76,,,,,,,,,,,,,525000,0.525,2025
+75,Dani de Wit,25,AZ Alkmaar,Eredivisie,Centre Attacking Midfielder,Attacking Midfield,42.25,,,,,,,,,,,,,4000000,4.0,2024
+76,Marco van Ginkel,30,Vitesse,Eredivisie,Centre Attacking Midfielder,Attacking Midfield,41.91,,,,,,,,,,,,,1400000,1.4,2024
+77,Simon Olsson,26,SC Heerenveen,Eredivisie,Centre Attacking Midfielder,Attacking Midfield,41.06,,,,,,,,,,,,,1500000,1.5,2026
+78,Pelle Clement,27,Sparta Rotterdam,Eredivisie,Right Wing,Attacking Midfield,39.66,,,,,,,,,,,,,700000,0.7,0
+79,Anas Ouahim,26,Heracles Almelo,Eredivisie,Left Defensive Midfielder,Attacking Midfield,39.45,,,,,,,,,,,,,450000,0.45,2025
+80,Victor Christoffer Jensen,23,FC Utrecht,Eredivisie,Right Centre Midfielder,Attacking Midfield,33.73,,,,,,,,,,,,,1000000,1.0,2026
+81,Lance Duijvestijn,24,Almere City,Eredivisie,Centre Attacking Midfielder,Attacking Midfield,32.59,,,,,,,,,,,,,500000,0.5,2024
+82,Reuven Niemeijer,28,RKC Waalwijk,Eredivisie,Centre Attacking Midfielder,Attacking Midfield,29.63,,,,,,,,,,,,,350000,0.35,2024
+83,Mees Hoedemakers,25,NEC,Eredivisie,Right Defensive Midfielder,Attacking Midfield,15.59,,,,,,,,,,,,,900000,0.9,0
+84,Quinten Ryan Crispito Timber,22,Feyenoord,Eredivisie,Left Defensive Midfielder,Central Midfield,70.14,,,,,,,,,56.0,,,,8500000,8.5,2026
+85,Guus Til,25,PSV Eindhoven,Eredivisie,Right Centre Midfielder,Central Midfield,66.7,,,,,,,,,94.0,,,,7000000,7.0,2026
+86,Sem Steijn,21,Twente,Eredivisie,Centre Attacking Midfielder,Central Midfield,64.01,,,,,,,,,69.0,,,,925000,0.925,2025
+87,Calvin Stengs,24,Feyenoord,Eredivisie,Centre Attacking Midfielder,Central Midfield,62.82,,,,,,,,,75.0,,,,11000000,11.0,2026
+88,Ismael Saibari,22,PSV Eindhoven,Eredivisie,Left Centre Midfielder,Central Midfield,56.17,,,,,,,,,100.0,,,,3000000,3.0,2028
+89,Kacper Kozłowski,19,Vitesse,Eredivisie,Left Centre Midfielder,Central Midfield,48.54,,,,,,,,,12.0,,,,8000000,8.0,2024
+90,Branco van den Boomen,28,Ajax,Eredivisie,Left Centre Midfielder,Central Midfield,47.69,,,,,,,,,31.0,,,,9000000,9.0,0
+91,Michal Sadílek,24,Twente,Eredivisie,Left Defensive Midfielder,Central Midfield,47.62,,,,,,,,,50.0,,,,4000000,4.0,2024
+92,Oscar Fraulo,19,FC Utrecht,Eredivisie,Left Centre Midfielder,Central Midfield,39.63,,,,,,,,,81.0,,,,2000000,2.0,2026
+93,Kenneth Taylor,21,Ajax,Eredivisie,Left Defensive Midfielder,Central Midfield,39.44,,,,,,,,,62.0,,,,14000000,14.0,2027
+94,Brian De Keersmaecker,23,Heracles Almelo,Eredivisie,Right Defensive Midfielder,Central Midfield,38.21,,,,,,,,,19.0,,,,450000,0.45,2025
+95,Anas Ouahim,26,Heracles Almelo,Eredivisie,Left Defensive Midfielder,Central Midfield,37.78,,,,,,,,,44.0,,,,450000,0.45,2025
+96,Marco van Ginkel,30,Vitesse,Eredivisie,Centre Attacking Midfielder,Central Midfield,36.39,,,,,,,,,6.0,,,,1400000,1.4,2024
+97,Victor Christoffer Jensen,23,FC Utrecht,Eredivisie,Right Centre Midfielder,Central Midfield,34.49,,,,,,,,,88.0,,,,1000000,1.0,2026
+98,Julian Baas,21,Excelsior,Eredivisie,Left Centre Midfielder,Central Midfield,24.3,,,,,,,,,25.0,,,,600000,0.6,2024
+99,Cisse Sandra,19,Excelsior,Eredivisie,Right Centre Midfielder,Central Midfield,23.59,,,,,,,,,38.0,,,,1200000,1.2,2025
+100,Zico Buurmeester,21,PEC Zwolle,Eredivisie,Right Defensive Midfielder,Defensive Midfield,57.75,,,,,,,,,,,,,550000,0.55,2024
+101,Jordy Clasie,32,AZ Alkmaar,Eredivisie,Right Defensive Midfielder,Defensive Midfield,55.07,,,,,,,,,,,,,3000000,3.0,2025
+102,Joey Veerman,24,PSV Eindhoven,Eredivisie,Centre Defensive Midfielder,Defensive Midfield,50.8,,,,,,,,,,,,,14000000,14.0,2026
+103,Kevin Felida,23,RKC Waalwijk,Eredivisie,Right Defensive Midfielder,Defensive Midfield,48.89,,,,,,,,,,,,,350000,0.35,2025
+104,Can Bozdogan,22,FC Utrecht,Eredivisie,Right Defensive Midfielder,Defensive Midfield,48.86,,,,,,,,,,,,,4000000,4.0,2024
+105,Loreintz Rosier,25,Fortuna Sittard,Eredivisie,Right Defensive Midfielder,Defensive Midfield,48.56,,,,,,,,,,,,,1000000,1.0,0
+106,Michal Sadílek,24,Twente,Eredivisie,Left Defensive Midfielder,Defensive Midfield,48.24,,,,,,,,,,,,,4000000,4.0,2024
+107,Mats Wieffer,23,Feyenoord,Eredivisie,Right Defensive Midfielder,Defensive Midfield,44.23,,,,,,,,,,,,,7000000,7.0,2027
+108,Thom Haye,28,SC Heerenveen,Eredivisie,Right Defensive Midfielder,Defensive Midfield,43.63,,,,,,,,,,,,,2000000,2.0,2024
+109,Luuk Brouwers,25,SC Heerenveen,Eredivisie,Right Defensive Midfielder,Defensive Midfield,41.94,,,,,,,,,,,,,1500000,1.5,2027
+110,Yassin Oukili,22,RKC Waalwijk,Eredivisie,Left Defensive Midfielder,Defensive Midfield,41.73,,,,,,,,,,,,,450000,0.45,2025
+111,Peer Koopmeiners,23,Almere City,Eredivisie,Left Defensive Midfielder,Defensive Midfield,41.51,,,,,,,,,,,,,600000,0.6,2025
+112,Thomas Lam,29,PEC Zwolle,Eredivisie,Left Centre Back,Defensive Midfield,40.51,,,,,,,,,,,,,700000,0.7,2024
+113,Dirk Proper,21,NEC,Eredivisie,Right Defensive Midfielder,Defensive Midfield,38.24,,,,,,,,,,,,,2000000,2.0,2025
+114,Deroy Duarte,24,Fortuna Sittard,Eredivisie,Left Defensive Midfielder,Defensive Midfield,37.91,,,,,,,,,,,,,750000,0.75,2024
+115,Lasse Schöne,37,NEC,Eredivisie,Left Defensive Midfielder,Defensive Midfield,37.16,,,,,,,,,,,,,300000,0.3,2024
+116,Brian De Keersmaecker,23,Heracles Almelo,Eredivisie,Right Defensive Midfielder,Defensive Midfield,35.8,,,,,,,,,,,,,450000,0.45,2025
+117,Davy van den Berg,23,PEC Zwolle,Eredivisie,Left Defensive Midfielder,Defensive Midfield,35.74,,,,,,,,,,,,,450000,0.45,2024
+118,Sven Mijnans,23,AZ Alkmaar,Eredivisie,Left Defensive Midfielder,Defensive Midfield,35.21,,,,,,,,,,,,,3500000,3.5,2028
+119,Branco van den Boomen,28,Ajax,Eredivisie,Left Centre Midfielder,Defensive Midfield,33.72,,,,,,,,,,,,,9000000,9.0,0
+120,Quinten Ryan Crispito Timber,22,Feyenoord,Eredivisie,Left Defensive Midfielder,Defensive Midfield,33.44,,,,,,,,,,,,,8500000,8.5,2026
+121,Redouan El Yaakoubi,27,Excelsior,Eredivisie,Centre Defensive Midfielder,Defensive Midfield,31.95,,,,,,,,,,,,,700000,0.7,2024
+122,Ryan Flamingo,20,FC Utrecht,Eredivisie,Right Centre Back,Defensive Midfield,31.86,,,,,,,,,,,,,2000000,2.0,2025
+123,Mathias Ullereng Kjølø,22,Twente,Eredivisie,Right Defensive Midfielder,Defensive Midfield,30.01,,,,,,,,,,,,,1200000,1.2,2025
+124,Jonathan de Guzmán,36,Sparta Rotterdam,Eredivisie,Right Defensive Midfielder,Defensive Midfield,29.7,,,,,,,,,,,,,300000,0.3,2024
+125,Evert Linthorst,23,Go Ahead Eagles,Eredivisie,Right Defensive Midfielder,Defensive Midfield,29.16,,,,,,,,,,,,,600000,0.6,2024
+126,Stije Resink,20,Almere City,Eredivisie,Left Defensive Midfielder,Defensive Midfield,29.13,,,,,,,,,,,,,400000,0.4,2025
+127,Álvaro Peña Herrero,31,Almere City,Eredivisie,Right Defensive Midfielder,Defensive Midfield,27.63,,,,,,,,,,,,,400000,0.4,2024
+128,Benjamin Tahirovic,20,Ajax,Eredivisie,Right Defensive Midfielder,Defensive Midfield,27.18,,,,,,,,,,,,,1000000,1.0,2026
+129,Melle Meulensteen,24,Vitesse,Eredivisie,Left Defensive Midfielder,Defensive Midfield,27.14,,,,,,,,,,,,,1800000,1.8,2026
+130,Jens Toornstra,34,FC Utrecht,Eredivisie,Left Defensive Midfielder,Defensive Midfield,26.76,,,,,,,,,,,,,1000000,1.0,2024
+131,Oğuzhan Özyakup,31,Fortuna Sittard,Eredivisie,Right Defensive Midfielder,Defensive Midfield,26.7,,,,,,,,,,,,,1000000,1.0,2024
+132,Thomas Bruns,31,Heracles Almelo,Eredivisie,Centre Attacking Midfielder,Defensive Midfield,23.79,,,,,,,,,,,,,400000,0.4,2025
+133,Calvin Twigt,20,FC Volendam,Eredivisie,Left Defensive Midfielder,Defensive Midfield,21.77,,,,,,,,,,,,,450000,0.45,2026
+134,Mees Hoedemakers,25,NEC,Eredivisie,Right Defensive Midfielder,Defensive Midfield,20.62,,,,,,,,,,,,,900000,0.9,0
+135,Joshua Gaston Kitolano,22,Sparta Rotterdam,Eredivisie,Left Defensive Midfielder,Defensive Midfield,19.03,,,,,,,,,,,,,3000000,3.0,2026
+136,Philippe Rommens,26,Go Ahead Eagles,Eredivisie,Left Defensive Midfielder,Defensive Midfield,18.43,,,,,,,,,,,,,800000,0.8,2024
+137,Mathijs Tielemans,21,Vitesse,Eredivisie,Right Defensive Midfielder,Defensive Midfield,18.38,,,,,,,,,,,,,500000,0.5,0
+138,Damon Mirani,27,FC Volendam,Eredivisie,Right Centre Back,Defensive Midfield,17.84,,,,,,,,,,,,,550000,0.55,0
+139,Kenneth Taylor,21,Ajax,Eredivisie,Left Defensive Midfielder,Defensive Midfield,16.65,,,,,,,,,,,,,14000000,14.0,2027
+140,Anas Tahiri,28,SC Heerenveen,Eredivisie,Left Defensive Midfielder,Defensive Midfield,15.5,,,,,,,,,,,,,900000,0.9,2024
+141,Enzo Cornelisse,21,Vitesse,Eredivisie,Left Back,Defensive Midfield,12.72,,,,,,,,,,,,,600000,0.6,2024
+142,Milan de Haan,19,FC Volendam,Eredivisie,Right Defensive Midfielder,Defensive Midfield,9.32,,,,,,,,,,,,,0,0.0,0
+143,Oscar Fraulo,19,FC Utrecht,Eredivisie,Left Centre Midfielder,Defensive Midfield,8.62,,,,,,,,,,,,,2000000,2.0,2026
+144,Yukinari Sugawara,23,AZ Alkmaar,Eredivisie,Right Back,Right Back,85.68,,,,,,,,,,,,,6000000,6.0,2025
+145,Siebe Horemans,25,Excelsior,Eredivisie,Right Back,Right Back,85.24,,,,,,,,,,,,,500000,0.5,2024
+146,Jordan Teze,24,PSV Eindhoven,Eredivisie,Right Back,Right Back,84.28,,,,,,,,,,,,,6000000,6.0,2025
+147,Lutsharel Geertruida,23,Feyenoord,Eredivisie,Right Back,Right Back,79.12,,,,,,,,,,,,,18000000,18.0,2025
+148,Julian Lelieveld,25,RKC Waalwijk,Eredivisie,Right Back,Right Back,69.64,,,,,,,,,,,,,700000,0.7,2025
+149,Carlens Arcus,27,Vitesse,Eredivisie,Right Back,Right Back,68.04,,,,,,,,,,,,,1800000,1.8,2025
+150,Alfons Sampsted,25,Twente,Eredivisie,Right Back,Right Back,64.32,,,,,,,,,,,,,1500000,1.5,2026
+151,Hamdi Akujobi,23,Almere City,Eredivisie,Right Back,Right Back,61.1,,,,,,,,,,,,,350000,0.35,2024
+152,Denzel Hall,22,SC Heerenveen,Eredivisie,Right Back,Right Back,56.47,,,,,,,,,,,,,350000,0.35,2024
+153,Devyne Rensch,20,Ajax,Eredivisie,Right Back,Right Back,55.03,,,,,,,,,,,,,8000000,8.0,2025
+154,Navajo Bakboord,24,Heracles Almelo,Eredivisie,Right Back,Right Back,53.85,,,,,,,,,,,,,300000,0.3,2024
+155,Ivo Daniel Ferreira Mendonca Pinto,33,Fortuna Sittard,Eredivisie,Right Back,Right Back,53.08,,,,,,,,,,,,,500000,0.5,2025
+156,Brian Plat,23,FC Volendam,Eredivisie,Right Back,Right Back,50.06,,,,,,,,,,,,,400000,0.4,2024
+157,Saïd Bakari,29,Sparta Rotterdam,Eredivisie,Right Back,Right Back,46.8,,,,,,,,,,,,,400000,0.4,0
+158,Déron Payne,21,FC Volendam,Eredivisie,Right Back,Right Back,46.7,,,,,,,,,,,,,75000,0.075,2025
+159,Hidde ter Avest,26,FC Utrecht,Eredivisie,Right Back,Right Back,39.31,,,,,,,,,,,,,1500000,1.5,2024
+160,Bart van Rooij,22,NEC,Eredivisie,Right Back,Right Back,38.61,,,,,,,,,,,,,900000,0.9,2025
+161,Mats Deijl,26,Go Ahead Eagles,Eredivisie,Right Back,Right Back,23.43,,,,,,,,,,,,,500000,0.5,2024
+162,Hussein Ali,21,SC Heerenveen,Eredivisie,Right Back,Right Back,21.36,,,,,,,,,,,,,300000,0.3,2025
+163,Calvin Verdonk,26,NEC,Eredivisie,Left Back,Left Back,79.43,,,,,,,,,,,,,800000,0.8,2024
+164,Patrick van Aanholt,33,PSV Eindhoven,Eredivisie,Left Back,Left Back,78.26,,,,,,,,,,,,,3200000,3.2,2024
+165,Mats Köhlert,25,SC Heerenveen,Eredivisie,Left Back,Left Back,75.0,,,,,,,,,,,,,1200000,1.2,2025
+166,Arthur Zagre,22,Excelsior,Eredivisie,Left Back,Left Back,73.64,,,,,,,,,,,,,800000,0.8,2024
+167,Souffian Elkarouani,22,FC Utrecht,Eredivisie,Left Back,Left Back,69.53,,,,,,,,,,,,,1400000,1.4,0
+168,Youri Regeer,20,Twente,Eredivisie,Left Back,Left Back,68.91,,,,,,,,,,,,,1500000,1.5,2025
+169,Djevencio van der Kust,22,Sparta Rotterdam,Eredivisie,Left Back,Left Back,64.62,,,,,,,,,,,,,850000,0.85,2025
+170,Bas Edo Kuipers,29,Go Ahead Eagles,Eredivisie,Left Back,Left Back,59.29,,,,,,,,,,,,,700000,0.7,2025
+171,David Møller Wolfe,21,AZ Alkmaar,Eredivisie,Left Back,Left Back,58.51,,,,,,,,,,,,,1000000,1.0,2026
+172,Quilindschy Hartman,21,Feyenoord,Eredivisie,Left Back,Left Back,55.16,,,,,,,,,,,,,0,0.0,0
+173,Jetro Willems,29,Heracles Almelo,Eredivisie,Left Back,Left Back,55.16,,,,,,,,,,,,,800000,0.8,0
+174,Anselmo García MacNulty,20,PEC Zwolle,Eredivisie,Left Back,Left Back,54.42,,,,,,,,,,,,,400000,0.4,2024
+175,Aaron Meijers,35,RKC Waalwijk,Eredivisie,Left Back,Left Back,54.27,,,,,,,,,,,,,250000,0.25,0
+176,Mitchell Dijks,30,Fortuna Sittard,Eredivisie,Left Back,Left Back,49.19,,,,,,,,,,,,,2000000,2.0,0
+177,Django Warmerdam,28,Sparta Rotterdam,Eredivisie,Left Back,Left Back,39.76,,,,,,,,,,,,,1000000,1.0,0
+178,Michael Gonçalves Pinto,30,Vitesse,Eredivisie,Left Back,Left Back,39.13,,,,,,,,,,,,,800000,0.8,0
+179,Youri Baas,20,NEC,Eredivisie,Left Back,Left Back,38.29,,,,,,,,,,,,,700000,0.7,2026
+180,Enzo Cornelisse,21,Vitesse,Eredivisie,Left Back,Left Back,29.52,,,,,,,,,,,,,600000,0.6,2024
+181,Sherel Floranus,25,Almere City,Eredivisie,Left Back,Left Back,26.04,,,,,,,,,,,,,800000,0.8,2024
+182,Jorrel Hato,17,Ajax,Eredivisie,Left Centre Back,Centre Back,72.99,,,,,,,,,,,,,0,0.0,0
+183,Robin Pröpper,30,Twente,Eredivisie,Left Centre Back,Centre Back,67.65,,,,,,,,,,,,,2000000,2.0,2024
+184,Dávid Hancko,25,Feyenoord,Eredivisie,Left Centre Back,Centre Back,67.4,,,,,,,,,,,,,20000000,20.0,2026
+185,André Ramalho Silva,31,PSV Eindhoven,Eredivisie,Right Centre Back,Centre Back,64.93,,,,,,,,,,,,,3500000,3.5,2024
+186,Gernot Trauner,31,Feyenoord,Eredivisie,Right Centre Back,Centre Back,62.55,,,,,,,,,,,,,5000000,5.0,2026
+187,Olivier Boscagli,25,PSV Eindhoven,Eredivisie,Left Centre Back,Centre Back,61.4,,,,,,,,,,,,,8000000,8.0,2025
+188,Thomas Lam,29,PEC Zwolle,Eredivisie,Left Centre Back,Centre Back,61.0,,,,,,,,,,,,,700000,0.7,2024
+189,Syb van Ottele,21,SC Heerenveen,Eredivisie,Right Centre Back,Centre Back,59.12,,,,,,,,,,,,,350000,0.35,2024
+190,Paweł Bochniewicz,27,SC Heerenveen,Eredivisie,Left Centre Back,Centre Back,58.93,,,,,,,,,,,,,2500000,2.5,2026
+191,Mees Hilgers,22,Twente,Eredivisie,Right Centre Back,Centre Back,50.69,,,,,,,,,,,,,4500000,4.5,2026
+192,Alexandre Manuel Penetra Correia,22,AZ Alkmaar,Eredivisie,Left Centre Back,Centre Back,50.1,,,,,,,,,,,,,3000000,3.0,2026
+193,Bram Nuytinck,33,NEC,Eredivisie,Left Centre Back,Centre Back,49.85,,,,,,,,,,,,,2000000,2.0,0
+194,Joris Kramer,27,Go Ahead Eagles,Eredivisie,Left Centre Back,Centre Back,49.5,,,,,,,,,,,,,650000,0.65,2025
+195,Bart Vriends,32,Sparta Rotterdam,Eredivisie,Right Centre Back,Centre Back,47.93,,,,,,,,,,,,,400000,0.4,2024
+196,Sam Kersten,25,PEC Zwolle,Eredivisie,Right Centre Back,Centre Back,45.35,,,,,,,,,,,,,650000,0.65,2024
+197,Casper Ludvig Widell,20,Excelsior,Eredivisie,Right Centre Back,Centre Back,44.62,,,,,,,,,,,,,900000,0.9,2023
+198,Justin Hoogma,25,Heracles Almelo,Eredivisie,Left Centre Back,Centre Back,43.82,,,,,,,,,,,,,1000000,1.0,2026
+199,Alois Dominik Oroz,22,Vitesse,Eredivisie,Right Centre Back,Centre Back,43.06,,,,,,,,,,,,,600000,0.6,2024
+200,Nicolas Isimat-Mirin,31,Vitesse,Eredivisie,Left Centre Back,Centre Back,41.21,,,,,,,,,,,,,400000,0.4,2024
+201,Riechedly Bazoer,26,AZ Alkmaar,Eredivisie,Right Centre Back,Centre Back,37.19,,,,,,,,,,,,,3500000,3.5,2025
+202,Damian van Bruggen,27,Almere City,Eredivisie,Right Centre Back,Centre Back,37.05,,,,,,,,,,,,,350000,0.35,2024
+203,Dimitrios Siovas,35,Fortuna Sittard,Eredivisie,Left Centre Back,Centre Back,36.86,,,,,,,,,,,,,450000,0.45,2024
+204,Bram van Polen,37,PEC Zwolle,Eredivisie,Right Centre Back,Centre Back,36.39,,,,,,,,,,,,,150000,0.15,2024
+205,Damon Mirani,27,FC Volendam,Eredivisie,Right Centre Back,Centre Back,36.24,,,,,,,,,,,,,550000,0.55,0
+206,Ramon Hendriks,22,Vitesse,Eredivisie,Left Centre Back,Centre Back,33.92,,,,,,,,,,,,,800000,0.8,2024
+207,Tijs Velthuis,21,Sparta Rotterdam,Eredivisie,Left Centre Back,Centre Back,32.51,,,,,,,,,,,,,500000,0.5,2024
+208,Juriën Gaari,29,RKC Waalwijk,Eredivisie,Right Centre Back,Centre Back,32.1,,,,,,,,,,,,,450000,0.45,0
+209,Stijn Bultman,18,Heracles Almelo,Eredivisie,Right Centre Back,Centre Back,31.96,,,,,,,,,,,,,0,0.0,0
+210,Dario van den Buijs,28,RKC Waalwijk,Eredivisie,Left Centre Back,Centre Back,30.61,,,,,,,,,,,,,550000,0.55,2025
+211,Gerrit Nauber,31,Go Ahead Eagles,Eredivisie,Centre Back,Centre Back,30.58,,,,,,,,,,,,,500000,0.5,2024
+212,Rodrigo Guth,22,Fortuna Sittard,Eredivisie,Right Centre Back,Centre Back,29.96,,,,,,,,,,,,,2000000,2.0,2027
+213,Shawn Adewoye,23,RKC Waalwijk,Eredivisie,Right Centre Back,Centre Back,29.57,,,,,,,,,,,,,900000,0.9,2024
+214,Mathias Ross Jensen,22,NEC,Eredivisie,Right Centre Back,Centre Back,28.93,,,,,,,,,,,,,1500000,1.5,2026
+215,Sven Sonnenberg,24,Heracles Almelo,Eredivisie,Right Centre Back,Centre Back,28.67,,,,,,,,,,,,,225000,0.225,2024
+216,Ryan Flamingo,20,FC Utrecht,Eredivisie,Right Centre Back,Centre Back,28.43,,,,,,,,,,,,,2000000,2.0,2025
+217,Nick Viergever,34,FC Utrecht,Eredivisie,Left Centre Back,Centre Back,27.84,,,,,,,,,,,,,800000,0.8,2024
+218,Serano Seymor,21,Excelsior,Eredivisie,Left Centre Back,Centre Back,27.7,,,,,,,,,,,,,300000,0.3,2024
+219,Mike van der Hoorn,30,FC Utrecht,Eredivisie,Right Centre Back,Centre Back,27.09,,,,,,,,,,,,,1500000,1.5,2024
+220,Jamal Amofa,24,Go Ahead Eagles,Eredivisie,Right Centre Back,Centre Back,25.16,,,,,,,,,,,,,550000,0.55,2025
+221,Modibo Sagnan,24,FC Utrecht,Eredivisie,Left Centre Back,Centre Back,23.49,,,,,,,,,,,,,3000000,3.0,2024
+222,Josip Šutalo,23,Ajax,Eredivisie,Right Centre Back,Centre Back,21.66,,,,,,,,,,,,,18000000,18.0,2028
+223,Sven Nieuwpoort,30,Excelsior,Eredivisie,Left Centre Back,Centre Back,20.97,,,,,,,,,,,,,375000,0.375,2025
+224,Théo Barbet,22,Almere City,Eredivisie,Left Centre Back,Centre Back,20.64,,,,,,,,,,,,,400000,0.4,2025
+225,Benaissa Benamar,26,FC Volendam,Eredivisie,Left Centre Back,Centre Back,18.75,,,,,,,,,,,,,600000,0.6,2024
+0,Kyogo Furuhashi,28,Celtic,Premiership,Centre Forward,Striker,92.92,95.0,100.0,95.0,100.0,90.0,90.0,5.0,10.0,75.0,20.0,50.0,75.0,9000000,9.0,2027
+1,Bojan Miovski,24,Aberdeen,Premiership,Right Centre Forward,Striker,90.82,90.0,75.0,65.0,85.0,40.0,80.0,60.0,50.0,50.0,40.0,65.0,55.0,1000000,1.0,2026
+2,Cyriel Dessers,28,Rangers,Premiership,Right Centre Forward,Striker,83.38,100.0,50.0,90.0,70.0,95.0,100.0,25.0,55.0,95.0,30.0,90.0,45.0,6000000,6.0,2027
+3,Simon Murray,31,Ross County,Premiership,Left Centre Forward,Striker,81.13,80.0,70.0,75.0,60.0,25.0,85.0,40.0,45.0,70.0,45.0,80.0,70.0,275000,0.275,2024
+4,Christian Doidge,31,Hibernian,Premiership,Centre Forward,Striker,79.88,75.0,85.0,100.0,90.0,75.0,5.0,100.0,100.0,60.0,80.0,95.0,80.0,450000,0.45,2024
+5,Luís Henrique de Barros Lopes,23,Aberdeen,Premiership,Left Centre Forward,Striker,75.5,50.0,40.0,25.0,95.0,50.0,95.0,35.0,35.0,25.0,10.0,75.0,65.0,0,0.0,0
+6,Jordan Neil White,31,Ross County,Premiership,Right Centre Forward,Striker,70.54,85.0,30.0,60.0,35.0,60.0,70.0,90.0,80.0,15.0,55.0,70.0,10.0,450000,0.45,2024
+7,Adam Le Fondre,36,Hibernian,Premiership,Right Centre Forward,Striker,64.95,55.0,95.0,80.0,50.0,20.0,20.0,50.0,95.0,40.0,60.0,85.0,95.0,400000,0.4,0
+8,Lawrence Shankland,28,Hearts,Premiership,Centre Forward,Striker,62.45,65.0,20.0,85.0,65.0,80.0,15.0,30.0,70.0,100.0,85.0,100.0,35.0,1000000,1.0,2025
+9,Dylan Vente,24,Hibernian,Premiership,Left Centre Forward,Striker,59.83,40.0,90.0,35.0,80.0,100.0,55.0,10.0,5.0,30.0,15.0,40.0,100.0,900000,0.9,2024
+10,Toyosi Olusanya,25,St Mirren,Premiership,Centre Forward,Striker,55.16,70.0,60.0,50.0,5.0,10.0,60.0,65.0,15.0,85.0,90.0,45.0,60.0,200000,0.2,2024
+11,Amadou Bakayoko,27,Dundee,Premiership,Centre Forward,Striker,52.89,35.0,25.0,30.0,75.0,85.0,35.0,80.0,85.0,10.0,65.0,25.0,40.0,400000,0.4,2024
+12,Kyle Vassell,30,Kilmarnock,Premiership,Right Centre Forward,Striker,50.95,30.0,55.0,70.0,30.0,45.0,40.0,75.0,75.0,80.0,35.0,60.0,5.0,350000,0.35,2024
+13,Bruce Anderson,25,Livingston,Premiership,Centre Forward,Striker,47.81,45.0,80.0,45.0,15.0,30.0,50.0,45.0,25.0,45.0,70.0,5.0,90.0,600000,0.6,2024
+14,Marley Watkins,32,Kilmarnock,Premiership,Left Centre Forward,Striker,46.71,15.0,45.0,5.0,20.0,70.0,75.0,55.0,30.0,65.0,100.0,30.0,85.0,400000,0.4,0
+15,Mikael Mandron,28,St Mirren,Premiership,Centre Forward,Striker,45.56,20.0,65.0,55.0,45.0,55.0,10.0,85.0,60.0,55.0,50.0,55.0,50.0,100000,0.1,0
+16,Thelonius Bair,24,Motherwell,Premiership,Centre Forward,Striker,38.74,10.0,35.0,20.0,40.0,65.0,25.0,70.0,65.0,35.0,25.0,35.0,30.0,350000,0.35,2024
+17,Stevie May,30,St Johnstone,Premiership,Centre Forward,Striker,34.12,25.0,10.0,15.0,55.0,35.0,65.0,20.0,20.0,90.0,95.0,15.0,20.0,475000,0.475,2025
+18,Kurtis Guthrie,30,Livingston,Premiership,Centre Forward,Striker,29.2,5.0,10.0,10.0,25.0,15.0,45.0,95.0,90.0,20.0,5.0,10.0,25.0,225000,0.225,2024
+19,Zach Robinson,21,Dundee,Premiership,Left Centre Forward,Striker,29.14,60.0,10.0,40.0,10.0,5.0,30.0,15.0,40.0,5.0,75.0,20.0,15.0,225000,0.225,2024
+20,Elie Youan,24,Hibernian,Premiership,Left Wing,Winger,78.81,,,,,,100.0,,,,,,,1000000,1.0,2024
+21,Martin Boyle,30,Hibernian,Premiership,Right Wing,Winger,77.22,,,,,,79.0,,,,,,,2000000,2.0,2025
+22,Danny Armstrong,25,Kilmarnock,Premiership,Right Midfielder,Winger,69.07,,,,,,64.0,,,,,,,450000,0.45,2025
+23,Abdallah Dipo Sima,22,Rangers,Premiership,Right Wing,Winger,68.58,,,,,,43.0,,,,,,,7000000,7.0,2025
+24,Blair Spittal,27,Motherwell,Premiership,Left Wing,Winger,67.79,,,,,,50.0,,,,,,,500000,0.5,2024
+25,Daizen Maeda,25,Celtic,Premiership,Left Wing,Winger,62.14,,,,,,14.0,,,,,,,6000000,6.0,2027
+26,Matthew Kennedy,28,Kilmarnock,Premiership,Left Midfielder,Winger,61.83,,,,,,86.0,,,,,,,450000,0.45,0
+27,Graham Carey,34,St Johnstone,Premiership,Left Midfielder,Winger,55.43,,,,,,57.0,,,,,,,500000,0.5,2024
+28,Conor McMenamin,28,St Mirren,Premiership,Right Wing,Winger,52.19,,,,,,71.0,,,,,,,250000,0.25,0
+29,Callum Slattery,24,Motherwell,Premiership,Right Wing,Winger,44.24,,,,,,29.0,,,,,,,450000,0.45,2024
+30,Dara James Morgan Costelloe,20,St Johnstone,Premiership,Right Midfielder,Winger,38.66,,,,,,7.0,,,,,,,300000,0.3,0
+31,Kenneth Vargas,21,Hearts,Premiership,Left Wing,Winger,37.85,,,,,,21.0,,,,,,,250000,0.25,2027
+32,Greg Kiltie,26,St Mirren,Premiership,Left Wing,Winger,32.22,,,,,,93.0,,,,,,,375000,0.375,2025
+33,Finlay Robertson,20,Dundee,Premiership,Right Midfielder,Winger,21.3,,,,,,36.0,,,,,,,150000,0.15,0
+34,Liam Boyce,32,Hearts,Premiership,Centre Attacking Midfielder,Attacking Midfield,71.61,,,,,,,,,,,,,600000,0.6,2024
+35,Jamie McGrath,27,Aberdeen,Premiership,Centre Attacking Midfielder,Attacking Midfield,69.55,,,,,,,,,,,,,500000,0.5,2024
+36,Sam Lammers,26,Rangers,Premiership,Centre Attacking Midfielder,Attacking Midfield,61.85,,,,,,,,,,,,,2400000,2.4,0
+37,Mohammed Sangare,24,Livingston,Premiership,Centre Attacking Midfielder,Attacking Midfield,60.41,,,,,,,,,,,,,200000,0.2,2024
+38,Yan Dhanda,24,Ross County,Premiership,Centre Attacking Midfielder,Attacking Midfield,51.21,,,,,,,,,,,,,600000,0.6,2024
+39,Joel Nouble,27,Livingston,Premiership,Left Attacking Midfielder,Attacking Midfield,47.69,,,,,,,,,,,,,500000,0.5,2024
+40,Kyle Magennis,25,Kilmarnock,Premiership,Left Defensive Midfielder,Attacking Midfield,45.47,,,,,,,,,,,,,400000,0.4,2025
+41,Dante Polvara,22,Aberdeen,Premiership,Centre Attacking Midfielder,Attacking Midfield,36.58,,,,,,,,,,,,,0,0.0,0
+42,Calem Nieuwenhof,22,Hearts,Premiership,Left Defensive Midfielder,Attacking Midfield,33.97,,,,,,,,,,,,,400000,0.4,2024
+43,Scott Pittman,31,Livingston,Premiership,Right Attacking Midfielder,Attacking Midfield,21.58,,,,,,,,,,,,,550000,0.55,2026
+44,Luke McCowan,25,Dundee,Premiership,Left Centre Midfielder,Central Midfield,80.7,,,,,,,,,47.0,,,,175000,0.175,2025
+45,Matthew O'Riley,22,Celtic,Premiership,Right Centre Midfielder,Central Midfield,70.29,,,,,,,,,93.0,,,,7000000,7.0,2027
+46,Joe Newell,30,Hibernian,Premiership,Left Defensive Midfielder,Central Midfield,58.92,,,,,,,,,80.0,,,,700000,0.7,2025
+47,Graeme Shinnie,32,Aberdeen,Premiership,Left Defensive Midfielder,Central Midfield,56.56,,,,,,,,,67.0,,,,700000,0.7,2024
+48,John Lundstram,29,Rangers,Premiership,Centre Defensive Midfielder,Central Midfield,55.98,,,,,,,,,87.0,,,,7500000,7.5,2024
+49,Jamie McGrath,27,Aberdeen,Premiership,Centre Attacking Midfielder,Central Midfield,52.55,,,,,,,,,33.0,,,,500000,0.5,2024
+50,David Turnbull,24,Celtic,Premiership,Left Centre Midfielder,Central Midfield,52.52,,,,,,,,,100.0,,,,4500000,4.5,2024
+51,Mohammed Sangare,24,Livingston,Premiership,Centre Attacking Midfielder,Central Midfield,50.71,,,,,,,,,60.0,,,,200000,0.2,2024
+52,Daniel Phillips,22,St Johnstone,Premiership,Right Defensive Midfielder,Central Midfield,40.86,,,,,,,,,53.0,,,,100000,0.1,2024
+53,Connor Steven Randall,27,Ross County,Premiership,Left Defensive Midfielder,Central Midfield,38.09,,,,,,,,,13.0,,,,450000,0.45,2024
+54,Jordan Neil White,31,Ross County,Premiership,Right Centre Forward,Central Midfield,35.39,,,,,,,,,20.0,,,,450000,0.45,2024
+55,Dante Polvara,22,Aberdeen,Premiership,Centre Attacking Midfielder,Central Midfield,34.63,,,,,,,,,27.0,,,,0,0.0,0
+56,Finlay Robertson,20,Dundee,Premiership,Right Midfielder,Central Midfield,31.06,,,,,,,,,40.0,,,,150000,0.15,0
+57,Andrew Shinnie,34,Livingston,Premiership,Left Defensive Midfielder,Central Midfield,30.45,,,,,,,,,7.0,,,,375000,0.375,0
+58,Scott Pittman,31,Livingston,Premiership,Right Attacking Midfielder,Central Midfield,21.84,,,,,,,,,73.0,,,,550000,0.55,2026
+59,Nicolas Raskin,22,Rangers,Premiership,Centre Defensive Midfielder,Defensive Midfield,54.36,,,,,,,,,,,,,7000000,7.0,0
+60,Cameron Peter Devlin,25,Hearts,Premiership,Right Defensive Midfielder,Defensive Midfield,51.95,,,,,,,,,,,,,700000,0.7,2025
+61,John Lundstram,29,Rangers,Premiership,Centre Defensive Midfielder,Defensive Midfield,46.9,,,,,,,,,,,,,7500000,7.5,2024
+62,Peter Haring,30,Hearts,Premiership,Right Defensive Midfielder,Defensive Midfield,46.67,,,,,,,,,,,,,500000,0.5,2024
+63,Joe Newell,30,Hibernian,Premiership,Left Defensive Midfielder,Defensive Midfield,45.99,,,,,,,,,,,,,700000,0.7,2025
+64,Calem Nieuwenhof,22,Hearts,Premiership,Left Defensive Midfielder,Defensive Midfield,43.98,,,,,,,,,,,,,400000,0.4,2024
+65,Harry Paton,25,Motherwell,Premiership,Left Defensive Midfielder,Defensive Midfield,40.08,,,,,,,,,,,,,250000,0.25,0
+66,James Jeggo,31,Hibernian,Premiership,Right Defensive Midfielder,Defensive Midfield,38.04,,,,,,,,,,,,,700000,0.7,2024
+67,Callum McGregor,30,Celtic,Premiership,Centre Defensive Midfielder,Defensive Midfield,36.85,,,,,,,,,,,,,8000000,8.0,2028
+68,Keanu Baccus,25,St Mirren,Premiership,Right Defensive Midfielder,Defensive Midfield,36.49,,,,,,,,,,,,,650000,0.65,2024
+69,Lennon Miller,17,Motherwell,Premiership,Right Defensive Midfielder,Defensive Midfield,36.16,,,,,,,,,,,,,350000,0.35,2025
+70,Lennon Miller,17,Motherwell,Premiership,Right Defensive Midfielder,Defensive Midfield,36.16,,,,,,,,,,,,,0,0.0,0
+71,Bradley Lyons,26,Kilmarnock,Premiership,Centre Defensive Midfielder,Defensive Midfield,36.14,,,,,,,,,,,,,200000,0.2,2025
+72,Kyle Magennis,25,Kilmarnock,Premiership,Left Defensive Midfielder,Defensive Midfield,34.59,,,,,,,,,,,,,400000,0.4,2025
+73,Graeme Shinnie,32,Aberdeen,Premiership,Left Defensive Midfielder,Defensive Midfield,32.34,,,,,,,,,,,,,700000,0.7,2024
+74,Jason Holt,30,Livingston,Premiership,Left Defensive Midfielder,Defensive Midfield,30.74,,,,,,,,,,,,,450000,0.45,2025
+75,Daniel Phillips,22,St Johnstone,Premiership,Right Defensive Midfielder,Defensive Midfield,30.6,,,,,,,,,,,,,100000,0.1,2024
+76,Caolan Boyd Munce,23,St Mirren,Premiership,Left Defensive Midfielder,Defensive Midfield,30.23,,,,,,,,,,,,,250000,0.25,2024
+77,Kyle Turner,25,Ross County,Premiership,Right Defensive Midfielder,Defensive Midfield,27.29,,,,,,,,,,,,,300000,0.3,0
+78,David Watson,18,Kilmarnock,Premiership,Right Defensive Midfielder,Defensive Midfield,25.68,,,,,,,,,,,,,0,0.0,0
+79,Leighton Clarkson,21,Aberdeen,Premiership,Right Defensive Midfielder,Defensive Midfield,23.4,,,,,,,,,,,,,800000,0.8,0
+80,Matthew Robert Smith,23,St Johnstone,Premiership,Left Defensive Midfielder,Defensive Midfield,21.79,,,,,,,,,,,,,400000,0.4,0
+81,Malachi Boateng,21,Dundee,Premiership,Left Defensive Midfielder,Defensive Midfield,17.38,,,,,,,,,,,,,0,0.0,0
+82,Andrew Shinnie,34,Livingston,Premiership,Left Defensive Midfielder,Defensive Midfield,15.03,,,,,,,,,,,,,375000,0.375,0
+83,Connor Steven Randall,27,Ross County,Premiership,Left Defensive Midfielder,Defensive Midfield,12.91,,,,,,,,,,,,,450000,0.45,2024
+84,Mark O''Hara,27,St Mirren,Premiership,Left Defensive Midfielder,Defensive Midfield,8.48,,,,,,,,,,,,,500000,0.5,2026
+85,James Brown,25,Ross County,Premiership,Right Wing Back,Right Back,81.41,,,,,,,,,,,,,325000,0.325,2024
+86,James Brown,25,Ross County,Premiership,Right Wing Back,Right Back,81.41,,,,,,,,,,,,,125000,0.125,0
+87,James Tavernier,31,Rangers,Premiership,Right Back,Right Back,78.98,,,,,,,,,,,,,8000000,8.0,2026
+88,Alistair Johnston,24,Celtic,Premiership,Right Back,Right Back,78.03,,,,,,,,,,,,,0,0.0,0
+89,Nathaniel Atkinson,24,Hearts,Premiership,Right Back,Right Back,72.56,,,,,,,,,,,,,850000,0.85,2025
+90,Lewis Miller,23,Hibernian,Premiership,Right Back,Right Back,70.98,,,,,,,,,,,,,350000,0.35,2025
+91,Lewis Miller,23,Hibernian,Premiership,Right Back,Right Back,70.98,,,,,,,,,,,,,0,0.0,0
+92,Jamie Brandon,25,Livingston,Premiership,Right Wing Back,Right Back,65.45,,,,,,,,,,,,,200000,0.2,2025
+93,Lewis Mayo,23,Kilmarnock,Premiership,Right Back,Right Back,60.74,,,,,,,,,,,,,350000,0.35,2024
+94,Stephen O''Donnell,31,Motherwell,Premiership,Right Wing Back,Right Back,54.04,,,,,,,,,,,,,500000,0.5,0
+95,Nicky Devlin,29,Aberdeen,Premiership,Right Wing Back,Right Back,48.58,,,,,,,,,,,,,700000,0.7,0
+96,Ryan Strain,26,St Mirren,Premiership,Right Wing Back,Right Back,44.4,,,,,,,,,,,,,600000,0.6,2024
+97,Cammy Kerr,28,Dundee,Premiership,Right Back,Right Back,38.29,,,,,,,,,,,,,350000,0.35,2025
+98,Jordan McGhee,27,Dundee,Premiership,Right Back,Right Back,36.79,,,,,,,,,,,,,350000,0.35,0
+99,Oludare Olufunwa,22,St Johnstone,Premiership,Right Back,Right Back,25.41,,,,,,,,,,,,,0,0.0,0
+100,Borna Barišić,30,Rangers,Premiership,Left Back,Left Back,81.33,,,,,,,,,,,,,6500000,6.5,2024
+101,Scott Tanser,28,St Mirren,Premiership,Left Wing Back,Left Back,74.44,,,,,,,,,,,,,400000,0.4,2024
+102,Owen Beck,21,Dundee,Premiership,Left Back,Left Back,74.35,,,,,,,,,,,,,400000,0.4,2026
+103,Greg Taylor,25,Celtic,Premiership,Left Back,Left Back,72.05,,,,,,,,,,,,,6000000,6.0,2025
+104,Stephen Kingsley,29,Hearts,Premiership,Left Back,Left Back,71.02,,,,,,,,,,,,,1000000,1.0,2025
+105,James Penrice,24,Livingston,Premiership,Left Wing Back,Left Back,57.23,,,,,,,,,,,,,400000,0.4,2024
+106,Lewis Stevenson,35,Hibernian,Premiership,Left Back,Left Back,55.14,,,,,,,,,,,,,325000,0.325,2024
+107,Brodie Spencer,19,Motherwell,Premiership,Left Wing Back,Left Back,43.35,,,,,,,,,,,,,0,0.0,0
+108,Jordan Obita,29,Hibernian,Premiership,Left Back,Left Back,38.81,,,,,,,,,,,,,350000,0.35,0
+109,Luke Robinson,21,St Johnstone,Premiership,Left Back,Left Back,27.37,,,,,,,,,,,,,150000,0.15,2024
+110,Liam Scales,25,Celtic,Premiership,Left Centre Back,Centre Back,69.38,,,,,,,,,,,,,600000,0.6,2025
+111,Frankie Kent,27,Hearts,Premiership,Right Centre Back,Centre Back,64.63,,,,,,,,,,,,,700000,0.7,2024
+112,Paul Hanlon,33,Hibernian,Premiership,Centre Back,Centre Back,63.01,,,,,,,,,,,,,400000,0.4,2024
+113,Gustaf Johan Lagerbielke,23,Celtic,Premiership,Right Centre Back,Centre Back,62.05,,,,,,,,,,,,,900000,0.9,2025
+114,Kye Rowles,25,Hearts,Premiership,Left Centre Back,Centre Back,57.66,,,,,,,,,,,,,1000000,1.0,2028
+115,William Fish,20,Hibernian,Premiership,Right Centre Back,Centre Back,57.11,,,,,,,,,,,,,400000,0.4,0
+116,John Souttar,27,Rangers,Premiership,Left Centre Back,Centre Back,55.89,,,,,,,,,,,,,1500000,1.5,2026
+117,Connor Goldson,30,Rangers,Premiership,Right Centre Back,Centre Back,55.48,,,,,,,,,,,,,7000000,7.0,2026
+118,William Nightingale,28,Ross County,Premiership,Right Centre Back,Centre Back,52.44,,,,,,,,,,,,,100000,0.1,0
+119,Ben Davies,28,Rangers,Premiership,Left Centre Back,Centre Back,52.36,,,,,,,,,,,,,3500000,3.5,2026
+120,Jack Baldwin,30,Ross County,Premiership,Centre Back,Centre Back,48.63,,,,,,,,,,,,,400000,0.4,2024
+121,Richard Olav Jensen,27,Aberdeen,Premiership,Left Centre Back,Centre Back,47.89,,,,,,,,,,,,,600000,0.6,2024
+122,Stuart John Findlay,28,Kilmarnock,Premiership,Left Centre Back,Centre Back,47.15,,,,,,,,,,,,,450000,0.45,2026
+123,Paul McGinn,32,Motherwell,Premiership,Right Centre Back,Centre Back,42.92,,,,,,,,,,,,,400000,0.4,0
+124,Luiyi Ramón de Lucas Pérez,29,Livingston,Premiership,Right Centre Back,Centre Back,42.7,,,,,,,,,,,,,300000,0.3,2024
+125,Slobodan Rubežić,23,Aberdeen,Premiership,Centre Back,Centre Back,41.74,,,,,,,,,,,,,900000,0.9,2023
+126,Andrew Considine,36,St Johnstone,Premiership,Left Centre Back,Centre Back,41.5,,,,,,,,,,,,,300000,0.3,2024
+127,Alexandros Gogić,29,St Mirren,Premiership,Centre Back,Centre Back,40.71,,,,,,,,,,,,,400000,0.4,2024
+128,Robbie Guthrie Deas,23,Kilmarnock,Premiership,Left Centre Back,Centre Back,39.28,,,,,,,,,,,,,350000,0.35,0
+129,Dan Casey,25,Motherwell,Premiership,Left Centre Back,Centre Back,38.8,,,,,,,,,,,,,250000,0.25,2025
+130,Stefan Gartenmann,26,Aberdeen,Premiership,Right Centre Back,Centre Back,37.38,,,,,,,,,,,,,700000,0.7,2025
+131,Ryan David Leak,25,Ross County,Premiership,Left Centre Back,Centre Back,35.89,,,,,,,,,,,,,250000,0.25,2024
+132,Joe Wright,28,Kilmarnock,Premiership,Right Centre Back,Centre Back,35.51,,,,,,,,,,,,,375000,0.375,2024
+133,Jack MacKenzie,23,Aberdeen,Premiership,Left Centre Back,Centre Back,29.99,,,,,,,,,,,,,400000,0.4,2025
+134,Bevis Mugabi,28,Motherwell,Premiership,Centre Back,Centre Back,29.63,,,,,,,,,,,,,350000,0.35,2024
+135,Michael Devlin,30,Livingston,Premiership,Left Centre Back,Centre Back,29.57,,,,,,,,,,,,,700000,0.7,2025
+136,Liam Gordon,27,St Johnstone,Premiership,Left Centre Back,Centre Back,24.5,,,,,,,,,,,,,500000,0.5,2024
+137,Sam McClelland,21,St Johnstone,Premiership,Right Centre Back,Centre Back,24.23,,,,,,,,,,,,,150000,0.15,0
+138,Joe Shaughnessy,31,Dundee,Premiership,Right Centre Back,Centre Back,23.4,,,,,,,,,,,,,425000,0.425,0
+139,Ayo Obileye,29,Livingston,Premiership,Centre Back,Centre Back,22.64,,,,,,,,,,,,,400000,0.4,0
+140,Richard Taylor,23,St Mirren,Premiership,Left Centre Back,Centre Back,20.72,,,,,,,,,,,,,100000,0.1,0
+141,Ricki Lamie,30,Dundee,Premiership,Left Centre Back,Centre Back,18.13,,,,,,,,,,,,,375000,0.375,2024
+142,Marcus Fraser,29,St Mirren,Premiership,Right Centre Back,Centre Back,17.13,,,,,,,,,,,,,450000,0.45,2025
