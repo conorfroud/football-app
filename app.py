@@ -315,7 +315,6 @@ def venn_tab(df1):
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
-df1 = pd.read_csv("/Users/conorfroud/full_back_belgium.csv")
 df2 = pd.read_csv("championshipscores.csv")
 
 # Create the navigation menu in the sidebar
