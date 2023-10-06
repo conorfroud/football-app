@@ -2,8 +2,6 @@ import pandas as pd
 import streamlit as st
 import plotly.express as px
 import matplotlib.pyplot as plt
-from mplsoccer import Pitch
-from mplsoccer import VerticalPitch, Pitch
 from matplotlib import font_manager
 import numpy as np
 from mplsoccer import PyPizza, FontManager
