@@ -32,12 +32,12 @@ def main_tab(df2):
     max_age = int(df2['Age'].max())
 
     # Get the minimum and maximum contract expiry values from the DataFrame
-    min_contract_expiry = int(df2['contract_expiry'].min())
-    max_contract_expiry = int(df2['contract_expiry'].max())
+    min_contract_expiry = int(df2['Contract expires'].min())
+    max_contract_expiry = int(df2['Contract expires'].max())
 
     # Get the minimum and maximum player market value (in euros) from the DataFrame
-    min_player_market_value = int(df2['player_market_value_euro'].min())
-    max_player_market_value = int(df2['player_market_value_euro'].max())
+    min_player_market_value = int(df2['Market value (millions)'].min())
+    max_player_market_value = int(df2['Market value (millions)'].max())
 
     # Add a sidebar dropdown box for leagues
     selected_league = st.sidebar.selectbox("Select a League", league_options)
