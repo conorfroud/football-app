@@ -20,7 +20,6 @@ pd.set_option("display.width", None)  # None means no width limit
 # Create a function for each tab's content
 
 def main_tab(df2):
-
     # Create a list of league options
     league_options = df2['League'].unique()
 
@@ -48,7 +47,7 @@ def main_tab(df2):
     age_range = st.sidebar.slider("Select Age Range", min_value=min_age, max_value=max_age, value=(min_age, max_age))
 
     # Add a multiselect box for selecting contract expiry years
-    selected_contract_expiry_years = st.sidebar.multiselect("Select Contract Expiry Years", contract_expiry_years)
+    selected_contract_expiry_years = st.sidebar.multiselect("Select Contract Expiry Years", contract_expiry_years, default=contract_expiry_years)
 
     # Add a slider for selecting the player market value (in euros) range
     player_market_value_range = st.sidebar.slider("Select Player Market Value Range (Euro)", min_value=min_player_market_value, max_value=max_player_market_value, value=(min_player_market_value, max_player_market_value))
@@ -67,6 +66,7 @@ def main_tab(df2):
 
     # Display the filtered DataFrame with selected columns
     st.table(filtered_df[selected_columns])
+
 
 
 
