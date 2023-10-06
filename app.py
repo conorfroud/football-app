@@ -66,11 +66,7 @@ def main_tab(df2):
 
     # Display the filtered DataFrame with selected columns
     st.table(filtered_df[selected_columns])
-
-
-
-
-
+    st.table(filtered_df.style.hide(axis="index"))
 
     #league = st.sidebar.multiselect(
        # "Select the League:",
