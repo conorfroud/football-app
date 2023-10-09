@@ -124,8 +124,8 @@ def about_tab(df2):
     # Create a selectbox to choose the Score Type
     selected_score_type = st.sidebar.selectbox(
         "Select a Score Type:",
-        options=df2["Score Type"].unique(),  # Replace "Score Type" with the actual column name
-        index=0  # Set the default index to the first score type
+        options=df2["Score Type"].unique(),
+        index=0
     )
 
     # Filter the DataFrame based on the selected Score Type
@@ -135,7 +135,7 @@ def about_tab(df2):
     selected_player = st.sidebar.selectbox(
         "Select a Player:",
         options=filtered_df["Player Name"].unique(),
-        index=0  # Set the default index to the first player
+        index=0
     )
 
     # Assign a default value to 'columns'
@@ -147,7 +147,7 @@ def about_tab(df2):
         plot_title = f"Forward Metrics for {selected_player}"
     
     elif selected_score_type == "Winger":
-        columns = ["Player Name", "Average Distance", "Top 5 PSV-99", "OBV Dribble & Carry", "Succesful Dribbles", "OP xA", "NP Shots", "NP Goals", "NP xG"]  # Modify as needed
+        columns = ["Player Name", "Average Distance", "Top 5 PSV-99", "OBV Dribble & Carry", "Succesful Dribbles", "OP xA", "NP Shots", "NP Goals", "NP xG"]
         plot_title = f"Winger Metric Percentiles for {selected_player}"
     
     # Define 'selected_df' here so it's always available
