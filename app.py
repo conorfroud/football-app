@@ -120,7 +120,7 @@ def main_tab(df2):
     #st.dataframe(selected_df, width=1500, height=500, hide_index=1)
 
 def about_tab(df2):
-    def about_tab(df2):
+
     st.title("Player Profile")
 
     # Create a selectbox to choose the Score Type
