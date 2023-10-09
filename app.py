@@ -138,8 +138,8 @@ def about_tab(df2):
     selected_df = df2[df2["Player Name"] == selected_player]
 
     # Reshape the data for plotting based on the selected profile
-    if selected_profile == "Full Back Profile":
-        columns = ["Player Name", "Average Distance", "Top 5 PSV-99", "OP xA", "player_season_obv_defensive_action_90 Percentile", "player_season_challenge_ratio Percentile", "player_season_padj_interceptions_90 Percentile", "player_season_padj_tackles_90 Percentile"]
+    if selected_profile == "Forward Profile":
+        columns = ["Player Name", "player_season_np_xg_90 Percentile", "player_season_npg_90 Percentile", "player_season_np_shots_90 Percentile"]
         plot_title = f"Full Back Metrics for {selected_player}"
     elif selected_profile == "Winger Profile":
         columns = ["Player Name", "Average Distance", "Top 5 PSV-99", "OBV Dribble & Carry", "Succesful Dribbles", "OP xA", "NP Shots", "NP Goals", "NP xG"]  # Modify as needed
