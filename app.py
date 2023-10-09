@@ -65,7 +65,7 @@ def main_tab(df2):
     selected_columns = ['Player Name', 'Age', 'Team', 'League', 'Position', 'Score Type', 'Stoke Score', 'Average Distance Percentile', 'Top 5 PSV-99 Percentile', 'Contract expires', 'Market value (millions)']
 
     # Display the filtered DataFrame with selected columns
-    st.table(filtered_df[selected_columns], sortable=True)
+    st.dataframe(filtered_df[selected_columns])
 
     #league = st.sidebar.multiselect(
        # "Select the League:",
