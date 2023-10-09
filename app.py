@@ -137,7 +137,7 @@ def about_tab(df2):
     selected_df = df2[(df2["Player Name"] == selected_player) & (df2["Forward Profile"] == df2["score type"])]
 
     # Define 'columns' based on the selected profile
-    if selected_profile == "Forward":
+    if selected_profile == "Forward Profile":
         columns = ["player_season_np_xg_90 Percentile", "player_season_npg_90 Percentile", "player_season_np_shots_90 Percentile"]
         plot_title = f"Forward Metrics for {selected_player}"
     elif selected_profile == "Winger":
