@@ -159,7 +159,7 @@ def about_tab(df2):
         columns = ["Player Name", "Average Distance Percentile", "Top 5 PSV-99 Percentile", "Dribble & Carry OBV", "Succesful Dribbles per 90",  "xA per 90", "Shots per 90", "Non-Pen Goals per 90", "xG per 90"]
         plot_title = f"Winger Metric Percentiles for {selected_player}"
     elif selected_profile == "Attacking Midfield Profile":
-        columns = ["Player Name", "Average Distance Percentile", "Top 5 PSV-99 Percentile", "Dribble & Carry OBV", "Succesful Dribbles per 90",  "xA per 90", "Shots per 90", "Non-Pen Goals per 90 (10)", "xG per 90 (10)"]
+        columns = ["Player Name", "Average Distance Percentile", "Top 5 PSV-99 Percentile", "Dribble & Carry OBV", "Succesful Dribbles per 90",  "xA per 90", "Shots per 90", "Non-Pen Goals per 90 (10)", "NP xG per 90 (10)"]
         plot_title = f"Attacking Midfield Metric Percentiles for {selected_player}"
     else:
         # Define columns and plot title for the default profile
