@@ -152,10 +152,7 @@ def about_tab(df2):
     
     # Define 'selected_df' here so it's always available
     selected_df = filtered_df[filtered_df["Player Name"] == selected_player]
-
-    percentiles_df = selected_df[columns]
-    percentiles_df = percentiles_df.melt(id_vars="Player Name", var_name="Percentile Type", value_name="Percentile")
-
+    
     # Load the Roboto font
     font_path = "Roboto-Bold.ttf"  # Replace with the actual path to the Roboto font
     prop = font_manager.FontProperties(fname=font_path)
