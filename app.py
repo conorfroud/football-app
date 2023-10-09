@@ -148,10 +148,10 @@ def about_tab(df2):
     selected_df = filtered_df[filtered_df["Player Name"] == selected_player]
 
     # Reshape the data for plotting based on the selected profile
-    if selected_profile == "Forward Profile":
+    if selected_score_type == "Forward":
         columns = ["Player Name", "player_season_np_xg_90 Percentile", "player_season_npg_90 Percentile", "player_season_np_shots_90 Percentile"]
         plot_title = f"Forward Metrics for {selected_player}"
-    elif selected_profile == "Winger Profile":
+    elif selected_score_type == "Winger":
         columns = ["Player Name", "Average Distance", "Top 5 PSV-99", "OBV Dribble & Carry", "Succesful Dribbles", "OP xA", "NP Shots", "NP Goals", "NP xG"]  # Modify as needed
         plot_title = f"Winger Metric Percentiles for {selected_player}"
     
