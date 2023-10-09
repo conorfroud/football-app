@@ -145,10 +145,14 @@ def about_tab(df2):
     if selected_score_type == "Forward":
         columns = ["Player Name", "player_season_np_xg_90 Percentile", "player_season_npg_90 Percentile", "player_season_np_shots_90 Percentile"]
         plot_title = f"Forward Metrics for {selected_player}"
+    
     elif selected_score_type == "Winger":
         columns = ["Player Name", "Average Distance", "Top 5 PSV-99", "OBV Dribble & Carry", "Succesful Dribbles", "OP xA", "NP Shots", "NP Goals", "NP xG"]  # Modify as needed
         plot_title = f"Winger Metric Percentiles for {selected_player}"
     
+    # Define 'selected_df' here so it's always available
+    selected_df = filtered_df[filtered_df["Player Name"] == selected_player]
+
     percentiles_df = selected_df[columns]
     percentiles_df = percentiles_df.melt(id_vars="Player Name", var_name="Percentile Type", value_name="Percentile")
 
