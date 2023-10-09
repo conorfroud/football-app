@@ -131,7 +131,7 @@ def about_tab(df2):
 # Create a selectbox to choose the profile
     selected_profile = st.sidebar.selectbox(
      "Select a Profile:",
-     ["Full Back Profile"]
+     ["Forward Profile"]
 )
 
 # Assuming you want to filter df1 based on the selected player
