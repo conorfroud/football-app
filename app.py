@@ -120,22 +120,34 @@ def main_tab(df2):
     #st.dataframe(selected_df, width=1500, height=500, hide_index=1)
 
 def about_tab(df2):
-    #st.title("Player Profile")
+    def about_tab(df2):
+    st.title("Player Profile")
 
+    # Create a selectbox to choose the Score Type
+    selected_score_type = st.sidebar.selectbox(
+        "Select a Score Type:",
+        options=df2["Score Type"].unique(),  # Replace "Score Type" with the actual column name
+        index=0  # Set the default index to the first score type
+    )
+
+    # Filter the DataFrame based on the selected Score Type
+    filtered_df = df2[df2["Score Type"] == selected_score_type]
+
+    # Create a selectbox to choose the player from the filtered DataFrame
     selected_player = st.sidebar.selectbox(
         "Select a Player:",
-        options=df2["Player Name"].unique(),
+        options=filtered_df["Player Name"].unique(),
         index=0  # Set the default index to the first player
     )
 
-# Create a selectbox to choose the profile
+    # Create a selectbox to choose the profile
     selected_profile = st.sidebar.selectbox(
-     "Select a Profile:",
-     ["Forward Profile"]
-)
+        "Select a Profile:",
+        ["Forward Profile"]
+    )
 
-# Assuming you want to filter df1 based on the selected player
-    selected_df = df2[df2["Player Name"] == selected_player]
+    # Assuming you want to filter df1 based on the selected player
+    selected_df = filtered_df[filtered_df["Player Name"] == selected_player]
 
     # Reshape the data for plotting based on the selected profile
     if selected_profile == "Forward Profile":
