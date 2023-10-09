@@ -121,37 +121,31 @@ def main_tab(df2):
 
 def about_tab(df2):
 
-    # Create a selectbox to choose the Score Type
-    selected_score_type = st.sidebar.selectbox(
-        "Select a Score Type:",
-        options=df2["Score Type"].unique(),
-        index=0
-    )
-
-    # Filter the DataFrame based on the selected Score Type
-    filtered_df = df2[df2["Score Type"] == selected_score_type]
-
-    # Create a selectbox to choose the player from the filtered DataFrame
-    selected_player = st.sidebar.selectbox(
+     selected_player = st.sidebar.selectbox(
         "Select a Player:",
-        options=filtered_df["Player Name"].unique(),
-        index=0
+        options=df2["Player Name"].unique(),
+        index=0  # Set the default index to the first player
     )
 
-    # Assign a default value to 'columns'
-    columns = []
+# Create a selectbox to choose the profile
+    selected_profile = st.sidebar.selectbox(
+     "Select a Profile:",
+     ["Forward Profile"]
+)
 
-    # Set 'columns' based on the selected score type
-    if selected_score_type == "Forward":
+# Assuming you want to filter df1 based on the selected player
+    selected_df = df2[df2["Player Name"] == selected_player]
+
+    # Reshape the data for plotting based on the selected profile
+    if selected_profile == "Forward Profile":
         columns = ["Player Name", "player_season_np_xg_90 Percentile", "player_season_npg_90 Percentile", "player_season_np_shots_90 Percentile"]
         plot_title = f"Forward Metrics for {selected_player}"
-    
-    elif selected_score_type == "Winger":
-        columns = ["Player Name", "Average Distance", "Top 5 PSV-99", "OBV Dribble & Carry", "Succesful Dribbles", "OP xA", "NP Shots", "NP Goals", "NP xG"]
+    elif selected_profile == "Winger Profile":
+        columns = ["Player Name", "Average Distance", "Top 5 PSV-99", "OBV Dribble & Carry", "Succesful Dribbles", "OP xA", "NP Shots", "NP Goals", "NP xG"]  # Modify as needed
         plot_title = f"Winger Metric Percentiles for {selected_player}"
     
-    # Define 'selected_df' here so it's always available
-    selected_df = filtered_df[filtered_df["Player Name"] == selected_player]
+    percentiles_df = selected_df[columns]
+    percentiles_df = percentiles_df.melt(id_vars="Player Name", var_name="Percentile Type", value_name="Percentile")
     
     # Load the Roboto font
     font_path = "Roboto-Bold.ttf"  # Replace with the actual path to the Roboto font
