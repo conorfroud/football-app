@@ -130,12 +130,11 @@ def about_tab(df2):
     # Create a selectbox to choose the profile
     selected_profile = st.sidebar.selectbox(
         "Select a Profile:",
-        options=df2[df2["Player Name"] == selected_player]["Score Type"].unique(),
-        index=0
+        ["Forward Profile"]
     )
 
-    # Define a default value for 'columns'
-    columns = []
+    # Assuming you want to filter df2 based on the selected player and the condition "forward profile" == "score type"
+    selected_df = df2[(df2["Player Name"] == selected_player) & (df2["Forward Profile"] == df2["score type"])]
 
     # Define 'columns' based on the selected profile
     if selected_profile == "Forward":
@@ -144,10 +143,7 @@ def about_tab(df2):
     elif selected_profile == "Winger":
         columns = ["Average Distance", "Top 5 PSV-99", "OBV Dribble & Carry", "Succesful Dribbles", "OP xA", "NP Shots", "NP Goals", "NP xG"]
         plot_title = f"Winger Metric Percentiles for {selected_player}"
-    
-    # Assuming you want to filter df2 based on the selected player and profile
-    selected_df = df2[(df2["Player Name"] == selected_player) & (df2["Score Type"] == selected_profile)]
-    
+        
     percentiles_df = selected_df[columns]
     percentiles_df = percentiles_df.melt(id_vars="Player Name", var_name="Percentile Type", value_name="Percentile")
     
