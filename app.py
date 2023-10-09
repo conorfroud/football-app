@@ -197,7 +197,7 @@ def about_tab(df1):
 
     selected_player = st.sidebar.selectbox(
         "Select a Player:",
-        options=df1["player_name"].unique(),
+        options=df1["Player Name"].unique(),
         index=0  # Set the default index to the first player
     )
 
@@ -208,18 +208,18 @@ def about_tab(df1):
 )
 
 # Assuming you want to filter df1 based on the selected player
-    selected_df = df1[df1["player_name"] == selected_player]
+    selected_df = df2[df2["Player Name"] == selected_player]
 
     # Reshape the data for plotting based on the selected profile
     if selected_profile == "Full Back Profile":
-        columns = ["player_name", "Average Distance", "Top 5 PSV-99", "OP xA", "player_season_obv_defensive_action_90 Percentile", "player_season_challenge_ratio Percentile", "player_season_padj_interceptions_90 Percentile", "player_season_padj_tackles_90 Percentile"]
+        columns = ["Player Name", "Average Distance", "Top 5 PSV-99", "OP xA", "player_season_obv_defensive_action_90 Percentile", "player_season_challenge_ratio Percentile", "player_season_padj_interceptions_90 Percentile", "player_season_padj_tackles_90 Percentile"]
         plot_title = f"Full Back Metrics for {selected_player}"
     elif selected_profile == "Winger Profile":
-        columns = ["player_name", "Average Distance", "Top 5 PSV-99", "OBV Dribble & Carry", "Succesful Dribbles", "OP xA", "NP Shots", "NP Goals", "NP xG"]  # Modify as needed
+        columns = ["PLayer Name", "Average Distance", "Top 5 PSV-99", "OBV Dribble & Carry", "Succesful Dribbles", "OP xA", "NP Shots", "NP Goals", "NP xG"]  # Modify as needed
         plot_title = f"Winger Metric Percentiles for {selected_player}"
     
     percentiles_df = selected_df[columns]
-    percentiles_df = percentiles_df.melt(id_vars="player_name", var_name="Percentile Type", value_name="Percentile")
+    percentiles_df = percentiles_df.melt(id_vars="Player Name", var_name="Percentile Type", value_name="Percentile")
 
     # Load the Roboto font
     font_path = "/Users/conorfroud/Documents/App/Roboto-Bold.ttf"  # Replace with the actual path to the Roboto font
@@ -253,7 +253,7 @@ def about_tab(df1):
 
     plt.tight_layout()
 
-    selected_player_row = df1[df1["player_name"] == selected_player].iloc[0]
+    selected_player_row = df1[df1["Player Name"] == selected_player].iloc[0]
     primary_position_text = f"Primary Position: {selected_player_row['primary_position']}"
     player_minutes_text = f"Player Minutes: {selected_player_row['player_season_minutes']}"
 
