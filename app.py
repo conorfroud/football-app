@@ -138,28 +138,23 @@ def about_tab(df2):
         index=0  # Set the default index to the first player
     )
 
-    # Assuming you have a 'Score Type' column in your DataFrame
-    selected_score_type = df2[df2["Player Name"] == selected_player].drop_duplicates(subset=["Player Name"])["Score Type"].values[0]
+    selected_player_df = df2[df2["Player Name"] == selected_player]
 
-
-    # Automatically select the profile based on 'Score Type'
-    if selected_score_type == "Striker":
-        selected_profile = "Forward Profile"
-    elif selected_score_type == "Winger":
-        selected_profile = "Winger Profile"
-    elif selected_score_type == "Attacking Midfield":
-        selected_profile = "Attacking Midfield Profile"
-    else:
-        selected_profile = "Default Profile"  # You can set a default profile here
+    available_profiles = selected_player_df["Score Type"].unique()
+    selected_profile = st.sidebar.selectbox(
+        "Select a Profile:",
+        options=available_profiles,
+        index=0  # Set the default index to the first profile
+    )
 
     # Define 'columns' based on the selected profile
-    if selected_profile == "Forward Profile":
+    if selected_profile == "Striker":
         columns = ["Player Name", "Top 5 PSV-99 Percentile", "Average Distance Percentile", "PAdj Pressures", "Dribble & Carry OBV", "xA per 90", "player_season_obv_shot_90 Percentile", "Shots per 90", "Non-Pen Goals per 90", "xG per 90"]
         plot_title = f"Forward Metrics for {selected_player}"
-    elif selected_profile == "Winger Profile":
+    elif selected_profile == "Winger":
         columns = ["Player Name", "Average Distance (W)", "Top 5 PSV (W)", "OBV Dribble & Carry (W)", "Dribbles per 90 (W)",  "xA per 90 (W)", "NP Shots per 90 (W)", "Non-Pen Goals per 90 (W)", "NP xG per 90 (W)"]
         plot_title = f"Winger Metric Percentiles for {selected_player}"
-    elif selected_profile == "Attacking Midfield Profile":
+    elif selected_profile == "Attacking Midfield":
         columns = ["Player Name", "Average Distance Percentile", "Top 5 PSV-99 Percentile", "Dribble & Carry OBV", "Dribbles per 90 (10)",  "xA per 90", "Shots per 90", "Non-Pen Goals per 90 (10)", "NP xG per 90 (10)"]
         plot_title = f"Attacking Midfield Metric Percentiles for {selected_player}"
     else:
@@ -168,7 +163,7 @@ def about_tab(df2):
         plot_title = f"Default Profile Metrics for {selected_player}"
 
     # Assuming selected_df is your DataFrame containing the data
-    selected_df = df2[df2["Player Name"] == selected_player]
+    selected_df = selected_player_df[selected_player_df["Score Type"] == selected_profile]
 
     percentiles_df = selected_df[columns]
     percentiles_df = percentiles_df.melt(id_vars="Player Name", var_name="Percentile Type", value_name="Percentile")
