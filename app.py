@@ -149,9 +149,9 @@ def about_tab(df2):
     percentiles_df = percentiles_df.melt(id_vars="Player Name", var_name="Percentile Type", value_name="Percentile")
 
     # Load the Roboto font
-    font_path = "/Users/conorfroud/Documents/App/Roboto-Bold.ttf"  # Replace with the actual path to the Roboto font
+    font_path = "Roboto-Bold.ttf"  # Replace with the actual path to the Roboto font
     prop = font_manager.FontProperties(fname=font_path)
-    font_path1 = "/Users/conorfroud/Documents/App/Roboto-Regular.ttf"
+    font_path1 = "Roboto-Regular.ttf"
     prop1 = font_manager.FontProperties(fname=font_path1)
 
     # Create a bar plot
