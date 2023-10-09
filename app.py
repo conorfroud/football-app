@@ -121,8 +121,6 @@ def main_tab(df2):
 
 def about_tab(df2):
 
-    st.title("Player Profile")
-
     # Create a selectbox to choose the Score Type
     selected_score_type = st.sidebar.selectbox(
         "Select a Score Type:",
