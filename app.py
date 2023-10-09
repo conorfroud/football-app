@@ -138,20 +138,29 @@ def about_tab(df2):
         index=0  # Set the default index to the first player
     )
 
-    # Create a selectbox to choose the profile
-    selected_profile = st.sidebar.selectbox(
-        "Select a Profile:",
-        ["Forward", "Winger"]
-    )
+    # Assuming you have a 'Score Type' column in your DataFrame
+    selected_score_type = df2[df2["Player Name"] == selected_player]["Score Type"].values[0]
+
+    # Automatically select the profile based on 'Score Type'
+    if selected_score_type == "Striker":
+        selected_profile = "Forward Profile"
+    elif selected_score_type == "Winger":
+        selected_profile = "Winger Profile"
+    else:
+        selected_profile = "Default Profile"  # You can set a default profile here
 
     # Define 'columns' based on the selected profile
-    if selected_profile == "Forward":
+    if selected_profile == "Forward Profile":
         columns = ["Player Name", "Top 5 PSV-99 Percentile", "Average Distance Percentile", "PAdj Pressures", "Dribble & Carry OBV", "xA per 90", "player_season_obv_shot_90 Percentile", "Shots per 90", "Non-Pen Goals per 90", "xG per 90"]
         plot_title = f"Forward Metrics for {selected_player}"
-    elif selected_profile == "Winger":
-        columns = ["Player Name", "Average Distance Percentile", "Top 5 PSV-99 Percentile", "Dribble & Carry OBV", "Succesful Dribbles per 90",  "xA per 90", "OBV Pass per 90", "Shots per 90", "Non-Pen Goals per 90", "xG per 90"]
+    elif selected_profile == "Winger Profile":
+        columns = ["Average Distance Percentile", "Top 5 PSV-99 Percentile", "Dribble & Carry OBV", "Succesful Dribbles per 90",  "xA per 90", "Shots per 90", "Non-Pen Goals per 90", "xG per 90"]
         plot_title = f"Winger Metric Percentiles for {selected_player}"
-    
+    else:
+        # Define columns and plot title for the default profile
+        columns = []
+        plot_title = f"Default Profile Metrics for {selected_player}"
+
     # Assuming selected_df is your DataFrame containing the data
     selected_df = df2[df2["Player Name"] == selected_player]
 
