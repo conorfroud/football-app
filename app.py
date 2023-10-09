@@ -20,6 +20,7 @@ pd.set_option("display.width", None)  # None means no width limit
 # Create a function for each tab's content
 
 def main_tab(df2):
+    
     # Create a list of league options
     league_options = df2['League'].unique()
 
@@ -52,6 +53,12 @@ def main_tab(df2):
     # Add a slider for selecting the player market value (in euros) range
     player_market_value_range = st.sidebar.slider("Select Player Market Value Range (Euro)", min_value=min_player_market_value, max_value=max_player_market_value, value=(min_player_market_value, max_player_market_value))
 
+    # Add a slider for selecting the Average Distance Percentile range
+    avg_distance_percentile_range = st.sidebar.slider("Select Average Distance Percentile Range", min_value=0, max_value=100, value=(0, 100))
+
+    # Add a slider for selecting the Top 5 PSV-99 Percentile range
+    top_5_psv_99_percentile_range = st.sidebar.slider("Select Top 5 PSV-99 Percentile Range", min_value=0, max_value=100, value=(0, 100))
+
     # Filter the DataFrame based on the selected filters
     filtered_df = df2[(df2['League'] == selected_league) &
                     (df2['Score Type'] == selected_score_type) &
@@ -59,7 +66,11 @@ def main_tab(df2):
                     (df2['Age'] <= age_range[1]) &
                     (df2['Contract expires'].isin(selected_contract_expiry_years)) &
                     (df2['Market value (millions)'] >= player_market_value_range[0]) &
-                    (df2['Market value (millions)'] <= player_market_value_range[1])]
+                    (df2['Market value (millions)'] <= player_market_value_range[1]) &
+                    (df2['Average Distance Percentile'] >= avg_distance_percentile_range[0]) &
+                    (df2['Average Distance Percentile'] <= avg_distance_percentile_range[1]) &
+                    (df2['Top 5 PSV-99 Percentile'] >= top_5_psv_99_percentile_range[0]) &
+                    (df2['Top 5 PSV-99 Percentile'] <= top_5_psv_99_percentile_range[1])]
 
     # Specify the columns you want to display in the final table
     selected_columns = ['Player Name', 'Age', 'Team', 'League', 'Stoke Score', 'Average Distance Percentile', 'Top 5 PSV-99 Percentile', 'Contract expires', 'Market value (millions)']
