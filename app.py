@@ -134,7 +134,7 @@ def about_tab(df2):
     )
 
     # Assuming you want to filter df2 based on the selected player and the condition "forward profile" == "score type"
-    selected_df = df2[(df2["Player Name"] == selected_player) & (df2["Forward Profile"] == df2["score type"])]
+    selected_df = df2[df2["Player Name"] == selected_player]
 
     # Define 'columns' based on the selected profile
     if selected_profile == "Forward Profile":
