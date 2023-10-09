@@ -121,7 +121,7 @@ def main_tab(df2):
 
 def about_tab(df2):
 
-     selected_player = st.sidebar.selectbox(
+    selected_player = st.sidebar.selectbox(
         "Select a Player:",
         options=df2["Player Name"].unique(),
         index=0  # Set the default index to the first player
