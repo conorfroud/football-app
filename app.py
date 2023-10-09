@@ -144,9 +144,6 @@ def about_tab(df2):
         ["Forward Profile", "Winger Profile"]
     )
 
-    # Assuming you want to filter df2 based on the selected player and the condition "forward profile" == "score type"
-    selected_df = df2[df2["Player Name"] == selected_player]
-
     # Define 'columns' based on the selected profile
     if selected_profile == "Forward Profile":
         columns = ["Player Name", "Top 5 PSV-99 Percentile", "Average Distance Percentile", "PAdj Pressures", "Dribble & Carry OBV", "xA per 90", "player_season_obv_shot_90 Percentile", "Shots per 90", "Non-Pen Goals per 90", "xG per 90"]
