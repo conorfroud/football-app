@@ -151,7 +151,10 @@ def about_tab(df2):
     elif selected_profile == "Winger Profile":
         columns = ["Average Distance Percentile", "Top 5 PSV-99 Percentile", "Dribble & Carry OBV", "Succesful Dribbles per 90",  "xA per 90", "Shots per 90", "Non-Pen Goals per 90", "xG per 90"]
         plot_title = f"Winger Metric Percentiles for {selected_player}"
-        
+    
+    # Assuming selected_df is your DataFrame containing the data
+    selected_df = df2[df2["Player Name"] == selected_player]
+
     percentiles_df = selected_df[columns]
     percentiles_df = percentiles_df.melt(id_vars="Player Name", var_name="Percentile Type", value_name="Percentile")
     
