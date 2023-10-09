@@ -1,0 +1,158 @@
+,Player Name,Age,Team,League,Position,Score Type,Stoke Score,player_season_np_xg_90 Percentile,player_season_npg_90 Percentile,player_season_np_shots_90 Percentile,player_season_obv_shot_90 Percentile,player_season_op_xa_90 Percentile,player_season_obv_dribble_carry_90 Percentile,player_season_padj_pressures_90 Percentile,player_season_aerial_wins_90 Percentile,player_season_aerial_ratio Percentile,Average Distance Percentile,Top 5 PSV-99 Percentile,player_season_obv_pass_90 Percentile,player_season_dribbles_90 Percentile,NP xG per 90 (10),Non-Pen Goals per 90 (10),NP Shots per 90 (10),OBV Pass per 90 (10),xA per 90 (10),Key Passes per 90 (10),Dribbles per 90 (10),OBV Dribble & Carry (10),Average Distance (10),Top 5 PSV (10)
+20,Ryan Hardie,26,Plymouth Argyle,Championship,Centre Forward,Striker,75.54,79.0,83.0,91.0,57.0,51.0,66.0,21.0,70.0,70.0,23.0,96.0,,,,,,,,,,,,
+23,Aaron Anthony Connolly,23,Hull City,Championship,Centre Forward,Striker,69.71,96.0,91.0,81.0,94.0,89.0,36.0,66.0,4.0,6.0,17.0,51.0,,,,,,,,,,,,
+5,Che Adams,27,Southampton,Championship,Centre Forward,Striker,68.9,85.0,79.0,66.0,98.0,94.0,85.0,85.0,19.0,36.0,66.0,16.0,,,,,,,,,,,,
+0,Freddie Ladapo,30,Ipswich Town,Championship,Centre Forward,Striker,67.41,94.0,94.0,98.0,91.0,77.0,100.0,96.0,79.0,74.0,32.0,3.0,,,,,,,,,,,,
+43,George Hirst,24,Ipswich Town,Championship,Centre Forward,Striker,64.99,72.0,49.0,83.0,19.0,96.0,60.0,38.0,81.0,89.0,38.0,31.0,,,,,,,,,,,,
+21,André Filipe Cunha Vidigal,25,Stoke City,Championship,Right Centre Forward,Striker,64.51,83.0,96.0,89.0,100.0,68.0,55.0,51.0,11.0,9.0,47.0,43.0,,,,,,,,,,,,
+34,Joshua Sargent,23,Norwich City,Championship,Left Centre Forward,Striker,62.59,100.0,100.0,85.0,79.0,60.0,89.0,64.0,43.0,79.0,94.0,66.0,,,,,,,,,,,,
+17,Matt Godden,32,Coventry City,Championship,Right Centre Forward,Striker,60.52,57.0,72.0,64.0,64.0,49.0,19.0,36.0,47.0,60.0,70.0,16.0,,,,,,,,,,,,
+33,Haji Wright,25,Coventry City,Championship,Left Centre Forward,Striker,60.22,89.0,60.0,96.0,11.0,47.0,83.0,87.0,62.0,51.0,30.0,74.0,,,,,,,,,,,,
+25,Emmanuel Latte Lath,24,Middlesbrough,Championship,Centre Forward,Striker,59.02,98.0,81.0,100.0,87.0,4.0,98.0,83.0,32.0,85.0,26.0,98.0,,,,,,,,,,,,
+2,Kelechi Promise Iheanacho,27,Leicester City,Championship,Centre Forward,Striker,56.9,70.0,64.0,77.0,81.0,98.0,34.0,81.0,2.0,2.0,36.0,83.0,,,,,,,,,,,,
+19,Jamie Vardy,36,Leicester City,Championship,Centre Forward,Striker,56.54,53.0,85.0,45.0,62.0,64.0,38.0,68.0,55.0,91.0,28.0,79.0,,,,,,,,,,,,
+36,Vakoun Issouf Bayo,26,Watford,Championship,Centre Forward,Striker,56.49,87.0,53.0,70.0,15.0,62.0,77.0,72.0,49.0,49.0,74.0,85.0,,,,,,,,,,,,
+11,Georginio Rutter,21,Leeds United,Championship,Centre Forward,Striker,55.82,60.0,38.0,51.0,17.0,100.0,64.0,94.0,53.0,72.0,60.0,81.0,,,,,,,,,,,,
+16,Ike Ugbo,25,Cardiff City,Championship,Centre Forward,Striker,55.75,91.0,77.0,32.0,47.0,34.0,51.0,43.0,60.0,43.0,57.0,31.0,,,,,,,,,,,,
+3,Jerry Yates,26,Swansea City,Championship,Right Centre Forward,Striker,54.27,74.0,70.0,19.0,66.0,36.0,70.0,70.0,28.0,19.0,45.0,34.0,,,,,,,,,,,,
+24,Ellis Simms,22,Coventry City,Championship,Right Centre Forward,Striker,54.21,77.0,55.0,87.0,96.0,11.0,68.0,57.0,45.0,30.0,34.0,89.0,,,,,,,,,,,,
+14,Nahki Wells,33,Bristol City,Championship,Centre Forward,Striker,52.97,81.0,51.0,60.0,53.0,57.0,57.0,91.0,40.0,17.0,98.0,87.0,,,,,,,,,,,,
+9,Adam Uche Idah,22,Norwich City,Championship,Centre Forward,Striker,51.63,66.0,74.0,53.0,83.0,81.0,30.0,60.0,13.0,26.0,64.0,68.0,,,,,,,,,,,,
+26,Harry Paul Leonard,20,Blackburn Rovers,Championship,Centre Forward,Striker,50.94,64.0,66.0,40.0,32.0,79.0,53.0,79.0,34.0,40.0,53.0,45.0,,,,,,,,,,,,
+40,Josh Koroma,24,Huddersfield Town,Championship,Left Centre Forward,Striker,48.98,51.0,19.0,94.0,30.0,70.0,96.0,4.0,36.0,23.0,6.0,64.0,,,,,,,,,,,,
+28,Brandon Thomas-Asante,24,West Bromwich Albion,Championship,Centre Forward,Striker,48.26,55.0,47.0,57.0,26.0,72.0,87.0,49.0,9.0,4.0,91.0,71.0,,,,,,,,,,,,
+12,Kevin Nisbet,26,Millwall,Championship,Centre Forward,Striker,47.64,47.0,45.0,62.0,34.0,45.0,23.0,19.0,72.0,53.0,11.0,49.0,,,,,,,,,,,,
+18,Ozan Tufan,28,Hull City,Championship,Left Centre Forward,Striker,47.4,62.0,98.0,79.0,89.0,15.0,49.0,100.0,23.0,98.0,87.0,40.0,,,,,,,,,,,,
+46,Mileta Rajovic,24,Watford,Championship,Centre Forward,Striker,46.49,38.0,87.0,28.0,72.0,19.0,4.0,30.0,66.0,68.0,62.0,9.0,,,,,,,,,,,,
+1,Jordan Hugill,31,Rotherham United,Championship,Centre Forward,Striker,45.5,6.0,62.0,6.0,70.0,55.0,21.0,2.0,100.0,66.0,9.0,77.0,,,,,,,,,,,,
+13,Jobe Bellingham,18,Sunderland,Championship,Centre Forward,Striker,44.48,26.0,36.0,26.0,68.0,53.0,72.0,89.0,51.0,81.0,77.0,28.0,,,,,,,,,,,,
+22,Wesley Moraes Ferreira da Silva,26,Stoke City,Championship,Centre Forward,Striker,44.36,28.0,10.0,43.0,38.0,85.0,43.0,55.0,89.0,64.0,2.0,21.0,,,,,,,,,,,,
+31,Delano Burgzorg,24,Huddersfield Town,Championship,Right Centre Forward,Striker,43.78,4.0,57.0,38.0,40.0,87.0,81.0,15.0,15.0,12.0,19.0,94.0,,,,,,,,,,,,
+35,Kion Etete,21,Cardiff City,Championship,Centre Forward,Striker,43.42,30.0,89.0,47.0,85.0,26.0,26.0,62.0,83.0,96.0,89.0,57.0,,,,,,,,,,,,
+10,Liam Delap,20,Hull City,Championship,Right Centre Forward,Striker,42.74,23.0,43.0,34.0,60.0,74.0,79.0,53.0,17.0,34.0,79.0,91.0,,,,,,,,,,,,
+30,Will Keane,30,Preston North End,Championship,Centre Forward,Striker,42.57,45.0,68.0,23.0,74.0,23.0,6.0,40.0,57.0,28.0,40.0,3.0,,,,,,,,,,,,
+44,Sinclair Armstrong,20,Queens Park Rangers,Championship,Centre Forward,Striker,40.28,32.0,21.0,30.0,45.0,83.0,74.0,6.0,30.0,32.0,4.0,100.0,,,,,,,,,,,,
+27,Josh Coburn,20,Middlesbrough,Championship,Centre Forward,Striker,37.72,17.0,32.0,4.0,49.0,91.0,17.0,77.0,77.0,55.0,85.0,62.0,,,,,,,,,,,,
+8,Lyndon Dykes,28,Queens Park Rangers,Championship,Centre Forward,Striker,36.33,21.0,28.0,55.0,21.0,9.0,40.0,11.0,96.0,83.0,13.0,55.0,,,,,,,,,,,,
+38,Tom Bradshaw,31,Millwall,Championship,Right Centre Forward,Striker,34.62,19.0,30.0,17.0,55.0,17.0,15.0,47.0,85.0,38.0,49.0,23.0,,,,,,,,,,,,
+15,Michael Smith,31,Sheffield Wednesday,Championship,Right Centre Forward,Striker,33.79,13.0,34.0,15.0,51.0,32.0,13.0,32.0,91.0,94.0,68.0,13.0,,,,,,,,,,,,
+37,Milutin Osmajić,24,Preston North End,Championship,Centre Forward,Striker,33.53,43.0,40.0,9.0,77.0,40.0,45.0,17.0,38.0,12.0,51.0,53.0,,,,,,,,,,,,
+32,Joël Piroe,24,Swansea City,Championship,Right Centre Forward,Striker,31.5,68.0,10.0,74.0,4.0,13.0,91.0,45.0,64.0,57.0,96.0,11.0,,,,,,,,,,,,
+7,Scott Hogan,31,Birmingham City,Championship,Centre Forward,Striker,28.96,49.0,23.0,36.0,23.0,30.0,47.0,28.0,21.0,15.0,72.0,60.0,,,,,,,,,,,,
+39,Yakou Meïté,27,Cardiff City,Championship,Centre Forward,Striker,28.73,34.0,10.0,68.0,9.0,28.0,32.0,34.0,98.0,100.0,21.0,71.0,,,,,,,,,,,,
+41,Danny Ward,32,Huddersfield Town,Championship,Centre Forward,Striker,28.21,36.0,10.0,72.0,2.0,2.0,9.0,9.0,87.0,47.0,15.0,38.0,,,,,,,,,,,,
+42,Kian Shay Harratt,21,Huddersfield Town,Championship,Left Centre Forward,Striker,27.23,40.0,10.0,49.0,6.0,43.0,11.0,13.0,94.0,87.0,55.0,6.0,,,,,,,,,,,,
+6,Lee Gregory,35,Sheffield Wednesday,Championship,Centre Forward,Striker,26.3,15.0,26.0,13.0,43.0,6.0,28.0,26.0,68.0,77.0,43.0,36.0,,,,,,,,,,,,
+45,Mason Burstow,20,Sunderland,Championship,Centre Forward,Striker,23.75,11.0,10.0,11.0,28.0,38.0,94.0,98.0,26.0,21.0,81.0,19.0,,,,,,,,,,,,
+4,Jamie Paterson,31,Swansea City,Championship,Left Centre Forward,Striker,22.3,9.0,10.0,21.0,13.0,66.0,62.0,74.0,6.0,62.0,100.0,26.0,,,,,,,,,,,,
+29,Ashley Fletcher,28,Sheffield Wednesday,Championship,Centre Forward,Striker,16.95,2.0,10.0,2.0,36.0,21.0,2.0,23.0,74.0,45.0,83.0,47.0,,,,,,,,,,,,
+37,Crysencio Summerville,21,Leeds United,Championship,Right Wing,Winger,88.12,98.0,70.0,94.0,,74.0,82.0,80.0,,,27.0,69.0,95.0,85.0,,,,,,,,,,
+39,Morgan Whittaker,22,Plymouth Argyle,Championship,Right Wing,Winger,86.13,88.0,88.0,97.0,,56.0,74.0,12.0,,,29.0,24.0,59.0,76.0,,,,,,,,,,
+61,Isaiah Jones,24,Middlesbrough,Championship,Right Wing,Winger,85.56,89.0,77.0,73.0,,89.0,86.0,88.0,,,62.0,98.0,92.0,80.0,,,,,,,,,,
+25,Nathan Broadhead,25,Ipswich Town,Championship,Left Wing,Winger,85.28,97.0,97.0,95.0,,91.0,38.0,79.0,,,68.0,26.0,61.0,71.0,,,,,,,,,,
+12,Stephy Alvaro Mavididi,25,Leicester City,Championship,Left Wing,Winger,84.29,80.0,55.0,70.0,,77.0,95.0,73.0,,,6.0,95.0,68.0,79.0,,,,,,,,,,
+56,Jack Clarke,22,Sunderland,Championship,Left Wing,Winger,83.58,39.0,83.0,48.0,,65.0,100.0,61.0,,,3.0,38.0,44.0,92.0,,,,,,,,,,
+30,Jaden Philogene-Bidace,21,Hull City,Championship,Left Wing,Winger,80.12,62.0,44.0,77.0,,98.0,94.0,89.0,,,56.0,49.0,80.0,91.0,,,,,,,,,,
+7,Omari Giraud-Hutchinson,19,Ipswich Town,Championship,Left Wing,Winger,74.99,79.0,65.0,80.0,,83.0,85.0,86.0,,,88.0,29.0,85.0,86.0,,,,,,,,,,
+31,Jon Rowe,20,Norwich City,Championship,Left Wing,Winger,74.63,82.0,98.0,82.0,,80.0,64.0,48.0,,,74.0,94.0,23.0,36.0,,,,,,,,,,
+49,Ollie Tanner,21,Cardiff City,Championship,Right Wing,Winger,73.26,65.0,58.0,64.0,,73.0,97.0,41.0,,,41.0,81.0,98.0,95.0,,,,,,,,,,
+16,Siriki Dembélé,27,Birmingham City,Championship,Left Wing,Winger,67.43,36.0,95.0,58.0,,50.0,73.0,21.0,,,8.0,20.0,58.0,97.0,,,,,,,,,,
+33,Daniel James,25,Leeds United,Championship,Left Wing,Winger,67.29,83.0,39.0,86.0,,82.0,76.0,62.0,,,14.0,89.0,97.0,15.0,,,,,,,,,,
+3,Marcus Forss,24,Middlesbrough,Championship,Right Wing,Winger,66.27,95.0,62.0,98.0,,100.0,39.0,74.0,,,67.0,65.0,50.0,56.0,,,,,,,,,,
+8,Yaser Esneider Asprilla Martínez,19,Watford,Championship,Right Wing,Winger,66.26,50.0,16.0,61.0,,95.0,79.0,59.0,,,32.0,73.0,79.0,88.0,,,,,,,,,,
+47,Matheus Martins Silva dos Santos,20,Watford,Championship,Left Wing,Winger,65.44,53.0,91.0,92.0,,52.0,77.0,17.0,,,11.0,71.0,42.0,39.0,,,,,,,,,,
+46,Samuel John Bell,21,Bristol City,Championship,Left Wing,Winger,61.73,61.0,89.0,47.0,,70.0,20.0,85.0,,,83.0,81.0,41.0,44.0,,,,,,,,,,
+34,Patrick Roberts,26,Sunderland,Championship,Right Wing,Winger,61.3,64.0,16.0,71.0,,68.0,70.0,55.0,,,47.0,12.0,18.0,89.0,,,,,,,,,,
+42,Tyrhys Dolan,21,Blackburn Rovers,Championship,Left Wing,Winger,60.76,86.0,41.0,55.0,,59.0,48.0,32.0,,,65.0,58.0,12.0,74.0,,,,,,,,,,
+58,Bali Mumba,22,Plymouth Argyle,Championship,Left Wing,Winger,58.91,38.0,33.0,18.0,,38.0,91.0,29.0,,,42.0,88.0,77.0,61.0,,,,,,,,,,
+1,Ryan Hedges,28,Blackburn Rovers,Championship,Right Wing,Winger,58.21,52.0,47.0,38.0,,67.0,80.0,23.0,,,100.0,52.0,39.0,50.0,,,,,,,,,,
+36,Duncan Watmore,29,Millwall,Championship,Left Wing,Winger,57.85,59.0,45.0,56.0,,88.0,71.0,30.0,,,73.0,47.0,38.0,29.0,,,,,,,,,,
+62,Degnand Wilfried Gnonto,19,Leeds United,Championship,Left Wing,Winger,56.63,67.0,61.0,62.0,,20.0,92.0,70.0,,,23.0,27.0,11.0,98.0,,,,,,,,,,
+65,Abdul Fatawu Issahaku,19,Leicester City,Championship,Right Wing,Winger,55.28,8.0,16.0,59.0,,94.0,65.0,56.0,,,12.0,79.0,86.0,77.0,,,,,,,,,,
+50,Wes Burns,28,Ipswich Town,Championship,Right Wing,Winger,55.23,33.0,32.0,35.0,,85.0,41.0,36.0,,,45.0,85.0,94.0,18.0,,,,,,,,,,
+26,Riley McGree,24,Middlesbrough,Championship,Left Wing,Winger,54.06,76.0,92.0,68.0,,3.0,50.0,71.0,,,95.0,23.0,15.0,65.0,,,,,,,,,,
+6,Samuel Silvera,22,Middlesbrough,Championship,Left Wing,Winger,54.03,85.0,16.0,85.0,,32.0,45.0,77.0,,,59.0,54.0,65.0,82.0,,,,,,,,,,
+57,Mark Sykes,26,Bristol City,Championship,Right Wing,Winger,53.68,41.0,64.0,12.0,,64.0,32.0,42.0,,,53.0,73.0,52.0,59.0,,,,,,,,,,
+27,Liam Cullen,24,Swansea City,Championship,Right Midfielder,Winger,53.18,55.0,42.0,52.0,,86.0,5.0,67.0,,,64.0,14.0,91.0,41.0,,,,,,,,,,
+35,Christian Fassnacht,29,Norwich City,Championship,Right Wing,Winger,52.57,91.0,71.0,33.0,,33.0,17.0,50.0,,,89.0,64.0,33.0,55.0,,,,,,,,,,
+4,Keshi Anderson,28,Birmingham City,Championship,Left Wing,Winger,51.57,29.0,16.0,21.0,,55.0,89.0,24.0,,,61.0,33.0,74.0,53.0,,,,,,,,,,
+43,Samuel Edozie,20,Southampton,Championship,Left Wing,Winger,51.19,35.0,82.0,42.0,,12.0,67.0,92.0,,,79.0,41.0,27.0,83.0,,,,,,,,,,
+32,Karlan Ahearne-Grant,26,Cardiff City,Championship,Left Wing,Winger,51.0,56.0,38.0,41.0,,62.0,56.0,11.0,,,55.0,86.0,53.0,26.0,,,,,,,,,,
+52,Adam Armstrong,26,Southampton,Championship,Right Wing,Winger,50.96,74.0,94.0,76.0,,42.0,18.0,68.0,,,35.0,92.0,3.0,5.0,,,,,,,,,,
+44,Sorba Thomas,24,Huddersfield Town,Championship,Right Wing,Winger,50.9,20.0,36.0,8.0,,92.0,29.0,8.0,,,21.0,97.0,100.0,17.0,,,,,,,,,,
+19,Marcus Harness,27,Ipswich Town,Championship,Left Wing,Winger,50.89,71.0,85.0,83.0,,71.0,61.0,65.0,,,38.0,5.0,29.0,12.0,,,,,,,,,,
+10,Abdoullah Ba,20,Sunderland,Championship,Right Wing,Winger,50.62,45.0,68.0,39.0,,29.0,47.0,18.0,,,20.0,83.0,8.0,68.0,,,,,,,,,,
+40,Kamaldeen Sulemana,21,Southampton,Championship,Left Wing,Winger,50.2,48.0,16.0,26.0,,47.0,83.0,38.0,,,18.0,77.0,45.0,100.0,,,,,,,,,,
+21,Ilias Chair,25,Queens Park Rangers,Championship,Left Wing,Winger,50.18,23.0,16.0,53.0,,36.0,59.0,5.0,,,17.0,36.0,70.0,64.0,,,,,,,,,,
+63,Jeremy Leonel Sarmiento Morante,21,West Bromwich Albion,Championship,Left Wing,Winger,49.71,17.0,74.0,29.0,,53.0,58.0,83.0,,,71.0,9.0,17.0,94.0,,,,,,,,,,
+29,Kasey McAteer,21,Leicester City,Championship,Right Wing,Winger,48.93,94.0,100.0,65.0,,14.0,33.0,52.0,,,58.0,91.0,21.0,24.0,,,,,,,,,,
+18,Onel Lázaro Hernández Mayea,30,Norwich City,Championship,Left Midfielder,Winger,47.41,68.0,16.0,74.0,,76.0,98.0,45.0,,,9.0,43.0,36.0,27.0,,,,,,,,,,
+5,Giorgi Chakvetadze,24,Watford,Championship,Left Wing,Winger,46.49,30.0,16.0,89.0,,48.0,88.0,64.0,,,70.0,39.0,14.0,73.0,,,,,,,,,,
+15,Ken Sema,30,Watford,Championship,Right Wing,Winger,45.87,11.0,16.0,24.0,,61.0,53.0,47.0,,,15.0,54.0,76.0,70.0,,,,,,,,,,
+24,Przemysław Płacheta,25,Norwich City,Championship,Left Wing,Winger,45.05,24.0,16.0,45.0,,97.0,44.0,35.0,,,80.0,67.0,71.0,35.0,,,,,,,,,,
+14,Tyrese Campbell,23,Stoke City,Championship,Left Wing,Winger,44.81,100.0,16.0,100.0,,27.0,68.0,58.0,,,2.0,43.0,5.0,52.0,,,,,,,,,,
+60,Josh Bowler,24,Cardiff City,Championship,Right Wing,Winger,40.81,27.0,86.0,17.0,,21.0,52.0,6.0,,,5.0,6.0,89.0,33.0,,,,,,,,,,
+2,Scott Twine,24,Hull City,Championship,Left Midfielder,Winger,40.36,70.0,16.0,88.0,,26.0,62.0,76.0,,,85.0,11.0,48.0,8.0,,,,,,,,,,
+48,Romain Esse,18,Millwall,Championship,Right Wing,Winger,40.27,32.0,80.0,23.0,,44.0,26.0,53.0,,,44.0,8.0,64.0,32.0,,,,,,,,,,
+59,Mehdi Pascal Marcel Léris,25,Stoke City,Championship,Right Wing,Winger,39.57,18.0,52.0,20.0,,45.0,8.0,39.0,,,52.0,32.0,67.0,45.0,,,,,,,,,,
+41,Nathan Tella,24,Southampton,Championship,Right Wing,Winger,39.41,92.0,73.0,91.0,,2.0,55.0,98.0,,,24.0,76.0,2.0,23.0,,,,,,,,,,
+11,Jamal Lowe,29,Swansea City,Championship,Left Midfielder,Winger,38.17,77.0,48.0,67.0,,17.0,27.0,91.0,,,76.0,17.0,82.0,2.0,,,,,,,,,,
+53,Harry Cornick,28,Bristol City,Championship,Right Wing,Winger,37.92,73.0,53.0,27.0,,8.0,9.0,97.0,,,91.0,45.0,73.0,38.0,,,,,,,,,,
+28,Dilan Kumar Markanday,22,Blackburn Rovers,Championship,Right Wing,Winger,37.84,42.0,59.0,44.0,,24.0,23.0,82.0,,,33.0,18.0,56.0,42.0,,,,,,,,,,
+45,Oliver Cooper,23,Swansea City,Championship,Left Midfielder,Winger,36.0,21.0,76.0,32.0,,11.0,30.0,95.0,,,48.0,3.0,47.0,58.0,,,,,,,,,,
+22,Anthony Musaba,22,Sheffield Wednesday,Championship,Left Midfielder,Winger,35.01,15.0,50.0,6.0,,39.0,3.0,15.0,,,82.0,49.0,35.0,62.0,,,,,,,,,,
+20,Fred Onyedinma,26,Rotherham United,Championship,Left Wing,Winger,34.61,47.0,56.0,36.0,,9.0,6.0,3.0,,,26.0,69.0,6.0,48.0,,,,,,,,,,
+13,Thomas Christopher Ince,31,Watford,Championship,Right Wing,Winger,34.12,12.0,67.0,30.0,,58.0,14.0,20.0,,,36.0,30.0,83.0,6.0,,,,,,,,,,
+0,Ryan Fraser,29,Southampton,Championship,Left Wing,Winger,33.17,6.0,16.0,11.0,,79.0,36.0,9.0,,,86.0,61.0,88.0,2.0,,,,,,,,,,
+23,Josh Windass,29,Sheffield Wednesday,Championship,Left Wing,Winger,30.69,58.0,16.0,50.0,,18.0,35.0,27.0,,,77.0,56.0,62.0,11.0,,,,,,,,,,
+54,Andre Green,25,Rotherham United,Championship,Right Wing,Winger,25.12,44.0,16.0,9.0,,6.0,12.0,2.0,,,50.0,62.0,26.0,47.0,,,,,,,,,,
+17,Jed Wallace,29,West Bromwich Albion,Championship,Right Wing,Winger,24.44,14.0,35.0,14.0,,15.0,11.0,44.0,,,98.0,59.0,32.0,30.0,,,,,,,,,,
+38,John Buckley,23,Sheffield Wednesday,Championship,Left Wing,Winger,23.94,2.0,16.0,3.0,,23.0,24.0,33.0,,,94.0,2.0,30.0,67.0,,,,,,,,,,
+9,Sam Greenwood,21,Middlesbrough,Championship,Left Wing,Winger,23.38,26.0,79.0,79.0,,5.0,2.0,100.0,,,97.0,35.0,20.0,9.0,,,,,,,,,,
+64,Callum Wright,23,Plymouth Argyle,Championship,Left Wing,Winger,21.42,5.0,16.0,5.0,,35.0,21.0,26.0,,,92.0,15.0,55.0,20.0,,,,,,,,,,
+55,Yunus Akgün,23,Leicester City,Championship,Right Wing,Winger,20.06,9.0,16.0,15.0,,41.0,42.0,94.0,,,39.0,21.0,9.0,14.0,,,,,,,,,,
+51,Oliver Burke,26,Birmingham City,Championship,Right Wing,Winger,17.16,3.0,16.0,2.0,,30.0,15.0,14.0,,,30.0,100.0,24.0,21.0,,,,,,,,,,
+41,Koji Miyoshi,26,Birmingham City,Championship,Centre Attacking Midfielder,Attacking Midfield,87.76,,,,,,,,,,,,,,91.0,70.0,77.0,93.0,98.0,93.0,84.0,95.0,20.0,89.0
+26,Samuel Szmodics,28,Blackburn Rovers,Championship,Centre Attacking Midfielder,Attacking Midfield,80.54,,,,,,,,,,,,,,98.0,95.0,93.0,73.0,61.0,52.0,27.0,82.0,45.0,84.0
+24,Duane Holmes,28,Preston North End,Championship,Right Attacking Midfielder,Attacking Midfield,80.42,,,,,,,,,,,,,,55.0,64.0,36.0,95.0,95.0,84.0,73.0,98.0,16.0,100.0
+9,Finn Azaz,23,Plymouth Argyle,Championship,Left Centre Midfielder,Attacking Midfield,73.75,,,,,,,,,,,,,,39.0,66.0,64.0,75.0,93.0,98.0,93.0,70.0,61.0,53.0
+32,Luke Cundle,21,Plymouth Argyle,Championship,Right Centre Midfielder,Attacking Midfield,68.99,,,,,,,,,,,,,,84.0,100.0,75.0,50.0,89.0,95.0,34.0,91.0,98.0,34.0
+30,Duncan Watmore,29,Millwall,Championship,Left Wing,Attacking Midfield,67.03,,,,,,,,,,,,,,64.0,57.0,66.0,52.0,91.0,80.0,52.0,93.0,50.0,86.0
+27,Zian Flemming,25,Millwall,Championship,Centre Attacking Midfielder,Attacking Midfield,65.36,,,,,,,,,,,,,,59.0,59.0,80.0,68.0,48.0,68.0,80.0,55.0,7.0,80.0
+18,Ilias Chair,25,Queens Park Rangers,Championship,Left Wing,Attacking Midfield,63.59,,,,,,,,,,,,,,20.0,25.0,55.0,80.0,55.0,70.0,89.0,84.0,9.0,77.0
+36,John Swift,28,West Bromwich Albion,Championship,Centre Attacking Midfielder,Attacking Midfield,63.46,,,,,,,,,,,,,,43.0,93.0,39.0,84.0,52.0,55.0,50.0,52.0,89.0,53.0
+12,Kasey Palmer,26,Coventry City,Championship,Centre Attacking Midfielder,Attacking Midfield,63.11,,,,,,,,,,,,,,41.0,25.0,61.0,91.0,86.0,91.0,100.0,64.0,5.0,36.0
+21,Morgan Rogers,21,Middlesbrough,Championship,Centre Attacking Midfielder,Attacking Midfield,62.26,,,,,,,,,,,,,,75.0,25.0,43.0,89.0,100.0,100.0,75.0,27.0,91.0,68.0
+4,Keshi Anderson,28,Birmingham City,Championship,Left Wing,Attacking Midfield,61.49,,,,,,,,,,,,,,32.0,25.0,34.0,82.0,68.0,89.0,68.0,100.0,48.0,70.0
+20,Jay Stansfield,20,Birmingham City,Championship,Centre Attacking Midfielder,Attacking Midfield,59.93,,,,,,,,,,,,,,80.0,86.0,98.0,30.0,43.0,14.0,98.0,59.0,84.0,75.0
+22,Alex Pritchard,30,Sunderland,Championship,Left Centre Midfielder,Attacking Midfield,56.78,,,,,,,,,,,,,,66.0,25.0,59.0,86.0,66.0,30.0,41.0,73.0,43.0,11.0
+17,Marcus Harness,27,Ipswich Town,Championship,Left Wing,Attacking Midfield,56.37,,,,,,,,,,,,,,77.0,84.0,89.0,36.0,84.0,77.0,30.0,86.0,25.0,16.0
+33,Conor Chaplin,26,Ipswich Town,Championship,Centre Attacking Midfielder,Attacking Midfield,54.58,,,,,,,,,,,,,,95.0,89.0,100.0,18.0,45.0,57.0,7.0,34.0,34.0,23.0
+0,Adama Traoré,28,Hull City,Championship,Centre Attacking Midfielder,Attacking Midfield,54.07,,,,,,,,,,,,,,86.0,68.0,70.0,25.0,41.0,73.0,70.0,45.0,80.0,14.0
+5,Mads Frøkjær-Jensen,24,Preston North End,Championship,Left Attacking Midfielder,Attacking Midfield,53.31,,,,,,,,,,,,,,70.0,75.0,48.0,43.0,57.0,50.0,61.0,30.0,39.0,60.0
+1,Scott Twine,24,Hull City,Championship,Left Midfielder,Attacking Midfield,52.91,,,,,,,,,,,,,,73.0,25.0,95.0,59.0,39.0,64.0,11.0,89.0,70.0,30.0
+13,Matty Crooks,29,Middlesbrough,Championship,Centre Attacking Midfielder,Attacking Midfield,51.56,,,,,,,,,,,,,,89.0,73.0,18.0,16.0,77.0,75.0,45.0,20.0,100.0,82.0
+6,Bradley Dack,29,Sunderland,Championship,Centre Attacking Midfielder,Attacking Midfield,49.47,,,,,,,,,,,,,,82.0,77.0,27.0,64.0,80.0,86.0,18.0,11.0,75.0,5.0
+15,Hakeem Odofin,25,Rotherham United,Championship,Centre Attacking Midfielder,Attacking Midfield,47.56,,,,,,,,,,,,,,52.0,91.0,23.0,32.0,59.0,16.0,39.0,80.0,30.0,27.0
+35,Aaron Ramsey,32,Cardiff City,Championship,Centre Attacking Midfielder,Attacking Midfield,46.89,,,,,,,,,,,,,,27.0,82.0,25.0,41.0,70.0,66.0,57.0,23.0,93.0,20.0
+11,Jobe Bellingham,18,Sunderland,Championship,Centre Forward,Attacking Midfield,46.2,,,,,,,,,,,,,,61.0,61.0,50.0,2.0,50.0,20.0,64.0,48.0,27.0,60.0
+39,Grady Diangana,25,West Bromwich Albion,Championship,Right Attacking Midfielder,Attacking Midfield,45.55,,,,,,,,,,,,,,36.0,25.0,82.0,61.0,73.0,82.0,95.0,18.0,57.0,9.0
+28,Joël Piroe,24,Leeds United,Championship,Centre Attacking Midfielder,Attacking Midfield,45.26,,,,,,,,,,,,,,100.0,98.0,91.0,23.0,16.0,25.0,32.0,7.0,67.0,40.0
+23,Tom Smith,31,Middlesbrough,Championship,Right Back,Attacking Midfield,43.89,,,,,,,,,,,,,,7.0,25.0,9.0,100.0,75.0,59.0,3.0,66.0,11.0,50.0
+19,Josh Windass,29,Sheffield Wednesday,Championship,Left Wing,Attacking Midfield,43.53,,,,,,,,,,,,,,57.0,25.0,52.0,66.0,30.0,27.0,25.0,68.0,55.0,93.0
+43,Brahima Diarra,20,Huddersfield Town,Championship,Centre Attacking Midfielder,Attacking Midfield,40.3,,,,,,,,,,,,,,68.0,25.0,57.0,48.0,23.0,41.0,77.0,41.0,64.0,47.0
+14,Carlos Miguel Ribeiro Dias,30,Rotherham United,Championship,Centre Attacking Midfielder,Attacking Midfield,40.17,,,,,,,,,,,,,,11.0,25.0,14.0,98.0,34.0,36.0,20.0,50.0,32.0,32.0
+40,Jason Knight,22,Bristol City,Championship,Right Centre Midfielder,Attacking Midfield,38.99,,,,,,,,,,,,,,34.0,25.0,41.0,57.0,27.0,18.0,43.0,36.0,77.0,64.0
+8,Tatsuhiro Sakamoto,26,Coventry City,Championship,Right Wing Back,Attacking Midfield,37.45,,,,,,,,,,,,,,16.0,25.0,2.0,55.0,25.0,43.0,82.0,75.0,36.0,47.0
+25,Jamie Allen,28,Coventry City,Championship,Centre Attacking Midfielder,Attacking Midfield,36.72,,,,,,,,,,,,,,9.0,25.0,5.0,77.0,82.0,45.0,14.0,32.0,59.0,25.0
+2,Jamie Paterson,31,Swansea City,Championship,Left Centre Forward,Attacking Midfield,34.22,,,,,,,,,,,,,,23.0,25.0,45.0,14.0,64.0,61.0,48.0,25.0,82.0,57.0
+38,Alan James Browne,28,Preston North End,Championship,Right Defensive Midfielder,Attacking Midfield,33.3,,,,,,,,,,,,,,14.0,25.0,20.0,45.0,20.0,23.0,59.0,43.0,52.0,43.0
+16,Ben Wiles,24,Huddersfield Town,Championship,Left Centre Midfielder,Attacking Midfield,32.84,,,,,,,,,,,,,,18.0,25.0,30.0,70.0,32.0,39.0,36.0,14.0,18.0,98.0
+31,John Buckley,23,Sheffield Wednesday,Championship,Left Wing,Attacking Midfield,31.75,,,,,,,,,,,,,,2.0,25.0,7.0,39.0,36.0,48.0,91.0,57.0,86.0,2.0
+37,Andre Green,25,Rotherham United,Championship,Right Wing,Attacking Midfield,31.71,,,,,,,,,,,,,,48.0,25.0,16.0,34.0,11.0,5.0,66.0,39.0,41.0,95.0
+29,Joël Piroe,24,Swansea City,Championship,Right Centre Forward,Attacking Midfield,31.48,,,,,,,,,,,,,,93.0,25.0,86.0,11.0,7.0,7.0,16.0,77.0,67.0,40.0
+34,Ashley Barnes,33,Norwich City,Championship,Centre Attacking Midfielder,Attacking Midfield,26.42,,,,,,,,,,,,,,50.0,55.0,73.0,5.0,18.0,34.0,3.0,16.0,73.0,18.0
+7,Lyndon Dykes,28,Queens Park Rangers,Championship,Centre Forward,Attacking Midfield,26.25,,,,,,,,,,,,,,45.0,52.0,68.0,7.0,5.0,11.0,55.0,9.0,2.0,91.0
+10,Sam Greenwood,21,Middlesbrough,Championship,Left Wing,Attacking Midfield,23.77,,,,,,,,,,,,,,25.0,80.0,84.0,27.0,9.0,9.0,23.0,2.0,95.0,73.0
+42,Chris Anthony Willock,25,Queens Park Rangers,Championship,Right Attacking Midfielder,Attacking Midfield,22.53,,,,,,,,,,,,,,5.0,25.0,11.0,9.0,14.0,32.0,86.0,61.0,23.0,7.0
+3,Lee Gregory,35,Sheffield Wednesday,Championship,Centre Forward,Attacking Midfield,18.81,,,,,,,,,,,,,,30.0,50.0,32.0,20.0,2.0,2.0,9.0,5.0,14.0,66.0
