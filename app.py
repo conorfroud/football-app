@@ -139,7 +139,8 @@ def about_tab(df2):
     )
 
     # Assuming you have a 'Score Type' column in your DataFrame
-    selected_score_type = df2[df2["Player Name"] == selected_player]["Score Type"].values[0]
+    selected_score_type = df2[df2["Player Name"] == selected_player].drop_duplicates(subset=["Player Name"])["Score Type"].values[0]
+
 
     # Automatically select the profile based on 'Score Type'
     if selected_score_type == "Striker":
