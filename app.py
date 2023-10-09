@@ -180,7 +180,7 @@ def about_tab(df2):
 
     plt.tight_layout()
 
-    selected_player_row = df1[df1["Player Name"] == selected_player].iloc[0]
+    selected_player_row = df2[df2["Player Name"] == selected_player].iloc[0]
     primary_position_text = f"Primary Position: {selected_player_row['primary_position']}"
     player_minutes_text = f"Player Minutes: {selected_player_row['player_season_minutes']}"
 
@@ -192,7 +192,7 @@ def about_tab(df2):
 
     st.pyplot(fig)
     
-    #st.dataframe(df1)
+    #st.dataframe(df2)
 
     # Plot for Defensive Play (you can modify column names and logic as needed)
     #ax2 = axes[1]
