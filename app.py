@@ -138,16 +138,10 @@ def about_tab(df2):
         index=0  # Set the default index to the first player
     )
 
-    # Create a selectbox to choose the profile
-    selected_profile = st.sidebar.selectbox(
-        "Select a Profile:",
-        ["Forward Profile"]
-    )
+    # Assign a default value to 'columns'
+    columns = []
 
-    # Assuming you want to filter df1 based on the selected player
-    selected_df = filtered_df[filtered_df["Player Name"] == selected_player]
-
-    # Reshape the data for plotting based on the selected profile
+    # Set 'columns' based on the selected score type
     if selected_score_type == "Forward":
         columns = ["Player Name", "player_season_np_xg_90 Percentile", "player_season_npg_90 Percentile", "player_season_np_shots_90 Percentile"]
         plot_title = f"Forward Metrics for {selected_player}"
