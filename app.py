@@ -180,10 +180,6 @@ def about_tab(df2):
 
     plt.tight_layout()
 
-    selected_player_row = df2[df2["Player Name"] == selected_player].iloc[0]
-    primary_position_text = f"Primary Position: {selected_player_row['Position']}"
-    player_minutes_text = f"Player Minutes: {selected_player_row['player_season_minutes']}"
-
 # Define the y-coordinate for the 'player_minutes_text' to position it below 'primary_position_text'
     #y_coord = -1.6
 
