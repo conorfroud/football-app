@@ -86,6 +86,8 @@ def main_tab(df2):
                     (df2['Contract expires'].isin(selected_contract_expiry_years)) &
                     (df2['Market value (millions)'] >= player_market_value_range[0]) &
                     (df2['Market value (millions)'] <= player_market_value_range[1]) &
+                    (df2['Stoke Score'] >= stoke_range[0]) &
+                    (df2['Stoke Score'] <= stoke_range[1]) &
                     (df2[selected_columns[5]] >= avg_distance_percentile_range[0]) &
                     (df2[selected_columns[5]] <= avg_distance_percentile_range[1]) &
                     (df2[selected_columns[6]] >= top_5_psv_99_percentile_range[0]) &
