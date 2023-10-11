@@ -38,9 +38,6 @@ def main_tab(df2):
     min_player_market_value = int(df2['Market value (millions)'].min())
     max_player_market_value = int(df2['Market value (millions)'].max())
 
-    min_stoke_score = 0
-    max_stoke_score = 100
-
     # Add a sidebar dropdown box for leagues
     selected_league = st.sidebar.selectbox("Select a League", league_options)
 
@@ -48,7 +45,7 @@ def main_tab(df2):
     selected_score_type = st.sidebar.selectbox("Select a Score Type", score_type_options)
 
     # Add a slider for selecting the Stoke Score range
-    stoke_score_range = st.sidebar.slider("Select Stoke Score Range", min_value=min_stoke_score, max_value=max_stoke_score, value=(min_stoke_score, max_stoke_score))
+    stoke_score_range = st.sidebar.slider("Select Stoke Score Range", min_value=0, max_value=100)
 
     # Add a slider for selecting the age range
     age_range = st.sidebar.slider("Select Age Range", min_value=min_age, max_value=max_age, value=(min_age, max_age))
