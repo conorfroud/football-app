@@ -91,10 +91,11 @@ def main_tab(df2):
     filtered_df = df2[combined_condition]
 
     # Define the columns to display based on the 'Score Type'
-    display_columns = score_type_column_mapping.get(selected_score_type, [])
+    display_columns = score_type_filter_mapping.get(selected_score_type, [])
 
     # Display the filtered DataFrame with selected columns
     st.dataframe(filtered_df[display_columns])
+
 
 
 
