@@ -82,8 +82,13 @@ def main_tab(df2):
     for column in columns_for_filter:
         filter_conditions.append((df2[column] >= avg_distance_percentile_range[0]) & (df2[column] <= avg_distance_percentile_range[1]))
 
-    # Filter the DataFrame based on the selected filters
-    filtered_df = df2[all(filter_conditions)]
+    # Combine all filter conditions with '&'
+    combined_condition = pd.Series([True]*len(df2))
+    for condition in filter_conditions:
+        combined_condition &= condition
+
+    # Filter the DataFrame based on the combined condition
+    filtered_df = df2[combined_condition]
 
     # Define the columns to display based on the 'Score Type'
     display_columns = score_type_column_mapping.get(selected_score_type, [])
