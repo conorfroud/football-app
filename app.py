@@ -34,9 +34,6 @@ def main_tab(df2):
     # Get the unique contract expiry years from the DataFrame
     contract_expiry_years = sorted(df2['Contract expires'].unique())
 
-    min_stoke_score = 0
-    max_stoke_score = 100
-
     # Get the minimum and maximum player market value (in euros) from the DataFrame
     min_player_market_value = int(df2['Market value (millions)'].min())
     max_player_market_value = int(df2['Market value (millions)'].max())
@@ -46,8 +43,6 @@ def main_tab(df2):
 
     # Add a sidebar dropdown box for score types
     selected_score_type = st.sidebar.selectbox("Select a Score Type", score_type_options)
-
-    st.sidebar.slider("Select Stoke Score Range", min_value=min_stoke_score, max_value=max_stoke_score, value=(min_stoke_score, max_stoke_score), key="stoke_score_slider")    
     
     # Add a slider for selecting the age range
     age_range = st.sidebar.slider("Select Age Range", min_value=min_age, max_value=max_age, value=(min_age, max_age))
@@ -86,8 +81,6 @@ def main_tab(df2):
                     (df2['Contract expires'].isin(selected_contract_expiry_years)) &
                     (df2['Market value (millions)'] >= player_market_value_range[0]) &
                     (df2['Market value (millions)'] <= player_market_value_range[1]) &
-                    (df2['Stoke Score'] >= st.sidebar.slider("Select Stoke Score Range", min_value=min_stoke_score, max_value=max_stoke_score, value=(min_stoke_score, max_stoke_score))[0]) &
-                    (df2['Stoke Score'] <= st.sidebar.slider("Select Stoke Score Range", min_value=min_stoke_score, max_value=max_stoke_score, value=(min_stoke_score, max_stoke_score))[1]) &
                     (df2[selected_columns[5]] >= avg_distance_percentile_range[0]) &
                     (df2[selected_columns[5]] <= avg_distance_percentile_range[1]) &
                     (df2[selected_columns[6]] >= top_5_psv_99_percentile_range[0]) &
