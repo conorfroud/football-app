@@ -274,7 +274,7 @@ def scatter_plot(df):
 # Sidebar for filtering by league (allow only one league to be selected)
     
 # Filter data based on user-selected positions, players, minutes played, and league
-    filtered_df = df[(df['primary_position'].isin(selected_positions) | (len(selected_positions) == 0)) & 
+    filtered_df = df[(df['position_1'].isin(selected_positions) | (len(selected_positions) == 0)) & 
                  #(df['player_name'].isin(selected_players) | (len(selected_players) == 0)) &
                  (df['minutes'] >= selected_minutes[0]) &
                  (df['minutes'] <= selected_minutes[1]) &
@@ -314,35 +314,6 @@ def scatter_plot(df):
 
 # Display the plot in Streamlit
     st.plotly_chart(fig)
-
-
-def venn_tab(df1):
-
-    # Sample percentile data for three metrics
-    percentile_data = {
-     'Metric A': [25, 50, 75],
-     'Metric B': [30, 60, 80],
-     'Metric C': [20, 50, 70],
-}
-
-    st.title('Venn Diagram of Percentile Values')
-
-# Create Venn diagram using matplotlib-venn
-    fig, ax = plt.subplots()
-    
-    venn3(subsets=(
-     set(percentile_data['Metric A']),
-     set(percentile_data['Metric B']),
-     set(percentile_data['Metric C'])
-),
-    set_labels=('Metric A', 'Metric B', 'Metric C'))
-
-# Display the Venn diagram in the Streamlit app
-    st.pyplot(fig)
-
-# Display the data table
-    st.subheader('Percentile Data')
-    st.table(percentile_data)
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
