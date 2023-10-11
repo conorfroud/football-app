@@ -45,8 +45,7 @@ def main_tab(df2):
     selected_score_type = st.sidebar.selectbox("Select a Score Type", score_type_options)
 
     # Add a slider for selecting the Stoke Score range
-    st.sidebar.header("Stoke Score Range")
-    stoke_score_range = st.sidebar.slider("Select Stoke Score Range", min_value=df2['Stoke Score'].min(), max_value=df2['Stoke Score'].max(), value=(df2['Stoke Score'].min(), df2['Stoke Score'].max()))
+    stoke_score_range = st.sidebar.slider("Select Stoke Score Range", min_value=float(df2['Stoke Score'].min()), max_value=float(df2['Stoke Score'].max()), value=(float(df2['Stoke Score'].min()), float(df2['Stoke Score'].max()))
 
     # Add a slider for selecting the age range
     age_range = st.sidebar.slider("Select Age Range", min_value=min_age, max_value=max_age, value=(min_age, max_age))
