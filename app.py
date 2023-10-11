@@ -74,7 +74,6 @@ def main_tab(df2):
     # Get the selected columns based on 'Score Type'
     selected_columns = score_type_column_mapping.get(selected_score_type, [])
 
-    # Filter the DataFrame based on the selected filters
     filtered_df = df2[(df2['League'] == selected_league) &
                     (df2['Score Type'] == selected_score_type) &
                     (df2['Age'] >= age_range[0]) &
@@ -83,9 +82,9 @@ def main_tab(df2):
                     (df2['Market value (millions)'] >= player_market_value_range[0]) &
                     (df2['Market value (millions)'] <= player_market_value_range[1]) &
                     (df2[selected_columns[5]] >= avg_distance_percentile_range[0]) &
-                    (df2[selected_columns[6]] <= avg_distance_percentile_range[1]) &
-                    ((df2[selected_columns[7]] >= top_5_psv_99_percentile_range[0]) &
-                    (df2[selected_columns[8]] <= top_5_psv_99_percentile_range[1]))]
+                    (df2[selected_columns[5]] <= avg_distance_percentile_range[1]) &
+                    ((df2[selected_columns[6]] >= top_5_psv_99_percentile_range[0]) &
+                    (df2[selected_columns[6]] <= top_5_psv_99_percentile_range[1]))]
 
     # Display the filtered DataFrame with selected columns
     st.dataframe(filtered_df[selected_columns])
