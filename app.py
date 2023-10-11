@@ -59,43 +59,31 @@ def main_tab(df2):
     # Add a slider for selecting the Top 5 PSV-99 Percentile range
     top_5_psv_99_percentile_range = st.sidebar.slider("Select Top 5 PSV-99 Percentile Range", min_value=0, max_value=100, value=(0, 100))
 
-    # Define a dictionary that maps 'Score Type' to columns for filtering
-    score_type_filter_mapping = {
-        'Striker': ['Average Distance Percentile', 'Top 5 PSV-99 Percentile'],
-        'Winger': ['Average Distance (W)', 'Top 5 PSV (W)'],
+    # Define a dictionary that maps 'Score Type' to columns
+    score_type_column_mapping = {
+        'Score Type 1': ['Player Name', 'Age', 'Team', 'League', 'Stoke Score', 'Average Distance Percentile', 'Contract expires', 'Market value (millions)'],
+        'Score Type 2': ['Player Name', 'Age', 'Team', 'League', 'Stoke Score', 'Top 5 PSV-99 Percentile', 'Contract expires', 'Market value (millions)'],
         # Add more mappings for other score types if needed
     }
 
-    # Get the columns for filtering based on 'Score Type'
-    columns_for_filter = score_type_filter_mapping.get(selected_score_type, [])
+    # Get the selected columns based on 'Score Type'
+    selected_columns = score_type_column_mapping.get(selected_score_type, [])
 
-    # Define the filter conditions for each column
-    filter_conditions = [
-        (df2['League'] == selected_league),
-        (df2['Score Type'] == selected_score_type),
-        (df2['Age'] >= age_range[0]) & (df2['Age'] <= age_range[1]),
-        (df2['Contract expires'].isin(selected_contract_expiry_years)),
-        (df2['Market value (millions)'] >= player_market_value_range[0]) & (df2['Market value (millions)'] <= player_market_value_range[1]),
-    ]
-
-    # Apply filter conditions for the selected columns
-    for column in columns_for_filter:
-        filter_conditions.append((df2[column] >= avg_distance_percentile_range[0]) & (df2[column] <= avg_distance_percentile_range[1]))
-
-    # Combine all filter conditions with '&'
-    combined_condition = pd.Series([True]*len(df2))
-    for condition in filter_conditions:
-        combined_condition &= condition
-
-    # Filter the DataFrame based on the combined condition
-    filtered_df = df2[combined_condition]
-
-    # Define the columns to display based on the 'Score Type'
-    display_columns = score_type_filter_mapping.get(selected_score_type, [])
+    # Filter the DataFrame based on the selected filters
+    filtered_df = df2[(df2['League'] == selected_league) &
+                    (df2['Score Type'] == selected_score_type) &
+                    (df2['Age'] >= age_range[0]) &
+                    (df2['Age'] <= age_range[1]) &
+                    (df2['Contract expires'].isin(selected_contract_expiry_years)) &
+                    (df2['Market value (millions)'] >= player_market_value_range[0]) &
+                    (df2['Market value (millions)'] <= player_market_value_range[1]) &
+                    (df2['Average Distance Percentile'] >= avg_distance_percentile_range[0]) &
+                    (df2['Average Distance Percentile'] <= avg_distance_percentile_range[1]) &
+                    (df2['Top 5 PSV-99 Percentile'] >= top_5_psv_99_percentile_range[0]) &
+                    (df2['Top 5 PSV-99 Percentile'] <= top_5_psv_99_percentile_range[1])]
 
     # Display the filtered DataFrame with selected columns
-    st.dataframe(filtered_df[display_columns])
-
+    st.dataframe(filtered_df[selected_columns])
 
 
 
