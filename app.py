@@ -34,6 +34,9 @@ def main_tab(df2):
     # Get the unique contract expiry years from the DataFrame
     contract_expiry_years = sorted(df2['Contract expires'].unique())
 
+    min_stoke_score = 0
+    max_stoke_score = 100
+
     # Get the minimum and maximum player market value (in euros) from the DataFrame
     min_player_market_value = int(df2['Market value (millions)'].min())
     max_player_market_value = int(df2['Market value (millions)'].max())
