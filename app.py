@@ -79,18 +79,18 @@ def main_tab(df2):
     selected_columns = score_type_column_mapping.get(selected_score_type, [])
 
     filtered_df = df2[(df2['League'] == selected_league) &
-                      (df2['Score Type'] == selected_score_type) &
-                      (df2['Age'] >= age_range[0]) &
-                      (df2['Age'] <= age_range[1]) &
-                      (df2['Contract expires'].isin(selected_contract_expiry_years)) &
-                      (df2['Market value (millions)'] >= player_market_value_range[0]) &
-                      (df2['Market value (millions)'] <= player_market_value_range[1]) &
-                      (df2['Stoke Score'] >= stoke_score_range[0]) &  # Include Stoke Score filter
-                      (df2['Stoke Score'] <= stoke_score_range[1]) &  # Include Stoke Score filter
-                      (df2[selected_columns[5]] >= avg_distance_percentile_range[0]) &
-                      (df2[selected_columns[5]] <= avg_distance_percentile_range[1]) &
-                      ((df2[selected_columns[6]] >= top_5_psv_99_percentile_range[0]) &
-                      (df2[selected_columns[6]] <= top_5_psv_99_percentile_range[1]))]
+                    (df2['Score Type'] == selected_score_type) &
+                    (df2['Age'] >= age_range[0]) &
+                    (df2['Age'] <= age_range[1]) &
+                    (df2['Contract expires'].isin(selected_contract_expiry_years)) &
+                    (df2['Market value (millions)'] >= player_market_value_range[0]) &
+                    (df2['Market value (millions)'] <= player_market_value_range[1]) &
+                    (df2['Stoke Score'] >= stoke_score_range[0]) &  # Include Stoke Score filter
+                    (df2['Stoke Score'] <= stoke_score_range[1]) &  # Include Stoke Score filter
+                    (df2[selected_columns[5]] >= avg_distance_percentile_range[0]) &
+                    (df2[selected_columns[5]] <= avg_distance_percentile_range[1]) &
+                    (df2[selected_columns[6]] >= top_5_psv_99_percentile_range[0]) &
+                    (df2[selected_columns[6]] <= top_5_psv_99_percentile_range[1])]
 
     # Display the filtered DataFrame with selected columns
     st.dataframe(filtered_df[selected_columns])
