@@ -59,7 +59,7 @@ def main_tab(df2):
     # Add a slider for selecting the Top 5 PSV-99 Percentile range
     top_5_psv_99_percentile_range = st.sidebar.slider("Select Top 5 PSV-99 Percentile Range", min_value=0, max_value=100, value=(0, 100))
 
-    # Define a dictionary that maps 'Score Type' to columns
+   # Define a dictionary that maps 'Score Type' to columns
     score_type_column_mapping = {
         'Striker': ['Player Name', 'Age', 'Team', 'League', 'Stoke Score', 'Average Distance Percentile', 'Top 5 PSV-99 Percentile', 'Contract expires', 'Market value (millions)'],
         'Winger': ['Player Name', 'Age', 'Team', 'League', 'Stoke Score', 'Average Distance (W)', 'Top 5 PSV (W)', 'Contract expires', 'Market value (millions)'],
@@ -77,14 +77,13 @@ def main_tab(df2):
                     (df2['Contract expires'].isin(selected_contract_expiry_years)) &
                     (df2['Market value (millions)'] >= player_market_value_range[0]) &
                     (df2['Market value (millions)'] <= player_market_value_range[1]) &
-                    (df2['Average Distance Percentile'] >= avg_distance_percentile_range[0]) &
-                    (df2['Average Distance Percentile'] <= avg_distance_percentile_range[1]) &
-                    (df2['Top 5 PSV-99 Percentile'] >= top_5_psv_99_percentile_range[0]) &
-                    (df2['Top 5 PSV-99 Percentile'] <= top_5_psv_99_percentile_range[1])]
+                    (df2[selected_columns[5]] >= avg_distance_percentile_range[0]) &
+                    (df2[selected_columns[6]] <= avg_distance_percentile_range[1]) &
+                    (df2[selected_columns[7]] >= top_5_psv_99_percentile_range[0]) &
+                    (df2[selected_columns[8]] <= top_5_psv_99_percentile_range[1])]
 
     # Display the filtered DataFrame with selected columns
     st.dataframe(filtered_df[selected_columns])
-
 
 
     #league = st.sidebar.multiselect(
