@@ -38,8 +38,8 @@ def main_tab(df2):
     min_player_market_value = int(df2['Market value (millions)'].min())
     max_player_market_value = int(df2['Market value (millions)'].max())
 
-    min_stoke_score = int(df2['Stoke Score'].min())
-    max_stoke_score = int(df2['Stoke Score'].max())
+    min_stoke_score = 0
+    max_stoke_score = 100
 
     # Add a sidebar dropdown box for leagues
     selected_league = st.sidebar.selectbox("Select a League", league_options)
