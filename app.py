@@ -96,6 +96,17 @@ def main_tab(df2):
     # Display the filtered DataFrame with selected columns
     st.dataframe(filtered_df[selected_columns])
 
+    # Add a download button to export the filtered DataFrame to a CSV file
+    if not filtered_df.empty:
+        csv_export = filtered_df[selected_columns].to_csv(index=False).encode('utf-8')
+        st.download_button(
+            label="Download CSV",
+            data=csv_export,
+            key="download_csv",
+            file_name="filtered_data.csv",
+            on_click=None,  # You can add a function to handle click events if needed
+        )
+
     #league = st.sidebar.multiselect(
        # "Select the League:",
         #options=df["Team"].unique(),
