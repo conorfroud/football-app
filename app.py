@@ -76,24 +76,25 @@ def main_tab(df2):
         'Centre Back': ['Player Name', 'Age', 'Team', 'League', 'Stoke Score', 'Average Distance (CB)',	'Top 5 PSV-99 (CB)', 'Contract expires', 'Market value (millions)']
     }
 
-    # Get the selected columns based on 'Score Type'
+    # Update the selected columns to include 'Score Type'
     selected_columns = score_type_column_mapping.get(selected_score_type, [])
+    selected_columns.append('Score Type')  # Add 'Score Type' to the selected columns
 
     filtered_df = df2[(df2['League'] == selected_league) &
-                    (df2['Score Type'] == selected_score_type) &
-                    (df2['Age'] >= age_range[0]) &
-                    (df2['Age'] <= age_range[1]) &
-                    (df2['Contract expires'].isin(selected_contract_expiry_years)) &
-                    (df2['Market value (millions)'] >= player_market_value_range[0]) &
-                    (df2['Market value (millions)'] <= player_market_value_range[1]) &
-                    (df2['Stoke Score'] >= stoke_range[0]) &
-                    (df2['Stoke Score'] <= stoke_range[1]) &
-                    (df2[selected_columns[5]] >= avg_distance_percentile_range[0]) &
-                    (df2[selected_columns[5]] <= avg_distance_percentile_range[1]) &
-                    (df2[selected_columns[6]] >= top_5_psv_99_percentile_range[0]) &
-                    (df2[selected_columns[6]] <= top_5_psv_99_percentile_range[1])]
+                (df2['Score Type'] == selected_score_type) &
+                (df2['Age'] >= age_range[0]) &
+                (df2['Age'] <= age_range[1]) &
+                (df2['Contract expires'].isin(selected_contract_expiry_years)) &
+                (df2['Market value (millions)'] >= player_market_value_range[0]) &
+                (df2['Market value (millions)'] <= player_market_value_range[1]) &
+                (df2['Stoke Score'] >= stoke_range[0]) &
+                (df2['Stoke Score'] <= stoke_range[1]) &
+                (df2[selected_columns[5]] >= avg_distance_percentile_range[0]) &
+                (df2[selected_columns[5]] <= avg_distance_percentile_range[1]) &
+                (df2[selected_columns[6]] >= top_5_psv_99_percentile_range[0]) &
+                (df2[selected_columns[6]] <= top_5_psv_99_percentile_range[1])]
 
-    # Display the filtered DataFrame with selected columns
+# Display the filtered DataFrame with selected columns
     st.dataframe(filtered_df[selected_columns])
 
     # Add a download button to export the filtered DataFrame to a CSV file
