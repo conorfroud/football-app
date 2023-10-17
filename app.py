@@ -77,7 +77,12 @@ def main_tab(df2):
         'Target Striker': ['Player Name', 'Age', 'Team', 'League', 'Stoke Score', 'Average Distance (ST)',	'Top 5 PSV-99 (ST)', 'Contract expires', 'Market value (millions)'],
         'Dribbling Winger': ['Player Name', 'Age', 'Team', 'League', 'Stoke Score', 'Average Distance (W)',	'Top 5 PSV (W)', 'Contract expires', 'Market value (millions)'],
         'Creative Winger': ['Player Name', 'Age', 'Team', 'League', 'Stoke Score', 'Average Distance (W)',	'Top 5 PSV (W)', 'Contract expires', 'Market value (millions)'],
-        'Goalscoring WF': ['Player Name', 'Age', 'Team', 'League', 'Stoke Score', 'Average Distance (W)',	'Top 5 PSV (W)', 'Contract expires', 'Market value (millions)']
+        'Goalscoring WF': ['Player Name', 'Age', 'Team', 'League', 'Stoke Score', 'Average Distance (W)',	'Top 5 PSV (W)', 'Contract expires', 'Market value (millions)'],
+        'Running 10': ['Player Name', 'Age', 'Team', 'League', 'Stoke Score', 'Average Distance (CAM)',	'Top 5 PSV (CAM)', 'Contract expires', 'Market value (millions)'],
+        'Attacking LB': ['Player Name', 'Age', 'Team', 'League', 'Stoke Score', 'Average Distance (FB)', 'Top 5 PSV (FB)', 'Contract expires', 'Market value (millions)'],
+        'Defensive LB': ['Player Name', 'Age', 'Team', 'League', 'Stoke Score', 'Average Distance (FB)', 'Top 5 PSV (FB)', 'Contract expires', 'Market value (millions)'],
+        'Ball Playing Centre Back': ['Player Name', 'Age', 'Team', 'League', 'Stoke Score', 'Average Distance (CB)', 'Top 5 PSV-99 (CB)', 'Contract expires', 'Market value (millions)'],
+        'Dominant Centre Back': ['Player Name', 'Age', 'Team', 'League', 'Stoke Score', 'Average Distance (CB)', 'Top 5 PSV-99 (CB)', 'Contract expires', 'Market value (millions)'],
     }
 
     # Update the selected columns to include 'Score Type'
