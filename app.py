@@ -240,6 +240,29 @@ def about_tab(df2):
 
     plt.tight_layout()
 
+    categories = percentiles_df["Percentile Type"]
+    values = percentiles_df["Percentile"]
+
+    N = len(categories)
+    values += values[:1]  # Close the plot by repeating the first value
+
+    angles = [n / float(N) * 2 * pi for n in range(N)]
+    angles += angles[:1]
+
+    fig, ax = plt.subplots(figsize=(10, 10, dpi=80))
+
+    ax.fill(angles, values, 'b', alpha=0.1)
+    ax.set_yticklabels([])
+    ax.set_xticks(angles[:-1])
+    ax.set_xticklabels(categories, fontsize=10)
+
+    ax.spines['polar'].set_visible(False)
+    ax.grid(visible=False)
+
+    ax.set_title(plot_title, fontsize=22, pad=20)
+    
+    st.pyplot(fig)
+
 # Define the y-coordinate for the 'player_minutes_text' to position it below 'primary_position_text'
     #y_coord = -1.6
 
@@ -342,7 +365,7 @@ df = pd.read_csv("belgiumdata.csv")
 df2 = pd.read_csv("championshipscores.csv")
 
 # Create the navigation menu in the sidebar
-selected_tab = st.sidebar.radio("Navigation", ["Stoke Score", "Scatter Plot"])
+selected_tab = st.sidebar.radio("Navigation", ["Stoke Score", "Player Profile", "Scatter Plot"])
 
 # Based on the selected tab, display the corresponding content
 if selected_tab == "Stoke Score":
