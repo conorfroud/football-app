@@ -241,36 +241,46 @@ def about_tab(df2):
 
     plt.tight_layout()
 
-    categories = percentiles_df["Percentile Type"]
+    # parameter list
+    params = [percentiles_df["Percentile Type"]]
+
+    # The values are taken from the excellent fbref website (supplied by StatsBomb)
     values = percentiles_df["Percentile"]
 
-    N = len(categories)
-    values += values[:1]  # Close the plot by repeating the first value
+# instantiate PyPizza class
+    baker = PyPizza(
+     params=params,                  # list of parameters
+     straight_line_color="#000000",  # color for straight lines
+     straight_line_lw=1,             # linewidth for straight lines
+     last_circle_lw=1,               # linewidth of last circle
+     other_circle_lw=1,              # linewidth for other circles
+     other_circle_ls="-."            # linestyle for other circles
+)
 
-    angles = [n / float(N) * 2 * pi for n in range(N)]
-    angles += angles[:1]
+# plot pizza
+    fig, ax = baker.make_pizza(
+     values,              # list of values
+     figsize=(8, 8),      # adjust figsize according to your need
+     param_location=110,  # where the parameters will be added
+     kwargs_slices=dict(
+        facecolor="cornflowerblue", edgecolor="#000000",
+        zorder=2, linewidth=1
+    ),                   # values to be used when plotting slices
+     kwargs_params=dict(
+        color="#000000", fontsize=12,
+        fontproperties=font_normal.prop, va="center"
+    ),                   # values to be used when adding parameter
+     kwargs_values=dict(
+        color="#000000", fontsize=12,
+        fontproperties=font_normal.prop, zorder=3,
+        bbox=dict(
+            edgecolor="#000000", facecolor="cornflowerblue",
+            boxstyle="round,pad=0.2", lw=1
+        )
+    )                    # values to be used when adding parameter-values
+)
 
-    fig, ax = plt.subplots(figsize=(10, 10))
-
-    ax.fill(angles, values, 'b', alpha=0.1)
-    ax.set_yticklabels([])
-    ax.set_xticks(angles[:-1])
-    ax.set_xticklabels(categories, fontsize=10)
-
-    ax.spines['polar'].set_visible(False)
-    ax.grid(visible=False)
-
-    ax.set_title(plot_title, fontsize=22, pad=20)
-    
-    st.pyplot(fig)
-
-# Define the y-coordinate for the 'player_minutes_text' to position it below 'primary_position_text'
-    #y_coord = -1.6
-
-    #ax.text(2, y_coord, primary_position_text, ha="center", fontproperties=prop1, fontsize=14)
-    #ax.text(2, y_coord - 0.2, player_minutes_text, ha="center", fontproperties=prop1, fontsize=14)
-
-    st.pyplot(fig)
+    plt.show()
     
     #st.dataframe(df2)
 
