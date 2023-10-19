@@ -249,7 +249,7 @@ def about_tab(df2):
     angles = [n / float(N) * 2 * pi for n in range(N)]
     angles += angles[:1]
 
-    fig, ax = plt.subplots(figsize=(10, 10, dpi=80))
+    fig, ax = plt.subplots(figsize=(10, 10))
 
     ax.fill(angles, values, 'b', alpha=0.1)
     ax.set_yticklabels([])
