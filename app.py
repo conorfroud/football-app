@@ -190,7 +190,7 @@ def about_tab(df2):
 
     # Define 'columns' based on the selected profile
     if selected_profile == "Striker":
-        columns = ["Top 5 PSV-99 Percentile", "Average Distance Percentile", "PAdj Pressures", "Dribble & Carry OBV", "xA per 90", "player_season_obv_shot_90 Percentile", "Shots per 90", "Non-Pen Goals per 90", "xG per 90"]
+        columns = ["Player Name", "Top 5 PSV-99 Percentile", "Average Distance Percentile", "PAdj Pressures", "Dribble & Carry OBV", "xA per 90", "player_season_obv_shot_90 Percentile", "Shots per 90", "Non-Pen Goals per 90", "xG per 90"]
         plot_title = f"Forward Metrics for {selected_player}"
     elif selected_profile == "Winger":
         columns = ["Player Name", "Average Distance (W)", "Top 5 PSV (W)", "OBV Dribble & Carry (W)", "Dribbles per 90 (W)",  "xA per 90 (W)", "NP Shots per 90 (W)", "Non-Pen Goals per 90 (W)", "NP xG per 90 (W)"]
@@ -240,6 +240,8 @@ def about_tab(df2):
     ax.spines['bottom'].set_color('#ccc8c8')
 
     plt.tight_layout()
+
+    st.pyplot(fig)
     
     #st.dataframe(df2)
 
