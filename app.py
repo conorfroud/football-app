@@ -13,7 +13,6 @@ from scipy import stats
 import plotly.graph_objs as go
 from matplotlib_venn import venn3
 from math import pi
-from mplsoccer import PyPizza
 
 st.set_page_config(layout="wide")
 
@@ -241,47 +240,6 @@ def about_tab(df2):
     ax.spines['bottom'].set_color('#ccc8c8')
 
     plt.tight_layout()
-
-    # parameter list
-    params = [percentiles_df["Percentile Type"]]
-
-    # The values are taken from the excellent fbref website (supplied by StatsBomb)
-    values = percentiles_df["Percentile"]
-
-# instantiate PyPizza class
-    baker = PyPizza(
-     params=params,                  # list of parameters
-     straight_line_color="#000000",  # color for straight lines
-     straight_line_lw=1,             # linewidth for straight lines
-     last_circle_lw=1,               # linewidth of last circle
-     other_circle_lw=1,              # linewidth for other circles
-     other_circle_ls="-."            # linestyle for other circles
-)
-
-# plot pizza
-    fig, ax = baker.make_pizza(
-     values,              # list of values
-     figsize=(8, 8),      # adjust figsize according to your need
-     param_location=110,  # where the parameters will be added
-     kwargs_slices=dict(
-        facecolor="cornflowerblue", edgecolor="#000000",
-        zorder=2, linewidth=1
-    ),                   # values to be used when plotting slices
-     kwargs_params=dict(
-        color="#000000", fontsize=12,
-        fontproperties=font_normal.prop, va="center"
-    ),                   # values to be used when adding parameter
-     kwargs_values=dict(
-        color="#000000", fontsize=12,
-        fontproperties=font_normal.prop, zorder=3,
-        bbox=dict(
-            edgecolor="#000000", facecolor="cornflowerblue",
-            boxstyle="round,pad=0.2", lw=1
-        )
-    )                    # values to be used when adding parameter-values
-)
-
-    plt.show()
     
     #st.dataframe(df2)
 
