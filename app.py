@@ -127,58 +127,6 @@ def main_tab(df2):
             on_click=None,  # You can add a function to handle click events if needed
         )
 
-    #league = st.sidebar.multiselect(
-       # "Select the League:",
-        #options=df["Team"].unique(),
-        #default=df["Team"].unique()
-   #)
-
-    #position = st.sidebar.selectbox(
-       # "Select the Position:",
-        #options=df["Position"].unique(),
-        #index=0  # Set the default index to the first position
-    #)
-
-    #df_selection = df.query(
-       # "Team == @league & Position == @position"
-    #)
-
-    #selected_columns = ["Player Name", "Position", "Team"]  # Always include these columns
-    
-    #if score_type == "Striker Score":
-        #selected_columns.append("Striker Score")
-        #sorted_column = "Striker Score"
-    #elif score_type == "Midfield Score":
-        #selected_columns.append("Midfield Score")
-        #sorted_column = "Midfield Score"
-
-    #df_selection = df_selection.sort_values(by=sorted_column, ascending=False)
-    #selected_df = df_selection[selected_columns]
-
-    # Create a bar chart of top 10 players based on the selected score
-    #st.subheader(f"Stoke City Score")
-    #top_10_players = df_selection.nlargest(10, sorted_column)
-    #fig = px.bar(
-        #top_10_players,
-       # x="Player Name",
-        #y=sorted_column,
-        #title=f"Top 10 Players by {score_type}",
-        #labels={"Player Name": "Player", sorted_column: "Score"}
-   # )
-    
-    # Add score annotations over each bar
-    #for index, row in top_10_players.iterrows():
-        #fig.add_annotation(
-           # x=row["Player Name"],
-           # y=row[sorted_column] + 2,  # Adjust y position for annotation
-           # text=str(row[sorted_column]),
-           # showarrow=False,
-           # font=dict(size=10)
-      #  )
-
-    #st.plotly_chart(fig)
-    #st.dataframe(selected_df, width=1500, height=500, hide_index=1)
-
 def about_tab(df2):
 
     selected_player = st.sidebar.selectbox(
@@ -252,35 +200,10 @@ def about_tab(df2):
     st.pyplot(fig)
 
     pitch = Pitch(pitch_color='grass', line_color='white', stripe=True)
-    fig, ax = pitch.draw()
+    fig1, ax = pitch.draw()
 
-    st.pyplot(fig)
+    st.pyplot(fig1)
     
-    #st.dataframe(df2)
-
-    # Plot for Defensive Play (you can modify column names and logic as needed)
-    #ax2 = axes[1]
-
-    #ax2.spines['right'].set_visible(False)
-    #ax2.spines['top'].set_visible(False)
-    #ax2.spines['bottom'].set_visible(False)
-    #ax2.spines['left'].set_color('#ccc8c8')
-    #ax2.spines['bottom'].set_color('#ccc8c8')
-
-    #df_selection_defense = df_selection[["player_name", "PAdj Pressues", "Pressure Regains", "Dribble & Carry OBV"]]  # Modify as needed
-    #percentiles_df_defense = df_selection_defense.melt(id_vars="player_name", var_name="Percentile Type", value_name="Percentile")
-    #colors_defense = [get_bar_color(p) for p in percentiles_df_defense["Percentile"]]
-    #ax2.barh(percentiles_df_defense["Percentile Type"], percentiles_df_defense["Percentile"], color=colors_defense)
-    #ax2.set_xlabel("Percentile Value", fontproperties=prop)
-    #ax2.set_ylabel("Percentile Type", fontproperties=prop)
-    #ax2.set_title(f"Out of Possession for {selected_player}", fontproperties=prop)
-    #for label in ax2.get_xticklabels() + ax2.get_yticklabels():
-       #label.set_fontproperties(prop)
-    #ax2.set_xlim(0, 100)
-    #for index, value in enumerate(percentiles_df_defense["Percentile"]):
-       #ax2.text(value + 1, index, f"{value:.0f}", va="center", fontproperties=prop)
-       # 
-
 def scatter_plot(df):
     
     # Sidebar with variable selection
