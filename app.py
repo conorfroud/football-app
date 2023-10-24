@@ -244,11 +244,6 @@ def about_tab(df2):
         bbox=dict(edgecolor="#000000", facecolor="#7EC0EE", boxstyle="round,pad=0.2", lw=1)
     )
 )
-
-    plt.savefig('pizza.png',dpi=1000, bbox_inches = 'tight', format='png')
-
-    image = Image.open('pizza.png')
-    st.image(image)
     
     st.pyplot(fig2)
 
