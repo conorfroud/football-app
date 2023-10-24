@@ -7,3 +7,5 @@ plotly==5.16.1
 scipy==1.6.2
 streamlit==1.23.1
 mplsoccer==1.0.5
+urllib.request
+matplotlib.pyplot
