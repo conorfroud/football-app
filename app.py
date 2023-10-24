@@ -201,7 +201,7 @@ def about_tab(df2):
 
     #st.pyplot(fig)
 
-    col1, col2, col3, col4, col5= st.columns([1,1, 2, 1, 1])
+    col1, col2, col3, col4, col5= st.columns([1,1, 5, 1, 1])
     
     with col3:
         
