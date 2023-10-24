@@ -200,8 +200,6 @@ def about_tab(df2):
 
     st.pyplot(fig)
 
-    # Import necessary libraries
-
 # Define your data
     params = percentiles_df["Percentile Type"]
     values1 = percentiles_df["Percentile"]
@@ -221,7 +219,7 @@ def about_tab(df2):
 # Create the pizza plot
     fig2, ax = baker.make_pizza(
     values1,
-    figsize=(4, 4),
+    figsize=(8, 8),
     kwargs_slices=dict(
         facecolor="#7EC0EE", edgecolor="#222222",
         zorder=1, linewidth=1
@@ -245,6 +243,8 @@ def about_tab(df2):
         bbox=dict(edgecolor="#000000", facecolor="#7EC0EE", boxstyle="round,pad=0.2", lw=1)
     )
 )
+
+    plt.tight_layout()
 
     st.pyplot(fig2)
 
