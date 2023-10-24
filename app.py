@@ -14,7 +14,6 @@ import plotly.graph_objs as go
 from matplotlib_venn import venn3
 from math import pi
 from mplsoccer import Pitch, VerticalPitch
-from highlight_text import fig_text
 
 st.set_page_config(layout="wide")
 
