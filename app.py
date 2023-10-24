@@ -249,6 +249,9 @@ def about_tab(df2):
     plt.tight_layout()
 
     st.pyplot(fig)
+
+    pitch = Pitch(pitch_color='grass', line_color='white', stripe=True)
+    fig, ax = pitch.draw()
     
     #st.dataframe(df2)
 
