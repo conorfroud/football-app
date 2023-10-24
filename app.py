@@ -198,7 +198,7 @@ def about_tab(df2):
 
     plt.tight_layout()
 
-    st.pyplot(fig)
+    #st.pyplot(fig)
 
 # Define your data
     params = percentiles_df["Percentile Type"]
@@ -219,7 +219,6 @@ def about_tab(df2):
 # Create the pizza plot
     fig2, ax = baker.make_pizza(
     values1,
-    figsize=(8, 8),
     kwargs_slices=dict(
         facecolor="#7EC0EE", edgecolor="#222222",
         zorder=1, linewidth=1
@@ -248,12 +247,6 @@ def about_tab(df2):
 
     st.pyplot(fig2)
 
-
-    pitch = Pitch(pitch_color='grass', line_color='white', stripe=True)
-    fig1, ax = pitch.draw()
-
-    st.pyplot(fig1)
-    
 def scatter_plot(df):
     
     # Sidebar with variable selection
