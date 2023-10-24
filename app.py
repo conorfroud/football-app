@@ -1,4 +1,4 @@
-!pip install mplsoccer
+pip install mplsoccer
 
 import pandas as pd
 import streamlit as st
