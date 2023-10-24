@@ -218,8 +218,9 @@ def about_tab(df2):
 )
 
 # Create the pizza plot
-    fig2, ax = baker.make_pizza(figsize=(8, 8),
-    values1,
+    fig2, ax = baker.make_pizza(
+    values1,                     
+    figsize=(8, 8),            
     kwargs_slices=dict(
         facecolor="#7EC0EE", edgecolor="#222222",
         zorder=1, linewidth=1
