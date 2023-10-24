@@ -13,7 +13,6 @@ from scipy import stats
 import plotly.graph_objs as go
 from matplotlib_venn import venn3
 from math import pi
-from mplsoccer import Pitch, VerticalPitch
 
 st.set_page_config(layout="wide")
 
