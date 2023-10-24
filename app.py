@@ -253,6 +253,8 @@ def about_tab(df2):
 
     pitch = Pitch(pitch_color='grass', line_color='white', stripe=True)
     fig, ax = pitch.draw()
+
+    st.pyplot(fig)
     
     #st.dataframe(df2)
 
