@@ -231,20 +231,17 @@ def about_tab(df2):
         zorder=2, linewidth=1,
     ),
     kwargs_params=dict(
-        color="#000000", fontsize=12,
-        fontproperties=font_normal, va="center"
+        color="#000000", fontsize=12, va="center"
     ),
     kwargs_values=dict(
-        color="#000000", fontsize=12,
-        fontproperties=font_normal, zorder=3,
+        color="#000000", fontsize=12, zorder=3,
         bbox=dict(
             edgecolor="#000000", facecolor="#7EC0EE",
             boxstyle="round,pad=0.2", lw=1
         )
     ),
     kwargs_compare_values=dict(
-        color="#000000", fontsize=12,
-        fontproperties=font_normal, zorder=3,
+        color="#000000", fontsize=12, zorder=3,
         bbox=dict(edgecolor="#000000", facecolor="#7EC0EE", boxstyle="round,pad=0.2", lw=1)
     )
 )
