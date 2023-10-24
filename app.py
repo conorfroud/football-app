@@ -15,6 +15,7 @@ from matplotlib_venn import venn3
 from math import pi
 from mplsoccer import Pitch
 from mplsoccer import PyPizza
+from PIL import Image
 
 st.set_page_config(layout="wide")
 
@@ -217,7 +218,7 @@ def about_tab(df2):
 )
 
 # Create the pizza plot
-    fig2, ax = baker.make_pizza(
+    fig2, ax = baker.make_pizza(figsize=(8, 8),
     values1,
     kwargs_slices=dict(
         facecolor="#7EC0EE", edgecolor="#222222",
@@ -243,8 +244,11 @@ def about_tab(df2):
     )
 )
 
-    plt.tight_layout()
+    plt.savefig('pizza.png',dpi=1000, bbox_inches = 'tight', format='png')
 
+    image = Image.open('pizza.png')
+    st.image(image)
+    
     st.pyplot(fig2)
 
 def scatter_plot(df):
