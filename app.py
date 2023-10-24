@@ -13,6 +13,10 @@ from scipy import stats
 import plotly.graph_objs as go
 from matplotlib_venn import venn3
 from math import pi
+from urllib.request import urlopen
+import matplotlib.pyplot as plt
+from PIL import Image
+from mplsoccer import PyPizza, add_image, FontManager
 
 st.set_page_config(layout="wide")
 
