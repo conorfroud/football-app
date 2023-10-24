@@ -249,7 +249,7 @@ def about_tab(df2):
     )
 )
 
-   st.pyplot(fig2)
+    st.pyplot(fig2)
 
 
     pitch = Pitch(pitch_color='grass', line_color='white', stripe=True)
