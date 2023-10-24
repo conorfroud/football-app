@@ -211,7 +211,7 @@ def about_tab(df2):
 # Instantiate PyPizza class
         baker = PyPizza(
         params=params,
-        background_color="#F5F5F5",
+        background_color="#FFFFFF",
         straight_line_color="#222222",
         straight_line_lw=1,
         last_circle_lw=1,
