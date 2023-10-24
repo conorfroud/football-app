@@ -246,6 +246,55 @@ def about_tab(df2):
     ax.spines['left'].set_color('#ccc8c8')
     ax.spines['bottom'].set_color('#ccc8c8')
 
+    # instantiate PyPizza class
+baker = PyPizza(
+    params=params,                  # list of parameters
+    background_color="#F5F5F5",     # background color
+    straight_line_color="#222222",  # color for straight lines
+    straight_line_lw=1,             # linewidth for straight lines
+    last_circle_lw=1,               # linewidth of last circle
+    last_circle_color="#222222",    # color of last circle
+    other_circle_ls="-.",           # linestyle for other circles
+    other_circle_lw=1               # linewidth for other circles
+)
+
+# plot pizza
+fig, ax = baker.make_pizza(
+    values1,                     # list of values    # comparison values
+    figsize=(8, 8),             # adjust figsize according to your need
+    kwargs_slices=dict(
+        facecolor="#7EC0EE", edgecolor="#222222",
+        zorder=1, linewidth=1
+    ),                          # values to be used when plotting slices
+    kwargs_compare=dict(
+        facecolor="#7EC0EE", edgecolor="#222222",
+        zorder=2, linewidth=1,
+    ),
+    kwargs_params=dict(
+        color="#000000", fontsize=12,
+        fontproperties=font_normal.prop, va="center"
+    ),                          # values to be used when adding parameter
+    kwargs_values=dict(
+        color="#000000", fontsize=12,
+        fontproperties=font_normal.prop, zorder=3,
+        bbox=dict(
+            edgecolor="#000000", facecolor="#7EC0EE",
+            boxstyle="round,pad=0.2", lw=1
+        )
+    ),                          # values to be used when adding parameter-values labels
+    kwargs_compare_values=dict(
+        color="#000000", fontsize=12, fontproperties=font_normal.prop, zorder=3,
+        bbox=dict(edgecolor="#000000", facecolor="#7EC0EE", boxstyle="round,pad=0.2", lw=1)
+    ),                          # values to be used when adding parameter-values labels
+)
+
+
+fig_text(x = 0.38, y = 1.03, s = "Weston McKennie", color = 'Black', family="Roboto", fontsize=20, fontweight="bold")
+fig_text(x = 0.24, y = 0.98,  s = "Percentile Rank vs Top 5 League Midfielders | Season 2022-23", color = 'Black', family="Roboto", fontsize=12)
+
+plt.savefig('mckenniepizza.png',dpi=1000, bbox_inches = 'tight', format='png')
+plt.show()
+
     plt.tight_layout()
 
     st.pyplot(fig)
