@@ -73,7 +73,7 @@ def main_tab(df2):
         'Striker': ['Player Name', 'Age', 'Team', 'League', 'Stoke Score', 'Average Distance Percentile', 'Top 5 PSV-99 Percentile', 'Contract expires', 'Market value (millions)'],
         'Winger': ['Player Name', 'Age', 'Team', 'League', 'Stoke Score', 'Average Distance (W)', 'Top 5 PSV (W)', 'Contract expires', 'Market value (millions)'],
         'Attacking Midfield': ['Player Name', 'Age', 'Team', 'League', 'Stoke Score', 'Average Distance (CAM)',	'Top 5 PSV (CAM)', 'Contract expires', 'Market value (millions)'],
-        'Central Midfield': ['Player Name', 'Age', 'Team', 'League', 'Stoke Score', 'Average Distance (8)',	'Top 5 PSV (8)', 'Contract expires', 'Market value (millions)'],
+        'Central Midfield': ['Player Name', 'Age', 'Team', 'League', 'Stoke Score', 'Average Distance (8)',	'Top 5 PSV-99 (8)', 'Contract expires', 'Market value (millions)'],
         'Defensive Midfield': ['Player Name', 'Age', 'Team', 'League', 'Stoke Score', 'Average Distance (6)', 'Top 5 PSV-99 (6)', 'Contract expires', 'Market value (millions)'],
         'Left Back': ['Player Name', 'Age', 'Team', 'League', 'Stoke Score', 'Average Distance (LB)', 'Top 5 PSV-99 (LB)', 'Contract expires', 'Market value (millions)'],
         'Right Back': ['Player Name', 'Age', 'Team', 'League', 'Stoke Score', 'Average Distance (RB)', 'Top 5 PSV-99 (RB)', 'Contract expires', 'Market value (millions)'],
