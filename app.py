@@ -131,8 +131,8 @@ def main_tab(df2):
 
 def about_tab(df2):
 
-    # Define the list of allowed profiles
-    allowed_profiles = ["Striker", "Winger", "Attacking Midfield", "Central Midfield", "Defensive Midfield", "Left Back", "Right Back", "Centre Back"]
+    # Define the allowed score types
+    allowed_score_types = ["Striker", "Winger", "Attacking Midfield", "Central Midfield", "Defensive Midfield", "Left Back", "Right Back", "Centre Back"]
 
     selected_player = st.sidebar.selectbox(
       "Select a Player:",
@@ -142,12 +142,12 @@ def about_tab(df2):
 
     selected_player_df = df2[df2["Player Name"] == selected_player]
 
-    available_profiles = selected_player_df["Score Type"].unique()
+# Filter the available profiles based on the allowed score types
+    available_profiles = selected_player_df[selected_player_df["Score Type"].isin(allowed_score_types)]["Score Type"].unique()
 
-# Use st.sidebar.radio to select the profile
-    selected_profile = st.sidebar.radio(
+    selected_profile = st.sidebar.selectbox(
       "Select a Profile:",
-      allowed_profiles,
+      options=available_profiles,
       index=0  # Set the default index to the first profile
 )
 
