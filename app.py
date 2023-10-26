@@ -158,7 +158,19 @@ def about_tab(df2):
         plot_title = f"Attacking Midfield Metric Percentiles for {selected_player}"
     elif selected_profile == "Central Midfield":
         columns = ["Player Name", "NP xG (8)", "NP Goals (8)", "OBV Pass (8)", "OP xA (8)", "Deep Progressions (8)", "Dribbles (8)", "OBV Dribble & Carry (8)",  "Average Distance (8)", "Top 5 PSV-99 (8)"]
-        plot_title = f"Attacking Midfield Metric Percentiles for {selected_player}"
+        plot_title = f"Central Midfield Metric Percentiles for {selected_player}"
+    elif selected_profile == "Defensive Midfield":
+        columns = ["Player Name", "Deep Progressions (6)", "OBV Pass (6)", "Dribbles (6)", "OBV Dribble & Carry (6)", "Tackle/Dribbled Past % (6)", "PAdj Tackles (6)", "PAdj Interceptions (6)",  "Average Distance (6)", "Top 5 PSV-99 (6)"]
+        plot_title = f"Defensive Midfield Metric Percentiles for {selected_player}"
+    elif selected_profile == "Left Back":
+        columns = ["Player Name", "PAdj Tackles (LB)", "PAdj Interceptions (LB)", "OBV Defensive Action (LB)", "OBV Dribble & Carry (LB)", "Tackle/Dribbled Past (LB)", "Open Play xA (LB)", "Successful Crosses (LB)",  "Average Distance (LB)", "Top 5 PSV-99 (LB)"]
+        plot_title = f"Left Back Metric Percentiles for {selected_player}"
+    elif selected_profile == "Right Back":
+        columns = ["Player Name", "PAdj Tackles (RB)", "PAdj Interceptions (RB)", "OBV Defensive Action (RB)", "OBV Dribble & Carry (RB)", "Tackle/Dribbled Past (RB)", "Open Play xA (RB)", "Successful Crosses (RB)",  "Average Distance (RB)", "Top 5 PSV-99 (RB)"]
+        plot_title = f"Right Back Metric Percentiles for {selected_player}"
+    elif selected_profile == "Centre Back":
+        columns = ["Player Name", "Aerial Wins (CB)", "Aerial Win % (CB)", "PAdj Interceptions (CB)", "PAdj Tackles (CB)", "OBV Pass (CB)", "OBV Dribble & Carry (CB)", "OBV Defensive Action",  "Average Distance (CB)", "Top 5 PSV-99 (CB)"]
+        plot_title = f"Centre Back Metric Percentiles for {selected_player}"
     else:
         # Define columns and plot title for the default profile
         columns = []
