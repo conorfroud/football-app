@@ -7,4 +7,3 @@ plotly==5.16.1
 scipy==1.6.2
 streamlit==1.23.1
 mplsoccer
-st-gsheets-connection
