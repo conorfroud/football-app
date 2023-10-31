@@ -16,6 +16,7 @@ from math import pi
 from mplsoccer import Pitch
 from mplsoccer import PyPizza
 from PIL import Image
+from streamlit_gsheets import GSheetsConnection
 
 st.set_page_config(layout="wide")
 
@@ -128,6 +129,14 @@ def main_tab(df2):
             file_name="filtered_data.csv",
             on_click=None,  # You can add a function to handle click events if needed
         )
+
+    url = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?pli=1#gid=0"
+
+    conn = st.experimental_connection("gsheets", type=GSheetsConnection)
+
+    data = conn.read(spreadsheet=url, usecols=[0, 1])
+    
+    st.dataframe(data) 
 
 def about_tab(df2):
 
