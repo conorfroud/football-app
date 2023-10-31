@@ -193,35 +193,7 @@ def about_tab(df2):
     prop = font_manager.FontProperties(fname=font_path)
     font_path1 = "Roboto-Regular.ttf"
     prop1 = font_manager.FontProperties(fname=font_path1)
-
-    # Create a bar plot
-    fig, ax = plt.subplots(figsize=(16, 10))
-    # Set the background color
-    #fig.patch.set_facecolor("#F5F5F5")
-    #ax.set_facecolor("#F5F5F5")
-    ax.barh(percentiles_df["Percentile Type"], percentiles_df["Percentile"], color="#7EC0EE")
-    ax.set_xlabel("League Average", fontproperties=prop1)
-    ax.set_ylabel("Percentile Type", fontproperties=prop1)
-    ax.set_title(plot_title, fontproperties=prop, fontsize=22, pad=20)  # Adjust the pad value to move the title higher
-    for label in ax.get_xticklabels() + ax.get_yticklabels():
-        label.set_fontproperties(prop)
-    ax.set_xlim(0, 100)
-    for index, value in enumerate(percentiles_df["Percentile"]):
-        ax.text(value + 1, index, f"{value:.0f}", va="center", fontproperties=prop)
-
-    plt.axvline(x=50, color='Black', linestyle='--', label='Horizontal Line at x=50')
-    #fig_text(x = 0.5, y = 0.03, s = "League Average", color = 'Black', family="Roboto", fontsize=10, fontweight="bold")
-
-    ax.spines['right'].set_visible(False)
-    ax.spines['top'].set_visible(False)
-    ax.spines['bottom'].set_visible(False)
-    ax.spines['left'].set_color('#ccc8c8')
-    ax.spines['bottom'].set_color('#ccc8c8')
-
-    plt.tight_layout()
-
-    #st.pyplot(fig)
-
+    
     col1, col2, col3, col4, col5= st.columns([1,1, 5, 1, 1])
     
     with col3:
@@ -270,26 +242,6 @@ def about_tab(df2):
 )
     
         st.pyplot(fig2)
-
-    # Title and description
-    st.title("Player Comparison App")
-    st.write("Select players and metrics to compare in a table.")
-
-    # Sidebar: Player selection
-    selected_players = st.sidebar.multiselect("Select Players", df2["Player Name"])
-
-    # Sidebar: Metric selection
-    selected_metrics = st.sidebar.multiselect("Select Metrics", df2.columns[1:])
-
-    # Filter the DataFrame based on selected players
-    filtered_df = df2[df2["Player Name"].isin(selected_players)]
-
-    # Display the table
-    if selected_players and selected_metrics:
-      st.write("Comparison Table")
-      st.dataframe(filtered_df[selected_metrics], width=700, height=400)
-    else:
-      st.warning("Select at least one player and one metric to compare.")
 
 def scatter_plot(df):
     
@@ -355,6 +307,28 @@ def scatter_plot(df):
 # Display the plot in Streamlit
     st.plotly_chart(fig)
 
+def comparison_tab(df2):
+
+    # Title and description
+    st.title("Player Comparison App")
+    st.write("Select players and metrics to compare in a table.")
+
+    # Sidebar: Player selection
+    selected_players = st.sidebar.multiselect("Select Players", df2["Player Name"])
+
+    # Sidebar: Metric selection
+    selected_metrics = st.sidebar.multiselect("Select Metrics", df2.columns[1:])
+
+    # Filter the DataFrame based on selected players
+    filtered_df = df2[df2["Player Name"].isin(selected_players)]
+
+    # Display the table
+    if selected_players and selected_metrics:
+      st.write("Comparison Table")
+      st.dataframe(filtered_df[selected_metrics], width=700, height=400)
+    else:
+      st.warning("Select at least one player and one metric to compare.")
+
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
 df2 = pd.read_csv("championshipscores.csv")
@@ -369,6 +343,6 @@ if selected_tab == "Player Profile":
     about_tab(df2)  # Pass the DataFrame to the about_tab function
 elif selected_tab == "Scatter Plot":
     scatter_plot(df)
-#elif selected_tab == "Venn Diagram":
-    #venn_tab(df)  # Pass the DataFrame to the about_tab function
+elif selected_tab == "Comparison Tab":
+    comparison_tab(df2)
 
