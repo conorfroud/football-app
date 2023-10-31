@@ -309,25 +309,30 @@ def scatter_plot(df):
 
 def comparison_tab(df):
 
-    # Title and description
+# Title and description
     st.title("Player Comparison App")
     st.write("Select players and metrics to compare in a table.")
 
-    # Sidebar: Player selection
+# Sidebar: Player selection
     selected_players = st.sidebar.multiselect("Select Players", df["player_name"])
 
-    # Sidebar: Metric selection
+# Sidebar: Metric selection
     selected_metrics = st.sidebar.multiselect("Select Metrics", df.columns[1:])
 
-    # Filter the DataFrame based on selected players
+# Filter the DataFrame based on selected players
     filtered_df = df[df["player_name"].isin(selected_players)]
 
-    # Display the table
-    if selected_players and selected_metrics:
+# Display the table
+    if selected_metrics:
       st.write("Comparison Table")
-      st.dataframe(filtered_df[selected_metrics], width=700, height=400)
+      if filtered_df.empty:
+         st.warning("No players selected. Please select at least one player.")
+      else:
+         selected_columns = ["player_name"] + selected_metrics
+         st.dataframe(filtered_df[selected_columns], width=700, height=400, hide_index=True)
     else:
-      st.warning("Select at least one player and one metric to compare.")
+       st.warning("Select at least one metric to compare.")
+
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
