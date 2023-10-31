@@ -341,7 +341,7 @@ if selected_tab == "Stoke Score":
     main_tab(df2)
 if selected_tab == "Player Profile":
     about_tab(df2)  # Pass the DataFrame to the about_tab function
-elif selected_tab == "Scatter Plot":
+if selected_tab == "Scatter Plot":
     scatter_plot(df)
 elif selected_tab == "Comparison Tab":
     comparison_tab(df2)
