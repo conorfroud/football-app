@@ -117,8 +117,7 @@ def main_tab(df2):
                 (df2[selected_columns[6]] <= top_5_psv_99_percentile_range[1])]
 
 # Display the filtered DataFrame with selected columns
-    s = filtered_df.style.format({"Contract expires": lambda x: '{:.0f}'.format(x)})
-    st.dataframe(s, hide_index=True)
+    st.dataframe(filtered_df[selected_columns], hide_index=True)
 
     # Add a download button to export the filtered DataFrame to a CSV file
     if not filtered_df.empty:
