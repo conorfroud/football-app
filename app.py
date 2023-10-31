@@ -307,20 +307,20 @@ def scatter_plot(df):
 # Display the plot in Streamlit
     st.plotly_chart(fig)
 
-def comparison_tab(df2):
+def comparison_tab(df):
 
     # Title and description
     st.title("Player Comparison App")
     st.write("Select players and metrics to compare in a table.")
 
     # Sidebar: Player selection
-    selected_players = st.sidebar.multiselect("Select Players", df2["Player Name"])
+    selected_players = st.sidebar.multiselect("Select Players", df["player_name"])
 
     # Sidebar: Metric selection
-    selected_metrics = st.sidebar.multiselect("Select Metrics", df2.columns[1:])
+    selected_metrics = st.sidebar.multiselect("Select Metrics", df.columns[1:])
 
     # Filter the DataFrame based on selected players
-    filtered_df = df2[df2["Player Name"].isin(selected_players)]
+    filtered_df = df[df["player_name"].isin(selected_players)]
 
     # Display the table
     if selected_players and selected_metrics:
@@ -344,5 +344,5 @@ if selected_tab == "Player Profile":
 if selected_tab == "Scatter Plot":
     scatter_plot(df)
 elif selected_tab == "Comparison Tab":
-    comparison_tab(df2)
+    comparison_tab(df)
 
