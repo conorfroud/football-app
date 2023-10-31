@@ -129,6 +129,23 @@ def main_tab(df2):
             on_click=None,  # You can add a function to handle click events if needed
         )
 
+    # Authenticate with Google Sheets (no credentials needed for public sheets)
+    gc = gspread.service_account()
+
+    # Open your public Google Sheet by its URL
+    url = 'https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?pli=1#gid=0'
+    sh = gc.open_by_url(url)
+
+    # Select a specific worksheet within the Google Sheet
+    worksheet = sh.get_worksheet(0)  # 0 represents the first worksheet
+
+    # Streamlit app
+    st.title('Public Google Sheet to Streamlit App')
+
+    # Read and display data from the Google Sheet
+    data = worksheet.get_all_records()
+    st.write(data)
+
 def about_tab(df2):
 
     # Define the allowed score types
