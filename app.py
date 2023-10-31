@@ -98,9 +98,6 @@ def main_tab(df2):
         'Dominant Centre Back': ['Player Name', 'Age', 'Team', 'League', 'Stoke Score', 'Average Distance (CB)', 'Top 5 PSV-99 (CB)', 'Contract expires', 'Market value (millions)'],
     }
 
-    # Remove commas from the 'Contract expires' column
-    df2['Contract expires'] = df2['Contract expires'].str.replace(',', '', regex=True)
-
     # Update the selected columns to include 'Score Type'
     selected_columns = score_type_column_mapping.get(selected_score_type, [])
     selected_columns.append('Score Type')  # Add 'Score Type' to the selected columns
