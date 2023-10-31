@@ -334,7 +334,10 @@ def comparison_tab(df):
         st.warning("No players selected. Please select at least one player.")
       else:
         selected_columns = ["player_name"] + selected_metrics
-        st.dataframe(filtered_df[selected_columns].style.apply(highlight_best_player, subset=selected_metrics), hide_index=True)
+        formatted_df = filtered_df[selected_columns].style.apply(highlight_best_player, subset=selected_metrics)
+        # Format numbers to two decimal places
+        formatted_df = formatted_df.format("{:.2f}", subset=selected_metrics)
+        st.dataframe(formatted_df, hide_index=True)
    else:
     st.warning("Select at least one metric to compare.")
 
