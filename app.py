@@ -276,13 +276,13 @@ def about_tab(df2):
     st.write("Select players and metrics to compare in a table.")
 
     # Sidebar: Player selection
-    selected_players = st.sidebar.multiselect("Select Players", df["Player"])
+    selected_players = st.sidebar.multiselect("Select Players", df2["Player Name"])
 
     # Sidebar: Metric selection
-    selected_metrics = st.sidebar.multiselect("Select Metrics", df.columns[1:])
+    selected_metrics = st.sidebar.multiselect("Select Metrics", df2.columns[1:])
 
     # Filter the DataFrame based on selected players
-    filtered_df = df[df["Player"].isin(selected_players)]
+    filtered_df = df2[df2["Player Name"].isin(selected_players)]
 
     # Display the table
     if selected_players and selected_metrics:
