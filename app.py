@@ -87,7 +87,7 @@ def main_tab(df2):
         'Running 10': ['Player Name', 'Age', 'Team', 'League', 'Stoke Score', 'Average Distance (CAM)',	'Top 5 PSV (CAM)', 'Contract expires', 'Market value (millions)'],
         'Creative 10': ['Player Name', 'Age', 'Team', 'League', 'Stoke Score', 'Average Distance (CAM)', 'Top 5 PSV (CAM)', 'Contract expires', 'Market value (millions)'],
         'Progressive 8': ['Player Name', 'Age', 'Team', 'League', 'Stoke Score', 'Average Distance (P8)', 'Top 5 PSV (P8)', 'Contract expires', 'Market value (millions)'],
-        'Running 8': ['Player Name', 'Age', 'Team', 'League', 'Stoke Score', 'Average Distance (P8)', 'Top 5 PSV (P8)', 'Contract expires', 'Market value (millions)'],
+        'Running 8': ['Player Name', 'Age', 'Team', 'League', 'Stoke Score', 'Average Distance (R8)', 'Top 5 PSV (R8)', 'Contract expires', 'Market value (millions)'],
         'Progressive 6': ['Player Name', 'Age', 'Team', 'League', 'Stoke Score', 'Average Distance (6)', 'Top 5 PSV-99 (6)', 'Contract expires', 'Market value (millions)'],
         'Defensive 6': ['Player Name', 'Age', 'Team', 'League', 'Stoke Score', 'Average Distance (6)', 'Top 5 PSV-99 (6)', 'Contract expires', 'Market value (millions)'],
         'Attacking LB': ['Player Name', 'Age', 'Team', 'League', 'Stoke Score', 'Average Distance (FB)', 'Top 5 PSV (FB)', 'Contract expires', 'Market value (millions)'],
