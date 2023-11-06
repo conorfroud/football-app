@@ -313,6 +313,15 @@ def scatter_plot(df):
     with col2:
         st.plotly_chart(fig)
 
+def calculate_totals(df, selected_metrics, show_total=True):
+    if show_total:
+        # Calculate the sum for selected metrics
+        df[selected_metrics] = df[selected_metrics].sum()
+    else:
+        # Multiply the selected metrics by 90
+        df[selected_metrics] = df[selected_metrics] * 90
+    return df
+
 def comparison_tab(df):
     
     # Title and description
@@ -329,15 +338,6 @@ def comparison_tab(df):
 
     # Filter the DataFrame based on selected players
     filtered_df = df[df["player_name"].isin(selected_players)]
-
-    # Define a function to calculate totals based on selected metrics
-    def calculate_totals(df, metrics, total_option):
-        if not total_option:
-            return df
-        for metric in metrics:
-            if metric != "minutes":
-                df[f"{metric}_total"] = df[metric] * df["minutes"]
-        return df
 
     def highlight_best_player(s):
         is_best = s == s.max()
