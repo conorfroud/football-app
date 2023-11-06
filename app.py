@@ -314,9 +314,6 @@ def scatter_plot(df):
         st.plotly_chart(fig)
 
 def comparison_tab(df):
-    
-    # Sidebar: Metric selection
-    selected_metrics = st.sidebar.multiselect("Select Metrics", df.columns[1:])
 
     # Add a "Total" option for selected metrics
     total_option = st.sidebar.checkbox("Total", key="total_checkbox")
@@ -331,7 +328,8 @@ def comparison_tab(df):
 
     # Calculate totals if the "Total" checkbox is selected
     if total_option:
-        filtered_df[selected_metrics] = filtered_df[selected_metrics] * (filtered_df["Minutes"] / 90)
+        selected_metrics_without_minutes = [metric for metric in selected_metrics if metric != "Minutes"]
+        filtered_df[selected_metrics_without_minutes] = filtered_df[selected_metrics_without_minutes] * (filtered_df["Minutes"] / 90)
     
     # Display the table with conditional formatting
     if selected_metrics:
@@ -346,6 +344,7 @@ def comparison_tab(df):
             st.dataframe(formatted_df, hide_index=True)
     else:
         st.warning("Select at least one metric to compare.")
+
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
