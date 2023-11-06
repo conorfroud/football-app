@@ -314,24 +314,6 @@ def scatter_plot(df):
         st.plotly_chart(fig)
 
 def comparison_tab(df):
-    
-    def calculate_totals(df, selected_metrics, show_total=True):
-     if show_total:
-        # Multiply the selected metrics by minutes
-        df[selected_metrics] = df[selected_metrics] * (df["minutes"] / 90)
-     else:
-        # Show the raw metric
-        df[selected_metrics] = df[selected_metrics]
-     return df
-    
-    # Title and description
-    st.write("Select players and metrics to compare in a table.")
-
-    # Sidebar: Player selection
-    selected_players = st.sidebar.multiselect("Select Players", df["Player Name"])
-
-    # Sidebar: Metric selection
-    selected_metrics = st.sidebar.multiselect("Select Metrics", df.columns[1:])
 
     # Add a "Total" option for selected metrics
     total_option = st.sidebar.checkbox("Total", key="total_checkbox")
@@ -343,13 +325,17 @@ def comparison_tab(df):
         is_best = s == s.max()
         return ['background-color: #00CD00' if v else '' for v in is_best]
 
+    # Calculate totals if the "Total" checkbox is selected
+    if total_option:
+        filtered_df[selected_metrics] = filtered_df[selected_metrics] * (filtered_df["Minutes"] / 90)
+    
     # Display the table with conditional formatting
     if selected_metrics:
         if filtered_df.empty:
             st.warning("No players selected. Please select at least one player.")
         else:
             selected_columns = ["Player Name"] + ["Minutes"] + selected_metrics
-            formatted_df = calculate_totals(filtered_df[selected_columns].copy(), selected_metrics, total_option)
+            formatted_df = filtered_df[selected_columns].copy()
             formatted_df = formatted_df.style.apply(highlight_best_player, subset=selected_metrics)
             # Format numbers to two decimal places
             formatted_df = formatted_df.format("{:.2f}", subset=selected_metrics)
