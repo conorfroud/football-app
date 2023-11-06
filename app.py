@@ -321,7 +321,7 @@ def comparison_tab(df):
         df[selected_metrics] = df[selected_metrics] * (df["minutes"] / 90)
      else:
         # Show the raw metric
-        df[selected_metrics] = df["minutes"] + df[selected_metrics]
+        df[selected_metrics] = df[minutes] + df[selected_metrics]
      return df
     
     # Title and description
