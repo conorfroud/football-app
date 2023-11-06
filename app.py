@@ -343,7 +343,7 @@ def comparison_tab(df):
         if filtered_df.empty:
             st.warning("No players selected. Please select at least one player.")
         else:
-            selected_columns = ["Player Name"] + ["Minutes"] + selected_metrics
+            selected_columns = ["Player Name"] + selected_metrics
             if total_option:
                 formatted_df = calculated_df[selected_columns].copy()
             else:
