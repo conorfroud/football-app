@@ -252,8 +252,8 @@ def scatter_plot(df):
 
     # Sidebar with variable selection
        st.sidebar.header('Select Variables')
-       x_variable = st.sidebar.selectbox('X-axis variable', df.columns, index=df.columns.get_loc('np_xg_90'))
-       y_variable = st.sidebar.selectbox('Y-axis variable', df.columns, index=df.columns.get_loc('op_xa_90'))
+       x_variable = st.sidebar.selectbox('X-axis variable', df.columns, index=df.columns.get_loc('xG'))
+       y_variable = st.sidebar.selectbox('Y-axis variable', df.columns, index=df.columns.get_loc('xG Assisted'))
 
 # Create a multi-select dropdown for filtering by primary_position
        selected_positions = st.sidebar.multiselect('Filter by Primary Position', df['position_1'].unique())
@@ -264,8 +264,8 @@ def scatter_plot(df):
     #selected_players = st.sidebar.multiselect('Select Players', df['player_name'])
 
 # Sidebar for filtering by 'minutes' played
-       min_minutes = int(df['minutes'].min())
-       max_minutes = int(df['minutes'].max())
+       min_minutes = int(df['Minutes'].min())
+       max_minutes = int(df['Minutes'].max())
        selected_minutes = st.sidebar.slider('Select Minutes Played Range', min_value=min_minutes, max_value=max_minutes, value=(250, max_minutes))
 
 # Sidebar for filtering by league (allow only one league to be selected)
@@ -273,8 +273,8 @@ def scatter_plot(df):
 # Filter data based on user-selected positions, players, minutes played, and league
        filtered_df = df[(df['position_1'].isin(selected_positions) | (len(selected_positions) == 0)) & 
                  #(df['player_name'].isin(selected_players) | (len(selected_players) == 0)) &
-                 (df['minutes'] >= selected_minutes[0]) &
-                 (df['minutes'] <= selected_minutes[1]) &
+                 (df['Minutes'] >= selected_minutes[0]) &
+                 (df['Minutes'] <= selected_minutes[1]) &
                  (df['competition_name'] == selected_league)]
 
 # Calculate Z-scores for the variables
