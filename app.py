@@ -261,7 +261,7 @@ def scatter_plot(df):
        selected_league = st.sidebar.selectbox('Select League', df['competition_name'].unique())
 
 # Create a multi-select dropdown for selecting players
-    #selected_players = st.sidebar.multiselect('Select Players', df['player_name'])
+    #selected_players = st.sidebar.multiselect('Select Players', df['Player Name'])
 
 # Sidebar for filtering by 'minutes' played
        min_minutes = int(df['Minutes'].min())
@@ -272,7 +272,7 @@ def scatter_plot(df):
     
 # Filter data based on user-selected positions, players, minutes played, and league
        filtered_df = df[(df['position_1'].isin(selected_positions) | (len(selected_positions) == 0)) & 
-                 #(df['player_name'].isin(selected_players) | (len(selected_players) == 0)) &
+                 #(df['Player Name'].isin(selected_players) | (len(selected_players) == 0)) &
                  (df['Minutes'] >= selected_minutes[0]) &
                  (df['Minutes'] <= selected_minutes[1]) &
                  (df['competition_name'] == selected_league)]
@@ -300,7 +300,7 @@ def scatter_plot(df):
      go.Scatter(
         x=outliers[x_variable],
         y=outliers[y_variable],
-        text=outliers['player_name'],
+        text=outliers['Player Name'],
         mode='text',
         showlegend=False,
         textposition='top center'
