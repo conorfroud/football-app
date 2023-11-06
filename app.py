@@ -339,6 +339,10 @@ def comparison_tab(df):
                 sub_df[f"{metric}_total"] = sub_df[metric] * sub_df["minutes"]
         return sub_df
 
+    def highlight_best_player(s):
+    is_best = s == s.max()
+    return ['background-color: #00CD00' if v else '' for v in is_best]
+
     # Display the table with conditional formatting
     if selected_metrics:
         if filtered_df.empty:
@@ -352,12 +356,6 @@ def comparison_tab(df):
             st.dataframe(formatted_df, hide_index=True)
     else:
         st.warning("Select at least one metric to compare.")
-
-def highlight_best_player(s):
-    is_best = s == s.max()
-    return ['background-color: #00CD00' if v else '' for v in is_best]
-
-comparison_tab(df)
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
