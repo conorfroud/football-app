@@ -321,7 +321,7 @@ def comparison_tab(df):
         df[selected_metrics] = df[selected_metrics] * (df["minutes"] / 90)
      else:
         # Show the raw metric
-        df[selected_metrics] = df[minutes] + df[selected_metrics]
+        df[selected_metrics] = df[selected_metrics]
      return df
     
     # Title and description
@@ -348,7 +348,7 @@ def comparison_tab(df):
         if filtered_df.empty:
             st.warning("No players selected. Please select at least one player.")
         else:
-            selected_columns = ["player_name"] + selected_metrics
+            selected_columns = ["player_name"] + ["minutes"] + selected_metrics
             formatted_df = calculate_totals(filtered_df[selected_columns].copy(), selected_metrics, total_option)
             formatted_df = formatted_df.style.apply(highlight_best_player, subset=selected_columns)
             # Format numbers to two decimal places
