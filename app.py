@@ -331,13 +331,13 @@ def comparison_tab(df):
     filtered_df = df[df["player_name"].isin(selected_players)]
 
     # Define a function to calculate totals based on selected metrics
-    def calculate_totals(sub_df, metrics, total_option):
+    def calculate_totals(df, metrics, total_option):
         if not total_option:
-            return sub_df
+            return df
         for metric in metrics:
             if metric != "minutes":
-                sub_df[f"{metric}_total"] = sub_df[metric] * sub_df["minutes"]
-        return sub_df
+                df[f"{metric}_total"] = df[metric] * df["minutes"]
+        return df
 
     def highlight_best_player(s):
         is_best = s == s.max()
