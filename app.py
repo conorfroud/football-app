@@ -330,11 +330,10 @@ def comparison_tab(df):
 # Define a function for conditional formatting
    def highlight_best_player(s):
       is_best = s == s.max()
-      return ['background-color: #00EE00' if v else '' for v in is_best]
+      return ['background-color: #00CD00' if v else '' for v in is_best]
 
 # Display the table with conditional formatting
    if selected_metrics:
-      st.write("Comparison Table")
       if filtered_df.empty:
         st.warning("No players selected. Please select at least one player.")
       else:
