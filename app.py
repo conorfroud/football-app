@@ -340,11 +340,14 @@ def comparison_tab(df):
     
     # Display the table with conditional formatting
     if selected_metrics:
-        if calculated_df.empty:
+        if filtered_df.empty:
             st.warning("No players selected. Please select at least one player.")
         else:
             selected_columns = ["Player Name"] + ["Minutes"] + selected_metrics
-            formatted_df = calculated_df[selected_columns].copy()
+            if total_option:
+                formatted_df = calculated_df[selected_columns].copy()
+            else:
+                formatted_df = filtered_df[selected_columns].copy()
             formatted_df = formatted_df.style.apply(highlight_best_player, subset=selected_metrics)
             # Format numbers to two decimal places
             formatted_df = formatted_df.format("{:.2f}", subset=selected_metrics)
