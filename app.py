@@ -328,7 +328,7 @@ def comparison_tab(df):
     st.write("Select players and metrics to compare in a table.")
 
     # Sidebar: Player selection
-    selected_players = st.sidebar.multiselect("Select Players", df["player_name"])
+    selected_players = st.sidebar.multiselect("Select Players", df["Played Name"])
 
     # Sidebar: Metric selection
     selected_metrics = st.sidebar.multiselect("Select Metrics", df.columns[1:])
@@ -337,7 +337,7 @@ def comparison_tab(df):
     total_option = st.sidebar.checkbox("Total", key="total_checkbox")
 
     # Filter the DataFrame based on selected players
-    filtered_df = df[df["player_name"].isin(selected_players)]
+    filtered_df = df[df["Player Name"].isin(selected_players)]
 
     def highlight_best_player(s):
         is_best = s == s.max()
@@ -348,7 +348,7 @@ def comparison_tab(df):
         if filtered_df.empty:
             st.warning("No players selected. Please select at least one player.")
         else:
-            selected_columns = ["player_name"] + ["minutes"] + selected_metrics
+            selected_columns = ["Player Name"] + ["Minutes"] + selected_metrics
             formatted_df = calculate_totals(filtered_df[selected_columns].copy(), selected_metrics, total_option)
             formatted_df = formatted_df.style.apply(highlight_best_player, subset=selected_metrics)
             # Format numbers to two decimal places
