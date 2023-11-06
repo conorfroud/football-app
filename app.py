@@ -319,6 +319,7 @@ def comparison_tab(df):
     total_option = st.sidebar.checkbox("Total", key="total_checkbox")
 
     # Filter the DataFrame based on selected players
+    selected_players = st.sidebar.multiselect("Select Players", df["Player Name"])
     filtered_df = df[df["Player Name"].isin(selected_players)]
 
     def highlight_best_player(s):
