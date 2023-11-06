@@ -315,14 +315,15 @@ def scatter_plot(df):
 
 def comparison_tab(df):
 
+    # Filter the DataFrame based on selected players
+    selected_players = st.sidebar.multiselect("Select Players", df["Player Name"])
+    
     # Sidebar: Metric selection
     selected_metrics = st.sidebar.multiselect("Select Metrics", df.columns[1:])
 
     # Add a "Total" option for selected metrics
     total_option = st.sidebar.checkbox("Total", key="total_checkbox")
 
-    # Filter the DataFrame based on selected players
-    selected_players = st.sidebar.multiselect("Select Players", df["Player Name"])
     filtered_df = df[df["Player Name"].isin(selected_players)]
 
     def highlight_best_player(s):
