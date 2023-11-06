@@ -340,8 +340,8 @@ def comparison_tab(df):
         return sub_df
 
     def highlight_best_player(s):
-    is_best = s == s.max()
-    return ['background-color: #00CD00' if v else '' for v in is_best]
+        is_best = s == s.max()
+        return ['background-color: #00CD00' if v else '' for v in is_best]
 
     # Display the table with conditional formatting
     if selected_metrics:
