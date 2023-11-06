@@ -313,16 +313,16 @@ def scatter_plot(df):
     with col2:
         st.plotly_chart(fig)
 
-def calculate_totals(df, selected_metrics, show_total=True):
-    if show_total:
+def comparison_tab(df):
+    
+    def calculate_totals(df, selected_metrics, show_total=True):
+     if show_total:
         # Multiply the selected metrics by minutes
         df[selected_metrics] = df[selected_metrics] * (df[minutes] / 90)
-    else:
+     else:
         # Show the raw metric
         df[selected_metrics] = df[selected_metrics]
-    return df
-
-def comparison_tab(df):
+     return df
     
     # Title and description
     st.write("Select players and metrics to compare in a table.")
