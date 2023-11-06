@@ -329,18 +329,21 @@ def comparison_tab(df):
         is_best = s == s.max()
         return ['background-color: #00CD00' if v else '' for v in is_best]
 
+    # Create a new DataFrame for calculated totals
+    calculated_df = filtered_df.copy()
+
     # Calculate totals if the "Total" checkbox is selected
     if total_option:
         selected_metrics_without_minutes = [metric for metric in selected_metrics if metric != "Minutes"]
-        filtered_df[selected_metrics_without_minutes] = filtered_df[selected_metrics_without_minutes] * (filtered_df["Minutes"] / 90)
+        calculated_df[selected_metrics_without_minutes] = calculated_df[selected_metrics_without_minutes] * (calculated_df["Minutes"] / 90)
     
     # Display the table with conditional formatting
     if selected_metrics:
-        if filtered_df.empty:
+        if calculated_df.empty:
             st.warning("No players selected. Please select at least one player.")
         else:
             selected_columns = ["Player Name"] + ["Minutes"] + selected_metrics
-            formatted_df = filtered_df[selected_columns].copy()
+            formatted_df = calculated_df[selected_columns].copy()
             formatted_df = formatted_df.style.apply(highlight_best_player, subset=selected_metrics)
             # Format numbers to two decimal places
             formatted_df = formatted_df.format("{:.2f}", subset=selected_metrics)
