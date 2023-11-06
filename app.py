@@ -315,11 +315,11 @@ def scatter_plot(df):
 
 def calculate_totals(df, selected_metrics, show_total=True):
     if show_total:
-        # Calculate the sum for selected metrics
-        df[selected_metrics] = df[selected_metrics].sum()
-    else:
         # Multiply the selected metrics by 90
         df[selected_metrics] = df[selected_metrics] * 90
+    else:
+        # Show the raw metric
+        df[selected_metrics] = df[selected_metrics]
     return df
 
 def comparison_tab(df):
