@@ -315,35 +315,52 @@ def scatter_plot(df):
 
 def comparison_tab(df):
 
-# Title and description
-   st.write("Select players and metrics to compare in a table.")
+import streamlit as st
 
-# Sidebar: Player selection
-   selected_players = st.sidebar.multiselect("Select Players", df["player_name"])
+def comparison_tab(df):
+    # Title and description
+    st.write("Select players and metrics to compare in a table.")
 
-# Sidebar: Metric selection
-   selected_metrics = st.sidebar.multiselect("Select Metrics", df.columns[1:])
+    # Sidebar: Player selection
+    selected_players = st.sidebar.multiselect("Select Players", df["player_name"])
 
-# Filter the DataFrame based on selected players
-   filtered_df = df[df["player_name"].isin(selected_players)]
+    # Sidebar: Metric selection
+    selected_metrics = st.sidebar.multiselect("Select Metrics", df.columns[1:])
 
-# Define a function for conditional formatting
-   def highlight_best_player(s):
-      is_best = s == s.max()
-      return ['background-color: #00CD00' if v else '' for v in is_best]
+    # Add a "Total" option for selected metrics
+    total_option = st.sidebar.checkbox("Total", key="total_checkbox")
 
-# Display the table with conditional formatting
-   if selected_metrics:
-      if filtered_df.empty:
-        st.warning("No players selected. Please select at least one player.")
-      else:
-        selected_columns = ["player_name"] + selected_metrics
-        formatted_df = filtered_df[selected_columns].style.apply(highlight_best_player, subset=selected_metrics)
-        # Format numbers to two decimal places
-        formatted_df = formatted_df.format("{:.2f}", subset=selected_metrics)
-        st.dataframe(formatted_df, hide_index=True)
-   else:
-    st.warning("Select at least one metric to compare.")
+    # Filter the DataFrame based on selected players
+    filtered_df = df[df["player_name"].isin(selected_players)]
+
+    # Define a function to calculate totals based on selected metrics
+    def calculate_totals(sub_df, metrics, total_option):
+        if not total_option:
+            return sub_df
+        for metric in metrics:
+            if metric != "minutes":
+                sub_df[f"{metric}_total"] = sub_df[metric] * sub_df["minutes"]
+        return sub_df
+
+    # Display the table with conditional formatting
+    if selected_metrics:
+        if filtered_df.empty:
+            st.warning("No players selected. Please select at least one player.")
+        else:
+            selected_columns = ["player_name"] + selected_metrics
+            formatted_df = calculate_totals(filtered_df[selected_columns].copy(), selected_metrics, total_option)
+            formatted_df = formatted_df.style.apply(highlight_best_player, subset=selected_metrics)
+            # Format numbers to two decimal places
+            formatted_df = formatted_df.format("{:.2f}", subset=selected_metrics)
+            st.dataframe(formatted_df, hide_index=True)
+    else:
+        st.warning("Select at least one metric to compare.")
+
+def highlight_best_player(s):
+    is_best = s == s.max()
+    return ['background-color: #00CD00' if v else '' for v in is_best]
+
+comparison_tab(df)
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
