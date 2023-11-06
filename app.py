@@ -328,7 +328,7 @@ def comparison_tab(df):
     st.write("Select players and metrics to compare in a table.")
 
     # Sidebar: Player selection
-    selected_players = st.sidebar.multiselect("Select Players", df["Played Name"])
+    selected_players = st.sidebar.multiselect("Select Players", df["Player Name"])
 
     # Sidebar: Metric selection
     selected_metrics = st.sidebar.multiselect("Select Metrics", df.columns[1:])
