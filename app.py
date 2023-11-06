@@ -316,7 +316,6 @@ def scatter_plot(df):
 def comparison_tab(df):
 
 # Title and description
-   st.title("Player Comparison App")
    st.write("Select players and metrics to compare in a table.")
 
 # Sidebar: Player selection
@@ -331,7 +330,7 @@ def comparison_tab(df):
 # Define a function for conditional formatting
    def highlight_best_player(s):
       is_best = s == s.max()
-      return ['background-color: yellow' if v else '' for v in is_best]
+      return ['background-color: #00EE00' if v else '' for v in is_best]
 
 # Display the table with conditional formatting
    if selected_metrics:
