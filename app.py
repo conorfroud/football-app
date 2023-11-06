@@ -314,10 +314,7 @@ def scatter_plot(df):
         st.plotly_chart(fig)
 
 def comparison_tab(df):
-
-import streamlit as st
-
-def comparison_tab(df):
+    
     # Title and description
     st.write("Select players and metrics to compare in a table.")
 
