@@ -315,6 +315,9 @@ def scatter_plot(df):
 
 def comparison_tab(df):
 
+    # Sidebar: Metric selection
+    selected_metrics = st.sidebar.multiselect("Select Metrics", df.columns[1:])
+
     # Add a "Total" option for selected metrics
     total_option = st.sidebar.checkbox("Total", key="total_checkbox")
 
@@ -344,7 +347,6 @@ def comparison_tab(df):
             st.dataframe(formatted_df, hide_index=True)
     else:
         st.warning("Select at least one metric to compare.")
-
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
