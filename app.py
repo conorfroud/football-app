@@ -339,14 +339,14 @@ def comparison_tab(df):
     # Calculate totals if the "Total" checkbox is selected
     if total_option:
         selected_metrics_without_minutes = [metric for metric in selected_metrics]
-        calculated_df[selected_metrics_without_minutes] = calculated_df[selected_metrics_without_minutes] * df["Minutes"]
-    
+        calculated_df[selected_metrics_without_minutes] = calculated_df[selected_metrics_without_minutes] * calculated_df["Minutes"]
+
     # Display the table with conditional formatting
     if selected_metrics:
         if filtered_df.empty:
             st.warning("No players selected. Please select at least one player.")
         else:
-            selected_columns = ["Player Name"] + selected_metrics
+            selected_columns = selected_metrics
             if total_option:
                 formatted_df = calculated_df[selected_columns].copy()
             else:
