@@ -338,8 +338,8 @@ def comparison_tab(df):
 
     # Calculate totals if the "Total" checkbox is selected
     if total_option:
-        selected_metrics_without_minutes = [metric for metric in selected_metrics if metric != "Minutes"]
-        calculated_df[selected_metrics_without_minutes] = calculated_df[selected_metrics_without_minutes] * (calculated_df["Minutes"] / 90)
+        selected_metrics_without_minutes = [metric for metric in selected_metrics]
+        calculated_df[selected_metrics_without_minutes] = calculated_df[selected_metrics_without_minutes] * df["Minutes"]
     
     # Display the table with conditional formatting
     if selected_metrics:
