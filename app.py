@@ -316,8 +316,6 @@ def scatter_plot(df):
     with col2:
         st.plotly_chart(fig)
 
-import streamlit as st
-
 def comparison_tab(df):
 
     # Filter the DataFrame based on selected players
@@ -345,9 +343,6 @@ def comparison_tab(df):
     # Create a new DataFrame for calculated totals
     calculated_df = filtered_df.copy()
 
-    # Create a DataFrame for raw 'Top 5 PSV-99' values
-    top5_psv99_raw = filtered_df[['Player Name', 'Top 5 PSV-99']]
-
     # Calculate totals if the "Total" checkbox is selected
     if total_option:
         selected_metrics_without_minutes = [metric for metric in selected_metrics]
@@ -360,9 +355,9 @@ def comparison_tab(df):
         else:
             selected_columns =  ["Player Name"] + ["Minutes"] + selected_metrics
             if total_option:
-                formatted_df = pd.concat([calculated_df[selected_columns], top5_psv99_raw], axis=1)
+                formatted_df = calculated_df[selected_columns].copy()
             else:
-                formatted_df = pd.concat([filtered_df[selected_columns], top5_psv99_raw], axis=1)
+                formatted_df = filtered_df[selected_columns].copy()
             formatted_df = formatted_df.style.apply(highlight_best_player, subset=selected_metrics)
             # Format numbers to two decimal places
             formatted_df = formatted_df.format({"Minutes": "{:.0f}"}, subset=["Minutes"])
@@ -370,6 +365,7 @@ def comparison_tab(df):
             st.dataframe(formatted_df, hide_index=True)
     else:
         st.warning("Select at least one metric to compare.")
+
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
