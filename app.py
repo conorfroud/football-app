@@ -256,7 +256,7 @@ def scatter_plot(df):
     # Sidebar with variable selection
        st.sidebar.header('Select Variables')
        x_variable = st.sidebar.selectbox('X-axis variable', df.columns, index=df.columns.get_loc('xG'))
-       y_variable = st.sidebar.selectbox('Y-axis variable', df.columns, index=df.columns.get_loc('OP xG Assisted'))
+       y_variable = st.sidebar.selectbox('Y-axis variable', df.columns, index=df.columns.get_loc('Open Play xG Assisted'))
 
 # Create a multi-select dropdown for filtering by primary_position
        selected_positions = st.sidebar.multiselect('Filter by Primary Position', df['position_1'].unique())
