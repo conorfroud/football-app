@@ -353,6 +353,7 @@ def comparison_tab(df):
                 formatted_df = filtered_df[selected_columns].copy()
             formatted_df = formatted_df.style.apply(highlight_best_player, subset=selected_metrics)
             # Format numbers to two decimal places
+            formatted_df = formatted_df.format({"Minutes": "{:.0f}"}, subset=["Minutes"])
             formatted_df = formatted_df.format("{:.2f}", subset=selected_metrics)
             st.dataframe(formatted_df, hide_index=True)
     else:
