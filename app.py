@@ -327,6 +327,13 @@ def comparison_tab(df):
     # Add a "Total" option for selected metrics
     total_option = st.sidebar.checkbox("Total", key="total_checkbox")
 
+    # Metrics to exclude from total calculation
+    exclude_from_total = ['Top 5 PSV-99']
+
+    # Remove excluded metrics from selected metrics if total option is selected
+    if total_option:
+        selected_metrics = [metric for metric in selected_metrics if metric not in exclude_from_total]
+
     filtered_df = df[df["Player Name"].isin(selected_players)]
 
     def highlight_best_player(s):
@@ -358,6 +365,7 @@ def comparison_tab(df):
             st.dataframe(formatted_df, hide_index=True)
     else:
         st.warning("Select at least one metric to compare.")
+
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
