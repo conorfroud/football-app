@@ -100,7 +100,6 @@ def main_tab(df2):
 
     # Update the selected columns to include 'Score Type'
     selected_columns = score_type_column_mapping.get(selected_score_type, [])
-    selected_columns.append('Score Type')  # Add 'Score Type' to the selected columns
 
     filtered_df = df2[(df2['League'] == selected_league) &
                 (df2['Score Type'] == selected_score_type) &
