@@ -159,7 +159,7 @@ def about_tab(df2):
         columns = ["Player Name", "xG (W)", "Non-Penalty Goals (W)", "Shots (W)", "Open Play xA (W)", "OBV Pass (W)", "Successful Dribbles (W)", "OBV Dribble & Carry (W)", "Average Distance (W)", "Top 5 PSV (W)"]
         plot_title = f"Winger Metric Percentiles for {selected_player}"
     elif selected_profile == "Attacking Midfield":
-        columns = ["Player Name", "NP xG per 90 (CAM)", "Non-Pen Goals per 90 (CAM)", "NP Shots per 90 (CAM)", "OBV Pass per 90 (CAM)", "xA per 90 (CAM)", "Dribbles per 90 (CAM)", "OBV Dribble & Carry (CAM)",  "Average Distance (CAM)", "Top 5 PSV (CAM)"]
+        columns = ["Player Name", "xG (CAM)", "Non-Penalty Goals (CAM)", "Shots (CAM)", "OBV Pass (CAM)", "Open Play xA (CAM)", "Key Passes (CAM)", "Throughballs (CAM)", "Successful Dribbles (CAM)", "OBV Dribble & Carry (CAM)", "Average Distance (CAM)", "Top 5 PSV (CAM)"]
         plot_title = f"Attacking Midfield Metric Percentiles for {selected_player}"
     elif selected_profile == "Central Midfield":
         columns = ["Player Name", "NP xG (8)", "NP Goals (8)", "OBV Pass (8)", "OP xA (8)", "Deep Progressions (8)", "Dribbles (8)", "OBV Dribble & Carry (8)",  "Average Distance (8)", "Top 5 PSV-99 (8)"]
