@@ -235,11 +235,13 @@ def about_tab(df2):
            bbox=dict(
             edgecolor="#000000", facecolor="#7EC0EE",
             boxstyle="round,pad=0.2", lw=1
-        )
+        ),
+        weight="bold"
     ),
         kwargs_compare_values=dict(
            color="#000000", fontsize=12, zorder=3,
-           bbox=dict(edgecolor="#000000", facecolor="#7EC0EE", boxstyle="round,pad=0.2", lw=1)
+           bbox=dict(edgecolor="#000000", facecolor="#7EC0EE", boxstyle="round,pad=0.2", lw=1),
+           weight="bold"
     )
 )
     
