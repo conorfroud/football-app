@@ -228,7 +228,7 @@ def about_tab(df2):
            zorder=2, linewidth=1,
     ),
         kwargs_params=dict(
-           color="#000000", fontsize=10, va="center"
+           color="#000000", fontsize=10, va="center", weight="bold"
     ),
         kwargs_values=dict(
            color="#000000", fontsize=12, zorder=3,
