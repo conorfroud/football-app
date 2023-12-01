@@ -242,10 +242,8 @@ def about_tab(df2):
     font_path1 = "Roboto-Regular.ttf"
     prop1 = font_manager.FontProperties(fname=font_path1)
     
-    col1, col2, col3, col4, col5= st.columns([1,1, 5, 1, 1])
+    col1, col2, col3, col4, col5 = st.columns([1, 1, 5, 1, 1])
     
-    # ... (previous code)
-
     with col3:
 
       params = percentiles_df_1["Percentile Type"]
@@ -296,7 +294,7 @@ def about_tab(df2):
 )
 
 
-    st.pyplot(fig2)
+    st.pyplot(fig)
 
 
 def scatter_plot(df):
