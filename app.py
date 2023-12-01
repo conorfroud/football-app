@@ -129,13 +129,6 @@ def main_tab(df2):
             on_click=None,  # You can add a function to handle click events if needed
         )
         
-import streamlit as st
-import pandas as pd
-from py_pizza import PyPizza
-from matplotlib import font_manager
-
-# Assume the PyPizza class is already imported
-
 def about_tab(df2):
 
     # Define the allowed score types
