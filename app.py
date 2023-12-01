@@ -146,8 +146,8 @@ def about_tab(df2):
         index=1  # Set the default index to the second player
     )
 
-    selected_player_df_1 = df2[df2["Player Name"] == selected_player_1]
-    selected_player_df_2 = df2[df2["Player Name"] == selected_player_2]
+    selected_df_1 = selected_player_df_1[selected_player_df_1["Score Type"] == selected_profile]
+    selected_df_2 = selected_player_df_2[selected_player_df_2["Score Type"] == selected_profile]
 
     profile_options = selected_player_df_1[selected_player_df_1["Score Type"].isin(allowed_score_types)]["Score Type"].unique()
 
@@ -173,8 +173,8 @@ def about_tab(df2):
        columns_2 = ["Player Name", "xG (W)", "Non-Penalty Goals (W)", "Shots (W)", "Open Play xA (W)", "OBV Pass (W)", "Successful Dribbles (W)", "OBV Dribble & Carry (W)", "Average Distance (W)", "Top 5 PSV (W)"]
        plot_title_2 = f"Winger Metric Percentiles for {selected_player_2}"
 
-    selected_df_1 = selected_player_df_1[selected_player_df_1["Score Type"] == selected_profile_1]
-    selected_df_2 = selected_player_df_2[selected_player_df_2["Score Type"] == selected_profile_2]
+    selected_df_1 = selected_player_df_1[selected_player_df_1["Score Type"] == selected_profile]
+    selected_df_2 = selected_player_df_2[selected_player_df_2["Score Type"] == selected_profile]
 
     percentiles_df_1 = selected_df_1[columns_1]
     percentiles_df_2 = selected_df_2[columns_2]
