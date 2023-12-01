@@ -17,6 +17,7 @@ from mplsoccer import Pitch
 from mplsoccer import PyPizza
 from PIL import Image
 import gspread
+from sklearn.metrics.pairwise import cosine_similarity
 
 st.set_page_config(layout="wide")
 
@@ -248,6 +249,13 @@ def about_tab(df2):
 
         st.pyplot(fig)
 
+# Function to calculate similarity
+def calculate_similarity(selected_df, columns):
+    selected_metrics = selected_df[columns].values
+    similarity_matrix = cosine_similarity(selected_metrics, selected_metrics)
+    similarity_df = pd.DataFrame(similarity_matrix, index=selected_df["Player Name"], columns=selected_df["Player Name"])
+    return similarity_df
+
 def similarity_score(df2):
 
     # Define the allowed score types
@@ -344,6 +352,14 @@ def similarity_score(df2):
         )
     
         st.pyplot(fig2)
+
+
+    # Calculate similarity
+    similarity_df = calculate_similarity(selected_df, columns)
+
+    # Display the player similarity scores
+    st.subheader("Player Similarity Scores")
+    st.write(similarity_df)
 
 def scatter_plot(df):
 
