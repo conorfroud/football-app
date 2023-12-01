@@ -471,12 +471,12 @@ df = pd.read_csv("belgiumdata.csv")
 df2 = pd.read_csv("championshipscores.csv")
 
 # Create the navigation menu in the sidebar
-selected_tab = st.sidebar.radio("Navigation", ["Stoke Score", "Player Profile", "Similarity Score", "Scatter Plot", "Comparison Tab"])
+selected_tab = st.sidebar.radio("Navigation", ["Stoke Score", "Player Radar Comparison", "Similarity Score", "Scatter Plot", "Comparison Tab"])
 
 # Based on the selected tab, display the corresponding content
 if selected_tab == "Stoke Score":
     main_tab(df2)
-if selected_tab == "Player Profile":
+if selected_tab == "Player Radar Comparison":
     about_tab(df2)  # Pass the DataFrame to the about_tab function
 if selected_tab == "Similarity Score":
     similarity_score(df2)
