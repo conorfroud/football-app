@@ -8,3 +8,4 @@ scipy==1.6.2
 streamlit==1.23.1
 mplsoccer
 gspread
+sklearn
