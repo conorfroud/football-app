@@ -146,8 +146,8 @@ def about_tab(df2):
         index=1  # Set the default index to the second player
     )
 
-    selected_df_1 = selected_player_df_1[selected_player_df_1["Score Type"] == selected_profile]
-    selected_df_2 = selected_player_df_2[selected_player_df_2["Score Type"] == selected_profile]
+    selected_player_df_1 = df2[df2["Player Name"] == selected_player_1]
+    selected_player_df_2 = df2[df2["Player Name"] == selected_player_2]
 
     profile_options = selected_player_df_1[selected_player_df_1["Score Type"].isin(allowed_score_types)]["Score Type"].unique()
 
@@ -155,10 +155,9 @@ def about_tab(df2):
       "Select Profile:",
       options=profile_options,
       index=0  # Set the default index to the first profile
-)
+    )
 
     # Define 'columns' based on the selected profile
-    
     if selected_profile == "Striker":
        columns_1 = ["Player Name", "xG (ST)", "Non-Penalty Goals (ST)", "Shots (ST)", "OBV Shot (ST)", "Open Play xA (ST)", "OBV Dribble & Carry (ST)", "PAdj Pressures (ST)", "Average Distance Percentile", "Top 5 PSV-99 Percentile"]
        plot_title_1 = f"Forward Metrics for {selected_player_1}"
@@ -191,57 +190,54 @@ def about_tab(df2):
     col1, col2, col3, col4, col5 = st.columns([1, 1, 3, 1, 1])
     
     with col3:
+        params = percentiles_df_1["Percentile Type"]
+        values1 = percentiles_df_1["Percentile"]
+        values2 = percentiles_df_2["Percentile"]
 
-      params = percentiles_df_1["Percentile Type"]
-      values1 = percentiles_df_1["Percentile"]
-      values2 = percentiles_df_2["Percentile"]
-
-    # Instantiate PyPizza class
-      baker = PyPizza(
-        params=params,
-        background_color="#FFFFFF",
-        straight_line_color="#222222",
-        straight_line_lw=1,
-        last_circle_lw=1,
-        last_circle_color="#222222",
-        other_circle_ls="-.",
-        other_circle_lw=1
-    )
-
-    # Create the pizza plot
-      fig, ax = baker.make_pizza(
-      values1,                     # list of values
-      compare_values=values2,    # comparison values
-      figsize=(8, 8),             # adjust figsize according to your need
-      kwargs_slices=dict(
-        facecolor="#FF34B3", edgecolor="#222222",
-        zorder=1, linewidth=1
-    ),                          # values to be used when plotting slices
-      kwargs_compare=dict(
-        facecolor="#7EC0EE", edgecolor="#222222",
-        zorder=2, linewidth=1,
-    ),
-      kwargs_params=dict(
-        color="#000000", fontsize=12,
-        va="center"
-    ),                          # values to be used when adding parameter
-      kwargs_values=dict(
-        color="#000000", fontsize=12,
-        zorder=3,
-        bbox=dict(
-            edgecolor="#000000", facecolor="#FF34B3",
-            boxstyle="round,pad=0.2", lw=1
+        # Instantiate PyPizza class
+        baker = PyPizza(
+            params=params,
+            background_color="#FFFFFF",
+            straight_line_color="#222222",
+            straight_line_lw=1,
+            last_circle_lw=1,
+            last_circle_color="#222222",
+            other_circle_ls="-.",
+            other_circle_lw=1
         )
-    ),                          # values to be used when adding parameter-values labels
-      kwargs_compare_values=dict(
-        color="#000000", fontsize=12, zorder=3,
-        bbox=dict(edgecolor="#000000", facecolor="#7EC0EE", boxstyle="round,pad=0.2", lw=1)
-    ),                          # values to be used when adding parameter-values labels
-)
 
+        # Create the pizza plot
+        fig, ax = baker.make_pizza(
+            values1,                     # list of values
+            compare_values=values2,    # comparison values
+            figsize=(8, 8),             # adjust figsize according to your need
+            kwargs_slices=dict(
+                facecolor="#FF34B3", edgecolor="#222222",
+                zorder=1, linewidth=1
+            ),                          # values to be used when plotting slices
+            kwargs_compare=dict(
+                facecolor="#7EC0EE", edgecolor="#222222",
+                zorder=2, linewidth=1,
+            ),
+            kwargs_params=dict(
+                color="#000000", fontsize=12,
+                va="center"
+            ),                          # values to be used when adding parameter
+            kwargs_values=dict(
+                color="#000000", fontsize=12,
+                zorder=3,
+                bbox=dict(
+                    edgecolor="#000000", facecolor="#FF34B3",
+                    boxstyle="round,pad=0.2", lw=1
+                )
+            ),                          # values to be used when adding parameter-values labels
+            kwargs_compare_values=dict(
+                color="#000000", fontsize=12, zorder=3,
+                bbox=dict(edgecolor="#000000", facecolor="#7EC0EE", boxstyle="round,pad=0.2", lw=1)
+            ),                          # values to be used when adding parameter-values labels
+        )
 
-    st.pyplot(fig)
-
+        st.pyplot(fig)
 
 def scatter_plot(df):
 
