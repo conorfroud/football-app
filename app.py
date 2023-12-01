@@ -141,82 +141,51 @@ def about_tab(df2):
         index=0  # Set the default index to the first player
     )
 
-    # Checkbox to compare players (Yes/No)
-    compare_yes = st.sidebar.checkbox("Compare Players (Yes)", value=True)
-    compare_no = st.sidebar.checkbox("Compare Players (No)", value=False)
+    # Select player 2
+    selected_player_2 = st.sidebar.selectbox(
+        "Select Player 2:",
+        options=df2["Player Name"].unique(),
+        index=1  # Set the default index to the second player
+    )
 
-    # Handle comparison vs. single player
-    if compare_yes:
-        # Select player 2
-        selected_player_2 = st.sidebar.selectbox(
-            "Select Player 2:",
-            options=df2["Player Name"].unique(),
-            index=1  # Set the default index to the second player
-        )
+    # Player 1 DataFrame
+    selected_player_df_1 = df2[df2["Player Name"] == selected_player_1]
 
-        # Player 1 DataFrame
-        selected_player_df_1 = df2[df2["Player Name"] == selected_player_1]
+    # Player 2 DataFrame
+    selected_player_df_2 = df2[df2["Player Name"] == selected_player_2]
 
-        # Player 2 DataFrame
-        selected_player_df_2 = df2[df2["Player Name"] == selected_player_2]
+    # Profile options based on Player 1
+    profile_options = selected_player_df_1[selected_player_df_1["Score Type"].isin(allowed_score_types)]["Score Type"].unique()
 
-        # Profile options based on Player 1
-        profile_options = selected_player_df_1[selected_player_df_1["Score Type"].isin(allowed_score_types)]["Score Type"].unique()
+    # Default profile selection
+    selected_profile = st.sidebar.selectbox(
+        "Select Profile:",
+        options=profile_options,
+        index=0  # Set the default index to the first profile
+    )
 
-        # Default profile selection
-        selected_profile = st.sidebar.selectbox(
-            "Select Profile:",
-            options=profile_options,
-            index=0  # Set the default index to the first profile
-        )
+    # Define 'columns' based on the selected profile
+    if selected_profile == "Striker":
+        columns_1 = ["Player Name", "xG (ST)", "Non-Penalty Goals (ST)", "Shots (ST)", "OBV Shot (ST)", "Open Play xA (ST)", "OBV Dribble & Carry (ST)", "PAdj Pressures (ST)", "Average Distance Percentile", "Top 5 PSV-99 Percentile"]
+        plot_title_1 = f"Forward Metrics for {selected_player_1}"
 
-        # Define 'columns' based on the selected profile
-        if selected_profile == "Striker":
-            columns_1 = ["Player Name", "xG (ST)", "Non-Penalty Goals (ST)", "Shots (ST)", "OBV Shot (ST)", "Open Play xA (ST)", "OBV Dribble & Carry (ST)", "PAdj Pressures (ST)", "Average Distance Percentile", "Top 5 PSV-99 Percentile"]
-            plot_title_1 = f"Forward Metrics for {selected_player_1}"
+        columns_2 = ["Player Name", "xG (ST)", "Non-Penalty Goals (ST)", "Shots (ST)", "OBV Shot (ST)", "Open Play xA (ST)", "OBV Dribble & Carry (ST)", "PAdj Pressures (ST)", "Average Distance Percentile", "Top 5 PSV-99 Percentile"]
+        plot_title_2 = f"Forward Metrics for {selected_player_2}"
 
-            columns_2 = ["Player Name", "xG (ST)", "Non-Penalty Goals (ST)", "Shots (ST)", "OBV Shot (ST)", "Open Play xA (ST)", "OBV Dribble & Carry (ST)", "PAdj Pressures (ST)", "Average Distance Percentile", "Top 5 PSV-99 Percentile"]
-            plot_title_2 = f"Forward Metrics for {selected_player_2}"
+    elif selected_profile == "Winger":
+        columns_1 = ["Player Name", "xG (W)", "Non-Penalty Goals (W)", "Shots (W)", "Open Play xA (W)", "OBV Pass (W)", "Successful Dribbles (W)", "OBV Dribble & Carry (W)", "Distance (W)", "Top 5 PSV (W)"]
+        plot_title_1 = f"Winger Metric Percentiles for {selected_player_1}"
 
-        elif selected_profile == "Winger":
-            columns_1 = ["Player Name", "xG (W)", "Non-Penalty Goals (W)", "Shots (W)", "Open Play xA (W)", "OBV Pass (W)", "Successful Dribbles (W)", "OBV Dribble & Carry (W)", "Distance (W)", "Top 5 PSV (W)"]
-            plot_title_1 = f"Winger Metric Percentiles for {selected_player_1}"
+        columns_2 = ["Player Name", "xG (W)", "Non-Penalty Goals (W)", "Shots (W)", "Open Play xA (W)", "OBV Pass (W)", "Successful Dribbles (W)", "OBV Dribble & Carry (W)", "Distance (W)", "Top 5 PSV (W)"]
+        plot_title_2 = f"Winger Metric Percentiles for {selected_player_2}"
 
-            columns_2 = ["Player Name", "xG (W)", "Non-Penalty Goals (W)", "Shots (W)", "Open Play xA (W)", "OBV Pass (W)", "Successful Dribbles (W)", "OBV Dribble & Carry (W)", "Distance (W)", "Top 5 PSV (W)"]
-            plot_title_2 = f"Winger Metric Percentiles for {selected_player_2}"
+    # Filter DataFrames based on the selected profile
+    selected_df_1 = selected_player_df_1[selected_player_df_1["Score Type"] == selected_profile]
+    selected_df_2 = selected_player_df_2[selected_player_df_2["Score Type"] == selected_profile]
 
-        # Filter DataFrames based on the selected profile
-        selected_df_1 = selected_player_df_1[selected_player_df_1["Score Type"] == selected_profile]
-        selected_df_2 = selected_player_df_2[selected_player_df_2["Score Type"] == selected_profile]
-
-        # Get columns for percentiles
-        percentiles_df_1 = selected_df_1[columns_1]
-        percentiles_df_2 = selected_df_2[columns_2]
-
-    elif compare_no:
-        # If not comparing players, use only Player 1
-        selected_df_1 = df2[(df2["Player Name"] == selected_player_1) & (df2["Score Type"].isin(allowed_score_types))]
-
-        # Default profile selection
-        selected_profile = st.sidebar.selectbox(
-            "Select Profile:",
-            options=selected_df_1["Score Type"].unique(),
-            index=0  # Set the default index to the first profile
-        )
-
-        # Define 'columns' based on the selected profile
-        if selected_profile == "Striker":
-            columns_1 = ["Player Name", "xG (ST)", "Non-Penalty Goals (ST)", "Shots (ST)", "OBV Shot (ST)", "Open Play xA (ST)", "OBV Dribble & Carry (ST)", "PAdj Pressures (ST)", "Average Distance Percentile", "Top 5 PSV-99 Percentile"]
-            plot_title_1 = f"Forward Metrics for {selected_player_1}"
-
-        elif selected_profile == "Winger":
-            columns_1 = ["Player Name", "xG (W)", "Non-Penalty Goals (W)", "Shots (W)", "Open Play xA (W)", "OBV Pass (W)", "Successful Dribbles (W)", "OBV Dribble & Carry (W)", "Distance (W)", "Top 5 PSV (W)"]
-            plot_title_1 = f"Winger Metric Percentiles for {selected_player_1}"
-
-        # Get columns for percentiles
-        percentiles_df_1 = selected_df_1[columns_1]
-        # Define an empty DataFrame for percentiles_df_2 when not comparing
-        percentiles_df_2 = pd.DataFrame(columns=columns_1)
+    # Get columns for percentiles
+    percentiles_df_1 = selected_df_1[columns_1]
+    percentiles_df_2 = selected_df_2[columns_2]
 
     # Melt DataFrames for PyPizza
     percentiles_df_1 = percentiles_df_1.melt(id_vars="Player Name", var_name="Percentile Type", value_name="Percentile")
@@ -233,7 +202,7 @@ def about_tab(df2):
     with col3:
         params = percentiles_df_1["Percentile Type"]
         values1 = percentiles_df_1["Percentile"]
-
+        
         # Instantiate PyPizza class
         baker = PyPizza(
             params=params,
@@ -246,61 +215,38 @@ def about_tab(df2):
             other_circle_lw=1
         )
 
-        if compare_yes:
-            # Create the pizza plot for comparing players
-            fig, ax = baker.make_pizza(
-                values1,
-                compare_values=percentiles_df_2["Percentile"].tolist(),
-                figsize=(8, 8),
-                kwargs_slices=dict(
-                    facecolor="#FF34B3", edgecolor="#222222",
-                    zorder=1, linewidth=1
-                ),
-                kwargs_compare=dict(
-                    facecolor="#7EC0EE", edgecolor="#222222",
-                    zorder=2, linewidth=1,
-                ),
-                kwargs_params=dict(
-                    color="#000000", fontsize=12,
-                    va="center"
-                ),
-                kwargs_values=dict(
-                    color="#000000", fontsize=12,
-                    zorder=3,
-                    bbox=dict(
-                        edgecolor="#000000", facecolor="#FF34B3",
-                        boxstyle="round,pad=0.2", lw=1
-                    )
-                ),
-                kwargs_compare_values=dict(
-                    color="#000000", fontsize=12, zorder=3,
-                    bbox=dict(edgecolor="#000000", facecolor="#7EC0EE", boxstyle="round,pad=0.2", lw=1)
-                ),
-            )
-        elif compare_no:
-            # Create the pizza plot for a single player
-            fig, ax = baker.make_pizza(
-                values1,
-                figsize=(8, 8),
-                kwargs_slices=dict(
-                    facecolor="#FF34B3", edgecolor="#222222",
-                    zorder=1, linewidth=1
-                ),
-                kwargs_params=dict(
-                    color="#000000", fontsize=12,
-                    va="center"
-                ),
-                kwargs_values=dict(
-                    color="#000000", fontsize=12,
-                    zorder=3,
-                    bbox=dict(
-                        edgecolor="#000000", facecolor="#FF34B3",
-                        boxstyle="round,pad=0.2", lw=1
-                    )
-                ),
-            )
+        # Create the pizza plot
+        fig, ax = baker.make_pizza(
+            values1,
+            compare_values=percentiles_df_2["Percentile"].tolist(),
+            figsize=(8, 8),
+            kwargs_slices=dict(
+                facecolor="#FF34B3", edgecolor="#222222",
+                zorder=1, linewidth=1
+            ),
+            kwargs_compare=dict(
+                facecolor="#7EC0EE", edgecolor="#222222",
+                zorder=2, linewidth=1,
+            ),
+            kwargs_params=dict(
+                color="#000000", fontsize=12,
+                va="center"
+            ),
+            kwargs_values=dict(
+                color="#000000", fontsize=12,
+                zorder=3,
+                bbox=dict(
+                    edgecolor="#000000", facecolor="#FF34B3",
+                    boxstyle="round,pad=0.2", lw=1
+                )
+            ),
+            kwargs_compare_values=dict(
+                color="#000000", fontsize=12, zorder=3,
+                bbox=dict(edgecolor="#000000", facecolor="#7EC0EE", boxstyle="round,pad=0.2", lw=1)
+            ),
+        )
 
-    st.pyplot(fig)
+        st.pyplot(fig)
 
 def scatter_plot(df):
 
