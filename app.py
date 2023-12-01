@@ -277,18 +277,18 @@ def about_tab(df2):
     ),
       kwargs_params=dict(
         color="#000000", fontsize=12,
-        fontproperties=font_normal.prop, va="center"
+        va="center"
     ),                          # values to be used when adding parameter
       kwargs_values=dict(
         color="#000000", fontsize=12,
-        fontproperties=font_normal.prop, zorder=3,
+        zorder=3,
         bbox=dict(
             edgecolor="#000000", facecolor="#FF34B3",
             boxstyle="round,pad=0.2", lw=1
         )
     ),                          # values to be used when adding parameter-values labels
       kwargs_compare_values=dict(
-        color="#000000", fontsize=12, fontproperties=font_normal.prop, zorder=3,
+        color="#000000", fontsize=12, zorder=3,
         bbox=dict(edgecolor="#000000", facecolor="#7EC0EE", boxstyle="round,pad=0.2", lw=1)
     ),                          # values to be used when adding parameter-values labels
 )
