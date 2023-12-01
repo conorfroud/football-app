@@ -250,6 +250,7 @@ def about_tab(df2):
 
       params = percentiles_df_1["Percentile Type"]
       values1 = percentiles_df_1["Percentile"]
+      values2 = percentiles_df_2["Percentile"]
 
     # Instantiate PyPizza class
       baker = PyPizza(
@@ -264,34 +265,36 @@ def about_tab(df2):
     )
 
     # Create the pizza plot
-      fig2, ax = baker.make_pizza(
-        values1,
-        figsize=(8, 8),
-        kwargs_slices=dict(
-            facecolor="#7EC0EE", edgecolor="#222222",
-            zorder=1, linewidth=1
-        ),
-        kwargs_compare=dict(
-            facecolor="#7EC0EE", edgecolor="#222222",
-            zorder=2, linewidth=1,
-        ),
-        kwargs_params=dict(
-            color="#000000", fontsize=10, va="center", weight="bold"
-        ),
-        kwargs_values=dict(
-            color="#000000", fontsize=12, zorder=3,
-            bbox=dict(
-                edgecolor="#000000", facecolor="#7EC0EE",
-                boxstyle="round,pad=0.2", lw=1
-            ),
-            weight="bold"
-        ),
-        kwargs_compare_values=dict(
-            color="#000000", fontsize=12, zorder=3,
-            bbox=dict(edgecolor="#000000", facecolor="#7EC0EE", boxstyle="round,pad=0.2", lw=1),
-            weight="bold"
+      fig, ax = baker.make_pizza(
+      values1,                     # list of values
+      compare_values=values2,    # comparison values
+      figsize=(8, 8),             # adjust figsize according to your need
+      kwargs_slices=dict(
+        facecolor="#FF34B3", edgecolor="#222222",
+        zorder=1, linewidth=1
+    ),                          # values to be used when plotting slices
+      kwargs_compare=dict(
+        facecolor="#7EC0EE", edgecolor="#222222",
+        zorder=2, linewidth=1,
+    ),
+      kwargs_params=dict(
+        color="#000000", fontsize=12,
+        fontproperties=font_normal.prop, va="center"
+    ),                          # values to be used when adding parameter
+      kwargs_values=dict(
+        color="#000000", fontsize=12,
+        fontproperties=font_normal.prop, zorder=3,
+        bbox=dict(
+            edgecolor="#000000", facecolor="#FF34B3",
+            boxstyle="round,pad=0.2", lw=1
         )
-    )
+    ),                          # values to be used when adding parameter-values labels
+      kwargs_compare_values=dict(
+        color="#000000", fontsize=12, fontproperties=font_normal.prop, zorder=3,
+        bbox=dict(edgecolor="#000000", facecolor="#7EC0EE", boxstyle="round,pad=0.2", lw=1)
+    ),                          # values to be used when adding parameter-values labels
+)
+
 
     st.pyplot(fig2)
 
