@@ -258,8 +258,7 @@ def calculate_similarity(selected_df, columns):
     similarity_df = pd.DataFrame(similarity_matrix, index=selected_df["Player Name"], columns=selected_df["Player Name"])
     return similarity_df
 
-def about_tab(df2):
-    st.title("About Tab")
+def similarity_score(df2):
 
     # Define the allowed score types
     allowed_score_types = ["Striker", "Winger", "Attacking Midfield", "Central Midfield", "Defensive Midfield", "Left Back", "Right Back", "Centre Back", "Stretch 9"]
