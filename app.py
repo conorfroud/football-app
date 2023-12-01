@@ -264,7 +264,7 @@ def calculate_similarity(selected_df, df2, columns):
     similarity_matrix = cosine_similarity(selected_metrics, striker_df)
     
     # Create a DataFrame with similarity scores
-    similarity_df = pd.DataFrame(similarity_matrix)
+    similarity_df = pd.DataFrame(similarity_matrix, index=selected_df["Player Name"], columns=df2[df2['Score Type'] == 'Striker']["Player Name"])
     
     return similarity_df
 
