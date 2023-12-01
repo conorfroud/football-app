@@ -306,8 +306,8 @@ def similarity_score(df2):
     selected_df = selected_player_df[selected_player_df["Score Type"] == selected_profile][columns[1:]]  # Exclude the "Player Name" column
 
     # Display selected DataFrame details
-    st.subheader("Selected DataFrame Details")
-    st.write(selected_df)
+    #st.subheader("Selected DataFrame Details")
+    #st.write(selected_df)
 
     # Extract only the metrics used in the pizza visualization for similarity calculation
     selected_metrics = selected_df.select_dtypes(include='number').values
