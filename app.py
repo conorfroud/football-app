@@ -151,6 +151,7 @@ def about_tab(df2):
     # Checkbox to compare players
     compare_players = st.sidebar.checkbox("Compare Players", value=True)
 
+    # Handle comparison vs. single player
     if compare_players:
         # Player 1 DataFrame
         selected_player_df_1 = df2[df2["Player Name"] == selected_player_1]
@@ -268,6 +269,7 @@ def about_tab(df2):
         )
 
         st.pyplot(fig)
+
 
 
 def scatter_plot(df):
