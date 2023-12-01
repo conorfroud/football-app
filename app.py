@@ -249,11 +249,19 @@ def about_tab(df2):
 
         st.pyplot(fig)
 
-# Function to calculate similarity
 def calculate_similarity(selected_df, columns):
-    selected_metrics = selected_df[columns].values
-    similarity_matrix = cosine_similarity(selected_metrics, selected_metrics)
+    # Extract the relevant metrics for similarity calculation
+    selected_metrics = selected_df[columns].select_dtypes(include='number').values
+
+    # Reset the index to avoid non-numeric indices
+    selected_metrics_df = selected_df[columns].select_dtypes(include='number').reset_index(drop=True)
+
+    # Calculate cosine similarity
+    similarity_matrix = cosine_similarity(selected_metrics_df, selected_metrics_df)
+
+    # Create a DataFrame to store the similarity scores
     similarity_df = pd.DataFrame(similarity_matrix, index=selected_df["Player Name"], columns=selected_df["Player Name"])
+
     return similarity_df
 
 def similarity_score(df2):
