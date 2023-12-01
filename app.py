@@ -249,30 +249,25 @@ def about_tab(df2):
 
         st.pyplot(fig)
 
+allowed_score_types = ["Striker", "Winger", "Attacking Midfield", "Central Midfield", "Defensive Midfield", "Left Back", "Right Back", "Centre Back", "Stretch 9"]
+
+# Function to calculate similarity
 def calculate_similarity(selected_df, columns):
-    # Extract the relevant metrics for similarity calculation
     selected_metrics = selected_df[columns].select_dtypes(include='number').values
-
-    # Reset the index to avoid non-numeric indices
-    selected_metrics_df = selected_df[columns].select_dtypes(include='number').reset_index(drop=True)
-
-    # Calculate cosine similarity
-    similarity_matrix = cosine_similarity(selected_metrics_df, selected_metrics_df)
-
-    # Create a DataFrame to store the similarity scores
+    similarity_matrix = cosine_similarity(selected_metrics, selected_metrics)
     similarity_df = pd.DataFrame(similarity_matrix, index=selected_df["Player Name"], columns=selected_df["Player Name"])
-
     return similarity_df
 
-def similarity_score(df2):
+def about_tab(df2):
+    st.title("About Tab")
 
     # Define the allowed score types
     allowed_score_types = ["Striker", "Winger", "Attacking Midfield", "Central Midfield", "Defensive Midfield", "Left Back", "Right Back", "Centre Back", "Stretch 9"]
 
     selected_player = st.sidebar.selectbox(
-      "Select a Player:",
-      options=df2["Player Name"].unique(),
-      index=0  # Set the default index to the first player
+        "Select a Player:",
+        options=df2["Player Name"].unique(),
+        index=0  # Set the default index to the first player
     )
 
     selected_player_df = df2[df2["Player Name"] == selected_player]
@@ -281,9 +276,9 @@ def similarity_score(df2):
     available_profiles = selected_player_df[selected_player_df["Score Type"].isin(allowed_score_types)]["Score Type"].unique()
 
     selected_profile = st.sidebar.selectbox(
-      "Select a Profile:",
-      options=available_profiles,
-      index=0  # Set the default index to the first profile
+        "Select a Profile:",
+        options=available_profiles,
+        index=0  # Set the default index to the first profile
     )
 
     # Define 'columns' based on the selected profile
@@ -302,17 +297,21 @@ def similarity_score(df2):
     # Assuming selected_df is your DataFrame containing the data
     selected_df = selected_player_df[selected_player_df["Score Type"] == selected_profile]
 
+    # Display selected DataFrame details
+    st.subheader("Selected DataFrame Details")
+    st.write(selected_df)
+
     percentiles_df = selected_df[columns]
     percentiles_df = percentiles_df.melt(id_vars="Player Name", var_name="Percentile Type", value_name="Percentile")
-    
+
     # Load the Roboto font
     font_path = "Roboto-Bold.ttf"  # Replace with the actual path to the Roboto font
     prop = font_manager.FontProperties(fname=font_path)
     font_path1 = "Roboto-Regular.ttf"
     prop1 = font_manager.FontProperties(fname=font_path1)
-    
-    col1, col2, col3, col4, col5 = st.columns([1,1, 5, 1, 1])
-    
+
+    col1, col2, col3, col4, col5 = st.columns([1, 1, 5, 1, 1])
+
     with col3:
         params = percentiles_df["Percentile Type"]
         values1 = percentiles_df["Percentile"]
@@ -331,8 +330,8 @@ def similarity_score(df2):
 
         # Create the pizza plot
         fig2, ax = baker.make_pizza(
-            values1,                     
-            figsize=(8, 8),            
+            values1,
+            figsize=(8, 8),
             kwargs_slices=dict(
                 facecolor="#7EC0EE", edgecolor="#222222",
                 zorder=1, linewidth=1
@@ -358,9 +357,8 @@ def similarity_score(df2):
                 weight="bold"
             )
         )
-    
-        st.pyplot(fig2)
 
+        st.pyplot(fig2)
 
     # Calculate similarity
     similarity_df = calculate_similarity(selected_df, columns)
