@@ -149,17 +149,13 @@ def about_tab(df2):
     selected_player_df_1 = df2[df2["Player Name"] == selected_player_1]
     selected_player_df_2 = df2[df2["Player Name"] == selected_player_2]
 
-    selected_profile_1 = st.sidebar.selectbox(
-        f"Select Profile for {selected_player_1}:",
-        options=selected_player_df_1[selected_player_df_1["Score Type"].isin(allowed_score_types)]["Score Type"].unique(),
-        index=0  # Set the default index to the first profile
-    )
+    profile_options = selected_player_df_1[selected_player_df_1["Score Type"].isin(allowed_score_types)]["Score Type"].unique()
 
-    selected_profile_2 = st.sidebar.selectbox(
-        f"Select Profile for {selected_player_2}:",
-        options=selected_player_df_2[selected_player_df_2["Score Type"].isin(allowed_score_types)]["Score Type"].unique(),
-        index=0  # Set the default index to the first profile
-    )
+    selected_profile = st.sidebar.selectbox(
+      "Select Profile:",
+      options=profile_options,
+      index=0  # Set the default index to the first profile
+)
 
     # Define 'columns' based on the selected profile
     if selected_profile_1 == "Striker":
