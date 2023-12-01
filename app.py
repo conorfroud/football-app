@@ -230,8 +230,8 @@ def about_tab(df2):
     selected_df_1 = selected_player_df_1[selected_player_df_1["Score Type"] == selected_profile_1]
     selected_df_2 = selected_player_df_2[selected_player_df_2["Score Type"] == selected_profile_2]
 
-    percentiles_df_1 = selected_df_1[columns]
-    percentiles_df_2 = selected_df_2[columns]
+    percentiles_df_1 = selected_df_1[columns_1]
+    percentiles_df_2 = selected_df_2[columns_2]
 
     percentiles_df_1 = percentiles_df_1.melt(id_vars="Player Name", var_name="Percentile Type", value_name="Percentile")
     percentiles_df_2 = percentiles_df_2.melt(id_vars="Player Name", var_name="Percentile Type", value_name="Percentile")
