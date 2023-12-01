@@ -368,13 +368,6 @@ def similarity_score(df2):
 
         st.pyplot(fig2)
 
-    # Calculate similarity against 'Striker' profiles
-    similarity_df = calculate_similarity(selected_df, df2, columns)
-
-    # Display the player similarity scores
-    st.subheader("Player Similarity Scores")
-    st.write(similarity_df)
-
 def scatter_plot(df):
 
     # Create three columns layout
