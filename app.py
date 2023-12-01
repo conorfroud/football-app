@@ -218,9 +218,12 @@ def about_tab(df2):
 
         # Get columns for percentiles
         percentiles_df_1 = selected_df_1[columns_1]
+        # Define an empty DataFrame for percentiles_df_2 when not comparing
+        percentiles_df_2 = pd.DataFrame(columns=columns_2)
 
     # Melt DataFrames for PyPizza
     percentiles_df_1 = percentiles_df_1.melt(id_vars="Player Name", var_name="Percentile Type", value_name="Percentile")
+    percentiles_df_2 = percentiles_df_2.melt(id_vars="Player Name", var_name="Percentile Type", value_name="Percentile")
 
     # Load the Roboto font
     font_path = "Roboto-Bold.ttf"  # Replace with the actual path to the Roboto font
