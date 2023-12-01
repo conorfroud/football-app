@@ -141,11 +141,12 @@ def about_tab(df2):
         index=0  # Set the default index to the first player
     )
 
-    # Checkbox to compare players
-    compare_players = st.sidebar.checkbox("Compare Players", value=True)
+    # Checkbox to compare players (Yes/No)
+    compare_yes = st.sidebar.checkbox("Compare Players (Yes)", value=True)
+    compare_no = st.sidebar.checkbox("Compare Players (No)", value=False)
 
     # Handle comparison vs. single player
-    if compare_players:
+    if compare_yes:
         # Select player 2
         selected_player_2 = st.sidebar.selectbox(
             "Select Player 2:",
@@ -192,7 +193,7 @@ def about_tab(df2):
         percentiles_df_1 = selected_df_1[columns_1]
         percentiles_df_2 = selected_df_2[columns_2]
 
-    else:
+    elif compare_no:
         # If not comparing players, use only Player 1
         selected_df_1 = df2[(df2["Player Name"] == selected_player_1) & (df2["Score Type"].isin(allowed_score_types))]
 
@@ -245,7 +246,7 @@ def about_tab(df2):
             other_circle_lw=1
         )
 
-        if compare_players:
+        if compare_yes:
             # Create the pizza plot for comparing players
             fig, ax = baker.make_pizza(
                 values1,
@@ -276,7 +277,7 @@ def about_tab(df2):
                     bbox=dict(edgecolor="#000000", facecolor="#7EC0EE", boxstyle="round,pad=0.2", lw=1)
                 ),
             )
-        else:
+        elif compare_no:
             # Create the pizza plot for a single player
             fig, ax = baker.make_pizza(
                 values1,
