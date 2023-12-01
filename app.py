@@ -198,7 +198,7 @@ def about_tab(df2):
     prop1 = font_manager.FontProperties(fname=font_path1)
 
     # Create PyPizza plot
-    col1, col2, col3, col4, col5 = st.columns([1, 1, 3, 1, 1])
+    col1, col2, col3, col4, col5 = st.columns([1, 1, 5, 1, 1])
     with col3:
         params = percentiles_df_1["Percentile Type"]
         values1 = percentiles_df_1["Percentile"]
