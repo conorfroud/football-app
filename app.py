@@ -164,7 +164,7 @@ def about_tab(df2):
     # Define 'columns' based on the selected profile
     if selected_profile_1 == "Striker":
         columns_1 = ["Player Name", "xG (ST)", "Non-Penalty Goals (ST)", "Shots (ST)", "OBV Shot (ST)", "Open Play xA (ST)", "OBV Dribble & Carry (ST)", "PAdj Pressures (ST)", "Average Distance Percentile", "Top 5 PSV-99 Percentile"]
-        plot_title_1 = f"Forward Metrics for {selected_player_1"
+        plot_title_1 = f"Forward Metrics for {selected_player_1}"
     elif selected_profile_1 == "Winger":
         columns_1 = ["Player Name", "xG (W)", "Non-Penalty Goals (W)", "Shots (W)", "Open Play xA (W)", "OBV Pass (W)", "Successful Dribbles (W)", "OBV Dribble & Carry (W)", "Average Distance (W)", "Top 5 PSV (W)"]
         plot_title_1 = f"Winger Metric Percentiles for {selected_player_1}"
