@@ -248,6 +248,103 @@ def about_tab(df2):
 
         st.pyplot(fig)
 
+def similarity_score(df2):
+
+    # Define the allowed score types
+    allowed_score_types = ["Striker", "Winger", "Attacking Midfield", "Central Midfield", "Defensive Midfield", "Left Back", "Right Back", "Centre Back", "Stretch 9"]
+
+    selected_player = st.sidebar.selectbox(
+      "Select a Player:",
+      options=df2["Player Name"].unique(),
+      index=0  # Set the default index to the first player
+    )
+
+    selected_player_df = df2[df2["Player Name"] == selected_player]
+
+    # Filter the available profiles based on the allowed score types
+    available_profiles = selected_player_df[selected_player_df["Score Type"].isin(allowed_score_types)]["Score Type"].unique()
+
+    selected_profile = st.sidebar.selectbox(
+      "Select a Profile:",
+      options=available_profiles,
+      index=0  # Set the default index to the first profile
+    )
+
+    # Define 'columns' based on the selected profile
+    if selected_profile == "Striker":
+        columns = ["Player Name", "xG (ST)", "Non-Penalty Goals (ST)", "Shots (ST)", "OBV Shot (ST)", "Open Play xA (ST)", "OBV Dribble & Carry (ST)", "PAdj Pressures (ST)", "Average Distance Percentile", "Top 5 PSV-99 Percentile"]
+        plot_title = f"Forward Metrics for {selected_player}"
+    elif selected_profile == "Winger":
+        columns = ["Player Name", "xG (W)", "Non-Penalty Goals (W)", "Shots (W)", "Open Play xA (W)", "OBV Pass (W)", "Successful Dribbles (W)", "OBV Dribble & Carry (W)", "Average Distance (W)", "Top 5 PSV (W)"]
+        plot_title = f"Winger Metric Percentiles for {selected_player}"
+    # ... (similar elif blocks for other profiles)
+    else:
+        # Define columns and plot title for the default profile
+        columns = []
+        plot_title = f"Default Profile Metrics for {selected_player}"
+
+    # Assuming selected_df is your DataFrame containing the data
+    selected_df = selected_player_df[selected_player_df["Score Type"] == selected_profile]
+
+    percentiles_df = selected_df[columns]
+    percentiles_df = percentiles_df.melt(id_vars="Player Name", var_name="Percentile Type", value_name="Percentile")
+    
+    # Load the Roboto font
+    font_path = "Roboto-Bold.ttf"  # Replace with the actual path to the Roboto font
+    prop = font_manager.FontProperties(fname=font_path)
+    font_path1 = "Roboto-Regular.ttf"
+    prop1 = font_manager.FontProperties(fname=font_path1)
+    
+    col1, col2, col3, col4, col5 = st.columns([1,1, 5, 1, 1])
+    
+    with col3:
+        params = percentiles_df["Percentile Type"]
+        values1 = percentiles_df["Percentile"]
+
+        # Instantiate PyPizza class
+        baker = PyPizza(
+            params=params,
+            background_color="#FFFFFF",
+            straight_line_color="#222222",
+            straight_line_lw=1,
+            last_circle_lw=1,
+            last_circle_color="#222222",
+            other_circle_ls="-.",
+            other_circle_lw=1
+        )
+
+        # Create the pizza plot
+        fig2, ax = baker.make_pizza(
+            values1,                     
+            figsize=(8, 8),            
+            kwargs_slices=dict(
+                facecolor="#7EC0EE", edgecolor="#222222",
+                zorder=1, linewidth=1
+            ),
+            kwargs_compare=dict(
+                facecolor="#7EC0EE", edgecolor="#222222",
+                zorder=2, linewidth=1,
+            ),
+            kwargs_params=dict(
+                color="#000000", fontsize=10, va="center", weight="bold"
+            ),
+            kwargs_values=dict(
+                color="#000000", fontsize=12, zorder=3,
+                bbox=dict(
+                    edgecolor="#000000", facecolor="#7EC0EE",
+                    boxstyle="round,pad=0.2", lw=1
+                ),
+                weight="bold"
+            ),
+            kwargs_compare_values=dict(
+                color="#000000", fontsize=12, zorder=3,
+                bbox=dict(edgecolor="#000000", facecolor="#7EC0EE", boxstyle="round,pad=0.2", lw=1),
+                weight="bold"
+            )
+        )
+    
+        st.pyplot(fig2)
+
 def scatter_plot(df):
 
     # Create three columns layout
@@ -374,13 +471,15 @@ df = pd.read_csv("belgiumdata.csv")
 df2 = pd.read_csv("championshipscores.csv")
 
 # Create the navigation menu in the sidebar
-selected_tab = st.sidebar.radio("Navigation", ["Stoke Score", "Player Profile", "Scatter Plot", "Comparison Tab"])
+selected_tab = st.sidebar.radio("Navigation", ["Stoke Score", "Player Profile", "Similarity Score", "Scatter Plot", "Comparison Tab"])
 
 # Based on the selected tab, display the corresponding content
 if selected_tab == "Stoke Score":
     main_tab(df2)
 if selected_tab == "Player Profile":
     about_tab(df2)  # Pass the DataFrame to the about_tab function
+if selected_tab == "Similarity Score":
+    similarity_score(df2)
 if selected_tab == "Scatter Plot":
     scatter_plot(df)
 elif selected_tab == "Comparison Tab":
