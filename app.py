@@ -252,12 +252,20 @@ def about_tab(df2):
 # Define the allowed score types
 allowed_score_types = ["Striker", "Winger", "Attacking Midfield", "Central Midfield", "Defensive Midfield", "Left Back", "Right Back", "Centre Back", "Stretch 9"]
 
-# Function to calculate similarity
-def calculate_similarity(selected_df, columns):
+# Function to calculate similarity against 'Striker' profiles
+def calculate_similarity(selected_df, df2, columns):
     # Exclude the "Player Name" column
     selected_metrics = selected_df[columns[1:]].select_dtypes(include='number').values
-    similarity_matrix = cosine_similarity(selected_metrics, selected_metrics)
+    
+    # Filter the DataFrame to include only 'Striker' profiles
+    striker_df = df2[df2['Score Type'] == 'Striker'][columns[1:]].select_dtypes(include='number').values
+    
+    # Calculate similarity
+    similarity_matrix = cosine_similarity(selected_metrics, striker_df)
+    
+    # Create a DataFrame with similarity scores
     similarity_df = pd.DataFrame(similarity_matrix)
+    
     return similarity_df
 
 # Main function for the Streamlit app
@@ -360,8 +368,8 @@ def similarity_score(df2):
 
         st.pyplot(fig2)
 
-    # Calculate similarity
-    similarity_df = calculate_similarity(selected_df, columns)
+    # Calculate similarity against 'Striker' profiles
+    similarity_df = calculate_similarity(selected_df, df2, columns)
 
     # Display the player similarity scores
     st.subheader("Player Similarity Scores")
