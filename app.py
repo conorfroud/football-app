@@ -128,7 +128,7 @@ def main_tab(df2):
             file_name="filtered_data.csv",
             on_click=None,  # You can add a function to handle click events if needed
         )
-
+        
 def about_tab(df2):
 
     # Define the allowed score types
@@ -218,8 +218,6 @@ def about_tab(df2):
 
         # Get columns for percentiles
         columns_2 = []  # Define an empty list for columns_2 when not comparing players
-        percentiles_df_1 = selected_df_1[columns_1]
-        # Define an empty DataFrame for percentiles_df_2 when not comparing
         percentiles_df_2 = pd.DataFrame(columns=columns_2)
 
     # Melt DataFrames for PyPizza
@@ -232,7 +230,7 @@ def about_tab(df2):
     font_path1 = "Roboto-Regular.ttf"
     prop1 = font_manager.FontProperties(fname=font_path1)
 
-        # Create PyPizza plot
+    # Create PyPizza plot
     col1, col2, col3, col4, col5 = st.columns([1, 1, 3, 1, 1])
     with col3:
         params = percentiles_df_1["Percentile Type"]
@@ -251,26 +249,58 @@ def about_tab(df2):
         )
 
         # Create the pizza plot
-        fig, ax = baker.make_pizza(
-            values1,
-            figsize=(8, 8),
-            kwargs_slices=dict(
-                facecolor="#FF34B3", edgecolor="#222222",
-                zorder=1, linewidth=1
-            ),
-            kwargs_params=dict(
-                color="#000000", fontsize=12,
-                va="center"
-            ),
-            kwargs_values=dict(
-                color="#000000", fontsize=12,
-                zorder=3,
-                bbox=dict(
-                    edgecolor="#000000", facecolor="#FF34B3",
-                    boxstyle="round,pad=0.2", lw=1
-                )
-            ),
-        )
+        if compare_players:
+            values2 = percentiles_df_2["Percentile"]
+            fig, ax = baker.make_pizza(
+                values1,
+                compare_values=values2,
+                figsize=(8, 8),
+                kwargs_slices=dict(
+                    facecolor="#FF34B3", edgecolor="#222222",
+                    zorder=1, linewidth=1
+                ),
+                kwargs_compare=dict(
+                    facecolor="#7EC0EE", edgecolor="#222222",
+                    zorder=2, linewidth=1,
+                ),
+                kwargs_params=dict(
+                    color="#000000", fontsize=12,
+                    va="center"
+                ),
+                kwargs_values=dict(
+                    color="#000000", fontsize=12,
+                    zorder=3,
+                    bbox=dict(
+                        edgecolor="#000000", facecolor="#FF34B3",
+                        boxstyle="round,pad=0.2", lw=1
+                    )
+                ),
+                kwargs_compare_values=dict(
+                    color="#000000", fontsize=12, zorder=3,
+                    bbox=dict(edgecolor="#000000", facecolor="#7EC0EE", boxstyle="round,pad=0.2", lw=1)
+                ),
+            )
+        else:
+            fig, ax = baker.make_pizza(
+                values1,
+                figsize=(8, 8),
+                kwargs_slices=dict(
+                    facecolor="#FF34B3", edgecolor="#222222",
+                    zorder=1, linewidth=1
+                ),
+                kwargs_params=dict(
+                    color="#000000", fontsize=12,
+                    va="center"
+                ),
+                kwargs_values=dict(
+                    color="#000000", fontsize=12,
+                    zorder=3,
+                    bbox=dict(
+                        edgecolor="#000000", facecolor="#FF34B3",
+                        boxstyle="round,pad=0.2", lw=1
+                    )
+                ),
+            )
 
         st.pyplot(fig)
 
