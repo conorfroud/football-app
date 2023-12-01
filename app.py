@@ -249,12 +249,6 @@ def about_tab(df2):
 
         st.pyplot(fig)
 
-import streamlit as st
-from py_pizza import PyPizza
-from sklearn.metrics.pairwise import cosine_similarity
-import pandas as pd
-from matplotlib import font_manager
-
 # Define the allowed score types
 allowed_score_types = ["Striker", "Winger", "Attacking Midfield", "Central Midfield", "Defensive Midfield", "Left Back", "Right Back", "Centre Back", "Stretch 9"]
 
