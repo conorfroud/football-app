@@ -217,6 +217,7 @@ def about_tab(df2):
         selected_df_1 = selected_player_df_1[selected_player_df_1["Score Type"] == selected_profile]
 
         # Get columns for percentiles
+        columns_2 = []  # Define an empty list for columns_2 when not comparing players
         percentiles_df_1 = selected_df_1[columns_1]
         # Define an empty DataFrame for percentiles_df_2 when not comparing
         percentiles_df_2 = pd.DataFrame(columns=columns_2)
@@ -236,7 +237,7 @@ def about_tab(df2):
     with col3:
         params = percentiles_df_1["Percentile Type"]
         values1 = percentiles_df_1["Percentile"]
-        
+
         # Instantiate PyPizza class
         baker = PyPizza(
             params=params,
