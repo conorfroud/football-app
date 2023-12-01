@@ -134,22 +134,32 @@ def about_tab(df2):
     # Define the allowed score types
     allowed_score_types = ["Striker", "Winger", "Attacking Midfield", "Central Midfield", "Defensive Midfield", "Left Back", "Right Back", "Centre Back", "Stretch 9"]
 
-    selected_player = st.sidebar.selectbox(
-      "Select a Player:",
-      options=df2["Player Name"].unique(),
-      index=0  # Set the default index to the first player
-)
+    selected_player_1 = st.sidebar.selectbox(
+        "Select Player 1:",
+        options=df2["Player Name"].unique(),
+        index=0  # Set the default index to the first player
+    )
 
-    selected_player_df = df2[df2["Player Name"] == selected_player]
+    selected_player_2 = st.sidebar.selectbox(
+        "Select Player 2:",
+        options=df2["Player Name"].unique(),
+        index=1  # Set the default index to the second player
+    )
 
-# Filter the available profiles based on the allowed score types
-    available_profiles = selected_player_df[selected_player_df["Score Type"].isin(allowed_score_types)]["Score Type"].unique()
+    selected_player_df_1 = df2[df2["Player Name"] == selected_player_1]
+    selected_player_df_2 = df2[df2["Player Name"] == selected_player_2]
 
-    selected_profile = st.sidebar.selectbox(
-      "Select a Profile:",
-      options=available_profiles,
-      index=0  # Set the default index to the first profile
-)
+    selected_profile_1 = st.sidebar.selectbox(
+        f"Select Profile for {selected_player_1}:",
+        options=selected_player_df_1[selected_player_df_1["Score Type"].isin(allowed_score_types)]["Score Type"].unique(),
+        index=0  # Set the default index to the first profile
+    )
+
+    selected_profile_2 = st.sidebar.selectbox(
+        f"Select Profile for {selected_player_2}:",
+        options=selected_player_df_2[selected_player_df_2["Score Type"].isin(allowed_score_types)]["Score Type"].unique(),
+        index=0  # Set the default index to the first profile
+    )
 
     # Define 'columns' based on the selected profile
     if selected_profile == "Striker":
@@ -184,11 +194,14 @@ def about_tab(df2):
         columns = []
         plot_title = f"Default Profile Metrics for {selected_player}"
 
-    # Assuming selected_df is your DataFrame containing the data
-    selected_df = selected_player_df[selected_player_df["Score Type"] == selected_profile]
+    selected_df_1 = selected_player_df_1[selected_player_df_1["Score Type"] == selected_profile_1]
+    selected_df_2 = selected_player_df_2[selected_player_df_2["Score Type"] == selected_profile_2]
 
-    percentiles_df = selected_df[columns]
-    percentiles_df = percentiles_df.melt(id_vars="Player Name", var_name="Percentile Type", value_name="Percentile")
+    percentiles_df_1 = selected_df_1[columns]
+    percentiles_df_2 = selected_df_2[columns]
+
+    percentiles_df_1 = percentiles_df_1.melt(id_vars="Player Name", var_name="Percentile Type", value_name="Percentile")
+    percentiles_df_2 = percentiles_df_2.melt(id_vars="Player Name", var_name="Percentile Type", value_name="Percentile")
     
     # Load the Roboto font
     font_path = "Roboto-Bold.ttf"  # Replace with the actual path to the Roboto font
