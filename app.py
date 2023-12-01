@@ -254,9 +254,10 @@ allowed_score_types = ["Striker", "Winger", "Attacking Midfield", "Central Midfi
 
 # Function to calculate similarity
 def calculate_similarity(selected_df, columns):
+    # Exclude the "Player Name" column
     selected_metrics = selected_df[columns[1:]].select_dtypes(include='number').values
     similarity_matrix = cosine_similarity(selected_metrics, selected_metrics)
-    similarity_df = pd.DataFrame(similarity_matrix, index=selected_df["Player Name"], columns=selected_df["Player Name"])
+    similarity_df = pd.DataFrame(similarity_matrix)
     return similarity_df
 
 # Main function for the Streamlit app
