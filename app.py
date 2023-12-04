@@ -254,13 +254,20 @@ def about_tab(df2):
             ),
         )
 
-        # Add text to the top of the plot
-        player_text_1 = f"{selected_player_1}'s Radar (Blue)"
-        player_text_2 = f"{selected_player_2}'s Radar (Pink)"
-        ax.text(0.5, -5, player_text_1, ha='center', va='center', fontsize=14, color="#7EC0EE", fontproperties=prop1)
-        ax.text(0.5, 5, player_text_2, ha='center', va='center', fontsize=14, color="#FF34B3", fontproperties=prop1)
-
         st.pyplot(fig)
+
+# Create a separate figure for text above the plot
+fig_text, ax_text = plt.subplots(figsize=(8, 2))
+ax_text.axis('off')
+
+# Add text to the top of the separate figure
+player_text_1 = f"{selected_player_1}'s Radar (Blue)"
+player_text_2 = f"{selected_player_2}'s Radar (Pink)"
+ax_text.text(0.5, 0.5, player_text_1, ha='center', va='center', fontsize=14, color="#7EC0EE", fontproperties=prop1)
+ax_text.text(0.5, 1.0, player_text_2, ha='center', va='center', fontsize=14, color="#FF34B3", fontproperties=prop1)
+
+# Show the separate figure for text above the plot
+st.pyplot(fig_text)
 
 # Define the allowed score types
 allowed_score_types = ["Striker", "Winger", "Attacking Midfield", "Central Midfield", "Defensive Midfield", "Left Back", "Right Back", "Centre Back", "Stretch 9"]
