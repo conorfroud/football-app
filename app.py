@@ -142,10 +142,13 @@ def about_tab(df2):
         index=0  # Set the default index to the first player
     )
 
+    # Filter available players for Player 2 based on the 'Score Type' of Player 1
+    available_players_2 = df2[df2["Score Type"] == df2[df2["Player Name"] == selected_player_1]["Score Type"].values[0]]["Player Name"].unique()
+
     # Select player 2
     selected_player_2 = st.sidebar.selectbox(
         "Select Player 2 (Pink):",
-        options=df2["Player Name"].unique(),
+        options=available_players_2,
         index=1  # Set the default index to the second player
     )
 
@@ -210,7 +213,7 @@ def about_tab(df2):
     with col3:
         params = percentiles_df_1["Percentile Type"]
         values1 = percentiles_df_1["Percentile"]
-        
+
         # Instantiate PyPizza class
         baker = PyPizza(
             params=params,
@@ -255,9 +258,6 @@ def about_tab(df2):
         )
 
         st.pyplot(fig)
-
-# Define the allowed score types
-allowed_score_types = ["Striker", "Winger", "Attacking Midfield", "Central Midfield", "Defensive Midfield", "Left Back", "Right Back", "Centre Back", "Stretch 9"]
 
 # Function to calculate similarity against 'Striker' profiles
 def calculate_similarity(selected_df, df2, columns):
