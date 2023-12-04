@@ -391,8 +391,9 @@ def scatter_plot(df):
         # Create a multi-select dropdown for filtering by primary_position
         selected_positions = st.sidebar.multiselect('Filter by Primary Position', df['primary_position'].unique())
 
-        # Create a multi-select dropdown for selecting leagues
-        selected_leagues = st.sidebar.multiselect('Select Leagues', df['competition_name'].unique())
+        # Create a multi-select dropdown for selecting leagues with 'English Championship' pre-selected
+        default_leagues = ['English Championship']
+        selected_leagues = st.sidebar.multiselect('Select Leagues', df['competition_name'].unique(), default=default_leagues)
 
         # Sidebar for filtering by 'minutes' played
         min_minutes = int(df['Minutes'].min())
