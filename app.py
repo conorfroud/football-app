@@ -58,6 +58,9 @@ def main_tab(df2):
     # Add a slider for selecting the age range
     age_range = st.sidebar.slider("Select Age Range", min_value=min_age, max_value=max_age, value=(min_age, max_age))
 
+    # Add a slider for selecting the L/R Footedness % range
+    lr_footedness_range = st.sidebar.slider("Select L/R Footedness % Range", min_value=0, max_value=100, value=(0, 100))
+
     # Add a multiselect box for selecting contract expiry years
     selected_contract_expiry_years = st.sidebar.multiselect("Select Contract Expiry Years", contract_expiry_years, default=contract_expiry_years)
 
@@ -102,19 +105,23 @@ def main_tab(df2):
     # Update the selected columns to include 'Score Type'
     selected_columns = score_type_column_mapping.get(selected_score_type, [])
 
-    filtered_df = df2[(df2['League'] == selected_league) &
-                (df2['Score Type'] == selected_score_type) &
-                (df2['Age'] >= age_range[0]) &
-                (df2['Age'] <= age_range[1]) &
-                (df2['Contract expires'].isin(selected_contract_expiry_years)) &
-                (df2['Market value (millions)'] >= player_market_value_range[0]) &
-                (df2['Market value (millions)'] <= player_market_value_range[1]) &
-                (df2['Stoke Score'] >= stoke_range[0]) &
-                (df2['Stoke Score'] <= stoke_range[1]) &
-                (df2[selected_columns[5]] >= avg_distance_percentile_range[0]) &
-                (df2[selected_columns[5]] <= avg_distance_percentile_range[1]) &
-                (df2[selected_columns[6]] >= top_5_psv_99_percentile_range[0]) &
-                (df2[selected_columns[6]] <= top_5_psv_99_percentile_range[1])]
+    filtered_df = df2[
+        (df2['League'] == selected_league) &
+        (df2['Score Type'] == selected_score_type) &
+        (df2['Age'] >= age_range[0]) &
+        (df2['Age'] <= age_range[1]) &
+        (df2['Contract expires'].isin(selected_contract_expiry_years)) &
+        (df2['Market value (millions)'] >= player_market_value_range[0]) &
+        (df2['Market value (millions)'] <= player_market_value_range[1]) &
+        (df2['Stoke Score'] >= stoke_range[0]) &
+        (df2['Stoke Score'] <= stoke_range[1]) &
+        (df2[selected_columns[5]] >= avg_distance_percentile_range[0]) &
+        (df2[selected_columns[5]] <= avg_distance_percentile_range[1]) &
+        (df2[selected_columns[6]] >= top_5_psv_99_percentile_range[0]) &
+        (df2[selected_columns[6]] <= top_5_psv_99_percentile_range[1]) &
+        (df2['L/R Footedness %'] >= lr_footedness_range[0]) &
+        (df2['L/R Footedness %'] <= lr_footedness_range[1])
+    ]
 
 # Display the filtered DataFrame with selected columns
     st.dataframe(filtered_df[selected_columns], hide_index=True)
