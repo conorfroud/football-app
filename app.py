@@ -180,6 +180,13 @@ def about_tab(df2):
         columns_2 = ["Player Name", "xG (W)", "Non-Penalty Goals (W)", "Shots (W)", "Open Play xA (W)", "OBV Pass (W)", "Successful Dribbles (W)", "OBV Dribble & Carry (W)", "Distance (W)", "Top 5 PSV (W)"]
         plot_title_2 = f"Winger Metric Percentiles for {selected_player_2}"
 
+    elif selected_profile == "Stretch 9":
+        columns_1 = ["Player Name", "xG (S9)", "Non-Penalty Goals (S9)", "Shots (S9)", "Open Play xA (S9)","Open Play xA (ST)", "OBV Dribble & Carry (ST)", "Top 5 PSV-99 (S9)", "Runs in Behind (S9)", "Threat of Runs in Behind (S9)"]
+        plot_title_1 = f"Stretch 9 Metric Percentiles for {selected_player_1}"
+
+        columns_2 = ["Player Name", "xG (S9)", "Non-Penalty Goals (S9)", "Shots (S9)", "Open Play xA (S9)","Open Play xA (ST)", "OBV Dribble & Carry (ST)", "Top 5 PSV-99 (S9)", "Runs in Behind (S9)", "Threat of Runs in Behind (S9)"]
+        plot_title_2 = f"Stretch 9 Metric Percentiles for {selected_player_2}"
+
     # Filter DataFrames based on the selected profile
     selected_df_1 = selected_player_df_1[selected_player_df_1["Score Type"] == selected_profile]
     selected_df_2 = selected_player_df_2[selected_player_df_2["Score Type"] == selected_profile]
@@ -503,10 +510,10 @@ if selected_tab == "Stoke Score":
     main_tab(df2)
 if selected_tab == "Player Radar Comparison":
     about_tab(df2)  # Pass the DataFrame to the about_tab function
-if selected_tab == "Similarity Score":
+if selected_tab == "Player Radar":
     similarity_score(df2)
 if selected_tab == "Scatter Plot":
     scatter_plot(df)
-elif selected_tab == "Comparison Tab":
+elif selected_tab == "Multi Player Comparison Tab":
     comparison_tab(df)
 
