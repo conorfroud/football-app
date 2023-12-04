@@ -278,6 +278,8 @@ def calculate_similarity(selected_df, df2, columns):
 # Main function for the Streamlit app
 def similarity_score(df2):
 
+    allowed_score_types = ["Striker", "Winger", "Stretch 9"]  # Add other score types as needed
+
     # Select a player and profile
     selected_player = st.sidebar.selectbox(
         "Select a Player:",
