@@ -383,69 +383,65 @@ def scatter_plot(df):
     col1, col2, col3 = st.columns([1, 5, 1])
 
     with col2:
+        # Sidebar with variable selection
+        st.sidebar.header('Select Variables')
+        x_variable = st.sidebar.selectbox('X-axis variable', df.columns, index=df.columns.get_loc('xG'))
+        y_variable = st.sidebar.selectbox('Y-axis variable', df.columns, index=df.columns.get_loc('Open Play xG Assisted'))
 
-    # Sidebar with variable selection
-       st.sidebar.header('Select Variables')
-       x_variable = st.sidebar.selectbox('X-axis variable', df.columns, index=df.columns.get_loc('xG'))
-       y_variable = st.sidebar.selectbox('Y-axis variable', df.columns, index=df.columns.get_loc('Open Play xG Assisted'))
+        # Create a multi-select dropdown for filtering by primary_position
+        selected_positions = st.sidebar.multiselect('Filter by Primary Position', df['primary_position'].unique())
 
-# Create a multi-select dropdown for filtering by primary_position
-       selected_positions = st.sidebar.multiselect('Filter by Primary Position', df['primary_position'].unique())
+        # Create a multi-select dropdown for selecting leagues
+        selected_leagues = st.sidebar.multiselect('Select Leagues', df['competition_name'].unique())
 
-       selected_league = st.sidebar.selectbox('Select League', df['competition_name'].unique())
+        # Sidebar for filtering by 'minutes' played
+        min_minutes = int(df['Minutes'].min())
+        max_minutes = int(df['Minutes'].max())
+        selected_minutes = st.sidebar.slider('Select Minutes Played Range', min_value=min_minutes, max_value=max_minutes, value=(300, max_minutes))
 
-# Create a multi-select dropdown for selecting players
-    #selected_players = st.sidebar.multiselect('Select Players', df['Player Name'])
+        # Filter data based on user-selected positions, minutes played, and leagues
+        filtered_df = df[(df['primary_position'].isin(selected_positions) | (len(selected_positions) == 0)) &
+                         (df['Minutes'] >= selected_minutes[0]) &
+                         (df['Minutes'] <= selected_minutes[1]) &
+                         (df['competition_name'].isin(selected_leagues) | (len(selected_leagues) == 0))]
 
-# Sidebar for filtering by 'minutes' played
-       min_minutes = int(df['Minutes'].min())
-       max_minutes = int(df['Minutes'].max())
-       selected_minutes = st.sidebar.slider('Select Minutes Played Range', min_value=min_minutes, max_value=max_minutes, value=(300, max_minutes))
+        # Calculate Z-scores for the variables
+        filtered_df['z_x'] = (filtered_df[x_variable] - filtered_df[x_variable].mean()) / filtered_df[x_variable].std()
+        filtered_df['z_y'] = (filtered_df[y_variable] - filtered_df[y_variable].mean()) / filtered_df[y_variable].std()
 
-# Sidebar for filtering by league (allow only one league to be selected)
-    
-# Filter data based on user-selected positions, players, minutes played, and league
-       filtered_df = df[(df['primary_position'].isin(selected_positions) | (len(selected_positions) == 0)) & 
-                 #(df['Player Name'].isin(selected_players) | (len(selected_players) == 0)) &
-                 (df['Minutes'] >= selected_minutes[0]) &
-                 (df['Minutes'] <= selected_minutes[1]) &
-                 (df['competition_name'] == selected_league)]
+        # Define a threshold for labeling outliers (you can customize this threshold)
+        threshold = st.sidebar.slider('Label Threshold', min_value=0.1, max_value=5.0, value=2.0)
 
-# Calculate Z-scores for the variables
-       filtered_df['z_x'] = (filtered_df[x_variable] - filtered_df[x_variable].mean()) / filtered_df[x_variable].std()
-       filtered_df['z_y'] = (filtered_df[y_variable] - filtered_df[y_variable].mean()) / filtered_df[y_variable].std()
+        # Create a scatter plot using Plotly with the filtered data
+        fig = px.scatter(filtered_df, x=x_variable, y=y_variable,
+                         hover_data={'Player Name': True, 'team_name': True, 'age': True, 'Minutes': True,
+                                     x_variable: False, y_variable: False})
 
-# Define a threshold for labeling outliers (you can customize this threshold)
-    threshold = st.sidebar.slider('Label Threshold', min_value=0.1, max_value=5.0, value=2.0)
+        # Customize the marker color and size
+        fig.update_traces(marker=dict(size=12, color='#7EC0EE'))
 
-# Create a scatter plot using Plotly with the filtered data
-    fig = px.scatter(filtered_df, x=x_variable, y=y_variable, hover_data={'Player Name': True, 'team_name':True, 'age':True, 'Minutes':True, x_variable:False, y_variable:False})
+        # Set the plot size
+        fig.update_layout(width=800, height=600)
 
-# Customize the marker color and size
-    fig.update_traces(marker=dict(size=12, color='#7EC0EE'))
+        # Filter and label outliers
+        outliers = filtered_df[(filtered_df['z_x'].abs() > threshold) | (filtered_df['z_y'].abs() > threshold)]
 
-# Set the plot size
-    fig.update_layout(width=800, height=600)
+        fig.add_trace(
+            go.Scatter(
+                x=outliers[x_variable],
+                y=outliers[y_variable],
+                text=outliers['Player Name'],
+                mode='text',
+                showlegend=False,
+                textposition='top center'
+            )
+        )
 
-# Filter and label outliers
-    outliers = filtered_df[(filtered_df['z_x'].abs() > threshold) | (filtered_df['z_y'].abs() > threshold)]
+        fig.update_layout(annotations=[], hovermode='closest')
 
-    fig.add_trace(
-     go.Scatter(
-        x=outliers[x_variable],
-        y=outliers[y_variable],
-        text=outliers['Player Name'],
-        mode='text',
-        showlegend=False,
-        textposition='top center'
-    )
-)
-
-    fig.update_layout(annotations=[], hovermode='closest')
-
-# Display the plot in Streamlit
-    with col2:
-        st.plotly_chart(fig)
+        # Display the plot in Streamlit
+        with col2:
+            st.plotly_chart(fig)
 
 def comparison_tab(df):
 
