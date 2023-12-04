@@ -137,14 +137,14 @@ def about_tab(df2):
 
     # Select player 1
     selected_player_1 = st.sidebar.selectbox(
-        "Select Player 1:",
+        "Select Player 1 (Blue):",
         options=df2["Player Name"].unique(),
         index=0  # Set the default index to the first player
     )
 
     # Select player 2
     selected_player_2 = st.sidebar.selectbox(
-        "Select Player 2:",
+        "Select Player 2 (Pink):",
         options=df2["Player Name"].unique(),
         index=1  # Set the default index to the second player
     )
@@ -229,11 +229,11 @@ def about_tab(df2):
             compare_values=percentiles_df_2["Percentile"].tolist(),
             figsize=(8, 8),
             kwargs_slices=dict(
-                facecolor="#FF34B3", edgecolor="#222222",
+                facecolor="#7EC0EE", edgecolor="#222222",
                 zorder=1, linewidth=1
             ),
             kwargs_compare=dict(
-                facecolor="#7EC0EE", edgecolor="#222222",
+                facecolor="#FF34B3", edgecolor="#222222",
                 zorder=2, linewidth=1,
             ),
             kwargs_params=dict(
@@ -244,13 +244,13 @@ def about_tab(df2):
                 color="#000000", fontsize=12,
                 zorder=3,
                 bbox=dict(
-                    edgecolor="#000000", facecolor="#FF34B3",
+                    edgecolor="#000000", facecolor="#7EC0EE",
                     boxstyle="round,pad=0.2", lw=1
                 )
             ),
             kwargs_compare_values=dict(
                 color="#000000", fontsize=12, zorder=3,
-                bbox=dict(edgecolor="#000000", facecolor="#7EC0EE", boxstyle="round,pad=0.2", lw=1)
+                bbox=dict(edgecolor="#000000", facecolor="#FF34B3", boxstyle="round,pad=0.2", lw=1)
             ),
         )
 
