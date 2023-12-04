@@ -305,7 +305,7 @@ def similarity_score(df2):
         plot_title = f"Default Profile Metrics for {selected_player}"
 
     # Assuming selected_df is your DataFrame containing the data
-    selected_df = selected_player_df[selected_player_df["Score Type"] == selected_profile][columns[1:]]  # Exclude the "Player Name" column
+    selected_df = selected_player_df[selected_player_df["Score Type"] == selected_profile][columns[0:]]  # Exclude the "Player Name" column
 
     # Display selected DataFrame details
     #st.subheader("Selected DataFrame Details")
