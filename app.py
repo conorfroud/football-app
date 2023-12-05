@@ -318,9 +318,18 @@ def similarity_score(df2):
     elif selected_profile == "Central Midfield":
         columns = ["Player Name", "xG (8)", "Non-Penalty Goals (8)", "OBV Pass (8)", "Open Play xA (8)", "Deep Progressions (8)", "Successful Dribbles (8)", "OBV Dribble & Carry (8)", "Average Distance (8)", "Top 5 PSV-99 (8)"]
         plot_title = f"Central Midfield Metric Percentiles for {selected_player}"
+    elif selected_profile == "Defensive Midfield":
+        columns = ["Player Name", "Deep Progressions (6)", "OBV Pass (6)", "OBV Dribble & Carry (6)", "Tackle/Dribbled Past % (6)", "PAdj Tackles (6)", "PAdj Interceptions (6)", "OBV Defensive Action (6)", "Average Distance (6)", "Top 5 PSV-99 (6)"]
+        plot_title = f"Defensive Midfield Metric Percentiles for {selected_player}"
+    elif selected_profile == "Left Back":
+        columns = ["Player Name", "PAdj Tackles (LB)", "PAdj Interceptions (LB)", "Tackle/Dribbled Past (LB)", "OBV Defensive Action (LB)", "OBV Dribble & Carry (LB)", "Successful Crosses (LB)", "Open Play xA (LB)", "OBV Pass (LB)", "Average Distance (LB)", "Top 5 PSV-99 (LB)"]
+        plot_title = f"Left Back Metric Percentiles for {selected_player}"
+    elif selected_profile == "Right Back":
+        columns = ["Player Name", "PAdj Tackles (RB)", "PAdj Interceptions (RB)", "Tackle/Dribbled Past (RB)", "OBV Defensive Action (RB)", "OBV Dribble & Carry (RB)", "Successful Crosses (RB)", "Open Play xA (RB)", "OBV Pass (RB)", "Average Distance (RB)", "Top 5 PSV-99 (RB)"]
+        plot_title = f"Right Back Metric Percentiles for {selected_player}"
     elif selected_profile == "Stretch 9":
         columns = ["Player Name", "xG (S9)", "Non-Penalty Goals (S9)", "Shots (S9)", "OBV Shot (S9)", "Open Play xA (S9)", "OBV Dribble & Carry (S9)", "Top 5 PSV-99 (S9)", "Runs in Behind (S9)", "Threat of Runs in Behind (S9)"]
-        plot_title = f"Winger Metric Percentiles for {selected_player}"
+        plot_title = f"Stretch 9 Metric Percentiles for {selected_player}"
     else:
         # Define columns and plot title for the default profile
         columns = []
