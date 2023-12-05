@@ -512,7 +512,7 @@ df = pd.read_csv("belgiumdata.csv")
 df2 = pd.read_csv("championshipscores.csv")
 
 # Create the navigation menu in the sidebar
-selected_tab = st.sidebar.radio("Navigation", ["Stoke Score", "Player Radar Single", "Player Radar Comparison", "Scatter Plot", "Multi Player Comparison Tab"])
+selected_tab = st.sidebar.radio("Navigation", ["Stoke Score", "Player Radar Single", "Scatter Plot", "Multi Player Comparison Tab"])
 
 # Based on the selected tab, display the corresponding content
 if selected_tab == "Stoke Score":
