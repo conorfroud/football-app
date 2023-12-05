@@ -314,7 +314,10 @@ def similarity_score(df2):
         plot_title = f"Winger Metric Percentiles for {selected_player}"
     elif selected_profile == "Attacking Midfield":
         columns = ["Player Name", "xG (CAM)", "Non-Penalty Goals (CAM)", "Shots (CAM)", "OBV Pass (CAM)", "Open Play xA (CAM)", "Throughballs (CAM)", "Successful Dribbles (CAM)", "OBV Dribble & Carry (CAM)", "Average Distance (CAM)", "Top 5 PSV (CAM)"]
-        plot_title = f"Winger Metric Percentiles for {selected_player}"
+        plot_title = f"Attacking Midfield Metric Percentiles for {selected_player}"
+    elif selected_profile == "Central Midfield":
+        columns = ["Player Name", "xG (8)", "Non-Penalty Goals (8)", "OBV Pass (8)", "Open Play xA (8)", "Deep Progressions (8)", "Successful Dribbles (8)", "OBV Dribble & Carry (8)", "Average Distance (8)", "Top 5 PSV-99 (8)"]
+        plot_title = f"Central Midfield Metric Percentiles for {selected_player}"
     elif selected_profile == "Stretch 9":
         columns = ["Player Name", "xG (S9)", "Non-Penalty Goals (S9)", "Shots (S9)", "OBV Shot (S9)", "Open Play xA (S9)", "OBV Dribble & Carry (S9)", "Top 5 PSV-99 (S9)", "Runs in Behind (S9)", "Threat of Runs in Behind (S9)"]
         plot_title = f"Winger Metric Percentiles for {selected_player}"
