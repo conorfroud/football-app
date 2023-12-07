@@ -328,7 +328,7 @@ def similarity_score(df2):
         columns = ["Player Name", "PAdj Tackles (RB)", "PAdj Interceptions (RB)", "Tackle/Dribbled Past (RB)", "OBV Defensive Action (RB)", "OBV Dribble & Carry (RB)", "Successful Crosses (RB)", "Open Play xA (RB)", "OBV Pass (RB)", "Average Distance (RB)", "Top 5 PSV-99 (RB)"]
         plot_title = f"Right Back Metric Percentiles for {selected_player}"
     elif selected_profile == "Stretch 9":
-        columns = ["Player Name", "xG (S9)", "Non-Penalty Goals (S9)", "Shots (S9)", "OBV Shot (S9)", "Open Play xA (S9)", "OBV Dribble & Carry (S9)", "Top 5 PSV-99 (S9)", "Runs in Behind (S9)", "Threat of Runs in Behind (S9)"]
+        columns = ["Player Name", "xG (S9)", "Non-Penalty Goals (S9)", "Shots (S9)", "OBV Shot (S9)", "Open Play xA (S9)", "Runs in Behind (S9)", "Threat of Runs in Behind (S9)", "Average Distance (S9)", "Top 5 PSV-99 (S9)"]
         plot_title = f"Stretch 9 Metric Percentiles for {selected_player}"
     else:
         # Define columns and plot title for the default profile
