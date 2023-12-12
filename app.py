@@ -424,9 +424,6 @@ def scatter_plot(df):
         max_minutes = int(df['Minutes'].max())
         selected_minutes = st.sidebar.slider('Select Minutes Played Range', min_value=min_minutes, max_value=max_minutes, value=(300, max_minutes))
 
-        # Multi-select dropdown for selecting players to highlight
-        selected_players = st.sidebar.multiselect('Select Players to Highlight', df['Player Name'].unique())
-
         # Filter data based on user-selected positions, minutes played, and leagues
         filtered_df = df[(df['primary_position'].isin(selected_positions) | (len(selected_positions) == 0)) &
                          (df['Minutes'] >= selected_minutes[0]) &
@@ -437,19 +434,35 @@ def scatter_plot(df):
         filtered_df['z_x'] = (filtered_df[x_variable] - filtered_df[x_variable].mean()) / filtered_df[x_variable].std()
         filtered_df['z_y'] = (filtered_df[y_variable] - filtered_df[y_variable].mean()) / filtered_df[y_variable].std()
 
-        # Identify highlighted points based on selected players
-        filtered_df['is_highlight'] = filtered_df['Player Name'].isin(selected_players)
+        # Define a threshold for labeling outliers (you can customize this threshold)
+        threshold = st.sidebar.slider('Label Threshold', min_value=0.1, max_value=5.0, value=2.0)
 
         # Create a scatter plot using Plotly with the filtered data
         fig = px.scatter(filtered_df, x=x_variable, y=y_variable,
                          hover_data={'Player Name': True, 'team_name': True, 'age': True, 'Minutes': True,
-                                     x_variable: False, y_variable: False, 'z_x': False, 'z_y': False},
-                         color='is_highlight',  # Use 'is_highlight' for coloring
-                         color_discrete_map={False: '#7EC0EE', True: 'red'},  # Customize colors for normal and highlighted points
-                         size_max=12)
+                                     x_variable: False, y_variable: False, 'z_x': False, 'z_y': False})
+
+        # Customize the marker color and size
+        fig.update_traces(marker=dict(size=12, color='#7EC0EE'))
 
         # Set the plot size
         fig.update_layout(width=800, height=600)
+
+        # Filter and label outliers
+        outliers = filtered_df[(filtered_df['z_x'].abs() > threshold) | (filtered_df['z_y'].abs() > threshold)]
+
+        fig.add_trace(
+            go.Scatter(
+                x=outliers[x_variable],
+                y=outliers[y_variable],
+                text=outliers['Player Name'],
+                mode='text',
+                showlegend=False,
+                textposition='top center'
+            )
+        )
+
+        fig.update_layout(annotations=[], hovermode='closest')
 
         # Display the plot in Streamlit
         with col2:
