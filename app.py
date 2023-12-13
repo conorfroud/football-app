@@ -464,9 +464,22 @@ def scatter_plot(df):
 
         fig.update_layout(annotations=[], hovermode='closest')
 
+        # Allow users to select points on the plot and highlight them in red
+        selected_points = st.sidebar.button("Select Points on the Plot")
+        if selected_points:
+            selected_indices = fig['layout']['selection']['selectedpoints']
+            selected_df = outliers.iloc[selected_indices]
+            selected_trace = go.Scatter(
+                x=selected_df[x_variable],
+                y=selected_df[y_variable],
+                mode='markers',
+                marker=dict(size=12, color='red'),
+                name='Selected Points'
+            )
+            fig.add_trace(selected_trace)
+
         # Display the plot in Streamlit
-        with col2:
-            st.plotly_chart(fig)
+        st.plotly_chart(fig)
 
 def comparison_tab(df):
 
