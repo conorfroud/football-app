@@ -467,16 +467,16 @@ def scatter_plot(df):
         # Create a multi-select dropdown for selecting players
         selected_players = st.sidebar.multiselect('Select Players', filtered_df['Player Name'].unique())
 
-        # Allow users to select points on the plot and highlight them in red
-        selected_points = st.sidebar.button("Highlight Selected Players")
-        if selected_points:
+        # Create a trace for selected players and automatically highlight them in red
+        if selected_players:
             selected_df = filtered_df[filtered_df['Player Name'].isin(selected_players)]
             selected_trace = go.Scatter(
                 x=selected_df[x_variable],
                 y=selected_df[y_variable],
                 mode='markers',
                 marker=dict(size=12, color='red'),
-                name='Selected Players'
+                name='Selected Players',
+                showlegend=False  # Remove legend for selected players
             )
             fig.add_trace(selected_trace)
 
