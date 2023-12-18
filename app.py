@@ -402,11 +402,10 @@ def similarity_score(df2):
         st.pyplot(fig2)
 
 def scatter_plot(df):
-    # Create three columns layout
+   
     col1, col2, col3 = st.columns([1, 5, 1])
 
     with col2:
-        
         # Sidebar with variable selection
         st.sidebar.header('Select Variables')
         x_variable = st.sidebar.selectbox('X-axis variable', df.columns, index=df.columns.get_loc('xG'))
@@ -438,12 +437,12 @@ def scatter_plot(df):
         threshold = st.sidebar.slider('Label Threshold', min_value=0.1, max_value=5.0, value=2.0)
 
         # Create a DataFrame to store hover data for all points
-        hover_data_df = filtered_df[['Player Name', 'team_name', 'age', 'Minutes', x_variable, y_variable, 'z_x', 'z_y']]
+        hover_data_fields = ['Player Name', 'team_name', 'age', 'Minutes', x_variable, y_variable, 'z_x', 'z_y']
+        hover_data_df = filtered_df[hover_data_fields]
 
         # Create a scatter plot using Plotly with the filtered data
         fig = px.scatter(filtered_df, x=x_variable, y=y_variable,
-                         hover_data={'Player Name': True, 'team_name': True, 'age': True, 'Minutes': True,
-                                     x_variable: True, y_variable: True, 'z_x': True, 'z_y': True})
+                         hover_data=hover_data_fields)
 
         # Customize the marker color and size
         fig.update_traces(marker=dict(size=12, color='#7EC0EE'))
@@ -471,7 +470,6 @@ def scatter_plot(df):
         # Create a trace for selected players and customize hover labels
         if selected_players:
             selected_df = filtered_df[filtered_df['Player Name'].isin(selected_players)]
-            hover_data_fields = ['Player Name', 'team_name', 'age', 'Minutes', x_variable, y_variable, 'z_x', 'z_y']
             selected_trace = go.Scatter(
                 x=selected_df[x_variable],
                 y=selected_df[y_variable],
@@ -480,7 +478,7 @@ def scatter_plot(df):
                 name='Selected Players',
                 text=selected_df['Player Name'],  # Display player name as text label
                 textposition='top center',
-                hoverinfo='+'.join(['text'] + hover_data_fields)  # Show all hover data fields
+                hoverinfo=hover_data_fields  # Show all hover data fields
             )
             fig.add_trace(selected_trace)
 
