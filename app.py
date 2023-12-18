@@ -402,12 +402,10 @@ def similarity_score(df2):
         st.pyplot(fig2)
 
 def scatter_plot(df):
-    
     # Create three columns layout
     col1, col2, col3 = st.columns([1, 5, 1])
 
     with col2:
-        
         # Sidebar with variable selection
         st.sidebar.header('Select Variables')
         x_variable = st.sidebar.selectbox('X-axis variable', df.columns, index=df.columns.get_loc('xG'))
@@ -444,7 +442,7 @@ def scatter_plot(df):
         # Create a scatter plot using Plotly with the filtered data
         fig = px.scatter(filtered_df, x=x_variable, y=y_variable,
                          hover_data={'Player Name': True, 'team_name': True, 'age': True, 'Minutes': True,
-                                     x_variable: False, y_variable: False, 'z_x': False, 'z_y': False})
+                                     x_variable: True, y_variable: True, 'z_x': True, 'z_y': True})
 
         # Customize the marker color and size
         fig.update_traces(marker=dict(size=12, color='#7EC0EE'))
@@ -475,15 +473,14 @@ def scatter_plot(df):
             selected_trace = go.Scatter(
                 x=selected_df[x_variable],
                 y=selected_df[y_variable],
-                mode='markers',
+                mode='markers+text',  # Combine markers and text
                 marker=dict(size=12, color='red'),
                 name='Selected Players',
-                hoverinfo='text+x+y+name'  # Show hover data and name
+                text=selected_df['Player Name'],  # Display player name as text label
+                textposition='top center',
+                hoverinfo='text+x+y'  # Show only player name in hover info
             )
             fig.add_trace(selected_trace)
-
-        # Ensure that hovermode is 'closest' to show hover data for the nearest point
-        fig.update_layout(annotations=[], hovermode='closest')
 
         # Display the plot in Streamlit
         st.plotly_chart(fig)
