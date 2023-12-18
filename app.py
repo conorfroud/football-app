@@ -402,7 +402,7 @@ def similarity_score(df2):
         st.pyplot(fig2)
 
 def scatter_plot(df):
-   
+    # Create three columns layout
     col1, col2, col3 = st.columns([1, 5, 1])
 
     with col2:
@@ -477,14 +477,22 @@ def scatter_plot(df):
                 marker=dict(size=12, color='red'),
                 name='Selected Players',
                 text=selected_df['Player Name'],  # Display player name as text label
-                textposition='top center',
-                hoverinfo=hover_data_fields  # Show all hover data fields
+                textposition='top center'
             )
+
+            # Customize hover info for selected trace
+            hover_info_selected = ['text'] + hover_data_fields
+            selected_trace.update(hoverinfo='+'.join(hover_info_selected))
+
             fig.add_trace(selected_trace)
+
+        # Customize hover info for the original trace
+        hover_info_original = ['text'] + hover_data_fields
+        fig.update_traces(hoverinfo='+'.join(hover_info_original))
 
         # Display the plot in Streamlit
         st.plotly_chart(fig)
-
+        
 def comparison_tab(df):
 
     # Filter the DataFrame based on selected players
