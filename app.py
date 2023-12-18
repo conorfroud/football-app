@@ -402,56 +402,91 @@ def similarity_score(df2):
         st.pyplot(fig2)
 
 def scatter_plot(df):
+    
+    # Create three columns layout
+    col1, col2, col3 = st.columns([1, 5, 1])
 
-    # Create a DataFrame to store hover data for all points
-    hover_data_df = filtered_df[['Player Name', 'team_name', 'age', 'Minutes', x_variable, y_variable, 'z_x', 'z_y']]
+    with col2:
+        
+        # Sidebar with variable selection
+        st.sidebar.header('Select Variables')
+        x_variable = st.sidebar.selectbox('X-axis variable', df.columns, index=df.columns.get_loc('xG'))
+        y_variable = st.sidebar.selectbox('Y-axis variable', df.columns, index=df.columns.get_loc('Open Play xG Assisted'))
 
-    # Create a scatter plot using Plotly with the filtered data
-    fig = px.scatter(filtered_df, x=x_variable, y=y_variable,
-                     hover_data={'Player Name': True, 'team_name': True, 'age': True, 'Minutes': True,
-                                 x_variable: False, y_variable: False, 'z_x': False, 'z_y': False})
+        # Create a multi-select dropdown for filtering by primary_position
+        selected_positions = st.sidebar.multiselect('Filter by Primary Position', df['primary_position'].unique())
 
-    # Customize the marker color and size
-    fig.update_traces(marker=dict(size=12, color='#7EC0EE'))
+        # Create a multi-select dropdown for selecting leagues with 'English Championship' pre-selected
+        default_leagues = ['English Championship']
+        selected_leagues = st.sidebar.multiselect('Select Leagues', df['competition_name'].unique(), default=default_leagues)
 
-    # Set the plot size
-    fig.update_layout(width=800, height=600)
+        # Sidebar for filtering by 'minutes' played
+        min_minutes = int(df['Minutes'].min())
+        max_minutes = int(df['Minutes'].max())
+        selected_minutes = st.sidebar.slider('Select Minutes Played Range', min_value=min_minutes, max_value=max_minutes, value=(300, max_minutes))
 
-    # Filter and label outliers
-    outliers = filtered_df[(filtered_df['z_x'].abs() > threshold) | (filtered_df['z_y'].abs() > threshold)]
+        # Filter data based on user-selected positions, minutes played, and leagues
+        filtered_df = df[(df['primary_position'].isin(selected_positions) | (len(selected_positions) == 0)) &
+                         (df['Minutes'] >= selected_minutes[0]) &
+                         (df['Minutes'] <= selected_minutes[1]) &
+                         (df['competition_name'].isin(selected_leagues) | (len(selected_leagues) == 0))]
 
-    fig.add_trace(
-        go.Scatter(
-            x=outliers[x_variable],
-            y=outliers[y_variable],
-            text=outliers['Player Name'],
-            mode='text',
-            showlegend=False,
-            textposition='top center'
+        # Calculate Z-scores for the variables
+        filtered_df['z_x'] = (filtered_df[x_variable] - filtered_df[x_variable].mean()) / filtered_df[x_variable].std()
+        filtered_df['z_y'] = (filtered_df[y_variable] - filtered_df[y_variable].mean()) / filtered_df[y_variable].std()
+
+        # Define a threshold for labeling outliers (you can customize this threshold)
+        threshold = st.sidebar.slider('Label Threshold', min_value=0.1, max_value=5.0, value=2.0)
+
+        # Create a DataFrame to store hover data for all points
+        hover_data_df = filtered_df[['Player Name', 'team_name', 'age', 'Minutes', x_variable, y_variable, 'z_x', 'z_y']]
+
+        # Create a scatter plot using Plotly with the filtered data
+        fig = px.scatter(filtered_df, x=x_variable, y=y_variable,
+                         hover_data={'Player Name': True, 'team_name': True, 'age': True, 'Minutes': True,
+                                     x_variable: False, y_variable: False, 'z_x': False, 'z_y': False})
+
+        # Customize the marker color and size
+        fig.update_traces(marker=dict(size=12, color='#7EC0EE'))
+
+        # Set the plot size
+        fig.update_layout(width=800, height=600)
+
+        # Filter and label outliers
+        outliers = filtered_df[(filtered_df['z_x'].abs() > threshold) | (filtered_df['z_y'].abs() > threshold)]
+
+        fig.add_trace(
+            go.Scatter(
+                x=outliers[x_variable],
+                y=outliers[y_variable],
+                text=outliers['Player Name'],
+                mode='text',
+                showlegend=False,
+                textposition='top center'
+            )
         )
-    )
 
-    # Create a multi-select dropdown for selecting players
-    selected_players = st.sidebar.multiselect('Select Players', filtered_df['Player Name'].unique())
+        # Create a multi-select dropdown for selecting players
+        selected_players = st.sidebar.multiselect('Select Players', filtered_df['Player Name'].unique())
 
-    # Create a trace for selected players and customize hover labels
-    if selected_players:
-        selected_df = filtered_df[filtered_df['Player Name'].isin(selected_players)]
-        selected_trace = go.Scatter(
-            x=selected_df[x_variable],
-            y=selected_df[y_variable],
-            mode='markers',
-            marker=dict(size=12, color='red'),
-            name='Selected Players',
-            hoverinfo='text+x+y+name'  # Show hover data and name
-        )
-        fig.add_trace(selected_trace)
+        # Create a trace for selected players and customize hover labels
+        if selected_players:
+            selected_df = filtered_df[filtered_df['Player Name'].isin(selected_players)]
+            selected_trace = go.Scatter(
+                x=selected_df[x_variable],
+                y=selected_df[y_variable],
+                mode='markers',
+                marker=dict(size=12, color='red'),
+                name='Selected Players',
+                hoverinfo='text+x+y+name'  # Show hover data and name
+            )
+            fig.add_trace(selected_trace)
 
-    # Ensure that hovermode is 'closest' to show hover data for the nearest point
-    fig.update_layout(annotations=[], hovermode='closest')
+        # Ensure that hovermode is 'closest' to show hover data for the nearest point
+        fig.update_layout(annotations=[], hovermode='closest')
 
-    # Display the plot in Streamlit
-    st.plotly_chart(fig)
+        # Display the plot in Streamlit
+        st.plotly_chart(fig)
 
 def comparison_tab(df):
 
