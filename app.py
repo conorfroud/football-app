@@ -436,13 +436,9 @@ def scatter_plot(df):
         # Define a threshold for labeling outliers (you can customize this threshold)
         threshold = st.sidebar.slider('Label Threshold', min_value=0.1, max_value=5.0, value=2.0)
 
-        # Create a DataFrame to store hover data for all points
-        hover_data_fields = ['Player Name', 'team_name', 'age', 'Minutes', x_variable, y_variable, 'z_x', 'z_y']
-        hover_data_df = filtered_df[hover_data_fields]
-
         # Create a scatter plot using Plotly with the filtered data
-        fig = px.scatter(filtered_df, x=x_variable, y=y_variable,
-                         hover_data=hover_data_fields)
+        hover_data_fields = {'Player Name': True, 'team_name': True, 'age': True, 'Minutes': True, x_variable: False, y_variable: False, 'z_x': False, 'z_y': False}
+        fig = px.scatter(filtered_df, x=x_variable, y=y_variable, hover_data=hover_data_fields)
 
         # Customize the marker color and size
         fig.update_traces(marker=dict(size=12, color='#7EC0EE'))
@@ -480,19 +476,13 @@ def scatter_plot(df):
                 textposition='top center'
             )
 
-            # Customize hover info for selected trace
-            hover_info_selected = ['text'] + hover_data_fields
-            selected_trace.update(hoverinfo='+'.join(hover_info_selected))
-
-            fig.add_trace(selected_trace)
-
-        # Customize hover info for the original trace
-        hover_info_original = ['text'] + hover_data_fields
-        fig.update_traces(hoverinfo='+'.join(hover_info_original))
+            # Customize hover data for selected trace
+            hover_data_fields_selected = {'Player Name': True, 'team_name': True, 'age': True, 'Minutes': True, x_variable: False, y_variable: False, 'z_x': False, 'z_y': False}
+            fig.add_trace(selected_trace).update_traces(hoverinfo="text+x+y")
 
         # Display the plot in Streamlit
         st.plotly_chart(fig)
-        
+    
 def comparison_tab(df):
 
     # Filter the DataFrame based on selected players
