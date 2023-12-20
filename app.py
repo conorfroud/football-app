@@ -322,10 +322,10 @@ def similarity_score(df2):
         columns = ["Player Name", "Deep Progressions (6)", "OBV Pass (6)", "OBV Dribble & Carry (6)", "Tackle/Dribbled Past % (6)", "PAdj Tackles (6)", "PAdj Interceptions (6)", "OBV Defensive Action (6)", "Average Distance (6)", "Top 5 PSV-99 (6)"]
         plot_title = f"Defensive Midfield Metric Percentiles for {selected_player}"
     elif selected_profile == "Left Back":
-        columns = ["Player Name", "PAdj Tackles (LB)", "PAdj Interceptions (LB)", "Tackle/Dribbled Past (LB)", "OBV Defensive Action (LB)", "OBV Dribble & Carry (LB)", "Successful Crosses (LB)", "Open Play xA (LB)", "OBV Pass (LB)", "Average Distance (LB)", "Top 5 PSV-99 (LB)"]
+        columns = ["Player Name", "PAdj Tackles & Interceptions (LB)", "Tackle/Dribbled Past (LB)", "OBV Defensive Action (LB)", "Dribbled Past (LB)", "OBV Dribble & Carry (LB)", "Successful Crosses (LB)", "Open Play xA (LB)", "OBV Pass (LB)", "Aerial Win % (LB)", "Average Distance (LB)", "Top 5 PSV-99 (LB)"]
         plot_title = f"Left Back Metric Percentiles for {selected_player}"
     elif selected_profile == "Right Back":
-        columns = ["Player Name", "PAdj Tackles (RB)", "PAdj Interceptions (RB)", "Tackle/Dribbled Past (RB)", "OBV Defensive Action (RB)", "OBV Dribble & Carry (RB)", "Successful Crosses (RB)", "Open Play xA (RB)", "OBV Pass (RB)", "Average Distance (RB)", "Top 5 PSV-99 (RB)"]
+        columns = ["Player Name", "PAdj Tackles & Interceptions (RB)", "Tackle/Dribbled Past (RB)", "OBV Defensive Action (RB)", "Dribbled Past (RB)", "OBV Dribble & Carry (RB)", "Successful Crosses (RB)", "Open Play xA (RB)", "OBV Pass (RB)", "Aerial Win % (RB)", "Average Distance (RB)", "Top 5 PSV-99 (RB)"]
         plot_title = f"Right Back Metric Percentiles for {selected_player}"
     elif selected_profile == "Centre Back":
         columns = ["Player Name", "Aerial Wins (CB)", "Aerial Win % (CB)", "PAdj Tackles & Interceptions (CB)", "Tackle / Dribbled Past % (CB)", "OBV Defensive Action (CB)", "Blocks per Shot (CB)", "Deep Progressions (CB)", "OBV Pass (CB)", "Pressure Change in Passing % (CB)", "OBV Dribble & Carry (CB)", "Top 5 PSV-99 (CB)"]
