@@ -140,7 +140,7 @@ def main_tab(df2):
 def about_tab(df2):
 
     # Define the allowed score types
-    allowed_score_types = ["Striker", "Winger", "Attacking Midfield", "Stretch 9"]
+    allowed_score_types = ["Striker", "Winger", "Attacking Midfield", "Central Midfield", "Stretch 9"]
 
     # Select player 1
     selected_player_1 = st.sidebar.selectbox(
