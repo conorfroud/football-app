@@ -550,6 +550,33 @@ def comparison_tab(df):
     else:
         st.warning("Select at least one metric to compare.")
 
+import streamlit as st
+import pandas as pd
+import numpy as np
+
+# Sample DataFrame with player data (replace with your actual DataFrame)
+data = {
+    'Player Name': ['Player A', 'Player B', 'Player C', 'Player D'],
+    'Score Type': ['Striker', 'Winger', 'Striker', 'Winger'],
+    'xG (ST)': [0.9, 0.8, 0.7, np.nan],
+    'Non-Penalty Goals (ST)': [1, 0, 2, 1],
+    'Shots (ST)': [10, 15, 8, 12],
+    'xG (W)': [0.5, 0.6, 0.4, 0.7],
+    'Non-Penalty Goals (W)': [3, 2, 1, 4],
+    'Shots (W)': [20, 15, 10, 25],
+    'Open Play xA (W)': [1.2, 0.8, 1.0, 0.9],
+    'OBV Pass (W)': [20, 18, 15, 22],
+    'Successful Dribbles (W)': [10, 8, 12, 9],
+    'OBV Dribble & Carry (W)': [5, 4, 6, 5],
+    'Distance (W)': [8000, 7500, 8200, 7800],
+    'Top 5 PSV (W)': [90, 88, 92, 89],
+    'Team': ['Team1', 'Team2', 'Team1', 'Team2'],
+    'Age': [25, 27, 23, 26],
+    'Player Season Minutes': [1800, 2000, 1600, 2200]
+}
+
+df2 = pd.DataFrame(data)
+
 def calculate_similarity(player1, player2, columns):
     metrics1 = player1[columns].fillna(0).values
     metrics2 = player2[columns].fillna(0).values
@@ -573,12 +600,9 @@ def player_similarity_app(df2):
             # Choose the reference player
             reference_player = player_name
 
-            # Define columns based on the selected position
-            if position_to_compare == 'Striker':
-                columns_to_compare = ['xG (ST)', 'Non-Penalty Goals (ST)', 'Shots (ST)', 'OBV Shot (ST)', 'Open Play xA (ST)', 'Aerial Wins (ST)', 'Average Distance Percentile', 'Top 5 PSV-99 Percentile', 'Team', 'Age', 'Player Season Minutes']
-            elif position_to_compare == 'Winger':
-                columns_to_compare = ['xG (W)', 'Non-Penalty Goals (W)', 'Shots (W)', 'Open Play xA (W)', 'OBV Pass (W)', 'Successful Dribbles (W)', 'OBV Dribble & Carry (W)', 'Distance (W)', 'Top 5 PSV (W)', 'Team', 'Age', 'Player Season Minutes']
-
+            # Define columns based on the selected position, excluding non-numeric columns
+            numeric_columns = ['xG (W)', 'Non-Penalty Goals (W)', 'Shots (W)', 'Open Play xA (W)', 'OBV Pass (W)', 'Successful Dribbles (W)', 'OBV Dribble & Carry (W)', 'Distance (W)', 'Top 5 PSV (W)', 'Age', 'Player Season Minutes']
+            
             # Calculate similarity scores for all players
             similarities = {}
             for _, player in filtered_df.iterrows():
@@ -586,7 +610,7 @@ def player_similarity_app(df2):
                     similarity_score = calculate_similarity(
                         filtered_df[filtered_df['Player Name'] == reference_player].iloc[0],  # Get the first row
                         player,
-                        columns_to_compare
+                        numeric_columns
                     )
                     similarities[player['Player Name']] = similarity_score
 
