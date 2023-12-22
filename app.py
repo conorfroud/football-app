@@ -599,7 +599,7 @@ def player_similarity_app(df2):
             similar_players_df = pd.DataFrame(similar_players, columns=['Player Name', 'Similarity Score'])
             
             # Add 'Player Club' and 'Player Season Minutes' columns to the DataFrame
-            similar_players_df = pd.merge(similar_players_df, filtered_df[['Player Name', 'Team', 'Player Season Minutes']], on='Player Name', how='left')
+            similar_players_df = pd.merge(similar_players_df, filtered_df[['Player Name', 'Age', 'Team', 'Player Season Minutes']], on='Player Name', how='left')
             
             st.dataframe(similar_players_df.head(10))
         else:
