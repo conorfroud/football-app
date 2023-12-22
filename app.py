@@ -593,15 +593,13 @@ def player_similarity_app(df2):
             # Sort players by similarity score (descending)
             similar_players = sorted(similarities.items(), key=lambda x: x[1])
 
-            # Display the top 10 most similar players with additional information
+            # Create a DataFrame with player data including 'Team'
+            similar_players_df = pd.DataFrame(similar_players[:10], columns=["Player Name", "Similarity"])
+            similar_players_df['Team'] = similar_players_df['Player Name'].apply(lambda x: filtered_df[filtered_df['Player Name'] == x]['Team'].values[0])
+
+            # Display the top 10 most similar players in a table with 'Team'
             st.header(f"Most similar {position_to_compare}s to {reference_player}:")
-            for player, similarity in similar_players[:10]:
-                player_data = filtered_df[filtered_df['Player Name'] == player].iloc[0]
-                st.write(f"Player Name: {player}")
-                st.write(f"Similarity: {similarity:.2f}")
-                st.write(f"Team: {player_data['Team']}")
-                st.write(f"Age: {player_data['Age']}")
-                st.write(f"Player Season Minutes: {player_data['Player Season Minutes']}")
+            st.table(similar_players_df)
         else:
             st.warning("Player not found in the selected position.")
 
