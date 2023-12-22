@@ -557,9 +557,6 @@ def calculate_similarity(player1, player2, columns):
 
 def player_similarity_app(df2):
     
-    # Create a Streamlit app
-    st.title("Player Similarity App")
-
     # Create a dropdown for selecting a player name
     player_name = st.selectbox("Select a player's name:", df2['Player Name'].unique())
     position_to_compare = st.radio("Select a position to compare:", ('Striker', 'Winger'))
@@ -595,11 +592,10 @@ def player_similarity_app(df2):
 
             # Create a DataFrame with player data including 'Team'
             similar_players_df = pd.DataFrame(similar_players[:10], columns=["Player Name", "Similarity"])
-            similar_players_df['Team'] = similar_players_df['Player Name'].apply(lambda x: df2[df2['Player Name'] == x]['Team'].values[0])
 
             # Display the top 10 most similar players in a table with 'Team'
             st.header(f"Most similar {position_to_compare}s to {reference_player}:")
-            st.table(similar_players_df[['Player Name', 'Similarity', 'Team']])
+            st.table(similar_players_df[['Player Name', 'Similarity']])
         else:
             st.warning("Player not found in the selected position.")
 
