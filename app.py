@@ -588,7 +588,7 @@ def player_similarity_app(df2):
                     similarity_score = calculate_similarity(
                         reference_player_data,
                         player,
-                        columns_to_compare[3:]  # Exclude the first three columns (Player Name, Player Club, Age)
+                        columns_to_compare[4:]  # Exclude the first three columns (Player Name, Player Club, Age)
                     )
                     similarities[player['Player Name']] = similarity_score
 
