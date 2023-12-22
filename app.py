@@ -574,11 +574,11 @@ def player_similarity_app(df2):
 
             # Define columns based on the selected position
             if position_to_compare == 'Striker':
-                columns_to_compare = ['xG (ST)', 'Non-Penalty Goals (ST)', 'Shots (ST)', 'OBV Shot (ST)', 'Open Play xA (ST)', 'Aerial Wins (ST)', 'Average Distance Percentile', 'Top 5 PSV-99 Percentile']
+                columns_to_compare = ['Player Name', 'Player Club', 'Player Season Minutes', 'xG (ST)', 'Non-Penalty Goals (ST)', 'Shots (ST)', 'OBV Shot (ST)', 'Open Play xA (ST)', 'Aerial Wins (ST)', 'Average Distance Percentile', 'Top 5 PSV-99 Percentile']
             elif position_to_compare == 'Winger':
-                columns_to_compare = ['xG (W)', 'Non-Penalty Goals (W)', 'Shots (W)', 'Open Play xA (W)', 'OBV Pass (W)', 'Successful Dribbles (W)', 'OBV Dribble & Carry (W)', 'Distance (W)', 'Top 5 PSV (W)']
+                columns_to_compare = ['Player Name', 'Player Club', 'Player Season Minutes', 'xG (W)', 'Non-Penalty Goals (W)', 'Shots (W)', 'Open Play xA (W)', 'OBV Pass (W)', 'Successful Dribbles (W)', 'OBV Dribble & Carry (W)', 'Distance (W)', 'Top 5 PSV (W)']
             elif position_to_compare == 'Attacking Midfield':
-                columns_to_compare = ['xG (CAM)', 'Non-Penalty Goals (CAM)', 'Shots (CAM)', 'Open Play xA (CAM)', 'OBV Pass (CAM)', 'Successful Dribbles (CAM)', 'OBV Dribble & Carry (CAM)', 'Average Distance (CAM)', 'Top 5 PSV (CAM)']
+                columns_to_compare = ['Player Name', 'Player Club', 'Player Season Minutes', 'xG (CAM)', 'Non-Penalty Goals (CAM)', 'Shots (CAM)', 'Open Play xA (CAM)', 'OBV Pass (CAM)', 'Successful Dribbles (CAM)', 'OBV Dribble & Carry (CAM)', 'Average Distance (CAM)', 'Top 5 PSV (CAM)']
 
             # Calculate similarity scores for all players
             similarities = {}
@@ -587,7 +587,7 @@ def player_similarity_app(df2):
                     similarity_score = calculate_similarity(
                         filtered_df[filtered_df['Player Name'] == reference_player].iloc[0],  # Get the first row
                         player,
-                        columns_to_compare
+                        columns_to_compare[3:]  # Exclude the first three columns (Player Name, Player Club, Player Season Minutes)
                     )
                     similarities[player['Player Name']] = similarity_score
 
@@ -597,10 +597,14 @@ def player_similarity_app(df2):
             # Display the top 10 most similar players in a table
             st.header(f"Most similar {position_to_compare}s to {reference_player}:")
             similar_players_df = pd.DataFrame(similar_players, columns=['Player Name', 'Similarity Score'])
+            
+            # Add 'Player Club' and 'Player Season Minutes' columns to the DataFrame
+            similar_players_df = pd.merge(similar_players_df, filtered_df[['Player Name', 'Team', 'Player Season Minutes']], on='Player Name', how='left')
+            
             st.dataframe(similar_players_df.head(10))
         else:
             st.warning("Player not found in the selected position.")
-            
+
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
 df2 = pd.read_csv("championshipscores.csv")
