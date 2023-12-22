@@ -618,7 +618,9 @@ def player_similarity_app(df2):
             (similar_players_df['Team'].isin(selected_leagues))
         ]
         
-        st.dataframe(filtered_df.head(50)
+        st.dataframe(filtered_df.head(50))
+    else:
+        st.warning("Player not found in the selected position.")
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
