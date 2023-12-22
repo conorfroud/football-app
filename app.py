@@ -621,7 +621,7 @@ def player_similarity_app(df2):
             # Add 'Player Club', 'Age', and 'Player Season Minutes' columns to the DataFrame
             similar_players_df = pd.merge(similar_players_df, filtered_df[['Player Name', 'Team', 'Age', 'Player Season Minutes']], on='Player Name', how='left')
             
-            st.dataframe(similar_players_df.head(10))
+            st.dataframe(similar_players_df)
         else:
             st.warning("Player not found in the selected position.")
 
