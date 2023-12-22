@@ -618,7 +618,7 @@ def player_similarity_app(df2):
             (similar_players_df['Team'].isin(selected_leagues))
         ]
         
-        st.dataframe(filtered_df)
+        st.dataframe(filtered_df.head(50)
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
