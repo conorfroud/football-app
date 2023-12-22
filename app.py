@@ -550,7 +550,6 @@ def comparison_tab(df):
     else:
         st.warning("Select at least one metric to compare.")
 
-
 def calculate_similarity(player1, player2, columns):
     metrics1 = player1[columns].fillna(0).values
     metrics2 = player2[columns].fillna(0).values
