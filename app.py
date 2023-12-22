@@ -573,17 +573,20 @@ def player_similarity_app(df2):
             # Choose the reference player
             reference_player = player_name
 
-            # Define columns based on the selected position, excluding non-numeric columns
-            numeric_columns = ['xG (W)', 'Non-Penalty Goals (W)', 'Shots (W)', 'Open Play xA (W)', 'OBV Pass (W)', 'Successful Dribbles (W)', 'OBV Dribble & Carry (W)', 'Distance (W)', 'Top 5 PSV (W)', 'Age', 'Player Season Minutes']
-            
-            # Calculate similarity scores for all players, excluding 'Team'
+            # Define columns based on the selected position
+            if position_to_compare == 'Striker':
+                columns_to_compare = ['xG (ST)', 'Non-Penalty Goals (ST)', 'Shots (ST)', 'OBV Shot (ST)', 'Open Play xA (ST)', 'Aerial Wins (ST)', 'Average Distance Percentile', 'Top 5 PSV-99 Percentile', 'Team', 'Age', 'Player Season Minutes']
+            elif position_to_compare == 'Winger':
+                columns_to_compare = ['xG (W)', 'Non-Penalty Goals (W)', 'Shots (W)', 'Open Play xA (W)', 'OBV Pass (W)', 'Successful Dribbles (W)', 'OBV Dribble & Carry (W)', 'Distance (W)', 'Top 5 PSV (W)', 'Team', 'Age', 'Player Season Minutes']
+
+            # Calculate similarity scores for all players
             similarities = {}
             for _, player in filtered_df.iterrows():
                 if player['Player Name'] != reference_player:
                     similarity_score = calculate_similarity(
                         filtered_df[filtered_df['Player Name'] == reference_player].iloc[0],  # Get the first row
                         player,
-                        numeric_columns
+                        columns_to_compare
                     )
                     similarities[player['Player Name']] = similarity_score
 
@@ -596,7 +599,7 @@ def player_similarity_app(df2):
 
             # Display the top 10 most similar players in a table with 'Team'
             st.header(f"Most similar {position_to_compare}s to {reference_player}:")
-            st.table(similar_players_df)
+            st.table(similar_players_df[['Player Name', 'Similarity', 'Team']])
         else:
             st.warning("Player not found in the selected position.")
 
