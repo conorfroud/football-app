@@ -551,12 +551,59 @@ def comparison_tab(df):
         st.warning("Select at least one metric to compare.")
 
 
+def calculate_similarity(player1, player2, columns):
+    metrics1 = player1[columns].fillna(0).values
+    metrics2 = player2[columns].fillna(0).values
+    return np.linalg.norm(metrics1 - metrics2)
+
+# Create a Streamlit app
+st.title("Player Similarity App")
+
+# Create a dropdown for selecting a player name
+player_name = st.selectbox("Select a player's name:", df2['Player Name'].unique())
+position_to_compare = st.radio("Select a position to compare:", ('Striker', 'Winger'))
+
+if player_name and position_to_compare:
+    # Filter DataFrame based on the selected position
+    filtered_df = df2[df2['Score Type'] == position_to_compare]
+
+    # Check if the entered player name exists in the filtered DataFrame
+    if player_name in filtered_df['Player Name'].values:
+        # Choose the reference player
+        reference_player = player_name
+
+        # Define columns based on the selected position
+        if position_to_compare == 'Striker':
+            columns_to_compare = ['xG (ST)', 'Non-Penalty Goals (ST)', 'Shots (ST)', 'OBV Shot (ST)', 'Open Play xA (ST)', 'Aerial Wins (ST)', 'Average Distance Percentile', 'Top 5 PSV-99 Percentile']
+        elif position_to_compare == 'Winger':
+            columns_to_compare = ['xG (W)', 'Non-Penalty Goals (W)', 'Shots (W)', 'Open Play xA (W)', 'OBV Pass (W)', 'Successful Dribbles (W)', 'OBV Dribble & Carry (W)', 'Distance (W)', 'Top 5 PSV (W)']
+
+        # Calculate similarity scores for all players
+        similarities = {}
+        for _, player in filtered_df.iterrows():
+            if player['Player Name'] != reference_player:
+                similarity_score = calculate_similarity(
+                    filtered_df[filtered_df['Player Name'] == reference_player], player, columns_to_compare
+                )
+                similarities[player['Player Name']] = similarity_score
+
+        # Sort players by similarity score (descending)
+        similar_players = sorted(similarities.items(), key=lambda x: x[1])
+
+        # Display the top 10 most similar players
+        st.header(f"Most similar {position_to_compare}s to {reference_player}:")
+        for player, similarity in similar_players[:10]:
+            st.write(f"{player} - Similarity: {similarity:.2f}")
+    else:
+        st.warning("Player not found in the selected position.")
+
+
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
 df2 = pd.read_csv("championshipscores.csv")
 
 # Create the navigation menu in the sidebar
-selected_tab = st.sidebar.radio("Navigation", ["Stoke Score", "Player Radar Single", "Player Radar Comparison", "Scatter Plot", "Multi Player Comparison Tab"])
+selected_tab = st.sidebar.radio("Navigation", ["Stoke Score", "Player Radar Single", "Player Radar Comparison", "Scatter Plot", "Multi Player Comparison Tab", "Similarity Score"])
 
 # Based on the selected tab, display the corresponding content
 if selected_tab == "Stoke Score":
@@ -567,6 +614,8 @@ if selected_tab == "Player Radar Single":
     similarity_score(df2)
 if selected_tab == "Scatter Plot":
     scatter_plot(df)
+if selected_tab == "Similarity Score":
+    calculate_similarity(player1, player2, columns)
 elif selected_tab == "Multi Player Comparison Tab":
     comparison_tab(df)
 
