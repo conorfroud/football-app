@@ -550,33 +550,6 @@ def comparison_tab(df):
     else:
         st.warning("Select at least one metric to compare.")
 
-import streamlit as st
-import pandas as pd
-import numpy as np
-
-# Sample DataFrame with player data (replace with your actual DataFrame)
-data = {
-    'Player Name': ['Player A', 'Player B', 'Player C', 'Player D'],
-    'Score Type': ['Striker', 'Winger', 'Striker', 'Winger'],
-    'xG (ST)': [0.9, 0.8, 0.7, np.nan],
-    'Non-Penalty Goals (ST)': [1, 0, 2, 1],
-    'Shots (ST)': [10, 15, 8, 12],
-    'xG (W)': [0.5, 0.6, 0.4, 0.7],
-    'Non-Penalty Goals (W)': [3, 2, 1, 4],
-    'Shots (W)': [20, 15, 10, 25],
-    'Open Play xA (W)': [1.2, 0.8, 1.0, 0.9],
-    'OBV Pass (W)': [20, 18, 15, 22],
-    'Successful Dribbles (W)': [10, 8, 12, 9],
-    'OBV Dribble & Carry (W)': [5, 4, 6, 5],
-    'Distance (W)': [8000, 7500, 8200, 7800],
-    'Top 5 PSV (W)': [90, 88, 92, 89],
-    'Team': ['Team1', 'Team2', 'Team1', 'Team2'],
-    'Age': [25, 27, 23, 26],
-    'Player Season Minutes': [1800, 2000, 1600, 2200]
-}
-
-df2 = pd.DataFrame(data)
-
 def calculate_similarity(player1, player2, columns):
     metrics1 = player1[columns].fillna(0).values
     metrics2 = player2[columns].fillna(0).values
@@ -603,7 +576,7 @@ def player_similarity_app(df2):
             # Define columns based on the selected position, excluding non-numeric columns
             numeric_columns = ['xG (W)', 'Non-Penalty Goals (W)', 'Shots (W)', 'Open Play xA (W)', 'OBV Pass (W)', 'Successful Dribbles (W)', 'OBV Dribble & Carry (W)', 'Distance (W)', 'Top 5 PSV (W)', 'Age', 'Player Season Minutes']
             
-            # Calculate similarity scores for all players
+            # Calculate similarity scores for all players, excluding 'Team'
             similarities = {}
             for _, player in filtered_df.iterrows():
                 if player['Player Name'] != reference_player:
@@ -619,7 +592,7 @@ def player_similarity_app(df2):
 
             # Create a DataFrame with player data including 'Team'
             similar_players_df = pd.DataFrame(similar_players[:10], columns=["Player Name", "Similarity"])
-            similar_players_df['Team'] = similar_players_df['Player Name'].apply(lambda x: filtered_df[filtered_df['Player Name'] == x]['Team'].values[0])
+            similar_players_df['Team'] = similar_players_df['Player Name'].apply(lambda x: df2[df2['Player Name'] == x]['Team'].values[0])
 
             # Display the top 10 most similar players in a table with 'Team'
             st.header(f"Most similar {position_to_compare}s to {reference_player}:")
