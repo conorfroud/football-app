@@ -562,7 +562,7 @@ def player_similarity_app(df2):
 
     # Create a dropdown for selecting a player name
     player_name = st.selectbox("Select a player's name:", df2['Player Name'].unique())
-    position_to_compare = st.radio("Select a position to compare:", ('Striker', 'Winger'))
+    position_to_compare = st.radio("Select a position to compare:", ('Striker', 'Winger', 'Attacking Midfield'))
 
     if player_name and position_to_compare:
         # Filter DataFrame based on the selected position
@@ -576,9 +576,12 @@ def player_similarity_app(df2):
             # Define columns based on the selected position
             if position_to_compare == 'Striker':
                 columns_to_compare = ['xG (ST)', 'Non-Penalty Goals (ST)', 'Shots (ST)', 'OBV Shot (ST)', 'Open Play xA (ST)', 'Aerial Wins (ST)', 'Average Distance Percentile', 'Top 5 PSV-99 Percentile']
-            elif position_to_compare == 'Winger':
+            if position_to_compare == 'Winger':
                 columns_to_compare = ['xG (W)', 'Non-Penalty Goals (W)', 'Shots (W)', 'Open Play xA (W)', 'OBV Pass (W)', 'Successful Dribbles (W)', 'OBV Dribble & Carry (W)', 'Distance (W)', 'Top 5 PSV (W)']
+            elif position_to_compare == 'Attacking Midfield':
+                columns_to_compare = ['xG (CAM)', 'Non-Penalty Goals (CAM)', 'Shots (CAM)', 'Open Play xA (CAM)', 'OBV Pass (CAM)', 'Successful Dribbles (CAM)', 'OBV Dribble & Carry (CAM)', 'Average Distance (CAM)', 'Top 5 PSV (CAM)']
 
+            
             # Calculate similarity scores for all players
             similarities = {}
             for _, player in filtered_df.iterrows():
