@@ -583,7 +583,9 @@ def player_similarity_app(df2):
             for _, player in filtered_df.iterrows():
                 if player['Player Name'] != reference_player:
                     similarity_score = calculate_similarity(
-                        filtered_df[filtered_df['Player Name'] == reference_player], player, columns_to_compare
+                        filtered_df[filtered_df['Player Name'] == reference_player].iloc[0],  # Get the first row
+                        player,
+                        columns_to_compare
                     )
                     similarities[player['Player Name']] = similarity_score
 
