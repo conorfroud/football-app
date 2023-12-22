@@ -574,7 +574,7 @@ def player_similarity_app(df2):
     selected_minutes = st.sidebar.slider('Select Minutes Played Range', min_value=min_minutes, max_value=max_minutes, value=(300, max_minutes))
 
     # Create a multi-select dropdown for selecting leagues with all leagues pre-selected
-    selected_leagues = st.sidebar.multiselect('Select Leagues', df2['competition_name'].unique(), default=df2['competition_name'].unique())
+    selected_leagues = st.sidebar.multiselect('Select Leagues', df2['League'].unique(), default=df2['League'].unique())
 
     if player_name and position_to_compare:
         # Filter DataFrame based on the selected position, age range, minutes played, and selected leagues
@@ -584,7 +584,7 @@ def player_similarity_app(df2):
             (df2['Age'] <= age_range[1]) &
             (df2['Player Season Minutes'] >= selected_minutes[0]) &
             (df2['Player Season Minutes'] <= selected_minutes[1]) &
-            (df2['competition_name'].isin(selected_leagues))
+            (df2['League'].isin(selected_leagues))
         ]
 
         # Check if the entered player name exists in the filtered DataFrame
@@ -594,11 +594,11 @@ def player_similarity_app(df2):
 
             # Define columns based on the selected position
             if position_to_compare == 'Striker':
-                columns_to_compare = ['Player Name', 'Player Club', 'Age', 'Player Season Minutes', 'xG (ST)', 'Non-Penalty Goals (ST)', 'Shots (ST)', 'OBV Shot (ST)', 'Open Play xA (ST)', 'Aerial Wins (ST)', 'Average Distance Percentile', 'Top 5 PSV-99 Percentile']
+                columns_to_compare = ['Player Name', 'Team', 'Age', 'Player Season Minutes', 'xG (ST)', 'Non-Penalty Goals (ST)', 'Shots (ST)', 'OBV Shot (ST)', 'Open Play xA (ST)', 'Aerial Wins (ST)', 'Average Distance Percentile', 'Top 5 PSV-99 Percentile']
             elif position_to_compare == 'Winger':
-                columns_to_compare = ['Player Name', 'Player Club', 'Age', 'Player Season Minutes', 'xG (W)', 'Non-Penalty Goals (W)', 'Shots (W)', 'Open Play xA (W)', 'OBV Pass (W)', 'Successful Dribbles (W)', 'OBV Dribble & Carry (W)', 'Distance (W)', 'Top 5 PSV (W)']
+                columns_to_compare = ['Player Name', 'Team', 'Age', 'Player Season Minutes', 'xG (W)', 'Non-Penalty Goals (W)', 'Shots (W)', 'Open Play xA (W)', 'OBV Pass (W)', 'Successful Dribbles (W)', 'OBV Dribble & Carry (W)', 'Distance (W)', 'Top 5 PSV (W)']
             elif position_to_compare == 'Attacking Midfield':
-                columns_to_compare = ['Player Name', 'Player Club', 'Age', 'Player Season Minutes', 'xG (CAM)', 'Non-Penalty Goals (CAM)', 'Shots (CAM)', 'Open Play xA (CAM)', 'OBV Pass (CAM)', 'Successful Dribbles (CAM)', 'OBV Dribble & Carry (CAM)', 'Average Distance (CAM)', 'Top 5 PSV (CAM)']
+                columns_to_compare = ['Player Name', 'Team', 'Age', 'Player Season Minutes', 'xG (CAM)', 'Non-Penalty Goals (CAM)', 'Shots (CAM)', 'Open Play xA (CAM)', 'OBV Pass (CAM)', 'Successful Dribbles (CAM)', 'OBV Dribble & Carry (CAM)', 'Average Distance (CAM)', 'Top 5 PSV (CAM)']
 
             # Calculate similarity scores for all players
             similarities = {}
@@ -619,7 +619,7 @@ def player_similarity_app(df2):
             similar_players_df = pd.DataFrame(similar_players, columns=['Player Name', 'Similarity Score'])
             
             # Add 'Player Club', 'Age', and 'Player Season Minutes' columns to the DataFrame
-            similar_players_df = pd.merge(similar_players_df, filtered_df[['Player Name', 'Player Club', 'Age', 'Player Season Minutes']], on='Player Name', how='left')
+            similar_players_df = pd.merge(similar_players_df, filtered_df[['Player Name', 'Team', 'Age', 'Player Season Minutes']], on='Player Name', how='left')
             
             st.dataframe(similar_players_df)
         else:
