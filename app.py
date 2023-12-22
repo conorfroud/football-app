@@ -617,7 +617,7 @@ if selected_tab == "Player Radar Single":
 if selected_tab == "Scatter Plot":
     scatter_plot(df)
 if selected_tab == "Similarity Score":
-    calculate_similarity(player1, player2, columns)
+    player_similarity_app(df2)
 elif selected_tab == "Multi Player Comparison Tab":
     comparison_tab(df)
 
