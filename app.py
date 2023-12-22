@@ -574,7 +574,7 @@ def player_similarity_app(df2):
     selected_minutes = st.sidebar.slider('Select Minutes Played Range', min_value=min_minutes, max_value=max_minutes, value=(300, max_minutes))
 
     # Create a multi-select dropdown for selecting leagues with all leagues pre-selected
-    selected_leagues = st.sidebar.multiselect('Select Leagues', df2['competition_name'].unique(), default=df2['competition_name'].unique())
+    selected_leagues = st.sidebar.multiselect('Select Leagues', df2['League'].unique(), default=df2['League'].unique())
 
     if player_name and position_to_compare:
         # Filter DataFrame based on the selected position, age range, minutes played, and selected leagues
@@ -584,7 +584,7 @@ def player_similarity_app(df2):
             (df2['Age'] <= age_range[1]) &
             (df2['Player Season Minutes'] >= selected_minutes[0]) &
             (df2['Player Season Minutes'] <= selected_minutes[1]) &
-            (df2['competition_name'].isin(selected_leagues))
+            (df2['League'].isin(selected_leagues))
         ]
 
         # Check if the entered player name exists in the filtered DataFrame
