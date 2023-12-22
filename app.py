@@ -577,53 +577,48 @@ def player_similarity_app(df2):
     selected_leagues = st.sidebar.multiselect('Select Leagues', df2['League'].unique(), default=df2['League'].unique())
 
     if player_name and position_to_compare:
-        # Filter DataFrame based on the selected position, age range, minutes played, and selected leagues
-        filtered_df = df2[
-            (df2['Score Type'] == position_to_compare) &
-            (df2['Age'] >= age_range[0]) &
-            (df2['Age'] <= age_range[1]) &
-            (df2['Player Season Minutes'] >= selected_minutes[0]) &
-            (df2['Player Season Minutes'] <= selected_minutes[1]) &
-            (df2['League'].isin(selected_leagues))
+        # Choose the reference player
+        reference_player = player_name
+
+        # Define columns based on the selected position
+        if position_to_compare == 'Striker':
+            columns_to_compare = ['Player Name', 'Team', 'Age', 'Player Season Minutes', 'xG (ST)', 'Non-Penalty Goals (ST)', 'Shots (ST)', 'OBV Shot (ST)', 'Open Play xA (ST)', 'Aerial Wins (ST)', 'Average Distance Percentile', 'Top 5 PSV-99 Percentile']
+        elif position_to_compare == 'Winger':
+            columns_to_compare = ['Player Name', 'Team', 'Age', 'Player Season Minutes', 'xG (W)', 'Non-Penalty Goals (W)', 'Shots (W)', 'Open Play xA (W)', 'OBV Pass (W)', 'Successful Dribbles (W)', 'OBV Dribble & Carry (W)', 'Distance (W)', 'Top 5 PSV (W)']
+        elif position_to_compare == 'Attacking Midfield':
+            columns_to_compare = ['Player Name', 'Team', 'Age', 'Player Season Minutes', 'xG (CAM)', 'Non-Penalty Goals (CAM)', 'Shots (CAM)', 'Open Play xA (CAM)', 'OBV Pass (CAM)', 'Successful Dribbles (CAM)', 'OBV Dribble & Carry (CAM)', 'Average Distance (CAM)', 'Top 5 PSV (CAM)']
+
+        # Calculate similarity scores for all players
+        similarities = {}
+        for _, player in df2.iterrows():
+            if player['Player Name'] != reference_player:
+                similarity_score = calculate_similarity(
+                    df2[df2['Player Name'] == reference_player].iloc[0],  # Get the first row
+                    player,
+                    columns_to_compare[3:]  # Exclude the first three columns (Player Name, Team, Age)
+                )
+                similarities[player['Player Name']] = similarity_score
+
+        # Sort players by similarity score (ascending)
+        similar_players = sorted(similarities.items(), key=lambda x: x[1])
+
+        # Display all similar players in a table
+        st.header(f"Similar {position_to_compare}s to {reference_player}:")
+        similar_players_df = pd.DataFrame(similar_players, columns=['Player Name', 'Similarity Score'])
+        
+        # Add 'Team', 'Age', and 'Player Season Minutes' columns to the DataFrame
+        similar_players_df = pd.merge(similar_players_df, df2[['Player Name', 'Team', 'Age', 'Player Season Minutes']], on='Player Name', how='left')
+        
+        # Apply filters after calculating similarity scores
+        filtered_df = similar_players_df[
+            (similar_players_df['Age'] >= age_range[0]) &
+            (similar_players_df['Age'] <= age_range[1]) &
+            (similar_players_df['Player Season Minutes'] >= selected_minutes[0]) &
+            (similar_players_df['Player Season Minutes'] <= selected_minutes[1]) &
+            (similar_players_df['Team'].isin(selected_leagues))
         ]
-
-        # Check if the entered player name exists in the filtered DataFrame
-        if player_name in filtered_df['Player Name'].values:
-            # Choose the reference player
-            reference_player = player_name
-
-            # Define columns based on the selected position
-            if position_to_compare == 'Striker':
-                columns_to_compare = ['Player Name', 'Team', 'Age', 'Player Season Minutes', 'xG (ST)', 'Non-Penalty Goals (ST)', 'Shots (ST)', 'OBV Shot (ST)', 'Open Play xA (ST)', 'Aerial Wins (ST)', 'Average Distance Percentile', 'Top 5 PSV-99 Percentile']
-            elif position_to_compare == 'Winger':
-                columns_to_compare = ['Player Name', 'Team', 'Age', 'Player Season Minutes', 'xG (W)', 'Non-Penalty Goals (W)', 'Shots (W)', 'Open Play xA (W)', 'OBV Pass (W)', 'Successful Dribbles (W)', 'OBV Dribble & Carry (W)', 'Distance (W)', 'Top 5 PSV (W)']
-            elif position_to_compare == 'Attacking Midfield':
-                columns_to_compare = ['Player Name', 'Team', 'Age', 'Player Season Minutes', 'xG (CAM)', 'Non-Penalty Goals (CAM)', 'Shots (CAM)', 'Open Play xA (CAM)', 'OBV Pass (CAM)', 'Successful Dribbles (CAM)', 'OBV Dribble & Carry (CAM)', 'Average Distance (CAM)', 'Top 5 PSV (CAM)']
-
-            # Calculate similarity scores for all players
-            similarities = {}
-            for _, player in filtered_df.iterrows():
-                if player['Player Name'] != reference_player:
-                    similarity_score = calculate_similarity(
-                        filtered_df[filtered_df['Player Name'] == reference_player].iloc[0],  # Get the first row
-                        player,
-                        columns_to_compare[3:]  # Exclude the first three columns (Player Name, Player Club, Age)
-                    )
-                    similarities[player['Player Name']] = similarity_score
-
-            # Sort players by similarity score (descending)
-            similar_players = sorted(similarities.items(), key=lambda x: x[1])
-
-            # Display all similar players in a table
-            st.header(f"Similar {position_to_compare}s to {reference_player}:")
-            similar_players_df = pd.DataFrame(similar_players, columns=['Player Name', 'Similarity Score'])
-            
-            # Add 'Player Club', 'Age', and 'Player Season Minutes' columns to the DataFrame
-            similar_players_df = pd.merge(similar_players_df, filtered_df[['Player Name', 'Team', 'Age', 'Player Season Minutes']], on='Player Name', how='left')
-            
-            st.dataframe(similar_players_df)
-        else:
-            st.warning("Player not found in the selected position.")
+        
+        st.dataframe(filtered_df)
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
