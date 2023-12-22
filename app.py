@@ -556,7 +556,6 @@ def calculate_similarity(player1, player2, columns):
     return np.linalg.norm(metrics1 - metrics2)
     
 def player_similarity_app(df2):
-    
     # Add a sidebar dropdown for selecting a player name
     player_name = st.sidebar.selectbox("Select a player's name:", df2['Player Name'].unique())
     
@@ -582,16 +581,18 @@ def player_similarity_app(df2):
 
             # Calculate similarity scores for all players
             similarities = {}
+            reference_player_data = filtered_df[filtered_df['Player Name'] == reference_player].iloc[0]
+
             for _, player in filtered_df.iterrows():
                 if player['Player Name'] != reference_player:
                     similarity_score = calculate_similarity(
-                        filtered_df[filtered_df['Player Name'] == reference_player].iloc[0],  # Get the first row
+                        reference_player_data,
                         player,
                         columns_to_compare[3:]  # Exclude the first three columns (Player Name, Player Club, Age)
                     )
                     similarities[player['Player Name']] = similarity_score
 
-            # Sort players by similarity score (descending)
+            # Sort players by similarity score (ascending)
             similar_players = sorted(similarities.items(), key=lambda x: x[1])
 
             # Display the top 10 most similar players in a table
