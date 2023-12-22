@@ -557,12 +557,11 @@ def calculate_similarity(player1, player2, columns):
 
 def player_similarity_app(df2):
     
-    # Create a Streamlit app
-    st.title("Player Similarity App")
-
-    # Create a dropdown for selecting a player name
-    player_name = st.selectbox("Select a player's name:", df2['Player Name'].unique())
-    position_to_compare = st.radio("Select a position to compare:", ('Striker', 'Winger', 'Attacking Midfield'))
+    # Add a sidebar dropdown for selecting a player name
+    player_name = st.sidebar.selectbox("Select a player's name:", df2['Player Name'].unique())
+    
+    # Add a sidebar radio button for selecting a position to compare
+    position_to_compare = st.sidebar.radio("Select a position to compare:", ('Striker', 'Winger', 'Attacking Midfield'))
 
     if player_name and position_to_compare:
         # Filter DataFrame based on the selected position
@@ -576,12 +575,11 @@ def player_similarity_app(df2):
             # Define columns based on the selected position
             if position_to_compare == 'Striker':
                 columns_to_compare = ['xG (ST)', 'Non-Penalty Goals (ST)', 'Shots (ST)', 'OBV Shot (ST)', 'Open Play xA (ST)', 'Aerial Wins (ST)', 'Average Distance Percentile', 'Top 5 PSV-99 Percentile']
-            if position_to_compare == 'Winger':
+            elif position_to_compare == 'Winger':
                 columns_to_compare = ['xG (W)', 'Non-Penalty Goals (W)', 'Shots (W)', 'Open Play xA (W)', 'OBV Pass (W)', 'Successful Dribbles (W)', 'OBV Dribble & Carry (W)', 'Distance (W)', 'Top 5 PSV (W)']
             elif position_to_compare == 'Attacking Midfield':
                 columns_to_compare = ['xG (CAM)', 'Non-Penalty Goals (CAM)', 'Shots (CAM)', 'Open Play xA (CAM)', 'OBV Pass (CAM)', 'Successful Dribbles (CAM)', 'OBV Dribble & Carry (CAM)', 'Average Distance (CAM)', 'Top 5 PSV (CAM)']
 
-            
             # Calculate similarity scores for all players
             similarities = {}
             for _, player in filtered_df.iterrows():
@@ -596,10 +594,10 @@ def player_similarity_app(df2):
             # Sort players by similarity score (descending)
             similar_players = sorted(similarities.items(), key=lambda x: x[1])
 
-            # Display the top 10 most similar players
+            # Display the top 10 most similar players in a table
             st.header(f"Most similar {position_to_compare}s to {reference_player}:")
-            for player, similarity in similar_players[:10]:
-                st.write(f"{player} - Similarity: {similarity:.2f}")
+            similar_players_df = pd.DataFrame(similar_players, columns=['Player Name', 'Similarity Score'])
+            st.dataframe(similar_players_df.head(10), index=False)
         else:
             st.warning("Player not found in the selected position.")
             
