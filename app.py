@@ -597,7 +597,7 @@ def player_similarity_app(df2):
             # Display the top 10 most similar players in a table
             st.header(f"Most similar {position_to_compare}s to {reference_player}:")
             similar_players_df = pd.DataFrame(similar_players, columns=['Player Name', 'Similarity Score'])
-            st.dataframe(similar_players_df.head(10), index=False)
+            st.dataframe(similar_players_df.head(10))
         else:
             st.warning("Player not found in the selected position.")
             
