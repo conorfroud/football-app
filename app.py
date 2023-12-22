@@ -557,6 +557,9 @@ def calculate_similarity(player1, player2, columns):
 
 def player_similarity_app(df2):
     
+    # Create a Streamlit app
+    st.title("Player Similarity App")
+
     # Create a dropdown for selecting a player name
     player_name = st.selectbox("Select a player's name:", df2['Player Name'].unique())
     position_to_compare = st.radio("Select a position to compare:", ('Striker', 'Winger'))
@@ -572,9 +575,9 @@ def player_similarity_app(df2):
 
             # Define columns based on the selected position
             if position_to_compare == 'Striker':
-                columns_to_compare = ['xG (ST)', 'Non-Penalty Goals (ST)', 'Shots (ST)', 'OBV Shot (ST)', 'Open Play xA (ST)', 'Aerial Wins (ST)', 'Average Distance Percentile', 'Top 5 PSV-99 Percentile', 'Team', 'Age', 'Player Season Minutes']
+                columns_to_compare = ['xG (ST)', 'Non-Penalty Goals (ST)', 'Shots (ST)', 'OBV Shot (ST)', 'Open Play xA (ST)', 'Aerial Wins (ST)', 'Average Distance Percentile', 'Top 5 PSV-99 Percentile']
             elif position_to_compare == 'Winger':
-                columns_to_compare = ['xG (W)', 'Non-Penalty Goals (W)', 'Shots (W)', 'Open Play xA (W)', 'OBV Pass (W)', 'Successful Dribbles (W)', 'OBV Dribble & Carry (W)', 'Distance (W)', 'Top 5 PSV (W)', 'Team', 'Age', 'Player Season Minutes']
+                columns_to_compare = ['xG (W)', 'Non-Penalty Goals (W)', 'Shots (W)', 'Open Play xA (W)', 'OBV Pass (W)', 'Successful Dribbles (W)', 'OBV Dribble & Carry (W)', 'Distance (W)', 'Top 5 PSV (W)']
 
             # Calculate similarity scores for all players
             similarities = {}
@@ -590,15 +593,13 @@ def player_similarity_app(df2):
             # Sort players by similarity score (descending)
             similar_players = sorted(similarities.items(), key=lambda x: x[1])
 
-            # Create a DataFrame with player data including 'Team'
-            similar_players_df = pd.DataFrame(similar_players[:10], columns=["Player Name", "Similarity"])
-
-            # Display the top 10 most similar players in a table with 'Team'
+            # Display the top 10 most similar players
             st.header(f"Most similar {position_to_compare}s to {reference_player}:")
-            st.table(similar_players_df[['Player Name', 'Similarity']])
+            for player, similarity in similar_players[:10]:
+                st.write(f"{player} - Similarity: {similarity:.2f}")
         else:
             st.warning("Player not found in the selected position.")
-
+            
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
 df2 = pd.read_csv("championshipscores.csv")
