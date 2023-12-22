@@ -549,13 +549,13 @@ def comparison_tab(df):
             st.dataframe(formatted_df, hide_index=True)
     else:
         st.warning("Select at least one metric to compare.")
-        
-def player_similarity_app(df2):
 
-    def calculate_similarity(player1, player2, columns):
+def calculate_similarity(player1, player2, columns):
     metrics1 = player1[columns].fillna(0).values
     metrics2 = player2[columns].fillna(0).values
     return np.linalg.norm(metrics1 - metrics2)
+        
+def player_similarity_app(df2):
     
     # Create a Streamlit app
     st.title("Player Similarity App")
