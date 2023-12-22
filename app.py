@@ -554,7 +554,7 @@ def calculate_similarity(player1, player2, columns):
     metrics1 = player1[columns].fillna(0).values
     metrics2 = player2[columns].fillna(0).values
     return np.linalg.norm(metrics1 - metrics2)
-        
+
 def player_similarity_app(df2):
     
     # Create a Streamlit app
@@ -575,9 +575,9 @@ def player_similarity_app(df2):
 
             # Define columns based on the selected position
             if position_to_compare == 'Striker':
-                columns_to_compare = ['xG (ST)', 'Non-Penalty Goals (ST)', 'Shots (ST)', 'OBV Shot (ST)', 'Open Play xA (ST)', 'Aerial Wins (ST)', 'Average Distance Percentile', 'Top 5 PSV-99 Percentile']
+                columns_to_compare = ['xG (ST)', 'Non-Penalty Goals (ST)', 'Shots (ST)', 'OBV Shot (ST)', 'Open Play xA (ST)', 'Aerial Wins (ST)', 'Average Distance Percentile', 'Top 5 PSV-99 Percentile', 'Team', 'Age', 'Player Season Minutes']
             elif position_to_compare == 'Winger':
-                columns_to_compare = ['xG (W)', 'Non-Penalty Goals (W)', 'Shots (W)', 'Open Play xA (W)', 'OBV Pass (W)', 'Successful Dribbles (W)', 'OBV Dribble & Carry (W)', 'Distance (W)', 'Top 5 PSV (W)']
+                columns_to_compare = ['xG (W)', 'Non-Penalty Goals (W)', 'Shots (W)', 'Open Play xA (W)', 'OBV Pass (W)', 'Successful Dribbles (W)', 'OBV Dribble & Carry (W)', 'Distance (W)', 'Top 5 PSV (W)', 'Team', 'Age', 'Player Season Minutes']
 
             # Calculate similarity scores for all players
             similarities = {}
@@ -593,10 +593,15 @@ def player_similarity_app(df2):
             # Sort players by similarity score (descending)
             similar_players = sorted(similarities.items(), key=lambda x: x[1])
 
-            # Display the top 10 most similar players
+            # Display the top 10 most similar players with additional information
             st.header(f"Most similar {position_to_compare}s to {reference_player}:")
             for player, similarity in similar_players[:10]:
-                st.write(f"{player} - Similarity: {similarity:.2f}")
+                player_data = filtered_df[filtered_df['Player Name'] == player].iloc[0]
+                st.write(f"Player Name: {player}")
+                st.write(f"Similarity: {similarity:.2f}")
+                st.write(f"Team: {player_data['Team']}")
+                st.write(f"Age: {player_data['Age']}")
+                st.write(f"Player Season Minutes: {player_data['Player Season Minutes']}")
         else:
             st.warning("Player not found in the selected position.")
 
