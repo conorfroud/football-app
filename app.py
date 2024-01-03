@@ -565,10 +565,7 @@ def player_similarity_app(df2):
     # Add a slider to filter players by age
     max_age = st.sidebar.slider("Select maximum age:", min_value=18, max_value=40, value=30)
 
-    # Filter DataFrame based on the selected position and age
-    filtered_df = df2[(df2['Score Type'] == position_to_compare) & (df2['Age'] <= max_age)]
-
-    # Check if the selected player is in the filtered DataFrame
+    # Check if the selected player is in the dataset
     if player_name in df2['Player Name'].values:
         # Choose the reference player
         reference_player = player_name
@@ -585,10 +582,10 @@ def player_similarity_app(df2):
         
         # Calculate similarity scores for all players within the age bracket
         similarities = {}
-        reference_player_data = filtered_df[filtered_df['Player Name'] == reference_player].iloc[0]
+        reference_player_data = df2[(df2['Player Name'] == reference_player) & (df2['Score Type'] == position_to_compare)].iloc[0]
 
-        for _, player in filtered_df.iterrows():
-            if player['Player Name'] != reference_player:
+        for _, player in df2.iterrows():
+            if (player['Player Name'] != reference_player) and (player['Age'] <= max_age) and (player['Score Type'] == position_to_compare):
                 similarity_score = calculate_similarity(
                     reference_player_data,
                     player,
@@ -604,7 +601,7 @@ def player_similarity_app(df2):
         similar_players_df = pd.DataFrame(similar_players, columns=['Player Name', 'Similarity Score'])
         
         # Add 'Player Club', 'Age', and 'Player Season Minutes' columns to the DataFrame
-        similar_players_df = pd.merge(similar_players_df, filtered_df[['Player Name', 'Team', 'Age', 'Player Season Minutes']], on='Player Name', how='left')
+        similar_players_df = pd.merge(similar_players_df, df2[['Player Name', 'Team', 'Age', 'Player Season Minutes']], on='Player Name', how='left')
         
         st.dataframe(similar_players_df.head(50))
     else:
