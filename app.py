@@ -560,7 +560,7 @@ def player_similarity_app(df2):
     player_name = st.sidebar.selectbox("Select a player's name:", df2['Player Name'].unique())
     
     # Add a sidebar radio button for selecting a position to compare
-    position_to_compare = st.sidebar.radio("Select a position to compare:", ('Striker', 'Winger', 'Attacking Midfield', 'Stretch 9'))
+    position_to_compare = st.sidebar.radio("Select a position to compare:", ('Striker', 'Winger', 'Attacking Midfield', 'Central Midfield', 'Stretch 9'))
 
     # Add a slider to filter players by age
     max_age = st.sidebar.slider("Select maximum age:", min_value=18, max_value=40, value=30)
@@ -611,7 +611,7 @@ def player_similarity_app(df2):
         # Remove duplicates in case of multiple matches in the age and minutes filter
         similar_players_df = similar_players_df.drop_duplicates(subset='Player Name')
         
-        st.dataframe(similar_players_df.head(100))
+        st.dataframe(similar_players_df.head(250))
     else:
         st.error("Player not found in the selected position.")
 
