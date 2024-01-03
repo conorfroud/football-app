@@ -554,7 +554,11 @@ def calculate_similarity(player1, player2, columns):
     metrics1 = player1[columns].fillna(0).values
     metrics2 = player2[columns].fillna(0).values
     return np.linalg.norm(metrics1 - metrics2)
-    
+
+def min_max_scale(x, min_val, max_val):
+    return (x - min_val) / (max_val - min_val) * 100
+
+# Modify your existing function
 def player_similarity_app(df2):
     # Add a sidebar dropdown for selecting a player name
     player_name = st.sidebar.selectbox("Select a player's name:", df2['Player Name'].unique())
@@ -589,6 +593,10 @@ def player_similarity_app(df2):
         similarities = {}
         reference_player_data = df2[(df2['Player Name'] == reference_player) & (df2['Score Type'] == position_to_compare)].iloc[0]
 
+        # Find the minimum and maximum similarity scores for scaling
+        min_similarity = float('inf')
+        max_similarity = float('-inf')
+
         for _, player in df2.iterrows():
             if (player['Player Name'] != reference_player) and (player['Age'] <= max_age) and (player['Score Type'] == position_to_compare) and (player['Player Season Minutes'] >= min_minutes):
                 similarity_score = calculate_similarity(
@@ -597,6 +605,15 @@ def player_similarity_app(df2):
                     columns_to_compare[4:]  # Exclude the first three columns (Player Name, Player Club, Age)
                 )
                 similarities[player['Player Name']] = similarity_score
+
+                # Update min and max similarity scores
+                min_similarity = min(min_similarity, similarity_score)
+                max_similarity = max(max_similarity, similarity_score)
+
+        # Normalize similarity scores to the range [0, 100]
+        for player_name, similarity_score in similarities.items():
+            normalized_similarity = min_max_scale(similarity_score, min_similarity, max_similarity)
+            similarities[player_name] = normalized_similarity
 
         # Sort players by similarity score (ascending)
         similar_players = sorted(similarities.items(), key=lambda x: x[1])
