@@ -578,7 +578,9 @@ def player_similarity_app(df2):
                 columns_to_compare = ['Player Name', 'Team', 'Age', 'Player Season Minutes', 'xG (W)', 'Non-Penalty Goals (W)', 'Shots (W)', 'Open Play xA (W)', 'OBV Pass (W)', 'Successful Dribbles (W)', 'OBV Dribble & Carry (W)', 'Distance (W)', 'Top 5 PSV (W)']
             elif position_to_compare == 'Attacking Midfield':
                 columns_to_compare = ['Player Name', 'Team', 'Age', 'Player Season Minutes', 'xG (CAM)', 'Non-Penalty Goals (CAM)', 'Shots (CAM)', 'Open Play xA (CAM)', 'OBV Pass (CAM)', 'Successful Dribbles (CAM)', 'OBV Dribble & Carry (CAM)', 'Average Distance (CAM)', 'Top 5 PSV (CAM)']
-
+            elif position_to_compare == 'Stretch 9':
+                columns_to_compare = ['Player Name', 'Team', 'Age', 'Player Season Minutes', 'xG (S9)',	'Non-Penalty Goals (S9)', 'Shots (S9)', 'OBV Shot (S9)', 'Open Play xA (S9)', 'OBV Dribble & Carry (S9)', 'PAdj Pressures (S9)', 'Top 5 PSV-99 (S9)', 'Runs in Behind (S9)', 'Threat of Runs in Behind (S9)']
+            
             # Calculate similarity scores for all players
             similarities = {}
             reference_player_data = filtered_df[filtered_df['Player Name'] == reference_player].iloc[0]
