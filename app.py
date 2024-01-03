@@ -556,15 +556,19 @@ def calculate_similarity(player1, player2, columns):
     return np.linalg.norm(metrics1 - metrics2)
     
 def player_similarity_app(df2):
+    
     # Add a sidebar dropdown for selecting a player name
     player_name = st.sidebar.selectbox("Select a player's name:", df2['Player Name'].unique())
     
     # Add a sidebar radio button for selecting a position to compare
     position_to_compare = st.sidebar.radio("Select a position to compare:", ('Striker', 'Winger', 'Attacking Midfield', 'Stretch 9'))
 
+    # Add a slider to filter players by age
+    max_age = st.sidebar.slider("Select maximum age:", min_value=18, max_value=40, value=30)
+
     if player_name and position_to_compare:
-        # Filter DataFrame based on the selected position
-        filtered_df = df2[df2['Score Type'] == position_to_compare]
+        # Filter DataFrame based on the selected position and age
+        filtered_df = df2[(df2['Score Type'] == position_to_compare) & (df2['Age'] <= max_age)]
 
         # Check if the entered player name exists in the filtered DataFrame
         if player_name in filtered_df['Player Name'].values:
@@ -581,7 +585,7 @@ def player_similarity_app(df2):
             elif position_to_compare == 'Stretch 9':
                 columns_to_compare = ['Player Name', 'Team', 'Age', 'Player Season Minutes', 'xG (S9)',	'Non-Penalty Goals (S9)', 'Shots (S9)', 'OBV Shot (S9)', 'Open Play xA (S9)', 'OBV Dribble & Carry (S9)', 'PAdj Pressures (S9)', 'Top 5 PSV-99 (S9)', 'Runs in Behind (S9)', 'Threat of Runs in Behind (S9)']
             
-            # Calculate similarity scores for all players
+            # Calculate similarity scores for all players within the age bracket
             similarities = {}
             reference_player_data = filtered_df[filtered_df['Player Name'] == reference_player].iloc[0]
 
@@ -597,8 +601,8 @@ def player_similarity_app(df2):
             # Sort players by similarity score (ascending)
             similar_players = sorted(similarities.items(), key=lambda x: x[1])
 
-            # Display the top 10 most similar players in a table
-            st.header(f"Most similar {position_to_compare}s to {reference_player}:")
+            # Display the top 50 most similar players within the selected age bracket
+            st.header(f"Most similar {position_to_compare}s to {reference_player} (Age <= {max_age}):")
             similar_players_df = pd.DataFrame(similar_players, columns=['Player Name', 'Similarity Score'])
             
             # Add 'Player Club', 'Age', and 'Player Season Minutes' columns to the DataFrame
