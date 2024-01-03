@@ -555,8 +555,9 @@ def calculate_similarity(player1, player2, columns):
     metrics2 = player2[columns].fillna(0).values
     return np.linalg.norm(metrics1 - metrics2)
 
-def min_max_scale(x, min_val, max_val):
-    return (x - min_val) / (max_val - min_val) * 100
+# Add a function for rescaling similarity scores
+def rescale_similarity(x, max_val):
+    return 100 - x * (100 / max_val)
 
 # Modify your existing function
 def player_similarity_app(df2):
@@ -564,7 +565,7 @@ def player_similarity_app(df2):
     player_name = st.sidebar.selectbox("Select a player's name:", df2['Player Name'].unique())
     
     # Add a sidebar radio button for selecting a position to compare
-    position_to_compare = st.sidebar.radio("Select a position to compare:", ('Striker', 'Winger', 'Attacking Midfield', 'Central Midfield', 'Stretch 9'))
+    position_to_compare = st.sidebar.radio("Select a position to compare:", ('Striker', 'Winger', 'Attacking Midfield', 'Stretch 9'))
 
     # Add a slider to filter players by age
     max_age = st.sidebar.slider("Select maximum age:", min_value=18, max_value=40, value=30)
@@ -593,8 +594,7 @@ def player_similarity_app(df2):
         similarities = {}
         reference_player_data = df2[(df2['Player Name'] == reference_player) & (df2['Score Type'] == position_to_compare)].iloc[0]
 
-        # Find the minimum and maximum similarity scores for scaling
-        min_similarity = float('inf')
+        # Find the maximum similarity score for scaling
         max_similarity = float('-inf')
 
         for _, player in df2.iterrows():
@@ -606,17 +606,16 @@ def player_similarity_app(df2):
                 )
                 similarities[player['Player Name']] = similarity_score
 
-                # Update min and max similarity scores
-                min_similarity = min(min_similarity, similarity_score)
+                # Update max similarity score
                 max_similarity = max(max_similarity, similarity_score)
 
         # Normalize similarity scores to the range [0, 100]
         for player_name, similarity_score in similarities.items():
-            normalized_similarity = min_max_scale(similarity_score, min_similarity, max_similarity)
+            normalized_similarity = rescale_similarity(similarity_score, max_similarity)
             similarities[player_name] = normalized_similarity
 
-        # Sort players by similarity score (ascending)
-        similar_players = sorted(similarities.items(), key=lambda x: x[1])
+        # Sort players by similarity score (descending)
+        similar_players = sorted(similarities.items(), key=lambda x: x[1], reverse=True)
 
         # Display the top 50 most similar players within the selected age and minutes bracket
         st.header(f"Most similar {position_to_compare}s to {reference_player} (Age <= {max_age}, Minutes >= {min_minutes}):")
