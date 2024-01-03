@@ -609,7 +609,7 @@ def player_similarity_app(df2):
         # Remove duplicates in case of multiple matches in the age and minutes filter
         similar_players_df = similar_players_df.drop_duplicates(subset='Player Name')
         
-        st.dataframe(similar_players_df.head(50))
+        st.dataframe(similar_players_df.head(100))
     else:
         st.error("Player not found in the selected position.")
 
