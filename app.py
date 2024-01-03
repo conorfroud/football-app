@@ -565,7 +565,7 @@ def player_similarity_app(df2):
     player_name = st.sidebar.selectbox("Select a player's name:", df2['Player Name'].unique())
     
     # Add a sidebar radio button for selecting a position to compare
-    position_to_compare = st.sidebar.radio("Select a position to compare:", ('Striker', 'Winger', 'Attacking Midfield', 'Stretch 9'))
+    position_to_compare = st.sidebar.radio("Select a position to compare:", ('Striker', 'Winger', 'Attacking Midfield', 'Defensive Midfield', 'Stretch 9'))
 
     # Add a slider to filter players by age
     max_age = st.sidebar.slider("Select maximum age:", min_value=18, max_value=40, value=30)
@@ -587,6 +587,8 @@ def player_similarity_app(df2):
             columns_to_compare = ['Player Name', 'Team', 'Age', 'Player Season Minutes', 'xG (CAM)', 'Non-Penalty Goals (CAM)', 'Shots (CAM)', 'Open Play xA (CAM)', 'OBV Pass (CAM)', 'Successful Dribbles (CAM)', 'OBV Dribble & Carry (CAM)', 'Average Distance (CAM)', 'Top 5 PSV (CAM)']
         elif position_to_compare == 'Central Midfield':
             columns_to_compare = ['Player Name', 'Team', 'Age', 'Player Season Minutes', 'xG (8)', 'Non-Penalty Goals (8)',	'OBV Pass (8)',	'Open Play xA (8)',	'Successful Dribbles (8)', 'OBV Dribble & Carry (8)', 'Average Distance (8)', 'Top 5 PSV-99 (8)', 'PAdj Tackles & Interceptions (8)', 'Deep Progressions (8)']
+        elif position_to_compare == 'Defensive Midfield':
+            columns_to_compare = ['Player Name', 'Team', 'Age', 'Player Season Minutes', 'Average Distance (6)', 'Top 5 PSV-99 (6)', 'OBV Defensive Action (6)', 'OBV Pass (6)', 'Deep Progressions (6)', 'Successful Dribbles (6)', 'OBV Dribble & Carry (6)', 'Tackle/Dribbled Past % (6)', 'PAdj Tackles & Interceptions (6)', 'Pass Forward % (6)', 'Turnovers (6)', 'PAdj Pressures (6)', 'Pressure Regains (6)', 'Ball Recoveries (6)']
         elif position_to_compare == 'Stretch 9':
             columns_to_compare = ['Player Name', 'Team', 'Age', 'Player Season Minutes', 'xG (S9)',	'Non-Penalty Goals (S9)', 'Shots (S9)', 'OBV Shot (S9)', 'Open Play xA (S9)', 'OBV Dribble & Carry (S9)', 'PAdj Pressures (S9)', 'Top 5 PSV-99 (S9)', 'Runs in Behind (S9)', 'Threat of Runs in Behind (S9)']
         
