@@ -611,7 +611,7 @@ def player_similarity_app(df2):
         
         st.dataframe(similar_players_df.head(50))
     else:
-        st.warning("Player not found in the dataset.")
+        st.error("Player not found in the selected position.")
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
