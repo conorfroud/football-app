@@ -565,6 +565,9 @@ def player_similarity_app(df2):
     # Add a slider to filter players by age
     max_age = st.sidebar.slider("Select maximum age:", min_value=18, max_value=40, value=30)
 
+    # Add a slider to filter players by 'Player Season Minutes'
+    min_minutes = st.sidebar.slider("Select minimum 'Player Season Minutes':", min_value=0, max_value=df2['Player Season Minutes'].max(), value=0)
+
     # Check if the selected player is in the dataset
     if player_name in df2['Player Name'].values:
         # Choose the reference player
@@ -580,12 +583,12 @@ def player_similarity_app(df2):
         elif position_to_compare == 'Stretch 9':
             columns_to_compare = ['Player Name', 'Team', 'Age', 'Player Season Minutes', 'xG (S9)',	'Non-Penalty Goals (S9)', 'Shots (S9)', 'OBV Shot (S9)', 'Open Play xA (S9)', 'OBV Dribble & Carry (S9)', 'PAdj Pressures (S9)', 'Top 5 PSV-99 (S9)', 'Runs in Behind (S9)', 'Threat of Runs in Behind (S9)']
         
-        # Calculate similarity scores for all players within the age bracket
+        # Calculate similarity scores for all players within the age and minutes bracket
         similarities = {}
         reference_player_data = df2[(df2['Player Name'] == reference_player) & (df2['Score Type'] == position_to_compare)].iloc[0]
 
         for _, player in df2.iterrows():
-            if (player['Player Name'] != reference_player) and (player['Age'] <= max_age) and (player['Score Type'] == position_to_compare):
+            if (player['Player Name'] != reference_player) and (player['Age'] <= max_age) and (player['Score Type'] == position_to_compare) and (player['Player Season Minutes'] >= min_minutes):
                 similarity_score = calculate_similarity(
                     reference_player_data,
                     player,
@@ -596,14 +599,14 @@ def player_similarity_app(df2):
         # Sort players by similarity score (ascending)
         similar_players = sorted(similarities.items(), key=lambda x: x[1])
 
-        # Display the top 50 most similar players within the selected age bracket
-        st.header(f"Most similar {position_to_compare}s to {reference_player} (Age <= {max_age}):")
+        # Display the top 50 most similar players within the selected age and minutes bracket
+        st.header(f"Most similar {position_to_compare}s to {reference_player} (Age <= {max_age}, Minutes >= {min_minutes}):")
         similar_players_df = pd.DataFrame(similar_players, columns=['Player Name', 'Similarity Score'])
         
         # Add 'Player Club', 'Age', and 'Player Season Minutes' columns to the DataFrame
         similar_players_df = pd.merge(similar_players_df, df2[['Player Name', 'Team', 'Age', 'Player Season Minutes']], on='Player Name', how='left')
         
-        # Remove duplicates in case of multiple matches in the age filter
+        # Remove duplicates in case of multiple matches in the age and minutes filter
         similar_players_df = similar_players_df.drop_duplicates(subset='Player Name')
         
         st.dataframe(similar_players_df.head(50))
