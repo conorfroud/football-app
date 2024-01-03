@@ -569,7 +569,7 @@ def player_similarity_app(df2):
     filtered_df = df2[(df2['Score Type'] == position_to_compare) & (df2['Age'] <= max_age)]
 
     # Check if the selected player is in the filtered DataFrame
-    if player_name in filtered_df['Player Name'].values:
+    if player_name in df2['Player Name'].values:
         # Choose the reference player
         reference_player = player_name
 
@@ -608,7 +608,7 @@ def player_similarity_app(df2):
         
         st.dataframe(similar_players_df.head(50))
     else:
-        st.warning("Player not found in the selected position within the specified age bracket.")
+        st.warning("Player not found in the dataset.")
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
