@@ -560,7 +560,7 @@ def player_similarity_app(df2):
     player_name = st.sidebar.selectbox("Select a player's name:", df2['Player Name'].unique())
     
     # Add a sidebar radio button for selecting a position to compare
-    position_to_compare = st.sidebar.radio("Select a position to compare:", ('Striker', 'Winger', 'Attacking Midfield'))
+    position_to_compare = st.sidebar.radio("Select a position to compare:", ('Striker', 'Winger', 'Attacking Midfield', 'Stretch 9'))
 
     if player_name and position_to_compare:
         # Filter DataFrame based on the selected position
