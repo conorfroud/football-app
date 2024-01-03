@@ -603,6 +603,9 @@ def player_similarity_app(df2):
         # Add 'Player Club', 'Age', and 'Player Season Minutes' columns to the DataFrame
         similar_players_df = pd.merge(similar_players_df, df2[['Player Name', 'Team', 'Age', 'Player Season Minutes']], on='Player Name', how='left')
         
+        # Remove duplicates in case of multiple matches in the age filter
+        similar_players_df = similar_players_df.drop_duplicates(subset='Player Name')
+        
         st.dataframe(similar_players_df.head(50))
     else:
         st.warning("Player not found in the dataset.")
