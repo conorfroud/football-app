@@ -204,6 +204,13 @@ def about_tab(df2):
         columns_2 = ["Player Name", "xG (8)", "Non-Penalty Goals (8)", "OBV Pass (8)", "Open Play xA (8)", "Deep Progressions (8)", "Successful Dribbles (8)", "OBV Dribble & Carry (8)", "Average Distance (8)", "Top 5 PSV-99 (8)"]
         plot_title_2 = f"Attacking Midfield Metric Percentiles for {selected_player_2}"
 
+    elif selected_profile == "Left Back":
+        columns_1 = ["Player Name", "PAdj Tackles & Interceptions (LB)", "Tackle/Dribbled Past (LB)", "OBV Defensive Action (LB)", "Dribbled Past (LB)", "OBV Dribble & Carry (LB)", "Successful Crosses (LB)", "Open Play xA (LB)", "OBV Pass (LB)", "Aerial Win % (LB)", "Average Distance (LB)", "Top 5 PSV-99 (LB)"]
+        plot_title_1 = f"Left Back Metric Percentiles for {selected_player_1}"
+
+        columns_2 = ["Player Name", "PAdj Tackles & Interceptions (LB)", "Tackle/Dribbled Past (LB)", "OBV Defensive Action (LB)", "Dribbled Past (LB)", "OBV Dribble & Carry (LB)", "Successful Crosses (LB)", "Open Play xA (LB)", "OBV Pass (LB)", "Aerial Win % (LB)", "Average Distance (LB)", "Top 5 PSV-99 (LB)"]
+        plot_title_2 = f"Left Back Metric Percentiles for {selected_player_2}"
+
     elif selected_profile == "Stretch 9":
         columns_1 = ["Player Name", "xG (S9)", "Non-Penalty Goals (S9)", "Shots (S9)", "OBV Shot (S9)", "Open Play xA (S9)", "OBV Dribble & Carry (S9)", "Top 5 PSV-99 (S9)", "Runs in Behind (S9)", "Threat of Runs in Behind (S9)"]
         plot_title_1 = f"Stretch 9 Metric Percentiles for {selected_player_1}"
