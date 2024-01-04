@@ -211,6 +211,13 @@ def about_tab(df2):
         columns_2 = ["Player Name", "PAdj Tackles & Interceptions (LB)", "Tackle/Dribbled Past (LB)", "OBV Defensive Action (LB)", "Dribbled Past (LB)", "OBV Dribble & Carry (LB)", "Successful Crosses (LB)", "Open Play xA (LB)", "OBV Pass (LB)", "Aerial Win % (LB)", "Average Distance (LB)", "Top 5 PSV-99 (LB)"]
         plot_title_2 = f"Left Back Metric Percentiles for {selected_player_2}"
 
+    elif selected_profile == "Right Back":
+        columns_1 = ["Player Name", "PAdj Tackles & Interceptions (RB)", "Tackle/Dribbled Past (RB)", "OBV Defensive Action (RB)", "Dribbled Past (RB)", "OBV Dribble & Carry (RB)", "Successful Crosses (RB)", "Open Play xA (RB)", "OBV Pass (RB)", "Aerial Win % (RB)", "Average Distance (RB)", "Top 5 PSV-99 (RB)"]
+        plot_title_1 = f"Right Back Metric Percentiles for {selected_player_1}"
+
+        columns_2 = ["Player Name", "PAdj Tackles & Interceptions (RB)", "Tackle/Dribbled Past (RB)", "OBV Defensive Action (RB)", "Dribbled Past (RB)", "OBV Dribble & Carry (RB)", "Successful Crosses (RB)", "Open Play xA (RB)", "OBV Pass (RB)", "Aerial Win % (RB)", "Average Distance (RB)", "Top 5 PSV-99 (RB)"]
+        plot_title_2 = f"Right Back Metric Percentiles for {selected_player_2}"
+
     elif selected_profile == "Centre Back":
         columns_1 = ["Player Name", "Aerial Wins (CB)", "Aerial Win % (CB)", "PAdj Tackles & Interceptions (CB)", "Tackle / Dribbled Past % (CB)", "OBV Defensive Action (CB)", "Blocks per Shot (CB)", "Deep Progressions (CB)", "OBV Pass (CB)", "Pressure Change in Passing % (CB)", "OBV Dribble & Carry (CB)", "Top 5 PSV-99 (CB)"]
         plot_title_1 = f"Centre Back Metric Percentiles for {selected_player_1}"
@@ -578,7 +585,7 @@ def player_similarity_app(df2):
     player_name = st.sidebar.selectbox("Select a player's name:", df2['Player Name'].unique())
     
     # Add a sidebar radio button for selecting a position to compare
-    position_to_compare = st.sidebar.radio("Select a position to compare:", ('Stretch 9', 'Winger', 'Attacking Midfield', 'Left Back', 'Centre Back'))
+    position_to_compare = st.sidebar.radio("Select a position to compare:", ('Stretch 9', 'Winger', 'Attacking Midfield', 'Left Back', 'Right Back', 'Centre Back'))
 
     # Add a slider to filter players by age
     max_age = st.sidebar.slider("Select maximum age:", min_value=18, max_value=40, value=30)
@@ -623,6 +630,8 @@ def player_similarity_app(df2):
             columns_to_compare = ['Player Name', 'Team', 'Age', 'League', 'Player Season Minutes', 'Top 5 PSV-99 (CB)',	'Aerial Win % (CB)', 'Aerial Wins (CB)', 'OBV Pass (CB)', 'OBV Dribble & Carry (CB)', 'OBV Defensive Action (CB)', 'Deep Progressions (CB)', 'PAdj Tackles & Interceptions (CB)', 'Tackle / Dribbled Past % (CB)', 'Blocks per Shot (CB)', 'Pressure Change in Passing % (CB)']
         elif position_to_compare == 'Left Back':
             columns_to_compare = ['Player Name', 'Team', 'Age', 'League', 'Player Season Minutes', 'Average Distance (LB)', 'Top 5 PSV-99 (LB)', 'OBV Defensive Action (LB)', 'OBV Dribble & Carry (LB)', 'Tackle/Dribbled Past (LB)', 'Open Play xA (LB)', 'Successful Crosses (LB)', 'Dribbled Past (LB)', 'Successful Dribbles (LB)', 'OBV Pass (LB)', 'PAdj Tackles & Interceptions (LB)', 'Aerial Win % (LB)']
+        elif position_to_compare == 'Right Back':
+            columns_to_compare = ['Player Name', 'Team', 'Age', 'League', 'Player Season Minutes', 'Average Distance (RB)', 'Top 5 PSV-99 (RB)', 'OBV Defensive Action (RB)', 'OBV Dribble & Carry (RB)', 'Tackle/Dribbled Past (RB)', 'Open Play xA (RB)', 'Successful Crosses (RB)', 'Dribbled Past (RB)', 'Successful Dribbles (RB)', 'OBV Pass (RB)', 'PAdj Tackles & Interceptions (RB)', 'Aerial Win % (RB)']
 
         # Calculate similarity scores for all players within the age, minutes, and league bracket
         similarities = {}
