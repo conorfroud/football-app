@@ -140,7 +140,7 @@ def main_tab(df2):
 def about_tab(df2):
 
     # Define the allowed score types
-    allowed_score_types = ["Striker", "Winger", "Attacking Midfield", "Central Midfield", "Left Back", "Stretch 9"]
+    allowed_score_types = ["Striker", "Winger", "Attacking Midfield", "Central Midfield", "Left Back", "Centre Back", "Stretch 9"]
 
     # Select player 1
     selected_player_1 = st.sidebar.selectbox(
@@ -210,6 +210,13 @@ def about_tab(df2):
 
         columns_2 = ["Player Name", "PAdj Tackles & Interceptions (LB)", "Tackle/Dribbled Past (LB)", "OBV Defensive Action (LB)", "Dribbled Past (LB)", "OBV Dribble & Carry (LB)", "Successful Crosses (LB)", "Open Play xA (LB)", "OBV Pass (LB)", "Aerial Win % (LB)", "Average Distance (LB)", "Top 5 PSV-99 (LB)"]
         plot_title_2 = f"Left Back Metric Percentiles for {selected_player_2}"
+
+    elif selected_profile == "Centre Back":
+        columns_1 = ["Player Name", "Aerial Wins (CB)", "Aerial Win % (CB)", "PAdj Tackles & Interceptions (CB)", "Tackle / Dribbled Past % (CB)", "OBV Defensive Action (CB)", "Blocks per Shot (CB)", "Deep Progressions (CB)", "OBV Pass (CB)", "Pressure Change in Passing % (CB)", "OBV Dribble & Carry (CB)", "Top 5 PSV-99 (CB)"]
+        plot_title_1 = f"Centre Back Metric Percentiles for {selected_player_1}"
+
+        columns_2 = ["Player Name", "Aerial Wins (CB)", "Aerial Win % (CB)", "PAdj Tackles & Interceptions (CB)", "Tackle / Dribbled Past % (CB)", "OBV Defensive Action (CB)", "Blocks per Shot (CB)", "Deep Progressions (CB)", "OBV Pass (CB)", "Pressure Change in Passing % (CB)", "OBV Dribble & Carry (CB)", "Top 5 PSV-99 (CB)"]
+        plot_title_2 = f"Centre Back Metric Percentiles for {selected_player_2}"
 
     elif selected_profile == "Stretch 9":
         columns_1 = ["Player Name", "xG (S9)", "Non-Penalty Goals (S9)", "Shots (S9)", "OBV Shot (S9)", "Open Play xA (S9)", "OBV Dribble & Carry (S9)", "Top 5 PSV-99 (S9)", "Runs in Behind (S9)", "Threat of Runs in Behind (S9)"]
