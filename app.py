@@ -594,19 +594,19 @@ def player_similarity_app(df2):
 
         # Define columns based on the selected position
         if position_to_compare == 'Striker':
-            columns_to_compare = ['Player Name', 'Team', 'Age', 'Player Season Minutes', 'xG (ST)', 'Non-Penalty Goals (ST)', 'Shots (ST)', 'OBV Shot (ST)', 'Open Play xA (ST)', 'Aerial Wins (ST)', 'Average Distance Percentile', 'Top 5 PSV-99 Percentile', 'League']
+            columns_to_compare = ['Player Name', 'Team', 'Age', 'League', 'Player Season Minutes', 'xG (ST)', 'Non-Penalty Goals (ST)', 'Shots (ST)', 'OBV Shot (ST)', 'Open Play xA (ST)', 'Aerial Wins (ST)', 'Average Distance Percentile', 'Top 5 PSV-99 Percentile']
         elif position_to_compare == 'Winger':
-            columns_to_compare = ['Player Name', 'Team', 'Age', 'Player Season Minutes', 'xG (W)', 'Non-Penalty Goals (W)', 'Shots (W)', 'Open Play xA (W)', 'OBV Pass (W)', 'Successful Dribbles (W)', 'OBV Dribble & Carry (W)', 'Distance (W)', 'Top 5 PSV (W)', 'League']
+            columns_to_compare = ['Player Name', 'Team', 'Age', 'League', 'Player Season Minutes', 'xG (W)', 'Non-Penalty Goals (W)', 'Shots (W)', 'Open Play xA (W)', 'OBV Pass (W)', 'Successful Dribbles (W)', 'OBV Dribble & Carry (W)', 'Distance (W)', 'Top 5 PSV (W)']
         elif position_to_compare == 'Attacking Midfield':
-            columns_to_compare = ['Player Name', 'Team', 'Age', 'Player Season Minutes', 'xG (CAM)', 'Non-Penalty Goals (CAM)', 'Shots (CAM)', 'Open Play xA (CAM)', 'OBV Pass (CAM)', 'Successful Dribbles (CAM)', 'OBV Dribble & Carry (CAM)', 'Average Distance (CAM)', 'Top 5 PSV (CAM)']
+            columns_to_compare = ['Player Name', 'Team', 'Age', 'League', 'Player Season Minutes', 'xG (CAM)', 'Non-Penalty Goals (CAM)', 'Shots (CAM)', 'Open Play xA (CAM)', 'OBV Pass (CAM)', 'Successful Dribbles (CAM)', 'OBV Dribble & Carry (CAM)', 'Average Distance (CAM)', 'Top 5 PSV (CAM)']
         elif position_to_compare == 'Central Midfield':
-            columns_to_compare = ['Player Name', 'Team', 'Age', 'Player Season Minutes', 'xG (8)', 'Non-Penalty Goals (8)',	'OBV Pass (8)',	'Open Play xA (8)',	'Successful Dribbles (8)', 'OBV Dribble & Carry (8)', 'Average Distance (8)', 'Top 5 PSV-99 (8)', 'PAdj Tackles & Interceptions (8)', 'Deep Progressions (8)']
+            columns_to_compare = ['Player Name', 'Team', 'Age', 'League', 'Player Season Minutes', 'xG (8)', 'Non-Penalty Goals (8)',	'OBV Pass (8)',	'Open Play xA (8)',	'Successful Dribbles (8)', 'OBV Dribble & Carry (8)', 'Average Distance (8)', 'Top 5 PSV-99 (8)', 'PAdj Tackles & Interceptions (8)', 'Deep Progressions (8)']
         elif position_to_compare == 'Defensive Midfield':
-            columns_to_compare = ['Player Name', 'Team', 'Age', 'Player Season Minutes', 'Average Distance (6)', 'Top 5 PSV-99 (6)', 'OBV Defensive Action (6)', 'OBV Pass (6)', 'Deep Progressions (6)', 'Successful Dribbles (6)', 'OBV Dribble & Carry (6)', 'Tackle/Dribbled Past % (6)', 'PAdj Tackles & Interceptions (6)', 'Pass Forward % (6)', 'Turnovers (6)', 'PAdj Pressures (6)', 'Pressure Regains (6)', 'Ball Recoveries (6)']
+            columns_to_compare = ['Player Name', 'Team', 'Age', 'League', 'Player Season Minutes', 'Average Distance (6)', 'Top 5 PSV-99 (6)', 'OBV Defensive Action (6)', 'OBV Pass (6)', 'Deep Progressions (6)', 'Successful Dribbles (6)', 'OBV Dribble & Carry (6)', 'Tackle/Dribbled Past % (6)', 'PAdj Tackles & Interceptions (6)', 'Pass Forward % (6)', 'Turnovers (6)', 'PAdj Pressures (6)', 'Pressure Regains (6)', 'Ball Recoveries (6)']
         elif position_to_compare == 'Stretch 9':
-            columns_to_compare = ['Player Name', 'Team', 'Age', 'Player Season Minutes', 'xG (S9)',	'Non-Penalty Goals (S9)', 'Shots (S9)', 'OBV Shot (S9)', 'Open Play xA (S9)', 'OBV Dribble & Carry (S9)', 'PAdj Pressures (S9)', 'Top 5 PSV-99 (S9)', 'Runs in Behind (S9)', 'Threat of Runs in Behind (S9)']
+            columns_to_compare = ['Player Name', 'Team', 'Age', 'League', 'Player Season Minutes', 'xG (S9)', 'Non-Penalty Goals (S9)', 'Shots (S9)', 'OBV Shot (S9)', 'Open Play xA (S9)', 'OBV Dribble & Carry (S9)', 'PAdj Pressures (S9)', 'Top 5 PSV-99 (S9)', 'Runs in Behind (S9)', 'Threat of Runs in Behind (S9)']
         elif position_to_compare == 'Left Back':
-            columns_to_compare = ['Player Name', 'Team', 'Age', 'Player Season Minutes', 'Average Distance (LB)', 'Top 5 PSV-99 (LB)',	'OBV Defensive Action (LB)', 'OBV Dribble & Carry (LB)', 'Tackle/Dribbled Past (LB)', 'Open Play xA (LB)', 'Successful Crosses (LB)', 'Dribbled Past (LB)', 'Successful Dribbles (LB)',	'OBV Pass (LB)', 'PAdj Tackles & Interceptions (LB)', 'Aerial Win % (LB)']
+            columns_to_compare = ['Player Name', 'Team', 'Age', 'League', 'Player Season Minutes', 'Average Distance (LB)', 'Top 5 PSV-99 (LB)', 'OBV Defensive Action (LB)', 'OBV Dribble & Carry (LB)', 'Tackle/Dribbled Past (LB)', 'Open Play xA (LB)', 'Successful Crosses (LB)', 'Dribbled Past (LB)', 'Successful Dribbles (LB)', 'OBV Pass (LB)', 'PAdj Tackles & Interceptions (LB)', 'Aerial Win % (LB)']
 
         # Calculate similarity scores for all players within the age, minutes, and league bracket
         similarities = {}
@@ -620,7 +620,7 @@ def player_similarity_app(df2):
                 similarity_score = calculate_similarity(
                     reference_player_data,
                     player,
-                    columns_to_compare[4:]  # Exclude the first three columns (Player Name, Player Club, Age)
+                    columns_to_compare[5:]  # Exclude the first three columns (Player Name, Player Club, Age)
                 )
                 similarities[player['Player Name']] = similarity_score
 
