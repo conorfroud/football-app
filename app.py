@@ -558,7 +558,7 @@ def calculate_similarity(player1, player2, columns):
 # Add a function for rescaling similarity scores
 def rescale_similarity(x, max_val):
     return 100 - x * (100 / max_val)
-
+       
 def player_similarity_app(df2):
     # Add a sidebar dropdown for selecting a player name
     player_name = st.sidebar.selectbox("Select a player's name:", df2['Player Name'].unique())
@@ -578,8 +578,14 @@ def player_similarity_app(df2):
     # Filter unique leagues based on the selected position and filters
     filtered_leagues = df2[(df2['Score Type'] == position_to_compare) & (df2['Age'] <= max_age) & (df2['Player Season Minutes'] >= min_minutes)]['League'].unique()
 
-    # Add a multi-select dropdown for filtering by 'League' with filtered unique leagues
-    selected_leagues = st.sidebar.multiselect("Select leagues:", filtered_leagues, default=selected_leagues)
+    # Set the default value for selected_leagues based on availability
+    if all(league in filtered_leagues for league in selected_leagues):
+        default_selected_leagues = selected_leagues
+    else:
+        default_selected_leagues = filtered_leagues
+
+    # Add a multi-select dropdown for filtering by 'League' with default value
+    selected_leagues = st.sidebar.multiselect("Select leagues:", filtered_leagues, default=default_selected_leagues)
 
     # Check if the selected player is in the dataset
     if player_name in df2['Player Name'].values:
