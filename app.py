@@ -571,7 +571,7 @@ def player_similarity_app(df2):
     player_name = st.sidebar.selectbox("Select a player's name:", df2['Player Name'].unique())
     
     # Add a sidebar radio button for selecting a position to compare
-    position_to_compare = st.sidebar.radio("Select a position to compare:", ('Stretch 9', 'Winger', 'Attacking Midfield', 'Defensive Midfield', 'Left Back'))
+    position_to_compare = st.sidebar.radio("Select a position to compare:", ('Stretch 9', 'Winger', 'Attacking Midfield', 'Left Back', 'Centre Back'))
 
     # Add a slider to filter players by age
     max_age = st.sidebar.slider("Select maximum age:", min_value=18, max_value=40, value=30)
