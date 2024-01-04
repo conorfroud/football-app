@@ -572,8 +572,14 @@ def player_similarity_app(df2):
     # Add a slider to filter players by 'Player Season Minutes'
     min_minutes = st.sidebar.slider("Select minimum 'Player Season Minutes':", min_value=0, max_value=int(df2['Player Season Minutes'].max()), value=0)
 
-    # Automatically select all leagues
+    # Automatically select all leagues by default
     selected_leagues = df2['League'].unique()
+
+    # Filter unique leagues based on the selected position and filters
+    filtered_leagues = df2[(df2['Score Type'] == position_to_compare) & (df2['Age'] <= max_age) & (df2['Player Season Minutes'] >= min_minutes)]['League'].unique()
+
+    # Add a multi-select dropdown for filtering by 'League' with filtered unique leagues
+    selected_leagues = st.sidebar.multiselect("Select leagues:", filtered_leagues, default=selected_leagues)
 
     # Check if the selected player is in the dataset
     if player_name in df2['Player Name'].values:
