@@ -450,7 +450,7 @@ def scatter_plot(df):
         y_variable = st.sidebar.selectbox('Y-axis variable', df.columns, index=df.columns.get_loc('Open Play xG Assisted'))
 
         # Create a multi-select dropdown for filtering by primary_position
-        selected_positions = st.sidebar.multiselect('Filter by Primary Position', df['primary_position'].unique())
+        selected_positions = st.sidebar.multiselect('Filter by Primary Position', df['position_1'].unique())
 
         # Create a multi-select dropdown for selecting leagues with 'English Championship' pre-selected
         default_leagues = ['English Championship']
