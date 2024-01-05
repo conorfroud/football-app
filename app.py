@@ -457,14 +457,14 @@ def scatter_plot(df):
         selected_leagues = st.sidebar.multiselect('Select Leagues', df['competition_name'].unique(), default=default_leagues)
 
         # Sidebar for filtering by 'minutes' played
-        min_minutes = int(df['Minutes'].min())
-        max_minutes = int(df['Minutes'].max())
+        min_minutes = int(df['Player Season Minutes'].min())
+        max_minutes = int(df['Player Season Minutes'].max())
         selected_minutes = st.sidebar.slider('Select Minutes Played Range', min_value=min_minutes, max_value=max_minutes, value=(300, max_minutes))
 
         # Filter data based on user-selected positions, minutes played, and leagues
-        filtered_df = df[(df['primary_position'].isin(selected_positions) | (len(selected_positions) == 0)) &
-                         (df['Minutes'] >= selected_minutes[0]) &
-                         (df['Minutes'] <= selected_minutes[1]) &
+        filtered_df = df[(df['position_1'].isin(selected_positions) | (len(selected_positions) == 0)) &
+                         (df['Player Season Minutes'] >= selected_minutes[0]) &
+                         (df['Player Season Minutes'] <= selected_minutes[1]) &
                          (df['competition_name'].isin(selected_leagues) | (len(selected_leagues) == 0))]
 
         # Calculate Z-scores for the variables
@@ -475,7 +475,7 @@ def scatter_plot(df):
         threshold = st.sidebar.slider('Label Threshold', min_value=0.1, max_value=5.0, value=2.0)
 
         # Create a scatter plot using Plotly with the filtered data
-        hover_data_fields = {'Player Name': True, 'team_name': True, 'age': True, 'Minutes': True, x_variable: False, y_variable: False, 'z_x': False, 'z_y': False}
+        hover_data_fields = {'Player Name': True, 'team_name': True, 'age': True, 'Player Season Minutes': True, x_variable: False, y_variable: False, 'z_x': False, 'z_y': False}
         fig = px.scatter(filtered_df, x=x_variable, y=y_variable, hover_data=hover_data_fields)
 
         # Customize the marker color and size
