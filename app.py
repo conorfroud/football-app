@@ -593,10 +593,16 @@ def player_similarity_app(df2):
     # Add a sidebar radio button for selecting a position to compare
     position_to_compare = st.sidebar.radio("Select a position to compare:", ('Stretch 9', 'Winger', 'Attacking Midfield', 'Left Back', 'Right Back', 'Centre Back'))
 
-    # Define columns based on the selected position outside of the if-elif blocks
+    # Calculate similarity scores for all players within the age, minutes, and league bracket
+    similarities = {}
+    reference_player_data = df2[(df2['Player Name'] == player_name) & (df2['Score Type'] == position_to_compare)].iloc[0]
+
+    # Find the maximum similarity score for scaling
+    max_similarity = float('-inf')
+
+    # Define columns based on the selected position
     columns_to_compare = []  # Initialize an empty list
 
-    # Define columns based on the selected position outside of the if-elif blocks
     if position_to_compare == 'Striker':
         columns_to_compare = ['Player Name', 'Team', 'Age', 'League', 'Player Season Minutes', 'xG (ST)', 'Non-Penalty Goals (ST)', 'Shots (ST)', 'OBV Shot (ST)', 'Open Play xA (ST)', 'Aerial Wins (ST)', 'Average Distance Percentile', 'Top 5 PSV-99 Percentile']
     elif position_to_compare == 'Winger':
@@ -615,13 +621,6 @@ def player_similarity_app(df2):
         columns_to_compare = ['Player Name', 'Team', 'Age', 'League', 'Player Season Minutes', 'Average Distance (LB)', 'Top 5 PSV-99 (LB)', 'OBV Defensive Action (LB)', 'OBV Dribble & Carry (LB)', 'Tackle/Dribbled Past (LB)', 'Open Play xA (LB)', 'Successful Crosses (LB)', 'Dribbled Past (LB)', 'Successful Dribbles (LB)', 'OBV Pass (LB)', 'PAdj Tackles & Interceptions (LB)', 'Aerial Win % (LB)']
     elif position_to_compare == 'Right Back':
         columns_to_compare = ['Player Name', 'Team', 'Age', 'League', 'Player Season Minutes', 'Average Distance (RB)', 'Top 5 PSV-99 (RB)', 'OBV Defensive Action (RB)', 'OBV Dribble & Carry (RB)', 'Tackle/Dribbled Past (RB)', 'Open Play xA (RB)', 'Successful Crosses (RB)', 'Dribbled Past (RB)', 'Successful Dribbles (RB)', 'OBV Pass (RB)', 'PAdj Tackles & Interceptions (RB)', 'Aerial Win % (RB)']
-
-    # Calculate similarity scores for all players within the age, minutes, and league bracket
-    similarities = {}
-    reference_player_data = df2[(df2['Player Name'] == player_name) & (df2['Score Type'] == position_to_compare)].iloc[0]
-
-    # Find the maximum similarity score for scaling
-    max_similarity = float('-inf')
 
     for _, player in df2.iterrows():
         if (player['Player Name'] != player_name) and (player['Age'] <= max_age) and (player['Player Season Minutes'] >= min_minutes) and (player['League'] in selected_leagues):
