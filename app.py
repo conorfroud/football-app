@@ -581,7 +581,6 @@ def rescale_similarity(x, max_val):
     return 100 - x * (100 / max_val)
        
 def player_similarity_app(df2):
-    
     # Define variables at the top of the function
     max_age = st.sidebar.slider("Select maximum age:", min_value=18, max_value=40, value=30)
     min_minutes = st.sidebar.slider("Select minimum 'Player Season Minutes':", min_value=0, max_value=int(df2['Player Season Minutes'].max()), value=0)
@@ -593,6 +592,9 @@ def player_similarity_app(df2):
     
     # Add a sidebar radio button for selecting a position to compare
     position_to_compare = st.sidebar.radio("Select a position to compare:", ('Stretch 9', 'Winger', 'Attacking Midfield', 'Left Back', 'Right Back', 'Centre Back'))
+
+    # Define columns based on the selected position outside of the if-elif blocks
+    columns_to_compare = []  # Initialize an empty list
 
     # Define columns based on the selected position outside of the if-elif blocks
     if position_to_compare == 'Striker':
