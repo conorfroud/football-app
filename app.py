@@ -40,8 +40,11 @@ def main_tab(df2):
     # Get the unique contract expiry years from the DataFrame
     contract_expiry_years = sorted(df2['Contract expires'].unique())
 
-    # Create a list of primary position options
-    primary_position_options = df2['Primary Position'].unique()
+    # Create a dictionary that maps 'Score Type' to unique 'Primary Position' options
+    primary_position_options_by_score_type = {
+      'Striker': df2[df2['Score Type'] == 'Striker']['Primary Position'].unique(),
+      'Winger': df2[df2['Score Type'] == 'Winger']['Primary Position'].unique()
+}
 
     # Get the minimum and maximum player market value (in euros) from the DataFrame
     min_player_market_value = int(df2['Market value (millions)'].min())
@@ -64,8 +67,8 @@ def main_tab(df2):
     # Add a slider for selecting the L/R Footedness % range
     lr_footedness_range = st.sidebar.slider("Select L/R Footedness % Range", min_value=0, max_value=100, value=(0, 100))
 
-    # Add a multiselect box for selecting primary positions
-    selected_primary_positions = st.sidebar.multiselect("Select Primary Position", primary_position_options, default=primary_position_options)
+    # Add a multiselect box for selecting primary positions based on the selected 'Score Type'
+    selected_primary_positions = st.sidebar.multiselect("Select Primary Positions", primary_position_options_by_score_type.get(selected_score_type, []))
 
     # Add a multiselect box for selecting contract expiry years
     selected_contract_expiry_years = st.sidebar.multiselect("Select Contract Expiry Years", contract_expiry_years, default=contract_expiry_years)
