@@ -610,88 +610,57 @@ def player_similarity_app(df2):
     elif position_to_compare == 'Right Back':
         columns_to_compare = ['Player Name', 'Team', 'Age', 'League', 'Player Season Minutes', 'Average Distance (RB)', 'Top 5 PSV-99 (RB)', 'OBV Defensive Action (RB)', 'OBV Dribble & Carry (RB)', 'Tackle/Dribbled Past (RB)', 'Open Play xA (RB)', 'Successful Crosses (RB)', 'Dribbled Past (RB)', 'Successful Dribbles (RB)', 'OBV Pass (RB)', 'PAdj Tackles & Interceptions (RB)', 'Aerial Win % (RB)']
 
-    # Add a slider to filter players by age
-    max_age = st.sidebar.slider("Select maximum age:", min_value=18, max_value=40, value=30)
+    # Calculate similarity scores for all players within the age, minutes, and league bracket
+    similarities = {}
+    reference_player_data = df2[(df2['Player Name'] == player_name) & (df2['Score Type'] == position_to_compare)].iloc[0]
 
-    # Add a slider to filter players by 'Player Season Minutes'
-    min_minutes = st.sidebar.slider("Select minimum 'Player Season Minutes':", min_value=0, max_value=int(df2['Player Season Minutes'].max()), value=0)
+    # Find the maximum similarity score for scaling
+    max_similarity = float('-inf')
 
-    # Automatically select all leagues by default
-    selected_leagues = df2['League'].unique()
+    for _, player in df2.iterrows():
+        if (player['Player Name'] != player_name) and (player['Age'] <= max_age) and (player['Player Season Minutes'] >= min_minutes) and (player['League'] in selected_leagues):
+            if primary_position_only:
+                if player['Primary Position'] == position_to_compare:
+                    similarity_score = calculate_similarity(
+                        reference_player_data,
+                        player,
+                        columns_to_compare[5:]  # Exclude the first three columns (Player Name, Player Club, Age)
+                    )
+                    similarities[player['Player Name']] = similarity_score
 
-    # Filter unique leagues based on the selected position and filters
-    if primary_position_only:
-        filtered_leagues = df2[(df2['Primary Position'] == position_to_compare) & (df2['Age'] <= max_age) & (df2['Player Season Minutes'] >= min_minutes)]['League'].unique()
-    else:
-        filtered_leagues = df2[(df2['Score Type'] == position_to_compare) & (df2['Age'] <= max_age) & (df2['Player Season Minutes'] >= min_minutes)]['League'].unique()
+                    # Update max similarity score
+                    max_similarity = max(max_similarity, similarity_score)
+            else:
+                if player['Score Type'] == position_to_compare:
+                    similarity_score = calculate_similarity(
+                        reference_player_data,
+                        player,
+                        columns_to_compare[5:]  # Exclude the first three columns (Player Name, Player Club, Age)
+                    )
+                    similarities[player['Player Name']] = similarity_score
 
-    # Set the default value for selected_leagues based on availability
-    if all(league in filtered_leagues for league in selected_leagues):
-        default_selected_leagues = selected_leagues
-    else:
-        default_selected_leagues = filtered_leagues
+                    # Update max similarity score
+                    max_similarity = max(max_similarity, similarity_score)
 
-    # Add a multi-select dropdown for filtering by 'League' with default value
-    selected_leagues = st.sidebar.multiselect("Select leagues:", filtered_leagues, default=default_selected_leagues)
+    # Normalize similarity scores to the range [0, 100]
+    for player_name, similarity_score in similarities.items():
+        normalized_similarity = rescale_similarity(similarity_score, max_similarity)
+        similarities[player_name] = normalized_similarity
 
-    # Check if the selected player is in the dataset
-    if player_name in df2['Player Name'].values:
-        # Choose the reference player
-        reference_player = player_name
+    # Sort players by similarity score (descending)
+    similar_players = sorted(similarities.items(), key=lambda x: x[1], reverse=True)
 
-        # Calculate similarity scores for all players within the age, minutes, and league bracket
-        similarities = {}
-        reference_player_data = df2[(df2['Player Name'] == reference_player) & (df2['Score Type'] == position_to_compare)].iloc[0]
-
-        # Find the maximum similarity score for scaling
-        max_similarity = float('-inf')
-
-        for _, player in df2.iterrows():
-            if (player['Player Name'] != reference_player) and (player['Age'] <= max_age) and (player['Player Season Minutes'] >= min_minutes) and (player['League'] in selected_leagues):
-                if primary_position_only:
-                    if player['Primary Position'] == position_to_compare:
-                        similarity_score = calculate_similarity(
-                            reference_player_data,
-                            player,
-                            columns_to_compare[5:]  # Exclude the first three columns (Player Name, Player Club, Age)
-                        )
-                        similarities[player['Player Name']] = similarity_score
-
-                        # Update max similarity score
-                        max_similarity = max(max_similarity, similarity_score)
-                else:
-                    if player['Score Type'] == position_to_compare:
-                        similarity_score = calculate_similarity(
-                            reference_player_data,
-                            player,
-                            columns_to_compare[5:]  # Exclude the first three columns (Player Name, Player Club, Age)
-                        )
-                        similarities[player['Player Name']] = similarity_score
-
-                        # Update max similarity score
-                        max_similarity = max(max_similarity, similarity_score)
-
-        # Normalize similarity scores to the range [0, 100]
-        for player_name, similarity_score in similarities.items():
-            normalized_similarity = rescale_similarity(similarity_score, max_similarity)
-            similarities[player_name] = normalized_similarity
-
-        # Sort players by similarity score (descending)
-        similar_players = sorted(similarities.items(), key=lambda x: x[1], reverse=True)
-
-        # Display the top 50 most similar players within the selected age, minutes, and league bracket
-        st.header(f"Most similar {position_to_compare}s to {reference_player} (Age <= {max_age}, Minutes >= {min_minutes}):")
-        similar_players_df = pd.DataFrame(similar_players, columns=['Player Name', 'Similarity Score'])
-        
-        # Add 'Player Club', 'Age', 'Player Season Minutes', and 'League' columns to the DataFrame
-        similar_players_df = pd.merge(similar_players_df, df2[['Player Name', 'Team', 'Age', 'Player Season Minutes', 'League']], on='Player Name', how='left')
-        
-        # Remove duplicates in case of multiple matches in the age, minutes, and league filter
-        similar_players_df = similar_players_df.drop_duplicates(subset='Player Name')
-        
-        st.dataframe(similar_players_df.head(250))
-    else:
-        st.error("Player not found in the selected position.")
+    # Display the top 50 most similar players within the selected age, minutes, and league bracket
+    st.header(f"Most similar {position_to_compare}s to {player_name} (Age <= {max_age}, Minutes >= {min_minutes}):")
+    similar_players_df = pd.DataFrame(similar_players, columns=['Player Name', 'Similarity Score'])
+    
+    # Add 'Player Club', 'Age', 'Player Season Minutes', and 'League' columns to the DataFrame
+    similar_players_df = pd.merge(similar_players_df, df2[['Player Name', 'Team', 'Age', 'Player Season Minutes', 'League']], on='Player Name', how='left')
+    
+    # Remove duplicates in case of multiple matches in the age, minutes, and league filter
+    similar_players_df = similar_players_df.drop_duplicates(subset='Player Name')
+    
+    st.dataframe(similar_players_df.head(250))
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
