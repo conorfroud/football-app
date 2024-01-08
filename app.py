@@ -667,7 +667,7 @@ def player_similarity_app(df2):
         similar_players = sorted(similarities.items(), key=lambda x: x[1], reverse=True)
 
         # Display the top 50 most similar players within the selected age, minutes, and league bracket
-        st.header(f"Most similar {position_to_compare}s to {reference_player} ({', '.join(selected_positions)}, Age <= {max_age}, Minutes >= {min_minutes}):")
+        st.header(f"Most similar {position_to_compare}s to {reference_player} (Age <= {max_age}, Minutes >= {min_minutes}):")
         similar_players_df = pd.DataFrame(similar_players, columns=['Player Name', 'Similarity Score'])
         
         # Add 'Player Club', 'Age', 'Player Season Minutes', and 'League' columns to the DataFrame
