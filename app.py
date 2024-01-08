@@ -590,8 +590,8 @@ def player_similarity_app(df2):
     # Filter unique positions based on the selected position for similarity calculation
     available_positions = df2[df2['Score Type'] == position_to_compare]['Position'].unique()
     
-    # Add a sidebar dropdown for selecting a position filter
-    selected_position = st.sidebar.selectbox("Select a position filter:", available_positions)
+    # Add a multi-select dropdown for selecting a position filter with default value as all available positions
+    selected_positions = st.sidebar.multiselect("Select position filters:", available_positions, default=available_positions)
 
     # Add a slider to filter players by age
     max_age = st.sidebar.slider("Select maximum age:", min_value=18, max_value=40, value=30)
@@ -647,7 +647,7 @@ def player_similarity_app(df2):
         max_similarity = float('-inf')
 
         for _, player in df2.iterrows():
-            if (player['Player Name'] != reference_player) and (player['Age'] <= max_age) and (player['Score Type'] == position_to_compare) and (player['Player Season Minutes'] >= min_minutes) and (player['League'] in selected_leagues) and (player['Position'] == selected_position):
+            if (player['Player Name'] != reference_player) and (player['Age'] <= max_age) and (player['Score Type'] == position_to_compare) and (player['Player Season Minutes'] >= min_minutes) and (player['League'] in selected_leagues) and (player['Position'] in selected_positions):
                 similarity_score = calculate_similarity(
                     reference_player_data,
                     player,
@@ -667,7 +667,7 @@ def player_similarity_app(df2):
         similar_players = sorted(similarities.items(), key=lambda x: x[1], reverse=True)
 
         # Display the top 50 most similar players within the selected age, minutes, and league bracket
-        st.header(f"Most similar {position_to_compare}s to {reference_player} ({selected_position}, Age <= {max_age}, Minutes >= {min_minutes}):")
+        st.header(f"Most similar {position_to_compare}s to {reference_player} ({', '.join(selected_positions)}, Age <= {max_age}, Minutes >= {min_minutes}):")
         similar_players_df = pd.DataFrame(similar_players, columns=['Player Name', 'Similarity Score'])
         
         # Add 'Player Club', 'Age', 'Player Season Minutes', and 'League' columns to the DataFrame
