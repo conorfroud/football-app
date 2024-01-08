@@ -671,7 +671,7 @@ def player_similarity_app(df2):
         similar_players_df = pd.DataFrame(similar_players, columns=['Player Name', 'Similarity Score'])
         
         # Add 'Player Club', 'Age', 'Player Season Minutes', and 'League' columns to the DataFrame
-        similar_players_df = pd.merge(similar_players_df, df2[['Player Name', 'Team', 'Age', 'Player Season Minutes', 'League', 'Position']], on='Player Name', how='left')
+        similar_players_df = pd.merge(similar_players_df, df2[['Player Name', 'Team', 'Age', 'Player Season Minutes', 'League', 'Position', 'L/R Footedness %']], on='Player Name', how='left')
         
         # Remove duplicates in case of multiple matches in the age, minutes, and league filter
         similar_players_df = similar_players_df.drop_duplicates(subset='Player Name')
