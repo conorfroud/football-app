@@ -590,9 +590,6 @@ def player_similarity_app(df2):
     # Filter unique positions based on the selected position for similarity calculation
     available_positions = df2[df2['Score Type'] == position_to_compare]['Position'].unique()
     
-    # Add a multi-select dropdown for selecting a position filter with default value as all available positions
-    selected_positions = st.sidebar.multiselect("Select position filters:", available_positions, default=available_positions)
-
     # Add a slider to filter players by age
     max_age = st.sidebar.slider("Select maximum age:", min_value=18, max_value=40, value=30)
 
@@ -613,6 +610,9 @@ def player_similarity_app(df2):
 
     # Add a multi-select dropdown for filtering by 'League' with default value
     selected_leagues = st.sidebar.multiselect("Select leagues:", filtered_leagues, default=default_selected_leagues)
+
+    # Add a multi-select dropdown for selecting a position filter with default value as all available positions
+    selected_positions = st.sidebar.multiselect("Select position filters:", available_positions, default=available_positions)
 
     # Check if the selected player is in the dataset
     if player_name in df2['Player Name'].values:
