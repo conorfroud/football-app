@@ -37,9 +37,6 @@ def main_tab(df2):
     min_age = int(df2['Age'].min())
     max_age = int(df2['Age'].max())
 
-    # Add a multi-select dropdown for 'Primary Position' with all fields selected by default
-    selected_primary_positions = st.sidebar.multiselect("Select Primary Positions", df2['Primary Position'].unique(), default=df2['Primary Position'].unique())
-
     # Get the unique contract expiry years from the DataFrame
     contract_expiry_years = sorted(df2['Contract expires'].unique())
 
@@ -105,10 +102,9 @@ def main_tab(df2):
         'Dominant Centre Back': ['Player Name', 'Age', 'Team', 'League', 'Primary Position', 'Player Season Minutes', 'Stoke Score', 'Average Distance (DCB)', 'Top 5 PSV-99 (DCB)', 'Contract expires', 'Market value (millions)', 'Aerial Wins (DCB)', 'Aerial Win % (DCB)', 'OBV Defensive Action (DCB)', 'Tackle / Dribbled Past % (DCB)', 'Blocks Per Shot (DCB)', 'L/R Footedness %'],
     }
 
-    # Dynamically construct the selected_columns list based on 'Score Type' and 'Primary Position'
-    selected_columns = ['Player Name', 'Age', 'Team', 'League', 'Primary Position', 'Score Type'] + score_type_column_mapping.get(selected_score_type, [])
+    # Update the selected columns to include 'Score Type'
+    selected_columns = score_type_column_mapping.get(selected_score_type, [])
 
-    # Update the filter conditions based on selected 'Primary Position'
     filtered_df = df2[
         (df2['League'] == selected_league) &
         (df2['Score Type'] == selected_score_type) &
@@ -124,8 +120,8 @@ def main_tab(df2):
         (df2[selected_columns[7]] >= top_5_psv_99_percentile_range[0]) &
         (df2[selected_columns[7]] <= top_5_psv_99_percentile_range[1]) &
         (df2['L/R Footedness %'] >= lr_footedness_range[0]) &
-        (df2['L/R Footedness %'] <= lr_footedness_range[1]) &
-        (df2['Primary Position'].isin(selected_primary_positions))
+        (df2['L/R Footedness %'] <= lr_footedness_range[1])
+    ]
 
 # Display the filtered DataFrame with selected columns
     st.dataframe(filtered_df[selected_columns], hide_index=True)
