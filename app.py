@@ -581,14 +581,18 @@ def rescale_similarity(x, max_val):
     return 100 - x * (100 / max_val)
        
 def player_similarity_app(df2):
+    
+    # Define variables at the top of the function
+    max_age = st.sidebar.slider("Select maximum age:", min_value=18, max_value=40, value=30)
+    min_minutes = st.sidebar.slider("Select minimum 'Player Season Minutes':", min_value=0, max_value=int(df2['Player Season Minutes'].max()), value=0)
+    selected_leagues = df2['League'].unique()
+    primary_position_only = st.sidebar.checkbox("Primary Position Only")
+    
     # Add a sidebar dropdown for selecting a player name
     player_name = st.sidebar.selectbox("Select a player's name:", df2['Player Name'].unique())
     
     # Add a sidebar radio button for selecting a position to compare
     position_to_compare = st.sidebar.radio("Select a position to compare:", ('Stretch 9', 'Winger', 'Attacking Midfield', 'Left Back', 'Right Back', 'Centre Back'))
-
-    # Add a checkbox for selecting "Primary Position Only"
-    primary_position_only = st.sidebar.checkbox("Primary Position Only")
 
     # Define columns based on the selected position outside of the if-elif blocks
     if position_to_compare == 'Striker':
@@ -661,7 +665,7 @@ def player_similarity_app(df2):
     similar_players_df = similar_players_df.drop_duplicates(subset='Player Name')
     
     st.dataframe(similar_players_df.head(250))
-
+    
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
 df2 = pd.read_csv("championshipscores.csv")
