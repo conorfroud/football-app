@@ -593,7 +593,7 @@ def player_similarity_app(df2):
     player_name = st.sidebar.selectbox("Select a player's name:", df2['Player Name'].unique())
     
     # Add a sidebar radio button for selecting a position to compare
-    position_to_compare = st.sidebar.radio("Select a position to compare:", ('Stretch 9', 'Winger', 'Attacking Midfield', 'Central Midfield', 'Left Back', 'Right Back', 'Centre Back'))
+    position_to compare = st.sidebar.radio("Select a position to compare:", ('Stretch 9', 'Winger', 'Attacking Midfield', 'Central Midfield', 'Left Back', 'Right Back', 'Centre Back'))
     
     # Filter unique positions based on the selected position for similarity calculation
     available_positions = df2[df2['Score Type'] == position_to_compare]['Position'].unique()
@@ -604,14 +604,15 @@ def player_similarity_app(df2):
     # Add a slider to filter players by 'Player Season Minutes'
     min_minutes = st.sidebar.slider("Select minimum 'Player Season Minutes':", min_value=0, max_value=int(df2['Player Season Minutes'].max()), value=0)
 
-    # Add a slider to filter players by 'L/R Footedness %'
+    # Add two sliders to filter players by 'L/R Footedness %' (minimum and maximum)
     min_lr_footedness = st.sidebar.slider("Select minimum 'L/R Footedness %':", min_value=0, max_value=100, value=0)
+    max_lr_footedness = st.sidebar.slider("Select maximum 'L/R Footedness %':", min_value=0, max_value=100, value=100)
 
     # Automatically select all leagues by default
     selected_leagues = df2['League'].unique()
 
     # Filter unique leagues based on the selected position and filters
-    filtered_leagues = df2[(df2['Score Type'] == position_to_compare) & (df2['Age'] <= max_age) & (df2['Player Season Minutes'] >= min_minutes) & (df2['L/R Footedness %'] >= min_lr_footedness)]['League'].unique()
+    filtered_leagues = df2[(df2['Score Type'] == position_to_compare) & (df2['Age'] <= max_age) & (df2['Player Season Minutes'] >= min_minutes) & (df2['L/R Footedness %'] >= min_lr_footedness) & (df2['L/R Footedness %'] <= max_lr_footedness)]['League'].unique()
 
     # Set the default value for selected_leagues based on availability
     if all(league in filtered_leagues for league in selected_leagues):
@@ -649,7 +650,7 @@ def player_similarity_app(df2):
             columns_to_compare = ['Player Name', 'Team', 'Age', 'League', 'Player Season Minutes', 'Average Distance (LB)', 'Top 5 PSV-99 (LB)', 'OBV Defensive Action (LB)', 'OBV Dribble & Carry (LB)', 'Tackle/Dribbled Past (LB)', 'Open Play xA (LB)', 'Successful Crosses (LB)', 'Dribbled Past (LB)', 'Successful Dribbles (LB)', 'OBV Pass (LB)', 'PAdj Tackles & Interceptions (LB)', 'Aerial Win % (LB)']
         elif position_to_compare == 'Right Back':
             columns_to_compare = ['Player Name', 'Team', 'Age', 'League', 'Player Season Minutes', 'Average Distance (RB)', 'Top 5 PSV-99 (RB)', 'OBV Defensive Action (RB)', 'OBV Dribble & Carry (RB)', 'Tackle/Dribbled Past (RB)', 'Open Play xA (RB)', 'Successful Crosses (RB)', 'Dribbled Past (RB)', 'Successful Dribbles (RB)', 'OBV Pass (RB)', 'PAdj Tackles & Interceptions (RB)', 'Aerial Win % (RB)']
-
+        
         # Calculate similarity scores for all players within the age, minutes, and league bracket
         similarities = {}
         reference_player_data = df2[(df2['Player Name'] == reference_player) & (df2['Score Type'] == position_to_compare)].iloc[0]
@@ -658,7 +659,15 @@ def player_similarity_app(df2):
         max_similarity = float('-inf')
 
         for _, player in df2.iterrows():
-            if (player['Player Name'] != reference_player) and (player['Age'] <= max_age) and (player['Score Type'] == position_to_compare) and (player['Player Season Minutes'] >= min_minutes) and (player['League'] in selected_leagues) and (player['Position'] in selected_positions) and (player['L/R Footedness %'] >= min_lr_footedness):
+            if (
+                player['Player Name'] != reference_player
+                and player['Age'] <= max_age
+                and player['Score Type'] == position_to_compare
+                and player['Player Season Minutes'] >= min_minutes
+                and player['League'] in selected_leagues
+                and player['Position'] in selected_positions
+                and (player['L/R Footedness %'] >= min_lr_footedness and player['L/R Footedness %'] <= max_lr_footedness)
+            ):
                 similarity_score = calculate_similarity(
                     reference_player_data,
                     player,
@@ -678,7 +687,7 @@ def player_similarity_app(df2):
         similar_players = sorted(similarities.items(), key=lambda x: x[1], reverse=True)
 
         # Display the top 50 most similar players within the selected age, minutes, and league bracket
-        st.header(f"Most similar {position_to_compare}s to {reference_player} (Age <= {max_age}, Minutes >= {min_minutes}, L/R Footedness >= {min_lr_footedness}%):")
+        st.header(f"Most similar {position_to_compare}s to {reference_player} (Age <= {max_age}, Minutes >= {min_minutes}, L/R Footedness >= {min_lr_footedness}%, L/R Footedness <= {max_lr_footedness}%):")
         similar_players_df = pd.DataFrame(similar_players, columns=['Player Name', 'Similarity Score'])
         
         # Add 'Player Club', 'Age', 'Player Season Minutes', 'League', and 'L/R Footedness %' columns to the DataFrame
