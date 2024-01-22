@@ -51,7 +51,7 @@ def main_tab(df2):
     max_stoke_score = 100.0
 
     # Add a sidebar multiselect box for leagues with default selections
-    selected_leagues = st.sidebar.multiselect("Select Leagues", league_options, default=['Dutch Eredivisie', 'Portuguese Primeira Liga', 'Belgian Jupiler Pro League', 'English Championship'])
+    selected_leagues = st.sidebar.multiselect("Select Leagues", league_options, default=['Dutch Eredivisie', 'Portugese Primeira Liga', 'Belgian Jupiler Pro League', 'English Championship'])
 
     # Add a sidebar dropdown box for score types
     selected_score_type = st.sidebar.selectbox("Select a Score Type", score_type_options)
