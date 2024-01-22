@@ -131,6 +131,9 @@ def main_tab(df2):
         (df2['Primary Position'].isin(selected_primary_positions))  # Include selected primary positions
     ]
 
+    # Sort the filtered DataFrame by "Stoke Score" column in descending order
+    filtered_df = filtered_df.sort_values(by='Stoke Score', ascending=False)
+
     # Display the filtered DataFrame with selected columns
     st.dataframe(filtered_df[selected_columns], hide_index=True)
 
