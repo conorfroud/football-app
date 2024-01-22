@@ -98,12 +98,12 @@ def main_tab(df2):
         (df2['Market value (millions)'] <= player_market_value_range[1]) &
         (df2['Stoke Score'] >= stoke_range[0]) &
         (df2['Stoke Score'] <= stoke_range[1]) &
-        (df2[selected_columns[6]] >= avg_distance_percentile_range[0]) &
-        (df2[selected_columns[6]] <= avg_distance_percentile_range[1]) &
-        (df2[selected_columns[7]] >= top_5_psv_99_percentile_range[0]) &
-        (df2[selected_columns[7]] <= top_5_psv_99_percentile_range[1]) &
-        (df2['L/R Footedness %'] >= lr_footedness_range[0]) &
-        (df2['L/R Footedness %'] <= lr_footedness_range[1]) &
+        (df2[selected_columns[6]].ge(avg_distance_percentile_range[0])) &
+        (df2[selected_columns[6]].le(avg_distance_percentile_range[1])) &
+        (df2[selected_columns[7]].ge(top_5_psv_99_percentile_range[0])) &
+        (df2[selected_columns[7]].le(top_5_psv_99_percentile_range[1])) &
+        (df2['L/R Footedness %'].ge(lr_footedness_range[0])) &
+        (df2['L/R Footedness %'].le(lr_footedness_range[1])) &
         (df2['Primary Position'].isin(selected_primary_positions))  # Include selected primary positions
     ]
 
