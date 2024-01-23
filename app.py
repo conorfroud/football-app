@@ -746,8 +746,8 @@ def player_stat_search(df):
     stat_min_max = {}
     for stat in selected_stats:
         if stat not in always_included_columns:
-            min_stat = filtered_df[stat].min()
-            max_stat = filtered_df[stat].max()
+            min_stat = float(filtered_df[stat].min())  # Convert numpy.float64 to Python float
+            max_stat = float(filtered_df[stat].max())  # Convert numpy.float64 to Python float
             stat_min_max[stat] = (min_stat, max_stat)
 
     # Create sliders for selected_stats using computed min and max values
