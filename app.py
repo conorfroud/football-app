@@ -704,18 +704,17 @@ def player_similarity_app(df2):
         st.error("Player not found in the selected position.")
 
 def player_stat_search(df):
-    st.title("Player Stat Search")
 
     # Sidebar for filtering by 'minutes' played
     min_minutes = int(df['Player Season Minutes'].min())
     max_minutes = int(df['Player Season Minutes'].max())
     selected_minutes = st.sidebar.slider('Select Minutes Played Range', min_value=min_minutes, max_value=max_minutes, value=(300, max_minutes))
 
-    # Preselect the desired stats and always include these columns
-    preselected_stats = ["Player Name", "team_name", "Player Season Minutes", "competition_name", "xG", "Shots", "Open Play Key Passes"]
+    # Get the list of all columns in the DataFrame
+    all_columns = df.columns.tolist()
 
     # Create a multiselect for stat selection
-    selected_stats = st.multiselect("Select Statistics", preselected_stats, default=preselected_stats)
+    selected_stats = st.multiselect("Select Columns", all_columns, default=["Player Name", "Player Season Minutes", "competition_name"])
 
     # Filter the DataFrame based on selected 'minutes played' range
     filtered_df = df[(df['Player Season Minutes'] >= selected_minutes[0]) & (df['Player Season Minutes'] <= selected_minutes[1])]
