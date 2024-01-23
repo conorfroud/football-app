@@ -702,7 +702,7 @@ def player_similarity_app(df2):
         st.dataframe(similar_players_df.head(250))
     else:
         st.error("Player not found in the selected position.")
-
+        
 def player_stat_search(df):
 
     # Sidebar for filtering by 'minutes' played
@@ -737,17 +737,6 @@ def player_stat_search(df):
     # Create a dictionary to store dynamic filter sliders
     stat_filters = {}
 
-    # Filter the DataFrame based on selected filters and create dynamic filters
-    filtered_df = df[(df['Player Season Minutes'] >= selected_minutes[0]) & (df['Player Season Minutes'] <= selected_minutes[1])]
-    filtered_df = filtered_df[(df['Age'] >= selected_age[0]) & (df['Age'] <= selected_age[1])]
-    if selected_positions:
-        filtered_df = filtered_df[filtered_df['position_1'].isin(selected_positions)]
-    if selected_leagues:
-        filtered_df = filtered_df[filtered_df['League'].isin(selected_leagues)]
-
-    # Display the customized table with 'Age' as a constant column
-    selected_stats_ordered = always_included_columns + [col for col in selected_stats if col not in always_included_columns]
-    
     # Generate dynamic filter sliders for selected stats
     for stat in selected_stats:
         if stat not in always_included_columns:
@@ -755,11 +744,17 @@ def player_stat_search(df):
             max_stat = df[stat].max()
             selected_stat = st.sidebar.slider(f'Select {stat} Range', min_value=min_stat, max_value=max_stat, value=(min_stat, max_stat))
             stat_filters[stat] = selected_stat
-            if stat == 'xG':
-                filtered_df = filtered_df[(df[stat] >= selected_stat[0]) & (df[stat] <= selected_stat[1])]
+
+    # Filter the DataFrame based on selected filters
+    filtered_df = df[(df['Player Season Minutes'] >= selected_minutes[0]) & (df['Player Season Minutes'] <= selected_minutes[1])]
+    filtered_df = filtered_df[(df['Age'] >= selected_age[0]) & (df['Age'] <= selected_age[1])]
+    if selected_positions:
+        filtered_df = filtered_df[filtered_df['position_1'].isin(selected_positions)]
+    if selected_leagues:
+        filtered_df = filtered_df[filtered_df['League'].isin(selected_leagues)]
 
     # Display the table with filters applied
-    st.write(filtered_df[selected_stats_ordered])
+    st.write(filtered_df[selected_stats])
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
