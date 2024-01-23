@@ -753,6 +753,10 @@ def player_stat_search(df):
     if selected_leagues:
         filtered_df = filtered_df[filtered_df['League'].isin(selected_leagues)]
 
+    # Apply dynamic filters for selected stats
+    for stat, selected_stat in stat_filters.items():
+        filtered_df = filtered_df[(filtered_df[stat] >= selected_stat[0]) & (filtered_df[stat] <= selected_stat[1])]
+
     # Display the table with filters applied
     st.write(filtered_df[selected_stats])
 
