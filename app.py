@@ -710,14 +710,25 @@ def player_stat_search(df):
     max_minutes = int(df['Player Season Minutes'].max())
     selected_minutes = st.sidebar.slider('Select Minutes Played Range', min_value=min_minutes, max_value=max_minutes, value=(300, max_minutes))
 
+    # Create a multi-select dropdown for filtering by primary_position
+    selected_positions = st.sidebar.multiselect('Filter by Primary Position', df['position_1'].unique())
+
+    # Create a multi-select dropdown for selecting leagues with 'English Championship' pre-selected
+    default_leagues = ['English Championship']
+    selected_leagues = st.sidebar.multiselect('Select Leagues', df['competition_name'].unique(), default=default_leagues)
+
     # Get the list of all columns in the DataFrame
     all_columns = df.columns.tolist()
 
     # Create a multiselect for stat selection
     selected_stats = st.multiselect("Select Columns", all_columns, default=["Player Name", "Player Season Minutes", "competition_name"])
 
-    # Filter the DataFrame based on selected 'minutes played' range
+    # Filter the DataFrame based on selected filters
     filtered_df = df[(df['Player Season Minutes'] >= selected_minutes[0]) & (df['Player Season Minutes'] <= selected_minutes[1])]
+    if selected_positions:
+        filtered_df = filtered_df[filtered_df['position_1'].isin(selected_positions)]
+    if selected_leagues:
+        filtered_df = filtered_df[filtered_df['competition_name'].isin(selected_leagues)]
 
     # Display the customized table
     st.write(filtered_df[selected_stats])
