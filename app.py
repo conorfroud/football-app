@@ -742,11 +742,9 @@ def player_stat_search(df):
     if selected_leagues:
         filtered_df = filtered_df[filtered_df['League'].isin(selected_leagues)]
 
-    # Reorder the selected_stats list so that it appears at the far right
-    selected_stats = [col for col in filtered_df.columns if col in selected_stats] + [col for col in filtered_df.columns if col not in selected_stats]
-
-    # Display the table with filters applied
-    st.write(filtered_df[selected_stats])
+    # Display the customized table with 'Age' as a constant column
+    selected_stats_ordered = always_included_columns + [col for col in selected_stats if col not in always_included_columns]
+    st.write(filtered_df[selected_stats_ordered])
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
