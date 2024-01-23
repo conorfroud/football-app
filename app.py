@@ -744,7 +744,7 @@ def player_stat_search(df):
 
     # Display the customized table with 'Age' as a constant column without index numbering
     selected_stats_ordered = always_included_columns + [col for col in selected_stats if col not in always_included_columns]
-    st.write(filtered_df[selected_stats_ordered], hide_index=True)
+    st.dataframe(filtered_df[selected_stats_ordered], hide_index=True)
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
