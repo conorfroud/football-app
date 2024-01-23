@@ -707,8 +707,11 @@ def player_stat_search(df):
     
     st.title("Player Stat Search")
 
+    # Preselect the desired stats and always include 'Player Name'
+    preselected_stats = ["Player Name", "xG", "Shots", "Open Play Key Passes"]
+
     # Create a multiselect for stat selection
-    selected_stats = st.multiselect("Select Statistics", ["xG", "Shots", "Open Play Key Passes"])
+    selected_stats = st.multiselect("Select Statistics", preselected_stats, default=preselected_stats)
 
     # Display the customized table
     st.write(df[selected_stats])
