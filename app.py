@@ -741,6 +741,19 @@ def player_stat_search(df):
         filtered_df = filtered_df[filtered_df['position_1'].isin(selected_positions)]
     if selected_leagues:
         filtered_df = filtered_df[filtered_df['League'].isin(selected_leagues)]
+    
+    # Create sliders for selected_stats
+    slider_filters = {}
+    for stat in selected_stats:
+        if stat not in always_included_columns:
+            min_stat = int(df[stat].min())
+            max_stat = int(df[stat].max())
+            default_stat = (min_stat, max_stat)
+            slider_filters[stat] = st.sidebar.slider(f'Select {stat} Range', min_value=min_stat, max_value=max_stat, value=default_stat)
+
+    # Filter the DataFrame based on selected stats
+    for stat, (min_val, max_val) in slider_filters.items():
+        filtered_df = filtered_df[(df[stat] >= min_val) & (df[stat] <= max_val)]
 
     # Display the customized table with 'Age' as a constant column without index numbering
     selected_stats_ordered = always_included_columns + [col for col in selected_stats if col not in always_included_columns]
