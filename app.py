@@ -753,8 +753,9 @@ def player_stat_search(df):
         if stat not in always_included_columns:
             min_stat = df[stat].min()
             max_stat = df[stat].max()
-            stat_filters[stat] = st.sidebar.slider(f'Select {stat} Range', min_value=min_stat, max_value=max_stat, value=(min_stat, max_stat))
-            filtered_df = filtered_df[(df[stat] >= stat_filters[stat][0]) & (df[stat] <= stat_filters[stat][1])]
+            selected_stat = st.sidebar.slider(f'Select {stat} Range', min_value=min_stat, max_value=max_stat, value=(min_stat, max_stat))
+            stat_filters[stat] = selected_stat
+            filtered_df = filtered_df[(df[stat] >= selected_stat[0]) & (df[stat] <= selected_stat[1])]
 
     # Display the table with filters applied
     st.write(filtered_df[selected_stats_ordered])
