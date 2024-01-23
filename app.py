@@ -703,12 +703,22 @@ def player_similarity_app(df2):
     else:
         st.error("Player not found in the selected position.")
 
+def player_stat_search(df):
+    
+    st.title("Player Stat Search")
+
+    # Create a multiselect for stat selection
+    selected_stats = st.multiselect("Select Statistics", ["xG", "Shots", "Open Play Key Passes"])
+
+    # Display the customized table
+    st.write(df[selected_stats])
+
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
 df2 = pd.read_csv("championshipscores.csv")
 
 # Create the navigation menu in the sidebar
-selected_tab = st.sidebar.radio("Navigation", ["Stoke Score", "Player Radar Single", "Player Radar Comparison", "Scatter Plot", "Multi Player Comparison Tab", "Similarity Score"])
+selected_tab = st.sidebar.radio("Navigation", ["Stoke Score", "Player Radar Single", "Player Radar Comparison", "Scatter Plot", "Multi Player Comparison Tab", "Similarity Score", "Stat Search"])
 
 # Based on the selected tab, display the corresponding content
 if selected_tab == "Stoke Score":
@@ -721,6 +731,7 @@ if selected_tab == "Scatter Plot":
     scatter_plot(df)
 if selected_tab == "Similarity Score":
     player_similarity_app(df2)
+if selected_tab == "Stat Search":
+    player_stat_search(df)
 elif selected_tab == "Multi Player Comparison Tab":
     comparison_tab(df)
-
