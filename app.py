@@ -720,8 +720,14 @@ def player_stat_search(df):
     # Get the list of all columns in the DataFrame
     all_columns = df.columns.tolist()
 
+    # Ensure that these columns are always included in selected_stats
+    always_included_columns = ["Player Name", "Player Season Minutes", "competition_name"]
+    
     # Create a multiselect for stat selection
-    selected_stats = st.multiselect("Select Columns", all_columns, default=["Player Name", "Player Season Minutes", "competition_name"])
+    selected_stats = st.multiselect("Select Columns", [col for col in all_columns if col not in always_included_columns], default=[])
+
+    # Add the always included columns to the selected_stats
+    selected_stats.extend(always_included_columns)
 
     # Filter the DataFrame based on selected filters
     filtered_df = df[(df['Player Season Minutes'] >= selected_minutes[0]) & (df['Player Season Minutes'] <= selected_minutes[1])]
