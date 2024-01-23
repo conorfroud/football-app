@@ -710,6 +710,11 @@ def player_stat_search(df):
     max_minutes = int(df['Player Season Minutes'].max())
     selected_minutes = st.sidebar.slider('Select Minutes Played Range', min_value=min_minutes, max_value=max_minutes, value=(300, max_minutes))
 
+    # Sidebar for filtering by 'age'
+    min_age = int(df['Player Age'].min())
+    max_age = int(df['Player Age'].max())
+    selected_age = st.sidebar.slider('Select Age Range', min_value=min_age, max_value=max_age, value=(min_age, max_age))
+
     # Create a multi-select dropdown for filtering by primary_position
     selected_positions = st.sidebar.multiselect('Filter by Primary Position', df['position_1'].unique())
 
@@ -721,7 +726,7 @@ def player_stat_search(df):
     all_columns = df.columns.tolist()
 
     # Ensure that these columns are always included in selected_stats
-    always_included_columns = ["Player Name", "Player Season Minutes", "competition_name"]
+    always_included_columns = ["Player Name", "Age", "Player Season Minutes", "competition_name"]
     
     # Create a multiselect for stat selection
     selected_stats = st.multiselect("Select Columns", [col for col in all_columns if col not in always_included_columns], default=[])
@@ -731,12 +736,13 @@ def player_stat_search(df):
 
     # Filter the DataFrame based on selected filters
     filtered_df = df[(df['Player Season Minutes'] >= selected_minutes[0]) & (df['Player Season Minutes'] <= selected_minutes[1])]
+    filtered_df = filtered_df[(df['Player Age'] >= selected_age[0]) & (df['Player Age'] <= selected_age[1])]
     if selected_positions:
         filtered_df = filtered_df[filtered_df['position_1'].isin(selected_positions)]
     if selected_leagues:
         filtered_df = filtered_df[filtered_df['competition_name'].isin(selected_leagues)]
 
-    # Display the customized table with pre-selected columns first
+    # Display the customized table with 'Age' as a constant column
     selected_stats_ordered = always_included_columns + [col for col in selected_stats if col not in always_included_columns]
     st.write(filtered_df[selected_stats_ordered])
 
