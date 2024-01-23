@@ -726,7 +726,7 @@ def player_stat_search(df):
     all_columns = df.columns.tolist()
 
     # Ensure that these columns are always included in selected_stats
-    always_included_columns = ["Player Name", "age", "Player Season Minutes", "competition_name"]
+    always_included_columns = ["Player Name", "age", "team_name", "Player Season Minutes", "competition_name"]
     
     # Create a multiselect for stat selection
     selected_stats = st.multiselect("Select Columns", [col for col in all_columns if col not in always_included_columns], default=[])
