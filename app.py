@@ -704,11 +704,10 @@ def player_similarity_app(df2):
         st.error("Player not found in the selected position.")
 
 def player_stat_search(df):
-    
     st.title("Player Stat Search")
 
-    # Preselect the desired stats and always include 'Player Name'
-    preselected_stats = ["Player Name", "xG", "Shots", "Open Play Key Passes"]
+    # Preselect the desired stats and always include these columns
+    preselected_stats = ["Player Name", "Player Season Minutes", "competition_name", "xG", "Shots", "Open Play Key Passes"]
 
     # Create a multiselect for stat selection
     selected_stats = st.multiselect("Select Statistics", preselected_stats, default=preselected_stats)
