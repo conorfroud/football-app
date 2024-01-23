@@ -465,7 +465,7 @@ def scatter_plot(df):
 
         # Create a multi-select dropdown for selecting leagues with 'English Championship' pre-selected
         default_leagues = ['English Championship']
-        selected_leagues = st.sidebar.multiselect('Select Leagues', df['competition_name'].unique(), default=default_leagues)
+        selected_leagues = st.sidebar.multiselect('Select Leagues', df['League'].unique(), default=default_leagues)
 
         # Sidebar for filtering by 'minutes' played
         min_minutes = int(df['Player Season Minutes'].min())
@@ -476,7 +476,7 @@ def scatter_plot(df):
         filtered_df = df[(df['position_1'].isin(selected_positions) | (len(selected_positions) == 0)) &
                          (df['Player Season Minutes'] >= selected_minutes[0]) &
                          (df['Player Season Minutes'] <= selected_minutes[1]) &
-                         (df['competition_name'].isin(selected_leagues) | (len(selected_leagues) == 0))]
+                         (df['League'].isin(selected_leagues) | (len(selected_leagues) == 0))]
 
         # Calculate Z-scores for the variables
         filtered_df['z_x'] = (filtered_df[x_variable] - filtered_df[x_variable].mean()) / filtered_df[x_variable].std()
@@ -486,7 +486,7 @@ def scatter_plot(df):
         threshold = st.sidebar.slider('Label Threshold', min_value=0.1, max_value=5.0, value=2.0)
 
         # Create a scatter plot using Plotly with the filtered data
-        hover_data_fields = {'Player Name': True, 'team_name': True, 'age': True, 'Player Season Minutes': True, x_variable: False, y_variable: False, 'z_x': False, 'z_y': False}
+        hover_data_fields = {'Player Name': True, 'Team': True, 'Age': True, 'Player Season Minutes': True, x_variable: False, y_variable: False, 'z_x': False, 'z_y': False}
         fig = px.scatter(filtered_df, x=x_variable, y=y_variable, hover_data=hover_data_fields)
 
         # Customize the marker color and size
@@ -526,7 +526,7 @@ def scatter_plot(df):
             )
 
             # Customize hover data for selected trace
-            hover_data_fields_selected = {'Player Name': True, 'team_name': True, 'age': True, 'Minutes': True, x_variable: False, y_variable: False, 'z_x': False, 'z_y': False}
+            hover_data_fields_selected = {'Player Name': True, 'Team': True, 'Age': True, 'Minutes': True, x_variable: False, y_variable: False, 'z_x': False, 'z_y': False}
             fig.add_trace(selected_trace).update_traces(hoverinfo="text+x+y")
 
         # Display the plot in Streamlit
@@ -711,8 +711,8 @@ def player_stat_search(df):
     selected_minutes = st.sidebar.slider('Select Minutes Played Range', min_value=min_minutes, max_value=max_minutes, value=(300, max_minutes))
 
     # Sidebar for filtering by 'age'
-    min_age = int(df['age'].min())
-    max_age = int(df['age'].max())
+    min_age = int(df['Age'].min())
+    max_age = int(df['Age'].max())
     selected_age = st.sidebar.slider('Select Age Range', min_value=min_age, max_value=max_age, value=(min_age, max_age))
 
     # Create a multi-select dropdown for filtering by primary_position
@@ -720,13 +720,13 @@ def player_stat_search(df):
 
     # Create a multi-select dropdown for selecting leagues with 'English Championship' pre-selected
     default_leagues = ['English Championship']
-    selected_leagues = st.sidebar.multiselect('Select Leagues', df['competition_name'].unique(), default=default_leagues)
+    selected_leagues = st.sidebar.multiselect('Select Leagues', df['League'].unique(), default=default_leagues)
 
     # Get the list of all columns in the DataFrame
     all_columns = df.columns.tolist()
 
     # Ensure that these columns are always included in selected_stats
-    always_included_columns = ["Player Name", "age", "team_name", "Player Season Minutes", "competition_name"]
+    always_included_columns = ["Player Name", "Age", "Team", "Player Season Minutes", "League"]
     
     # Create a multiselect for stat selection
     selected_stats = st.multiselect("Select Columns", [col for col in all_columns if col not in always_included_columns], default=[])
@@ -736,11 +736,11 @@ def player_stat_search(df):
 
     # Filter the DataFrame based on selected filters
     filtered_df = df[(df['Player Season Minutes'] >= selected_minutes[0]) & (df['Player Season Minutes'] <= selected_minutes[1])]
-    filtered_df = filtered_df[(df['age'] >= selected_age[0]) & (df['age'] <= selected_age[1])]
+    filtered_df = filtered_df[(df['Age'] >= selected_age[0]) & (df['Age'] <= selected_age[1])]
     if selected_positions:
         filtered_df = filtered_df[filtered_df['position_1'].isin(selected_positions)]
     if selected_leagues:
-        filtered_df = filtered_df[filtered_df['competition_name'].isin(selected_leagues)]
+        filtered_df = filtered_df[filtered_df['League'].isin(selected_leagues)]
 
     # Display the customized table with 'Age' as a constant column
     selected_stats_ordered = always_included_columns + [col for col in selected_stats if col not in always_included_columns]
