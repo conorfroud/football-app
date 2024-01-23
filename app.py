@@ -734,17 +734,6 @@ def player_stat_search(df):
     # Add the always included columns to the selected_stats
     selected_stats.extend(always_included_columns)
 
-    # Create a dictionary to store dynamic filter sliders
-    stat_filters = {}
-
-    # Generate dynamic filter sliders for selected stats
-    for stat in selected_stats:
-        if stat not in always_included_columns:
-            min_stat = df[stat].min()
-            max_stat = df[stat].max()
-            selected_stat = st.sidebar.slider(f'Select {stat} Range', min_value=min_stat, max_value=max_stat, value=(min_stat, max_stat))
-            stat_filters[stat] = selected_stat
-
     # Filter the DataFrame based on selected filters
     filtered_df = df[(df['Player Season Minutes'] >= selected_minutes[0]) & (df['Player Season Minutes'] <= selected_minutes[1])]
     filtered_df = filtered_df[(df['Age'] >= selected_age[0]) & (df['Age'] <= selected_age[1])]
@@ -752,10 +741,6 @@ def player_stat_search(df):
         filtered_df = filtered_df[filtered_df['position_1'].isin(selected_positions)]
     if selected_leagues:
         filtered_df = filtered_df[filtered_df['League'].isin(selected_leagues)]
-
-    # Apply dynamic filters for selected stats
-    for stat, selected_stat in stat_filters.items():
-        filtered_df = filtered_df[(filtered_df[stat] >= selected_stat[0]) & (filtered_df[stat] <= selected_stat[1])]
 
     # Display the table with filters applied
     st.write(filtered_df[selected_stats])
