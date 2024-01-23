@@ -755,7 +755,8 @@ def player_stat_search(df):
             max_stat = df[stat].max()
             selected_stat = st.sidebar.slider(f'Select {stat} Range', min_value=min_stat, max_value=max_stat, value=(min_stat, max_stat))
             stat_filters[stat] = selected_stat
-            filtered_df = filtered_df[(df[stat] >= selected_stat[0]) & (df[stat] <= selected_stat[1])]
+            if stat == 'xG':
+                filtered_df = filtered_df[(df[stat] >= selected_stat[0]) & (df[stat] <= selected_stat[1])]
 
     # Display the table with filters applied
     st.write(filtered_df[selected_stats_ordered])
