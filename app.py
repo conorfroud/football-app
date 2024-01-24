@@ -34,9 +34,6 @@ def main_tab(df2):
     band_2_leagues = ['Dutch Eredivisie', 'Portugese Primeira Liga', 'Belgian Jupiler Pro League', 'English Championship']
     league_options = list(set(league_options) | set(band_2_leagues))
 
-    # Sort the league options alphabetically
-    league_options.sort()
-
     # Create a list of score type options
     score_type_options = df2['Score Type'].unique()
 
