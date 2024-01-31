@@ -9,3 +9,4 @@ streamlit==1.23.1
 mplsoccer
 gspread
 scikit-learn
+typing
