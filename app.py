@@ -18,6 +18,7 @@ from mplsoccer import PyPizza
 from PIL import Image
 import gspread
 from sklearn.metrics.pairwise import cosine_similarity
+from typing import Literal
 
 st.set_page_config(layout="wide")
 
