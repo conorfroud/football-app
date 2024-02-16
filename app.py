@@ -787,8 +787,8 @@ def stoke_score_wyscout(df3):
     max_age = int(df3['Age'].max())
 
     # Get the minimum and maximum player market value (in euros) from the DataFrame
-    min_player_market_value = int(df2['Market value (millions)'].min())
-    max_player_market_value = int(df2['Market value (millions)'].max())
+    min_player_market_value = int(df3['Market value (millions)'].min())
+    max_player_market_value = int(df3['Market value (millions)'].max())
 
     min_stoke_score = 0.0
     max_stoke_score = 100.0
@@ -821,23 +821,16 @@ def stoke_score_wyscout(df3):
     selected_columns = score_type_column_mapping.get(selected_score_type, [])
 
     # Modify the filtering condition to include selected primary positions
-    filtered_df = df2[
-        (df2['League'].isin(selected_leagues)) &
-        (df2['Score Type'] == selected_score_type) &
-        (df2['Age'] >= age_range[0]) &
-        (df2['Age'] <= age_range[1]) &
-        (df2['Contract expires'].isin(selected_contract_expiry_years)) &
-        (df2['Market value (millions)'] >= player_market_value_range[0]) &
-        (df2['Market value (millions)'] <= player_market_value_range[1]) &
-        (df2['Stoke Score'] >= stoke_range[0]) &
-        (df2['Stoke Score'] <= stoke_range[1]) &
-        (df2[selected_columns[6]].ge(avg_distance_percentile_range[0])) &
-        (df2[selected_columns[6]].le(avg_distance_percentile_range[1])) &
-        (df2[selected_columns[7]].ge(top_5_psv_99_percentile_range[0])) &
-        (df2[selected_columns[7]].le(top_5_psv_99_percentile_range[1])) &
-        (df2['L/R Footedness %'].ge(lr_footedness_range[0])) &
-        (df2['L/R Footedness %'].le(lr_footedness_range[1])) &
-        (df2['Primary Position'].isin(selected_primary_positions))  # Include selected primary positions
+    filtered_df = df3[
+        (df3['League'].isin(selected_leagues)) &
+        (df3['Score Type'] == selected_score_type) &
+        (df3['Age'] >= age_range[0]) &
+        (df3['Age'] <= age_range[1]) &
+        (df3['Contract expires'].isin(selected_contract_expiry_years)) &
+        (df3['Market value (millions)'] >= player_market_value_range[0]) &
+        (df3['Market value (millions)'] <= player_market_value_range[1]) &
+        (df3['Stoke Score'] >= stoke_range[0]) &
+        (df3['Stoke Score'] <= stoke_range[1])
     ]
 
     # Sort the filtered DataFrame by "Stoke Score" column in descending order
@@ -856,7 +849,7 @@ def stoke_score_wyscout(df3):
             file_name="filtered_data.csv",
             on_click=None,  # You can add a function to handle click events if needed
         )
-
+        
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
 df2 = pd.read_csv("championshipscores.csv")
