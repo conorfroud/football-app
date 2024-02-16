@@ -27,7 +27,7 @@ pd.set_option("display.width", None)  # None means no width limit
 def main_tab(df2):
     
     # Create a list of league options
-    league_options = df2['League'].unique()
+    league_options = df['League'].unique().tolist()
 
     # Create a list of score type options
     score_type_options = df2['Score Type'].unique()
@@ -51,6 +51,14 @@ def main_tab(df2):
 
     # Add a sidebar multiselect box for leagues with default selections
     selected_leagues = st.sidebar.multiselect("Select Leagues", league_options, default=['English Championship'])
+
+    # Filter the DataFrame based on selected options
+    if 'Band 2' in selected_leagues:
+      # Include rows where the League column contains 'Band 2'
+      filtered_df = df[df['League'].str.contains('Band 2')]
+    else:
+      # Include rows where the League column matches selected leagues
+      filtered_df = df[df['League'].isin(selected_leagues)]
 
     # Add a sidebar dropdown box for score types
     selected_score_type = st.sidebar.selectbox("Select a Score Type", score_type_options)
