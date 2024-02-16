@@ -774,12 +774,96 @@ def player_stat_search(df):
     selected_stats_ordered = always_included_columns + [col for col in selected_stats if col not in always_included_columns]
     st.dataframe(filtered_df[selected_stats_ordered], hide_index=True)
 
+def stoke_score_wyscout(df3):
+    
+    # Create a list of league options
+    league_options = df3['League'].unique()
+    
+    # Create a list of score type options
+    score_type_options = df3['Score Type'].unique()
+
+    # Get the minimum and maximum age values from the DataFrame
+    min_age = int(df3['Age'].min())
+    max_age = int(df3['Age'].max())
+
+    # Get the minimum and maximum player market value (in euros) from the DataFrame
+    min_player_market_value = int(df2['Market value (millions)'].min())
+    max_player_market_value = int(df2['Market value (millions)'].max())
+
+    min_stoke_score = 0.0
+    max_stoke_score = 100.0
+
+    # Add a sidebar multiselect box for leagues with default selections
+    selected_leagues = st.sidebar.multiselect("Select Leagues", league_options)
+
+    # Add a sidebar dropdown box for score types
+    selected_score_type = st.sidebar.selectbox("Select a Score Type", score_type_options)
+
+    stoke_range = st.sidebar.slider("Select Stoke Score Range", min_value=min_stoke_score, max_value=max_stoke_score, value=(min_stoke_score, max_stoke_score))
+    
+    # Add a slider for selecting the age range
+    age_range = st.sidebar.slider("Select Age Range", min_value=min_age, max_value=max_age, value=(min_age, max_age))
+
+    # Add a multiselect box for selecting contract expiry years
+    selected_contract_expiry_years = st.sidebar.multiselect("Select Contract Expiry Years", contract_expiry_years, default=contract_expiry_years)
+
+    # Add a slider for selecting the player market value (in euros) range
+    player_market_value_range = st.sidebar.slider("Select Player Market Value Range (Euro)", min_value=min_player_market_value, max_value=max_player_market_value, value=(min_player_market_value, max_player_market_value))
+
+    # Define a dictionary that maps 'Score Type' to columns
+    score_type_column_mapping = {
+        'Striker': ['Player Name', 'Age', 'Team', 'League', 'Primary Position', 'Player Season Minutes', 'Stoke Score'],
+        'Winger': ['Player Name', 'Age', 'Team', 'League', 'Primary Position', 'Player Season Minutes', 'Stoke Score'],
+        'Attacking Midfield': ['Player Name', 'Age', 'Team', 'League', 'Primary Position', 'Player Season Minutes', 'Stoke Score']
+    }
+
+    # Update the selected columns to include 'Score Type'
+    selected_columns = score_type_column_mapping.get(selected_score_type, [])
+
+    # Modify the filtering condition to include selected primary positions
+    filtered_df = df2[
+        (df2['League'].isin(selected_leagues)) &
+        (df2['Score Type'] == selected_score_type) &
+        (df2['Age'] >= age_range[0]) &
+        (df2['Age'] <= age_range[1]) &
+        (df2['Contract expires'].isin(selected_contract_expiry_years)) &
+        (df2['Market value (millions)'] >= player_market_value_range[0]) &
+        (df2['Market value (millions)'] <= player_market_value_range[1]) &
+        (df2['Stoke Score'] >= stoke_range[0]) &
+        (df2['Stoke Score'] <= stoke_range[1]) &
+        (df2[selected_columns[6]].ge(avg_distance_percentile_range[0])) &
+        (df2[selected_columns[6]].le(avg_distance_percentile_range[1])) &
+        (df2[selected_columns[7]].ge(top_5_psv_99_percentile_range[0])) &
+        (df2[selected_columns[7]].le(top_5_psv_99_percentile_range[1])) &
+        (df2['L/R Footedness %'].ge(lr_footedness_range[0])) &
+        (df2['L/R Footedness %'].le(lr_footedness_range[1])) &
+        (df2['Primary Position'].isin(selected_primary_positions))  # Include selected primary positions
+    ]
+
+    # Sort the filtered DataFrame by "Stoke Score" column in descending order
+    filtered_df = filtered_df.sort_values(by='Stoke Score', ascending=False)
+
+    # Display the filtered DataFrame with selected columns
+    st.dataframe(filtered_df[selected_columns], hide_index=True)
+
+    # Add a download button to export the filtered DataFrame to a CSV file
+    if not filtered_df.empty:
+        csv_export = filtered_df[selected_columns].to_csv(index=False).encode('utf-8')
+        st.download_button(
+            label="Download CSV",
+            data=csv_export,
+            key="download_csv",
+            file_name="filtered_data.csv",
+            on_click=None,  # You can add a function to handle click events if needed
+        )
+
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
 df2 = pd.read_csv("championshipscores.csv")
+df3 = pd.read_csv("nonpriorityleaguesdata.csv")
 
 # Create the navigation menu in the sidebar
-selected_tab = st.sidebar.radio("Navigation", ["Stoke Score", "Player Radar Single", "Player Radar Comparison", "Scatter Plot", "Multi Player Comparison Tab", "Similarity Score", "Stat Search"])
+selected_tab = st.sidebar.radio("Navigation", ["Stoke Score", "Player Radar Single", "Player Radar Comparison", "Scatter Plot", "Multi Player Comparison Tab", "Similarity Score", "Stat Search", "Stoke Score - Wyscout"])
 
 # Based on the selected tab, display the corresponding content
 if selected_tab == "Stoke Score":
@@ -794,5 +878,7 @@ if selected_tab == "Similarity Score":
     player_similarity_app(df2)
 if selected_tab == "Stat Search":
     player_stat_search(df)
+if selected_tab == "Stoke Score - Wyscout":
+    stoke_score_wyscout(df3)
 elif selected_tab == "Multi Player Comparison Tab":
     comparison_tab(df)
