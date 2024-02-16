@@ -28,6 +28,18 @@ def main_tab(df2):
     
     # Create a list of league options
     league_options = df2['League'].unique()
+    
+    # Define the custom order for leagues
+    custom_league_order = ['English Championship', 'Belgian Jupiler Pro League', 'Dutch Eredivisie', 'Portuguese Primeira Liga', 'Band 2']
+    
+    # Filter out the custom ordered leagues and sort them alphabetically
+    custom_ordered_leagues = sorted([league for league in custom_league_order if league in league_options])
+    
+    # Add the remaining leagues in their original order
+    remaining_leagues = [league for league in league_options if league not in custom_ordered_leagues]
+    
+    # Concatenate the custom ordered leagues and remaining leagues
+    league_options_ordered = custom_ordered_leagues + remaining_leagues
 
     # Create a list of score type options
     score_type_options = df2['Score Type'].unique()
