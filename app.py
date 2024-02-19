@@ -790,7 +790,7 @@ def stoke_score_wyscout(df3):
     max_stoke_score = 100.0
 
     # Add a sidebar multiselect box for leagues with default selections
-    selected_leagues = st.sidebar.multiselect("Select Leagues", league_options)
+    selected_leagues = st.sidebar.multiselect("Select Leagues", league_options, default=['Super League Greece'])
 
     # Add a sidebar dropdown box for score types
     selected_score_type = st.sidebar.selectbox("Select a Score Type", score_type_options)
@@ -816,9 +816,6 @@ def stoke_score_wyscout(df3):
         (df3['Score Type'] == selected_score_type) &
         (df3['Age'] >= age_range[0]) &
         (df3['Age'] <= age_range[1]) &
-        (df3['Contract expires'].isin(selected_contract_expiry_years)) &
-        (df3['Market value (millions)'] >= player_market_value_range[0]) &
-        (df3['Market value (millions)'] <= player_market_value_range[1]) &
         (df3['Stoke Score'] >= stoke_range[0]) &
         (df3['Stoke Score'] <= stoke_range[1])
     ]
