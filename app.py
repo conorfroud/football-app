@@ -786,10 +786,6 @@ def stoke_score_wyscout(df3):
     min_age = int(df3['Age'].min())
     max_age = int(df3['Age'].max())
 
-    # Get the minimum and maximum player market value (in euros) from the DataFrame
-    min_player_market_value = int(df3['Market value (millions)'].min())
-    max_player_market_value = int(df3['Market value (millions)'].max())
-
     min_stoke_score = 0.0
     max_stoke_score = 100.0
 
@@ -803,12 +799,6 @@ def stoke_score_wyscout(df3):
     
     # Add a slider for selecting the age range
     age_range = st.sidebar.slider("Select Age Range", min_value=min_age, max_value=max_age, value=(min_age, max_age))
-
-    # Add a multiselect box for selecting contract expiry years
-    selected_contract_expiry_years = st.sidebar.multiselect("Select Contract Expiry Years", contract_expiry_years, default=contract_expiry_years)
-
-    # Add a slider for selecting the player market value (in euros) range
-    player_market_value_range = st.sidebar.slider("Select Player Market Value Range (Euro)", min_value=min_player_market_value, max_value=max_player_market_value, value=(min_player_market_value, max_player_market_value))
 
     # Define a dictionary that maps 'Score Type' to columns
     score_type_column_mapping = {
