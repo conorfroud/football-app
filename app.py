@@ -802,9 +802,9 @@ def stoke_score_wyscout(df3):
 
     # Define a dictionary that maps 'Score Type' to columns
     score_type_column_mapping = {
-        'Striker': ['Player Name', 'Age', 'Team', 'League', 'Primary Position', 'Player Season Minutes', 'Stoke Score'],
-        'Winger': ['Player Name', 'Age', 'Team', 'League', 'Primary Position', 'Player Season Minutes', 'Stoke Score'],
-        'Attacking Midfield': ['Player Name', 'Age', 'Team', 'League', 'Primary Position', 'Player Season Minutes', 'Stoke Score']
+        'Striker': ['Player', 'Age', 'Team', 'League', 'Position', 'Stoke Score'],
+        'Winger': ['Player', 'Age', 'Team', 'League', 'Position', 'Stoke Score'],
+        'Attacking Midfield': ['Player', 'Age', 'Team', 'League', 'Position', 'Stoke Score']
     }
 
     # Update the selected columns to include 'Score Type'
