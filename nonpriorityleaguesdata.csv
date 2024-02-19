@@ -1,0 +1,571 @@
+,Player,Team,Age,Position,Score Type,Stoke Score,xG per 90 Percentile,Goals per 90 Percentile,Shots per 90 Percentile,Touches in box per 90 Percentile,xA per 90 Percentile,Aerial duels per 90 Percentile,xG per 90 Percentile (W),Goals per 90 Percentile (W),Shots per 90 Percentile (W),xA per 90 Percentile (W),Dribbles per 90 Percentile (W),Progressive runs per 90 Percentile (W),Passes to penalty area per 90 Percentile,xG per 90 Percentile (CAM),Goals per 90 Percentile (CAM),Shots per 90 Percentile (CAM),xA per 90 Percentile (CAM),League,Unnamed: 0
+0,K. Tyukavin,Dinamo Moskva,21,CF,Striker,70.57,100.0,93.0,95.0,81.0,72.0,23.0,,,,,,,,,,,,Russian Premier League,
+1,E. Golenkov,Rostov,24,"CF, RWF",Striker,67.95,77.0,91.0,65.0,91.0,90.0,98.0,,,,,,,,,,,,Russian Premier League,
+2,F. Chalov,CSKA Moskva,25,"CF, AMF, LWF",Striker,66.79,84.0,97.0,58.0,42.0,83.0,38.0,,,,,,,,,,,,Russian Premier League,
+3,M. Konaté,Akhmat Grozny,26,CF,Striker,65.98,95.0,70.0,98.0,95.0,55.0,74.0,,,,,,,,,,,,Russian Premier League,
+4,J. Córdoba,Krasnodar,30,CF,Striker,61.45,91.0,87.0,74.0,55.0,38.0,58.0,,,,,,,,,,,,Russian Premier League,
+5,T. Suleymanov,Lokomotiv Moskva,23,CF,Striker,60.29,93.0,78.0,93.0,93.0,72.0,93.0,,,,,,,,,,,,Russian Premier League,
+6,M. Cassierra,Zenit,26,CF,Striker,59.83,71.0,100.0,52.0,86.0,49.0,35.0,,,,,,,,,,,,Russian Premier League,
+7,Q. Promes,Spartak Moskva,31,"CF, LWF, LAMF",Striker,57.31,49.0,62.0,83.0,63.0,98.0,5.0,,,,,,,,,,,,Russian Premier League,
+8,I. Sergeev,Zenit,28,CF,Striker,51.39,88.0,97.0,58.0,58.0,38.0,33.0,,,,,,,,,,,,Russian Premier League,
+9,F. Smolov,Dinamo Moskva,33,"AMF, CF",Striker,50.63,63.0,62.0,86.0,77.0,66.0,14.0,,,,,,,,,,,,Russian Premier League,
+10,D. Vorobjev,Orenburg,26,"CF, RWF, RW",Striker,49.61,66.0,81.0,88.0,55.0,49.0,16.0,,,,,,,,,,,,Russian Premier League,
+11,A. Kashtanov,Ural,27,CF,Striker,48.92,66.0,72.0,67.0,98.0,31.0,100.0,,,,,,,,,,,,Russian Premier League,
+12,W. Isidor,Zenit,23,"CF, LAMF, LWF",Striker,48.87,98.0,87.0,100.0,100.0,17.0,28.0,,,,,,,,,,,,Russian Premier League,
+13,V. Shitov,Krylya Sovetov,20,"CF, AMF, RAMF",Striker,48.34,59.0,66.0,83.0,28.0,95.0,28.0,,,,,,,,,,,,Russian Premier League,
+14,A. Zabolotny,CSKA Moskva,32,CF,Striker,47.41,71.0,78.0,35.0,84.0,10.0,67.0,,,,,,,,,,,,Russian Premier League,
+15,M. Daku,Rubin Kazan',25,CF,Striker,46.81,55.0,37.0,63.0,30.0,60.0,81.0,,,,,,,,,,,,Russian Premier League,
+16,A. Dzyuba,Lokomotiv Moskva,35,CF,Striker,46.27,59.0,42.0,14.0,72.0,60.0,77.0,,,,,,,,,,,,Russian Premier League,
+17,E. Markov,Fakel,29,CF,Striker,45.46,77.0,84.0,42.0,26.0,3.0,91.0,,,,,,,,,,,,Russian Premier League,
+18,N. Komlichenko,Rostov,28,CF,Striker,45.18,77.0,48.0,52.0,49.0,38.0,88.0,,,,,,,,,,,,Russian Premier League,
+19,A. Sobolev,Spartak Moskva,26,CF,Striker,44.55,43.0,33.0,91.0,74.0,44.0,72.0,,,,,,,,,,,,Russian Premier League,
+20,M. Glushenkov,Lokomotiv Moskva,24,"AMF, RAMF, CF",Striker,44.31,35.0,48.0,49.0,40.0,100.0,2.0,,,,,,,,,,,,Russian Premier League,
+21,E. Bicfalvi,Ural,35,"CF, AMF",Striker,41.01,33.0,33.0,70.0,47.0,77.0,84.0,,,,,,,,,,,,Russian Premier League,
+22,J. Fameyeh,Rubin Kazan',26,CF,Striker,40.35,86.0,33.0,74.0,79.0,24.0,51.0,,,,,,,,,,,,Russian Premier League,
+23,M. Ignatov,Spartak Moskva,23,"AMF, CF, LCMF",Striker,37.28,28.0,42.0,37.0,88.0,90.0,12.0,,,,,,,,,,,,Russian Premier League,
+24,Á. Henríquez,Baltika,29,CF,Striker,34.67,19.0,66.0,10.0,33.0,66.0,60.0,,,,,,,,,,,,Russian Premier League,
+25,G. Guzina,Baltika,29,CF,Striker,34.64,43.0,15.0,26.0,37.0,49.0,95.0,,,,,,,,,,,,Russian Premier League,
+26,I. Ignatjev,Sochi,24,CF,Striker,34.45,51.0,56.0,31.0,16.0,72.0,38.0,,,,,,,,,,,,Russian Premier League,
+27,L. Djordjević,Sochi,29,CF,Striker,32.8,81.0,52.0,58.0,35.0,17.0,28.0,,,,,,,,,,,,Russian Premier League,
+28,Guilherme Schettine,Ural,28,CF,Striker,32.68,55.0,12.0,79.0,67.0,10.0,79.0,,,,,,,,,,,,Russian Premier League,
+29,Gustavo Mantuan,Zenit,22,"RWF, CF, RWB",Striker,32.21,14.0,22.0,31.0,60.0,93.0,9.0,,,,,,,,,,,,Russian Premier League,
+30,T. Musaev,Baltika,22,CF,Striker,31.59,30.0,22.0,47.0,70.0,24.0,86.0,,,,,,,,,,,,Russian Premier League,
+31,A. Mostovoy,Zenit,26,"LWF, CF, LAMF",Striker,29.13,12.0,74.0,16.0,21.0,83.0,7.0,,,,,,,,,,,,Russian Premier League,
+32,V. Iljin,Akhmat Grozny,31,"RAMF, CF, RW",Striker,28.09,19.0,15.0,40.0,14.0,55.0,63.0,,,,,,,,,,,,Russian Premier League,
+33,K. Appaev,Fakel,33,CF,Striker,27.05,5.0,5.0,5.0,65.0,60.0,70.0,,,,,,,,,,,,Russian Premier League,
+34,J. Boselli,Nizhny Novgorod,24,CF,Striker,25.94,9.0,19.0,74.0,7.0,79.0,42.0,,,,,,,,,,,,Russian Premier League,
+35,Zé Turbo,Nizhny Novgorod,27,CF,Striker,25.44,26.0,58.0,21.0,51.0,10.0,65.0,,,,,,,,,,,,Russian Premier League,
+36,A. Rahmanović,Krylya Sovetov,29,"CF, AMF",Striker,25.2,37.0,27.0,19.0,19.0,38.0,53.0,,,,,,,,,,,,Russian Premier League,
+37,E. Sevikyan,Nizhny Novgorod,22,CF,Striker,23.79,19.0,52.0,28.0,5.0,10.0,49.0,,,,,,,,,,,,Russian Premier League,
+38,M. Kuzmin,Baltika,27,"LCMF, CF, RCMF",Striker,21.84,5.0,9.0,7.0,12.0,86.0,19.0,,,,,,,,,,,,Russian Premier League,
+39,V. Obukhov,Orenburg,31,CF,Striker,20.94,23.0,42.0,10.0,9.0,24.0,56.0,,,,,,,,,,,,Russian Premier League,
+40,S. Oganesyan,Orenburg,22,"CF, RWF, LCMF",Striker,18.99,47.0,27.0,23.0,23.0,24.0,21.0,,,,,,,,,,,,Russian Premier League,
+41,G. Melkadze,Sochi,26,CF,Striker,16.64,40.0,5.0,44.0,44.0,3.0,45.0,,,,,,,,,,,,Russian Premier League,
+42,A. Troshechkin,Nizhny Novgorod,27,"LCMF, CF",Striker,12.52,5.0,5.0,2.0,2.0,31.0,45.0,,,,,,,,,,,,Russian Premier League,
+43,B. Garré,Krylya Sovetov,23,"RAMF, AMF, RW",Winger,81.83,,,,,,,98.0,100.0,80.0,36.0,100.0,100.0,88.0,,,,,Russian Premier League,
+44,Q. Promes,Spartak Moskva,31,"CF, LWF, LAMF",Winger,80.66,,,,,,,85.0,82.0,90.0,95.0,68.0,71.0,78.0,,,,,Russian Premier League,
+45,M. Glushenkov,Lokomotiv Moskva,24,"AMF, RAMF, CF",Winger,74.88,,,,,,,68.0,71.0,74.0,100.0,75.0,83.0,69.0,,,,,Russian Premier League,
+46,Claudinho,Zenit,26,"LCMF, LW, RCMF",Winger,66.6,,,,,,,56.0,53.0,83.0,86.0,76.0,69.0,80.0,,,,,Russian Premier League,
+47,F. Chalov,CSKA Moskva,25,"CF, AMF, LWF",Winger,66.13,,,,,,,97.0,98.0,76.0,72.0,31.0,21.0,49.0,,,,,Russian Premier League,
+48,S. Pinyaev,Lokomotiv Moskva,19,"RAMF, LAMF",Winger,64.27,,,,,,,29.0,45.0,71.0,97.0,92.0,95.0,85.0,,,,,Russian Premier League,
+49,N. Moumi Ngamaleu,Dinamo Moskva,29,"LAMF, RAMF",Winger,62.9,,,,,,,50.0,39.0,64.0,92.0,81.0,81.0,75.0,,,,,Russian Premier League,
+50,F. Smolov,Dinamo Moskva,33,"AMF, CF",Winger,61.69,,,,,,,93.0,82.0,93.0,45.0,47.0,85.0,59.0,,,,,Russian Premier League,
+51,T. Bongonda,Spartak Moskva,28,"RWF, RAMF",Winger,61.64,,,,,,,63.0,88.0,74.0,29.0,90.0,98.0,61.0,,,,,Russian Premier League,
+52,A. Miranchuk,Lokomotiv Moskva,28,"AMF, LAMF",Winger,61.02,,,,,,,56.0,53.0,58.0,86.0,56.0,88.0,97.0,,,,,Russian Premier League,
+53,B. Berisha,Akhmat Grozny,32,"LAMF, LWF",Winger,60.65,,,,,,,33.0,28.0,27.0,88.0,94.0,93.0,76.0,,,,,Russian Premier League,
+54,B. Mansilla,Orenburg,26,"LWF, LW",Winger,59.83,,,,,,,46.0,39.0,78.0,68.0,94.0,76.0,81.0,,,,,Russian Premier League,
+55,D. Makarov,Dinamo Moskva,25,RAMF,Winger,59.16,,,,,,,75.0,91.0,97.0,61.0,83.0,41.0,83.0,,,,,Russian Premier League,
+56,A. Zinkovskiy,Spartak Moskva,27,"LW, LAMF",Winger,58.96,,,,,,,23.0,58.0,85.0,68.0,88.0,97.0,100.0,,,,,Russian Premier League,
+57,V. Shitov,Krylya Sovetov,20,"CF, AMF, RAMF",Winger,58.36,,,,,,,90.0,86.0,90.0,92.0,40.0,64.0,19.0,,,,,Russian Premier League,
+58,Bitello,Dinamo Moskva,23,"AMF, LAMF, LWF",Winger,57.44,,,,,,,59.0,76.0,68.0,98.0,19.0,68.0,65.0,,,,,Russian Premier League,
+59,N. Tiknizyan,Lokomotiv Moskva,24,"LB, LAMF",Winger,56.58,,,,,,,68.0,94.0,44.0,61.0,42.0,30.0,42.0,,,,,Russian Premier League,
+60,A. Mostovoy,Zenit,26,"LWF, CF, LAMF",Winger,56.28,,,,,,,33.0,91.0,25.0,72.0,97.0,90.0,86.0,,,,,Russian Premier League,
+61,N. Saltykov,Krylya Sovetov,19,"LAMF, AMF, LW",Winger,56.27,,,,,,,68.0,71.0,47.0,45.0,62.0,60.0,37.0,,,,,Russian Premier League,
+62,I. Oleynikov,Akhmat Grozny,25,AMF,Winger,54.31,,,,,,,87.0,28.0,51.0,52.0,64.0,66.0,55.0,,,,,Russian Premier League,
+63,R. Ezhov,Krylya Sovetov,26,"LAMF, RAMF, LB",Winger,53.19,,,,,,,63.0,78.0,20.0,36.0,50.0,63.0,93.0,,,,,Russian Premier League,
+64,Batxi,Krasnodar,25,"LW, LWF, RW",Winger,52.1,,,,,,,17.0,25.0,17.0,82.0,62.0,86.0,55.0,,,,,Russian Premier League,
+65,Wendel,Zenit,26,"RCMF, LCMF, RW",Winger,51.65,,,,,,,17.0,63.0,22.0,92.0,26.0,73.0,41.0,,,,,Russian Premier League,
+66,N. Čumić,Rubin Kazan',25,"LW, LWF",Winger,47.67,,,,,,,87.0,32.0,69.0,6.0,79.0,78.0,92.0,,,,,Russian Premier League,
+67,M. Kramarič,Sochi,26,"LWF, LW, AMF",Winger,47.15,,,,,,,39.0,71.0,56.0,79.0,33.0,32.0,12.0,,,,,Russian Premier League,
+68,D. Vorobjev,Orenburg,26,"CF, RWF, RW",Winger,46.23,,,,,,,95.0,94.0,95.0,29.0,20.0,34.0,5.0,,,,,Russian Premier League,
+69,A. Fayzullaev,CSKA Moskva,20,"LWF, LW, AMF",Winger,46.01,,,,,,,50.0,45.0,90.0,61.0,37.0,56.0,68.0,,,,,Russian Premier League,
+70,M. Ignatov,Spartak Moskva,23,"AMF, CF, LCMF",Winger,44.35,,,,,,,56.0,65.0,61.0,79.0,36.0,47.0,26.0,,,,,Russian Premier League,
+71,I. Ishkov,Ural,18,"RAMF, RW, AMF",Winger,43.43,,,,,,,92.0,53.0,81.0,52.0,69.0,21.0,58.0,,,,,Russian Premier League,
+72,A. Yushin,Ural,28,"LAMF, RAMF, LW",Winger,43.07,,,,,,,81.0,12.0,98.0,82.0,44.0,58.0,53.0,,,,,Russian Premier League,
+73,J. Carrascal,Dinamo Moskva,25,"RCMF, LAMF, RAMF",Winger,42.59,,,,,,,42.0,12.0,42.0,61.0,86.0,75.0,90.0,,,,,Russian Premier League,
+74,W. Isidor,Zenit,23,"CF, LAMF, LWF",Winger,42.52,,,,,,,100.0,97.0,100.0,3.0,53.0,26.0,24.0,,,,,Russian Premier League,
+75,Miguel,Sochi,20,"LWF, RW, AMF",Winger,42.29,,,,,,,50.0,39.0,53.0,68.0,73.0,60.0,29.0,,,,,Russian Premier League,
+76,S. Kovachev,Akhmat Grozny,25,"RAMF, RWF, AMF",Winger,40.76,,,,,,,36.0,71.0,63.0,52.0,66.0,24.0,36.0,,,,,Russian Premier League,
+77,N. Moțpan,Fakel,22,"AMF, RW, DMF",Winger,40.36,,,,,,,83.0,31.0,46.0,52.0,54.0,36.0,10.0,,,,,Russian Premier League,
+78,I. Akhmetov,Krasnodar,25,"LW, RCMF, RW",Winger,39.22,,,,,,,50.0,80.0,25.0,14.0,71.0,49.0,26.0,,,,,Russian Premier League,
+79,I. Dmitriev,Ural,19,"LAMF, LW",Winger,38.88,,,,,,,8.0,12.0,7.0,75.0,79.0,80.0,71.0,,,,,Russian Premier League,
+80,J. Marín,Orenburg,26,"RCMF, RWF, LW",Winger,38.6,,,,,,,75.0,12.0,49.0,9.0,85.0,39.0,73.0,,,,,Russian Premier League,
+81,N. Burmistrov,Sochi,34,"RWF, AMF, RW",Winger,37.93,,,,,,,36.0,47.0,35.0,14.0,46.0,44.0,95.0,,,,,Russian Premier League,
+82,I. Alshin,Fakel,30,"RW, LWB, RAMF",Winger,37.86,,,,,,,17.0,25.0,31.0,45.0,58.0,30.0,65.0,,,,,Russian Premier League,
+83,N. Rasskazov,Krylya Sovetov,25,"RAMF, RB",Winger,37.01,,,,,,,8.0,42.0,3.0,75.0,17.0,54.0,47.0,,,,,Russian Premier League,
+84,A. Egorychev,Ural,30,"AMF, RAMF, RW",Winger,35.77,,,,,,,31.0,71.0,15.0,36.0,5.0,8.0,51.0,,,,,Russian Premier League,
+85,E. Gürlük,Orenburg,20,"RW, LW, RWF",Winger,34.77,,,,,,,4.0,12.0,37.0,61.0,98.0,92.0,31.0,,,,,Russian Premier League,
+86,V. Vada,Rubin Kazan',27,"RW, RWF",Winger,34.43,,,,,,,81.0,86.0,35.0,22.0,7.0,5.0,17.0,,,,,Russian Premier League,
+87,J. Medina,Spartak Moskva,26,"RW, RAMF, RWF",Winger,33.86,,,,,,,71.0,65.0,59.0,22.0,33.0,12.0,32.0,,,,,Russian Premier League,
+88,E. Bicfalvi,Ural,35,"CF, AMF",Winger,33.78,,,,,,,63.0,61.0,86.0,56.0,14.0,2.0,15.0,,,,,Russian Premier League,
+89,V. Iljin,Akhmat Grozny,31,"RAMF, CF, RW",Winger,33.35,,,,,,,42.0,36.0,66.0,36.0,40.0,37.0,8.0,,,,,Russian Premier League,
+90,R. Magal,Fakel,32,"LW, LAMF, RWB",Winger,31.68,,,,,,,42.0,12.0,54.0,22.0,50.0,51.0,44.0,,,,,Russian Premier League,
+91,A. Rahmanović,Krylya Sovetov,29,"CF, AMF",Winger,30.9,,,,,,,75.0,58.0,29.0,14.0,22.0,14.0,14.0,,,,,Russian Premier League,
+92,O. Olusegun,Krasnodar,21,"RW, RWF, LW",Winger,28.72,,,,,,,75.0,53.0,42.0,2.0,29.0,17.0,2.0,,,,,Russian Premier League,
+93,D. Kulakov,Ural,37,"RB, RWB, RAMF",Winger,26.67,,,,,,,2.0,12.0,2.0,45.0,3.0,46.0,98.0,,,,,Russian Premier League,
+94,Kady,Krasnodar,27,"RWF, RW, RCMF",Winger,26.37,,,,,,,23.0,34.0,32.0,22.0,59.0,19.0,34.0,,,,,Russian Premier League,
+95,M. Mukhin,CSKA Moskva,22,"RCB, RWF, AMF",Winger,23.23,,,,,,,27.0,53.0,39.0,6.0,11.0,53.0,3.0,,,,,Russian Premier League,
+96,Y. Kovalev,Orenburg,30,"RWF, RW",Winger,19.67,,,,,,,25.0,12.0,19.0,29.0,26.0,42.0,39.0,,,,,Russian Premier League,
+97,I. Samoshnikov,Lokomotiv Moskva,26,"RAMF, RB, LB",Winger,18.91,,,,,,,17.0,12.0,14.0,36.0,24.0,26.0,22.0,,,,,Russian Premier League,
+98,A. Ionov,Rostov,34,"RWF, RW",Winger,15.18,,,,,,,17.0,12.0,5.0,36.0,2.0,3.0,46.0,,,,,Russian Premier League,
+99,V. Malkevich,Ural,24,"LWB, LAMF, LB",Winger,12.72,,,,,,,12.0,12.0,10.0,9.0,11.0,10.0,63.0,,,,,Russian Premier League,
+100,E. Kharin,Akhmat Grozny,28,"LB, RB, AMF",Winger,10.6,,,,,,,8.0,12.0,12.0,14.0,8.0,15.0,20.0,,,,,Russian Premier League,
+101,Y. Mikhaylov,Orenburg,20,"LCMF, RCMF, RW",Winger,8.49,,,,,,,4.0,12.0,8.0,22.0,14.0,7.0,7.0,,,,,Russian Premier League,
+102,Q. Promes,Spartak Moskva,31,"CF, LWF, LAMF",Attacking Midfield,81.43,,,,,,,,,,,,,,84.0,81.0,89.0,93.0,Russian Premier League,
+103,B. Garré,Krylya Sovetov,23,"RAMF, AMF, RW",Attacking Midfield,80.64,,,,,,,,,,,,,,98.0,100.0,77.0,27.0,Russian Premier League,
+104,M. Glushenkov,Lokomotiv Moskva,24,"AMF, RAMF, CF",Attacking Midfield,74.55,,,,,,,,,,,,,,68.0,68.0,72.0,100.0,Russian Premier League,
+105,N. Moumi Ngamaleu,Dinamo Moskva,29,"LAMF, RAMF",Attacking Midfield,66.54,,,,,,,,,,,,,,48.0,33.0,61.0,90.0,Russian Premier League,
+106,S. Pinyaev,Lokomotiv Moskva,19,"RAMF, LAMF",Attacking Midfield,66.05,,,,,,,,,,,,,,23.0,40.0,68.0,95.0,Russian Premier League,
+107,A. Miranchuk,Lokomotiv Moskva,28,"AMF, LAMF",Attacking Midfield,65.07,,,,,,,,,,,,,,53.0,48.0,52.0,84.0,Russian Premier League,
+108,A. Zinkovskiy,Spartak Moskva,27,"LW, LAMF",Attacking Midfield,63.76,,,,,,,,,,,,,,18.0,53.0,82.0,65.0,Russian Premier League,
+109,F. Chalov,CSKA Moskva,25,"CF, AMF, LWF",Attacking Midfield,63.11,,,,,,,,,,,,,,95.0,98.0,75.0,69.0,Russian Premier League,
+110,Bitello,Dinamo Moskva,23,"AMF, LAMF, LWF",Attacking Midfield,61.4,,,,,,,,,,,,,,57.0,75.0,66.0,98.0,Russian Premier League,
+111,D. Makarov,Dinamo Moskva,25,RAMF,Attacking Midfield,61.19,,,,,,,,,,,,,,76.0,90.0,95.0,58.0,Russian Premier League,
+112,T. Bongonda,Spartak Moskva,28,"RWF, RAMF",Attacking Midfield,60.77,,,,,,,,,,,,,,61.0,86.0,72.0,20.0,Russian Premier League,
+113,B. Berisha,Akhmat Grozny,32,"LAMF, LWF",Attacking Midfield,60.23,,,,,,,,,,,,,,28.0,24.0,23.0,86.0,Russian Premier League,
+114,F. Smolov,Dinamo Moskva,33,"AMF, CF",Attacking Midfield,59.86,,,,,,,,,,,,,,93.0,81.0,93.0,38.0,Russian Premier League,
+115,N. Tiknizyan,Lokomotiv Moskva,24,"LB, LAMF",Attacking Midfield,58.56,,,,,,,,,,,,,,68.0,93.0,36.0,58.0,Russian Premier League,
+116,A. Mostovoy,Zenit,26,"LWF, CF, LAMF",Attacking Midfield,55.26,,,,,,,,,,,,,,28.0,90.0,20.0,69.0,Russian Premier League,
+117,V. Shitov,Krylya Sovetov,20,"CF, AMF, RAMF",Attacking Midfield,54.92,,,,,,,,,,,,,,89.0,84.0,89.0,90.0,Russian Premier League,
+118,R. Ezhov,Krylya Sovetov,26,"LAMF, RAMF, LB",Attacking Midfield,54.29,,,,,,,,,,,,,,61.0,77.0,18.0,27.0,Russian Premier League,
+119,N. Saltykov,Krylya Sovetov,19,"LAMF, AMF, LW",Attacking Midfield,51.95,,,,,,,,,,,,,,68.0,68.0,41.0,38.0,Russian Premier League,
+120,I. Oleynikov,Akhmat Grozny,25,AMF,Attacking Midfield,51.71,,,,,,,,,,,,,,86.0,24.0,43.0,47.0,Russian Premier League,
+121,J. Carrascal,Dinamo Moskva,25,"RCMF, LAMF, RAMF",Attacking Midfield,48.1,,,,,,,,,,,,,,41.0,10.0,34.0,58.0,Russian Premier League,
+122,A. Fayzullaev,CSKA Moskva,20,"LWF, LW, AMF",Attacking Midfield,45.81,,,,,,,,,,,,,,48.0,40.0,89.0,58.0,Russian Premier League,
+123,I. Ishkov,Ural,18,"RAMF, RW, AMF",Attacking Midfield,44.41,,,,,,,,,,,,,,91.0,48.0,80.0,47.0,Russian Premier League,
+124,I. Alshin,Fakel,30,"RW, LWB, RAMF",Attacking Midfield,42.96,,,,,,,,,,,,,,15.0,20.0,27.0,38.0,Russian Premier League,
+125,M. Kramarič,Sochi,26,"LWF, LW, AMF",Attacking Midfield,42.7,,,,,,,,,,,,,,36.0,68.0,50.0,78.0,Russian Premier League,
+126,N. Rasskazov,Krylya Sovetov,25,"RAMF, RB",Attacking Midfield,42.22,,,,,,,,,,,,,,7.0,36.0,5.0,74.0,Russian Premier League,
+127,M. Ignatov,Spartak Moskva,23,"AMF, CF, LCMF",Attacking Midfield,42.15,,,,,,,,,,,,,,53.0,60.0,57.0,78.0,Russian Premier League,
+128,A. Yushin,Ural,28,"LAMF, RAMF, LW",Attacking Midfield,41.24,,,,,,,,,,,,,,80.0,10.0,98.0,82.0,Russian Premier League,
+129,I. Dmitriev,Ural,19,"LAMF, LW",Attacking Midfield,41.17,,,,,,,,,,,,,,7.0,10.0,7.0,74.0,Russian Premier League,
+130,Miguel,Sochi,20,"LWF, RW, AMF",Attacking Midfield,41.14,,,,,,,,,,,,,,48.0,33.0,45.0,65.0,Russian Premier League,
+131,N. Burmistrov,Sochi,34,"RWF, AMF, RW",Attacking Midfield,40.26,,,,,,,,,,,,,,33.0,43.0,30.0,11.0,Russian Premier League,
+132,W. Isidor,Zenit,23,"CF, LAMF, LWF",Attacking Midfield,39.09,,,,,,,,,,,,,,100.0,95.0,100.0,2.0,Russian Premier League,
+133,N. Moțpan,Fakel,22,"AMF, RW, DMF",Attacking Midfield,38.35,,,,,,,,,,,,,,82.0,27.0,39.0,47.0,Russian Premier League,
+134,S. Kovachev,Akhmat Grozny,25,"RAMF, RWF, AMF",Attacking Midfield,37.09,,,,,,,,,,,,,,33.0,68.0,59.0,47.0,Russian Premier League,
+135,R. Magal,Fakel,32,"LW, LAMF, RWB",Attacking Midfield,33.82,,,,,,,,,,,,,,41.0,10.0,48.0,17.0,Russian Premier League,
+136,J. Medina,Spartak Moskva,26,"RW, RAMF, RWF",Attacking Midfield,33.49,,,,,,,,,,,,,,73.0,60.0,55.0,17.0,Russian Premier League,
+137,A. Egorychev,Ural,30,"AMF, RAMF, RW",Attacking Midfield,33.03,,,,,,,,,,,,,,25.0,68.0,16.0,27.0,Russian Premier League,
+138,D. Kulakov,Ural,37,"RB, RWB, RAMF",Attacking Midfield,32.92,,,,,,,,,,,,,,2.0,10.0,2.0,38.0,Russian Premier League,
+139,V. Iljin,Akhmat Grozny,31,"RAMF, CF, RW",Attacking Midfield,29.95,,,,,,,,,,,,,,41.0,30.0,64.0,27.0,Russian Premier League,
+140,E. Bicfalvi,Ural,35,"CF, AMF",Attacking Midfield,29.66,,,,,,,,,,,,,,61.0,57.0,84.0,52.0,Russian Premier League,
+141,A. Rahmanović,Krylya Sovetov,29,"CF, AMF",Attacking Midfield,29.27,,,,,,,,,,,,,,76.0,53.0,25.0,11.0,Russian Premier League,
+142,I. Samoshnikov,Lokomotiv Moskva,26,"RAMF, RB, LB",Attacking Midfield,21.38,,,,,,,,,,,,,,15.0,10.0,14.0,27.0,Russian Premier League,
+143,M. Mukhin,CSKA Moskva,22,"RCB, RWF, AMF",Attacking Midfield,20.53,,,,,,,,,,,,,,20.0,48.0,32.0,5.0,Russian Premier League,
+144,E. Kharin,Akhmat Grozny,28,"LB, RB, AMF",Attacking Midfield,16.05,,,,,,,,,,,,,,7.0,10.0,11.0,11.0,Russian Premier League,
+145,V. Malkevich,Ural,24,"LWB, LAMF, LB",Attacking Midfield,15.88,,,,,,,,,,,,,,11.0,10.0,9.0,7.0,Russian Premier League,
+0,L. García,AEK Athens,26,CF,Striker,69.91,99.0,100.0,100.0,89.0,90.0,81.0,,,,,,,,,,,,Super League Greece,0.0
+1,J. Miritello,Asteras Tripolis,25,CF,Striker,68.88,91.0,88.0,65.0,70.0,50.0,98.0,,,,,,,,,,,,Super League Greece,1.0
+2,Carlitos,Lamia,33,CF,Striker,68.79,88.0,81.0,89.0,48.0,98.0,21.0,,,,,,,,,,,,Super League Greece,2.0
+3,F. Ioannidis,Panathinaikos,24,CF,Striker,64.98,94.0,92.0,85.0,94.0,50.0,51.0,,,,,,,,,,,,Super League Greece,3.0
+4,O. Ožegović,Kifissia,29,CF,Striker,63.81,79.0,79.0,81.0,63.0,55.0,68.0,,,,,,,,,,,,Super League Greece,4.0
+5,G. Masouras,Olympiacos Piraeus,30,"AMF, RAMF, CF",Striker,62.59,51.0,73.0,65.0,87.0,90.0,49.0,,,,,,,,,,,,Super League Greece,5.0
+6,A. Šporar,Panathinaikos,29,CF,Striker,62.16,96.0,96.0,79.0,83.0,70.0,74.0,,,,,,,,,,,,Super League Greece,6.0
+7,A. El Kaabi,Olympiacos Piraeus,30,CF,Striker,61.01,92.0,94.0,94.0,92.0,28.0,53.0,,,,,,,,,,,,Super League Greece,7.0
+8,E. Ponce,AEK Athens,26,CF,Striker,58.85,99.0,98.0,98.0,98.0,28.0,60.0,,,,,,,,,,,,Super League Greece,8.0
+9,Loren Morón,Aris,30,CF,Striker,57.19,74.0,84.0,83.0,56.0,18.0,57.0,,,,,,,,,,,,Super League Greece,9.0
+10,S. Zuber,AEK Athens,32,"AMF, LAMF, CF",Striker,56.92,42.0,67.0,91.0,74.0,80.0,38.0,,,,,,,,,,,,Super League Greece,10.0
+11,S. Jovetić,Olympiacos Piraeus,34,"CF, AMF",Striker,55.08,88.0,92.0,96.0,96.0,87.0,32.0,,,,,,,,,,,,Super League Greece,11.0
+12,Brandon Thomas,PAOK,29,CF,Striker,54.54,83.0,73.0,68.0,81.0,41.0,58.0,,,,,,,,,,,,Super League Greece,12.0
+13,K. Aleksić,Panserraikos,25,CF,Striker,52.78,71.0,42.0,92.0,77.0,28.0,87.0,,,,,,,,,,,,Super League Greece,13.0
+14,João Pedro,Panetolikos FC,27,CF,Striker,49.65,76.0,47.0,74.0,75.0,41.0,75.0,,,,,,,,,,,,Super League Greece,14.0
+15,M. Acuña,Lamia,31,CF,Striker,49.17,83.0,75.0,49.0,45.0,64.0,91.0,,,,,,,,,,,,Super League Greece,15.0
+16,T. Murg,PAOK,29,"AMF, CF",Striker,48.78,45.0,84.0,22.0,56.0,80.0,2.0,,,,,,,,,,,,Super League Greece,16.0
+17,M. Samatta,PAOK,31,CF,Striker,47.17,57.0,39.0,43.0,91.0,80.0,72.0,,,,,,,,,,,,Super League Greece,17.0
+18,J. Bartolo,Asteras Tripolis,27,"AMF, CF",Striker,45.32,42.0,54.0,53.0,42.0,100.0,15.0,,,,,,,,,,,,Super League Greece,18.0
+19,Luiz Phellype,OFI,30,CF,Striker,44.65,76.0,42.0,77.0,32.0,18.0,79.0,,,,,,,,,,,,Super League Greece,19.0
+20,Fran Navarro,Olympiacos Piraeus,26,CF,Striker,44.48,83.0,88.0,32.0,63.0,64.0,36.0,,,,,,,,,,,,Super League Greece,20.0
+21,N. Dicko,Paris,31,CF,Striker,43.09,57.0,58.0,60.0,79.0,41.0,40.0,,,,,,,,,,,,Super League Greece,21.0
+22,Pedro Conde,PAS Giannina,35,CF,Striker,42.77,63.0,70.0,72.0,51.0,6.0,83.0,,,,,,,,,,,,Super League Greece,22.0
+23,K. Angielski,Atromitos,27,CF,Striker,42.49,71.0,77.0,62.0,34.0,2.0,85.0,,,,,,,,,,,,Super League Greece,23.0
+24,N. Vergos,Atromitos,28,CF,Striker,41.8,67.0,62.0,58.0,25.0,28.0,55.0,,,,,,,,,,,,Super League Greece,24.0
+25,V. Mantzis,Asteras Tripolis,32,CF,Striker,41.45,60.0,57.0,47.0,66.0,41.0,89.0,,,,,,,,,,,,Super League Greece,25.0
+26,Á. Zamora,Aris,21,"CF, AMF, LAMF",Striker,39.81,48.0,64.0,57.0,53.0,41.0,45.0,,,,,,,,,,,,Super League Greece,26.0
+27,S. Araújo,AEK Athens,32,"CF, AMF",Striker,39.44,63.0,26.0,75.0,72.0,75.0,43.0,,,,,,,,,,,,Super League Greece,27.0
+28,J. García,Volos NFC,31,CF,Striker,38.85,53.0,47.0,30.0,30.0,18.0,100.0,,,,,,,,,,,,Super League Greece,28.0
+29,N. Karelis,Panetolikos FC,31,CF,Striker,38.51,48.0,17.0,51.0,58.0,64.0,70.0,,,,,,,,,,,,Super League Greece,29.0
+30,P. Moraitis,Volos NFC,27,CF,Striker,37.68,67.0,51.0,37.0,40.0,6.0,96.0,,,,,,,,,,,,Super League Greece,30.0
+31,Bernard,Panathinaikos,31,"AMF, LAMF, CF",Striker,37.38,18.0,54.0,22.0,21.0,93.0,6.0,,,,,,,,,,,,Super League Greece,31.0
+32,L. Shengelia,Panetolikos FC,28,"CF, RAMF, RW",Striker,37.2,25.0,30.0,55.0,48.0,96.0,9.0,,,,,,,,,,,,Super League Greece,32.0
+33,H. Mosquera,OFI,29,"LAMF, CF, LW",Striker,37.04,30.0,8.0,87.0,100.0,93.0,17.0,,,,,,,,,,,,Super League Greece,33.0
+34,F. Duricic,Panathinaikos,32,"AMF, CF",Striker,35.08,32.0,67.0,37.0,60.0,41.0,25.0,,,,,,,,,,,,Super League Greece,34.0
+35,D. Valencia,Atromitos,24,"LW, CF, LAMF",Striker,33.19,57.0,20.0,17.0,23.0,41.0,66.0,,,,,,,,,,,,Super League Greece,35.0
+36,S. Tsiloulis,Lamia,29,"RW, LAMF, CF",Striker,31.73,38.0,47.0,34.0,37.0,18.0,42.0,,,,,,,,,,,,Super League Greece,36.0
+37,A. Warda,Panserraikos,30,"AMF, LAMF, CF",Striker,29.99,11.0,60.0,11.0,15.0,68.0,62.0,,,,,,,,,,,,Super League Greece,37.0
+38,J. Léo,PAS Giannina,27,"CF, AMF",Striker,29.63,15.0,30.0,28.0,85.0,55.0,77.0,,,,,,,,,,,,Super League Greece,38.0
+39,N. Zouglis,Asteras Tripolis,20,"AMF, CF, LW",Striker,29.57,18.0,8.0,26.0,68.0,85.0,34.0,,,,,,,,,,,,Super League Greece,39.0
+40,S. Longo,Lamia,31,CF,Striker,29.44,34.0,39.0,25.0,37.0,55.0,92.0,,,,,,,,,,,,Super League Greece,40.0
+41,M. Bakić,OFI,30,"AMF, CF",Striker,28.68,25.0,8.0,70.0,8.0,75.0,19.0,,,,,,,,,,,,Super League Greece,41.0
+42,A. Tetteh,Kifissia,22,"CF, LAMF, RW",Striker,28.51,9.0,15.0,9.0,26.0,59.0,94.0,,,,,,,,,,,,Super League Greece,42.0
+43,Frederico Duarte,Panetolikos FC,24,"CF, RCMF, LAMF",Striker,25.44,13.0,23.0,40.0,12.0,59.0,23.0,,,,,,,,,,,,Super League Greece,43.0
+44,J. Garro,PAS Giannina,31,"CF, AMF, RAMF",Striker,23.81,36.0,36.0,42.0,43.0,18.0,64.0,,,,,,,,,,,,Super League Greece,44.0
+45,I. Iliev,Kifissia,24,"AMF, CF",Striker,20.06,7.0,8.0,4.0,6.0,80.0,30.0,,,,,,,,,,,,Super League Greece,45.0
+46,Z. Chatzistravos,Panserraikos,24,"AMF, LW, CF",Striker,17.96,25.0,30.0,13.0,12.0,18.0,28.0,,,,,,,,,,,,Super League Greece,46.0
+47,C. Bălan,PAS Giannina,29,CF,Striker,16.96,25.0,20.0,15.0,28.0,10.0,47.0,,,,,,,,,,,,Super League Greece,47.0
+48,J. Masharipov,Panserraikos,30,"AMF, CF, LAMF",Striker,16.21,3.0,8.0,6.0,18.0,72.0,26.0,,,,,,,,,,,,Super League Greece,48.0
+49,F. Bertoglio,Volos NFC,33,"AMF, CF",Striker,14.57,40.0,34.0,19.0,9.0,6.0,11.0,,,,,,,,,,,,Super League Greece,49.0
+50,S. Díaz,Panetolikos FC,25,"CF, LCMF, LAMF",Striker,14.39,25.0,8.0,45.0,18.0,28.0,4.0,,,,,,,,,,,,Super League Greece,50.0
+51,Rubén Pardo,Aris,31,"CF, AMF, LCMF",Striker,13.51,7.0,25.0,8.0,4.0,41.0,8.0,,,,,,,,,,,,Super League Greece,51.0
+52,D. Rienstra,PAS Giannina,31,"LCMF, LDMF, CF",Striker,5.8,3.0,8.0,2.0,2.0,10.0,13.0,,,,,,,,,,,,Super League Greece,52.0
+53,K. Fortounis,Olympiacos Piraeus,31,"LAMF, RAMF, RW",Winger,89.27,,,,,,,84.0,90.0,98.0,97.0,98.0,98.0,97.0,,,,,Super League Greece,53.0
+54,K. Despodov,PAOK,27,"RAMF, RW",Winger,81.58,,,,,,,95.0,100.0,77.0,91.0,72.0,81.0,86.0,,,,,Super League Greece,54.0
+55,S. Palacios,Panathinaikos,32,"RAMF, RW",Winger,79.44,,,,,,,80.0,93.0,79.0,95.0,84.0,87.0,85.0,,,,,Super League Greece,55.0
+56,N. Eliasson,AEK Athens,28,"RAMF, RW",Winger,77.82,,,,,,,58.0,71.0,52.0,99.0,93.0,60.0,89.0,,,,,Super League Greece,56.0
+57,N. Amrabat,AEK Athens,36,"RAMF, RW",Winger,76.5,,,,,,,95.0,93.0,72.0,100.0,97.0,97.0,100.0,,,,,Super League Greece,57.0
+58,Daniel Podence,Olympiacos Piraeus,28,"LAMF, RAMF, LW",Winger,72.73,,,,,,,76.0,98.0,86.0,70.0,91.0,55.0,99.0,,,,,Super League Greece,58.0
+59,M. Gaćinović,AEK Athens,29,"LAMF, LW",Winger,72.5,,,,,,,95.0,57.0,92.0,89.0,78.0,93.0,67.0,,,,,Super League Greece,59.0
+60,G. Konstantelias,PAOK,20,"AMF, LAMF",Winger,71.52,,,,,,,66.0,89.0,84.0,60.0,94.0,75.0,80.0,,,,,Super League Greece,60.0
+61,J. Bartolo,Asteras Tripolis,27,"AMF, CF",Winger,69.04,,,,,,,80.0,78.0,70.0,97.0,56.0,78.0,68.0,,,,,Super League Greece,61.0
+62,M. Suleymanov,Aris,24,"RAMF, RW",Winger,67.19,,,,,,,58.0,76.0,88.0,55.0,74.0,94.0,61.0,,,,,Super League Greece,62.0
+63,Mateus Santos,Kifissia,25,"RAMF, RW",Winger,66.88,,,,,,,90.0,35.0,97.0,66.0,100.0,87.0,49.0,,,,,Super League Greece,63.0
+64,A. Živković,PAOK,27,"RAMF, RW, LAMF",Winger,65.53,,,,,,,80.0,94.0,76.0,75.0,51.0,40.0,76.0,,,,,Super League Greece,64.0
+65,Bernard,Panathinaikos,31,"AMF, LAMF, CF",Winger,64.89,,,,,,,43.0,78.0,42.0,87.0,57.0,57.0,81.0,,,,,Super League Greece,65.0
+66,G. Masouras,Olympiacos Piraeus,30,"AMF, RAMF, CF",Winger,64.72,,,,,,,88.0,91.0,84.0,82.0,26.0,20.0,64.0,,,,,Super League Greece,66.0
+67,T. Murg,PAOK,29,"AMF, CF",Winger,64.42,,,,,,,84.0,97.0,42.0,66.0,41.0,42.0,51.0,,,,,Super League Greece,67.0
+68,S. Zuber,AEK Athens,32,"AMF, LAMF, CF",Winger,62.88,,,,,,,80.0,85.0,95.0,66.0,44.0,58.0,38.0,,,,,Super League Greece,68.0
+69,T. Bifouma,Kifissia,31,"LAMF, LW",Winger,61.33,,,,,,,24.0,57.0,18.0,82.0,89.0,92.0,62.0,,,,,Super League Greece,69.0
+70,L. Shengelia,Panetolikos FC,28,"CF, RAMF, RW",Winger,61.08,,,,,,,49.0,62.0,73.0,91.0,73.0,74.0,58.0,,,,,Super League Greece,70.0
+71,D. Mancini,Panathinaikos,27,"RAMF, LAMF, RW",Winger,60.44,,,,,,,43.0,57.0,45.0,82.0,70.0,65.0,94.0,,,,,Super League Greece,71.0
+72,J. Neira,OFI,34,"AMF, LCMF",Winger,60.01,,,,,,,90.0,81.0,91.0,40.0,77.0,90.0,92.0,,,,,Super League Greece,72.0
+73,D. Jubitana,Atromitos,24,"RW, RWF, RCMF",Winger,59.33,,,,,,,31.0,62.0,42.0,82.0,82.0,91.0,53.0,,,,,Super League Greece,73.0
+74,G. Robail,Atromitos,30,"RW, RAMF, LW",Winger,58.18,,,,,,,58.0,85.0,39.0,75.0,38.0,45.0,72.0,,,,,Super League Greece,74.0
+75,Taison,PAOK,36,"LAMF, LW",Winger,57.61,,,,,,,34.0,30.0,50.0,66.0,60.0,99.0,98.0,,,,,Super League Greece,75.0
+76,S. Jovetić,Olympiacos Piraeus,34,"CF, AMF",Winger,57.25,,,,,,,100.0,99.0,100.0,75.0,52.0,56.0,82.0,,,,,Super League Greece,76.0
+77,B. Verbič,Panathinaikos,30,"LAMF, LW",Winger,56.41,,,,,,,92.0,88.0,81.0,28.0,80.0,68.0,49.0,,,,,Super League Greece,77.0
+78,K. Rosero,PAS Giannina,25,"RW, RAMF, LAMF",Winger,56.31,,,,,,,58.0,30.0,38.0,34.0,90.0,77.0,88.0,,,,,Super League Greece,78.0
+79,P. Mantalos,AEK Athens,32,"AMF, LDMF, RDMF",Winger,56.09,,,,,,,70.0,41.0,81.0,94.0,40.0,64.0,82.0,,,,,Super League Greece,79.0
+80,H. Mosquera,OFI,29,"LAMF, CF, LW",Winger,55.59,,,,,,,58.0,14.0,94.0,87.0,99.0,100.0,93.0,,,,,Super League Greece,80.0
+81,Adrián Riera,OFI,27,"AMF, LAMF",Winger,55.51,,,,,,,68.0,51.0,49.0,82.0,95.0,83.0,27.0,,,,,Super League Greece,81.0
+82,Aitor Cantalapiedra,Panathinaikos,27,"LAMF, LW, RW",Winger,54.83,,,,,,,95.0,95.0,93.0,55.0,58.0,71.0,43.0,,,,,Super League Greece,82.0
+83,S. Tsiloulis,Lamia,29,"RW, LAMF, CF",Winger,54.52,,,,,,,73.0,73.0,56.0,11.0,82.0,68.0,13.0,,,,,Super League Greece,83.0
+84,N. Kaltsas,Asteras Tripolis,33,"RAMF, RW",Winger,53.86,,,,,,,73.0,71.0,65.0,82.0,14.0,7.0,56.0,,,,,Super League Greece,84.0
+85,Xesc Regis,Asteras Tripolis,27,"LAMF, LW, RAMF",Winger,52.67,,,,,,,85.0,78.0,60.0,20.0,33.0,48.0,36.0,,,,,Super League Greece,85.0
+86,Pep Biel,Olympiacos Piraeus,27,"RAMF, AMF, LAMF",Winger,51.94,,,,,,,89.0,51.0,98.0,66.0,66.0,59.0,66.0,,,,,Super League Greece,86.0
+87,J. Menéndez,Kifissia,29,"LAMF, LW",Winger,51.9,,,,,,,70.0,38.0,64.0,44.0,65.0,89.0,39.0,,,,,Super League Greece,87.0
+88,M. Deletić,Volos NFC,30,"RAMF, RW, LW",Winger,50.68,,,,,,,38.0,73.0,53.0,28.0,81.0,31.0,52.0,,,,,Super League Greece,88.0
+89,S. Araújo,AEK Athens,32,"CF, AMF",Winger,49.92,,,,,,,99.0,57.0,90.0,60.0,26.0,71.0,91.0,,,,,Super League Greece,89.0
+90,S. Mourgos,Panserraikos,25,"RAMF, RW",Winger,48.51,,,,,,,38.0,68.0,30.0,60.0,64.0,61.0,32.0,,,,,Super League Greece,90.0
+91,D. Moberg Karlsson,Aris,29,"RW, RAMF, LAMF",Winger,46.82,,,,,,,58.0,14.0,70.0,75.0,85.0,69.0,73.0,,,,,Super League Greece,91.0
+92,K. Pileas,Panserraikos,25,"LB, LAMF",Winger,46.07,,,,,,,58.0,30.0,18.0,75.0,20.0,35.0,78.0,,,,,Super League Greece,92.0
+93,F. Duricic,Panathinaikos,32,"AMF, CF",Winger,45.74,,,,,,,64.0,85.0,57.0,20.0,42.0,52.0,56.0,,,,,Super League Greece,93.0
+94,R. Pizarro,AEK Athens,29,"LAMF, AMF",Winger,45.63,,,,,,,58.0,14.0,68.0,47.0,92.0,95.0,90.0,,,,,Super League Greece,94.0
+95,M. Tomás,Panserraikos,23,"RAMF, RW, AMF",Winger,44.97,,,,,,,43.0,14.0,55.0,51.0,74.0,73.0,64.0,,,,,Super League Greece,95.0
+96,N. Zouglis,Asteras Tripolis,20,"AMF, CF, LW",Winger,43.5,,,,,,,43.0,14.0,47.0,72.0,88.0,76.0,15.0,,,,,Super League Greece,96.0
+97,Z. Tošić,Lamia,36,"RW, RAMF",Winger,42.0,,,,,,,49.0,14.0,32.0,89.0,62.0,16.0,77.0,,,,,Super League Greece,97.0
+98,L. Abanda,OFI,23,"LB, LWB, LAMF",Winger,41.38,,,,,,,11.0,35.0,14.0,94.0,15.0,29.0,95.0,,,,,Super League Greece,98.0
+99,Frederico Duarte,Panetolikos FC,24,"CF, RCMF, LAMF",Winger,40.61,,,,,,,34.0,51.0,59.0,34.0,35.0,53.0,60.0,,,,,Super League Greece,99.0
+100,Á. Zamora,Aris,21,"CF, AMF, LAMF",Winger,40.34,,,,,,,86.0,83.0,74.0,20.0,32.0,29.0,3.0,,,,,Super League Greece,100.0
+101,V. Darida,Aris,33,"RDMF, RCMF, AMF",Winger,40.01,,,,,,,38.0,47.0,36.0,55.0,12.0,38.0,44.0,,,,,Super League Greece,101.0
+102,A. Warda,Panserraikos,30,"AMF, LAMF, CF",Winger,39.95,,,,,,,31.0,82.0,25.0,44.0,48.0,40.0,45.0,,,,,Super League Greece,102.0
+103,Rubén Martínez,Lamia,34,"RAMF, LW, RW",Winger,39.23,,,,,,,70.0,76.0,75.0,6.0,45.0,26.0,16.0,,,,,Super League Greece,103.0
+104,Sidcley,Lamia,30,"LB, LW",Winger,39.11,,,,,,,34.0,38.0,23.0,34.0,68.0,62.0,22.0,,,,,Super League Greece,104.0
+105,Jon Toral,OFI,29,"RAMF, AMF, RDMF",Winger,38.92,,,,,,,64.0,14.0,85.0,44.0,39.0,51.0,70.0,,,,,Super League Greece,105.0
+106,Sito,Asteras Tripolis,27,"LAMF, LW",Winger,38.76,,,,,,,13.0,14.0,14.0,82.0,47.0,85.0,75.0,,,,,Super League Greece,106.0
+107,G. Pamlidis,PAS Giannina,30,"RAMF, AMF, RW",Winger,38.48,,,,,,,49.0,44.0,34.0,44.0,30.0,23.0,20.0,,,,,Super League Greece,107.0
+108,D. Valencia,Atromitos,24,"LW, CF, LAMF",Winger,37.97,,,,,,,95.0,47.0,33.0,20.0,24.0,14.0,10.0,,,,,Super League Greece,108.0
+109,M. Bakić,OFI,30,"AMF, CF",Winger,37.96,,,,,,,49.0,14.0,88.0,60.0,9.0,80.0,59.0,,,,,Super League Greece,109.0
+110,F. Bertoglio,Volos NFC,33,"AMF, CF",Winger,36.23,,,,,,,76.0,66.0,36.0,2.0,76.0,36.0,31.0,,,,,Super League Greece,110.0
+111,G. Masouras,Kifissia,27,"RB, RW",Winger,35.29,,,,,,,22.0,27.0,12.0,34.0,31.0,66.0,40.0,,,,,Super League Greece,111.0
+112,Z. Chatzistravos,Panserraikos,24,"AMF, LW, CF",Winger,35.25,,,,,,,49.0,62.0,27.0,11.0,49.0,26.0,30.0,,,,,Super League Greece,112.0
+113,V. Slivka,Lamia,28,"AMF, LW",Winger,34.74,,,,,,,26.0,57.0,10.0,26.0,17.0,32.0,47.0,,,,,Super League Greece,113.0
+114,M. Comba,Volos NFC,30,"AMF, LW, RCMF",Winger,33.55,,,,,,,43.0,62.0,30.0,14.0,27.0,8.0,42.0,,,,,Super League Greece,114.0
+115,S. Alexandropoulos,Olympiacos Piraeus,22,"LDMF, AMF, RDMF",Winger,33.08,,,,,,,19.0,14.0,62.0,66.0,50.0,82.0,27.0,,,,,Super League Greece,115.0
+116,P. Tzimas,PAS Giannina,22,"LAMF, LW",Winger,33.06,,,,,,,80.0,41.0,66.0,6.0,60.0,6.0,11.0,,,,,Super League Greece,116.0
+117,J. Masharipov,Panserraikos,30,"AMF, CF, LAMF",Winger,32.08,,,,,,,3.0,14.0,9.0,51.0,86.0,84.0,41.0,,,,,Super League Greece,117.0
+118,J. Léo,PAS Giannina,27,"CF, AMF",Winger,30.51,,,,,,,38.0,62.0,51.0,28.0,55.0,26.0,16.0,,,,,Super League Greece,118.0
+119,Q. Cornette,Volos NFC,29,"LAMF, LW, RWB",Winger,29.67,,,,,,,31.0,14.0,79.0,34.0,67.0,43.0,55.0,,,,,Super League Greece,119.0
+120,A. Tetteh,Kifissia,22,"CF, LAMF, RW",Winger,29.6,,,,,,,22.0,35.0,20.0,34.0,53.0,20.0,6.0,,,,,Super League Greece,120.0
+121,N. Andereggen,Kifissia,24,"LW, LAMF",Winger,28.79,,,,,,,28.0,14.0,44.0,51.0,43.0,50.0,25.0,,,,,Super League Greece,121.0
+122,N. Alho,Volos NFC,30,"RB, RW, RAMF",Winger,28.21,,,,,,,7.0,30.0,5.0,51.0,6.0,15.0,74.0,,,,,Super League Greece,122.0
+123,T. Vilhena,Panathinaikos,29,"LDMF, LCMF, RAMF",Winger,27.8,,,,,,,58.0,41.0,57.0,34.0,19.0,10.0,9.0,,,,,Super League Greece,123.0
+124,Pedro Amaral,Lamia,26,"LB, LW, LCB",Winger,27.15,,,,,,,3.0,41.0,11.0,40.0,18.0,24.0,69.0,,,,,Super League Greece,124.0
+125,S. Díaz,Panetolikos FC,25,"CF, LCMF, LAMF",Winger,26.56,,,,,,,49.0,14.0,67.0,14.0,69.0,48.0,18.0,,,,,Super League Greece,125.0
+126,J. Garro,PAS Giannina,31,"CF, AMF, RAMF",Winger,26.09,,,,,,,68.0,68.0,62.0,11.0,23.0,3.0,23.0,,,,,Super League Greece,126.0
+127,A. Camara,Atromitos,22,"LW, AMF, LCMF",Winger,25.99,,,,,,,13.0,35.0,22.0,26.0,28.0,45.0,19.0,,,,,Super League Greece,127.0
+128,G. Konstantakopoulos,Kifissia,19,"AMF, LCMF, RCMF",Winger,24.71,,,,,,,28.0,69.0,23.0,55.0,10.0,3.0,7.0,,,,,Super League Greece,128.0
+129,I. Iliev,Kifissia,24,"AMF, CF",Winger,23.08,,,,,,,7.0,14.0,6.0,66.0,16.0,22.0,35.0,,,,,Super League Greece,129.0
+130,G. Kiakos,PAS Giannina,25,"LB, LAMF",Winger,22.47,,,,,,,15.0,51.0,16.0,11.0,36.0,18.0,33.0,,,,,Super League Greece,130.0
+131,Rubén Pardo,Aris,31,"CF, AMF, LCMF",Winger,21.51,,,,,,,7.0,53.0,19.0,20.0,8.0,32.0,48.0,,,,,Super League Greece,131.0
+132,M. Panagidis,Aris,20,"LAMF, LW, RAMF",Winger,21.03,,,,,,,19.0,14.0,26.0,40.0,34.0,47.0,8.0,,,,,Super League Greece,132.0
+133,João Carvalho,Olympiacos Piraeus,26,"AMF, RDMF, LDMF",Winger,18.71,,,,,,,19.0,14.0,40.0,20.0,2.0,39.0,84.0,,,,,Super League Greece,133.0
+134,M. Sofianos,Panserraikos,20,"LAMF, LW",Winger,18.04,,,,,,,26.0,14.0,48.0,1.0,60.0,34.0,28.0,,,,,Super League Greece,134.0
+135,S. Fridjónsson,Atromitos,27,"RCMF, LDMF, AMF",Winger,14.22,,,,,,,11.0,47.0,2.0,20.0,1.0,1.0,2.0,,,,,Super League Greece,135.0
+136,D. Dankerlui,Panserraikos,27,"RB, LAMF",Winger,13.13,,,,,,,7.0,14.0,3.0,20.0,7.0,12.0,35.0,,,,,Super League Greece,136.0
+137,S. Goss,Asteras Tripolis,28,"LDMF, LCMF, AMF",Winger,12.08,,,,,,,3.0,14.0,7.0,48.0,4.0,5.0,5.0,,,,,Super League Greece,137.0
+138,F. Gino,PAS Giannina,30,"AMF, LDMF, LCMF",Winger,11.1,,,,,,,15.0,14.0,28.0,6.0,4.0,9.0,24.0,,,,,Super League Greece,138.0
+139,F. Kitsos,Volos NFC,20,"LB, LAMF, RB",Winger,9.1,,,,,,,1.0,14.0,1.0,6.0,22.0,12.0,13.0,,,,,Super League Greece,139.0
+140,V. Sourlis,Asteras Tripolis,21,"RDMF, AMF, LCMF",Winger,8.77,,,,,,,19.0,14.0,8.0,6.0,11.0,17.0,1.0,,,,,Super League Greece,140.0
+141,K. Fortounis,Olympiacos Piraeus,31,"LAMF, RAMF, RW",Attacking Midfield,94.24,,,,,,,,,,,,,,83.0,89.0,98.0,97.0,Super League Greece,141.0
+142,K. Despodov,PAOK,27,"RAMF, RW",Attacking Midfield,81.54,,,,,,,,,,,,,,95.0,100.0,76.0,91.0,Super League Greece,142.0
+143,N. Amrabat,AEK Athens,36,"RAMF, RW",Attacking Midfield,79.99,,,,,,,,,,,,,,95.0,92.0,70.0,100.0,Super League Greece,143.0
+144,N. Eliasson,AEK Athens,28,"RAMF, RW",Attacking Midfield,78.74,,,,,,,,,,,,,,56.0,70.0,50.0,99.0,Super League Greece,144.0
+145,S. Palacios,Panathinaikos,32,"RAMF, RW",Attacking Midfield,78.34,,,,,,,,,,,,,,79.0,92.0,78.0,95.0,Super League Greece,145.0
+146,Daniel Podence,Olympiacos Piraeus,28,"LAMF, RAMF, LW",Attacking Midfield,76.72,,,,,,,,,,,,,,74.0,98.0,86.0,70.0,Super League Greece,146.0
+147,M. Gaćinović,AEK Athens,29,"LAMF, LW",Attacking Midfield,75.77,,,,,,,,,,,,,,95.0,56.0,92.0,89.0,Super League Greece,147.0
+148,G. Konstantelias,PAOK,20,"AMF, LAMF",Attacking Midfield,72.28,,,,,,,,,,,,,,64.0,88.0,83.0,59.0,Super League Greece,148.0
+149,Bernard,Panathinaikos,31,"AMF, LAMF, CF",Attacking Midfield,70.21,,,,,,,,,,,,,,40.0,77.0,40.0,86.0,Super League Greece,149.0
+150,Mateus Santos,Kifissia,25,"RAMF, RW",Attacking Midfield,68.79,,,,,,,,,,,,,,90.0,35.0,96.0,65.0,Super League Greece,150.0
+151,J. Bartolo,Asteras Tripolis,27,"AMF, CF",Attacking Midfield,66.83,,,,,,,,,,,,,,79.0,77.0,68.0,97.0,Super League Greece,151.0
+152,A. Živković,PAOK,27,"RAMF, RW, LAMF",Attacking Midfield,66.1,,,,,,,,,,,,,,79.0,94.0,75.0,75.0,Super League Greece,152.0
+153,M. Suleymanov,Aris,24,"RAMF, RW",Attacking Midfield,65.97,,,,,,,,,,,,,,56.0,74.0,88.0,54.0,Super League Greece,153.0
+154,D. Mancini,Panathinaikos,27,"RAMF, LAMF, RW",Attacking Midfield,65.49,,,,,,,,,,,,,,40.0,56.0,43.0,82.0,Super League Greece,154.0
+155,Taison,PAOK,36,"LAMF, LW",Attacking Midfield,65.46,,,,,,,,,,,,,,32.0,30.0,48.0,65.0,Super League Greece,155.0
+156,J. Neira,OFI,34,"AMF, LCMF",Attacking Midfield,63.82,,,,,,,,,,,,,,90.0,80.0,90.0,39.0,Super League Greece,156.0
+157,T. Murg,PAOK,29,"AMF, CF",Attacking Midfield,63.53,,,,,,,,,,,,,,83.0,96.0,40.0,65.0,Super League Greece,157.0
+158,S. Zuber,AEK Athens,32,"AMF, LAMF, CF",Attacking Midfield,61.98,,,,,,,,,,,,,,79.0,85.0,95.0,65.0,Super League Greece,158.0
+159,G. Masouras,Olympiacos Piraeus,30,"AMF, RAMF, CF",Attacking Midfield,61.47,,,,,,,,,,,,,,87.0,90.0,83.0,82.0,Super League Greece,159.0
+160,T. Bifouma,Kifissia,31,"LAMF, LW",Attacking Midfield,61.47,,,,,,,,,,,,,,23.0,56.0,16.0,82.0,Super League Greece,160.0
+161,P. Mantalos,AEK Athens,32,"AMF, LDMF, RDMF",Attacking Midfield,60.95,,,,,,,,,,,,,,69.0,40.0,80.0,93.0,Super League Greece,161.0
+162,L. Shengelia,Panetolikos FC,28,"CF, RAMF, RW",Attacking Midfield,60.92,,,,,,,,,,,,,,47.0,61.0,71.0,91.0,Super League Greece,162.0
+163,G. Robail,Atromitos,30,"RW, RAMF, LW",Attacking Midfield,60.72,,,,,,,,,,,,,,56.0,85.0,37.0,75.0,Super League Greece,163.0
+164,H. Mosquera,OFI,29,"LAMF, CF, LW",Attacking Midfield,59.42,,,,,,,,,,,,,,56.0,14.0,94.0,86.0,Super League Greece,164.0
+165,S. Jovetić,Olympiacos Piraeus,34,"CF, AMF",Attacking Midfield,58.15,,,,,,,,,,,,,,100.0,99.0,100.0,75.0,Super League Greece,165.0
+166,N. Kaltsas,Asteras Tripolis,33,"RAMF, RW",Attacking Midfield,56.79,,,,,,,,,,,,,,72.0,70.0,63.0,82.0,Super League Greece,166.0
+167,K. Rosero,PAS Giannina,25,"RW, RAMF, LAMF",Attacking Midfield,56.73,,,,,,,,,,,,,,56.0,30.0,36.0,35.0,Super League Greece,167.0
+168,Aitor Cantalapiedra,Panathinaikos,27,"LAMF, LW, RW",Attacking Midfield,56.0,,,,,,,,,,,,,,95.0,95.0,93.0,54.0,Super League Greece,168.0
+169,Adrián Riera,OFI,27,"AMF, LAMF",Attacking Midfield,54.09,,,,,,,,,,,,,,66.0,49.0,46.0,82.0,Super League Greece,169.0
+170,Xesc Regis,Asteras Tripolis,27,"LAMF, LW, RAMF",Attacking Midfield,54.07,,,,,,,,,,,,,,85.0,77.0,58.0,21.0,Super League Greece,170.0
+171,B. Verbič,Panathinaikos,30,"LAMF, LW",Attacking Midfield,53.28,,,,,,,,,,,,,,92.0,87.0,80.0,30.0,Super League Greece,171.0
+172,J. Menéndez,Kifissia,29,"LAMF, LW",Attacking Midfield,52.59,,,,,,,,,,,,,,69.0,38.0,62.0,42.0,Super League Greece,172.0
+173,S. Tsiloulis,Lamia,29,"RW, LAMF, CF",Attacking Midfield,52.53,,,,,,,,,,,,,,72.0,72.0,54.0,11.0,Super League Greece,173.0
+174,K. Pileas,Panserraikos,25,"LB, LAMF",Attacking Midfield,52.19,,,,,,,,,,,,,,56.0,30.0,16.0,75.0,Super League Greece,174.0
+175,S. Araújo,AEK Athens,32,"CF, AMF",Attacking Midfield,52.16,,,,,,,,,,,,,,99.0,56.0,89.0,59.0,Super League Greece,175.0
+176,Pep Biel,Olympiacos Piraeus,27,"RAMF, AMF, LAMF",Attacking Midfield,51.84,,,,,,,,,,,,,,88.0,49.0,98.0,65.0,Super League Greece,176.0
+177,R. Pizarro,AEK Athens,29,"LAMF, AMF",Attacking Midfield,49.99,,,,,,,,,,,,,,56.0,14.0,67.0,45.0,Super League Greece,177.0
+178,S. Mourgos,Panserraikos,25,"RAMF, RW",Attacking Midfield,49.68,,,,,,,,,,,,,,35.0,66.0,28.0,59.0,Super League Greece,178.0
+179,M. Tomás,Panserraikos,23,"RAMF, RW, AMF",Attacking Midfield,49.09,,,,,,,,,,,,,,40.0,14.0,52.0,49.0,Super League Greece,179.0
+180,L. Abanda,OFI,23,"LB, LWB, LAMF",Attacking Midfield,48.66,,,,,,,,,,,,,,10.0,35.0,12.0,93.0,Super League Greece,180.0
+181,M. Deletić,Volos NFC,30,"RAMF, RW, LW",Attacking Midfield,48.6,,,,,,,,,,,,,,35.0,72.0,51.0,30.0,Super League Greece,181.0
+182,D. Moberg Karlsson,Aris,29,"RW, RAMF, LAMF",Attacking Midfield,48.48,,,,,,,,,,,,,,56.0,14.0,68.0,75.0,Super League Greece,182.0
+183,F. Duricic,Panathinaikos,32,"AMF, CF",Attacking Midfield,47.46,,,,,,,,,,,,,,62.0,85.0,55.0,21.0,Super League Greece,183.0
+184,Z. Tošić,Lamia,36,"RW, RAMF",Attacking Midfield,45.88,,,,,,,,,,,,,,47.0,14.0,30.0,89.0,Super League Greece,184.0
+185,V. Darida,Aris,33,"RDMF, RCMF, AMF",Attacking Midfield,45.69,,,,,,,,,,,,,,35.0,45.0,34.0,54.0,Super League Greece,185.0
+186,M. Bakić,OFI,30,"AMF, CF",Attacking Midfield,45.15,,,,,,,,,,,,,,47.0,14.0,88.0,59.0,Super League Greece,186.0
+187,Jon Toral,OFI,29,"RAMF, AMF, RDMF",Attacking Midfield,44.4,,,,,,,,,,,,,,62.0,14.0,85.0,42.0,Super League Greece,187.0
+188,Frederico Duarte,Panetolikos FC,24,"CF, RCMF, LAMF",Attacking Midfield,44.04,,,,,,,,,,,,,,32.0,49.0,57.0,35.0,Super League Greece,188.0
+189,A. Warda,Panserraikos,30,"AMF, LAMF, CF",Attacking Midfield,43.43,,,,,,,,,,,,,,29.0,81.0,23.0,42.0,Super League Greece,189.0
+190,N. Zouglis,Asteras Tripolis,20,"AMF, CF, LW",Attacking Midfield,43.12,,,,,,,,,,,,,,40.0,14.0,44.0,71.0,Super League Greece,190.0
+191,Sito,Asteras Tripolis,27,"LAMF, LW",Attacking Midfield,41.04,,,,,,,,,,,,,,12.0,14.0,12.0,82.0,Super League Greece,191.0
+192,V. Slivka,Lamia,28,"AMF, LW",Attacking Midfield,38.82,,,,,,,,,,,,,,24.0,56.0,11.0,27.0,Super League Greece,192.0
+193,S. Alexandropoulos,Olympiacos Piraeus,22,"LDMF, AMF, RDMF",Attacking Midfield,38.46,,,,,,,,,,,,,,18.0,14.0,60.0,65.0,Super League Greece,193.0
+194,Rubén Martínez,Lamia,34,"RAMF, LW, RW",Attacking Midfield,37.6,,,,,,,,,,,,,,69.0,74.0,74.0,6.0,Super League Greece,194.0
+195,Á. Zamora,Aris,21,"CF, AMF, LAMF",Attacking Midfield,37.1,,,,,,,,,,,,,,86.0,82.0,73.0,21.0,Super League Greece,195.0
+196,J. Masharipov,Panserraikos,30,"AMF, CF, LAMF",Attacking Midfield,37.09,,,,,,,,,,,,,,3.0,14.0,10.0,49.0,Super League Greece,196.0
+197,G. Pamlidis,PAS Giannina,30,"RAMF, AMF, RW",Attacking Midfield,36.53,,,,,,,,,,,,,,47.0,43.0,32.0,42.0,Super League Greece,197.0
+198,Z. Chatzistravos,Panserraikos,24,"AMF, LW, CF",Attacking Midfield,35.54,,,,,,,,,,,,,,47.0,61.0,25.0,11.0,Super League Greece,198.0
+199,D. Valencia,Atromitos,24,"LW, CF, LAMF",Attacking Midfield,35.53,,,,,,,,,,,,,,95.0,45.0,31.0,21.0,Super League Greece,199.0
+200,M. Comba,Volos NFC,30,"AMF, LW, RCMF",Attacking Midfield,35.25,,,,,,,,,,,,,,40.0,61.0,28.0,15.0,Super League Greece,200.0
+201,N. Alho,Volos NFC,30,"RB, RW, RAMF",Attacking Midfield,35.22,,,,,,,,,,,,,,7.0,30.0,5.0,49.0,Super League Greece,201.0
+202,F. Bertoglio,Volos NFC,33,"AMF, CF",Attacking Midfield,34.75,,,,,,,,,,,,,,74.0,64.0,34.0,2.0,Super League Greece,202.0
+203,A. Camara,Atromitos,22,"LW, AMF, LCMF",Attacking Midfield,31.56,,,,,,,,,,,,,,12.0,35.0,20.0,27.0,Super League Greece,203.0
+204,P. Tzimas,PAS Giannina,22,"LAMF, LW",Attacking Midfield,30.9,,,,,,,,,,,,,,79.0,40.0,64.0,6.0,Super League Greece,204.0
+205,Q. Cornette,Volos NFC,29,"LAMF, LW, RWB",Attacking Midfield,30.83,,,,,,,,,,,,,,29.0,14.0,78.0,35.0,Super League Greece,205.0
+206,T. Vilhena,Panathinaikos,29,"LDMF, LCMF, RAMF",Attacking Midfield,30.56,,,,,,,,,,,,,,56.0,40.0,55.0,35.0,Super League Greece,206.0
+207,A. Tetteh,Kifissia,22,"CF, LAMF, RW",Attacking Midfield,28.96,,,,,,,,,,,,,,21.0,35.0,19.0,35.0,Super League Greece,207.0
+208,N. Andereggen,Kifissia,24,"LW, LAMF",Attacking Midfield,28.81,,,,,,,,,,,,,,27.0,14.0,42.0,49.0,Super League Greece,208.0
+209,J. Léo,PAS Giannina,27,"CF, AMF",Attacking Midfield,28.6,,,,,,,,,,,,,,35.0,61.0,49.0,30.0,Super League Greece,209.0
+210,G. Kiakos,PAS Giannina,25,"LB, LAMF",Attacking Midfield,27.48,,,,,,,,,,,,,,15.0,49.0,14.0,11.0,Super League Greece,210.0
+211,G. Konstantakopoulos,Kifissia,19,"AMF, LCMF, RCMF",Attacking Midfield,26.88,,,,,,,,,,,,,,27.0,68.0,21.0,54.0,Super League Greece,211.0
+212,Rubén Pardo,Aris,31,"CF, AMF, LCMF",Attacking Midfield,26.8,,,,,,,,,,,,,,7.0,52.0,18.0,21.0,Super League Greece,212.0
+213,S. Díaz,Panetolikos FC,25,"CF, LCMF, LAMF",Attacking Midfield,26.45,,,,,,,,,,,,,,47.0,14.0,65.0,15.0,Super League Greece,213.0
+214,I. Iliev,Kifissia,24,"AMF, CF",Attacking Midfield,25.23,,,,,,,,,,,,,,7.0,14.0,6.0,65.0,Super League Greece,214.0
+215,João Carvalho,Olympiacos Piraeus,26,"AMF, RDMF, LDMF",Attacking Midfield,24.01,,,,,,,,,,,,,,18.0,14.0,38.0,21.0,Super League Greece,215.0
+216,M. Panagidis,Aris,20,"LAMF, LW, RAMF",Attacking Midfield,23.8,,,,,,,,,,,,,,18.0,14.0,24.0,39.0,Super League Greece,216.0
+217,J. Garro,PAS Giannina,31,"CF, AMF, RAMF",Attacking Midfield,23.27,,,,,,,,,,,,,,66.0,66.0,60.0,11.0,Super League Greece,217.0
+218,M. Sofianos,Panserraikos,20,"LAMF, LW",Attacking Midfield,19.1,,,,,,,,,,,,,,24.0,14.0,45.0,1.0,Super League Greece,218.0
+219,D. Dankerlui,Panserraikos,27,"RB, LAMF",Attacking Midfield,18.6,,,,,,,,,,,,,,7.0,14.0,4.0,21.0,Super League Greece,219.0
+220,F. Gino,PAS Giannina,30,"AMF, LDMF, LCMF",Attacking Midfield,17.93,,,,,,,,,,,,,,15.0,14.0,26.0,6.0,Super League Greece,220.0
+221,S. Fridjónsson,Atromitos,27,"RCMF, LDMF, AMF",Attacking Midfield,15.98,,,,,,,,,,,,,,10.0,45.0,2.0,21.0,Super League Greece,221.0
+222,S. Goss,Asteras Tripolis,28,"LDMF, LCMF, AMF",Attacking Midfield,14.86,,,,,,,,,,,,,,3.0,14.0,7.0,46.0,Super League Greece,222.0
+223,F. Kitsos,Volos NFC,20,"LB, LAMF, RB",Attacking Midfield,10.85,,,,,,,,,,,,,,1.0,14.0,1.0,6.0,Super League Greece,223.0
+224,V. Sourlis,Asteras Tripolis,21,"RDMF, AMF, LCMF",Attacking Midfield,8.94,,,,,,,,,,,,,,18.0,14.0,8.0,6.0,Super League Greece,224.0
+0,V. Vanat,Dynamo Kyiv,22,CF,Striker,71.0,100.0,100.0,98.0,100.0,79.0,22.0,,,,,,,,,,,,Ukrainian Premier League,0.0
+1,O. Kozhushko,Kryvbas KR,25,CF,Striker,69.01,98.0,96.0,91.0,96.0,74.0,7.0,,,,,,,,,,,,Ukrainian Premier League,1.0
+2,Y. Klymchuk,Rukh Lviv,26,CF,Striker,66.48,87.0,86.0,96.0,89.0,66.0,48.0,,,,,,,,,,,,Ukrainian Premier League,2.0
+3,R. Stepanyuk,Vorskla,32,CF,Striker,65.14,83.0,71.0,61.0,72.0,74.0,54.0,,,,,,,,,,,,Ukrainian Premier League,3.0
+4,O. Gutsulyak,Dnipro-1,26,"RW, RAMF, CF",Striker,65.05,77.0,80.0,89.0,74.0,66.0,72.0,,,,,,,,,,,,Ukrainian Premier League,4.0
+5,O. Filippov,Dnipro-1,31,CF,Striker,61.49,91.0,98.0,67.0,76.0,66.0,37.0,,,,,,,,,,,,Ukrainian Premier League,5.0
+6,E. Guerrero,Zorya,23,CF,Striker,61.06,58.0,93.0,83.0,83.0,87.0,28.0,,,,,,,,,,,,Ukrainian Premier League,6.0
+7,A. Boryachuk,Metalist 1925 Kharkiv,27,"CF, AMF",Striker,52.42,96.0,91.0,78.0,35.0,59.0,46.0,,,,,,,,,,,,Ukrainian Premier League,7.0
+8,S. Iyede,Chornomorets,26,CF,Striker,51.89,89.0,47.0,87.0,85.0,53.0,35.0,,,,,,,,,,,,Ukrainian Premier League,8.0
+9,P. Budkivskyi,Polissya,31,CF,Striker,51.75,73.0,63.0,74.0,78.0,23.0,96.0,,,,,,,,,,,,Ukrainian Premier League,9.0
+10,M. Pryadun,LNZ Cherkasy,26,CF,Striker,51.48,80.0,83.0,80.0,61.0,46.0,63.0,,,,,,,,,,,,Ukrainian Premier League,10.0
+11,I. Krasnopir,Obolon,21,CF,Striker,50.66,36.0,66.0,33.0,59.0,87.0,83.0,,,,,,,,,,,,Ukrainian Premier League,11.0
+12,S. Sukhanov,Obolon,28,"CF, LCMF",Striker,50.05,66.0,86.0,100.0,13.0,59.0,67.0,,,,,,,,,,,,Ukrainian Premier League,12.0
+13,D. Sikan,Shakhtar Donetsk,22,"CF, AMF",Striker,49.83,73.0,61.0,65.0,87.0,38.0,43.0,,,,,,,,,,,,Ukrainian Premier League,13.0
+14,A. Shtogrin,Chornomorets,25,"RW, CF, RWB",Striker,47.97,66.0,89.0,46.0,39.0,23.0,50.0,,,,,,,,,,,,Ukrainian Premier League,14.0
+15,Y. Pastukh,Rukh Lviv,19,"RCMF, CF, LCMF",Striker,46.9,49.0,74.0,22.0,57.0,66.0,65.0,,,,,,,,,,,,Ukrainian Premier League,15.0
+16,D. Bezborodko,Kolos Kovalivka,29,CF,Striker,46.16,53.0,20.0,57.0,93.0,92.0,52.0,,,,,,,,,,,,Ukrainian Premier League,16.0
+17,Talles,Rukh Lviv,25,"RCMF, CF, AMF",Striker,44.07,93.0,38.0,93.0,33.0,92.0,2.0,,,,,,,,,,,,Ukrainian Premier League,17.0
+18,Felipe Rodrigues,Vorskla,28,"CF, LAMF, LW",Striker,43.29,85.0,78.0,41.0,91.0,12.0,74.0,,,,,,,,,,,,Ukrainian Premier League,18.0
+19,R. Taranukha,Obolon,27,CF,Striker,43.17,58.0,59.0,76.0,50.0,23.0,85.0,,,,,,,,,,,,Ukrainian Premier League,19.0
+20,E. Tverdokhlib,Kryvbas KR,23,"LW, CF, AMF",Striker,40.12,36.0,26.0,37.0,67.0,46.0,89.0,,,,,,,,,,,,Ukrainian Premier League,20.0
+21,O. Pikhalyonok,Dnipro-1,26,"AMF, CF, RCMF",Striker,39.27,21.0,47.0,39.0,9.0,100.0,4.0,,,,,,,,,,,,Ukrainian Premier League,21.0
+22,B. Boychuk,Chornomorets,27,"LW, LAMF, CF",Striker,39.24,45.0,71.0,17.0,54.0,83.0,9.0,,,,,,,,,,,,Ukrainian Premier League,22.0
+23,Arielson,Polissya,19,"CF, AMF",Striker,38.3,45.0,26.0,85.0,26.0,98.0,15.0,,,,,,,,,,,,Ukrainian Premier League,23.0
+24,A. Salabay,Kolos Kovalivka,21,"CF, AMF",Striker,36.79,66.0,53.0,54.0,52.0,33.0,87.0,,,,,,,,,,,,Ukrainian Premier League,24.0
+25,Iago Siqueira,Veres,23,"CF, AMF, LCMF",Striker,35.9,77.0,42.0,70.0,28.0,12.0,41.0,,,,,,,,,,,,Ukrainian Premier League,25.0
+26,O. Vyshnevskyi,Obolon' (OLD),28,CF,Striker,34.71,66.0,9.0,63.0,65.0,38.0,76.0,,,,,,,,,,,,Ukrainian Premier League,26.0
+27,V. Veleten,Kolos Kovalivka,21,"LWF, AMF, CF",Striker,34.67,24.0,53.0,50.0,98.0,46.0,59.0,,,,,,,,,,,,Ukrainian Premier League,27.0
+28,M. Marusych,Veres,30,CF,Striker,34.38,36.0,9.0,4.0,70.0,79.0,100.0,,,,,,,,,,,,Ukrainian Premier League,28.0
+29,D. Teslyuk,Rukh Lviv,20,"RW, CF",Striker,34.31,53.0,34.0,52.0,80.0,23.0,80.0,,,,,,,,,,,,Ukrainian Premier League,29.0
+30,E. Gunichev,Minaj,20,"CF, RW",Striker,33.41,28.0,66.0,27.0,30.0,33.0,91.0,,,,,,,,,,,,Ukrainian Premier League,30.0
+31,O. Khoblenko,LNZ Cherkasy,29,CF,Striker,33.1,15.0,26.0,59.0,48.0,53.0,93.0,,,,,,,,,,,,Ukrainian Premier League,31.0
+32,R. Debelko,Kryvbas KR,30,"CF, AMF, LCMF",Striker,32.43,21.0,38.0,24.0,63.0,87.0,24.0,,,,,,,,,,,,Ukrainian Premier League,32.0
+33,M. Gayduchyk,Veres,24,CF,Striker,32.08,41.0,22.0,27.0,37.0,46.0,98.0,,,,,,,,,,,,Ukrainian Premier League,33.0
+34,M. Lunyov,Kryvbas KR,25,"AMF, CF",Striker,31.03,28.0,53.0,30.0,7.0,96.0,17.0,,,,,,,,,,,,Ukrainian Premier League,34.0
+35,O. Sydorov,Metalist 1925 Kharkiv,22,CF,Striker,28.6,61.0,17.0,11.0,46.0,23.0,70.0,,,,,,,,,,,,Ukrainian Premier League,35.0
+36,A. Avagimyan,Chornomorets,27,"CF, RCMF",Striker,25.77,9.0,42.0,48.0,15.0,74.0,11.0,,,,,,,,,,,,Ukrainian Premier League,36.0
+37,R. Plaksa,Oleksandria,22,"CF, RCMF",Striker,23.17,12.0,76.0,15.0,4.0,23.0,33.0,,,,,,,,,,,,Ukrainian Premier League,37.0
+38,V. Grusha,Obolon,29,"LW, CF, LCMF",Striker,22.68,5.0,9.0,72.0,17.0,59.0,61.0,,,,,,,,,,,,Ukrainian Premier League,38.0
+39,I. Nesterenko,Vorskla,20,"LCMF, CF, AMF",Striker,19.78,12.0,53.0,20.0,22.0,4.0,30.0,,,,,,,,,,,,Ukrainian Premier League,39.0
+40,M. Shestakov,Veres,33,"RW, CF, RWF",Striker,18.73,17.0,30.0,7.0,42.0,12.0,57.0,,,,,,,,,,,,Ukrainian Premier League,40.0
+41,A. Kulakov,Oleksandria,24,CF,Striker,18.46,36.0,9.0,13.0,42.0,4.0,78.0,,,,,,,,,,,,Ukrainian Premier League,41.0
+42,V. Pogorilyi,Oleksandria,20,CF,Striker,17.44,49.0,9.0,9.0,24.0,33.0,39.0,,,,,,,,,,,,Ukrainian Premier League,42.0
+43,D. Alefirenko,Zorya,23,"LW, LAMF, CF",Striker,13.13,5.0,34.0,43.0,11.0,4.0,13.0,,,,,,,,,,,,Ukrainian Premier League,43.0
+44,K. Kovalets,Oleksandria,30,"AMF, CF",Striker,12.46,28.0,9.0,35.0,20.0,12.0,20.0,,,,,,,,,,,,Ukrainian Premier League,44.0
+45,O. Slobodyan,Obolon,27,"AMF, CF, LCMF",Striker,11.93,2.0,9.0,2.0,2.0,46.0,26.0,,,,,,,,,,,,Ukrainian Premier League,45.0
+46,O. Zubkov,Shakhtar Donetsk,27,"RW, RWF, RAMF",Winger,86.64,,,,,,,92.0,80.0,100.0,97.0,94.0,92.0,97.0,,,,,Ukrainian Premier League,46.0
+47,I. Kvasnytsya,Rukh Lviv,20,"RW, RAMF",Winger,76.2,,,,,,,66.0,95.0,60.0,99.0,100.0,88.0,43.0,,,,,Ukrainian Premier League,47.0
+48,M. Zaderaka,Kryvbas KR,29,"RAMF, LW, LAMF",Winger,71.45,,,,,,,75.0,85.0,79.0,80.0,71.0,42.0,80.0,,,,,Ukrainian Premier League,48.0
+49,D. Antyukh,Zorya,26,"RAMF, RW, LW",Winger,70.98,,,,,,,83.0,55.0,85.0,85.0,90.0,81.0,88.0,,,,,Ukrainian Premier League,49.0
+50,A. Yarmolenko,Dynamo Kyiv,34,"RAMF, RW",Winger,70.87,,,,,,,100.0,100.0,99.0,98.0,73.0,76.0,99.0,,,,,Ukrainian Premier League,50.0
+51,V. Buyalskyi,Dynamo Kyiv,31,"AMF, RCMF",Winger,69.72,,,,,,,94.0,95.0,62.0,100.0,28.0,36.0,77.0,,,,,Ukrainian Premier League,51.0
+52,B. Makouana,Polissya,21,"LAMF, LW",Winger,69.66,,,,,,,73.0,73.0,70.0,53.0,85.0,90.0,44.0,,,,,Ukrainian Premier League,52.0
+53,A. Shulyanskyi,Oleksandria,22,"LW, LWF, LAMF",Winger,63.0,,,,,,,66.0,74.0,65.0,63.0,72.0,78.0,56.0,,,,,Ukrainian Premier League,53.0
+54,O. Gutsulyak,Dnipro-1,26,"RW, RAMF, CF",Winger,61.86,,,,,,,87.0,88.0,91.0,45.0,70.0,52.0,22.0,,,,,Ukrainian Premier League,54.0
+55,O. Kuzyk,Chornomorets,28,"AMF, RCMF",Winger,60.27,,,,,,,43.0,71.0,49.0,74.0,66.0,60.0,71.0,,,,,Ukrainian Premier League,55.0
+56,O. Pikhalyonok,Dnipro-1,26,"AMF, CF, RCMF",Winger,60.04,,,,,,,53.0,55.0,45.0,91.0,29.0,58.0,84.0,,,,,Ukrainian Premier League,56.0
+57,N. Voloshyn,Dynamo Kyiv,20,"LAMF, LW, RW",Winger,59.02,,,,,,,84.0,95.0,72.0,48.0,42.0,79.0,72.0,,,,,Ukrainian Premier League,57.0
+58,A. Plumain,Rukh Lviv,28,"LCMF, RW, AMF",Winger,56.85,,,,,,,48.0,63.0,74.0,95.0,88.0,91.0,91.0,,,,,Ukrainian Premier League,58.0
+59,O. Kashchuk,Shakhtar Donetsk,23,"LW, LAMF, LWF",Winger,56.24,,,,,,,78.0,98.0,27.0,72.0,59.0,30.0,92.0,,,,,Ukrainian Premier League,59.0
+60,S. Myakushko,Vorskla,30,"LWF, AMF",Winger,56.19,,,,,,,59.0,17.0,97.0,72.0,97.0,94.0,83.0,,,,,Ukrainian Premier League,60.0
+61,O. Karavaev,Dynamo Kyiv,31,"RB, RAMF, RW",Winger,55.72,,,,,,,88.0,69.0,69.0,85.0,22.0,62.0,54.0,,,,,Ukrainian Premier League,61.0
+62,V. Kabaev,Dynamo Kyiv,28,"LAMF, LW",Winger,55.52,,,,,,,37.0,55.0,63.0,80.0,98.0,100.0,90.0,,,,,Ukrainian Premier League,62.0
+63,A. Shtogrin,Chornomorets,25,"RW, CF, RWB",Winger,54.6,,,,,,,78.0,92.0,52.0,13.0,53.0,80.0,6.0,,,,,Ukrainian Premier League,63.0
+64,S. Shestakov,LNZ Cherkasy,33,"RW, LW, RAMF",Winger,54.28,,,,,,,26.0,80.0,19.0,66.0,51.0,70.0,81.0,,,,,Ukrainian Premier League,64.0
+65,A. Kozak,Polissya,25,"RAMF, RW, RWF",Winger,54.27,,,,,,,31.0,69.0,76.0,80.0,48.0,27.0,85.0,,,,,Ukrainian Premier League,65.0
+66,D. Kuzyk,Kryvbas KR,21,"RW, RAMF",Winger,53.24,,,,,,,28.0,76.0,42.0,89.0,58.0,64.0,74.0,,,,,Ukrainian Premier League,66.0
+67,I. Kane,Vorskla,23,"RW, RAMF, LW",Winger,52.84,,,,,,,31.0,17.0,53.0,63.0,69.0,83.0,78.0,,,,,Ukrainian Premier League,67.0
+68,Geovani,Oleksandria,22,"RWF, RW, RAMF",Winger,52.81,,,,,,,94.0,48.0,94.0,59.0,92.0,77.0,15.0,,,,,Ukrainian Premier League,68.0
+69,B. Boychuk,Chornomorets,27,"LW, LAMF, CF",Winger,52.13,,,,,,,66.0,78.0,23.0,66.0,47.0,73.0,50.0,,,,,Ukrainian Premier League,69.0
+70,V. Naumets,LNZ Cherkasy,24,RW,Winger,51.45,,,,,,,69.0,90.0,71.0,9.0,65.0,84.0,59.0,,,,,Ukrainian Premier League,70.0
+71,V. Dmytrenko,Metalist 1925 Kharkiv,23,"LW, LAMF, RW",Winger,51.34,,,,,,,69.0,91.0,67.0,18.0,84.0,86.0,8.0,,,,,Ukrainian Premier League,71.0
+72,V. Runich,Rukh Lviv,24,LW,Winger,50.86,,,,,,,95.0,99.0,82.0,45.0,45.0,45.0,10.0,,,,,Ukrainian Premier League,72.0
+73,V. Tanchyk,Dnipro-1,32,"RWB, LW, RB",Winger,50.59,,,,,,,15.0,48.0,13.0,91.0,86.0,93.0,59.0,,,,,Ukrainian Premier League,73.0
+74,H. Pasich,LNZ Cherkasy,30,"LW, LAMF",Winger,50.49,,,,,,,75.0,55.0,95.0,28.0,55.0,84.0,52.0,,,,,Ukrainian Premier League,74.0
+75,V. Veleten,Kolos Kovalivka,21,"LWF, AMF, CF",Winger,49.89,,,,,,,56.0,60.0,55.0,28.0,95.0,95.0,94.0,,,,,Ukrainian Premier League,75.0
+76,B. Lednev,Dnipro-1,25,"LW, LAMF",Winger,49.78,,,,,,,73.0,83.0,86.0,23.0,36.0,54.0,46.0,,,,,Ukrainian Premier League,76.0
+77,V. Hrytsuk,Polissya,36,AMF,Winger,48.86,,,,,,,99.0,87.0,59.0,80.0,18.0,9.0,70.0,,,,,Ukrainian Premier League,77.0
+78,V. Kalitvintsev,Oleksandria,31,"RW, LW, RAMF",Winger,47.42,,,,,,,20.0,17.0,74.0,94.0,67.0,37.0,100.0,,,,,Ukrainian Premier League,78.0
+79,V. Sharay,Veres,26,"LW, RAMF",Winger,46.06,,,,,,,53.0,48.0,66.0,93.0,15.0,39.0,26.0,,,,,Ukrainian Premier League,79.0
+80,V. Solomon-Otabor,Rukh Lviv,28,"LW, LAMF",Winger,45.46,,,,,,,37.0,17.0,31.0,28.0,99.0,97.0,95.0,,,,,Ukrainian Premier League,80.0
+81,Talles,Rukh Lviv,25,"RCMF, CF, AMF",Winger,44.51,,,,,,,97.0,48.0,98.0,74.0,38.0,26.0,42.0,,,,,Ukrainian Premier League,81.0
+82,M. Lunyov,Kryvbas KR,25,"AMF, CF",Winger,44.48,,,,,,,59.0,60.0,35.0,80.0,77.0,20.0,37.0,,,,,Ukrainian Premier League,82.0
+83,R. Rusyn,Metalist 1925 Kharkiv,28,"RW, RWF, RAMF",Winger,44.44,,,,,,,37.0,63.0,38.0,34.0,61.0,64.0,49.0,,,,,Ukrainian Premier League,83.0
+84,A. Boryachuk,Metalist 1925 Kharkiv,27,"CF, AMF",Winger,43.25,,,,,,,98.0,93.0,84.0,40.0,33.0,12.0,3.0,,,,,Ukrainian Premier League,84.0
+85,Felipe Rodrigues,Vorskla,28,"CF, LAMF, LW",Winger,42.84,,,,,,,90.0,83.0,47.0,9.0,76.0,24.0,24.0,,,,,Ukrainian Premier League,85.0
+86,A. Bliznichenko,,29,"RW, AMF",Winger,42.78,,,,,,,43.0,66.0,94.0,89.0,49.0,31.0,64.0,,,,,Ukrainian Premier League,86.0
+87,Arielson,Polissya,19,"CF, AMF",Winger,42.08,,,,,,,66.0,37.0,88.0,85.0,56.0,14.0,21.0,,,,,Ukrainian Premier League,87.0
+88,D. Sikan,Shakhtar Donetsk,22,"CF, AMF",Winger,40.92,,,,,,,81.0,73.0,78.0,23.0,20.0,41.0,3.0,,,,,Ukrainian Premier League,88.0
+89,D. Khomchenovskyi,Kryvbas KR,33,"LAMF, LW",Winger,40.83,,,,,,,90.0,34.0,64.0,53.0,24.0,48.0,40.0,,,,,Ukrainian Premier League,89.0
+90,D. Yusov,Metalist 1925 Kharkiv,30,LW,Winger,40.58,,,,,,,84.0,81.0,87.0,3.0,45.0,18.0,28.0,,,,,Ukrainian Premier League,90.0
+91,M. Bragaru,Chornomorets,21,"LB, LWB, RAMF",Winger,40.52,,,,,,,15.0,17.0,36.0,23.0,91.0,98.0,16.0,,,,,Ukrainian Premier League,91.0
+92,Iago Siqueira,Veres,23,"CF, AMF, LCMF",Winger,40.27,,,,,,,87.0,52.0,80.0,9.0,61.0,33.0,6.0,,,,,Ukrainian Premier League,92.0
+93,I. Kyryukhantsev,Zorya,28,"RB, RW",Winger,39.77,,,,,,,15.0,17.0,30.0,34.0,81.0,74.0,65.0,,,,,Ukrainian Premier League,93.0
+94,Newerton,Shakhtar Donetsk,18,"LW, LWF",Winger,38.24,,,,,,,26.0,17.0,51.0,34.0,83.0,99.0,87.0,,,,,Ukrainian Premier League,94.0
+95,A. Salabay,Kolos Kovalivka,21,"CF, AMF",Winger,37.98,,,,,,,78.0,60.0,58.0,18.0,64.0,64.0,12.0,,,,,Ukrainian Premier League,95.0
+96,V. Grusha,Obolon,29,"LW, CF, LCMF",Winger,37.4,,,,,,,24.0,17.0,82.0,40.0,93.0,67.0,86.0,,,,,Ukrainian Premier League,96.0
+97,A. Batsula,Vorskla,32,"LB, LW, LAMF",Winger,37.39,,,,,,,10.0,17.0,10.0,85.0,33.0,45.0,98.0,,,,,Ukrainian Premier League,97.0
+98,V. Yurchenko,Metalist 1925 Kharkiv,30,"AMF, DMF, LCMF",Winger,37.04,,,,,,,48.0,69.0,20.0,53.0,6.0,34.0,36.0,,,,,Ukrainian Premier League,98.0
+99,Ari Moura,Metalist 1925 Kharkiv,27,"RW, RAMF",Winger,36.65,,,,,,,20.0,51.0,41.0,40.0,87.0,57.0,19.0,,,,,Ukrainian Premier League,99.0
+100,Z. Badibanga,Chornomorets,32,"RWB, RW, RAMF",Winger,36.52,,,,,,,20.0,42.0,14.0,53.0,31.0,72.0,76.0,,,,,Ukrainian Premier League,100.0
+101,M. Ghecev,,26,"RW, RAMF",Winger,36.41,,,,,,,7.0,17.0,17.0,69.0,79.0,54.0,93.0,,,,,Ukrainian Premier League,101.0
+102,T. Korablin,Minaj,22,"RCMF, LAMF, RW",Winger,36.41,,,,,,,28.0,17.0,58.0,63.0,74.0,71.0,46.0,,,,,Ukrainian Premier League,102.0
+103,D. Teslyuk,Rukh Lviv,20,"RW, CF",Winger,35.21,,,,,,,71.0,42.0,56.0,13.0,63.0,43.0,31.0,,,,,Ukrainian Premier League,103.0
+104,D. Alefirenko,Zorya,23,"LW, LAMF, CF",Winger,34.94,,,,,,,24.0,42.0,50.0,3.0,78.0,69.0,66.0,,,,,Ukrainian Premier League,104.0
+105,R. Debelko,Kryvbas KR,30,"CF, AMF, LCMF",Winger,34.56,,,,,,,53.0,48.0,27.0,69.0,18.0,45.0,9.0,,,,,Ukrainian Premier League,105.0
+106,I. Nesterenko,Vorskla,20,"LCMF, CF, AMF",Winger,34.25,,,,,,,37.0,60.0,24.0,3.0,49.0,59.0,19.0,,,,,Ukrainian Premier League,106.0
+107,E. Tverdokhlib,Kryvbas KR,23,"LW, CF, AMF",Winger,34.01,,,,,,,62.0,37.0,44.0,28.0,26.0,20.0,27.0,,,,,Ukrainian Premier League,107.0
+108,A. Savin,LNZ Cherkasy,33,"LW, RB, LB",Winger,33.97,,,,,,,43.0,17.0,47.0,59.0,40.0,49.0,73.0,,,,,Ukrainian Premier League,108.0
+109,D. Oliynyk,LNZ Cherkasy,36,"LCMF, AMF, RCMF",Winger,33.85,,,,,,,48.0,34.0,76.0,53.0,41.0,35.0,17.0,,,,,Ukrainian Premier League,109.0
+110,I. Gorbach,Zorya,19,"LW, LAMF, LWF",Winger,33.66,,,,,,,78.0,17.0,92.0,3.0,80.0,56.0,48.0,,,,,Ukrainian Premier League,110.0
+111,D. Nagnoynyi,Zorya,22,"LCMF, AMF, LDMF",Winger,33.44,,,,,,,43.0,42.0,40.0,69.0,21.0,29.0,38.0,,,,,Ukrainian Premier League,111.0
+112,V. Voloshyn,Zorya,22,"RCMF, AMF, RW",Winger,33.19,,,,,,,43.0,66.0,90.0,76.0,23.0,3.0,35.0,,,,,Ukrainian Premier League,112.0
+113,D. Miroshnichenko,Dnipro-1,29,"LB, RAMF",Winger,33.1,,,,,,,20.0,39.0,33.0,76.0,13.0,39.0,54.0,,,,,Ukrainian Premier League,113.0
+114,I. Medynskyi,Obolon,31,"RW, RB, RWB",Winger,31.45,,,,,,,31.0,17.0,9.0,45.0,26.0,51.0,67.0,,,,,Ukrainian Premier League,114.0
+115,O. Ilyin,Kolos Kovalivka,26,"RWF, RWB, RW",Winger,30.71,,,,,,,15.0,17.0,22.0,53.0,52.0,66.0,60.0,,,,,Ukrainian Premier League,115.0
+116,S. Sharay,Veres,26,"AMF, LCMF, RCMF",Winger,30.02,,,,,,,53.0,87.0,43.0,34.0,3.0,1.0,30.0,,,,,Ukrainian Premier League,116.0
+117,E. Gunichev,Minaj,20,"CF, RW",Winger,29.38,,,,,,,59.0,76.0,29.0,18.0,16.0,8.0,14.0,,,,,Ukrainian Premier League,117.0
+118,V. Shepelev,Dynamo Kyiv,26,"LCMF, LDMF, AMF",Winger,27.67,,,,,,,10.0,17.0,6.0,34.0,57.0,87.0,30.0,,,,,Ukrainian Premier League,118.0
+119,V. Odaryuk,,29,"RW, RB, LW",Winger,27.06,,,,,,,34.0,17.0,33.0,18.0,43.0,23.0,69.0,,,,,Ukrainian Premier League,119.0
+120,D. Nagiyev,Obolon,28,"RB, RW",Winger,21.81,,,,,,,4.0,17.0,3.0,45.0,8.0,51.0,62.0,,,,,Ukrainian Premier League,120.0
+121,V. Rogozinskyi,Minaj,28,"LW, LB",Winger,21.68,,,,,,,10.0,17.0,16.0,59.0,12.0,15.0,51.0,,,,,Ukrainian Premier League,121.0
+122,Y. Vakulko,Kryvbas KR,26,"LCMF, AMF, RAMF",Winger,21.43,,,,,,,1.0,17.0,1.0,40.0,35.0,18.0,79.0,,,,,Ukrainian Premier League,122.0
+123,O. Prytula,Rukh Lviv,23,"AMF, RCMF",Winger,21.31,,,,,,,37.0,17.0,26.0,48.0,10.0,16.0,63.0,,,,,Ukrainian Premier League,123.0
+124,M. Shestakov,Veres,33,"RW, CF, RWF",Winger,20.21,,,,,,,48.0,39.0,15.0,9.0,9.0,22.0,13.0,,,,,Ukrainian Premier League,124.0
+125,V. Gakman,Veres,23,"RB, RW",Winger,19.78,,,,,,,4.0,17.0,8.0,53.0,13.0,10.0,57.0,,,,,Ukrainian Premier League,125.0
+126,K. Kovalets,Oleksandria,30,"AMF, CF",Winger,19.56,,,,,,,59.0,17.0,37.0,9.0,37.0,6.0,33.0,,,,,Ukrainian Premier League,126.0
+127,D. Myshnov,Zorya,30,"LCMF, AMF, RDMF",Winger,18.21,,,,,,,15.0,17.0,21.0,40.0,8.0,13.0,41.0,,,,,Ukrainian Premier League,127.0
+128,N. Yakubu,Vorskla,23,"LW, LAMF, LB",Winger,17.27,,,,,,,7.0,17.0,2.0,18.0,30.0,28.0,33.0,,,,,Ukrainian Premier League,128.0
+129,D. Fateev,Mariupol,29,"RB, RWB, RW",Winger,13.67,,,,,,,62.0,17.0,12.0,3.0,1.0,2.0,23.0,,,,,Ukrainian Premier League,129.0
+130,O. Slobodyan,Obolon,27,"AMF, CF, LCMF",Winger,9.9,,,,,,,7.0,17.0,7.0,28.0,2.0,5.0,5.0,,,,,Ukrainian Premier League,130.0
+131,A. Tkachuk,Metalist 1925 Kharkiv,36,"RCMF, LCMF, AMF",Winger,8.35,,,,,,,2.0,17.0,5.0,18.0,5.0,6.0,1.0,,,,,Ukrainian Premier League,131.0
+132,O. Zubkov,Shakhtar Donetsk,27,"RW, RWF, RAMF",Attacking Midfield,90.06,,,,,,,,,,,,,,91.0,80.0,100.0,96.0,Ukrainian Premier League,132.0
+133,I. Kvasnytsya,Rukh Lviv,20,"RW, RAMF",Attacking Midfield,74.7,,,,,,,,,,,,,,63.0,96.0,55.0,99.0,Ukrainian Premier League,133.0
+134,M. Zaderaka,Kryvbas KR,29,"RAMF, LW, LAMF",Attacking Midfield,74.47,,,,,,,,,,,,,,72.0,85.0,78.0,76.0,Ukrainian Premier League,134.0
+135,A. Yarmolenko,Dynamo Kyiv,34,"RAMF, RW",Attacking Midfield,74.03,,,,,,,,,,,,,,100.0,100.0,99.0,97.0,Ukrainian Premier League,135.0
+136,D. Antyukh,Zorya,26,"RAMF, RW, LW",Attacking Midfield,73.15,,,,,,,,,,,,,,81.0,50.0,82.0,83.0,Ukrainian Premier League,136.0
+137,V. Buyalskyi,Dynamo Kyiv,31,"AMF, RCMF",Attacking Midfield,69.81,,,,,,,,,,,,,,93.0,96.0,57.0,100.0,Ukrainian Premier League,137.0
+138,B. Makouana,Polissya,21,"LAMF, LW",Attacking Midfield,66.37,,,,,,,,,,,,,,69.0,72.0,67.0,46.0,Ukrainian Premier League,138.0
+139,O. Pikhalyonok,Dnipro-1,26,"AMF, CF, RCMF",Attacking Midfield,64.68,,,,,,,,,,,,,,50.0,50.0,42.0,90.0,Ukrainian Premier League,139.0
+140,A. Shulyanskyi,Oleksandria,22,"LW, LWF, LAMF",Attacking Midfield,60.71,,,,,,,,,,,,,,63.0,75.0,61.0,54.0,Ukrainian Premier League,140.0
+141,O. Kuzyk,Chornomorets,28,"AMF, RCMF",Attacking Midfield,59.78,,,,,,,,,,,,,,40.0,70.0,45.0,68.0,Ukrainian Premier League,141.0
+142,N. Voloshyn,Dynamo Kyiv,20,"LAMF, LW, RW",Attacking Midfield,59.38,,,,,,,,,,,,,,82.0,96.0,69.0,41.0,Ukrainian Premier League,142.0
+143,O. Gutsulyak,Dnipro-1,26,"RW, RAMF, CF",Attacking Midfield,58.88,,,,,,,,,,,,,,84.0,90.0,88.0,39.0,Ukrainian Premier League,143.0
+144,A. Plumain,Rukh Lviv,28,"LCMF, RW, AMF",Attacking Midfield,58.83,,,,,,,,,,,,,,45.0,60.0,71.0,94.0,Ukrainian Premier League,144.0
+145,O. Karavaev,Dynamo Kyiv,31,"RB, RAMF, RW",Attacking Midfield,57.93,,,,,,,,,,,,,,87.0,67.0,66.0,83.0,Ukrainian Premier League,145.0
+146,V. Kabaev,Dynamo Kyiv,28,"LAMF, LW",Attacking Midfield,56.82,,,,,,,,,,,,,,33.0,50.0,58.0,76.0,Ukrainian Premier League,146.0
+147,A. Kozak,Polissya,25,"RAMF, RW, RWF",Attacking Midfield,56.79,,,,,,,,,,,,,,28.0,67.0,74.0,76.0,Ukrainian Premier League,147.0
+148,D. Kuzyk,Kryvbas KR,21,"RW, RAMF",Attacking Midfield,56.76,,,,,,,,,,,,,,25.0,76.0,37.0,87.0,Ukrainian Premier League,148.0
+149,S. Myakushko,Vorskla,30,"LWF, AMF",Attacking Midfield,56.3,,,,,,,,,,,,,,57.0,13.0,96.0,65.0,Ukrainian Premier League,149.0
+150,S. Shestakov,LNZ Cherkasy,33,"RW, LW, RAMF",Attacking Midfield,54.61,,,,,,,,,,,,,,22.0,80.0,13.0,57.0,Ukrainian Premier League,150.0
+151,I. Kane,Vorskla,23,"RW, RAMF, LW",Attacking Midfield,54.16,,,,,,,,,,,,,,28.0,13.0,48.0,54.0,Ukrainian Premier League,151.0
+152,V. Kalitvintsev,Oleksandria,31,"RW, LW, RAMF",Attacking Midfield,53.29,,,,,,,,,,,,,,17.0,13.0,71.0,93.0,Ukrainian Premier League,152.0
+153,O. Kashchuk,Shakhtar Donetsk,23,"LW, LAMF, LWF",Attacking Midfield,52.02,,,,,,,,,,,,,,76.0,99.0,23.0,65.0,Ukrainian Premier League,153.0
+154,H. Pasich,LNZ Cherkasy,30,"LW, LAMF",Attacking Midfield,51.92,,,,,,,,,,,,,,72.0,50.0,94.0,24.0,Ukrainian Premier League,154.0
+155,V. Hrytsuk,Polissya,36,AMF,Attacking Midfield,50.95,,,,,,,,,,,,,,99.0,87.0,54.0,76.0,Ukrainian Premier League,155.0
+156,V. Veleten,Kolos Kovalivka,21,"LWF, AMF, CF",Attacking Midfield,50.52,,,,,,,,,,,,,,54.0,56.0,49.0,24.0,Ukrainian Premier League,156.0
+157,B. Boychuk,Chornomorets,27,"LW, LAMF, CF",Attacking Midfield,50.08,,,,,,,,,,,,,,63.0,78.0,18.0,57.0,Ukrainian Premier League,157.0
+158,V. Solomon-Otabor,Rukh Lviv,28,"LW, LAMF",Attacking Midfield,49.98,,,,,,,,,,,,,,33.0,13.0,25.0,24.0,Ukrainian Premier League,158.0
+159,Geovani,Oleksandria,22,"RWF, RW, RAMF",Attacking Midfield,49.71,,,,,,,,,,,,,,93.0,41.0,92.0,51.0,Ukrainian Premier League,159.0
+160,B. Lednev,Dnipro-1,25,"LW, LAMF",Attacking Midfield,48.32,,,,,,,,,,,,,,69.0,83.0,84.0,18.0,Ukrainian Premier League,160.0
+161,V. Dmytrenko,Metalist 1925 Kharkiv,23,"LW, LAMF, RW",Attacking Midfield,47.0,,,,,,,,,,,,,,67.0,91.0,64.0,13.0,Ukrainian Premier League,161.0
+162,R. Rusyn,Metalist 1925 Kharkiv,28,"RW, RWF, RAMF",Attacking Midfield,46.57,,,,,,,,,,,,,,33.0,60.0,33.0,30.0,Ukrainian Premier League,162.0
+163,A. Bliznichenko,,29,"RW, AMF",Attacking Midfield,45.49,,,,,,,,,,,,,,40.0,63.0,92.0,87.0,Ukrainian Premier League,163.0
+164,Talles,Rukh Lviv,25,"RCMF, CF, AMF",Attacking Midfield,44.43,,,,,,,,,,,,,,96.0,41.0,97.0,68.0,Ukrainian Premier League,164.0
+165,A. Batsula,Vorskla,32,"LB, LW, LAMF",Attacking Midfield,44.2,,,,,,,,,,,,,,10.0,13.0,9.0,83.0,Ukrainian Premier League,165.0
+166,M. Bragaru,Chornomorets,21,"LB, LWB, RAMF",Attacking Midfield,42.66,,,,,,,,,,,,,,13.0,13.0,30.0,18.0,Ukrainian Premier League,166.0
+167,V. Sharay,Veres,26,"LW, RAMF",Attacking Midfield,42.59,,,,,,,,,,,,,,50.0,41.0,63.0,91.0,Ukrainian Premier League,167.0
+168,M. Lunyov,Kryvbas KR,25,"AMF, CF",Attacking Midfield,41.96,,,,,,,,,,,,,,57.0,56.0,28.0,76.0,Ukrainian Premier League,168.0
+169,D. Khomchenovskyi,Kryvbas KR,33,"LAMF, LW",Attacking Midfield,40.66,,,,,,,,,,,,,,89.0,28.0,60.0,46.0,Ukrainian Premier League,169.0
+170,Felipe Rodrigues,Vorskla,28,"CF, LAMF, LW",Attacking Midfield,39.15,,,,,,,,,,,,,,89.0,83.0,43.0,7.0,Ukrainian Premier League,170.0
+171,A. Boryachuk,Metalist 1925 Kharkiv,27,"CF, AMF",Attacking Midfield,39.01,,,,,,,,,,,,,,97.0,93.0,81.0,35.0,Ukrainian Premier League,171.0
+172,Z. Badibanga,Chornomorets,32,"RWB, RW, RAMF",Attacking Midfield,38.87,,,,,,,,,,,,,,17.0,36.0,10.0,46.0,Ukrainian Premier League,172.0
+173,V. Yurchenko,Metalist 1925 Kharkiv,30,"AMF, DMF, LCMF",Attacking Midfield,38.75,,,,,,,,,,,,,,45.0,67.0,15.0,46.0,Ukrainian Premier League,173.0
+174,Arielson,Polissya,19,"CF, AMF",Attacking Midfield,38.12,,,,,,,,,,,,,,63.0,31.0,85.0,83.0,Ukrainian Premier League,174.0
+175,D. Miroshnichenko,Dnipro-1,29,"LB, RAMF",Attacking Midfield,37.8,,,,,,,,,,,,,,17.0,33.0,27.0,71.0,Ukrainian Premier League,175.0
+176,T. Korablin,Minaj,22,"RCMF, LAMF, RW",Attacking Midfield,37.42,,,,,,,,,,,,,,25.0,13.0,51.0,54.0,Ukrainian Premier League,176.0
+177,M. Ghecev,,26,"RW, RAMF",Attacking Midfield,37.06,,,,,,,,,,,,,,6.0,13.0,12.0,61.0,Ukrainian Premier League,177.0
+178,Iago Siqueira,Veres,23,"CF, AMF, LCMF",Attacking Midfield,36.14,,,,,,,,,,,,,,84.0,46.0,79.0,7.0,Ukrainian Premier League,178.0
+179,Ari Moura,Metalist 1925 Kharkiv,27,"RW, RAMF",Attacking Midfield,35.62,,,,,,,,,,,,,,17.0,45.0,36.0,35.0,Ukrainian Premier League,179.0
+180,D. Sikan,Shakhtar Donetsk,22,"CF, AMF",Attacking Midfield,35.61,,,,,,,,,,,,,,79.0,72.0,76.0,18.0,Ukrainian Premier League,180.0
+181,D. Alefirenko,Zorya,23,"LW, LAMF, CF",Attacking Midfield,35.06,,,,,,,,,,,,,,21.0,36.0,46.0,3.0,Ukrainian Premier League,181.0
+182,A. Salabay,Kolos Kovalivka,21,"CF, AMF",Attacking Midfield,33.69,,,,,,,,,,,,,,76.0,56.0,51.0,13.0,Ukrainian Premier League,182.0
+183,I. Gorbach,Zorya,19,"LW, LAMF, LWF",Attacking Midfield,33.24,,,,,,,,,,,,,,76.0,13.0,90.0,3.0,Ukrainian Premier League,183.0
+184,D. Oliynyk,LNZ Cherkasy,36,"LCMF, AMF, RCMF",Attacking Midfield,32.84,,,,,,,,,,,,,,45.0,28.0,74.0,46.0,Ukrainian Premier League,184.0
+185,D. Nagnoynyi,Zorya,22,"LCMF, AMF, LDMF",Attacking Midfield,32.2,,,,,,,,,,,,,,40.0,36.0,34.0,61.0,Ukrainian Premier League,185.0
+186,I. Nesterenko,Vorskla,20,"LCMF, CF, AMF",Attacking Midfield,32.11,,,,,,,,,,,,,,33.0,56.0,19.0,3.0,Ukrainian Premier League,186.0
+187,V. Voloshyn,Zorya,22,"RCMF, AMF, RW",Attacking Midfield,31.64,,,,,,,,,,,,,,40.0,63.0,87.0,71.0,Ukrainian Premier League,187.0
+188,R. Debelko,Kryvbas KR,30,"CF, AMF, LCMF",Attacking Midfield,31.11,,,,,,,,,,,,,,50.0,41.0,23.0,61.0,Ukrainian Premier League,188.0
+189,E. Tverdokhlib,Kryvbas KR,23,"LW, CF, AMF",Attacking Midfield,31.01,,,,,,,,,,,,,,60.0,31.0,40.0,24.0,Ukrainian Premier League,189.0
+190,V. Shepelev,Dynamo Kyiv,26,"LCMF, LDMF, AMF",Attacking Midfield,29.12,,,,,,,,,,,,,,10.0,13.0,6.0,30.0,Ukrainian Premier League,190.0
+191,S. Sharay,Veres,26,"AMF, LCMF, RCMF",Attacking Midfield,27.31,,,,,,,,,,,,,,50.0,87.0,39.0,30.0,Ukrainian Premier League,191.0
+192,Y. Vakulko,Kryvbas KR,26,"LCMF, AMF, RAMF",Attacking Midfield,24.94,,,,,,,,,,,,,,1.0,13.0,1.0,35.0,Ukrainian Premier League,192.0
+193,D. Myshnov,Zorya,30,"LCMF, AMF, RDMF",Attacking Midfield,23.19,,,,,,,,,,,,,,13.0,13.0,16.0,35.0,Ukrainian Premier League,193.0
+194,O. Prytula,Rukh Lviv,23,"AMF, RCMF",Attacking Midfield,22.48,,,,,,,,,,,,,,33.0,13.0,21.0,41.0,Ukrainian Premier League,194.0
+195,K. Kovalets,Oleksandria,30,"AMF, CF",Attacking Midfield,19.14,,,,,,,,,,,,,,57.0,13.0,31.0,7.0,Ukrainian Premier League,195.0
+196,N. Yakubu,Vorskla,23,"LW, LAMF, LB",Attacking Midfield,17.96,,,,,,,,,,,,,,6.0,13.0,3.0,13.0,Ukrainian Premier League,196.0
+197,A. Tkachuk,Metalist 1925 Kharkiv,36,"RCMF, LCMF, AMF",Attacking Midfield,11.18,,,,,,,,,,,,,,3.0,13.0,4.0,13.0,Ukrainian Premier League,197.0
+198,O. Slobodyan,Obolon,27,"AMF, CF, LCMF",Attacking Midfield,8.56,,,,,,,,,,,,,,6.0,13.0,7.0,24.0,Ukrainian Premier League,198.0
