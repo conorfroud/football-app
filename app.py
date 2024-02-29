@@ -803,7 +803,8 @@ def stoke_score_wyscout(df3):
     score_type_column_mapping = {
         'Striker': ['Player', 'Age', 'Team', 'League', 'Position', 'Stoke Score'],
         'Winger': ['Player', 'Age', 'Team', 'League', 'Position', 'Stoke Score'],
-        'Attacking Midfield': ['Player', 'Age', 'Team', 'League', 'Position', 'Stoke Score']
+        'Attacking Midfield': ['Player', 'Age', 'Team', 'League', 'Position', 'Stoke Score'],
+        'Centre Back': ['Player', 'Age', 'Team', 'League', 'Position', 'Stoke Score', 'foot', 'Aerial duels won, %']
     }
 
     # Update the selected columns to include 'Score Type'
@@ -816,7 +817,10 @@ def stoke_score_wyscout(df3):
         (df3['Age'] >= age_range[0]) &
         (df3['Age'] <= age_range[1]) &
         (df3['Stoke Score'] >= stoke_range[0]) &
-        (df3['Stoke Score'] <= stoke_range[1])
+        (df3['Stoke Score'] <= stoke_range[1]) &
+        (df3['foot'].isin(['left', 'right'])) &  # Filter for foot
+        (df3['Aerial duels won, %'] >= 0) &  # Filter for Aerial duels won, %
+        (df3['Aerial duels won, %'] <= 100)  # Assuming percentage is between 0 and 100
     ]
 
     # Sort the filtered DataFrame by "Stoke Score" column in descending order
