@@ -799,6 +799,12 @@ def stoke_score_wyscout(df3):
     # Add a slider for selecting the age range
     age_range = st.sidebar.slider("Select Age Range", min_value=min_age, max_value=max_age, value=(min_age, max_age))
 
+    # Create a list of foot options
+    foot_options = df3['foot'].unique()
+
+    # Add a multiselect box for selecting foot
+    selected_foot = st.sidebar.multiselect("Select Foot", foot_options, default=foot_options)
+
     # Define a dictionary that maps 'Score Type' to columns
     score_type_column_mapping = {
         'Striker': ['Player', 'Age', 'Team', 'League', 'Position', 'Stoke Score'],
@@ -818,7 +824,7 @@ def stoke_score_wyscout(df3):
         (df3['Age'] <= age_range[1]) &
         (df3['Stoke Score'] >= stoke_range[0]) &
         (df3['Stoke Score'] <= stoke_range[1]) &
-        (df3['foot'].isin(['left', 'right'])) &  # Filter for foot
+        (df3['foot'].isin(selected_foot)) &  # Filter for foot
         (df3['Aerial duels won, %'] >= 0) &  # Filter for Aerial duels won, %
         (df3['Aerial duels won, %'] <= 100)  # Assuming percentage is between 0 and 100
     ]
