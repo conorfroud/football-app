@@ -805,6 +805,9 @@ def stoke_score_wyscout(df3):
     # Add a multiselect box for selecting foot
     selected_foot = st.sidebar.multiselect("Select Foot", foot_options, default=foot_options)
 
+    # Add a slider for selecting the range of Aerial duels won, %
+    aerial_duels_range = st.sidebar.slider("Select Aerial Duels Won Percentage Range", min_value=0, max_value=100, value=(0, 100))
+
     # Define a dictionary that maps 'Score Type' to columns
     score_type_column_mapping = {
         'Striker': ['Player', 'Age', 'Team', 'League', 'Position', 'Stoke Score'],
@@ -825,8 +828,8 @@ def stoke_score_wyscout(df3):
         (df3['Stoke Score'] >= stoke_range[0]) &
         (df3['Stoke Score'] <= stoke_range[1]) &
         (df3['foot'].isin(selected_foot)) &  # Filter for foot
-        (df3['Aerial duels won, %'] >= 0) &  # Filter for Aerial duels won, %
-        (df3['Aerial duels won, %'] <= 100)  # Assuming percentage is between 0 and 100
+        (df3['Aerial duels won, %'] >= aerial_duels_range[0]) &  # Filter for Aerial duels won, %
+        (df3['Aerial duels won, %'] <= aerial_duels_range[1])  # Assuming percentage is between 0 and 100
     ]
 
     # Sort the filtered DataFrame by "Stoke Score" column in descending order
