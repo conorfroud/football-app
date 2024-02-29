@@ -819,7 +819,7 @@ def stoke_score_wyscout(df3):
     # Update the selected columns to include 'Score Type'
     selected_columns = score_type_column_mapping.get(selected_score_type, [])
 
-    # Modify the filtering condition to include selected primary positions
+     # Modify the filtering condition to include selected primary positions
     filtered_df = df3[
         (df3['League'].isin(selected_leagues)) &
         (df3['Score Type'] == selected_score_type) &
@@ -827,10 +827,15 @@ def stoke_score_wyscout(df3):
         (df3['Age'] <= age_range[1]) &
         (df3['Stoke Score'] >= stoke_range[0]) &
         (df3['Stoke Score'] <= stoke_range[1]) &
-        (df3['foot'].isin(selected_foot)) &  # Filter for foot
-        (df3['Aerial duels won, %'] >= aerial_duels_range[0]) &  # Filter for Aerial duels won, %
-        (df3['Aerial duels won, %'] <= aerial_duels_range[1])  # Assuming percentage is between 0 and 100
+        (df3['foot'].isin(selected_foot))  # Filter for foot
     ]
+
+    # Filter for Aerial duels won, % only if the selected position is Centre Back
+    if selected_score_type == 'Centre Back':
+        filtered_df = filtered_df[
+            (filtered_df['Aerial duels won, %'] >= aerial_duels_range[0]) &
+            (filtered_df['Aerial duels won, %'] <= aerial_duels_range[1])
+        ]
 
     # Sort the filtered DataFrame by "Stoke Score" column in descending order
     filtered_df = filtered_df.sort_values(by='Stoke Score', ascending=False)
