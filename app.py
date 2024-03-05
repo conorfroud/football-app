@@ -551,7 +551,7 @@ def comparison_tab(df):
     selected_players = st.sidebar.multiselect("Select Players", df["Player Name"])
     
     # Add a filter for Player Season Minutes with a default minimum value of 500 minutes
-    min_minutes = st.sidebar.slider("Minimum Player Season Minutes", min_value=0, max_value=df["Player Season Minutes"].max(), value=500)
+    min_minutes = st.sidebar.slider("Minimum Player Season Minutes", min_value=0, max_value=int(df["Player Season Minutes"].max()), value=500)
     
     # Sidebar: Metric selection
     selected_metrics = st.sidebar.multiselect("Select Metrics", df.columns[1:])
