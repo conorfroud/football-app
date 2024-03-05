@@ -161,6 +161,8 @@ def main_tab(df2):
         
 def about_tab(df2):
 
+    df2 = df2[df2['League'] != 'Band 2 Leagues']
+
     # Define the allowed score types
     allowed_score_types = ["Striker", "Winger", "Attacking Midfield", "Central Midfield", "Left Back", "Right Back", "Centre Back", "Stretch 9"]
 
@@ -861,7 +863,7 @@ df2 = pd.read_csv("championshipscores.csv")
 df3 = pd.read_csv("nonpriorityleaguesdata.csv")
 
 # Create the navigation menu in the sidebar
-selected_tab = st.sidebar.radio("Navigation", ["Stoke Score", "Player Radar Single", "Scatter Plot", "Multi Player Comparison Tab", "Similarity Score", "Stat Search", "Stoke Score - Wyscout"])
+selected_tab = st.sidebar.radio("Navigation", ["Stoke Score", "Player Radar Single", "Player Radar Comparison", "Scatter Plot", "Multi Player Comparison Tab", "Similarity Score", "Stat Search", "Stoke Score - Wyscout"])
 
 # Based on the selected tab, display the corresponding content
 if selected_tab == "Stoke Score":
