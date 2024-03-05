@@ -551,8 +551,7 @@ def comparison_tab(df):
     selected_players = st.sidebar.multiselect("Select Players", df["Player Name"])
     
     # Add a filter for Player Season Minutes with a default minimum value of 500 minutes
-    min_minutes = st.sidebar.number_input("Minimum Player Season Minutes", value=500, min_value=0)
-    filtered_df = df[df["Player Season Minutes"] >= min_minutes]
+    min_minutes = st.sidebar.slider("Minimum Player Season Minutes", min_value=0, max_value=df["Player Season Minutes"].max(), value=500)
     
     # Sidebar: Metric selection
     selected_metrics = st.sidebar.multiselect("Select Metrics", df.columns[1:])
@@ -572,12 +571,15 @@ def comparison_tab(df):
         return ['background-color: #00CD00' if v else '' for v in is_best]
 
     # Create a new DataFrame for calculated totals
-    calculated_df = filtered_df.copy()
+    calculated_df = df.copy()
+
+    # Filter DataFrame based on selected players and minimum minutes
+    filtered_df = calculated_df[(calculated_df["Player Name"].isin(selected_players)) & (calculated_df["Player Season Minutes"] >= min_minutes)]
 
     # Calculate totals if the "Total" checkbox is selected
     if total_option:
         selected_metrics_without_minutes = [metric for metric in selected_metrics]
-        calculated_df[selected_metrics_without_minutes] = calculated_df[selected_metrics_without_minutes].multiply((calculated_df["Player Season Minutes"]/90), axis="index")
+        filtered_df[selected_metrics_without_minutes] = filtered_df[selected_metrics_without_minutes].multiply((filtered_df["Player Season Minutes"]/90), axis="index")
 
     # Display the table with conditional formatting
     if selected_metrics:
@@ -586,7 +588,7 @@ def comparison_tab(df):
         else:
             selected_columns =  ["Player Name"] + ["Player Season Minutes"] + ["Team"] + selected_metrics
             if total_option:
-                formatted_df = calculated_df[selected_columns].copy()
+                formatted_df = filtered_df[selected_columns].copy()
             else:
                 formatted_df = filtered_df[selected_columns].copy()
             formatted_df = formatted_df.style.apply(highlight_best_player, subset=selected_metrics)
