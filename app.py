@@ -550,6 +550,10 @@ def comparison_tab(df):
     # Filter the DataFrame based on selected players
     selected_players = st.sidebar.multiselect("Select Players", df["Player Name"])
     
+    # Add a filter for Player Season Minutes with a default minimum value of 500 minutes
+    min_minutes = st.sidebar.number_input("Minimum Player Season Minutes", value=500, min_value=0)
+    filtered_df = df[df["Player Season Minutes"] >= min_minutes]
+    
     # Sidebar: Metric selection
     selected_metrics = st.sidebar.multiselect("Select Metrics", df.columns[1:])
 
@@ -562,8 +566,6 @@ def comparison_tab(df):
     # Remove excluded metrics from selected metrics if total option is selected
     if total_option:
         selected_metrics = [metric for metric in selected_metrics if metric not in exclude_from_total]
-
-    filtered_df = df[df["Player Name"].isin(selected_players)]
 
     def highlight_best_player(s):
         is_best = s == s.max()
