@@ -609,6 +609,9 @@ def rescale_similarity(x, max_val):
     return 100 - x * (100 / max_val)
     
 def player_similarity_app(df2):
+    # Define columns_to_compare globally
+    global columns_to_compare
+
     # Add a sidebar dropdown for selecting a player name
     player_name = st.sidebar.selectbox("Select a player's name:", df2['Player Name'].unique())
     
@@ -665,12 +668,18 @@ def player_similarity_app(df2):
         elif position_to_compare == 'Stretch 9':
             columns_to_compare = ['Player Name', 'Team', 'Age', 'League', 'Player Season Minutes', 'xG (S9)', 'Non-Penalty Goals (S9)', 'Shots (S9)', 'OBV Shot (S9)', 'Open Play xA (S9)', 'OBV Dribble & Carry (S9)', 'PAdj Pressures (S9)', 'Aerial Wins (S9)', 'Aerial Win % (S9)', 'Average Distance (S9)', 'Top 5 PSV-99 (S9)', 'Runs in Behind (S9)', 'Threat of Runs in Behind (S9)']
         elif position_to_compare == 'Centre Back':
-            columns_to_compare = ['Player Name', 'Team', 'Age', 'League', 'Player Season Minutes', 'Top 5 PSV-99 (CB)',	'Aerial Win % (CB)', 'Aerial Wins (CB)', 'OBV Pass (CB)', 'OBV Dribble & Carry (CB)', 'OBV Defensive Action (CB)', 'Deep Progressions (CB)', 'PAdj Tackles & Interceptions (CB)', 'Tackle / Dribbled Past % (CB)', 'Blocks per Shot (CB)', 'Pressure Change in Passing % (CB)']
+            columns_to_compare = ['Player Name', 'Team', 'Age', 'League', 'Player Season Minutes', 'Top 5 PSV-99 (CB)', 'Aerial Win % (CB)', 'Aerial Wins (CB)', 'OBV Pass (CB)', 'OBV Dribble & Carry (CB)', 'OBV Defensive Action (CB)', 'Deep Progressions (CB)', 'PAdj Tackles & Interceptions (CB)', 'Tackle / Dribbled Past % (CB)', 'Blocks per Shot (CB)', 'Pressure Change in Passing % (CB)']
         elif position_to_compare == 'Left Back':
             columns_to_compare = ['Player Name', 'Team', 'Age', 'League', 'Player Season Minutes', 'Average Distance (LB)', 'Top 5 PSV-99 (LB)', 'OBV Defensive Action (LB)', 'OBV Dribble & Carry (LB)', 'Tackle/Dribbled Past (LB)', 'Open Play xA (LB)', 'Successful Crosses (LB)', 'Dribbled Past (LB)', 'Successful Dribbles (LB)', 'OBV Pass (LB)', 'PAdj Tackles & Interceptions (LB)', 'Aerial Win % (LB)']
         elif position_to_compare == 'Right Back':
             columns_to_compare = ['Player Name', 'Team', 'Age', 'League', 'Player Season Minutes', 'Average Distance (RB)', 'Top 5 PSV-99 (RB)', 'OBV Defensive Action (RB)', 'OBV Dribble & Carry (RB)', 'Tackle/Dribbled Past (RB)', 'Open Play xA (RB)', 'Successful Crosses (RB)', 'Dribbled Past (RB)', 'Successful Dribbles (RB)', 'OBV Pass (RB)', 'PAdj Tackles & Interceptions (RB)', 'Aerial Win % (RB)']
-        
+
+        # Add sliders for adjusting feature importance
+        feature_importance = {}
+        st.sidebar.header("Feature Importance")
+        for column in columns_to_compare[6:]:
+            feature_importance[column] = st.sidebar.slider(f"Importance of {column}:", min_value=0.0, max_value=1.0, value=0.5)
+
         # Calculate similarity scores for all players within the age, minutes, and league bracket
         similarities = {}
         reference_player_data = df2[(df2['Player Name'] == reference_player) & (df2['Score Type'] == position_to_compare)].iloc[0]
@@ -691,7 +700,8 @@ def player_similarity_app(df2):
                 similarity_score = calculate_similarity(
                     reference_player_data,
                     player,
-                    columns_to_compare[6:]  # Exclude the first three columns (Player Name, Player Club, Age)
+                    columns_to_compare[6:],  # Exclude the first three columns (Player Name, Player Club, Age)
+                    feature_importance  # Pass feature importance to calculate_similarity
                 )
                 similarities[player['Player Name']] = similarity_score
 
