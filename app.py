@@ -599,15 +599,14 @@ def comparison_tab(df):
     else:
         st.warning("Select at least one metric to compare.")
 
-def calculate_similarity(player1, player2, columns):
-    metrics1 = player1[columns].fillna(0).values
-    metrics2 = player2[columns].fillna(0).values
+def calculate_similarity(player1, player2, columns, feature_importance):
+    metrics1 = player1[columns].fillna(0).values * np.array([feature_importance[col] for col in columns])
+    metrics2 = player2[columns].fillna(0).values * np.array([feature_importance[col] for col in columns])
     return np.linalg.norm(metrics1 - metrics2)
 
-# Add a function for rescaling similarity scores
 def rescale_similarity(x, max_val):
     return 100 - x * (100 / max_val)
-    
+
 def player_similarity_app(df2):
     # Define columns_to_compare globally
     global columns_to_compare
