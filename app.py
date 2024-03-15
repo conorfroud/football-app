@@ -881,14 +881,12 @@ def stoke_score_wyscout(df3):
 # Function to read data from Google Sheets and display it
 def display_data():
     # Create a connection object.
-    conn = st.connection("gsheets", type=GSheetsConnection)
+    url = "https://docs.google.com/spreadsheets/d/10_uIbAH8t-qM74VgWtxPuA363PNpj22sj5h9TULl5_Q/edit#gid=0"
 
-    # Read data from Google Sheets
-    df = conn.read()
+    conn = st.experimental_connection("gsheets", type=GSheetsConnection)
 
-    # Print results.
-    for row in df.itertuples():
-        st.write(f"{row.name} has a :{row.pet}:")
+    data = conn.read(spreadsheet=url, usecols=[0,1])
+    st.dataframe(data)
         
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
