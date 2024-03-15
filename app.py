@@ -885,16 +885,19 @@ def display_data():
 
     conn = st.connection("gsheets", type=GSheetsConnection)
 
-    data = conn.read(spreadsheet=url, usecols=[1, 2, 9, 22, 40, 41])
+    data = conn.read(spreadsheet=url)
 
-    # Sidebar dropdown filters
-    selected_columns = st.sidebar.multiselect("Select Columns", data.columns.tolist())
+    # Sidebar dropdown filter for Position column
+    positions = data['Position'].unique().tolist()
+    selected_position = st.sidebar.selectbox("Filter by Position", ["All"] + positions)
 
-    if selected_columns:
-        filtered_data = data[selected_columns]
-        st.dataframe(filtered_data.head(100))
+    # Apply filter if position is selected
+    if selected_position != "All":
+        filtered_data = data[data['Position'] == selected_position]
     else:
-        st.warning("Please select at least one column.")
+        filtered_data = data
+
+    st.dataframe(filtered_data.head(100))
         
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
