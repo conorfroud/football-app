@@ -885,7 +885,7 @@ def display_data():
 
     conn = st.connection("gsheets", type=GSheetsConnection)
 
-    data = conn.read(spreadsheet=url)
+    data = conn.read(spreadsheet=url, usecols=[1, 2, 9, 22, 40, 41])
 
     # Sidebar dropdown filter for Position column
     positions = data['Position'].unique().tolist()
