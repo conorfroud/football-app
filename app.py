@@ -886,7 +886,15 @@ def display_data():
     conn = st.connection("gsheets", type=GSheetsConnection)
 
     data = conn.read(spreadsheet=url, usecols=[1, 2, 9, 22, 40, 41])
-    st.dataframe(data.head(100))
+
+    # Sidebar dropdown filters
+    selected_columns = st.sidebar.multiselect("Select Columns", data.columns.tolist())
+
+    if selected_columns:
+        filtered_data = data[selected_columns]
+        st.dataframe(filtered_data.head(100))
+    else:
+        st.warning("Please select at least one column.")
         
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
