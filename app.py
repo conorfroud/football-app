@@ -885,7 +885,7 @@ def display_data():
 
     conn = st.connection("gsheets", type=GSheetsConnection)
 
-    data = conn.read(spreadsheet=url, usecols=[1, 2, 24])
+    data = conn.read(spreadsheet=url, usecols=[1, 2, 22])
     st.dataframe(data.head(100))
         
 # Load the DataFrame
@@ -894,7 +894,7 @@ df2 = pd.read_csv("championshipscores.csv")
 df3 = pd.read_csv("nonpriorityleaguesdata.csv")
 
 # Create the navigation menu in the sidebar
-selected_tab = st.sidebar.radio("Navigation", ["Stoke Score", "Player Radar Single", "Player Radar Comparison", "Scatter Plot", "Multi Player Comparison Tab", "Similarity Score", "Stat Search", "Stoke Score - Wyscout", "Google Sheets App"])
+selected_tab = st.sidebar.radio("Navigation", ["Stoke Score", "Player Radar Single", "Player Radar Comparison", "Scatter Plot", "Multi Player Comparison Tab", "Similarity Score", "Stat Search", "Stoke Score - Wyscout", "Player Database"])
 
 # Based on the selected tab, display the corresponding content
 if selected_tab == "Stoke Score":
@@ -911,7 +911,7 @@ if selected_tab == "Stat Search":
     player_stat_search(df)
 if selected_tab == "Stoke Score - Wyscout":
     stoke_score_wyscout(df3)
-if selected_tab == "Google Sheets App":
+if selected_tab == "Player Database":
     display_data()
 elif selected_tab == "Multi Player Comparison Tab":
     comparison_tab(df)
