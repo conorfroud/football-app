@@ -877,6 +877,18 @@ def stoke_score_wyscout(df3):
             file_name="filtered_data.csv",
             on_click=None,  # You can add a function to handle click events if needed
         )
+
+# Function to read data from Google Sheets and display it
+def display_data():
+    # Create a connection object.
+    conn = st.connection("gsheets", type=GSheetsConnection)
+
+    # Read data from Google Sheets
+    df = conn.read()
+
+    # Print results.
+    for row in df.itertuples():
+        st.write(f"{row.name} has a :{row.pet}:")
         
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
@@ -901,5 +913,7 @@ if selected_tab == "Stat Search":
     player_stat_search(df)
 if selected_tab == "Stoke Score - Wyscout":
     stoke_score_wyscout(df3)
+if selected_tab == "Google Sheets App":
+    display_data()
 elif selected_tab == "Multi Player Comparison Tab":
     comparison_tab(df)
