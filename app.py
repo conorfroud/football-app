@@ -879,9 +879,9 @@ def stoke_score_wyscout(df3):
         )
 
 # Function to read data from Google Sheets and display it
-def display_data(10_uIbAH8t-qM74VgWtxPuA363PNpj22sj5h9TULl5_Q):
+def display_data("10_uIbAH8t-qM74VgWtxPuA363PNpj22sj5h9TULl5_Q"):
     # Create a connection object.
-    conn = st.connection("gsheets", type=GSheetsConnection, spreadsheet_id=10_uIbAH8t-qM74VgWtxPuA363PNpj22sj5h9TULl5_Q)
+    conn = st.connection("gsheets", type=GSheetsConnection, spreadsheet_id="10_uIbAH8t-qM74VgWtxPuA363PNpj22sj5h9TULl5_Q")
 
     # Read data from Google Sheets
     df = conn.read()
