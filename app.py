@@ -164,7 +164,7 @@ def about_tab(df2):
     df2 = df2[df2['League'] != 'Band 2 Leagues']
 
     # Define the allowed score types
-    allowed_score_types = ["Striker", "Winger", "Attacking Midfield", "Central Midfield", "Left Back", "Right Back", "Centre Back", "Stretch 9"]
+    allowed_score_types = ["Striker", "Winger", "Attacking Midfield", "Central Midfield", "Defensive Midfield", "Left Back", "Right Back", "Centre Back", "Stretch 9"]
 
     # Select player 1
     selected_player_1 = st.sidebar.selectbox(
@@ -227,6 +227,13 @@ def about_tab(df2):
 
         columns_2 = ["Player Name", "xG (8)", "Non-Penalty Goals (8)", "OBV Pass (8)", "Open Play xA (8)", "Deep Progressions (8)", "Successful Dribbles (8)", "OBV Dribble & Carry (8)", "Average Distance (8)", "Top 5 PSV-99 (8)"]
         plot_title_2 = f"Attacking Midfield Metric Percentiles for {selected_player_2}"
+
+    elif selected_profile == "Defensive Midfield":
+        columns_1 = ["Player Name", "Deep Progressions (6)", "OBV Pass (6)", "OBV Dribble & Carry (6)", "Pass Forward % (6)", "PAdj Pressures (6)", "Pressure Regains (6)", "PAdj Tackles & Interceptions (6)", "Tackle/Dribbled Past % (6)", "OBV Defensive Action (6)", "Ball Recoveries (6)", "Average Distance (6)", "Top 5 PSV-99 (6)"]
+        plot_title_1 = f"Defensive Midfield Metric Percentiles for {selected_player_1}"
+
+        columns_2 = ["Player Name", "Deep Progressions (6)", "OBV Pass (6)", "OBV Dribble & Carry (6)", "Pass Forward % (6)", "PAdj Pressures (6)", "Pressure Regains (6)", "PAdj Tackles & Interceptions (6)", "Tackle/Dribbled Past % (6)", "OBV Defensive Action (6)", "Ball Recoveries (6)", "Average Distance (6)", "Top 5 PSV-99 (6)"]
+        plot_title_2 = f"Defensive Midfield Metric Percentiles for {selected_player_2}"
 
     elif selected_profile == "Left Back":
         columns_1 = ["Player Name", "PAdj Tackles & Interceptions (LB)", "Tackle/Dribbled Past (LB)", "OBV Defensive Action (LB)", "Dribbled Past (LB)", "OBV Dribble & Carry (LB)", "Successful Crosses (LB)", "Open Play xA (LB)", "OBV Pass (LB)", "Aerial Win % (LB)", "Average Distance (LB)", "Top 5 PSV-99 (LB)"]
