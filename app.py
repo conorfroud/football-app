@@ -885,8 +885,8 @@ def display_data():
 
     conn = st.connection("gsheets", type=GSheetsConnection)
 
-    data = conn.read(spreadsheet=url, usecols=[1, 2])
-    st.dataframe(data)
+    data = conn.read(spreadsheet=url, usecols=[0,1])
+    st.dataframe(data.head(100))
         
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
