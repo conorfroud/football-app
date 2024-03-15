@@ -885,7 +885,7 @@ def display_data():
 
     conn = st.connection("gsheets", type=GSheetsConnection)
 
-    data = conn.read(spreadsheet=url, usecols=[1, 2, 9, 22, 41])
+    data = conn.read(spreadsheet=url, usecols=[1, 2, 9, 22, 40, 41])
     st.dataframe(data.head(100))
         
 # Load the DataFrame
