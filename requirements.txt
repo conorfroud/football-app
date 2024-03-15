@@ -8,4 +8,4 @@ streamlit
 mplsoccer
 scikit-learn
 numpy
-streamlit_gsheets
+st-gsheets-connection
