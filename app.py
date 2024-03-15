@@ -229,10 +229,10 @@ def about_tab(df2):
         plot_title_2 = f"Attacking Midfield Metric Percentiles for {selected_player_2}"
 
     elif selected_profile == "Defensive Midfield":
-        columns_1 = ["Player Name", "Deep Progressions (6)", "OBV Pass (6)", "OBV Dribble & Carry (6)", "Pass Forward % (6)", "PAdj Pressures (6)", "Pressure Regains (6)", "PAdj Tackles & Interceptions (6)", "Tackle/Dribbled Past % (6)", "OBV Defensive Action (6)", "Ball Recoveries (6)", "Average Distance (6)", "Top 5 PSV-99 (6)"]
+        columns_1 = ["Player Name", "OBV Pass (6)", "OBV Dribble & Carry (6)", "Pass Forward % (6)", "PAdj Pressures (6)", "PAdj Tackles & Interceptions (6)", "Tackle/Dribbled Past % (6)", "Ball Recoveries (6)", "Average Distance (6)", "Top 5 PSV-99 (6)"]
         plot_title_1 = f"Defensive Midfield Metric Percentiles for {selected_player_1}"
 
-        columns_2 = ["Player Name", "Deep Progressions (6)", "OBV Pass (6)", "OBV Dribble & Carry (6)", "Pass Forward % (6)", "PAdj Pressures (6)", "Pressure Regains (6)", "PAdj Tackles & Interceptions (6)", "Tackle/Dribbled Past % (6)", "OBV Defensive Action (6)", "Ball Recoveries (6)", "Average Distance (6)", "Top 5 PSV-99 (6)"]
+        columns_2 = ["Player Name", "OBV Pass (6)", "OBV Dribble & Carry (6)", "Pass Forward % (6)", "PAdj Pressures (6)", "PAdj Tackles & Interceptions (6)", "Tackle/Dribbled Past % (6)", "Ball Recoveries (6)", "Average Distance (6)", "Top 5 PSV-99 (6)"]
         plot_title_2 = f"Defensive Midfield Metric Percentiles for {selected_player_2}"
 
     elif selected_profile == "Left Back":
