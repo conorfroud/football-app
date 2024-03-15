@@ -897,7 +897,7 @@ def display_data():
     else:
         filtered_data = data
 
-    st.dataframe(filtered_data.head(100))
+    st.dataframe(filtered_data.head(500))
         
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
