@@ -617,7 +617,14 @@ def rescale_similarity(x, max_val):
 
 def player_similarity_app(df2):
     # Define columns_to_compare globally
-    global columns_to_compare
+    global base_columns_to_compare
+
+    # Dictionary to map positions to selectable additional metrics
+    position_additional_metrics = {
+        'Striker': ['xG (ST)'],
+        'Winger': ['xG (W)'],
+        # Add more positions and their corresponding additional metrics if needed
+    }
 
     # Add a sidebar dropdown for selecting a player name
     player_name = st.sidebar.selectbox("Select a player's name:", df2['Player Name'].unique())
@@ -661,17 +668,21 @@ def player_similarity_app(df2):
         # Choose the reference player
         reference_player = player_name
 
-        # Define columns based on the selected position
+        # Define base columns based on the selected position
         if position_to_compare == 'Striker':
             base_columns_to_compare = ['Player Name', 'Team', 'Age', 'League', 'Player Season Minutes', 'xG (ST)', 'Non-Penalty Goals (ST)', 'Shots (ST)', 'OBV Shot (ST)', 'Open Play xA (ST)', 'Aerial Wins (ST)', 'Average Distance Percentile', 'Top 5 PSV-99 Percentile']
-            additional_metrics = st.sidebar.multiselect("Select additional metrics for Striker:", ['xG (ST)'])
         elif position_to_compare == 'Winger':
             base_columns_to_compare = ['Player Name', 'Team', 'Age', 'League', 'Player Season Minutes', 'xG (W)', 'Non-Penalty Goals (W)', 'Shots (W)', 'Open Play xA (W)', 'OBV Pass (W)', 'Successful Dribbles (W)', 'OBV Dribble & Carry (W)', 'Distance (W)', 'Top 5 PSV (W)']
-            additional_metrics = st.sidebar.multiselect("Select additional metrics for Winger:", ['xG (W)'])
         # Add more conditions for other positions if needed
 
+        # Get additional metrics for the selected position
+        additional_metrics = position_additional_metrics.get(position_to_compare, [])
+
+        # Add a multiselect dropdown for selecting additional metrics
+        additional_metrics_selection = st.sidebar.multiselect("Select additional metrics:", additional_metrics, [])
+
         # Combine base columns and additional metrics
-        columns_to_compare = base_columns_to_compare + additional_metrics
+        columns_to_compare = base_columns_to_compare + additional_metrics_selection
 
         # Add a multiselect dropdown for adjusting feature importance
         feature_importance = {}
@@ -728,7 +739,7 @@ def player_similarity_app(df2):
         st.dataframe(similar_players_df.head(250))
     else:
         st.error("Player not found in the selected position.")
-
+        
 def player_stat_search(df):
 
     # Sidebar for filtering by 'minutes' played
