@@ -672,24 +672,21 @@ def player_similarity_app(df2):
         # Choose the reference player
         reference_player = player_name
 
-        # Get base columns for the selected position
-        base_columns_to_compare = position_base_metrics.get(position_to_compare, [])
-
         # Get additional metrics for the selected position
         additional_metrics = position_additional_metrics.get(position_to_compare, [])
 
-        # Combine base columns and additional metrics
-        all_metrics = base_columns_to_compare + additional_metrics
+        # Get base metrics for the selected position
+        base_metrics = position_base_metrics.get(position_to_compare, [])
 
-        # Add a multiselect dropdown for selecting metrics
-        selected_metrics = st.sidebar.multiselect("Select metrics:", all_metrics, default=all_metrics)
+        # Add a multiselect dropdown for selecting additional metrics
+        all_metrics = base_metrics + additional_metrics
+        selected_metrics = st.sidebar.multiselect("Select metrics:", all_metrics, default=base_metrics)
 
         # Add a multiselect dropdown for adjusting feature importance
         feature_importance = {}
         st.sidebar.header("Feature Importance")
-        for metric in selected_metrics:
-            key = f"{position_to_compare}-{metric}"
-            feature_importance[metric] = st.sidebar.slider(f"Importance of {metric}:", min_value=0.0, max_value=1.0, value=0.5, key=key)
+        for metric in selected_metrics[len(base_metrics):]:
+            feature_importance[metric] = st.sidebar.slider(f"Importance of {metric}:", min_value=0.0, max_value=1.0, value=0.5)
 
         # Calculate similarity scores for all players within the age, minutes, and league bracket
         similarities = {}
@@ -711,7 +708,7 @@ def player_similarity_app(df2):
                 similarity_score = calculate_similarity(
                     reference_player_data,
                     player,
-                    selected_metrics,  # Use selected metrics for similarity calculation
+                    selected_metrics[6:],  # Exclude the first three columns (Player Name, Team, Age)
                     feature_importance  # Pass feature importance to calculate_similarity
                 )
                 similarities[player['Player Name']] = similarity_score
@@ -740,7 +737,7 @@ def player_similarity_app(df2):
         st.dataframe(similar_players_df.head(250))
     else:
         st.error("Player not found in the selected position.")
-        
+ 
 def player_stat_search(df):
 
     # Sidebar for filtering by 'minutes' played
