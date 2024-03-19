@@ -678,20 +678,17 @@ def player_similarity_app(df2):
         # Get additional metrics for the selected position
         additional_metrics = position_additional_metrics.get(position_to_compare, [])
 
-        # Add a multiselect dropdown for selecting base metrics
-        base_metrics_selection = st.sidebar.multiselect("Select base metrics:", base_columns_to_compare, default=base_columns_to_compare)
+        # Combine base columns and additional metrics
+        all_metrics = base_columns_to_compare + additional_metrics
 
-        # Add a multiselect dropdown for selecting additional metrics
-        additional_metrics_selection = st.sidebar.multiselect("Select additional metrics:", additional_metrics, [])
-
-        # Combine base columns, additional metrics, and base metrics
-        columns_to_compare = base_metrics_selection + additional_metrics_selection
+        # Add a multiselect dropdown for selecting metrics
+        selected_metrics = st.sidebar.multiselect("Select metrics:", all_metrics, default=all_metrics)
 
         # Add a multiselect dropdown for adjusting feature importance
         feature_importance = {}
         st.sidebar.header("Feature Importance")
-        for column in columns_to_compare[6:]:
-            feature_importance[column] = st.sidebar.slider(f"Importance of {column}:", min_value=0.0, max_value=1.0, value=0.5)
+        for metric in selected_metrics:
+            feature_importance[metric] = st.sidebar.slider(f"Importance of {metric}:", min_value=0.0, max_value=1.0, value=0.5)
 
         # Calculate similarity scores for all players within the age, minutes, and league bracket
         similarities = {}
@@ -713,7 +710,7 @@ def player_similarity_app(df2):
                 similarity_score = calculate_similarity(
                     reference_player_data,
                     player,
-                    columns_to_compare[6:],  # Exclude the first three columns (Player Name, Player Club, Age)
+                    selected_metrics,  # Use selected metrics for similarity calculation
                     feature_importance  # Pass feature importance to calculate_similarity
                 )
                 similarities[player['Player Name']] = similarity_score
