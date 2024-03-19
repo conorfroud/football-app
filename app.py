@@ -620,6 +620,15 @@ def player_similarity_app(df2):
     position_additional_metrics = {
         'Striker': ['xG (ST)'],
         'Winger': ['xG (W)'],
+        'Attacking Midfield': ['xG (CAM)'],
+        'Central Midfield': ['xG (8)'],
+        'Defensive Midfield': [],
+        'Left Back': [],
+        'Right Back': [],
+        'Centre Back': [],
+        'Stretch 9': ['xG (S9)']
+    }
+
         # Add more positions and their corresponding additional metrics if needed
     }
 
