@@ -684,7 +684,7 @@ def player_similarity_app(df2):
         # Add a multiselect dropdown for adjusting feature importance
         feature_importance = {}
         st.sidebar.header("Feature Importance")
-        selected_features = st.sidebar.multiselect("Select features for similarity calculation:", columns_to_compare[6:], default=columns_to_compare[6:])
+        selected_features = st.sidebar.multiselect("Select features for similarity calculation:", columns_to_compare[5:], default=columns_to_compare[5:])
         for column in selected_features:
             feature_importance[column] = st.sidebar.slider(f"Importance of {column}:", min_value=0.0, max_value=1.0, value=0.5)
 
