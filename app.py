@@ -629,9 +629,6 @@ def player_similarity_app(df2):
         'Stretch 9': ['xG (S9)']
     }
 
-        # Add more positions and their corresponding additional metrics if needed
-    }
-
     # Dictionary to map positions to base metrics
     position_base_metrics = {
         'Striker': ['Non-Penalty Goals (ST)', 'Shots (ST)', 'OBV Shot (ST)', 'Open Play xA (ST)', 'Aerial Wins (ST)', 'Average Distance Percentile', 'Top 5 PSV-99 Percentile'],
