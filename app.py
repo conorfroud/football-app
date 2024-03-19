@@ -608,17 +608,14 @@ def comparison_tab(df):
         st.warning("Select at least one metric to compare.")
 
 def calculate_similarity(player1, player2, columns, feature_importance):
-    metrics1 = player1[columns].fillna(0).values * np.array([feature_importance[col] for col in columns])
-    metrics2 = player2[columns].fillna(0).values * np.array([feature_importance[col] for col in columns])
+    metrics1 = player1[columns].fillna(0).values * np.array([feature_importance.get(col, 0.5) for col in columns])
+    metrics2 = player2[columns].fillna(0).values * np.array([feature_importance.get(col, 0.5) for col in columns])
     return np.linalg.norm(metrics1 - metrics2)
 
 def rescale_similarity(x, max_val):
     return 100 - x * (100 / max_val)
 
 def player_similarity_app(df2):
-    # Define columns_to_compare globally
-    global base_columns_to_compare
-
     # Dictionary to map positions to selectable additional metrics
     position_additional_metrics = {
         'Striker': ['xG (ST)'],
@@ -668,12 +665,8 @@ def player_similarity_app(df2):
         # Choose the reference player
         reference_player = player_name
 
-        # Define base columns based on the selected position
-        if position_to_compare == 'Striker':
-            base_columns_to_compare = ['Player Name', 'Team', 'Age', 'League', 'Player Season Minutes', 'xG (ST)', 'Non-Penalty Goals (ST)', 'Shots (ST)', 'OBV Shot (ST)', 'Open Play xA (ST)', 'Aerial Wins (ST)', 'Average Distance Percentile', 'Top 5 PSV-99 Percentile']
-        elif position_to_compare == 'Winger':
-            base_columns_to_compare = ['Player Name', 'Team', 'Age', 'League', 'Player Season Minutes', 'xG (W)', 'Non-Penalty Goals (W)', 'Shots (W)', 'Open Play xA (W)', 'OBV Pass (W)', 'Successful Dribbles (W)', 'OBV Dribble & Carry (W)', 'Distance (W)', 'Top 5 PSV (W)']
-        # Add more conditions for other positions if needed
+        # Get base columns for the selected position
+        base_columns_to_compare = get_base_columns(position_to_compare)
 
         # Get additional metrics for the selected position
         additional_metrics = position_additional_metrics.get(position_to_compare, [])
@@ -739,6 +732,13 @@ def player_similarity_app(df2):
         st.dataframe(similar_players_df.head(250))
     else:
         st.error("Player not found in the selected position.")
+
+def get_base_columns(position_to_compare):
+    if position_to_compare == 'Striker':
+        return ['Player Name', 'Team', 'Age', 'League', 'Player Season Minutes', 'xG (ST)', 'Non-Penalty Goals (ST)', 'Shots (ST)', 'OBV Shot (ST)', 'Open Play xA (ST)', 'Aerial Wins (ST)', 'Average Distance Percentile', 'Top 5 PSV-99 Percentile']
+    elif position_to_compare == 'Winger':
+        return ['Player Name', 'Team', 'Age', 'League', 'Player Season Minutes', 'xG (W)', 'Non-Penalty Goals (W)', 'Shots (W)', 'Open Play xA (W)', 'OBV Pass (W)', 'Successful Dribbles (W)', 'OBV Dribble & Carry (W)', 'Distance (W)', 'Top 5 PSV (W)']
+    # Add more conditions for other positions if needed
         
 def player_stat_search(df):
 
