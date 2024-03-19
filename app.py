@@ -625,8 +625,8 @@ def player_similarity_app(df2):
 
     # Dictionary to map positions to base metrics
     position_base_metrics = {
-        'Striker': ['Player Name', 'Team', 'Age', 'League', 'Player Season Minutes', 'xG (ST)', 'Non-Penalty Goals (ST)', 'Shots (ST)', 'OBV Shot (ST)', 'Open Play xA (ST)', 'Aerial Wins (ST)', 'Average Distance Percentile', 'Top 5 PSV-99 Percentile'],
-        'Winger': ['Player Name', 'Team', 'Age', 'League', 'Player Season Minutes', 'xG (W)', 'Non-Penalty Goals (W)', 'Shots (W)', 'Open Play xA (W)', 'OBV Pass (W)', 'Successful Dribbles (W)', 'OBV Dribble & Carry (W)', 'Distance (W)', 'Top 5 PSV (W)'],
+        'Striker': ['Non-Penalty Goals (ST)', 'Shots (ST)', 'OBV Shot (ST)', 'Open Play xA (ST)', 'Aerial Wins (ST)', 'Average Distance Percentile', 'Top 5 PSV-99 Percentile'],
+        'Winger': ['Non-Penalty Goals (W)', 'Shots (W)', 'Open Play xA (W)', 'OBV Pass (W)', 'Successful Dribbles (W)', 'OBV Dribble & Carry (W)', 'Distance (W)', 'Top 5 PSV (W)'],
         # Add more positions and their corresponding base metrics if needed
     }
 
@@ -708,7 +708,7 @@ def player_similarity_app(df2):
                 similarity_score = calculate_similarity(
                     reference_player_data,
                     player,
-                    selected_metrics[6:],  # Exclude the first three columns (Player Name, Team, Age)
+                    selected_metrics,  # Exclude the first three columns (Player Name, Team, Age)
                     feature_importance  # Pass feature importance to calculate_similarity
                 )
                 similarities[player['Player Name']] = similarity_score
