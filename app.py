@@ -681,10 +681,11 @@ def player_similarity_app(df2):
         elif position_to_compare == 'Right Back':
             columns_to_compare = ['Player Name', 'Team', 'Age', 'League', 'Player Season Minutes', 'Average Distance (RB)', 'Top 5 PSV-99 (RB)', 'OBV Defensive Action (RB)', 'OBV Dribble & Carry (RB)', 'Tackle/Dribbled Past (RB)', 'Open Play xA (RB)', 'Successful Crosses (RB)', 'Dribbled Past (RB)', 'Successful Dribbles (RB)', 'OBV Pass (RB)', 'PAdj Tackles & Interceptions (RB)', 'Aerial Win % (RB)']
 
-        # Add sliders for adjusting feature importance
+        # Add a multiselect dropdown for adjusting feature importance
         feature_importance = {}
         st.sidebar.header("Feature Importance")
-        for column in columns_to_compare[6:]:
+        selected_features = st.sidebar.multiselect("Select features for similarity calculation:", columns_to_compare[6:], default=columns_to_compare[6:])
+        for column in selected_features:
             feature_importance[column] = st.sidebar.slider(f"Importance of {column}:", min_value=0.0, max_value=1.0, value=0.5)
 
         # Calculate similarity scores for all players within the age, minutes, and league bracket
@@ -707,7 +708,7 @@ def player_similarity_app(df2):
                 similarity_score = calculate_similarity(
                     reference_player_data,
                     player,
-                    columns_to_compare[6:],  # Exclude the first three columns (Player Name, Player Club, Age)
+                    selected_features,  # Use selected features for similarity calculation
                     feature_importance  # Pass feature importance to calculate_similarity
                 )
                 similarities[player['Player Name']] = similarity_score
