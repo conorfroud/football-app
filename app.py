@@ -939,14 +939,13 @@ def streamlit_interface():
     cols = st.columns(num_columns)
     
     with cols[0]:  # Access the first column
+        st.markdown(f"**Team:** {filtered_data['Current Club'].iloc[0]}")
         st.markdown(f"**Position:** {filtered_data['Position'].iloc[0]}")
-        st.markdown(f"**Confidence Score:** {filtered_data['Confidence Score'].iloc[0]:.2f}")  # Assuming it's a float, format to 2 decimal places
         st.markdown(f"**Scout Top 3s:** {filtered_data['Scout Top 3s'].iloc[0]}")
         st.markdown(f"**No. of Reports:** {filtered_data['No. of Reports'].iloc[0]}")
         st.markdown(f"**A Verdicts:** {filtered_data['A Verdicts'].iloc[0]}")
         st.markdown(f"**B Verdicts:** {filtered_data['B Verdicts'].iloc[0]}")
         st.markdown(f"**Average Player Performance:** {filtered_data['Average Player Performance'].iloc[0]}")
-
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
