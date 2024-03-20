@@ -926,12 +926,15 @@ def streamlit_interface():
     conn = st.connection("gsheets", type=GSheetsConnection)
     data = conn.read(spreadsheet=url, usecols=[1, 4, 9, 22, 40, 41])  # Adjust columns accordingly
 
+    # Print out the columns to identify the one containing player names
+    st.write("Columns in the data:", data.columns)
+
     # Sidebar dropdown filter for Player Name
-    player_names = data['Name'].unique().tolist()
+    player_names = data['Player'].unique().tolist()  # Replace 'Player' with the correct column name
     selected_player = st.sidebar.selectbox("Select Player", player_names)
 
     # Filter data based on selected player
-    filtered_data = data[data['Name'] == selected_player]
+    filtered_data = data[data['Player'] == selected_player]
 
     # Display player info card visualization
     st.markdown(f"### Player Info Card: {selected_player}")
@@ -940,7 +943,7 @@ def streamlit_interface():
     st.write(f"**Confidence Score:** {filtered_data['Confidence Score'].iloc[0]}")
     st.write(f"**A Verdicts:** {filtered_data['A Verdicts'].iloc[0]}")
     st.write(f"**B Verdicts:** {filtered_data['B Verdicts'].iloc[0]}")
-    
+   
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
 df2 = pd.read_csv("championshipscores.csv")
