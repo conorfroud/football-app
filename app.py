@@ -917,6 +917,73 @@ def display_data():
         filtered_data = data
 
     st.dataframe(filtered_data.head(500))
+
+def create_profile_card(player_name, age, weight, height, stats, player_image, team_logo):
+    width, height = 1012, 686
+    image = Image.new('RGB', (width, height), 'white')
+    draw = ImageDraw.Draw(image)
+    font = ImageFont.truetype('arial.ttf', size=45)
+    
+    # Add the name
+    draw.text((10, 50), player_name, fill='green', font=font)
+
+    # Add the details
+    font = ImageFont.truetype('arial.ttf', size=35)
+    draw.text((10, 150), f'AGE\n{age}', fill='black', font=font)
+    draw.text((10, 250), f'WEIGHT\n{weight} lbs', fill='black', font=font)
+    draw.text((10, 350), f'HEIGHT\n{height}\'', fill='black', font=font)
+
+    # Adding the stats
+    start_x = 500
+    start_y = 150
+    spacing = 70
+    for stat in stats:
+        draw.text((start_x, start_y), f'{stat[0]}', fill='black', font=font)
+        draw.text((start_x + 300, start_y), f'{stat[1]}', fill='black', font=font)
+        start_y += spacing
+
+    # Paste the player image
+    player_image = Image.open(player_image)
+    image.paste(player_image, (width - 300, 150))
+
+    # Paste the team logo
+    logo = Image.open(team_logo)
+    image.paste(logo, (10, height - 150 - logo.height))
+
+    return image
+
+# Streamlit interface
+st.title('Soccer Player Profile Card Generator')
+
+# File uploader for player image and team logo
+player_img_file = st.file_uploader("Choose a Player Image", type=['png', 'jpg', 'jpeg'])
+team_logo_file = st.file_uploader("Choose a Team Logo", type=['png', 'jpg', 'jpeg'])
+
+# Text input for player details
+player_name = st.text_input('Player Name', 'ADAM THOMAS')
+age = st.text_input('Age', '16')
+weight = st.text_input('Weight', '150')
+height = st.text_input('Height', "5'7\"")
+
+# Placeholder for stats
+stats = [
+    ('Appearances', '19'),
+    ('Goals', '20'),
+    ('Shooting Accuracy', '60%'),
+    ('Passing Accuracy', '75%'),
+    ('Overlapping Run', '25')
+]
+
+if player_img_file and team_logo_file:
+    # Convert the uploaded files to bytes
+    player_img_bytes = Image.open(player_img_file)
+    team_logo_bytes = Image.open(team_logo_file)
+
+    # Generate the profile card
+    result_img = create_profile_card(player_name, age, weight, height, stats, player_img_bytes, team_logo_bytes)
+
+    # Display the profile card
+    st.image(result_img, caption='Player Profile Card')
         
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
@@ -924,7 +991,7 @@ df2 = pd.read_csv("championshipscores.csv")
 df3 = pd.read_csv("nonpriorityleaguesdata.csv")
 
 # Create the navigation menu in the sidebar
-selected_tab = st.sidebar.radio("Navigation", ["Stoke Score", "Player Radar Single", "Player Radar Comparison", "Scatter Plot", "Multi Player Comparison Tab", "Similarity Score", "Stat Search", "Stoke Score - Wyscout", "Player Database"])
+selected_tab = st.sidebar.radio("Navigation", ["Stoke Score", "Player Radar Single", "Player Radar Comparison", "Scatter Plot", "Multi Player Comparison Tab", "Similarity Score", "Stat Search", "Stoke Score - Wyscout", "Player Database", "Player Profile"])
 
 # Based on the selected tab, display the corresponding content
 if selected_tab == "Stoke Score":
@@ -943,5 +1010,7 @@ if selected_tab == "Stoke Score - Wyscout":
     stoke_score_wyscout(df3)
 if selected_tab == "Player Database":
     display_data()
+if selected_tab == "Player Profile":
+    create_profile_card()
 elif selected_tab == "Multi Player Comparison Tab":
     comparison_tab(df)
