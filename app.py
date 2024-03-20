@@ -918,96 +918,36 @@ def display_data():
 
     st.dataframe(filtered_data.head(500))
 
-# Function to create the profile card
-def create_profile_card(player_name, age, weight, height, stats, player_image, team_logo, current_club, position):
-    width, height = 1012, 686
-    image = Image.new('RGB', (width, height), 'white')
-    draw = ImageDraw.Draw(image)
-    font = ImageFont.truetype('arial.ttf', size=45)
-    
-    # Add the name, current club, and position
-    draw.text((10, 50), player_name, fill='green', font=font)
-    draw.text((10, 100), f'Current Club: {current_club}', fill='black', font=font)
-    draw.text((10, 150), f'Position: {position}', fill='black', font=font)
-
-    # Add the details
-    font = ImageFont.truetype('arial.ttf', size=35)
-    draw.text((10, 250), f'AGE\n{age}', fill='black', font=font)
-    draw.text((10, 350), f'WEIGHT\n{weight} lbs', fill='black', font=font)
-    draw.text((10, 450), f'HEIGHT\n{height}\'', fill='black', font=font)
-
-    # Adding the stats
-    start_x = 500
-    start_y = 250
-    spacing = 70
-    for stat in stats:
-        draw.text((start_x, start_y), f'{stat[0]}', fill='black', font=font)
-        draw.text((start_x + 300, start_y), f'{stat[1]}', fill='black', font=font)
-        start_y += spacing
-
-    # Paste the player image
-    player_image = player_image.resize((250, 250))
-    image.paste(player_image, (width - 300, 50))
-
-    # Paste the team logo
-    logo = team_logo.resize((150, 150))
-    image.paste(logo, (10, height - 150 - logo.height))
-
-    return image
-
 # Function for Streamlit interface
 def streamlit_interface():
-    # Streamlit interface
-    st.title('Soccer Player Profile Card Generator')
-
-    # File uploader for player image and team logo
-    player_img_file = st.file_uploader("Choose a Player Image", type=['png', 'jpg', 'jpeg'])
-    team_logo_file = st.file_uploader("Choose a Team Logo", type=['png', 'jpg', 'jpeg'])
-
-    # Text input for player details
-    player_name = st.text_input('Player Name', 'ADAM THOMAS')
-    age = st.text_input('Age', '16')
-    weight = st.text_input('Weight', '150')
-    height = st.text_input('Height', "5'7\"")
-
-    # Placeholder for stats
-    stats = [
-        ('Appearances', '19'),
-        ('Goals', '20'),
-        ('Shooting Accuracy', '60%'),
-        ('Passing Accuracy', '75%'),
-        ('Overlapping Run', '25')
-    ]
 
     # Pull data from Google Sheets
     url = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?usp=sharing"
     conn = st.connection("gsheets", type=GSheetsConnection)
     data = conn.read(spreadsheet=url, usecols=[1, 4, 9, 22, 40, 41])  # Adjust columns accordingly
 
-    # Sidebar dropdown filter for Position column
-    positions = data['Position'].unique().tolist()
-    selected_position = st.sidebar.selectbox("Filter by Position", ["All"] + positions)
+    # Sidebar dropdown filter for Player Name
+    player_names = data['Player Name'].unique().tolist()
+    selected_player = st.sidebar.selectbox("Select Player", player_names)
 
-    # Apply filter if position is selected
-    if selected_position != "All":
-        filtered_data = data[data['Position'] == selected_position]
-    else:
-        filtered_data = data
+    # Filter data based on selected player
+    filtered_data = data[data['Player Name'] == selected_player]
 
-    st.dataframe(filtered_data.head(500))
+    st.dataframe(filtered_data.head(1))
 
     if player_img_file and team_logo_file:
         # Convert the uploaded files to bytes
         player_img_bytes = Image.open(player_img_file)
         team_logo_bytes = Image.open(team_logo_file)
 
-        # Generate the profile card
-        result_img = create_profile_card(player_name, age, weight, height, stats, player_img_bytes, team_logo_bytes,
-                                         filtered_data.iloc[0]['Current Club'], filtered_data.iloc[0]['Position'])
+        # Generate the profile card for the selected player
+        result_img = create_profile_card(selected_player, filtered_data.iloc[0]['Age'], filtered_data.iloc[0]['Weight'], 
+                                         filtered_data.iloc[0]['Height'], filtered_data.iloc[0]['Stats'], player_img_bytes, 
+                                         team_logo_bytes, filtered_data.iloc[0]['Current Club'], filtered_data.iloc[0]['Position'])
 
         # Display the profile card
         st.image(result_img, caption='Player Profile Card')
-        
+ 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
 df2 = pd.read_csv("championshipscores.csv")
