@@ -924,7 +924,7 @@ def streamlit_interface():
     # Pull data from Google Sheets
     url = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?usp=sharing"
     conn = st.connection("gsheets", type=GSheetsConnection)
-    data = conn.read(spreadsheet=url, usecols=[1, 4, 9, 22, 40, 41])  # Adjust columns accordingly
+    data = conn.read(spreadsheet=url)  # Adjust columns accordingly
 
     # Sidebar dropdown filter for Player Name
     player_names = data['Player'].unique().tolist()  # Replace 'Player' with the correct column name
@@ -937,6 +937,7 @@ def streamlit_interface():
     st.markdown(f"### Player Info Card: {selected_player}")
     st.write(f"**Position:** {filtered_data['Position'].iloc[0]}")
     st.write(f"**Confidence Score:** {filtered_data['Confidence Score'].iloc[0]}")
+    st.write(f"**Scout Top 3s:** {filtered_data['Scout Top 3s'].iloc[0]}")
     st.write(f"**A Verdicts:** {filtered_data['A Verdicts'].iloc[0]}")
     st.write(f"**B Verdicts:** {filtered_data['B Verdicts'].iloc[0]}")
    
