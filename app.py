@@ -941,7 +941,7 @@ def streamlit_interface():
     
     with col1:
         # Placeholder for player image or any visual representation
-        st.image("path_to_player_image.jpg", caption=selected_player)
+        st.markdown(f"### Player Info Card: {selected_player}")
 
     with col2:
         st.markdown(f"**Position:** {filtered_data['Position'].iloc[0]}")
