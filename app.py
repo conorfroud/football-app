@@ -918,9 +918,9 @@ def display_data():
 
     st.dataframe(filtered_data.head(500))
 
-# Function for Streamlit interface
-def streamlit_interface():
+import streamlit as st
 
+def streamlit_interface():
     # Pull data from Google Sheets
     url = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?usp=sharing"
     conn = st.connection("gsheets", type=GSheetsConnection)
@@ -934,13 +934,22 @@ def streamlit_interface():
     filtered_data = data[data['Player'] == selected_player]
 
     # Display player info card visualization
-    st.markdown(f"### Player Info Card: {selected_player}")
-    st.write(f"**Position:** {filtered_data['Position'].iloc[0]}")
-    st.write(f"**Confidence Score:** {filtered_data['Confidence Score'].iloc[0]}")
-    st.write(f"**Scout Top 3s:** {filtered_data['Scout Top 3s'].iloc[0]}")
-    st.write(f"**A Verdicts:** {filtered_data['A Verdicts'].iloc[0]}")
-    st.write(f"**B Verdicts:** {filtered_data['B Verdicts'].iloc[0]}")
-   
+    st.markdown(f"### Player Info Card: {selected_player}", unsafe_allow_html=True)
+    
+    # Using columns to create a card-like layout
+    col1, col2 = st.columns([2, 3])
+    
+    with col1:
+        # Placeholder for player image or any visual representation
+        st.image("path_to_player_image.jpg", caption=selected_player)
+
+    with col2:
+        st.markdown(f"**Position:** {filtered_data['Position'].iloc[0]}")
+        st.markdown(f"**Confidence Score:** {filtered_data['Confidence Score'].iloc[0]:.2f}")  # Assuming it's a float, format to 2 decimal places
+        st.markdown(f"**Scout Top 3s:** {filtered_data['Scout Top 3s'].iloc[0]}")
+        st.markdown(f"**A Verdicts:** {filtered_data['A Verdicts'].iloc[0]}")
+        st.markdown(f"**B Verdicts:** {filtered_data['B Verdicts'].iloc[0]}")
+
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
 df2 = pd.read_csv("championshipscores.csv")
