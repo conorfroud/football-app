@@ -700,6 +700,16 @@ def player_similarity_app(df2):
         for metric in selected_metrics[len(base_metrics):]:
             feature_importance[metric] = st.sidebar.slider(f"Importance of {metric}:", min_value=0.0, max_value=1.0, value=0.5)
 
+        # Add a multiselect dropdown for selecting additional metrics
+        all_metrics = base_metrics + additional_metrics
+        selected_metrics = st.sidebar.multiselect("Select metrics:", all_metrics, default=base_metrics)
+
+        # Add a multiselect dropdown for adjusting feature importance
+        feature_importance = {}
+        st.sidebar.header("Feature Importance")
+        for metric in selected_metrics[len(base_metrics):]:
+            feature_importance[metric] = st.sidebar.slider(f"Importance of {metric}:", min_value=0.0, max_value=1.0, value=0.5)
+
         # Calculate similarity scores for all players within the age, minutes, and league bracket
         similarities = {}
         reference_player_data = df2[(df2['Player Name'] == reference_player) & (df2['Score Type'] == position_to_compare)].iloc[0]
