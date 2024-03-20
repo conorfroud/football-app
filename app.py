@@ -932,7 +932,7 @@ def streamlit_interface():
     filtered_data = data[data['Player'] == selected_player]
 
     # Display player info card visualization
-    st.markdown(f"### Player Info Card: {selected_player}", unsafe_allow_html=True)
+    st.markdown(f"###{selected_player}", unsafe_allow_html=True)
     
     # Using columns to create a card-like layout
     num_columns = 1  # Adjust the number of columns as needed
