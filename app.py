@@ -690,15 +690,16 @@ def player_similarity_app(df2):
         # Get base metrics for the selected position
         base_metrics = position_base_metrics.get(position_to_compare, [])
 
-        # Add a multiselect dropdown for selecting additional metrics
+        # Add a multiselect dropdown for selecting additional metrics with unique key
         all_metrics = base_metrics + additional_metrics
-        selected_metrics = st.sidebar.multiselect("Select metrics:", all_metrics, default=base_metrics)
+        metric_keys = [f"{position_to_compare}_{metric}" for metric in all_metrics]
+        selected_metrics = st.sidebar.multiselect("Select metrics:", all_metrics, default=base_metrics, key=f"{position_to_compare}_metrics")
 
-        # Add a multiselect dropdown for adjusting feature importance
+        # Add a multiselect dropdown for adjusting feature importance with unique key
         feature_importance = {}
         st.sidebar.header("Feature Importance")
-        for metric in selected_metrics[len(base_metrics):]:
-            feature_importance[metric] = st.sidebar.slider(f"Importance of {metric}:", min_value=0.0, max_value=1.0, value=0.5)
+        for metric, key in zip(all_metrics[len(base_metrics):], metric_keys[len(base_metrics):]):
+            feature_importance[metric] = st.sidebar.slider(f"Importance of {metric}:", min_value=0.0, max_value=1.0, value=0.5, key=key)
 
         # Add a multiselect dropdown for selecting additional metrics
         all_metrics = base_metrics + additional_metrics
