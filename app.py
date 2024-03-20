@@ -918,7 +918,6 @@ def display_data():
 
     st.dataframe(filtered_data.head(500))
 
-# Function for Streamlit interface
 def streamlit_interface():
     # Streamlit interface
     st.title('Soccer Player Profile Card Generator')
@@ -941,6 +940,23 @@ def streamlit_interface():
         ('Passing Accuracy', '75%'),
         ('Overlapping Run', '25')
     ]
+
+    # Create a connection object.
+    url = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?usp=sharing"
+    conn = st.connection("gsheets", type=GSheetsConnection)
+    data = conn.read(spreadsheet=url, usecols=[1, 2, 9, 22, 40, 41])
+
+    # Sidebar dropdown filter for Position column
+    positions = data['Position'].unique().tolist()
+    selected_position = st.sidebar.selectbox("Filter by Position", ["All"] + positions)
+
+    # Apply filter if position is selected
+    if selected_position != "All":
+        filtered_data = data[data['Position'] == selected_position]
+    else:
+        filtered_data = data
+
+    st.dataframe(filtered_data.head(500))
 
     if player_img_file and team_logo_file:
         # Convert the uploaded files to bytes
