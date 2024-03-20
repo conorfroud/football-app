@@ -695,9 +695,13 @@ def player_similarity_app(df2):
         all_metrics = base_metrics + additional_metrics
         selected_metrics = st.sidebar.multiselect("Select metrics:", all_metrics, default=base_metrics)
 
-        # Add a multiselect dropdown for adjusting feature importance
-        feature_importance = {}
+        # Add a sidebar header for feature importance
         st.sidebar.header("Feature Importance")
+
+        # Dictionary to hold feature importance values
+        feature_importance = {}
+        
+        # Loop through selected metrics to create sliders for feature importance
         for metric in selected_metrics[len(base_metrics):]:
             feature_importance[metric] = st.sidebar.slider(f"Importance of {metric}:", min_value=0.0, max_value=1.0, value=0.5)
 
@@ -750,6 +754,7 @@ def player_similarity_app(df2):
         st.dataframe(similar_players_df.head(250))
     else:
         st.error("Player not found in the selected position.")
+
  
 def player_stat_search(df):
 
