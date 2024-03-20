@@ -691,25 +691,21 @@ def player_similarity_app(df2):
         base_metrics = position_base_metrics.get(position_to_compare, [])
 
         # Add a multiselect dropdown for selecting additional metrics with unique key
-        all_metrics = base_metrics + additional_metrics
-        metric_keys = [f"{position_to_compare}_{metric}" for metric in all_metrics]
-        selected_metrics = st.sidebar.multiselect("Select metrics:", all_metrics, default=base_metrics, key=f"{position_to_compare}_metrics")
+        additional_metric_keys = [f"{position_to_compare}_additional_{metric}" for metric in additional_metrics]
+        selected_additional_metrics = st.sidebar.multiselect("Select additional metrics:", additional_metrics, default=[], key=f"{position_to_compare}_additional_metrics")
+
+        # Add a multiselect dropdown for selecting base metrics with unique key
+        base_metric_keys = [f"{position_to_compare}_base_{metric}" for metric in base_metrics]
+        selected_base_metrics = st.sidebar.multiselect("Select base metrics:", base_metrics, default=[], key=f"{position_to_compare}_base_metrics")
+
+        # Combine selected additional and base metrics
+        selected_metrics = selected_base_metrics + selected_additional_metrics
 
         # Add a multiselect dropdown for adjusting feature importance with unique key
         feature_importance = {}
         st.sidebar.header("Feature Importance")
-        for metric, key in zip(all_metrics[len(base_metrics):], metric_keys[len(base_metrics):]):
+        for metric, key in zip(all_metrics, base_metric_keys + additional_metric_keys):
             feature_importance[metric] = st.sidebar.slider(f"Importance of {metric}:", min_value=0.0, max_value=1.0, value=0.5, key=key)
-
-        # Add a multiselect dropdown for selecting additional metrics
-        all_metrics = base_metrics + additional_metrics
-        selected_metrics = st.sidebar.multiselect("Select metrics:", all_metrics, default=base_metrics)
-
-        # Add a multiselect dropdown for adjusting feature importance
-        feature_importance = {}
-        st.sidebar.header("Feature Importance")
-        for metric in selected_metrics[len(base_metrics):]:
-            feature_importance[metric] = st.sidebar.slider(f"Importance of {metric}:", min_value=0.0, max_value=1.0, value=0.5)
 
         # Calculate similarity scores for all players within the age, minutes, and league bracket
         similarities = {}
