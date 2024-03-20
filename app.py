@@ -934,11 +934,11 @@ def streamlit_interface():
     filtered_data = data[data['Player'] == selected_player]
 
     # Display player info card visualization
-    st.write(f"### Player Info Card: {selected_player}")
+    st.markdown(f"### Player Info Card: {selected_player}")
     st.write(f"**Position:** {filtered_data['Position'].iloc[0]}")
     st.write(f"**Confidence Score:** {filtered_data['Confidence Score'].iloc[0]}")
-    st.write(f"**A Verdicts:** {filtered_data['"A" Verdicts'].iloc[0]}")
-    st.write(f"**B Verdicts:** {filtered_data['"B" Verdicts'].iloc[0]}")
+    st.write(f"**A Verdicts:** {filtered_data['A Verdicts'].iloc[0]}")
+    st.write(f"**B Verdicts:** {filtered_data['B Verdicts'].iloc[0]}")
    
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
