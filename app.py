@@ -618,15 +618,15 @@ def rescale_similarity(x, max_val):
 def player_similarity_app(df2):
     # Dictionary to map positions to selectable additional metrics
     position_additional_metrics = {
-        'Striker': ['xG (ST)'],
-        'Winger': ['xG (W)'],
-        'Attacking Midfield': ['xG (CAM)'],
-        'Central Midfield': ['xG (8)'],
+        'Striker': [],
+        'Winger': [],
+        'Attacking Midfield': [],
+        'Central Midfield': [],
         'Defensive Midfield': [],
         'Left Back': [],
         'Right Back': [],
         'Centre Back': [],
-        'Stretch 9': ['xG (S9)']
+        'Stretch 9': []
     }
 
     # Dictionary to map positions to base metrics
