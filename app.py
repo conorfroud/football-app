@@ -918,6 +918,44 @@ def display_data():
 
     st.dataframe(filtered_data.head(500))
 
+# Function to create the profile card
+def create_profile_card(player_name, age, weight, height, stats, player_image, team_logo, current_club, position):
+    width, height = 1012, 686
+    image = Image.new('RGB', (width, height), 'white')
+    draw = ImageDraw.Draw(image)
+    font = ImageFont.truetype('arial.ttf', size=45)
+    
+    # Add the name, current club, and position
+    draw.text((10, 50), player_name, fill='green', font=font)
+    draw.text((10, 100), f'Current Club: {current_club}', fill='black', font=font)
+    draw.text((10, 150), f'Position: {position}', fill='black', font=font)
+
+    # Add the details
+    font = ImageFont.truetype('arial.ttf', size=35)
+    draw.text((10, 250), f'AGE\n{age}', fill='black', font=font)
+    draw.text((10, 350), f'WEIGHT\n{weight} lbs', fill='black', font=font)
+    draw.text((10, 450), f'HEIGHT\n{height}\'', fill='black', font=font)
+
+    # Adding the stats
+    start_x = 500
+    start_y = 250
+    spacing = 70
+    for stat in stats:
+        draw.text((start_x, start_y), f'{stat[0]}', fill='black', font=font)
+        draw.text((start_x + 300, start_y), f'{stat[1]}', fill='black', font=font)
+        start_y += spacing
+
+    # Paste the player image
+    player_image = player_image.resize((250, 250))
+    image.paste(player_image, (width - 300, 50))
+
+    # Paste the team logo
+    logo = team_logo.resize((150, 150))
+    image.paste(logo, (10, height - 150 - logo.height))
+
+    return image
+
+# Function for Streamlit interface
 def streamlit_interface():
     # Streamlit interface
     st.title('Soccer Player Profile Card Generator')
@@ -941,10 +979,10 @@ def streamlit_interface():
         ('Overlapping Run', '25')
     ]
 
-    # Create a connection object.
+    # Pull data from Google Sheets
     url = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?usp=sharing"
     conn = st.connection("gsheets", type=GSheetsConnection)
-    data = conn.read(spreadsheet=url, usecols=[1, 2, 9, 22, 40, 41])
+    data = conn.read(spreadsheet=url, usecols=[1, 4, 9, 22, 40, 41])  # Adjust columns accordingly
 
     # Sidebar dropdown filter for Position column
     positions = data['Position'].unique().tolist()
@@ -964,7 +1002,8 @@ def streamlit_interface():
         team_logo_bytes = Image.open(team_logo_file)
 
         # Generate the profile card
-        result_img = create_profile_card(player_name, age, weight, height, stats, player_img_bytes, team_logo_bytes)
+        result_img = create_profile_card(player_name, age, weight, height, stats, player_img_bytes, team_logo_bytes,
+                                         filtered_data.iloc[0]['Current Club'], filtered_data.iloc[0]['Position'])
 
         # Display the profile card
         st.image(result_img, caption='Player Profile Card')
