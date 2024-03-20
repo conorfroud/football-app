@@ -681,6 +681,7 @@ def player_similarity_app(df2):
 
     # Check if the selected player is in the dataset
     if player_name in df2['Player Name'].values:
+
         # Choose the reference player
         reference_player = player_name
 
@@ -689,6 +690,9 @@ def player_similarity_app(df2):
 
         # Get base metrics for the selected position
         base_metrics = position_base_metrics.get(position_to_compare, [])
+
+        # Combine base and additional metrics
+        all_metrics = base_metrics + additional_metrics
 
         # Add a multiselect dropdown for selecting additional metrics with unique key
         additional_metric_keys = [f"{position_to_compare}_additional_{metric}" for metric in additional_metrics]
