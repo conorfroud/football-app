@@ -934,20 +934,7 @@ def streamlit_interface():
     filtered_data = data[data['Player'] == selected_player]
 
     st.dataframe(filtered_data.head(1))
-
-    if player_img_file and team_logo_file:
-        # Convert the uploaded files to bytes
-        player_img_bytes = Image.open(player_img_file)
-        team_logo_bytes = Image.open(team_logo_file)
-
-        # Generate the profile card for the selected player
-        result_img = create_profile_card(selected_player, filtered_data.iloc[0]['Age'], filtered_data.iloc[0]['Weight'], 
-                                         filtered_data.iloc[0]['Height'], filtered_data.iloc[0]['Stats'], player_img_bytes, 
-                                         team_logo_bytes, filtered_data.iloc[0]['Current Club'], filtered_data.iloc[0]['Position'])
-
-        # Display the profile card
-        st.image(result_img, caption='Player Profile Card')
- 
+    
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
 df2 = pd.read_csv("championshipscores.csv")
