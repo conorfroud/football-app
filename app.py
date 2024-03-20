@@ -682,35 +682,35 @@ def player_similarity_app(df2):
     # Check if the selected player is in the dataset
     if player_name in df2['Player Name'].values:
 
-        # Choose the reference player
-        reference_player = player_name
+            # Choose the reference player
+            reference_player = player_name
 
-        # Get additional metrics for the selected position
-        additional_metrics = position_additional_metrics.get(position_to_compare, [])
+            # Get additional metrics for the selected position
+            additional_metrics = position_additional_metrics.get(position_to_compare, [])
 
-        # Get base metrics for the selected position
-        base_metrics = position_base_metrics.get(position_to_compare, [])
+            # Get base metrics for the selected position
+            base_metrics = position_base_metrics.get(position_to_compare, [])
 
-        # Combine base and additional metrics
-        all_metrics = base_metrics + additional_metrics
+            # Combine base and additional metrics
+            all_metrics = base_metrics + additional_metrics
 
-        # Add a multiselect dropdown for selecting additional metrics with unique key
-        additional_metric_keys = [f"{position_to_compare}_additional_{metric}" for metric in additional_metrics]
-        selected_additional_metrics = st.sidebar.multiselect("Select additional metrics:", additional_metrics, default=[], key=f"{position_to_compare}_additional_metrics")
+            # Add a multiselect dropdown for selecting additional metrics with unique key
+            additional_metric_keys = [f"{position_to_compare}_additional_{metric}" for metric in additional_metrics]
+            selected_additional_metrics = st.sidebar.multiselect("Select additional metrics:", additional_metrics, default=[], key=f"{position_to_compare}_additional_metrics")
 
-        # Add a multiselect dropdown for selecting base metrics with unique key
-        base_metric_keys = [f"{position_to_compare}_base_{metric}" for metric in base_metrics]
-        selected_base_metrics = st.sidebar.multiselect("Select base metrics:", base_metrics, default=[], key=f"{position_to_compare}_base_metrics")
+            # Add a multiselect dropdown for selecting base metrics with unique key
+            base_metric_keys = [f"{position_to_compare}_base_{metric}" for metric in base_metrics]
+            selected_base_metrics = st.sidebar.multiselect("Select base metrics:", base_metrics, default=base_metrics, key=f"{position_to_compare}_base_metrics")
 
-        # Combine selected additional and base metrics
-        selected_metrics = selected_base_metrics + selected_additional_metrics
+            # Combine selected additional and base metrics
+            selected_metrics = selected_base_metrics + selected_additional_metrics
 
-        # Add a multiselect dropdown for adjusting feature importance with unique key
-        feature_importance = {}
-        st.sidebar.header("Feature Importance")
-        for metric, key in zip(all_metrics, base_metric_keys + additional_metric_keys):
-            feature_importance[metric] = st.sidebar.slider(f"Importance of {metric}:", min_value=0.0, max_value=1.0, value=0.5, key=key)
-
+            # Add a multiselect dropdown for adjusting feature importance with unique key
+            feature_importance = {}
+            st.sidebar.header("Feature Importance")
+            for metric, key in zip(all_metrics, base_metric_keys + additional_metric_keys):
+                feature_importance[metric] = st.sidebar.slider(f"Importance of {metric}:", min_value=0.0, max_value=1.0, value=0.5, key=key)
+                
         # Calculate similarity scores for all players within the age, minutes, and league bracket
         similarities = {}
         reference_player_data = df2[(df2['Player Name'] == reference_player) & (df2['Score Type'] == position_to_compare)].iloc[0]
