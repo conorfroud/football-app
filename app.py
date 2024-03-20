@@ -927,11 +927,11 @@ def streamlit_interface():
     data = conn.read(spreadsheet=url, usecols=[1, 4, 9, 22, 40, 41])  # Adjust columns accordingly
 
     # Sidebar dropdown filter for Player Name
-    player_names = data['Player Name'].unique().tolist()
+    player_names = data['Player'].unique().tolist()
     selected_player = st.sidebar.selectbox("Select Player", player_names)
 
     # Filter data based on selected player
-    filtered_data = data[data['Player Name'] == selected_player]
+    filtered_data = data[data['Player'] == selected_player]
 
     st.dataframe(filtered_data.head(1))
 
