@@ -937,13 +937,9 @@ def streamlit_interface():
     st.markdown(f"### Player Info Card: {selected_player}", unsafe_allow_html=True)
     
     # Using columns to create a card-like layout
-    col1, col2 = st.columns([2, 3])
+    col1 = st.columns([0])
     
     with col1:
-        # Placeholder for player image or any visual representation
-        st.markdown(f"### Player Info Card: {selected_player}")
-
-    with col2:
         st.markdown(f"**Position:** {filtered_data['Position'].iloc[0]}")
         st.markdown(f"**Confidence Score:** {filtered_data['Confidence Score'].iloc[0]:.2f}")  # Assuming it's a float, format to 2 decimal places
         st.markdown(f"**Scout Top 3s:** {filtered_data['Scout Top 3s'].iloc[0]}")
