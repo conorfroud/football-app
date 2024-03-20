@@ -691,26 +691,21 @@ def player_similarity_app(df2):
         # Get base metrics for the selected position
         base_metrics = position_base_metrics.get(position_to_compare, [])
 
-        # Combine base and additional metrics
-        all_metrics = base_metrics + additional_metrics
+        # Combine base and additional metrics for the multiselect dropdown
+        all_metric_options = base_metrics + additional_metrics
 
-        # Add a multiselect dropdown for selecting additional metrics with unique key
-        additional_metric_keys = [f"{position_to_compare}_additional_{metric}" for metric in additional_metrics]
-        selected_additional_metrics = st.sidebar.multiselect("Select additional metrics:", additional_metrics, default=[], key=f"{position_to_compare}_additional_metrics")
+        # Generate keys for all metric options
+        all_metric_keys = [f"{position_to_compare}_metric_{metric}" for metric in all_metric_options]
 
-        # Add a multiselect dropdown for selecting base metrics with unique key
-        base_metric_keys = [f"{position_to_compare}_base_{metric}" for metric in base_metrics]
-        selected_base_metrics = st.sidebar.multiselect("Select base metrics:", base_metrics, default=base_metrics, key=f"{position_to_compare}_base_metrics")
-
-        # Combine selected additional and base metrics
-        selected_metrics = selected_base_metrics + selected_additional_metrics
+        # Multiselect dropdown for selecting base and additional metrics
+        selected_metrics = st.sidebar.multiselect("Select base and additional metrics:", all_metric_options, default=base_metrics, key=f"{position_to_compare}_all_metrics")
 
         # Add a multiselect dropdown for adjusting feature importance with unique key
         feature_importance = {}
         st.sidebar.header("Feature Importance")
-        for metric, key in zip(all_metrics, base_metric_keys + additional_metric_keys):
+        for metric, key in zip(all_metric_options, all_metric_keys):
             feature_importance[metric] = st.sidebar.slider(f"Importance of {metric}:", min_value=0.0, max_value=1.0, value=0.5, key=key)
-    
+
         # Calculate similarity scores for all players within the age, minutes, and league bracket
         similarities = {}
         reference_player_data = df2[(df2['Player Name'] == reference_player) & (df2['Score Type'] == position_to_compare)].iloc[0]
