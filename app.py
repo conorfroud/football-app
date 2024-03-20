@@ -927,13 +927,19 @@ def streamlit_interface():
     data = conn.read(spreadsheet=url, usecols=[1, 4, 9, 22, 40, 41])  # Adjust columns accordingly
 
     # Sidebar dropdown filter for Player Name
-    player_names = data['Player'].unique().tolist()
+    player_names = data['Name'].unique().tolist()
     selected_player = st.sidebar.selectbox("Select Player", player_names)
 
     # Filter data based on selected player
-    filtered_data = data[data['Player'] == selected_player]
+    filtered_data = data[data['Name'] == selected_player]
 
-    st.dataframe(filtered_data.head(1))
+    # Display player info card visualization
+    st.markdown(f"### Player Info Card: {selected_player}")
+    st.write("---")
+    st.write(f"**Position:** {filtered_data['Position'].iloc[0]}")
+    st.write(f"**Confidence Score:** {filtered_data['Confidence Score'].iloc[0]}")
+    st.write(f"**A Verdicts:** {filtered_data['A Verdicts'].iloc[0]}")
+    st.write(f"**B Verdicts:** {filtered_data['B Verdicts'].iloc[0]}")
     
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
