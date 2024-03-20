@@ -640,7 +640,6 @@ def player_similarity_app(df2):
         'Right Back': ['Average Distance (RB)', 'Top 5 PSV-99 (RB)', 'OBV Defensive Action (RB)', 'OBV Dribble & Carry (RB)', 'Tackle/Dribbled Past (RB)', 'Open Play xA (RB)', 'Successful Crosses (RB)', 'Dribbled Past (RB)', 'Successful Dribbles (RB)', 'OBV Pass (RB)', 'PAdj Tackles & Interceptions (RB)', 'Aerial Win % (RB)'],
         'Centre Back': ['Top 5 PSV-99 (CB)', 'Aerial Win % (CB)', 'Aerial Wins (CB)', 'OBV Pass (CB)', 'OBV Dribble & Carry (CB)', 'OBV Defensive Action (CB)', 'Deep Progressions (CB)', 'PAdj Tackles & Interceptions (CB)', 'Tackle / Dribbled Past % (CB)', 'Blocks per Shot (CB)', 'Pressure Change in Passing % (CB)'],
         'Stretch 9': ['xG (S9)', 'Non-Penalty Goals (S9)', 'Shots (S9)', 'OBV Shot (S9)', 'Open Play xA (S9)', 'OBV Dribble & Carry (S9)', 'PAdj Pressures (S9)', 'Aerial Wins (S9)', 'Aerial Win % (S9)', 'Average Distance (S9)', 'Top 5 PSV-99 (S9)', 'Runs in Behind (S9)', 'Threat of Runs in Behind (S9)']
-    
     }
 
     # Add a sidebar dropdown for selecting a player name
@@ -695,13 +694,9 @@ def player_similarity_app(df2):
         all_metrics = base_metrics + additional_metrics
         selected_metrics = st.sidebar.multiselect("Select metrics:", all_metrics, default=base_metrics)
 
-        # Add a sidebar header for feature importance
-        st.sidebar.header("Feature Importance")
-
-        # Dictionary to hold feature importance values
+        # Add a multiselect dropdown for adjusting feature importance
         feature_importance = {}
-        
-        # Loop through selected metrics to create sliders for feature importance
+        st.sidebar.header("Feature Importance")
         for metric in selected_metrics[len(base_metrics):]:
             feature_importance[metric] = st.sidebar.slider(f"Importance of {metric}:", min_value=0.0, max_value=1.0, value=0.5)
 
@@ -755,7 +750,6 @@ def player_similarity_app(df2):
     else:
         st.error("Player not found in the selected position.")
 
- 
 def player_stat_search(df):
 
     # Sidebar for filtering by 'minutes' played
