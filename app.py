@@ -918,8 +918,6 @@ def display_data():
 
     st.dataframe(filtered_data.head(500))
 
-import streamlit as st
-
 def streamlit_interface():
     # Pull data from Google Sheets
     url = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?usp=sharing"
@@ -937,9 +935,10 @@ def streamlit_interface():
     st.markdown(f"### Player Info Card: {selected_player}", unsafe_allow_html=True)
     
     # Using columns to create a card-like layout
-    col1 = st.columns([0])
+    num_columns = 1  # Adjust the number of columns as needed
+    cols = st.columns(num_columns)
     
-    with col1:
+    with cols[0]:  # Access the first column
         st.markdown(f"**Position:** {filtered_data['Position'].iloc[0]}")
         st.markdown(f"**Confidence Score:** {filtered_data['Confidence Score'].iloc[0]:.2f}")  # Assuming it's a float, format to 2 decimal places
         st.markdown(f"**Scout Top 3s:** {filtered_data['Scout Top 3s'].iloc[0]}")
