@@ -926,9 +926,6 @@ def streamlit_interface():
     conn = st.connection("gsheets", type=GSheetsConnection)
     data = conn.read(spreadsheet=url, usecols=[1, 4, 9, 22, 40, 41])  # Adjust columns accordingly
 
-    # Print out the columns to identify the one containing player names
-    st.write("Columns in the data:", data.columns)
-
     # Sidebar dropdown filter for Player Name
     player_names = data['Player'].unique().tolist()  # Replace 'Player' with the correct column name
     selected_player = st.sidebar.selectbox("Select Player", player_names)
