@@ -906,17 +906,31 @@ def display_data():
 
     data = conn.read(spreadsheet=url, usecols=[1, 2, 9, 22, 40, 41])
 
-    # Sidebar dropdown filter for Position column
-    positions = data['Position'].unique().tolist()
-    selected_position = st.sidebar.selectbox("Filter by Position", ["All"] + positions)
+    # Filter data for RB position
+    rb_data = data[data['Position'] == 'RB']
 
-    # Apply filter if position is selected
-    if selected_position != "All":
-        filtered_data = data[data['Position'] == selected_position]
-    else:
-        filtered_data = data
+    # Select top 5 RB players based on some criteria (for example, goals scored)
+    top_5_rb_players = rb_data.sort_values(by='some_criteria', ascending=False).head(5)
 
-    st.dataframe(filtered_data.head(500))
+    # Plot the top 5 RB players on the pitch visualization
+    plot_players_on_pitch(top_5_rb_players)
+
+
+def plot_players_on_pitch(players_data):
+    pitch = VerticalPitch(pitch_type='statsbomb', pitch_color='#d9d9d9', #line_color='#A3A3A3',
+                          stripe=False, line_zorder=2, pad_top=0.1)
+
+    fig, ax = pitch.draw(figsize=(16, 10))
+    ax.patch.set_alpha(1)
+    background = "#d9d9d9"
+    fig.set_facecolor(background)
+
+    # Plot each player's position on the pitch
+    for index, player in players_data.iterrows():
+        # Plot player's position, you may need to adjust x, y coordinates based on your data
+        ax.plot(player['x'], player['y'], marker='o', markersize=10, color='red', alpha=0.8)
+
+    st.pyplot(fig)
 
 def streamlit_interface():
     # Pull data from Google Sheets
@@ -953,7 +967,7 @@ df2 = pd.read_csv("championshipscores.csv")
 df3 = pd.read_csv("nonpriorityleaguesdata.csv")
 
 # Create the navigation menu in the sidebar
-selected_tab = st.sidebar.radio("Navigation", ["Stoke Score", "Player Radar Single", "Player Radar Comparison", "Scatter Plot", "Multi Player Comparison Tab", "Similarity Score", "Stat Search", "Stoke Score - Wyscout", "Player Profile"])
+selected_tab = st.sidebar.radio("Navigation", ["Stoke Score", "Player Radar Single", "Player Radar Comparison", "Scatter Plot", "Multi Player Comparison Tab", "Similarity Score", "Stat Search", "Stoke Score - Wyscout", "Player Database", "Player Profile"])
 
 # Based on the selected tab, display the corresponding content
 if selected_tab == "Stoke Score":
