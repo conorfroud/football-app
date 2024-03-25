@@ -912,10 +912,10 @@ def display_data():
     lb_data = data[data['Position'] == 'LB']
     lw_data = data[data['Position'] == 'LW']
     rw_data = data[data['Position'] == 'RW']
-    dm_data = data[data['Position'] == 'DM']
+    dm_data = data[data['Position'] == 'CDM']
     cm_data = data[data['Position'] == 'CM']
     am_data = data[data['Position'] == 'AM']
-    st_data = data[data['Position'] == 'ST']
+    st_data = data[data['Position'] == 'CF']
 
     # Select top 5 players for each position based on some criteria (for example, confidence score)
     top_5_rb_players = rb_data.sort_values(by='Confidence Score', ascending=False).head(5)
