@@ -938,10 +938,10 @@ def plot_players_on_pitch(players_data, column_names):
 
         # Annotate player name at the center of the pitch
         if player['Position'] == 'RB':
-            ax.annotate(player[column_names[0]], xy=(center_x_rb, 38), xytext=(center_x, 38),
+            ax.annotate(player[column_names[0]], xy=(center_x_rb, 38), xytext=(center_x_rb, 38),
                         textcoords="offset points", ha='center', va='center', color='black', fontsize=6)
         elif player['Position'] == 'LB':
-            ax.annotate(player[column_names[0]], xy=(center_x_lb, 38), xytext=(center_x, 38),
+            ax.annotate(player[column_names[0]], xy=(center_x_lb, 38), xytext=(center_x_lb, 38),
                         textcoords="offset points", ha='center', va='center', color='black', fontsize=6)
 
     # Remove the red dot
