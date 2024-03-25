@@ -898,43 +898,37 @@ def stoke_score_wyscout(df3):
             on_click=None,  # You can add a function to handle click events if needed
         )
 
+# Function to read data from Google Sheets and display it
 def display_data():
-    # Assuming you have defined `st` and `GSheetsConnection` properly
+    # Create a connection object.
     url = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?usp=sharing"
 
     conn = st.connection("gsheets", type=GSheetsConnection)
 
-    data = conn.read(spreadsheet=url, usecols=[1, 2, 9, 16, 22, 40, 41])
-
-    # Convert Contract End Date column to datetime
-    data['Contract'] = pd.to_datetime(data['Contract'])
+    data = conn.read(spreadsheet=url, usecols=[1, 2, 9, 22, 40, 41])
 
     # Filter data for RB and LB positions
     rb_data = data[data['Position'] == 'RB']
     lb_data = data[data['Position'] == 'LB']
 
-    # Get selected contract end date from sidebar
-    selected_date = st.sidebar.date_input('Select Contract End Date', min_value=data.iloc[:, 3].min(), 
-                                          max_value=data.iloc[:, 3].max())
-
-    # Filter RB and LB data based on selected contract end date
-    filtered_rb_data = rb_data[rb_data['Contract'] < selected_date]
-    filtered_lb_data = lb_data[lb_data['Contract'] < selected_date]
+    # Select top 5 RB and LB players based on some criteria (for example, confidence score)
+    top_5_rb_players = rb_data.sort_values(by='Confidence Score', ascending=False).head(5)
+    top_5_lb_players = lb_data.sort_values(by='Confidence Score', ascending=False).head(5)
 
     # Plot the top 5 RB and LB players on the pitch visualization
-    plot_players_on_pitch(filtered_rb_data.head(5), filtered_lb_data.head(5))
+    plot_players_on_pitch(top_5_rb_players, top_5_lb_players, data.columns)
 
-def plot_players_on_pitch(rb_players_data, lb_players_data):
+def plot_players_on_pitch(rb_players_data, lb_players_data, column_names):
     pitch = VerticalPitch(pitch_type='statsbomb', pitch_color='#ffffff', stripe=False, line_zorder=2, pad_top=0.1)
 
-    fig, ax = pitch.draw(figsize=(12, 8))
+    fig, ax = pitch.draw(figsize=(12, 8))  # Adjust the figsize parameter to make the plot smaller
     ax.patch.set_alpha(1)
     background = "#ffffff"
     fig.set_facecolor(background)
 
     # Set the X-coordinate of the center of the pitch for RBs and LBs
-    center_x_rb = 58  # X-coordinate of the center of the pitch for RBs
-    center_x_lb = 8  # X-coordinate of the center of the pitch for LBs
+    center_x_rb = 60  # X-coordinate of the center of the pitch for RBs
+    center_x_lb = 10  # X-coordinate of the center of the pitch for LBs
 
     # Set the starting y-coordinate for RBs and LBs
     start_y_rb = 38  # Adjust this value according to your preference for RBs
@@ -942,21 +936,20 @@ def plot_players_on_pitch(rb_players_data, lb_players_data):
 
     # Annotate RB players
     for index, player in rb_players_data.iterrows():
-        ax.annotate(player['Player'], xy=(center_x_rb, start_y_rb), xytext=(center_x_rb, start_y_rb),
+        ax.annotate(player[column_names[0]], xy=(center_x_rb, start_y_rb), xytext=(center_x_rb, start_y_rb),
                     textcoords="offset points", ha='center', va='center', color='black', fontsize=6)
         start_y_rb -= 3  # Adjust this value to increase/decrease vertical spacing between names
 
     # Annotate LB players
     for index, player in lb_players_data.iterrows():
-        ax.annotate(player['Player'], xy=(center_x_lb, start_y_lb), xytext=(center_x_lb, start_y_lb),
+        ax.annotate(player[column_names[0]], xy=(center_x_lb, start_y_lb), xytext=(center_x_lb, start_y_lb),
                     textcoords="offset points", ha='center', va='center', color='black', fontsize=6)
         start_y_lb -= 3  # Adjust this value to increase/decrease vertical spacing between names
 
     # Remove the red dot
     ax.get_xaxis().set_visible(False)
     ax.get_yaxis().set_visible(False)
-
-    # Display the entire data DataFrame below the pitch visualization
+    
     st.write(data)
 
     st.pyplot(fig)
