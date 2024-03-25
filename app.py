@@ -926,10 +926,12 @@ def plot_players_on_pitch(players_data):
     background = "#d9d9d9"
     fig.set_facecolor(background)
 
-    # Plot each player's position on the pitch
+    # Plot each player's position at the center of the pitch
+    center_x = 0.5  # X-coordinate of the center of the pitch
+    center_y = 0.5  # Y-coordinate of the center of the pitch
+
     for index, player in players_data.iterrows():
-        # Plot player's position, you may need to adjust x, y coordinates based on your data
-        ax.plot(player['x'], player['y'], marker='o', markersize=10, color='red', alpha=0.8)
+       ax.plot(center_x, center_y, marker='o', markersize=10, color='red', alpha=0.8)
 
     st.pyplot(fig)
 
