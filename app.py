@@ -925,15 +925,21 @@ def plot_players_on_pitch(players_data, column_names):
     background = "#d9d9d9"
     fig.set_facecolor(background)
 
+    # Set the starting y-coordinate for annotation
+    start_y = 90  # Adjust this value according to your preference
+
     # Plot each player's position at the center of the pitch
     center_x = 50  # X-coordinate of the center of the pitch
-    center_y = 50  # Y-coordinate of the center of the pitch
 
     for index, player in players_data.iterrows():
-        ax.plot(center_x, center_y, marker='o', markersize=10, color='red', alpha=0.8)
         # Annotate player name at the center of the pitch
-        ax.annotate(player[column_names[1]], xy=(center_x, center_y), xytext=(center_x, center_y),
+        ax.annotate(player[column_names[1]], xy=(center_x, start_y), xytext=(center_x, start_y),
                     textcoords="offset points", ha='center', va='center', color='black', fontsize=10)
+        start_y -= 5  # Adjust this value to increase/decrease vertical spacing between names
+
+    # Remove the red dot
+    ax.get_xaxis().set_visible(False)
+    ax.get_yaxis().set_visible(False)
 
     st.pyplot(fig)
 
