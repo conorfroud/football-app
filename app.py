@@ -945,9 +945,10 @@ def display_data():
     # Plot the top 5 players for each position on the pitch visualization
     plot_players_on_pitch(top_5_rb_players, top_5_lb_players, top_5_lw_players, top_5_rw_players, top_5_dm_players, top_5_cm_players, top_5_am_players, top_5_st_players, filtered_data, data.columns)
         
-    # Display a table below the filtered table for original data
-    st.write("Table of Original Players:")
-    st.write(data)  # Display original data in a table
+    # Display a table below the filtered table for original data sorted by 'Confidence Score Last Month'
+    st.write("Top Confidence Risers")
+    sorted_original_data = data.sort_values(by='Confidence Score Last Month', ascending=False)
+    st.write(sorted_original_data)  # Display original data sorted by 'Confidence Score Last Month' in a table
 
 # Plotting function
 def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_players_data, dm_players_data, cm_players_data, am_players_data, st_players_data, data, column_names):
