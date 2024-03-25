@@ -929,7 +929,7 @@ def plot_players_on_pitch(players_data, column_names):
     start_y = 50  # Adjust this value according to your preference
 
     # Plot each player's position at the center of the pitch
-    center_x = 70  # X-coordinate of the center of the pitch
+    center_x = 60  # X-coordinate of the center of the pitch
 
     for index, player in players_data.iterrows():
         # Annotate player name at the center of the pitch
