@@ -18,6 +18,7 @@ from mplsoccer import PyPizza
 from PIL import Image
 from sklearn.metrics.pairwise import cosine_similarity
 from streamlit_gsheets import GSheetsConnection
+from mplsoccer.pitch import Pitch, VerticalPitch
 
 st.set_page_config(layout="wide")
 
