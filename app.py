@@ -907,22 +907,30 @@ def display_data():
 
     data = conn.read(spreadsheet=url, usecols=[1, 2, 9, 15, 22, 40, 41])
 
-    # Filter data for RB, LB, LW, and RW positions
+    # Filter data for RB, LB, LW, RW, DM, CM, AM, and ST positions
     rb_data = data[data['Position'] == 'RB']
     lb_data = data[data['Position'] == 'LB']
     lw_data = data[data['Position'] == 'LW']
     rw_data = data[data['Position'] == 'RW']
+    dm_data = data[data['Position'] == 'DM']
+    cm_data = data[data['Position'] == 'CM']
+    am_data = data[data['Position'] == 'AM']
+    st_data = data[data['Position'] == 'ST']
 
-    # Select top 5 RB, LB, LW, and RW players based on some criteria (for example, confidence score)
+    # Select top 5 players for each position based on some criteria (for example, confidence score)
     top_5_rb_players = rb_data.sort_values(by='Confidence Score', ascending=False).head(5)
     top_5_lb_players = lb_data.sort_values(by='Confidence Score', ascending=False).head(5)
     top_5_lw_players = lw_data.sort_values(by='Confidence Score', ascending=False).head(5)
     top_5_rw_players = rw_data.sort_values(by='Confidence Score', ascending=False).head(5)
+    top_5_dm_players = dm_data.sort_values(by='Confidence Score', ascending=False).head(5)
+    top_5_cm_players = cm_data.sort_values(by='Confidence Score', ascending=False).head(5)
+    top_5_am_players = am_data.sort_values(by='Confidence Score', ascending=False).head(5)
+    top_5_st_players = st_data.sort_values(by='Confidence Score', ascending=False).head(5)
 
-    # Plot the top 5 RB, LB, LW, and RW players on the pitch visualization
-    plot_players_on_pitch(top_5_rb_players, top_5_lb_players, top_5_lw_players, top_5_rw_players, data, data.columns)
+    # Plot the top 5 players for each position on the pitch visualization
+    plot_players_on_pitch(top_5_rb_players, top_5_lb_players, top_5_lw_players, top_5_rw_players, top_5_dm_players, top_5_cm_players, top_5_am_players, top_5_st_players, data, data.columns)
 
-def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_players_data, data, column_names):
+def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_players_data, dm_players_data, cm_players_data, am_players_data, st_players_data, data, column_names):
     pitch = VerticalPitch(pitch_type='statsbomb', pitch_color='#ffffff', stripe=False, line_zorder=2, pad_top=0.1)
 
     fig, ax = pitch.draw(figsize=(12, 8))  # Adjust the figsize parameter to make the plot smaller
@@ -930,41 +938,18 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
     background = "#ffffff"
     fig.set_facecolor(background)
 
-    # Set the X-coordinate of the center of the pitch for RBs, LBs, LWs, and RWs
-    center_x_rb = 58  # X-coordinate of the center of the pitch for RBs
-    center_x_lb = 8  # X-coordinate of the center of the pitch for LBs
-    center_x_lw = 8  # X-coordinate of the center of the pitch for LWs
-    center_x_rw = 58  # X-coordinate of the center of the pitch for RWs
+    # Set the X-coordinate of the center of the pitch for each position
+    positions_x = {'RB': 58, 'LB': 8, 'LW': 8, 'RW': 58, 'DM': 33, 'CM': 50, 'AM': 50, 'ST': 33}
 
-    # Set the starting y-coordinate for RBs, LBs, LWs, and RWs
-    start_y_rb = 38  # Adjust this value according to your preference for RBs
-    start_y_lb = 38  # Adjust this value according to your preference for LBs
-    start_y_lw = 80  # Adjust this value according to your preference for LWs
-    start_y_rw = 80  # Adjust this value according to your preference for RWs
+    # Set the starting y-coordinate for each position
+    start_y = {'RB': 38, 'LB': 38, 'LW': 80, 'RW': 80, 'DM': 50, 'CM': 50, 'AM': 20, 'ST': 20}
 
-    # Annotate RB players
-    for index, player in rb_players_data.iterrows():
-        ax.annotate(player[column_names[0]], xy=(center_x_rb, start_y_rb), xytext=(center_x_rb, start_y_rb),
-                    textcoords="offset points", ha='center', va='center', color='black', fontsize=6)
-        start_y_rb -= 3  # Adjust this value to increase/decrease vertical spacing between names
-
-    # Annotate LB players
-    for index, player in lb_players_data.iterrows():
-        ax.annotate(player[column_names[0]], xy=(center_x_lb, start_y_lb), xytext=(center_x_lb, start_y_lb),
-                    textcoords="offset points", ha='center', va='center', color='black', fontsize=6)
-        start_y_lb -= 3  # Adjust this value to increase/decrease vertical spacing between names
-    
-    # Annotate LW players
-    for index, player in lw_players_data.iterrows():
-        ax.annotate(player[column_names[0]], xy=(center_x_lw, start_y_lw), xytext=(center_x_lw, start_y_lw),
-                    textcoords="offset points", ha='center', va='center', color='black', fontsize=6)
-        start_y_lw -= 3  # Adjust this value to increase/decrease vertical spacing between names
-    
-    # Annotate RW players
-    for index, player in rw_players_data.iterrows():
-        ax.annotate(player[column_names[0]], xy=(center_x_rw, start_y_rw), xytext=(center_x_rw, start_y_rw),
-                    textcoords="offset points", ha='center', va='center', color='black', fontsize=6)
-        start_y_rw -= 3  # Adjust this value to increase/decrease vertical spacing between names
+    # Annotate players for each position
+    for position, players_data in zip(['RB', 'LB', 'LW', 'RW', 'DM', 'CM', 'AM', 'ST'], [rb_players_data, lb_players_data, lw_players_data, rw_players_data, dm_players_data, cm_players_data, am_players_data, st_players_data]):
+        for index, player in players_data.iterrows():
+            ax.annotate(player[column_names[0]], xy=(positions_x[position], start_y[position]), xytext=(positions_x[position], start_y[position]),
+                        textcoords="offset points", ha='center', va='center', color='black', fontsize=6)
+            start_y[position] -= 3  # Adjust this value to increase/decrease vertical spacing between names
 
     # Remove the red dot
     ax.get_xaxis().set_visible(False)
