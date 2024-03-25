@@ -913,8 +913,8 @@ def display_data():
     # Extract unique entries in 'Contract' column
     unique_contracts = data['Contract'].unique()
 
-    # Set the default selected expiry date to the maximum contract expiry date
-    selected_expiry_date = max(unique_contracts)
+    # Set the default selected expiry date to 2030
+    selected_expiry_date = '2030'  # Assuming '2030' is a valid contract expiry date in your data
 
     # Add a sidebar dropdown box for selecting contract expiry date
     selected_expiry_date = st.sidebar.selectbox("Select Contract Expiry Date", sorted(unique_contracts), index=unique_contracts.tolist().index(selected_expiry_date))
