@@ -910,7 +910,7 @@ def display_data():
     rb_data = data[data['Position'] == 'RB']
 
     # Select top 5 RB players based on some criteria (for example, goals scored)
-    top_5_rb_players = rb_data.sort_values(by='some_criteria', ascending=False).head(5)
+    top_5_rb_players = rb_data.sort_values(by='Confidence Score', ascending=False).head(5)
 
     # Plot the top 5 RB players on the pitch visualization
     plot_players_on_pitch(top_5_rb_players)
