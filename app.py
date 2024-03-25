@@ -921,7 +921,7 @@ def display_data():
 def plot_players_on_pitch(rb_players_data, lb_players_data, column_names):
     pitch = VerticalPitch(pitch_type='statsbomb', pitch_color='#ffffff', stripe=False, line_zorder=2, pad_top=0.1)
 
-    fig, ax = pitch.draw(figsize=(16, 10))
+    fig, ax = pitch.draw(figsize=(12, 8))
     ax.patch.set_alpha(1)
     background = "#ffffff"
     fig.set_facecolor(background)
