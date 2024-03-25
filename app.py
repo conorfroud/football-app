@@ -928,7 +928,7 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, column_names):
 
     # Set the X-coordinate of the center of the pitch for RBs and LBs
     center_x_rb = 60  # X-coordinate of the center of the pitch for RBs
-    center_x_lb = 20  # X-coordinate of the center of the pitch for LBs
+    center_x_lb = 10  # X-coordinate of the center of the pitch for LBs
 
     # Set the starting y-coordinate for RBs and LBs
     start_y_rb = 38  # Adjust this value according to your preference for RBs
