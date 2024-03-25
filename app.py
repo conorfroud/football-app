@@ -899,7 +899,7 @@ def stoke_score_wyscout(df3):
         )
 
 # Function to read data from Google Sheets and display it
-def display_data(selected_expiry_date):
+def display_data():
     # Create a connection object.
     url = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?usp=sharing"
 
