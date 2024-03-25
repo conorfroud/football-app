@@ -946,11 +946,11 @@ def display_data():
     plot_players_on_pitch(top_5_rb_players, top_5_lb_players, top_5_lw_players, top_5_rw_players, top_5_dm_players, top_5_cm_players, top_5_am_players, top_5_st_players, filtered_data, data.columns)
         
     # Display a table below the filtered table for original data sorted by 'Confidence Score Last Month'
-    st.write("Top Confidence Risers")
+    st.write("Table of Original Players (Sorted by Confidence Score Last Month and Selected Columns):")
     sorted_original_data = data.sort_values(by='Confidence Score Last Month', ascending=False)
     # Select only specific columns: 1, 2, 9, 15, 26
-    selected_columns = [1, 2, 9, 15, 26]
-    st.write(sorted_original_data.iloc[:, selected_columns])  # Display selected columns of original data sorted by 'Confidence Score Last Month' in a table
+    selected_columns = ['Col2', 'Col3', 'Col10', 'Col16', 'Col27']  # Adjust column indices as needed
+    st.write(sorted_original_data[selected_columns])  # Display selected columns of original data sorted by 'Confidence Score Last Month' in a table
 
 # Plotting function
 def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_players_data, dm_players_data, cm_players_data, am_players_data, st_players_data, data, column_names):
