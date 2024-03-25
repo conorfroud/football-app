@@ -898,6 +898,8 @@ def stoke_score_wyscout(df3):
             on_click=None,  # You can add a function to handle click events if needed
         )
 
+import pandas as pd
+
 # Function to read data from Google Sheets and display it
 def display_data():
     # Create a connection object.
@@ -945,6 +947,9 @@ def display_data():
     # Plot the top 5 players for each position on the pitch visualization
     plot_players_on_pitch(top_5_rb_players, top_5_lb_players, top_5_lw_players, top_5_rw_players, top_5_dm_players, top_5_cm_players, top_5_am_players, top_5_st_players, filtered_data, data.columns)
 
+    # Write the table below the pitch graphic
+    st.write(filtered_data)
+
 # Plotting function
 def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_players_data, dm_players_data, cm_players_data, am_players_data, st_players_data, data, column_names):
     pitch = VerticalPitch(pitch_type='statsbomb', pitch_color='#ffffff', stripe=False, line_zorder=2, pad_top=0.1)
@@ -970,8 +975,6 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
     # Remove the red dot
     ax.get_xaxis().set_visible(False)
     ax.get_yaxis().set_visible(False)
-    
-    st.write(data)
 
     st.pyplot(fig)
 
