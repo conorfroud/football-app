@@ -922,7 +922,7 @@ def plot_players_on_pitch(players_data, column_names):
 
     fig, ax = pitch.draw(figsize=(16, 10))
     ax.patch.set_alpha(1)
-    background = "#d9d9d9"
+    background = "#ffffff"
     fig.set_facecolor(background)
 
     # Set the starting y-coordinate for annotation
