@@ -910,8 +910,11 @@ def display_data():
     # Convert 'Contract' column to a consistent type (e.g., string)
     data['Contract'] = data['Contract'].astype(str)
 
+    # Extract unique entries in 'Contract' column
+    unique_contracts = data['Contract'].unique()
+
     # Add a sidebar dropdown box for selecting contract expiry date
-    selected_expiry_date = st.sidebar.selectbox("Select Contract Expiry Date", sorted(data['Contract']))
+    selected_expiry_date = st.sidebar.selectbox("Select Contract Expiry Date", sorted(unique_contracts))
 
     # Filter data for players with contract expiry before selected date
     filtered_data = data[data['Contract'] < selected_expiry_date]
