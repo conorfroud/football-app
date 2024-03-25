@@ -925,26 +925,24 @@ def plot_players_on_pitch(players_data, column_names):
     background = "#ffffff"
     fig.set_facecolor(background)
 
-    # Set the starting y-coordinate for annotation
-    start_y = 38  # Adjust this value according to your preference
-
     # Set the X-coordinate of the center of the pitch
     center_x_rb = 60  # X-coordinate of the center of the pitch for RBs
     center_x_lb = 20  # X-coordinate of the center of the pitch for LBs
 
     for index, player in players_data.iterrows():
-        # Set the appropriate start_y and center_x based on player's position
+        # Set the appropriate center_x based on player's position
         if player['Position'] == 'RB':
-            center_x = center_x_rb
+            center_x_rb
         elif player['Position'] == 'LB':
-            center_x = center_x_lb
+            center_x_lb
 
         # Annotate player name at the center of the pitch
-        ax.annotate(player[column_names[0]], xy=(center_x, start_y), xytext=(center_x, start_y),
-                    textcoords="offset points", ha='center', va='center', color='black', fontsize=6)
-        
-        # Adjust the start_y for next player
-        start_y -= 3  # Adjust this value to increase/decrease vertical spacing between names
+        if player['Position'] == 'RB':
+            ax.annotate(player[column_names[0]], xy=(center_x_rb, 38), xytext=(center_x, 38),
+                        textcoords="offset points", ha='center', va='center', color='black', fontsize=6)
+        elif player['Position'] == 'LB':
+            ax.annotate(player[column_names[0]], xy=(center_x_lb, 38), xytext=(center_x, 38),
+                        textcoords="offset points", ha='center', va='center', color='black', fontsize=6)
 
     # Remove the red dot
     ax.get_xaxis().set_visible(False)
