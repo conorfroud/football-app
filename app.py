@@ -939,8 +939,8 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
     # Set the starting y-coordinate for RBs, LBs, LWs, and RWs
     start_y_rb = 38  # Adjust this value according to your preference for RBs
     start_y_lb = 38  # Adjust this value according to your preference for LBs
-    start_y_lw = 60  # Adjust this value according to your preference for LWs
-    start_y_rw = 60  # Adjust this value according to your preference for RWs
+    start_y_lw = 80  # Adjust this value according to your preference for LWs
+    start_y_rw = 80  # Adjust this value according to your preference for RWs
 
     # Annotate RB players
     for index, player in rb_players_data.iterrows():
