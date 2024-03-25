@@ -911,13 +911,12 @@ def display_data():
     rb_data = data[data['Position'] == 'RB']
 
     # Select top 5 RB players based on some criteria (for example, goals scored)
-    top_5_rb_players = rb_data.sort_values(by='Confidence Score', ascending=False).head(5)
+    top_5_rb_players = rb_data.sort_values(by='some_criteria', ascending=False).head(5)
 
     # Plot the top 5 RB players on the pitch visualization
-    plot_players_on_pitch(top_5_rb_players)
+    plot_players_on_pitch(top_5_rb_players, data.columns)
 
-
-def plot_players_on_pitch(players_data):
+def plot_players_on_pitch(players_data, column_names):
     pitch = VerticalPitch(pitch_type='statsbomb', pitch_color='#d9d9d9', #line_color='#A3A3A3',
                           stripe=False, line_zorder=2, pad_top=0.1)
 
@@ -927,11 +926,14 @@ def plot_players_on_pitch(players_data):
     fig.set_facecolor(background)
 
     # Plot each player's position at the center of the pitch
-    center_x = 0.5  # X-coordinate of the center of the pitch
-    center_y = 0.5  # Y-coordinate of the center of the pitch
+    center_x = 50  # X-coordinate of the center of the pitch
+    center_y = 50  # Y-coordinate of the center of the pitch
 
     for index, player in players_data.iterrows():
-       ax.plot(center_x, center_y, marker='o', markersize=10, color='red', alpha=0.8)
+        ax.plot(center_x, center_y, marker='o', markersize=10, color='red', alpha=0.8)
+        # Annotate player name at the center of the pitch
+        ax.annotate(player[column_names[1]], xy=(center_x, center_y), xytext=(center_x, center_y),
+                    textcoords="offset points", ha='center', va='center', color='black', fontsize=10)
 
     st.pyplot(fig)
 
