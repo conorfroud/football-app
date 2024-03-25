@@ -898,10 +898,6 @@ def stoke_score_wyscout(df3):
             on_click=None,  # You can add a function to handle click events if needed
         )
 
-import streamlit as st
-import pandas as pd
-from mplsoccer import VerticalPitch
-
 # Function to read data from Google Sheets and display it
 def display_data():
     # Create a connection object.
@@ -910,6 +906,9 @@ def display_data():
     conn = st.connection("gsheets", type=GSheetsConnection)
 
     data = conn.read(spreadsheet=url, usecols=[1, 2, 9, 16, 22, 40, 41])
+
+    # Convert Contract End Date column to datetime
+    data['Contract'] = pd.to_datetime(data['Contract'])
 
     # Filter data for RB and LB positions
     rb_data = data[data['Position'] == 'RB']
@@ -924,8 +923,8 @@ def display_data():
                                           max_value=data.iloc[:, 3].max())
 
     # Filter RB and LB data based on selected contract end date
-    filtered_rb_data = rb_data[rb_data.iloc[:, 3] < selected_date]
-    filtered_lb_data = lb_data[lb_data.iloc[:, 3] < selected_date]
+    filtered_rb_data = rb_data[rb_data['Contract'] < selected_date]
+    filtered_lb_data = lb_data[lb_data['Contract'] < selected_date]
 
     # Plot the top 5 RB and LB players on the pitch visualization
     plot_players_on_pitch(filtered_rb_data.head(5), filtered_lb_data.head(5), data.columns)
