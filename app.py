@@ -907,6 +907,9 @@ def display_data():
 
     data = conn.read(spreadsheet=url, usecols=[1, 2, 9, 15, 22, 40, 41])
 
+    # Convert 'Contract' column to a consistent type (e.g., string)
+    data['Contract'] = data['Contract'].astype(str)
+
     # Add a sidebar dropdown box for selecting contract expiry date
     selected_expiry_date = st.sidebar.selectbox("Select Contract Expiry Date", sorted(data['Contract']))
 
