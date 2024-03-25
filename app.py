@@ -933,7 +933,7 @@ def plot_players_on_pitch(players_data, column_names):
 
     for index, player in players_data.iterrows():
         # Annotate player name at the center of the pitch
-        ax.annotate(player[column_names[1]], xy=(center_x, start_y), xytext=(center_x, start_y),
+        ax.annotate(player[column_names[0]], xy=(center_x, start_y), xytext=(center_x, start_y),
                     textcoords="offset points", ha='center', va='center', color='black', fontsize=10)
         start_y -= 5  # Adjust this value to increase/decrease vertical spacing between names
 
