@@ -939,10 +939,10 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
     fig.set_facecolor(background)
 
     # Set the X-coordinate of the center of the pitch for each position
-    positions_x = {'RB': 58, 'LB': 8, 'LW': 8, 'RW': 58, 'CDM': 33, 'CM': 50, 'AM': 15, 'CF': 33}
+    positions_x = {'RB': 58, 'LB': 8, 'LW': 8, 'RW': 58, 'CDM': 33, 'CM': 48, 'AM': 18, 'CF': 33}
 
     # Set the starting y-coordinate for each position
-    start_y = {'RB': 38, 'LB': 38, 'LW': 80, 'RW': 80, 'CDM': 45, 'CM': 65, 'AM': 65, 'CF': 85}
+    start_y = {'RB': 38, 'LB': 38, 'LW': 80, 'RW': 80, 'CDM': 45, 'CM': 65, 'AM': 65, 'CF': 87}
 
     # Annotate players for each position
     for position, players_data in zip(['RB', 'LB', 'LW', 'RW', 'CDM', 'CM', 'AM', 'CF'], [rb_players_data, lb_players_data, lw_players_data, rw_players_data, dm_players_data, cm_players_data, am_players_data, st_players_data]):
