@@ -926,10 +926,10 @@ def plot_players_on_pitch(players_data, column_names):
     fig.set_facecolor(background)
 
     # Set the starting y-coordinate for annotation
-    start_y = 90  # Adjust this value according to your preference
+    start_y = 50  # Adjust this value according to your preference
 
     # Plot each player's position at the center of the pitch
-    center_x = 50  # X-coordinate of the center of the pitch
+    center_x = 70  # X-coordinate of the center of the pitch
 
     for index, player in players_data.iterrows():
         # Annotate player name at the center of the pitch
