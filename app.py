@@ -916,9 +916,9 @@ def display_data():
     top_5_lb_players = lb_data.sort_values(by='Confidence Score', ascending=False).head(5)
 
     # Plot the top 5 RB and LB players on the pitch visualization
-    plot_players_on_pitch(top_5_rb_players, top_5_lb_players, data.columns)
+    plot_players_on_pitch(top_5_rb_players, top_5_lb_players, data, data.columns)
 
-def plot_players_on_pitch(rb_players_data, lb_players_data, column_names):
+def plot_players_on_pitch(rb_players_data, lb_players_data, data, column_names):
     pitch = VerticalPitch(pitch_type='statsbomb', pitch_color='#ffffff', stripe=False, line_zorder=2, pad_top=0.1)
 
     fig, ax = pitch.draw(figsize=(12, 8))  # Adjust the figsize parameter to make the plot smaller
