@@ -907,25 +907,16 @@ def display_data():
 
     data = conn.read(spreadsheet=url, usecols=[1, 2, 9, 22, 40, 41])
 
-    # Filter data for RB position
-    rb_data = data[data['Position'] == 'RB']
+    # Filter data for both RB and LB positions
+    rb_lb_data = data[data['Position'].isin(['RB', 'LB'])]
 
-    # Filter data for LB position
-    lb_data = data[data['Position'] == 'LB']
+    # Select top 5 players based on some criteria (for example, confidence score)
+    top_5_players = rb_lb_data.sort_values(by='Confidence Score', ascending=False).head(5)
 
-    # Select top 5 RB players based on some criteria (for example, confidence score)
-    top_5_rb_players = rb_data.sort_values(by='Confidence Score', ascending=False).head(5)
+    # Plot the top 5 players on the pitch visualization
+    plot_players_on_pitch(top_5_players, data.columns)
 
-    # Select top 5 LB players based on some criteria (for example, confidence score)
-    top_5_lb_players = lb_data.sort_values(by='Confidence Score', ascending=False).head(5)
-
-    # Plot the top 5 RB players on the left side of the pitch visualization
-    plot_players_on_pitch(top_5_rb_players, data.columns, position='RB', center_x=20)
-
-    # Plot the top 5 LB players on the right side of the pitch visualization
-    plot_players_on_pitch(top_5_lb_players, data.columns, position='LB', center_x=80)
-
-def plot_players_on_pitch(players_data, column_names, position, center_x):
+def plot_players_on_pitch(players_data, column_names):
     pitch = VerticalPitch(pitch_type='statsbomb', pitch_color='#ffffff', #line_color='#A3A3A3',
                           stripe=False, line_zorder=2, pad_top=0.1)
 
@@ -935,13 +926,29 @@ def plot_players_on_pitch(players_data, column_names, position, center_x):
     fig.set_facecolor(background)
 
     # Set the starting y-coordinate for annotation
-    start_y = 38  # Adjust this value according to your preference
+    start_y_rb = 38  # Adjust this value according to your preference for RBs
+    start_y_lb = 38  # Adjust this value according to your preference for LBs
+
+    # Set the X-coordinate of the center of the pitch
+    center_x_rb = 60  # X-coordinate of the center of the pitch for RBs
+    center_x_lb = 20  # X-coordinate of the center of the pitch for LBs
 
     for index, player in players_data.iterrows():
+        if player['Position'] == 'RB':
+            start_y = start_y_rb
+            center_x = center_x_rb
+        elif player['Position'] == 'LB':
+            start_y = start_y_lb
+            center_x = center_x_lb
+        
         # Annotate player name at the center of the pitch
         ax.annotate(player[column_names[0]], xy=(center_x, start_y), xytext=(center_x, start_y),
                     textcoords="offset points", ha='center', va='center', color='black', fontsize=6)
-        start_y -= 3  # Adjust this value to increase/decrease vertical spacing between names
+        
+        if player['Position'] == 'RB':
+            start_y_rb -= 3  # Adjust this value to increase/decrease vertical spacing between RB names
+        elif player['Position'] == 'LB':
+            start_y_lb -= 3  # Adjust this value to increase/decrease vertical spacing between LB names
 
     # Remove the red dot
     ax.get_xaxis().set_visible(False)
