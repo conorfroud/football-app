@@ -931,10 +931,10 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
     fig.set_facecolor(background)
 
     # Set the X-coordinate of the center of the pitch for RBs, LBs, LWs, and RWs
-    center_x_rb = 60  # X-coordinate of the center of the pitch for RBs
-    center_x_lb = 10  # X-coordinate of the center of the pitch for LBs
-    center_x_lw = 10  # X-coordinate of the center of the pitch for LWs
-    center_x_rw = 60  # X-coordinate of the center of the pitch for RWs
+    center_x_rb = 58  # X-coordinate of the center of the pitch for RBs
+    center_x_lb = 8  # X-coordinate of the center of the pitch for LBs
+    center_x_lw = 8  # X-coordinate of the center of the pitch for LWs
+    center_x_rw = 58  # X-coordinate of the center of the pitch for RWs
 
     # Set the starting y-coordinate for RBs, LBs, LWs, and RWs
     start_y_rb = 38  # Adjust this value according to your preference for RBs
