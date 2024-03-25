@@ -898,6 +898,10 @@ def stoke_score_wyscout(df3):
             on_click=None,  # You can add a function to handle click events if needed
         )
 
+import streamlit as st
+import pandas as pd
+from mplsoccer import VerticalPitch
+
 # Function to read data from Google Sheets and display it
 def display_data():
     # Create a connection object.
@@ -915,8 +919,16 @@ def display_data():
     top_5_rb_players = rb_data.sort_values(by='Confidence Score', ascending=False).head(5)
     top_5_lb_players = lb_data.sort_values(by='Confidence Score', ascending=False).head(5)
 
+    # Get selected contract end date from sidebar
+    selected_date = st.sidebar.date_input('Select Contract End Date', min_value=data.iloc[:, 3].min(), 
+                                          max_value=data.iloc[:, 3].max())
+
+    # Filter RB and LB data based on selected contract end date
+    filtered_rb_data = rb_data[rb_data.iloc[:, 3] < selected_date]
+    filtered_lb_data = lb_data[lb_data.iloc[:, 3] < selected_date]
+
     # Plot the top 5 RB and LB players on the pitch visualization
-    plot_players_on_pitch(top_5_rb_players, top_5_lb_players, data.columns)
+    plot_players_on_pitch(filtered_rb_data.head(5), filtered_lb_data.head(5), data.columns)
 
 def plot_players_on_pitch(rb_players_data, lb_players_data, column_names):
     pitch = VerticalPitch(pitch_type='statsbomb', pitch_color='#ffffff', stripe=False, line_zorder=2, pad_top=0.1)
@@ -951,7 +963,7 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, column_names):
     ax.get_yaxis().set_visible(False)
 
     st.pyplot(fig)
-    
+ 
 def streamlit_interface():
     # Pull data from Google Sheets
     url = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?usp=sharing"
