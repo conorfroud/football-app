@@ -907,6 +907,9 @@ def display_data(selected_expiry_date):
 
     data = conn.read(spreadsheet=url, usecols=[1, 2, 9, 15, 22, 40, 41])
 
+    # Add a sidebar dropdown box for selecting contract expiry date
+    selected_expiry_date = st.sidebar.selectbox("Select Contract Expiry Date", sorted(data['Contract']))
+
     # Filter data for players with contract expiry before selected date
     filtered_data = data[data['Contract'] < selected_expiry_date]
 
@@ -962,9 +965,6 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
     st.write(data)
 
     st.pyplot(fig)
-
-# Add a sidebar dropdown box for selecting contract expiry date
-selected_expiry_date = st.sidebar.selectbox("Select Contract Expiry Date", sorted(data['Contract']))
 
 def streamlit_interface():
     # Pull data from Google Sheets
