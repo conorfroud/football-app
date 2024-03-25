@@ -987,7 +987,7 @@ df2 = pd.read_csv("championshipscores.csv")
 df3 = pd.read_csv("nonpriorityleaguesdata.csv")
 
 # Create the navigation menu in the sidebar
-selected_tab = st.sidebar.radio("Navigation", ["Stoke Score", "Player Radar Single", "Player Radar Comparison", "Scatter Plot", "Multi Player Comparison Tab", "Similarity Score", "Stat Search", "Stoke Score - Wyscout", "Confidence XI", "Player Profile"])
+selected_tab = st.sidebar.radio("Navigation", ["Stoke Score", "Player Radar Single", "Player Radar Comparison", "Scatter Plot", "Multi Player Comparison Tab", "Similarity Score", "Stat Search", "Stoke Score - Wyscout", "Confidence Scores", "Player Profile"])
 
 # Based on the selected tab, display the corresponding content
 if selected_tab == "Stoke Score":
@@ -1004,7 +1004,7 @@ if selected_tab == "Stat Search":
     player_stat_search(df)
 if selected_tab == "Stoke Score - Wyscout":
     stoke_score_wyscout(df3)
-if selected_tab == "Confidence XI":
+if selected_tab == "Confidence Scores":
     display_data()
 if selected_tab == "Player Profile":
     streamlit_interface()
