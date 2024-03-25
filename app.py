@@ -913,19 +913,16 @@ def display_data():
     # Filter data for LB position
     lb_data = data[data['Position'] == 'LB']
 
-    # Select top 5 RB players based on some criteria (for example, goals scored)
-    top_5_rb_players = rb_data.sort_values(by='Confidence Score', ascending=False).head(5)
+    # Combine RB and LB data
+    combined_data = pd.concat([rb_data, lb_data])
 
-    # Select top 5 LB players based on some criteria (for example, goals scored)
-    top_5_lb_players = lb_data.sort_values(by='Confidence Score', ascending=False).head(5)
+    # Select top 5 players based on some criteria (for example, confidence score)
+    top_5_players = combined_data.sort_values(by='Confidence Score', ascending=False).head(5)
 
-    # Plot the top 5 RB players on the pitch visualization
-    plot_players_on_pitch(top_5_rb_players, data.columns, position='RB')
+    # Plot the top 5 players on the pitch visualization
+    plot_players_on_pitch(top_5_players, data.columns)
 
-    # Plot the top 5 LB players on the pitch visualization
-    plot_players_on_pitch(top_5_lb_players, data.columns, position='LB')
-
-def plot_players_on_pitch(players_data, column_names, position):
+def plot_players_on_pitch(players_data, column_names):
     pitch = VerticalPitch(pitch_type='statsbomb', pitch_color='#ffffff', #line_color='#A3A3A3',
                           stripe=False, line_zorder=2, pad_top=0.1)
 
@@ -937,11 +934,8 @@ def plot_players_on_pitch(players_data, column_names, position):
     # Set the starting y-coordinate for annotation
     start_y = 38  # Adjust this value according to your preference
 
-    # Set the X-coordinate of the center of the pitch based on position
-    if position == 'RB':
-        center_x = 60  # X-coordinate of the center of the pitch for RBs
-    elif position == 'LB':
-        center_x = 20  # X-coordinate of the center of the pitch for LBs
+    # Set the X-coordinate of the center of the pitch
+    center_x = 60  # X-coordinate of the center of the pitch
 
     for index, player in players_data.iterrows():
         # Annotate player name at the center of the pitch
