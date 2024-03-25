@@ -939,13 +939,13 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
     fig.set_facecolor(background)
 
     # Set the X-coordinate of the center of the pitch for each position
-    positions_x = {'RB': 58, 'LB': 8, 'LW': 8, 'RW': 58, 'DM': 33, 'CM': 50, 'AM': 50, 'ST': 33}
+    positions_x = {'RB': 58, 'LB': 8, 'LW': 8, 'RW': 58, 'CDM': 33, 'CM': 50, 'AM': 50, 'CF': 33}
 
     # Set the starting y-coordinate for each position
-    start_y = {'RB': 38, 'LB': 38, 'LW': 80, 'RW': 80, 'DM': 50, 'CM': 50, 'AM': 20, 'ST': 20}
+    start_y = {'RB': 38, 'LB': 38, 'LW': 80, 'RW': 80, 'CDM': 50, 'CM': 50, 'AM': 20, 'CF': 20}
 
     # Annotate players for each position
-    for position, players_data in zip(['RB', 'LB', 'LW', 'RW', 'DM', 'CM', 'AM', 'ST'], [rb_players_data, lb_players_data, lw_players_data, rw_players_data, dm_players_data, cm_players_data, am_players_data, st_players_data]):
+    for position, players_data in zip(['RB', 'LB', 'LW', 'RW', 'CDM', 'CM', 'AM', 'CF'], [rb_players_data, lb_players_data, lw_players_data, rw_players_data, dm_players_data, cm_players_data, am_players_data, st_players_data]):
         for index, player in players_data.iterrows():
             ax.annotate(player[column_names[0]], xy=(positions_x[position], start_y[position]), xytext=(positions_x[position], start_y[position]),
                         textcoords="offset points", ha='center', va='center', color='black', fontsize=6)
