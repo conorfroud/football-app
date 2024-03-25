@@ -917,7 +917,7 @@ def display_data():
     plot_players_on_pitch(top_5_rb_players, data.columns)
 
 def plot_players_on_pitch(players_data, column_names):
-    pitch = VerticalPitch(pitch_type='statsbomb', pitch_color='#d9d9d9', #line_color='#A3A3A3',
+    pitch = VerticalPitch(pitch_type='statsbomb', pitch_color='#ffffff', #line_color='#A3A3A3',
                           stripe=False, line_zorder=2, pad_top=0.1)
 
     fig, ax = pitch.draw(figsize=(16, 10))
