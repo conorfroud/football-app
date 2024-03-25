@@ -905,7 +905,7 @@ def display_data():
 
     conn = st.connection("gsheets", type=GSheetsConnection)
 
-    data = conn.read(spreadsheet=url, usecols=[1, 2, 9, 16, 22, 40, 41])
+    data = conn.read(spreadsheet=url, usecols=[1, 2, 9, 15, 22, 40, 41])
 
     # Filter data for RB and LB positions
     rb_data = data[data['Position'] == 'RB']
