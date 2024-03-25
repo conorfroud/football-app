@@ -899,7 +899,7 @@ def stoke_score_wyscout(df3):
         )
 
 # Function to read data from Google Sheets and display it
-def display_data():
+def display_data(contract_expiry_before):
     # Create a connection object.
     url = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?usp=sharing"
 
@@ -907,19 +907,15 @@ def display_data():
 
     data = conn.read(spreadsheet=url, usecols=[1, 2, 9, 15, 22, 40, 41])
 
-    # Filter data based on contract expiry
-    contract_expiry_before = st.selectbox("Contract Expiry Before", data['Contract'].unique())
-    filtered_data = data[data['Contract'] < contract_expiry_before]
-
     # Filter data for RB, LB, LW, RW, DM, CM, AM, and ST positions
-    rb_data = filtered_data[filtered_data['Position'] == 'RB']
-    lb_data = filtered_data[filtered_data['Position'] == 'LB']
-    lw_data = filtered_data[filtered_data['Position'] == 'LW']
-    rw_data = filtered_data[filtered_data['Position'] == 'RW']
-    dm_data = filtered_data[filtered_data['Position'] == 'CDM']
-    cm_data = filtered_data[filtered_data['Position'] == 'CM']
-    am_data = filtered_data[filtered_data['Position'] == 'AM']
-    st_data = filtered_data[filtered_data['Position'] == 'CF']
+    rb_data = data[data['Position'] == 'RB']
+    lb_data = data[data['Position'] == 'LB']
+    lw_data = data[data['Position'] == 'LW']
+    rw_data = data[data['Position'] == 'RW']
+    dm_data = data[data['Position'] == 'CDM']
+    cm_data = data[data['Position'] == 'CM']
+    am_data = data[data['Position'] == 'AM']
+    st_data = data[data['Position'] == 'CF']
 
     # Select top 5 players for each position based on some criteria (for example, confidence score)
     top_5_rb_players = rb_data.sort_values(by='Confidence Score', ascending=False).head(5)
@@ -932,8 +928,9 @@ def display_data():
     top_5_st_players = st_data.sort_values(by='Confidence Score', ascending=False).head(5)
 
     # Plot the top 5 players for each position on the pitch visualization
-    plot_players_on_pitch(top_5_rb_players, top_5_lb_players, top_5_lw_players, top_5_rw_players, top_5_dm_players, top_5_cm_players, top_5_am_players, top_5_st_players, filtered_data, filtered_data.columns)
+    plot_players_on_pitch(top_5_rb_players, top_5_lb_players, top_5_lw_players, top_5_rw_players, top_5_dm_players, top_5_cm_players, top_5_am_players, top_5_st_players, data, data.columns)
 
+# Plotting function
 def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_players_data, dm_players_data, cm_players_data, am_players_data, st_players_data, data, column_names):
     pitch = VerticalPitch(pitch_type='statsbomb', pitch_color='#ffffff', stripe=False, line_zorder=2, pad_top=0.1)
 
@@ -962,6 +959,16 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
     st.write(data)
 
     st.pyplot(fig)
+
+# Function to add contract expiry filter to sidebar
+def add_contract_expiry_filter(data):
+    contract_expiry_before = st.sidebar.selectbox("Contract Expiry Before", sorted(data['Contract'].unique()))
+    return contract_expiry_before
+
+if __name__ == "__main__":
+    data = None  # Placeholder for data, to be populated later
+    contract_expiry_before = add_contract_expiry_filter(data)
+    display_data(contract_expiry_before)
 
 def streamlit_interface():
     # Pull data from Google Sheets
