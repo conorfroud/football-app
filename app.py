@@ -960,16 +960,6 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
 
     st.pyplot(fig)
 
-if __name__ == "__main__":
-    # Create a connection object.
-    url = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?usp=sharing"
-    conn = st.connection("gsheets", type=GSheetsConnection)
-
-    data = conn.read(spreadsheet=url, usecols=[1, 2, 9, 15, 22, 40, 41])
-
-    contract_expiry_before = st.sidebar.selectbox("Contract Expiry Before", sorted(data['Contract'].unique()))
-    display_data(contract_expiry_before)
-
 def streamlit_interface():
     # Pull data from Google Sheets
     url = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?usp=sharing"
