@@ -907,18 +907,22 @@ def display_data():
 
     data = conn.read(spreadsheet=url, usecols=[1, 2, 9, 15, 22, 40, 41])
 
-    # Filter data for RB and LB positions
+    # Filter data for RB, LB, LW, and RW positions
     rb_data = data[data['Position'] == 'RB']
     lb_data = data[data['Position'] == 'LB']
+    lw_data = data[data['Position'] == 'LW']
+    rw_data = data[data['Position'] == 'RW']
 
-    # Select top 5 RB and LB players based on some criteria (for example, confidence score)
+    # Select top 5 RB, LB, LW, and RW players based on some criteria (for example, confidence score)
     top_5_rb_players = rb_data.sort_values(by='Confidence Score', ascending=False).head(5)
     top_5_lb_players = lb_data.sort_values(by='Confidence Score', ascending=False).head(5)
+    top_5_lw_players = lw_data.sort_values(by='Confidence Score', ascending=False).head(5)
+    top_5_rw_players = rw_data.sort_values(by='Confidence Score', ascending=False).head(5)
 
-    # Plot the top 5 RB and LB players on the pitch visualization
-    plot_players_on_pitch(top_5_rb_players, top_5_lb_players, data, data.columns)
+    # Plot the top 5 RB, LB, LW, and RW players on the pitch visualization
+    plot_players_on_pitch(top_5_rb_players, top_5_lb_players, top_5_lw_players, top_5_rw_players, data, data.columns)
 
-def plot_players_on_pitch(rb_players_data, lb_players_data, data, column_names):
+def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_players_data, data, column_names):
     pitch = VerticalPitch(pitch_type='statsbomb', pitch_color='#ffffff', stripe=False, line_zorder=2, pad_top=0.1)
 
     fig, ax = pitch.draw(figsize=(12, 8))  # Adjust the figsize parameter to make the plot smaller
@@ -926,13 +930,17 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, data, column_names):
     background = "#ffffff"
     fig.set_facecolor(background)
 
-    # Set the X-coordinate of the center of the pitch for RBs and LBs
+    # Set the X-coordinate of the center of the pitch for RBs, LBs, LWs, and RWs
     center_x_rb = 60  # X-coordinate of the center of the pitch for RBs
     center_x_lb = 10  # X-coordinate of the center of the pitch for LBs
+    center_x_lw = 10  # X-coordinate of the center of the pitch for LWs
+    center_x_rw = 60  # X-coordinate of the center of the pitch for RWs
 
-    # Set the starting y-coordinate for RBs and LBs
+    # Set the starting y-coordinate for RBs, LBs, LWs, and RWs
     start_y_rb = 38  # Adjust this value according to your preference for RBs
     start_y_lb = 38  # Adjust this value according to your preference for LBs
+    start_y_lw = 60  # Adjust this value according to your preference for LWs
+    start_y_rw = 60  # Adjust this value according to your preference for RWs
 
     # Annotate RB players
     for index, player in rb_players_data.iterrows():
@@ -945,6 +953,18 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, data, column_names):
         ax.annotate(player[column_names[0]], xy=(center_x_lb, start_y_lb), xytext=(center_x_lb, start_y_lb),
                     textcoords="offset points", ha='center', va='center', color='black', fontsize=6)
         start_y_lb -= 3  # Adjust this value to increase/decrease vertical spacing between names
+    
+    # Annotate LW players
+    for index, player in lw_players_data.iterrows():
+        ax.annotate(player[column_names[0]], xy=(center_x_lw, start_y_lw), xytext=(center_x_lw, start_y_lw),
+                    textcoords="offset points", ha='center', va='center', color='black', fontsize=6)
+        start_y_lw -= 3  # Adjust this value to increase/decrease vertical spacing between names
+    
+    # Annotate RW players
+    for index, player in rw_players_data.iterrows():
+        ax.annotate(player[column_names[0]], xy=(center_x_rw, start_y_rw), xytext=(center_x_rw, start_y_rw),
+                    textcoords="offset points", ha='center', va='center', color='black', fontsize=6)
+        start_y_rw -= 3  # Adjust this value to increase/decrease vertical spacing between names
 
     # Remove the red dot
     ax.get_xaxis().set_visible(False)
