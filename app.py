@@ -913,8 +913,11 @@ def display_data():
     # Extract unique entries in 'Contract' column
     unique_contracts = data['Contract'].unique()
 
+    # Set the default selected expiry date to the maximum contract expiry date
+    selected_expiry_date = max(unique_contracts)
+
     # Add a sidebar dropdown box for selecting contract expiry date
-    selected_expiry_date = st.sidebar.selectbox("Select Contract Expiry Date", sorted(unique_contracts))
+    selected_expiry_date = st.sidebar.selectbox("Select Contract Expiry Date", sorted(unique_contracts), index=unique_contracts.tolist().index(selected_expiry_date))
 
     # Filter data for players with contract expiry before selected date
     filtered_data = data[data['Contract'] < selected_expiry_date]
