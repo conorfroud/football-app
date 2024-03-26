@@ -925,9 +925,8 @@ def display_data():
     # Add a sidebar slider for selecting age range
     min_age, max_age = st.sidebar.slider("Select Age Range", min_value=data['Age'].min(), max_value=data['Age'].max(), value=(data['Age'].min(), data['Age'].max()))
 
-    # Add a sidebar checkbox for selecting 'Domestic', 'Both', or 'Abroad'
-    domestic_filter = st.sidebar.checkbox("Domestic", True)
-    abroad_filter = st.sidebar.checkbox("Abroad", True)
+    # Add a sidebar checkbox for selecting only domestic players
+    domestic_only = st.sidebar.checkbox("Domestic players only?", False, help="Check to include only domestic players")
 
     # Filter data for players with contract expiry before selected date
     filtered_data = data[data['Contract'] < selected_expiry_date]
@@ -940,10 +939,8 @@ def display_data():
     filtered_data = filtered_data[(filtered_data['Age'] >= min_age) & (filtered_data['Age'] <= max_age)]
 
     # Filter data based on 'Domestic / Abroad' column
-    if domestic_filter and not abroad_filter:
+    if domestic_only:
         filtered_data = filtered_data[filtered_data['Domestic / Abroad'] == 'Domestic']
-    elif abroad_filter and not domestic_filter:
-        filtered_data = filtered_data[filtered_data['Domestic / Abroad'] == 'Abroad']
 
     # Filter data for RB, LB, LW, RW, DM, CM, AM, and ST positions
     rb_data = filtered_data[filtered_data['Position'] == 'RB']
