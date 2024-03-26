@@ -999,14 +999,18 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
             start_y[position] -= 3  
 
     # Annotate left-footed CBs
+    offset_left_cb = 0
     for index, player in left_cb_players_data.iterrows():
-        ax.annotate(player[column_names[0]], xy=(25, 38), xytext=(25, 38),
+        ax.annotate(player[column_names[0]], xy=(25, 38), xytext=(25, 38 + offset_left_cb),
                     textcoords="offset points", ha='center', va='center', color='blue', fontsize=6)
-    
+        offset_left_cb -= 3  # Adjust the offset for left-footed CBs
+
     # Annotate right-footed CBs
+    offset_right_cb = 0
     for index, player in right_cb_players_data.iterrows():
-        ax.annotate(player[column_names[0]], xy=(40, 38), xytext=(40, 38),
+        ax.annotate(player[column_names[0]], xy=(40, 38), xytext=(40, 38 + offset_right_cb),
                     textcoords="offset points", ha='center', va='center', color='red', fontsize=6)
+        offset_right_cb -= 3  # Adjust the offset for right-footed CBs
 
     # Remove the red dot
     ax.get_xaxis().set_visible(False)
