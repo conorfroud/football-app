@@ -944,6 +944,11 @@ def display_data():
     cm_data = filtered_data[filtered_data['Position'] == 'CM']
     am_data = filtered_data[filtered_data['Position'] == 'AM']
     st_data = filtered_data[filtered_data['Position'] == 'CF']
+    cb_data = filtered_data[filtered_data['Position'] == 'CB']  # New: Filter data for CBs
+
+    # Filter CBs for left-footed and right-footed players
+    left_footed_cb_data = cb_data[cb_data['Foot'] == 'L']
+    right_footed_cb_data = cb_data[cb_data['Foot'] == 'R']
 
     # Select top 5 players for each position based on some criteria (for example, confidence score)
     top_5_rb_players = rb_data.sort_values(by='Confidence Score', ascending=False).head(5)
@@ -954,9 +959,11 @@ def display_data():
     top_5_cm_players = cm_data.sort_values(by='Confidence Score', ascending=False).head(5)
     top_5_am_players = am_data.sort_values(by='Confidence Score', ascending=False).head(5)
     top_5_st_players = st_data.sort_values(by='Confidence Score', ascending=False).head(5)
+    top_5_left_footed_cb_players = left_footed_cb_data.sort_values(by='Confidence Score', ascending=False).head(5)  # New: Top 5 left-footed CBs
+    top_5_right_footed_cb_players = right_footed_cb_data.sort_values(by='Confidence Score', ascending=False).head(5)  # New: Top 5 right-footed CBs
 
     # Plot the top 5 players for each position on the pitch visualization
-    plot_players_on_pitch(top_5_rb_players, top_5_lb_players, top_5_lw_players, top_5_rw_players, top_5_dm_players, top_5_cm_players, top_5_am_players, top_5_st_players, filtered_data, data.columns)
+    plot_players_on_pitch(top_5_rb_players, top_5_lb_players, top_5_lw_players, top_5_rw_players, top_5_dm_players, top_5_cm_players, top_5_am_players, top_5_st_players, top_5_left_footed_cb_players, top_5_right_footed_cb_players, filtered_data, data.columns)
         
     # Filter and select desired columns
     selected_columns = ["Player", "Current Club", "Position", "Contract", "Confidence Score Last Month"]
@@ -970,7 +977,7 @@ def display_data():
     st.dataframe(sorted_original_data, hide_index=True)
 
 # Plotting function
-def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_players_data, dm_players_data, cm_players_data, am_players_data, st_players_data, data, column_names):
+def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_players_data, dm_players_data, cm_players_data, am_players_data, st_players_data, left_cb_players_data, right_cb_players_data, data, column_names):
     pitch = VerticalPitch(pitch_type='statsbomb', pitch_color='#ffffff', stripe=False, line_zorder=2, pad_top=0.1)
 
     fig, ax = pitch.draw(figsize=(12, 8))  # Adjust the figsize parameter to make the plot smaller
@@ -979,17 +986,28 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
     fig.set_facecolor(background)
 
     # Set the X-coordinate of the center of the pitch for each position
-    positions_x = {'RB': 58, 'LB': 8, 'LW': 8, 'RW': 58, 'CDM': 33, 'CM': 48, 'AM': 18, 'CF': 33}
+    positions_x = {'RB': 58, 'LB': 8, 'LW': 8, 'RW': 58, 'CDM': 33, 'CM': 48, 'AM': 18, 'CF': 33, 'CB': 33}  # New: Added 'CB'
 
     # Set the starting y-coordinate for each position
-    start_y = {'RB': 38, 'LB': 38, 'LW': 80, 'RW': 80, 'CDM': 45, 'CM': 65, 'AM': 65, 'CF': 87}
-
-    # Annotate players for each position
+    start_y = {'RB': 38, 'LB': 38, 'LW': 80, 'RW': 80, 'CDM': 45, 'CM': 65, 'AM': 65, 'CF': 87, 'CB': 65}  # New: Added 'CB'
+        # Annotate players for each position
     for position, players_data in zip(['RB', 'LB', 'LW', 'RW', 'CDM', 'CM', 'AM', 'CF'], [rb_players_data, lb_players_data, lw_players_data, rw_players_data, dm_players_data, cm_players_data, am_players_data, st_players_data]):
         for index, player in players_data.iterrows():
             ax.annotate(player[column_names[0]], xy=(positions_x[position], start_y[position]), xytext=(positions_x[position], start_y[position]),
                         textcoords="offset points", ha='center', va='center', color='black', fontsize=6)
             start_y[position] -= 3  # Adjust this value to increase/decrease vertical spacing between names
+
+    # Annotate left-footed CBs
+    for index, player in left_cb_players_data.iterrows():
+        ax.annotate(player[column_names[0]], xy=(positions_x['CB'], start_y['CB']), xytext=(positions_x['CB'], start_y['CB']),
+                    textcoords="offset points", ha='center', va='center', color='blue', fontsize=6)
+        start_y['CB'] -= 3
+    
+    # Annotate right-footed CBs
+    for index, player in right_cb_players_data.iterrows():
+        ax.annotate(player[column_names[0]], xy=(positions_x['CB'], start_y['CB']), xytext=(positions_x['CB'], start_y['CB']),
+                    textcoords="offset points", ha='center', va='center', color='red', fontsize=6)
+        start_y['CB'] -= 3
 
     # Remove the red dot
     ax.get_xaxis().set_visible(False)
