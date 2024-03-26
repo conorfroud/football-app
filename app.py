@@ -898,7 +898,6 @@ def stoke_score_wyscout(df3):
             on_click=None,  # You can add a function to handle click events if needed
         )
 
-# Function to read data from Google Sheets and display it
 def display_data():
     # Create a connection object.
     url = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?usp=sharing"
@@ -919,8 +918,15 @@ def display_data():
     # Add a sidebar dropdown box for selecting contract expiry date
     selected_expiry_date = st.sidebar.selectbox("Select Contract Expiry Date", sorted(unique_contracts), index=unique_contracts.tolist().index(selected_expiry_date))
 
+    # Add a sidebar checkbox to select or exclude players from Stoke City
+    include_stoke_city = st.sidebar.checkbox("Include Stoke City players", True)
+
     # Filter data for players with contract expiry before selected date
     filtered_data = data[data['Contract'] < selected_expiry_date]
+
+    # Filter data to include or exclude Stoke City players based on user choice
+    if not include_stoke_city:
+        filtered_data = filtered_data[filtered_data['Current Club'] != 'Stoke City']
 
     # Filter data for RB, LB, LW, RW, DM, CM, AM, and ST positions
     rb_data = filtered_data[filtered_data['Position'] == 'RB']
