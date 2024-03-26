@@ -917,7 +917,7 @@ def display_data():
     selected_expiry_date = '2030'  # Assuming '2030' is a valid contract expiry date in your data
 
     # Add a sidebar dropdown box for selecting contract expiry date
-    selected_expiry_date = st.sidebar.selectbox("Select Contract Expiry Date", sorted(unique_contracts), index=unique_contracts.tolist().index(selected_expiry_date))
+    selected_expiry_date = st.sidebar.selectbox("Contract Expiry Before", sorted(unique_contracts), index=unique_contracts.tolist().index(selected_expiry_date))
 
     # Add a sidebar checkbox to select or exclude players from Stoke City
     include_stoke_city = st.sidebar.checkbox("Include Stoke City players", True)
