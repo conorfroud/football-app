@@ -986,28 +986,27 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
     fig.set_facecolor(background)
 
     # Set the X-coordinate of the center of the pitch for each position
-    positions_x = {'RB': 58, 'LB': 8, 'LW': 8, 'RW': 58, 'CDM': 33, 'CM': 48, 'AM': 18, 'CF': 33, 'CB': 33}  # New: Added 'CB'
+    positions_x = {'RB': 58, 'LB': 8, 'LW': 8, 'RW': 58, 'CDM': 33, 'CM': 48, 'AM': 18, 'CF': 33, 'CB': 33}  
 
     # Set the starting y-coordinate for each position
-    start_y = {'RB': 38, 'LB': 38, 'LW': 80, 'RW': 80, 'CDM': 45, 'CM': 65, 'AM': 65, 'CF': 87, 'CB': 65}  # New: Added 'CB'
-        # Annotate players for each position
+    start_y = {'RB': 38, 'LB': 38, 'LW': 80, 'RW': 80, 'CDM': 45, 'CM': 65, 'AM': 65, 'CF': 87, 'CB': 65}  
+
+    # Annotate players for each position
     for position, players_data in zip(['RB', 'LB', 'LW', 'RW', 'CDM', 'CM', 'AM', 'CF'], [rb_players_data, lb_players_data, lw_players_data, rw_players_data, dm_players_data, cm_players_data, am_players_data, st_players_data]):
         for index, player in players_data.iterrows():
             ax.annotate(player[column_names[0]], xy=(positions_x[position], start_y[position]), xytext=(positions_x[position], start_y[position]),
                         textcoords="offset points", ha='center', va='center', color='black', fontsize=6)
-            start_y[position] -= 3  # Adjust this value to increase/decrease vertical spacing between names
+            start_y[position] -= 3  
 
     # Annotate left-footed CBs
     for index, player in left_cb_players_data.iterrows():
-        ax.annotate(player[column_names[0]], xy=(positions_x['CB'], start_y['CB']), xytext=(positions_x['CB'], start_y['CB']),
+        ax.annotate(player[column_names[0]], xy=(25, 38), xytext=(25, 38),
                     textcoords="offset points", ha='center', va='center', color='blue', fontsize=6)
-        start_y['CB'] -= 3
     
     # Annotate right-footed CBs
     for index, player in right_cb_players_data.iterrows():
-        ax.annotate(player[column_names[0]], xy=(positions_x['CB'], start_y['CB']), xytext=(positions_x['CB'], start_y['CB']),
+        ax.annotate(player[column_names[0]], xy=(40, 38), xytext=(40, 38),
                     textcoords="offset points", ha='center', va='center', color='red', fontsize=6)
-        start_y['CB'] -= 3
 
     # Remove the red dot
     ax.get_xaxis().set_visible(False)
