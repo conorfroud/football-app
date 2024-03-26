@@ -952,7 +952,6 @@ def display_data():
     # Display a table below the filtered table for original data sorted by 'Confidence Score Last Month'
     st.write("Confidence Score Last Month:")
     sorted_original_data = filtered_data.sort_values(by='Confidence Score Last Month', ascending=False)
-    st.write(sorted_original_data)  # Display selected columns of original data sorted by 'Confidence Score Last Month' in a table
 
     # Display the filtered DataFrame with selected columns
     st.dataframe(sorted_original_data, hide_index=True)
