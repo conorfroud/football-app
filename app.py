@@ -922,6 +922,9 @@ def display_data():
     # Add a sidebar checkbox to select or exclude players from Stoke City
     include_stoke_city = st.sidebar.checkbox("Include Stoke City players", True)
 
+    # Add a sidebar checkbox to select only players available for loan
+    only_loan_available = st.sidebar.checkbox("Select only players available for loan", False)
+
     # Add a sidebar slider for selecting age range
     min_age, max_age = st.sidebar.slider("Select Age Range", min_value=data['Age'].min(), max_value=data['Age'].max(), value=(data['Age'].min(), data['Age'].max()))
 
@@ -941,6 +944,10 @@ def display_data():
     # Filter data based on 'Domestic / Abroad' column
     if domestic_only:
         filtered_data = filtered_data[filtered_data['Domestic / Abroad'] == 'Domestic']
+
+    # Filter data to include only players available for loan if checkbox is checked
+    if only_loan_available:
+        filtered_data = filtered_data[filtered_data['Available for Loan?'] == 'Yes']
 
     # Filter data for RB, LB, LW, RW, DM, CM, AM, and ST positions
     rb_data = filtered_data[filtered_data['Position'] == 'RB']
