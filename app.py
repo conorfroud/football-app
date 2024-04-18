@@ -920,7 +920,7 @@ def display_data():
     selected_expiry_date = st.sidebar.selectbox("Contract Expiry Before", sorted(unique_contracts), index=unique_contracts.tolist().index(selected_expiry_date))
 
     # Add a sidebar checkbox to select or exclude players from Stoke City
-    include_stoke_city = st.sidebar.checkbox("Include Stoke City players", True)
+    include_stoke_city = st.sidebar.checkbox("Include Stoke City players", False)
 
     # Add a sidebar checkbox to select only players available for loan
     only_loan_available = st.sidebar.checkbox("Select only players available for loan", False)
