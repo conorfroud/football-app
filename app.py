@@ -905,7 +905,7 @@ def display_data():
 
     conn = st.connection("gsheets", type=GSheetsConnection)
 
-    data = conn.read(spreadsheet=url, usecols=[1, 2, 10, 14, 16, 19, 23, 27, 41, 42, 88])
+    data = conn.read(spreadsheet=url, usecols=[1, 2, 7, 10, 14, 16, 19, 23, 27, 41, 42, 88])
 
     # Convert 'Contract' column to a consistent type (e.g., string)
     data['Contract'] = data['Contract'].astype(str)
