@@ -92,6 +92,12 @@ def main_tab(df2):
     # Add a slider for selecting the Top 5 PSV-99 Percentile range
     top_5_psv_99_percentile_range = st.sidebar.slider("Select Top 5 PSV-99 Percentile Range", min_value=0, max_value=100, value=(0, 100))
 
+    # Create a list of season options
+    season_options = df2['Season'].unique()
+
+    # Add a sidebar dropdown box for selecting the season
+    selected_season = st.sidebar.selectbox("Select a Season", season_options)
+
     # Define a dictionary that maps 'Score Type' to columns
     score_type_column_mapping = {
         'Striker': ['Player Name', 'Age', 'Team', 'League', 'Primary Position', 'Player Season Minutes', 'Stoke Score', 'Average Distance Percentile', 'Top 5 PSV-99 Percentile', 'Contract expires', 'Market value (millions)', 'xG (ST)', 'Non-Penalty Goals (ST)', 'Shots (ST)', 'OBV Shot (ST)', 'Open Play xA (ST)', 'OBV Dribble & Carry (ST)', 'PAdj Pressures (ST)', 'Aerial Wins (ST)', 'Aerial Win % (ST)', 'L/R Footedness %'],
@@ -121,12 +127,13 @@ def main_tab(df2):
         'Dominant Centre Back': ['Player Name', 'Age', 'Team', 'League', 'Primary Position', 'Player Season Minutes', 'Stoke Score', 'Average Distance (DCB)', 'Top 5 PSV-99 (DCB)', 'Contract expires', 'Market value (millions)', 'Aerial Wins (DCB)', 'Aerial Win % (DCB)', 'OBV Defensive Action (DCB)', 'Tackle / Dribbled Past % (DCB)', 'Blocks Per Shot (DCB)', 'L/R Footedness %'],
     }
 
-    # Update the selected columns to include 'Score Type'
+    # Update the selected columns to include 'Score Type' and 'Season'
     selected_columns = score_type_column_mapping.get(selected_score_type, [])
 
     # Modify the filtering condition to include selected primary positions
     filtered_df = df2[
         (df2['League'].isin(selected_leagues)) &
+        (df2['Season'] == selected_season) &
         (df2['Score Type'] == selected_score_type) &
         (df2['Age'] >= age_range[0]) &
         (df2['Age'] <= age_range[1]) &
