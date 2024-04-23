@@ -67,7 +67,7 @@ def main_tab(df2):
     selected_leagues = st.sidebar.multiselect("Select Leagues", league_options, default=['English Championship'])
 
     # Define the list of available season options
-    season_options = ['2023', '2023/2024']
+    season_options = df2['Season'].unique()
 
     # Add a sidebar dropdown box for selecting the season
     selected_season = st.sidebar.selectbox("Select a Season", season_options)
