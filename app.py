@@ -66,11 +66,11 @@ def main_tab(df2):
     # Add a sidebar multiselect box for leagues with default selections
     selected_leagues = st.sidebar.multiselect("Select Leagues", league_options, default=['English Championship'])
 
-    # Define the list of available season options
-    season_options = df2['Season'].unique()
+    # Filter seasons based on selected leagues
+    filtered_season_options = df2[df2['League'].isin(selected_leagues)]['Season'].unique()
 
     # Add a sidebar dropdown box for selecting the season
-    selected_season = st.sidebar.selectbox("Select a Season", season_options)
+    selected_season = st.sidebar.selectbox("Select a Season", filtered_season_options)
 
     # Add a sidebar dropdown box for score types
     selected_score_type = st.sidebar.selectbox("Select a Score Type", score_type_options)
