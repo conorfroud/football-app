@@ -66,11 +66,17 @@ def main_tab(df2):
     # Add a sidebar multiselect box for leagues with default selections
     selected_leagues = st.sidebar.multiselect("Select Leagues", league_options, default=['English Championship'])
 
+    # Create a list of season options
+    season_options = df2['Season'].unique()
+
+    # Add a sidebar dropdown box for selecting the season
+    selected_season = st.sidebar.selectbox("Select a Season", season_options)
+
     # Add a sidebar dropdown box for score types
     selected_score_type = st.sidebar.selectbox("Select a Score Type", score_type_options)
 
     stoke_range = st.sidebar.slider("Select Stoke Score Range", min_value=min_stoke_score, max_value=max_stoke_score, value=(min_stoke_score, max_stoke_score))
-    
+
     # Add a slider for selecting the age range
     age_range = st.sidebar.slider("Select Age Range", min_value=min_age, max_value=max_age, value=(min_age, max_age))
 
@@ -91,12 +97,6 @@ def main_tab(df2):
 
     # Add a slider for selecting the Top 5 PSV-99 Percentile range
     top_5_psv_99_percentile_range = st.sidebar.slider("Select Top 5 PSV-99 Percentile Range", min_value=0, max_value=100, value=(0, 100))
-
-    # Create a list of season options
-    season_options = df2['Season'].unique()
-
-    # Add a sidebar dropdown box for selecting the season
-    selected_season = st.sidebar.selectbox("Select a Season", season_options)
 
     # Define a dictionary that maps 'Score Type' to columns
     score_type_column_mapping = {
