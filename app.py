@@ -75,6 +75,9 @@ def main_tab(df2):
     # Filter seasons based on selected leagues
     filtered_season_options = df2[df2['League'].isin(selected_leagues)]['Season'].unique()
 
+    # Add a sidebar dropdown box for selecting seasons
+    selected_season = st.sidebar.selectbox("Select a Season", custom_season_order)
+
     # Add a sidebar dropdown box for score types
     selected_score_type = st.sidebar.selectbox("Select a Score Type", score_type_options)
 
