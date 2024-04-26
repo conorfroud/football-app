@@ -1058,6 +1058,9 @@ def streamlit_interface():
 
     # Filter data based on selected player
     filtered_data = data[data['Player'] == selected_player]
+    
+    # Filter data1 based on selected player
+    filtered_data1 = data1[data1['Player'] == selected_player]
 
     # Display player info card visualization
     st.markdown(f"### {selected_player} ###", unsafe_allow_html=True)
@@ -1074,6 +1077,9 @@ def streamlit_interface():
         st.markdown(f"**A Verdicts:** {filtered_data['A Verdicts'].iloc[0]}")
         st.markdown(f"**B Verdicts:** {filtered_data['B Verdicts'].iloc[0]}")
         st.markdown(f"**Average Player Performance:** {filtered_data['Average Player Performance'].iloc[0]}")
+        
+    # Display report data from data1
+    st.write(filtered_data1)
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
