@@ -1076,7 +1076,7 @@ def streamlit_interface():
     st.markdown("---")  # Add a separator
 
     # Center align the text "**Player Reports:**"
-    st.markdown("<p style='text-align:center'>**Player Reports:**</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align:center'>Player Reports</p>", unsafe_allow_html=True)
     
     # Display report data from data1
     for index, row in filtered_data1[['Player', 'Scout', 'Comments']].iterrows():
