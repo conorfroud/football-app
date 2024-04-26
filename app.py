@@ -1047,30 +1047,34 @@ def streamlit_interface():
     # Pull data from Google Sheets
     url = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?usp=sharing"
     conn = st.connection("gsheets", type=GSheetsConnection)
-    data = conn.read(spreadsheet=url)  # Adjust columns accordingly
+    data_sheet1 = conn.read(spreadsheet=url, sheet="Players")  # Adjust sheet name accordingly
+    data_sheet2 = conn.read(spreadsheet=url, sheet="Player Reports")  # Adjust sheet name accordingly
 
     # Sidebar dropdown filter for Player Name
-    player_names = data['Player'].unique().tolist()  # Replace 'Player' with the correct column name
+    player_names = data_sheet1['Player'].unique().tolist()  # Using data from the first sheet
     selected_player = st.sidebar.selectbox("Select Player", player_names)
 
-    # Filter data based on selected player
-    filtered_data = data[data['Player'] == selected_player]
+    # Filter data from the second sheet based on selected player
+    player_reports = data_sheet2[data_sheet2['Player'] == selected_player]
+
+    # Merge data from the first sheet with player reports from the second sheet based on 'Player Name'
+    data = pd.merge(data_sheet1, player_reports, on='Player', how='inner')
 
     # Display player info card visualization
     st.markdown(f"### {selected_player} ###", unsafe_allow_html=True)
     
     # Using columns to create a card-like layout
-    num_columns = 1  # Adjust the number of columns as needed
+    num_columns = 1
     cols = st.columns(num_columns)
     
-    with cols[0]:  # Access the first column
-        st.markdown(f"**Team:** {filtered_data['Current Club'].iloc[0]}")
-        st.markdown(f"**Position:** {filtered_data['Position'].iloc[0]}")
-        st.markdown(f"**Scout Top 3s:** {filtered_data['Scout Top 3s'].iloc[0]}")
-        st.markdown(f"**No. of Reports:** {filtered_data['No. of Reports'].iloc[0]}")
-        st.markdown(f"**A Verdicts:** {filtered_data['A Verdicts'].iloc[0]}")
-        st.markdown(f"**B Verdicts:** {filtered_data['B Verdicts'].iloc[0]}")
-        st.markdown(f"**Average Player Performance:** {filtered_data['Average Player Performance'].iloc[0]}")
+    with cols[0]:
+        st.markdown(f"**Team:** {data['Current Club'].iloc[0]}")
+        st.markdown(f"**Position:** {data['Position'].iloc[0]}")
+        st.markdown(f"**Scout Top 3s:** {data['Scout Top 3s'].iloc[0]}")
+        st.markdown(f"**No. of Reports:** {data['No. of Reports'].iloc[0]}")
+        st.markdown(f"**A Verdicts:** {data['A Verdicts'].iloc[0]}")
+        st.markdown(f"**B Verdicts:** {data['B Verdicts'].iloc[0]}")
+        st.markdown(f"**Average Player Performance:** {data['Average Player Performance'].iloc[0]}")
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
