@@ -9,5 +9,3 @@ mplsoccer
 scikit-learn
 numpy
 st-gsheets-connection
-Image
-io
