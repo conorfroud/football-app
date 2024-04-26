@@ -1046,8 +1046,8 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
 def streamlit_interface():
     
     # Pull data from Google Sheets
-    url = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?usp=sharing"
     conn = st.connection("gsheets", type=GSheetsConnection)
+    spreadsheet = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?usp=sharing"
     data = conn.read(worksheet="Players")
 
     # Sidebar dropdown filter for Player Name
