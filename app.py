@@ -1047,7 +1047,6 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
     st.pyplot(fig)
     
 def streamlit_interface():
-    
     # Pull data from Google Sheets
     url = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?usp=sharing"
     url1 = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit#gid=1930222963"
@@ -1072,17 +1071,17 @@ def streamlit_interface():
     col1, col2, col3 = st.columns([1, 1, 2])
     
     with col1:
-    # Extract image URL from the cell
-    image_url = filtered_data['Image'].iloc[0]
-    if not pd.isnull(image_url):  # Check if image_url is not NaN
-        # Fetch image from Google Drive
-        response = requests.get(image_url)
-        if response.status_code == 200:
-            st.image(response.content, width=140)
+        # Extract image URL from the cell
+        image_url = filtered_data['Image'].iloc[0]
+        if not pd.isnull(image_url):  # Check if image_url is not NaN
+            # Fetch image from Google Drive
+            response = requests.get(image_url)
+            if response.status_code == 200:
+                st.image(response.content, width=140)
+            else:
+                st.write("Image not available")
         else:
-            st.write("Image not available")
-    else:
-        st.write("No image available")
+            st.write("No image available")
     
     # Display player information in the second column
     with col2:
@@ -1111,7 +1110,7 @@ def streamlit_interface():
         st.markdown(f"**Verdict:** {row['Player Level - Score']}")
         st.markdown(f"**Comments:** {row['Comments']}")
         st.markdown("---")  # Add a separator
-        
+      
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
 df2 = pd.read_csv("championshipscores.csv")
