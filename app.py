@@ -1045,6 +1045,8 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
 
     st.pyplot(fig)
 
+import base64
+
 def streamlit_interface():
     
     # Pull data from Google Sheets
@@ -1073,9 +1075,11 @@ def streamlit_interface():
     # Display player headshot in the first column
     with col1:
         # Extract base64 encoded image from the cell
-        image_data_base64 = filtered_data['Image'].iloc[0]
+        image_data_base64 = filtered_data['Player Image'].iloc[0]
+        st.write("Image Data:", image_data_base64)  # Debugging statement
         # Decode base64 string back into bytes
         image_bytes = base64.b64decode(image_data_base64)
+        st.write("Decoded Bytes:", image_bytes)  # Debugging statement
         # Use PIL to open the image
         pil_image = Image.open(io.BytesIO(image_bytes))
         st.image(pil_image, width=140)
@@ -1107,8 +1111,7 @@ def streamlit_interface():
         st.markdown(f"**Verdict:** {row['Player Level - Score']}")
         st.markdown(f"**Comments:** {row['Comments']}")
         st.markdown("---")  # Add a separator
-
-
+        
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
 df2 = pd.read_csv("championshipscores.csv")
