@@ -1065,21 +1065,21 @@ def streamlit_interface():
     # Display player info card visualization
     st.markdown(f"### {selected_player} ###", unsafe_allow_html=True)
     
-    # Using columns to create a card-like layout
-    num_columns = 1
-    cols = st.columns(num_columns)
-
-    with cols[0]:
-        st.markdown(f"**Team:** {filtered_data['Current Club'].iloc[0]}")
-        st.markdown(f"**Position:** {filtered_data['Position'].iloc[0]}")
-        st.markdown(f"**Scout Top 3s:** {filtered_data['Scout Top 3s'].iloc[0]}")
-        st.markdown(f"**No. of Reports:** {filtered_data['No. of Reports'].iloc[0]}")
-        st.markdown(f"**A Verdicts:** {filtered_data['A Verdicts'].iloc[0]}")
-        st.markdown(f"**B Verdicts:** {filtered_data['B Verdicts'].iloc[0]}")
-        st.markdown(f"**Average Player Performance:** {filtered_data['Average Player Performance'].iloc[0]}")
+    # Display player information
+    st.markdown(f"**Team:** {filtered_data['Current Club'].iloc[0]}")
+    st.markdown(f"**Position:** {filtered_data['Position'].iloc[0]}")
+    st.markdown(f"**Scout Top 3s:** {filtered_data['Scout Top 3s'].iloc[0]}")
+    st.markdown(f"**No. of Reports:** {filtered_data['No. of Reports'].iloc[0]}")
+    st.markdown(f"**A Verdicts:** {filtered_data['A Verdicts'].iloc[0]}")
+    st.markdown(f"**B Verdicts:** {filtered_data['B Verdicts'].iloc[0]}")
+    st.markdown(f"**Average Player Performance:** {filtered_data['Average Player Performance'].iloc[0]}")
 
     # Display report data from data1
-    st.write(filtered_data1)
+    st.markdown("**Player Reports:**")
+    for index, row in filtered_data1[['Player', 'Scout', 'Comments']].iterrows():
+        st.markdown(f"**Player:** {row['Player']}")
+        st.markdown(f"**Scout:** {row['Scout']}")
+        st.markdown(f"**Comments:** {row['Comments']}")
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
