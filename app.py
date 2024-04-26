@@ -1080,6 +1080,7 @@ def streamlit_interface():
         st.markdown(f"**Player:** {row['Player']}")
         st.markdown(f"**Scout:** {row['Scout']}")
         st.markdown(f"**Comments:** {row['Comments']}")
+        st.markdown("---")  # Add a separator
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
