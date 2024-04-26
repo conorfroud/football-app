@@ -1075,7 +1075,7 @@ def streamlit_interface():
     # Display player headshot in the first column
     with col1:
         # Extract base64 encoded image from the cell
-        image_data_base64 = filtered_data['Player Image'].iloc[0]
+        image_data_base64 = filtered_data['Image'].iloc[0]
         st.write("Image Data:", image_data_base64)  # Debugging statement
         # Decode base64 string back into bytes
         image_bytes = base64.b64decode(image_data_base64)
