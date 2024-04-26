@@ -1055,8 +1055,8 @@ def streamlit_interface():
     # Sidebar select box filter for Player Name
     selected_player = st.sidebar.selectbox("Select Player", data['Player'].unique().tolist())
 
-    # Filter data based on selected player name
-    filtered_data = data[data['Player'] == selected_player]
+    # Filter data based on selected player name and select 'Transfermarkt URL' column
+    filtered_data = data[data['Player'] == selected_player][['Player', 'Transfermarkt URL']]
 
     # Filter data1 based on the selected player's Transfermarkt URL
     player_url = filtered_data['Transfermarkt URL'].iloc[0]
