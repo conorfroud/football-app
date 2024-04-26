@@ -1044,9 +1044,7 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
     ax.get_yaxis().set_visible(False)
 
     st.pyplot(fig)
-
-import base64
-
+    
 def streamlit_interface():
     
     # Pull data from Google Sheets
@@ -1074,15 +1072,14 @@ def streamlit_interface():
     
     # Display player headshot in the first column
     with col1:
-        # Extract base64 encoded image from the cell
-        image_data_base64 = filtered_data['Image'].iloc[0]
-        st.write("Image Data:", image_data_base64)  # Debugging statement
-        # Decode base64 string back into bytes
-        image_bytes = base64.b64decode(image_data_base64)
-        st.write("Decoded Bytes:", image_bytes)  # Debugging statement
-        # Use PIL to open the image
-        pil_image = Image.open(io.BytesIO(image_bytes))
-        st.image(pil_image, width=140)
+        # Extract image URL from the cell
+        image_url = filtered_data['Image'].iloc[0]
+        # Fetch image from Google Drive
+        response = requests.get(image_url)
+        if response.status_code == 200:
+            st.image(response.content, width=140)
+        else:
+            st.write("Image not available")
     
     # Display player information in the second column
     with col2:
