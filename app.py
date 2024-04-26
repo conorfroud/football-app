@@ -1044,11 +1044,17 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
     st.pyplot(fig)
     
 def streamlit_interface():
+    
     # Pull data from Google Sheets
     url = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?usp=sharing"
     conn = st.connection("gsheets", type=GSheetsConnection)
-    data_sheet1 = conn.read(spreadsheet=url, sheet="Players")  # Adjust sheet name accordingly
-    data_sheet2 = conn.read(spreadsheet=url, sheet="Player Reports")  # Adjust sheet name accordingly
+    data = conn.read(spreadsheet=url)
+
+    # Filter data from the first sheet
+    data_sheet1 = data['Players']  # Adjust sheet name accordingly
+
+    # Filter data from the second sheet
+    data_sheet2 = data['Player Reports']  # Adjust sheet name accordingly
 
     # Sidebar dropdown filter for Player Name
     player_names = data_sheet1['Player'].unique().tolist()  # Using data from the first sheet
