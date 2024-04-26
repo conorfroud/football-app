@@ -1048,10 +1048,10 @@ def streamlit_interface():
     # Pull data from Google Sheets
     url = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?usp=sharing"
     conn = st.connection("gsheets", type=GSheetsConnection)
-    data = conn.read(spreadsheet=url, worksheet="Players")
+    data = conn.read(spreadsheet=url, sheet="Players")  # Use 'sheet' instead of 'worksheet'
 
     # Sidebar dropdown filter for Player Name
-    player_names = data['Player'].unique().tolist()  # Replace 'Player' with the correct column name
+    player_names = data['Player'].unique().tolist()
     selected_player = st.sidebar.selectbox("Select Player", player_names)
 
     # Filter data based on selected player
@@ -1061,10 +1061,10 @@ def streamlit_interface():
     st.markdown(f"### {selected_player} ###", unsafe_allow_html=True)
     
     # Using columns to create a card-like layout
-    num_columns = 1  # Adjust the number of columns as needed
+    num_columns = 1
     cols = st.columns(num_columns)
     
-    with cols[0]:  # Access the first column
+    with cols[0]:
         st.markdown(f"**Team:** {filtered_data['Current Club'].iloc[0]}")
         st.markdown(f"**Position:** {filtered_data['Position'].iloc[0]}")
         st.markdown(f"**Scout Top 3s:** {filtered_data['Scout Top 3s'].iloc[0]}")
