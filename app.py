@@ -1047,9 +1047,11 @@ def streamlit_interface():
     
     # Pull data from Google Sheets
     url = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?usp=sharing"
+    url1 = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit#gid=1930222963"
     conn = st.connection("gsheets", type=GSheetsConnection)
-    data = conn.read(spreadsheet=url, sheet="Players")  # Use 'sheet' instead of 'worksheet'
-
+    data = conn.read(spreadsheet=url)
+    data1 = conn.read(spreadsheet=url1)
+    
     # Sidebar dropdown filter for Player Name
     player_names = data['Player'].unique().tolist()
     selected_player = st.sidebar.selectbox("Select Player", player_names)
