@@ -1079,7 +1079,7 @@ def streamlit_interface():
     st.markdown("<p style='text-align:center'>Player Reports</p>", unsafe_allow_html=True)
     
     # Display report data from data1
-    for index, row in filtered_data1[['Player', 'Scout', 'Comments']].iterrows():
+    for index, row in filtered_data1[['Player', 'Scout', 'Comments', 'Date of report', 'Player Level - Score']].iterrows():
         st.markdown(f"**Player:** {row['Player']}")
         st.markdown(f"**Scout:** {row['Scout']}")
         st.markdown(f"**Date of Report:** {row['Date of report']}")
