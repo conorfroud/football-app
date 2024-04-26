@@ -1068,7 +1068,7 @@ def streamlit_interface():
     st.markdown(f"### {selected_player} ###", unsafe_allow_html=True)
     
     # Splitting the player information into three columns
-    col1, col2, col3 = st.columns([1, 1, 2])
+    col1, col2, col3 = st.columns([2, 2, 2])
     
     with col1:
         # Extract image URL from the cell
