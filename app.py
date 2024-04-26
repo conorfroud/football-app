@@ -1042,8 +1042,6 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
     ax.get_yaxis().set_visible(False)
 
     st.pyplot(fig)
-    
-import requests
 
 def streamlit_interface():
     
@@ -1072,12 +1070,15 @@ def streamlit_interface():
     
     # Display player headshot in the first column
     with col1:
-        image_url = filtered_data['Image'].iloc[0]
-        response = requests.get(image_url)
-        if response.status_code == 200:
-            st.image(response.content, width=140)
+        image_url = filtered_data['Player Image URL'].iloc[0]
+        if isinstance(image_url, str) and image_url.startswith(('http://', 'https://')):
+            response = requests.get(image_url)
+            if response.status_code == 200:
+                st.image(response.content, width=140)
+            else:
+                st.write("Image not available")
         else:
-            st.write("Image not available")
+            st.write("Invalid image URL")
     
     # Display player information in the second column
     with col2:
