@@ -67,7 +67,7 @@ def main_tab(df2):
     selected_leagues = st.sidebar.multiselect("Select Leagues", league_options, default=['English Championship'])
 
     # Define your custom order for seasons
-    custom_season_order = ['2024', '2023/2024', '2023']  # Add more years as needed
+    custom_season_order = [2024, '2023/2024', 2023]  # Add more years as needed
 
     # Filter seasons based on selected leagues
     filtered_season_options = df2[df2['League'].isin(selected_leagues)]['Season'].unique()
