@@ -1065,14 +1065,21 @@ def streamlit_interface():
     # Display player info card visualization
     st.markdown(f"### {selected_player} ###", unsafe_allow_html=True)
     
-    # Display player information
-    st.markdown(f"**Team:** {filtered_data['Current Club'].iloc[0]}")
-    st.markdown(f"**Position:** {filtered_data['Position'].iloc[0]}")
-    st.markdown(f"**Scout Top 3s:** {filtered_data['Scout Top 3s'].iloc[0]}")
-    st.markdown(f"**No. of Reports:** {filtered_data['No. of Reports'].iloc[0]}")
-    st.markdown(f"**A Verdicts:** {filtered_data['A Verdicts'].iloc[0]}")
-    st.markdown(f"**B Verdicts:** {filtered_data['B Verdicts'].iloc[0]}")
-    st.markdown(f"**Average Player Performance:** {filtered_data['Average Player Performance'].iloc[0]}")
+    # Splitting the player information into two columns
+    col1, col2 = st.columns(2)
+    
+    # Display player information in two columns
+    with col1:
+        st.markdown(f"**Team:** {filtered_data['Current Club'].iloc[0]}")
+        st.markdown(f"**Position:** {filtered_data['Position'].iloc[0]}")
+        st.markdown(f"**Scout Top 3s:** {filtered_data['Scout Top 3s'].iloc[0]}")
+        st.markdown(f"**No. of Reports:** {filtered_data['No. of Reports'].iloc[0]}")
+
+    with col2:
+        st.markdown(f"**A Verdicts:** {filtered_data['A Verdicts'].iloc[0]}")
+        st.markdown(f"**B Verdicts:** {filtered_data['B Verdicts'].iloc[0]}")
+        st.markdown(f"**Average Player Performance:** {filtered_data['Average Player Performance'].iloc[0]}")
+    
     st.markdown("---")  # Add a separator
 
     # Center align the text "**Player Reports:**"
