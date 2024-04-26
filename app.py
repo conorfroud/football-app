@@ -1043,6 +1043,9 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
 
     st.pyplot(fig)
 
+from PIL import Image
+import io
+
 def streamlit_interface():
     
     # Pull data from Google Sheets
@@ -1070,15 +1073,11 @@ def streamlit_interface():
     
     # Display player headshot in the first column
     with col1:
-        image_url = filtered_data['Player Image URL'].iloc[0]
-        if isinstance(image_url, str) and image_url.startswith(('http://', 'https://')):
-            response = requests.get(image_url)
-            if response.status_code == 200:
-                st.image(response.content, width=140)
-            else:
-                st.write("Image not available")
-        else:
-            st.write("Invalid image URL")
+        # Extract image from the cell
+        image_data = filtered_data['Image'].iloc[0]
+        # Convert image data to PIL Image
+        pil_image = Image.open(io.BytesIO(image_data))
+        st.image(pil_image, width=140)
     
     # Display player information in the second column
     with col2:
