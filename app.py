@@ -21,6 +21,7 @@ from streamlit_gsheets import GSheetsConnection
 from mplsoccer.pitch import Pitch, VerticalPitch
 import io
 import base64
+import requests
 
 st.set_page_config(layout="wide")
 
