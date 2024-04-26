@@ -69,17 +69,6 @@ def main_tab(df2):
     # Convert all 'Season' values to strings in the DataFrame
     df2['Season'] = df2['Season'].astype(str)
 
-    # Add a sidebar multiselect box for leagues with default selections
-    selected_leagues = st.sidebar.multiselect("Select Leagues", league_options, default=['English Championship'])
-
-    # Add a sidebar multiselect box for leagues with unique keys
-    for league in league_options:
-       league_key = f"league_multiselect_{league}"  # Unique key for each league
-       selected_leagues = st.sidebar.multiselect(f"Select Leagues ({league})", league_options, default=['English Championship'], key=league_key)
-
-    # Convert all 'Season' values to strings in the DataFrame
-    df2['Season'] = df2['Season'].astype(str)
-
     # Define your custom order for seasons
     custom_season_order = ['2024', '2023/2024', '2023']  # Add more years as needed
 
