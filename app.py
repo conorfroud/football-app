@@ -1059,7 +1059,7 @@ def streamlit_interface():
     filtered_data = data[data['Player'] == selected_player]
 
     # Filter data1 based on the selected player's Transfermarkt URL
-    player_url = data['Transfermarkt URL'].iloc[0]
+    player_url = filtered_data['Transfermarkt URL'].iloc[0]
     filtered_data1 = data1[data1['Transfermarkt URL'] == player_url]
 
     # Display player info card visualization
