@@ -20,6 +20,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from streamlit_gsheets import GSheetsConnection
 from mplsoccer.pitch import Pitch, VerticalPitch
 import io
+import base64
 
 st.set_page_config(layout="wide")
 
@@ -1044,9 +1045,6 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
 
     st.pyplot(fig)
 
-from PIL import Image
-import io
-
 def streamlit_interface():
     
     # Pull data from Google Sheets
@@ -1074,10 +1072,12 @@ def streamlit_interface():
     
     # Display player headshot in the first column
     with col1:
-        # Extract image from the cell
-        image_data = filtered_data['Image'].iloc[0]
-        # Convert image data to PIL Image
-        pil_image = Image.open(io.BytesIO(image_data))
+        # Extract base64 encoded image from the cell
+        image_data_base64 = filtered_data['Image'].iloc[0]
+        # Decode base64 string back into bytes
+        image_bytes = base64.b64decode(image_data_base64)
+        # Use PIL to open the image
+        pil_image = Image.open(io.BytesIO(image_bytes))
         st.image(pil_image, width=140)
     
     # Display player information in the second column
@@ -1107,6 +1107,7 @@ def streamlit_interface():
         st.markdown(f"**Verdict:** {row['Player Level - Score']}")
         st.markdown(f"**Comments:** {row['Comments']}")
         st.markdown("---")  # Add a separator
+
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
