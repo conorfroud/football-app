@@ -1070,7 +1070,7 @@ def streamlit_interface():
     
     # Display player headshot in the first column (adjust width and height as needed)
     with col1:
-        st.image("/Users/conorfroud/Downloads/Iheanacho.png", width=150)
+        st.image("Iheanacho.png", width=150)
     
     # Display player information in the second column
     with col2:
