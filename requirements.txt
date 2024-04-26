@@ -9,6 +9,5 @@ mplsoccer
 scikit-learn
 numpy
 st-gsheets-connection
-PIL
 Image
 io
