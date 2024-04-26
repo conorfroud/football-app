@@ -1085,8 +1085,8 @@ def streamlit_interface():
     
     # Display player information in the second column
     with col2:
-        st.markdown(f"**Age:** {filtered_data['Age'].iloc[0]}")
         st.markdown(f"**Team:** {filtered_data['Current Club'].iloc[0]}")
+        st.markdown(f"**Age:** {filtered_data['Age'].iloc[0]}")
         st.markdown(f"**Position:** {filtered_data['Position'].iloc[0]}")
         st.markdown(f"**Height:** {filtered_data['Average Height'].iloc[0]}")
         st.markdown(f"**Foot:** {filtered_data['Foot'].iloc[0]}")
