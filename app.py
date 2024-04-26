@@ -1082,6 +1082,8 @@ def streamlit_interface():
     for index, row in filtered_data1[['Player', 'Scout', 'Comments']].iterrows():
         st.markdown(f"**Player:** {row['Player']}")
         st.markdown(f"**Scout:** {row['Scout']}")
+        st.markdown(f"**Date of Report:** {row['Date of report']}")
+        st.markdown(f"**Verdict:** {row['Player Level - Score']}")
         st.markdown(f"**Comments:** {row['Comments']}")
         st.markdown("---")  # Add a separator
 
