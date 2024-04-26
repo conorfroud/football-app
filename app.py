@@ -1070,14 +1070,15 @@ def streamlit_interface():
     
     # Display player headshot in the first column (adjust width and height as needed)
     with col1:
-        st.image("Iheanacho.png", width=100)
+        st.image("Iheanacho.png", width=140)
     
     # Display player information in the second column
     with col2:
+        st.markdown(f"**Age:** {filtered_data['Age'].iloc[0]}")
         st.markdown(f"**Team:** {filtered_data['Current Club'].iloc[0]}")
         st.markdown(f"**Position:** {filtered_data['Position'].iloc[0]}")
-        st.markdown(f"**Scout Top 3s:** {filtered_data['Scout Top 3s'].iloc[0]}")
-        st.markdown(f"**No. of Reports:** {filtered_data['No. of Reports'].iloc[0]}")
+        st.markdown(f"**Height:** {filtered_data['Average Height'].iloc[0]}")
+        st.markdown(f"**Foot:** {filtered_data['Foot'].iloc[0]}")
 
     # Display additional player information in the third column
     with col3:
