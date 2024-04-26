@@ -1073,9 +1073,12 @@ def streamlit_interface():
     st.markdown(f"**A Verdicts:** {filtered_data['A Verdicts'].iloc[0]}")
     st.markdown(f"**B Verdicts:** {filtered_data['B Verdicts'].iloc[0]}")
     st.markdown(f"**Average Player Performance:** {filtered_data['Average Player Performance'].iloc[0]}")
+    st.markdown("---")  # Add a separator
 
+    # Center align the text "**Player Reports:**"
+    st.markdown("<p style='text-align:center'>**Player Reports:**</p>", unsafe_allow_html=True)
+    
     # Display report data from data1
-    st.markdown("**Player Reports:**")
     for index, row in filtered_data1[['Player', 'Scout', 'Comments']].iterrows():
         st.markdown(f"**Player:** {row['Player']}")
         st.markdown(f"**Scout:** {row['Scout']}")
