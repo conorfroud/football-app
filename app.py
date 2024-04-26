@@ -1070,6 +1070,7 @@ def streamlit_interface():
     cols = st.columns(num_columns)
     
     with cols[0]:
+        st.markdown(f"**URL:** {filtered_data['Tranfermarkt URL'].iloc[0]}")
         st.markdown(f"**Team:** {filtered_data['Current Club'].iloc[0]}")
         st.markdown(f"**Position:** {filtered_data['Position'].iloc[0]}")
         st.markdown(f"**Scout Top 3s:** {filtered_data['Scout Top 3s'].iloc[0]}")
