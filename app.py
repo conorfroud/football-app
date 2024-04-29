@@ -1134,7 +1134,7 @@ def streamlit_interface():
             showarrow=False,
             font=dict(size=10),
             xshift=5,  # Adjust the position horizontally
-            yshift=10,  # Adjust the position vertically
+            yshift=15,  # Adjust the position vertically
         )
 
        st.plotly_chart(fig)  # Display the plot
