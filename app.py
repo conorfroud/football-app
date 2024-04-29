@@ -1077,7 +1077,7 @@ def streamlit_interface():
             # Fetch image from Google Drive
             response = requests.get(image_url)
             if response.status_code == 200:
-                st.image(response.content, width=300)
+                st.image(response.content, width=250)
             else:
                 st.write("Image not available")
         else:
