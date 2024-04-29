@@ -1117,11 +1117,12 @@ def streamlit_interface():
     
     with col5:
         fig = px.scatter(report_data, x='Date of report', y='Match Performance',
-                     labels={'Date of report': 'Date', 'Player Level': 'Player Level', 'Match Performance': 'Match Performance', 'Scout': 'Scout'})
+                     labels={'Date of report': 'Date', 'Player Level': 'Player Level', 'Match Performance': 'Match Performance', 'Scout': 'Scout'},
+                     hover_data={'Player Level': True, 'Scout': True})
         
         fig.update_traces(marker=dict(size=12, color='#7EC0EE'))  # Customize marker color and size
         
-        fig.update_layout(width=800, height=600)  # Set plot size
+        fig.update_layout(width=800, height=600, yaxis=dict(range=[0, 10]))  # Set plot size and y-axis range
         
         st.plotly_chart(fig)  # Display the plot
 
