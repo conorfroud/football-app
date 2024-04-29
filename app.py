@@ -1068,7 +1068,7 @@ def streamlit_interface():
     st.markdown(f"### {selected_player} ###", unsafe_allow_html=True)
     
     # Create three columns layout
-    col1, col2, col3 = st.columns([2, 6, 2])
+    col1, col2, col3 = st.columns([2, 2, 2])
     
     with col1:
         # Extract image URL from the cell
@@ -1106,25 +1106,25 @@ def streamlit_interface():
     
     st.markdown("---")  # Add a separator
 
-    # Center align the text "**Player Reports:**"
-    st.markdown(f"### Player Reports ###", unsafe_allow_html=True)
-    
     # Display report data from data1
     report_data = filtered_data1[['Date of report', 'Match Performance']].tail(5)
     
     # Convert 'Match Performance' column to numeric
     report_data['Match Performance'] = pd.to_numeric(report_data['Match Performance'])
+
+    # Splitting the player performance plot into two columns
+    col4, col5 = st.columns([1, 1])
     
-    # Plot scatter plot based on 'Match Performance' for the last 5 reports
-    fig = px.scatter(report_data, x='Date of report', y='Match Performance', 
+    with col4:
+        fig = px.scatter(report_data, x='Date of report', y='Match Performance', 
                      title='Match Performance Over Last 5 Reports',
                      labels={'Date of report': 'Date', 'Match Performance': 'Match Performance'})
-    
-    fig.update_traces(marker=dict(size=12, color='#7EC0EE'))  # Customize marker color and size
-    
-    fig.update_layout(width=800, height=600)  # Set plot size
-    
-    st.plotly_chart(fig)  # Display the plot
+        
+        fig.update_traces(marker=dict(size=12, color='#7EC0EE'))  # Customize marker color and size
+        
+        fig.update_layout(width=800, height=600)  # Set plot size
+        
+        st.plotly_chart(fig)  # Display the plot
 
     # Center align the text "**Player Reports:**"
     st.markdown(f"### Player Reports ###", unsafe_allow_html=True)
