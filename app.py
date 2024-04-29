@@ -1116,14 +1116,15 @@ def streamlit_interface():
     report_data['Match Performance'] = pd.to_numeric(report_data['Match Performance'])
     
     # Plot line plot based on 'Match Performance' for the last 5 reports
-    plt.figure(figsize=(6, 4))
-    plt.plot(report_data['Date of report'], report_data['Match Performance'], marker='o')
-    plt.xlabel('Date')
-    plt.ylabel('Match Performance')
-    plt.title('Match Performance Over Last 5 Reports')
-    plt.ylim(0, 10)  # Set y-axis limits
-    plt.yticks(range(11))  # Set y-ticks from 0 to 10
-    st.pyplot(plt)
+    with col2:
+        plt.figure(figsize=(6, 4))
+        plt.plot(report_data['Date of report'], report_data['Match Performance'], marker='o')
+        plt.xlabel('Date')
+        plt.ylabel('Match Performance')
+        plt.title('Match Performance Over Last 5 Reports')
+        plt.ylim(0, 10)  # Set y-axis limits
+        plt.yticks(range(11))  # Set y-ticks from 0 to 10
+        st.pyplot(plt)
 
     for index, row in filtered_data1[['Player', 'Scout', 'Comments', 'Date of report', 'Player Level - Score']].iterrows():
         st.markdown(f"**Player:** {row['Player']}")
