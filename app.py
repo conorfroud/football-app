@@ -1113,12 +1113,12 @@ def streamlit_interface():
     report_data['Match Performance'] = pd.to_numeric(report_data['Match Performance'])
 
     # Splitting the player performance plot into two columns
-    col4, col5 = st.columns([1, 1])
+    col4, col5, col6 = st.columns([1, 3, 1])
     
-    with col4:
+    with col5:
         fig = px.scatter(report_data, x='Date of report', y='Match Performance', 
                      title='Match Performance Over Last 5 Reports',
-                     labels={'Date of report': 'Date', 'Match Performance': 'Match Performance'})
+                     labels={'Date of report': 'Date', 'Player Level': 'Player Level', 'Match Performance': 'Match Performance', 'Scout': 'Scout'})
         
         fig.update_traces(marker=dict(size=12, color='#7EC0EE'))  # Customize marker color and size
         
