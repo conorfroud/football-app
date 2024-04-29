@@ -1046,11 +1046,6 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
 
     st.pyplot(fig)
     
-import streamlit as st
-import pandas as pd
-import requests
-import matplotlib.pyplot as plt
-
 def streamlit_interface():
     # Pull data from Google Sheets
     url = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?usp=sharing"
@@ -1124,7 +1119,7 @@ def streamlit_interface():
     plt.ylabel('Match Performance')
     plt.title('Match Performance Over Last 5 Reports')
     plt.ylim(0, 10)  # Set y-axis limits
-    plt.gca().invert_xaxis()  # Invert x-axis
+    plt.yticks(range(11))  # Set y-ticks from 0 to 10
     st.pyplot(plt)
 
     for index, row in filtered_data1[['Player', 'Scout', 'Comments', 'Date of report', 'Player Level - Score']].iterrows():
