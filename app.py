@@ -1111,7 +1111,6 @@ def streamlit_interface():
     
     # Display report data from data1
     report_data = filtered_data1[['Date of report', 'Match Performance']].tail(5)
-    st.dataframe(report_data)  # Display the last 5 reports
     
     # Plot line plot based on 'Match Performance' for the last 5 reports
     plt.figure(figsize=(10, 6))
