@@ -1115,8 +1115,10 @@ def streamlit_interface():
     # Convert 'Match Performance' column to numeric
     report_data['Match Performance'] = pd.to_numeric(report_data['Match Performance'])
     
-    # Plot line plot based on 'Match Performance' for the last 5 reports
-    with col2:
+    # Splitting the player performance plot into two columns
+    col4, col5 = st.columns([1, 1])
+    
+    with col4:
         plt.figure(figsize=(6, 4))
         plt.plot(report_data['Date of report'], report_data['Match Performance'], marker='o')
         plt.xlabel('Date')
