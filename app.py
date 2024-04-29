@@ -1110,6 +1110,17 @@ def streamlit_interface():
     st.markdown(f"### Player Reports ###", unsafe_allow_html=True)
     
     # Display report data from data1
+    report_data = filtered_data1[['Date of report', 'Match Performance']].tail(5)
+    st.dataframe(report_data)  # Display the last 5 reports
+    
+    # Plot line plot based on 'Match Performance' for the last 5 reports
+    plt.figure(figsize=(10, 6))
+    plt.plot(report_data['Date of report'], report_data['Match Performance'], marker='o')
+    plt.xlabel('Date')
+    plt.ylabel('Match Performance')
+    plt.title('Match Performance Over Last 5 Reports')
+    st.pyplot(plt)
+
     for index, row in filtered_data1[['Player', 'Scout', 'Comments', 'Date of report', 'Player Level - Score']].iterrows():
         st.markdown(f"**Player:** {row['Player']}")
         st.markdown(f"**Scout:** {row['Scout']}")
