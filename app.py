@@ -1140,7 +1140,7 @@ def streamlit_interface():
        st.plotly_chart(fig)  # Display the plot
 
     # Display report data from data1
-    report_data = filtered_data1[['Player', 'Scout', 'Comments', 'Date of report', 'Player Level - Score']].tail(10)
+    report_data = filtered_data1[['Player', 'Scout', 'Comments', 'Date of report', 'Player Level - Score', 'Score']]
     report_data = report_data[::-1]  # Reverse the DataFrame to show most recent reports first
     
     st.markdown(f"### Player Reports ###", unsafe_allow_html=True)
