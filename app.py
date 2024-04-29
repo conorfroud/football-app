@@ -1046,6 +1046,11 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
 
     st.pyplot(fig)
 
+import pandas as pd
+import requests
+import streamlit as st
+from gsheetsdb import connect
+
 def streamlit_interface():
     
     url = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?usp=sharing"
@@ -1077,7 +1082,7 @@ def streamlit_interface():
             # Fetch image from Google Drive
             response = requests.get(image_url)
             if response.status_code == 200:
-                st.image(response.content, width=140)
+                st.image(response.content, width=140, align='center')  # Center-align the image
             else:
                 st.write("Image not available")
         else:
