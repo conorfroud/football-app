@@ -1105,9 +1105,6 @@ def streamlit_interface():
         st.markdown(f"**Average Player Performance:** {filtered_data['Average Player Performance'].iloc[0]}")
     
     st.markdown("---")  # Add a separator
-
-    # Center align the text "**Player Reports:**"
-    st.markdown(f"### Player Reports ###", unsafe_allow_html=True)
     
     # Display report data from data1
     report_data = filtered_data1[['Date of report', 'Match Performance']].tail(5)
@@ -1116,9 +1113,9 @@ def streamlit_interface():
     report_data['Match Performance'] = pd.to_numeric(report_data['Match Performance'])
     
     # Splitting the player performance plot into two columns
-    col4, col5 = st.columns([1, 1])
+    col4, col5, col6 = st.columns([1, 3, 1])
     
-    with col4:
+    with col5:
         plt.figure(figsize=(6, 4))
         plt.plot(report_data['Date of report'], report_data['Match Performance'], marker='o')
         plt.xlabel('Date')
@@ -1127,6 +1124,11 @@ def streamlit_interface():
         plt.ylim(0, 10)  # Set y-axis limits
         plt.yticks(range(11))  # Set y-ticks from 0 to 10
         st.pyplot(plt)
+
+    st.markdown("---")  # Add a separator
+    
+    # Center align the text "**Player Reports:**"
+    st.markdown(f"### Player Reports ###", unsafe_allow_html=True)
 
     for index, row in filtered_data1[['Player', 'Scout', 'Comments', 'Date of report', 'Player Level - Score']].iterrows():
         st.markdown(f"**Player:** {row['Player']}")
