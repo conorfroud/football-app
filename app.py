@@ -1148,6 +1148,7 @@ def streamlit_interface():
     for index, row in report_data.iterrows():
         st.markdown(f"**Player:** {row['Player']}")
         st.markdown(f"**Scout:** {row['Scout']}")
+        st.markdown(f"**Fixture:** {row['Score']}")
         st.markdown(f"**Date of Report:** {row['Date of report']}")
         st.markdown(f"**Verdict:** {row['Player Level - Score']}")
         st.markdown(f"**Comments:** {row['Comments']}")
