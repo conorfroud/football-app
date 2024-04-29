@@ -1107,6 +1107,39 @@ def streamlit_interface():
     st.markdown("---")  # Add a separator
 
     # Display report data from data1
+    report_data = filtered_data1[['Date of report', 'Match Performance', 'Player Level', 'Scout', 'Score', 'Player Level - Score']].tail(10)
+    
+    # Convert 'Match Performance' column to numeric
+    report_data['Match Performance'] = pd.to_numeric(report_data['Match Performance'])
+
+    # Splitting the player performance plot into two columns
+    col4, col5, col6 = st.columns([1, 5, 1])
+    
+    with col5:
+    
+       fig = px.scatter(report_data, x='Date of report', y='Match Performance',
+                     labels={'Date of report': 'Date', 'Player Level': 'Player Level', 'Match Performance': 'Match Performance', 'Scout': 'Scout'},
+                     hover_data={'Player Level': True, 'Scout': True, 'Score': True})
+
+       fig.update_traces(marker=dict(size=12, color='#7EC0EE'))  # Customize marker color and size
+
+       fig.update_layout(width=800, height=600, yaxis=dict(range=[0, 10]))  # Set plot size and y-axis range
+    
+       # Add annotations for each point
+       for i, row in report_data.iterrows():
+         fig.add_annotation(
+            x=row['Date of report'],
+            y=row['Match Performance'],
+            text=f"{row['Player Level - Score']}",
+            showarrow=False,
+            font=dict(size=10),
+            xshift=5,  # Adjust the position horizontally
+            yshift=15,  # Adjust the position vertically
+        )
+
+       st.plotly_chart(fig)  # Display the plot
+
+    # Display report data from data1
     report_data = filtered_data1[['Player', 'Scout', 'Comments', 'Date of report', 'Player Level - Score']].tail(10)
     report_data = report_data[::-1]  # Reverse the DataFrame to show most recent reports first
     
