@@ -1107,7 +1107,7 @@ def streamlit_interface():
     st.markdown("---")  # Add a separator
 
     # Display report data from data1
-    report_data = filtered_data1[['Date of report', 'Match Performance', 'Player Level', 'Scout', 'Score', 'Player Level - Score']].tail(5)
+    report_data = filtered_data1[['Date of report', 'Match Performance', 'Player Level', 'Scout', 'Score', 'Player Level - Score']].tail(10)
     
     # Convert 'Match Performance' column to numeric
     report_data['Match Performance'] = pd.to_numeric(report_data['Match Performance'])
