@@ -1113,7 +1113,7 @@ def streamlit_interface():
     report_data['Match Performance'] = pd.to_numeric(report_data['Match Performance'])
     
     # Splitting the player performance plot into two columns
-    col4, col5, col6 = st.columns([1, 3, 1])
+    col4, col5, col6 = st.columns([1, 5, 1])
     
     with col5:
         plt.figure(figsize=(6, 4))
