@@ -1045,7 +1045,7 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
     ax.get_yaxis().set_visible(False)
 
     st.pyplot(fig)
-    
+
 def streamlit_interface():
     # Pull data from Google Sheets
     url = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?usp=sharing"
@@ -1111,6 +1111,9 @@ def streamlit_interface():
     
     # Display report data from data1
     report_data = filtered_data1[['Date of report', 'Match Performance']].tail(5)
+    
+    # Convert 'Match Performance' column to numeric
+    report_data['Match Performance'] = pd.to_numeric(report_data['Match Performance'])
     
     # Plot line plot based on 'Match Performance' for the last 5 reports
     plt.figure(figsize=(10, 6))
