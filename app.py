@@ -1046,7 +1046,15 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
 
     st.pyplot(fig)
 
+import streamlit as st
+import pandas as pd
+import requests
+import matplotlib.pyplot as plt
+import plotly.express as px
+import plotly.graph_objects as go
+
 def streamlit_interface():
+    
     # Pull data from Google Sheets
     url = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?usp=sharing"
     url1 = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit#gid=1930222963"
@@ -1067,44 +1075,32 @@ def streamlit_interface():
     # Display player info card visualization
     st.markdown(f"### {selected_player} ###", unsafe_allow_html=True)
     
-    # Splitting the player information into three columns
-    col1, col2, col3 = st.columns([2, 2, 2])
-    
-    with col1:
-        # Extract image URL from the cell
-        image_url = filtered_data['Image'].iloc[0]
-        if not pd.isnull(image_url):  # Check if image_url is not NaN
-            # Fetch image from Google Drive
-            response = requests.get(image_url)
-            if response.status_code == 200:
-                st.image(response.content, width=140)
-            else:
-                st.write("Image not available")
+    # Extract image URL from the cell
+    image_url = filtered_data['Image'].iloc[0]
+    if not pd.isnull(image_url):  # Check if image_url is not NaN
+        # Fetch image from Google Drive
+        response = requests.get(image_url)
+        if response.status_code == 200:
+            st.image(response.content, width=140)
         else:
-            st.write("No image available")
+            st.write("Image not available")
+    else:
+        st.write("No image available")
     
-    # Display player information in the second column
-    with col2:
-        st.markdown(f"**Team:** {filtered_data['Current Club'].iloc[0]}")
-        st.markdown(f"**Age:** {filtered_data['Age'].iloc[0]}")
-        st.markdown(f"**Position:** {filtered_data['Position'].iloc[0]}")
-        st.markdown(f"**Contract:** {filtered_data['Contract'].iloc[0]}")
-        st.markdown(f"**Agent:** {filtered_data['Agent'].iloc[0]}")
-        st.markdown(f"**Height:** {filtered_data['Average Height'].iloc[0]}")
-        st.markdown(f"**Foot:** {filtered_data['Foot'].iloc[0]}")
-        st.markdown(f"**Transfermarkt:** {filtered_data['Transfermarkt URL'].iloc[0]}")
-
-    # Display additional player information in the third column
-    with col3:
-        st.markdown(f"**No. of Reports:** {filtered_data['No. of Reports'].iloc[0]}")
-        st.markdown(f"**A Verdicts:** {filtered_data['A Verdicts'].iloc[0]}")
-        st.markdown(f"**B Verdicts:** {filtered_data['B Verdicts'].iloc[0]}")
-        st.markdown(f"**ET Verdicts:** {filtered_data['ET Verdicts'].iloc[0]}")
-        st.markdown(f"**Sign Verdicts:** {filtered_data['Sign Verdicts'].iloc[0]}")
-        st.markdown(f"**Monitor Closely Verdicts:** {filtered_data['Monitor Closely Verdicts'].iloc[0]}")
-        st.markdown(f"**Average Player Performance:** {filtered_data['Average Player Performance'].iloc[0]}")
+    # Display player information
+    st.markdown(f"**Team:** {filtered_data['Current Club'].iloc[0]}")
+    st.markdown(f"**Age:** {filtered_data['Age'].iloc[0]}")
+    st.markdown(f"**Position:** {filtered_data['Position'].iloc[0]}")
+    st.markdown(f"**Contract:** {filtered_data['Contract'].iloc[0]}")
+    st.markdown(f"**Agent:** {filtered_data['Agent'].iloc[0]}")
+    st.markdown(f"**Height:** {filtered_data['Average Height'].iloc[0]}")
+    st.markdown(f"**Foot:** {filtered_data['Foot'].iloc[0]}")
+    st.markdown(f"**Transfermarkt:** {filtered_data['Transfermarkt URL'].iloc[0]}")
     
     st.markdown("---")  # Add a separator
+
+    # Center align the text "**Player Reports:**"
+    st.markdown(f"### Player Reports ###", unsafe_allow_html=True)
     
     # Display report data from data1
     report_data = filtered_data1[['Date of report', 'Match Performance']].tail(5)
@@ -1112,24 +1108,33 @@ def streamlit_interface():
     # Convert 'Match Performance' column to numeric
     report_data['Match Performance'] = pd.to_numeric(report_data['Match Performance'])
     
-    # Splitting the player performance plot into two columns
-    col4, col5, col6 = st.columns([1, 5, 1])
+    # Plot line plot based on 'Match Performance' for the last 5 reports
+    fig = px.scatter(report_data, x='Date of report', y='Match Performance', 
+                     title='Match Performance Over Last 5 Reports',
+                     labels={'Date of report': 'Date', 'Match Performance': 'Match Performance'})
     
-    with col5:
-        plt.figure(figsize=(6, 4))
-        plt.plot(report_data['Date of report'], report_data['Match Performance'], marker='o')
-        plt.xlabel('Date')
-        plt.ylabel('Match Performance')
-        plt.title('Match Performance Over Last 5 Reports')
-        plt.ylim(0, 10)  # Set y-axis limits
-        plt.yticks(range(11))  # Set y-ticks from 0 to 10
-        st.pyplot(plt)
+    fig.update_traces(marker=dict(size=12, color='#7EC0EE'))  # Customize marker color and size
+    
+    fig.update_layout(width=800, height=600)  # Set plot size
+    
+    st.plotly_chart(fig)  # Display the plot
+    
+    st.markdown("---")  # Add a separator
+    
+    # Display additional player information
+    st.markdown(f"**No. of Reports:** {filtered_data['No. of Reports'].iloc[0]}")
+    st.markdown(f"**A Verdicts:** {filtered_data['A Verdicts'].iloc[0]}")
+    st.markdown(f"**B Verdicts:** {filtered_data['B Verdicts'].iloc[0]}")
+    st.markdown(f"**ET Verdicts:** {filtered_data['ET Verdicts'].iloc[0]}")
+    st.markdown(f"**Sign Verdicts:** {filtered_data['Sign Verdicts'].iloc[0]}")
+    st.markdown(f"**Monitor Closely Verdicts:** {filtered_data['Monitor Closely Verdicts'].iloc[0]}")
+    st.markdown(f"**Average Player Performance:** {filtered_data['Average Player Performance'].iloc[0]}")
 
     st.markdown("---")  # Add a separator
     
     # Center align the text "**Player Reports:**"
     st.markdown(f"### Player Reports ###", unsafe_allow_html=True)
-
+    
     for index, row in filtered_data1[['Player', 'Scout', 'Comments', 'Date of report', 'Player Level - Score']].iterrows():
         st.markdown(f"**Player:** {row['Player']}")
         st.markdown(f"**Scout:** {row['Scout']}")
