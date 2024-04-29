@@ -1116,41 +1116,30 @@ def streamlit_interface():
     col4, col5, col6 = st.columns([1, 5, 1])
     
     with col5:
-        
-        fig = px.scatter(report_data, x='Date of report', y='Match Performance',
+    
+       fig = px.scatter(report_data, x='Date of report', y='Match Performance',
                      labels={'Date of report': 'Date', 'Player Level': 'Player Level', 'Match Performance': 'Match Performance', 'Scout': 'Scout'},
-                     hover_data={'Player Level': True, 'Scout': True})
-        
-        fig.update_traces(marker=dict(size=12, color='#7EC0EE'))  # Customize marker color and size
-        
-        fig.update_layout(width=800, height=600, yaxis=dict(range=[0, 10]))  # Set plot size and y-axis range
-        
-        # Add labels below the plot
-        fig.update_layout(annotations=[
-          dict(
-            x=0.5,
-            y=-0.1,
-            xref='paper',
-            yref='paper',
-            text='Player Level',
+                     hover_data={'Player Level': True, 'Scout': True, 'Score': True})
+
+       fig.update_traces(marker=dict(size=12, color='#7EC0EE'))  # Customize marker color and size
+
+       fig.update_layout(width=800, height=600, yaxis=dict(range=[0, 10]))  # Set plot size and y-axis range
+    
+       # Add annotations for each point
+       for i, row in report_data.iterrows():
+         fig.add_annotation(
+            x=row['Date of report'],
+            y=row['Match Performance'],
+            text=f"Player Level: {row['Player Level']}<br>Match Performance: {row['Match Performance']}",
             showarrow=False,
-            font=dict(size=12)
-        ),
-          dict(
-            x=0.5,
-            y=-0.15,
-            xref='paper',
-            yref='paper',
-            text='Match Performance',
-            showarrow=False,
-            font=dict(size=12)
+            font=dict(size=10),
+            xshift=5,  # Adjust the position horizontally
+            yshift=10,  # Adjust the position vertically
         )
-    ])
 
-        st.plotly_chart(fig)  # Display the plot
+       st.plotly_chart(fig)  # Display the plot
 
-        # Center align the text "**Player Reports:**"
-        st.markdown(f"### Player Reports ###", unsafe_allow_html=True)
+    st.markdown(f"### Player Reports ###", unsafe_allow_html=True)
         
     for index, row in filtered_data1[['Player', 'Scout', 'Comments', 'Date of report', 'Player Level - Score']].iterrows():
         st.markdown(f"**Player:** {row['Player']}")
