@@ -1077,7 +1077,12 @@ def streamlit_interface():
             # Fetch image from Google Drive
             response = requests.get(image_url)
             if response.status_code == 200:
-                st.image(response.content, width=140, align='center')  # Center-align the image
+                st.markdown(
+                    f'<div style="display: flex; justify-content: center;">'
+                    f'<img src="{image_url}" style="width: 140px;">'
+                    f'</div>',
+                    unsafe_allow_html=True
+                )
             else:
                 st.write("Image not available")
         else:
@@ -1148,7 +1153,7 @@ def streamlit_interface():
         st.markdown(f"**Verdict:** {row['Player Level - Score']}")
         st.markdown(f"**Comments:** {row['Comments']}")
         st.markdown("---")  # Add a separator
-  
+
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
 df2 = pd.read_csv("championshipscores.csv")
