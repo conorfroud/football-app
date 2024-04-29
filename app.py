@@ -1077,12 +1077,8 @@ def streamlit_interface():
             # Fetch image from Google Drive
             response = requests.get(image_url)
             if response.status_code == 200:
-                st.markdown(
-                    f'<div style="display: flex; justify-content: center;">'
-                    f'<img src="{image_url}" style="width: 140px;">'
-                    f'</div>',
-                    unsafe_allow_html=True
-                )
+                st.image(image_url, width=140, use_column_width='always', caption='Player Image')
+                st.markdown("<style>div.row-widget.stRadio > div{flex-direction:column;}</style>", unsafe_allow_html=True)
             else:
                 st.write("Image not available")
         else:
