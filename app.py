@@ -1116,8 +1116,7 @@ def streamlit_interface():
     col4, col5, col6 = st.columns([1, 5, 1])
     
     with col5:
-        fig = px.scatter(report_data, x='Date of report', y='Match Performance', 
-                     title='Match Performance Over Last 5 Reports',
+        fig = px.scatter(report_data, x='Date of report', y='Match Performance',
                      labels={'Date of report': 'Date', 'Player Level': 'Player Level', 'Match Performance': 'Match Performance', 'Scout': 'Scout'})
         
         fig.update_traces(marker=dict(size=12, color='#7EC0EE'))  # Customize marker color and size
