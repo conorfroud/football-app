@@ -1071,17 +1071,19 @@ def streamlit_interface():
     col1, col2, col3 = st.columns([2, 2, 2])
     
     with col1:
-        # Extract image URL from the cell
-        image_url = filtered_data['Image'].iloc[0]
-        if not pd.isnull(image_url):  # Check if image_url is not NaN
-            # Fetch image from Google Drive
-            response = requests.get(image_url)
-            if response.status_code == 200:
-                st.image(image_url, width=140, use_column_width='always', caption='Player Image')
-            else:
-                st.write("Image not available")
-        else:
-            st.write("No image available")
+      # Extract image URL from the cell
+      image_url = filtered_data['Image'].iloc[0]
+      if not pd.isnull(image_url):  # Check if image_url is not NaN
+          # Fetch image from Google Drive
+          response = requests.get(image_url)
+          if response.status_code == 200:
+              st.image(image_url, caption='Player Image')
+          else:
+              st.write("Image not available")
+      else:
+          st.write("No image available")
+
+        
     
     # Display player information in the center column
     with col2:
