@@ -1107,7 +1107,7 @@ def streamlit_interface():
     st.markdown("---")  # Add a separator
 
     # Display report data from data1
-    report_data = filtered_data1[['Date of report', 'Match Performance', 'Player Level', 'Scout', 'Score']].tail(5)
+    report_data = filtered_data1[['Date of report', 'Match Performance', 'Player Level', 'Scout', 'Score', 'Player Level - Score']].tail(5)
     
     # Convert 'Match Performance' column to numeric
     report_data['Match Performance'] = pd.to_numeric(report_data['Match Performance'])
@@ -1130,7 +1130,7 @@ def streamlit_interface():
          fig.add_annotation(
             x=row['Date of report'],
             y=row['Match Performance'],
-            text=f"Player Level: {row['Player Level']}<br>Match Performance: {row['Match Performance']}",
+            text=f"{row['Player Level - Score']}",
             showarrow=False,
             font=dict(size=10),
             xshift=5,  # Adjust the position horizontally
