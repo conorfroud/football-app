@@ -1125,14 +1125,22 @@ def streamlit_interface():
 
        fig.update_layout(width=800, height=600, yaxis=dict(range=[0, 10]))  # Set plot size and y-axis range
 
-       # Add jitter to x-coordinate for points with the same date
-       jitter = np.random.uniform(-0.2, 0.2, len(report_data))
-       report_data['Jitter'] = jitter
+       # Count the number of reports for each date
+       date_counts = report_data['Date of report'].value_counts()
+
+       # Duplicate date values for each date with multiple reports
+       duplicated_dates = []
+       for date, count in date_counts.items():
+           if count > 1:
+              duplicated_dates.extend([date, date])  # Duplicate the date twice
+           else:
+              duplicated_dates.append(date)  # Add the date once
+       report_data['Duplicated Date'] = duplicated_dates
 
        # Add annotations for each point
        for i, row in report_data.iterrows():
           fig.add_annotation(
-            x=row['Date of report'] + row['Jitter'],  # Add jitter to x-coordinate
+            x=row['Duplicated Date'],  # Use duplicated date
             y=row['Match Performance'],
             text=f"{row['Player Level - Score']}",
             showarrow=False,
@@ -1141,11 +1149,12 @@ def streamlit_interface():
             yshift=15,  # Adjust the position vertically
         )
 
-       fig.update_xaxes(tickmode='linear', tickangle=45)  # Set x-axis mode to linear and rotate labels by 45 degrees
+       fig.update_xaxes(tickmode='array', tickvals=sorted(report_data['Duplicated Date'].unique()))  # Set tick values to unique duplicated dates
+       fig.update_xaxes(tickangle=45)  # Rotate labels by 45 degrees
        fig.update_layout(margin=dict(l=40, r=40, t=40, b=40))  # Adjust margins to prevent clipping
 
        st.plotly_chart(fig)  # Display the plot
-        
+  
     # Display report data from data1
     report_data = filtered_data1[['Player', 'Scout', 'Comments', 'Date of report', 'Player Level - Score', 'Score']]
     report_data = report_data[::-1]  # Reverse the DataFrame to show most recent reports first
