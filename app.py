@@ -1071,17 +1071,26 @@ def streamlit_interface():
     col1, col2, col3 = st.columns([2, 2, 2])
     
     with col1:
-        # Extract image URL from the cell
-        image_url = filtered_data['Image'].iloc[0]
-        if not pd.isnull(image_url):  # Check if image_url is not NaN
-            # Fetch image from Google Drive
-            response = requests.get(image_url)
-            if response.status_code == 200:
-                st.image(response.content, width=200)
-            else:
-                st.write("Image not available")
-        else:
-            st.write("No image available")
+       # Extract image URL from the cell
+       image_url = filtered_data['Image'].iloc[0]
+       if not pd.isnull(image_url):  # Check if image_url is not NaN
+           # Fetch image from Google Drive
+           response = requests.get(image_url)
+           if response.status_code == 200:
+               # Calculate aspect ratio to maintain image proportions
+               image = Image.open(BytesIO(response.content))
+               aspect_ratio = image.width / image.height
+            
+               # Define a fixed height or calculate it dynamically based on aspect ratio
+               image_height = 200  # You can adjust this value as needed
+            
+               # Display the image with specified height
+               st.image(response.content, width=aspect_ratio * image_height, height=image_height)
+           else:
+               st.write("Image not available")
+       else:
+           st.write("No image available")
+
 
     # Display player information in the center column
     with col2:
