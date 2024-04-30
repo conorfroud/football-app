@@ -1207,7 +1207,7 @@ def searchable_reports():
 
     # Sort DataFrame based on the most recent report date
     if 'Report Date' in filtered_data.columns:
-        filtered_data = filtered_data.sort_values(by='Submission Date', ascending=True)
+        filtered_data = filtered_data.sort_values(by='Submission Date', ascending=False)
 
     # Display the filtered DataFrame
     st.write("Filtered Data:", filtered_data[selected_columns])
