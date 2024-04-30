@@ -1157,17 +1157,21 @@ def streamlit_interface():
         st.markdown("---")  # Add a separator
 
 def searchable_reports():
-    
     url1 = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit#gid=155686186"
     conn = st.connection("gsheets", type=GSheetsConnection)
     data1 = conn.read(spreadsheet=url1)
 
-    # Create a multi-select dropdown for selecting leagues with 'England 2' pre-selected
+    # Create a multi-select dropdown for selecting scouts with 'Jared Dublin' pre-selected
     default_scout = ['Jared Dublin']
     selected_scout = st.sidebar.multiselect('Select Scout', data1['Scout Name'].unique(), default=default_scout)
     
-    # Filter data based on selected leagues
+    # Filter data based on selected scout
     filtered_data = data1[data1['Scout Name'].isin(selected_scout)]
+    
+    # Select only the desired columns
+    desired_columns = ['Player Name', 'Scout Name', 'Player Level', 'Match Performance (Score out of 10)', 
+                       'Verdict - DETAILED REPORTS only!', 'Scout Comments']
+    filtered_data = filtered_data[desired_columns]
     
     # Display the filtered DataFrame
     st.write("Filtered Data:", filtered_data)
