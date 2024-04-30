@@ -1156,13 +1156,18 @@ def streamlit_interface():
         st.markdown("---")  # Add a separator
 
 def searchable_reports():
-    
     url1 = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit#gid=1930222963"
     conn = st.connection("gsheets", type=GSheetsConnection)
     data1 = conn.read(spreadsheet=url1)
 
-    # Display the DataFrame
-    st.write("Data from URL1:", data1)
+    # Create a selectbox for selecting player
+    selected_player = st.selectbox("Select Player", data1['Player'].unique())
+
+    # Filter data based on selected player
+    filtered_data = data1[data1['Player'] == selected_player]
+
+    # Display the filtered DataFrame
+    st.write("Data for Selected Player:", filtered_data)
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
