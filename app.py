@@ -1157,6 +1157,7 @@ def streamlit_interface():
         st.markdown("---")  # Add a separator
 
 def searchable_reports():
+    
     url1 = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit#gid=155686186"
     conn = st.connection("gsheets", type=GSheetsConnection)
     data1 = conn.read(spreadsheet=url1)
@@ -1167,11 +1168,31 @@ def searchable_reports():
     
     # Filter data based on selected scout
     filtered_data = data1[data1['Scout Name'].isin(selected_scout)]
-    
-    # Select only the desired columns
-    desired_columns = ['Player Name', 'Scout Name', 'Player Level', 'Match Performance (Score out of 10)', 
-                       'Verdict - DETAILED REPORTS only!', 'Scout Comments']
-    filtered_data = filtered_data[desired_columns]
+
+    # Get the list of all columns in the DataFrame
+    all_columns = filtered_data.columns.tolist()
+
+    # Ensure that these columns are always included in selected_stats
+    always_included_columns = ['Player Name', 'Scout Name', 'Player Level', 
+                               'Match Performance (Score out of 10)', 
+                               'Verdict - DETAILED REPORTS only!', 
+                               'Scout Comments']
+
+    # Create a multiselect for stat selection
+    selected_columns = st.sidebar.multiselect("Select Columns", 
+                                              [col for col in all_columns if col not in always_included_columns], 
+                                              default=[])
+
+    # Add the always included columns to the selected_stats
+    selected_columns.extend(always_included_columns)
+
+    # Apply filters based on selected columns
+    for column in selected_columns:
+        if column not in always_included_columns:
+            min_val = filtered_data[column].min()
+            max_val = filtered_data[column].max()
+            slider_filter = st.sidebar.slider(f'Select {column} Range', min_value=min_val, max_value=max_val, value=(min_val, max_val))
+            filtered_data = filtered_data[(filtered_data[column] >= slider_filter[0]) & (filtered_data[column] <= slider_filter[1])]
     
     # Display the filtered DataFrame
     st.write("Filtered Data:", filtered_data)
