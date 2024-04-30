@@ -22,6 +22,7 @@ from mplsoccer.pitch import Pitch, VerticalPitch
 import io
 import base64
 import requests
+from io import BytesIO
 
 st.set_page_config(layout="wide")
 
