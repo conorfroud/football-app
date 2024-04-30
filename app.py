@@ -1177,7 +1177,7 @@ def searchable_reports():
     always_included_columns = ['Player Name', 'Scout Name', 'Player Level', 
                                'Match Performance (Score out of 10)', 
                                'Verdict - DETAILED REPORTS only!', 
-                               'Scout Comments']
+                               'Scout Comments', 'Submission Date']
 
     # Create a multiselect for stat selection
     selected_columns = st.sidebar.multiselect("Select Columns", 
