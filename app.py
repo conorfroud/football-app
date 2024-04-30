@@ -1160,14 +1160,15 @@ def searchable_reports():
     conn = st.connection("gsheets", type=GSheetsConnection)
     data1 = conn.read(spreadsheet=url1)
 
-    # Create a selectbox for selecting player
-    selected_player = st.selectbox("Select Player", data1['Player'].unique())
-
-    # Filter data based on selected player
-    filtered_data = data1[data1['Player'] == selected_player]
-
+    # Create a multi-select dropdown for selecting leagues with 'England 2' pre-selected
+    default_leagues = ['England 2']
+    selected_leagues = st.sidebar.multiselect('Select Leagues', data1['League Level'].unique(), default=default_leagues)
+    
+    # Filter data based on selected leagues
+    filtered_data = data1[data1['League Level'].isin(selected_leagues)]
+    
     # Display the filtered DataFrame
-    st.write("Data for Selected Player:", filtered_data)
+    st.write("Filtered Data:", filtered_data)
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
