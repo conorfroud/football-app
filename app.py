@@ -1157,14 +1157,14 @@ def streamlit_interface():
         st.markdown("---")  # Add a separator
 
 def searchable_reports():
-    
     url1 = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit#gid=155686186"
     conn = st.connection("gsheets", type=GSheetsConnection)
     data1 = conn.read(spreadsheet=url1)
 
-    # Create a multi-select dropdown for selecting scouts with 'Jared Dublin' pre-selected
     # Define default scouts
     default_scout = ['Jared Dublin', 'Scott Coomber', 'Mamady Sidibe', 'Nathan Collier', 'Rob Kozluk']
+
+    # Create a multi-select dropdown for selecting scouts with default scouts pre-selected
     selected_scout = st.sidebar.multiselect('Select Scout', data1['Scout Name'].unique(), default=default_scout)
     
     # Filter data based on selected scout
@@ -1205,8 +1205,12 @@ def searchable_reports():
             filtered_data = filtered_data[(filtered_data[column] >= slider_filter[0]) & 
                                           (filtered_data[column] <= slider_filter[1])]
 
+    # Sort DataFrame based on the most recent report date
+    if 'Report Date' in filtered_data.columns:
+        filtered_data = filtered_data.sort_values(by='Submission Date', ascending=False)
+
     # Display the filtered DataFrame
-    st.write("Filtered Data:", filtered_data)
+    st.write("Filtered Data:", filtered_data[selected_columns])
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
