@@ -1100,9 +1100,11 @@ def streamlit_interface():
         st.markdown(f"**A Verdicts:** {filtered_data['A Verdicts'].iloc[0]}")
         st.markdown(f"**B Verdicts:** {filtered_data['B Verdicts'].iloc[0]}")
         st.markdown(f"**ET Verdicts:** {filtered_data['ET Verdicts'].iloc[0]}")
+        st.markdown(f"**% of A & B Verdicts:** {filtered_data['% of A & B Verdicts'].iloc[0]}")
         st.markdown(f"**No. of Detailed Reports:** {filtered_data['No. of Detailed Reports'].iloc[0]}")
         st.markdown(f"**Sign Verdicts:** {filtered_data['Sign Verdicts'].iloc[0]}")
         st.markdown(f"**Monitor Closely Verdicts:** {filtered_data['Monitor Closely Verdicts'].iloc[0]}")
+        st.markdown(f"**% of Sign & Monitor Closely Verdicts:** {filtered_data['% of Sign & Monitor Closely Verdicts'].iloc[0]}")
         st.markdown(f"**Average Player Performance:** {filtered_data['Average Player Performance'].iloc[0]}")
     
     st.markdown("---")  # Add a separator
