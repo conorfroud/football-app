@@ -1189,12 +1189,15 @@ def searchable_reports():
     # Apply filters based on selected columns
     for column in selected_columns:
         if column not in always_included_columns:
-            min_val = filtered_data[column].min()
-            max_val = filtered_data[column].max()
-
             # Convert the column to numeric values and handle NaNs
             filtered_data[column] = pd.to_numeric(filtered_data[column], errors='coerce')
 
+            # Print data types of the selected column
+            st.write(f"{column} Data Type:", filtered_data[column].dtype)
+
+            min_val = filtered_data[column].min()
+            max_val = filtered_data[column].max()
+            
             slider_filter = st.sidebar.slider(f'Select {column} Range', min_value=min_val, max_value=max_val, value=(min_val, max_val))
             
             # Handle NaN values in comparison
