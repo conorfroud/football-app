@@ -1128,6 +1128,9 @@ def streamlit_interface():
         else:
             duplicated_report_data = pd.concat([duplicated_report_data, report_data[report_data['Date of report'] == date]])
 
+    # Splitting the player performance plot into two columns
+    col4, col5, col6 = st.columns([1, 5, 1])
+
     # Plot the data with duplicated dates
     with col5:
         fig = px.scatter(duplicated_report_data, x='Duplicated Date', y='Match Performance',
