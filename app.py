@@ -1130,7 +1130,7 @@ def streamlit_interface():
        # Add annotations for each point
        for i, row in report_data.iterrows():
          fig.add_annotation(
-            x=row['Date of report'],
+            x=row['Fixture Date'],
             y=row['Match Performance'],
             text=f"{row['Player Level - Score']}",
             showarrow=False,
