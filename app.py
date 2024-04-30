@@ -1191,9 +1191,15 @@ def searchable_reports():
         if column not in always_included_columns:
             min_val = filtered_data[column].min()
             max_val = filtered_data[column].max()
+
+            # Convert NaN values to np.nan for proper comparison
+            filtered_data[column] = filtered_data[column].replace('NaN', np.nan)
             slider_filter = st.sidebar.slider(f'Select {column} Range', min_value=min_val, max_value=max_val, value=(min_val, max_val))
-            filtered_data = filtered_data[(filtered_data[column] >= slider_filter[0]) & (filtered_data[column] <= slider_filter[1])]
-    
+            
+            # Handle NaN values in comparison
+            filtered_data = filtered_data[(filtered_data[column].astype(float) >= slider_filter[0]) & 
+                                          (filtered_data[column].astype(float) <= slider_filter[1])]
+
     # Display the filtered DataFrame
     st.write("Filtered Data:", filtered_data)
 
