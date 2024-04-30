@@ -1109,7 +1109,7 @@ def streamlit_interface():
     st.markdown("---")  # Add a separator
 
     # Display report data from data1
-    report_data = filtered_data1[['Date of report', 'Match Performance', 'Player Level', 'Scout', 'Score', 'Player Level - Score']].tail(10)
+    report_data = filtered_data1[['Date of report', 'Fixture Date', 'Match Performance', 'Player Level', 'Scout', 'Score', 'Player Level - Score']].tail(10)
     
     # Convert 'Match Performance' column to numeric
     report_data['Match Performance'] = pd.to_numeric(report_data['Match Performance'])
@@ -1119,8 +1119,8 @@ def streamlit_interface():
     
     with col5:
     
-       fig = px.scatter(report_data, x='Date of report', y='Match Performance',
-                     labels={'Date of report': 'Date', 'Player Level': 'Player Level', 'Match Performance': 'Match Performance', 'Scout': 'Scout'},
+       fig = px.scatter(report_data, x='Fixture Date', y='Match Performance',
+                     labels={'Fixture Date': 'Fixture Date', 'Player Level': 'Player Level', 'Match Performance': 'Match Performance', 'Scout': 'Scout'},
                      hover_data={'Player Level': True, 'Scout': True, 'Score': True})
 
        fig.update_traces(marker=dict(size=12, color='#7EC0EE'))  # Customize marker color and size
