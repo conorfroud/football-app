@@ -1157,6 +1157,7 @@ def streamlit_interface():
         st.markdown("---")  # Add a separator
 
 def searchable_reports():
+    
     url1 = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit#gid=155686186"
     conn = st.connection("gsheets", type=GSheetsConnection)
     data1 = conn.read(spreadsheet=url1)
@@ -1205,8 +1206,11 @@ def searchable_reports():
             filtered_data = filtered_data[(filtered_data[column] >= slider_filter[0]) & 
                                           (filtered_data[column] <= slider_filter[1])]
 
+    # Convert 'Submission Date' to datetime
+    filtered_data['Submission Date'] = pd.to_datetime(filtered_data['Submission Date'])
+
     # Sort DataFrame based on the most recent report date
-    if 'Report Date' in filtered_data.columns:
+    if 'Submission Date' in filtered_data.columns:
         filtered_data = filtered_data.sort_values(by='Submission Date', ascending=False)
 
     # Display the filtered DataFrame
