@@ -1155,13 +1155,22 @@ def streamlit_interface():
         st.markdown(f"**Comments:** {row['Comments']}")
         st.markdown("---")  # Add a separator
 
+def searchable_reports():
+    
+    url1 = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit#gid=1930222963"
+    conn = st.connection("gsheets", type=GSheetsConnection)
+    data1 = conn.read(spreadsheet=url1)
+
+    # Display the DataFrame
+    st.write("Data from URL1:", data1)
+
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
 df2 = pd.read_csv("championshipscores.csv")
 df3 = pd.read_csv("nonpriorityleaguesdata.csv")
 
 # Create the navigation menu in the sidebar
-selected_tab = st.sidebar.radio("Navigation", [ "Player Profile", "Stoke Score", "Player Radar Single", "Player Radar Comparison", "Scatter Plot", "Multi Player Comparison Tab", "Similarity Score", "Stat Search", "Stoke Score - Wyscout", "Confidence Scores"])
+selected_tab = st.sidebar.radio("Navigation", [ "Player Profile", "Stoke Score", "Player Radar Single", "Player Radar Comparison", "Scatter Plot", "Multi Player Comparison Tab", "Similarity Score", "Stat Search", "Stoke Score - Wyscout", "Confidence Scores", "Report Search"])
 
 # Based on the selected tab, display the corresponding content
 if selected_tab == "Stoke Score":
@@ -1182,5 +1191,7 @@ if selected_tab == "Confidence Scores":
     display_data()
 if selected_tab == "Player Profile":
     streamlit_interface()
+if selected_tab == "Report Search":
+    searchable_reports()
 elif selected_tab == "Multi Player Comparison Tab":
     comparison_tab(df)
