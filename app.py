@@ -1112,49 +1112,50 @@ def streamlit_interface():
     # Convert 'Match Performance' column to numeric
     report_data['Match Performance'] = pd.to_numeric(report_data['Match Performance'])
 
-    # Splitting the player performance plot into two columns
-    col4, col5, col6 = st.columns([1, 5, 1])
+    # Count the number of reports for each date
+    date_counts = report_data['Date of report'].value_counts()
 
-    # Display player performance plot
+    # Create a new DataFrame to store data with duplicated dates
+    duplicated_report_data = pd.DataFrame()
+
+    # Duplicate date values for each date with multiple reports
+    for date, count in date_counts.items():
+        if count > 1:
+            duplicated_dates = pd.date_range(date, periods=count)  # Duplicate the date as many times as there are reports
+            duplicated_data = report_data[report_data['Date of report'] == date].copy()
+            duplicated_data['Duplicated Date'] = duplicated_dates
+            duplicated_report_data = pd.concat([duplicated_report_data, duplicated_data], ignore_index=True)
+        else:
+            duplicated_report_data = pd.concat([duplicated_report_data, report_data[report_data['Date of report'] == date]])
+
+    # Plot the data with duplicated dates
     with col5:
-       fig = px.scatter(report_data, x='Date of report', y='Match Performance',
-                     labels={'Date of report': 'Date', 'Player Level': 'Player Level', 'Match Performance': 'Match Performance', 'Scout': 'Scout'},
-                     hover_data={'Player Level': True, 'Scout': True, 'Score': True})
+        fig = px.scatter(duplicated_report_data, x='Duplicated Date', y='Match Performance',
+                         labels={'Duplicated Date': 'Date', 'Player Level': 'Player Level', 'Match Performance': 'Match Performance', 'Scout': 'Scout'},
+                         hover_data={'Player Level': True, 'Scout': True, 'Score': True})
 
-       fig.update_traces(marker=dict(size=12, color='#7EC0EE'))  # Customize marker color and size
+        fig.update_traces(marker=dict(size=12, color='#7EC0EE'))  # Customize marker color and size
 
-       fig.update_layout(width=800, height=600, yaxis=dict(range=[0, 10]))  # Set plot size and y-axis range
+        fig.update_layout(width=800, height=600, yaxis=dict(range=[0, 10]))  # Set plot size and y-axis range
 
-       # Count the number of reports for each date
-       date_counts = report_data['Date of report'].value_counts()
+        # Add annotations for each point
+        for i, row in duplicated_report_data.iterrows():
+            fig.add_annotation(
+                x=row['Duplicated Date'],  # Use duplicated date
+                y=row['Match Performance'],
+                text=f"{row['Player Level - Score']}",
+                showarrow=False,
+                font=dict(size=10),
+                xshift=5,  # Adjust the position horizontally
+                yshift=15,  # Adjust the position vertically
+            )
 
-       # Duplicate date values for each date with multiple reports
-       duplicated_dates = []
-       for date, count in date_counts.items():
-           if count > 1:
-              duplicated_dates.extend([date, date])  # Duplicate the date twice
-           else:
-              duplicated_dates.append(date)  # Add the date once
-       report_data['Duplicated Date'] = duplicated_dates
+        fig.update_xaxes(tickmode='array', tickvals=sorted(duplicated_report_data['Duplicated Date'].unique()))  # Set tick values to unique duplicated dates
+        fig.update_xaxes(tickangle=45)  # Rotate labels by 45 degrees
+        fig.update_layout(margin=dict(l=40, r=40, t=40, b=40))  # Adjust margins to prevent clipping
 
-       # Add annotations for each point
-       for i, row in report_data.iterrows():
-          fig.add_annotation(
-            x=row['Duplicated Date'],  # Use duplicated date
-            y=row['Match Performance'],
-            text=f"{row['Player Level - Score']}",
-            showarrow=False,
-            font=dict(size=10),
-            xshift=5,  # Adjust the position horizontally
-            yshift=15,  # Adjust the position vertically
-        )
+        st.plotly_chart(fig)  # Display the plot
 
-       fig.update_xaxes(tickmode='array', tickvals=sorted(report_data['Duplicated Date'].unique()))  # Set tick values to unique duplicated dates
-       fig.update_xaxes(tickangle=45)  # Rotate labels by 45 degrees
-       fig.update_layout(margin=dict(l=40, r=40, t=40, b=40))  # Adjust margins to prevent clipping
-
-       st.plotly_chart(fig)  # Display the plot
-  
     # Display report data from data1
     report_data = filtered_data1[['Player', 'Scout', 'Comments', 'Date of report', 'Player Level - Score', 'Score']]
     report_data = report_data[::-1]  # Reverse the DataFrame to show most recent reports first
