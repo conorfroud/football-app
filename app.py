@@ -1163,7 +1163,8 @@ def searchable_reports():
     data1 = conn.read(spreadsheet=url1)
 
     # Create a multi-select dropdown for selecting scouts with 'Jared Dublin' pre-selected
-    default_scout = ['Jared Dublin']
+    # Define default scouts
+    default_scout = ['Jared Dublin', 'Scott Coomber', 'Mamady Sidibe', 'Nathan Collier', 'Rob Kozluk']
     selected_scout = st.sidebar.multiselect('Select Scout', data1['Scout Name'].unique(), default=default_scout)
     
     # Filter data based on selected scout
