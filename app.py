@@ -1255,9 +1255,9 @@ def streamlit_interface(df2):
     st.markdown(f"### Player Reports ###", unsafe_allow_html=True)
 
     # Check if there's player data available
-    if not filtered_data.empty:
+    if not filtered_data1.empty:
         # If player data is available, display reports for that player
-        for index, row in report_data.iterrows():
+        for index, row in filtered_data1.iterrows():
             st.markdown(f"**Player:** {row['Player']}")
             st.markdown(f"**Scout:** {row['Scout']}")
             st.markdown(f"**Fixture:** {row['Score']}")
@@ -1268,7 +1268,7 @@ def streamlit_interface(df2):
     else:
         # If player data is unavailable, still display reports
         st.write("Player data not available. However, here are the reports:")
-        for index, row in report_data.iterrows():
+        for index, row in filtered_data1.iterrows():
             st.markdown(f"**Player:** {row['Player']}")
             st.markdown(f"**Scout:** {row['Scout']}")
             st.markdown(f"**Fixture:** {row['Score']}")
