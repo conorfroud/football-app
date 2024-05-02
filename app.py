@@ -1272,7 +1272,7 @@ def streamlit_interface(df2):
         # Add labels and title
         ax.set_xlabel('Metrics')
         ax.set_ylabel('Values')
-        ax.set_title(f"Physical Data for {selected_player}")
+        ax.set_title(f"Technical Data for {selected_player}")
 
         # Invert y-axis for better visualization
         ax.invert_yaxis()
