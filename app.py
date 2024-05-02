@@ -1149,6 +1149,8 @@ def streamlit_interface(df2):
 
             fig.update_traces(marker=dict(size=12, color='#7EC0EE'))  # Customize marker color and size
 
+            fig.update_traces(marker=dict(color='red'), selector=dict(type='scatter', mode='markers', name='Sign'))
+
             fig.update_layout(width=600, height=500, yaxis=dict(range=[0, 10]))
 
             # Add annotations for each point
