@@ -1251,7 +1251,7 @@ def streamlit_interface(df2):
             )
             
             # Add title
-            plt.title(f"Data Profile - {selected_profile}", fontsize=16, y=1.10)
+            plt.title(f"Data Profile - {selected_profile}", fontsize=14, y=1.10, fontweight='bold')
             
             st.pyplot(fig2)
 
