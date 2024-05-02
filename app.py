@@ -1157,7 +1157,7 @@ def streamlit_interface(df2):
         selected_player_df = df2[df2["player_id"] == selected_player_id]
 
         if selected_player_df.empty:
-            st.sidebar.write("Player data not available")
+            st.write("Player data not available")
             return
 
         allowed_score_types = ["Striker", "Winger", "Stretch 9", "Attacking Midfield", "Central Midfield", "Defensive Midfield", "Left Back", "Right Back", "Centre Back"]  # Add other score types as needed
@@ -1233,9 +1233,9 @@ def streamlit_interface(df2):
 
             st.pyplot(fig2)
 
-    st.markdown(f"### Player Reports ###", unsafe_allow_html=True)
+st.markdown(f"### Player Reports ###", unsafe_allow_html=True)
             
-    for index, row in report_data.iterrows():
+for index, row in report_data.iterrows():
         st.markdown(f"**Player:** {row['Player']}")
         st.markdown(f"**Scout:** {row['Scout']}")
         st.markdown(f"**Fixture:** {row['Score']}")
