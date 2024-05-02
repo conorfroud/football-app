@@ -1069,22 +1069,34 @@ def streamlit_interface(df2):
 
     # Display player info card visualization
     st.markdown(f"### {selected_player} ###", unsafe_allow_html=True)
-    
+
     # Create three columns layout
     col1, col2, col3 = st.columns([2, 2, 2])
-    
+
     with col1:
-        # Extract image URL from the cell
-        image_url = filtered_data['Image'].iloc[0]
-        if not pd.isnull(image_url):  # Check if image_url is not NaN
-            # Fetch image from Google Drive
-            response = requests.get(image_url)
-            if response.status_code == 200:
-                st.image(response.content, width=200)
+        # Create three nested columns within col1
+        col1_1, col1_2, col1_3 = st.columns([1, 3, 1])
+
+        with col1_1:
+            # Add content in the first nested column if needed
+            pass
+
+        with col1_2:
+            # Extract image URL from the cell
+            image_url = filtered_data['Image'].iloc[0]
+            if not pd.isnull(image_url):  # Check if image_url is not NaN
+                # Fetch image from Google Drive
+                response = requests.get(image_url)
+                if response.status_code == 200:
+                    st.image(response.content, width=200)
+                else:
+                    st.write("Image not available")
             else:
-                st.write("Image not available")
-        else:
-            st.write("No image available")
+                st.write("No image available")
+
+        with col1_3:
+            # Add content in the third nested column if needed
+            pass
 
     # Display player information in the center column
     with col2:
@@ -1113,7 +1125,7 @@ def streamlit_interface(df2):
         st.markdown(f"**Sign Verdicts:** {filtered_data['Sign Verdicts'].iloc[0]}")
         st.markdown(f"**Monitor Closely Verdicts:** {filtered_data['Monitor Closely Verdicts'].iloc[0]}")
         st.markdown(f"**Average Player Performance:** {filtered_data['Average Player Performance'].iloc[0]}")
-    
+
     st.markdown("---")  # Add a separator
 
     # Display report data from data1
