@@ -1253,6 +1253,28 @@ def streamlit_interface(df2):
 
             st.pyplot(fig2)
 
+    # Splitting the player performance plot into two columns
+    col7, col8 = st.columns([3, 3])
+
+    with col7:
+
+        fig, ax = plt.subplots(figsize=(8, 6))
+
+        # Create horizontal bar chart
+        ax.barh(params, values1, color="#7EC0EE", edgecolor="#222222")
+
+        # Add labels and title
+        ax.set_xlabel('Metrics')
+        ax.set_ylabel('Values')
+        ax.set_title(plot_title)
+
+        # Invert y-axis for better visualization
+        ax.invert_yaxis()
+
+        # Show the plot
+        plt.tight_layout()
+        plt.show()
+
     # Display report data from data1
     report_data = filtered_data1[['Player', 'Scout', 'Comments', 'Date of report', 'Player Level - Score', 'Score']]
     report_data = report_data[::-1]  # Reverse the DataFrame to show most recent reports first
