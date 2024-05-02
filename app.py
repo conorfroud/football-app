@@ -1234,7 +1234,7 @@ def streamlit_interface(df2):
                     zorder=2, linewidth=1,
                 ),
                 kwargs_params=dict(
-                    color="#000000", fontsize=8, va="center", 
+                    color="#000000", fontsize=8, va="center",
                 ),
                 kwargs_values=dict(
                     color="#000000", fontsize=12, zorder=3,
@@ -1242,7 +1242,6 @@ def streamlit_interface(df2):
                         edgecolor="#000000", facecolor="#7EC0EE",
                         boxstyle="round,pad=0.2", lw=1
                     ),
-
                 ),
                 kwargs_compare_values=dict(
                     color="#000000", fontsize=12, zorder=3,
@@ -1250,7 +1249,10 @@ def streamlit_interface(df2):
                     weight="bold"
                 )
             )
-
+            
+            # Add title
+            plt.title(f"Technical Data for {selected_player}", fontsize=16)
+            
             st.pyplot(fig2)
 
     st.markdown("---")  # Add a separator
