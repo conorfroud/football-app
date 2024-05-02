@@ -1280,7 +1280,7 @@ def streamlit_interface(df2):
         # Add labels and title
         ax.set_xlabel('Percentile')
         ax.set_ylabel('Metrics')
-        ax.set_title(f"Technical Data for {selected_player}")
+        ax.set_title(f"Technical Data for {selected_player}", fontweight='bold')
 
         # Invert y-axis for better visualization
         ax.invert_yaxis()
@@ -1305,7 +1305,7 @@ def streamlit_interface(df2):
         # Add labels and title
         ax.set_xlabel('Percentile')
         ax.set_ylabel('Metrics')
-        ax.set_title(f"Physical Data for {selected_player}")
+        ax.set_title(f"Physical Data for {selected_player}", fontweight='bold')
 
         # Invert y-axis for better visualization
         ax.invert_yaxis()
