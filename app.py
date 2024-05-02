@@ -1202,51 +1202,53 @@ def streamlit_interface(df2):
     # Extract only the metrics used in the pizza visualization for similarity calculation
     selected_metrics = selected_df.select_dtypes(include='number').values
 
-    params = selected_df.columns[1:]
-    values1 = selected_df.iloc[0, 1:]
+    with col5:
+    
+       params = selected_df.columns[1:]
+       values1 = selected_df.iloc[0, 1:]
 
-    # Instantiate PyPizza class
-    baker = PyPizza(
-        params=params,
-        background_color="#FFFFFF",
-        straight_line_color="#222222",
-        straight_line_lw=1,
-        last_circle_lw=1,
-        last_circle_color="#222222",
-        other_circle_ls="-.",
-        other_circle_lw=1
-    )
+       # Instantiate PyPizza class
+       baker = PyPizza(
+           params=params,
+           background_color="#FFFFFF",
+           straight_line_color="#222222",
+           straight_line_lw=1,
+           last_circle_lw=1,
+           last_circle_color="#222222",
+           other_circle_ls="-.",
+           other_circle_lw=1
+       )
 
-    # Create the pizza plot
-    fig2, ax = baker.make_pizza(
-        values1,
-        figsize=(8, 8),
-        kwargs_slices=dict(
-            facecolor="#7EC0EE", edgecolor="#222222",
-            zorder=1, linewidth=1
-        ),
-        kwargs_compare=dict(
-            facecolor="#7EC0EE", edgecolor="#222222",
-            zorder=2, linewidth=1,
-        ),
-        kwargs_params=dict(
-            color="#000000", fontsize=8, va="center", 
-        ),
-        kwargs_values=dict(
-            color="#000000", fontsize=12, zorder=3,
-            bbox=dict(
-                edgecolor="#000000", facecolor="#7EC0EE",
-                boxstyle="round,pad=0.2", lw=1
-            ),
-        ),
-        kwargs_compare_values=dict(
-            color="#000000", fontsize=12, zorder=3,
-            bbox=dict(edgecolor="#000000", facecolor="#7EC0EE", boxstyle="round,pad=0.2", lw=1),
-            weight="bold"
-        )
-    )
+       # Create the pizza plot
+       fig2, ax = baker.make_pizza(
+           values1,
+           figsize=(8, 8),
+           kwargs_slices=dict(
+               facecolor="#7EC0EE", edgecolor="#222222",
+               zorder=1, linewidth=1
+           ),
+           kwargs_compare=dict(
+               facecolor="#7EC0EE", edgecolor="#222222",
+               zorder=2, linewidth=1,
+           ),
+           kwargs_params=dict(
+               color="#000000", fontsize=8, va="center", 
+           ),
+           kwargs_values=dict(
+               color="#000000", fontsize=12, zorder=3,
+               bbox=dict(
+                   edgecolor="#000000", facecolor="#7EC0EE",
+                   boxstyle="round,pad=0.2", lw=1
+               ),
+           ),
+           kwargs_compare_values=dict(
+               color="#000000", fontsize=12, zorder=3,
+               bbox=dict(edgecolor="#000000", facecolor="#7EC0EE", boxstyle="round,pad=0.2", lw=1),
+               weight="bold"
+           )
+       )
 
-    st.pyplot(fig2)
+       st.pyplot(fig2)
 
     # Display report data from data1
     report_data = filtered_data1[['Player', 'Scout', 'Comments', 'Date of report', 'Player Level - Score', 'Score']]
