@@ -1253,6 +1253,8 @@ def streamlit_interface(df2):
 
             st.pyplot(fig2)
 
+    st.markdown("---")  # Add a separator
+    
     st.markdown(f"### Player Reports ###", unsafe_allow_html=True)
             
     for index, row in report_data.iterrows():
