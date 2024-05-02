@@ -1247,6 +1247,8 @@ def streamlit_interface(df2):
 
        st.pyplot(fig2)
 
+    st.markdown("---")  # Add a separator
+
     # Display report data from data1
     report_data = filtered_data1[['Player', 'Scout', 'Comments', 'Date of report', 'Player Level - Score', 'Score']]
     report_data = report_data[::-1]  # Reverse the DataFrame to show most recent reports first
