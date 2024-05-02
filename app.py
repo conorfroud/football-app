@@ -1174,8 +1174,32 @@ def streamlit_interface(df2):
         elif selected_profile == "Winger":
             columns = ["Player Name", "xG (W)", "Non-Penalty Goals (W)", "Shots (W)", "OBV Pass (W)", "Open Play xA (W)",  "Successful Dribbles (W)", "OBV Dribble & Carry (W)", "Distance (W)", "Top 5 PSV (W)"]
             plot_title = f"Winger Metric Percentiles for {selected_player}"
-        # Add other profile conditions...
-
+        elif selected_profile == "Attacking Midfield":
+            columns = ["Player Name", "xG (CAM)", "Non-Penalty Goals (CAM)", "Shots (CAM)", "OBV Pass (CAM)", "Open Play xA (CAM)", "Throughballs (CAM)", "Successful Dribbles (CAM)", "OBV Dribble & Carry (CAM)", "Average Distance (CAM)", "Top 5 PSV (CAM)"]
+            plot_title = f"Attacking Midfield Metric Percentiles for {selected_player}"
+        elif selected_profile == "Central Midfield":
+            columns = ["Player Name", "xG (8)", "Non-Penalty Goals (8)", "OBV Pass (8)", "Open Play xA (8)", "Deep Progressions (8)", "Successful Dribbles (8)", "OBV Dribble & Carry (8)", "Average Distance (8)", "Top 5 PSV-99 (8)"]
+            plot_title = f"Central Midfield Metric Percentiles for {selected_player}"
+        elif selected_profile == "Defensive Midfield":
+            columns = ["Player Name", "Deep Progressions (6)", "OBV Pass (6)", "OBV Dribble & Carry (6)", "Pass Forward % (6)", "PAdj Pressures (6)", "Pressure Regains (6)", "PAdj Tackles & Interceptions (6)", "Tackle/Dribbled Past % (6)", "OBV Defensive Action (6)", "Ball Recoveries (6)", "Average Distance (6)", "Top 5 PSV-99 (6)"]
+            plot_title = f"Defensive Midfield Metric Percentiles for {selected_player}"
+        elif selected_profile == "Left Back":
+            columns = ["Player Name", "PAdj Tackles & Interceptions (LB)", "Tackle/Dribbled Past (LB)", "OBV Defensive Action (LB)", "Dribbled Past (LB)", "OBV Dribble & Carry (LB)", "Successful Crosses (LB)", "Open Play xA (LB)", "OBV Pass (LB)", "Aerial Win % (LB)", "Average Distance (LB)", "Top 5 PSV-99 (LB)"]
+            plot_title = f"Left Back Metric Percentiles for {selected_player}"
+        elif selected_profile == "Right Back":
+            columns = ["Player Name", "PAdj Tackles & Interceptions (RB)", "Tackle/Dribbled Past (RB)", "OBV Defensive Action (RB)", "Dribbled Past (RB)", "OBV Dribble & Carry (RB)", "Successful Crosses (RB)", "Open Play xA (RB)", "OBV Pass (RB)", "Aerial Win % (RB)", "Average Distance (RB)", "Top 5 PSV-99 (RB)"]
+            plot_title = f"Right Back Metric Percentiles for {selected_player}"
+        elif selected_profile == "Centre Back":
+            columns = ["Player Name", "Aerial Wins (CB)", "Aerial Win % (CB)", "PAdj Tackles & Interceptions (CB)", "Tackle / Dribbled Past % (CB)", "OBV Defensive Action (CB)", "Blocks per Shot (CB)", "Deep Progressions (CB)", "OBV Pass (CB)", "Pressure Change in Passing % (CB)", "OBV Dribble & Carry (CB)", "Top 5 PSV-99 (CB)"]
+            plot_title = f"Centre Back Metric Percentiles for {selected_player}"
+        elif selected_profile == "Stretch 9":
+            columns = ["Player Name", "xG (S9)", "Non-Penalty Goals (S9)", "Shots (S9)", "OBV Shot (S9)", "Open Play xA (S9)", "Runs in Behind (S9)", "Threat of Runs in Behind (S9)", "Average Distance (S9)", "Top 5 PSV-99 (S9)"]
+            plot_title = f"Stretch 9 Metric Percentiles for {selected_player}"
+        else:
+            # Define columns and plot title for the default profile
+            columns = []
+            plot_title = f"Default Profile Metrics for {selected_player}"
+            
         # Assuming selected_df is your DataFrame containing the data
         selected_df = selected_player_df[selected_player_df["Score Type"] == selected_profile][columns[0:]]  # Exclude the "Player Name" column
 
