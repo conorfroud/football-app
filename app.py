@@ -1117,9 +1117,9 @@ def streamlit_interface(df2):
     report_data['Match Performance'] = pd.to_numeric(report_data['Match Performance'])
 
     # Splitting the player performance plot into two columns
-    col4, col5, col6 = st.columns([1, 5, 1])
+    col4, col5 = st.columns([3, 3])
     
-    with col5:
+    with col4:
     
        fig = px.scatter(report_data, x='Fixture Date', y='Match Performance',
                      labels={'Fixture Date': 'Fixture Date', 'Player Level': 'Player Level', 'Match Performance': 'Match Performance', 'Scout': 'Scout'},
