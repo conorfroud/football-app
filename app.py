@@ -1117,9 +1117,9 @@ def streamlit_interface(df2):
     report_data['Match Performance'] = pd.to_numeric(report_data['Match Performance'])
 
     # Splitting the player performance plot into two columns
-    col4, col5, col6 = st.columns([3, 1, 3])
+    col4, col5, col6 = st.columns([1, 5, 1])
     
-    with col4:
+    with col5:
     
        fig = px.scatter(report_data, x='Fixture Date', y='Match Performance',
                      labels={'Fixture Date': 'Fixture Date', 'Player Level': 'Player Level', 'Match Performance': 'Match Performance', 'Scout': 'Scout'},
@@ -1150,6 +1150,10 @@ def streamlit_interface(df2):
     selected_player_name = filtered_data['Player'].iloc[0]
 
     selected_player_df = df2[df2["player_id"] == selected_player_id]
+
+    if selected_player_df.empty:
+        st.sidebar.write("Player data not available")
+        return
 
     # Filter the available profiles based on the allowed score types
     available_profiles = selected_player_df[selected_player_df["Score Type"].isin(allowed_score_types)]["Score Type"].unique()
