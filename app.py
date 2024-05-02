@@ -1256,7 +1256,7 @@ def streamlit_interface(df2):
     st.markdown("---")  # Add a separator
 
     # Splitting the player performance plot into two columns
-    col7, col8, col9 = st.columns([3, 2, 3])
+    col7, col8, col9 = st.columns([3, 1, 3])
 
     with col7:
 
