@@ -1075,7 +1075,7 @@ def streamlit_interface(df2):
 
     with col1:
         # Create three nested columns within col1
-        col1_1, col1_2, col1_3 = st.columns([1, 3, 1])
+        col1_1, col1_2, col1_3 = st.columns([0.75, 3, 1])
 
         with col1_1:
             # Add content in the first nested column if needed
