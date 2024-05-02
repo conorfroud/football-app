@@ -1088,7 +1088,12 @@ def streamlit_interface(df2):
 
     # Display player information in the center column
     with col2:
-        st.markdown(f"**Team:** {filtered_data['Current Club'].iloc[0]}")
+        team_info = filtered_data['Current Club'].iloc[0]
+        # Check if Parent Club data is not 'NA' and not NaN
+        parent_club = filtered_data['Parent Club (If applicable)'].iloc[0]
+        if parent_club != 'NA' and not pd.isnull(parent_club):
+            team_info += f" (Parent Club: {parent_club})"
+        st.markdown(f"**Team:** {team_info}")
         st.markdown(f"**Age:** {filtered_data['Age'].iloc[0]}")
         st.markdown(f"**Position:** {filtered_data['Position'].iloc[0]}")
         st.markdown(f"**Contract:** {filtered_data['Contract'].iloc[0]}")
@@ -1097,10 +1102,6 @@ def streamlit_interface(df2):
         st.markdown(f"**Height:** {filtered_data['Average Height'].iloc[0]}")
         st.markdown(f"**Foot:** {filtered_data['Foot'].iloc[0]}")
         st.markdown(f"**Transfermarkt:** {filtered_data['Transfermarkt URL'].iloc[0]}")
-        
-        # Check if Parent Club data is not 'NA'
-        if filtered_data['Parent Club (If applicable)'].iloc[0] != 'NA':
-            st.markdown(f"**Parent Club:** {filtered_data['Parent Club (If applicable)'].iloc[0]}")
 
     # Display additional player information in the third column
     with col3:
