@@ -1120,30 +1120,43 @@ def streamlit_interface(df2):
     col4, col5, col6 = st.columns([1, 5, 1])
     
     with col5:
-    
-       fig = px.scatter(report_data, x='Fixture Date', y='Match Performance',
-                     labels={'Fixture Date': 'Fixture Date', 'Player Level': 'Player Level', 'Match Performance': 'Match Performance', 'Scout': 'Scout'},
-                     hover_data={'Player Level': True, 'Scout': True, 'Score': True})
+        if filtered_data.empty:
+            st.write("Player data not available")
+        else:
+            fig = px.scatter(report_data, x='Fixture Date', y='Match Performance',
+                         labels={'Fixture Date': 'Fixture Date', 'Player Level': 'Player Level', 'Match Performance': 'Match Performance', 'Scout': 'Scout'},
+                         hover_data={'Player Level': True, 'Scout': True, 'Score': True})
 
-       fig.update_traces(marker=dict(size=12, color='#7EC0EE'))  # Customize marker color and size
+            fig.update_traces(marker=dict(size=12, color='#7EC0EE'))  # Customize marker color and size
 
-       fig.update_layout(width=800, height=600, yaxis=dict(range=[0, 10]))  # Set plot size and y-axis range
-    
-       # Add annotations for each point
-       for i, row in report_data.iterrows():
-         fig.add_annotation(
-            x=row['Fixture Date'],
-            y=row['Match Performance'],
-            text=f"{row['Player Level - Score']}",
-            showarrow=False,
-            font=dict(size=10),
-            xshift=5,  # Adjust the position horizontally
-            yshift=15,  # Adjust the position vertically
-        )
+            fig.update_layout(width=800, height=600, yaxis=dict(range=[0, 10]))  # Set plot size and y-axis range
 
-       st.plotly_chart(fig)  # Display the plot
+            # Add annotations for each point
+            for i, row in report_data.iterrows():
+                fig.add_annotation(
+                    x=row['Fixture Date'],
+                    y=row['Match Performance'],
+                    text=f"{row['Player Level - Score']}",
+                    showarrow=False,
+                    font=dict(size=10),
+                    xshift=5,  # Adjust the position horizontally
+                    yshift=15,  # Adjust the position vertically
+                )
+
+            st.plotly_chart(fig)  # Display the plot
 
     allowed_score_types = ["Striker", "Winger", "Stretch 9", "Attacking Midfield", "Central Midfield", "Defensive Midfield", "Left Back", "Right Back", "Centre Back"]  # Add other score types as needed
+
+    # Display report data from data1 regardless of player data availability
+    st.markdown(f"### Player Reports ###", unsafe_allow_html=True)
+    for index, row in report_data.iterrows():
+        st.markdown(f"**Player:** {row['Player']}")
+        st.markdown(f"**Scout:** {row['Scout']}")
+        st.markdown(f"**Fixture:** {row['Score']}")
+        st.markdown(f"**Date of Report:** {row['Date of report']}")
+        st.markdown(f"**Verdict:** {row['Player Level - Score']}")
+        st.markdown(f"**Comments:** {row['Comments']}")
+        st.markdown("---")  # Add a separator
 
     # Select a player and profile
     selected_player_id = filtered_data['Statsbomb ID'].iloc[0]
@@ -1203,70 +1216,55 @@ def streamlit_interface(df2):
     # Extract only the metrics used in the pizza visualization for similarity calculation
     selected_metrics = selected_df.select_dtypes(include='number').values
 
-    with col6:
-    
-       params = selected_df.columns[1:]
-       values1 = selected_df.iloc[0, 1:]
+    with col5:
+        if selected_df.empty:
+            st.write("Player data not available")
+        else:
+            params = selected_df.columns[1:]
+            values1 = selected_df.iloc[0, 1:]
 
-       # Instantiate PyPizza class
-       baker = PyPizza(
-           params=params,
-           background_color="#FFFFFF",
-           straight_line_color="#222222",
-           straight_line_lw=1,
-           last_circle_lw=1,
-           last_circle_color="#222222",
-           other_circle_ls="-.",
-           other_circle_lw=1
-       )
+            # Instantiate PyPizza class
+            baker = PyPizza(
+                params=params,
+                background_color="#FFFFFF",
+                straight_line_color="#222222",
+                straight_line_lw=1,
+                last_circle_lw=1,
+                last_circle_color="#222222",
+                other_circle_ls="-.",
+                other_circle_lw=1
+            )
 
-       # Create the pizza plot
-       fig2, ax = baker.make_pizza(
-           values1,
-           figsize=(8, 8),
-           kwargs_slices=dict(
-               facecolor="#7EC0EE", edgecolor="#222222",
-               zorder=1, linewidth=1
-           ),
-           kwargs_compare=dict(
-               facecolor="#7EC0EE", edgecolor="#222222",
-               zorder=2, linewidth=1,
-           ),
-           kwargs_params=dict(
-               color="#000000", fontsize=8, va="center", 
-           ),
-           kwargs_values=dict(
-               color="#000000", fontsize=12, zorder=3,
-               bbox=dict(
-                   edgecolor="#000000", facecolor="#7EC0EE",
-                   boxstyle="round,pad=0.2", lw=1
-               ),
-           ),
-           kwargs_compare_values=dict(
-               color="#000000", fontsize=12, zorder=3,
-               bbox=dict(edgecolor="#000000", facecolor="#7EC0EE", boxstyle="round,pad=0.2", lw=1),
-               weight="bold"
-           )
-       )
+            # Create the pizza plot
+            fig2, ax = baker.make_pizza(
+                values1,
+                figsize=(8, 8),
+                kwargs_slices=dict(
+                    facecolor="#7EC0EE", edgecolor="#222222",
+                    zorder=1, linewidth=1
+                ),
+                kwargs_compare=dict(
+                    facecolor="#7EC0EE", edgecolor="#222222",
+                    zorder=2, linewidth=1,
+                ),
+                kwargs_params=dict(
+                    color="#000000", fontsize=8, va="center", 
+                ),
+                kwargs_values=dict(
+                    color="#000000", fontsize=12, zorder=3,
+                    bbox=dict(
+                        edgecolor="#000000", facecolor="#7EC0EE",
+                        boxstyle="round,pad=0.2", lw=1
+                    ),
+                ),
+                kwargs_compare_values=dict(
+                    color="#000000", fontsize=12, zorder=3,
+                    bbox=dict(edgecolor="#000000", facecolor="#7EC0EE", boxstyle="round,pad=0.2", lw=1),
+                    weight="bold"
+                )
+            )
 
-       st.pyplot(fig2)
-
-    st.markdown("---")  # Add a separator
-
-    # Display report data from data1
-    report_data = filtered_data1[['Player', 'Scout', 'Comments', 'Date of report', 'Player Level - Score', 'Score']]
-    report_data = report_data[::-1]  # Reverse the DataFrame to show most recent reports first
-    
-    st.markdown(f"### Player Reports ###", unsafe_allow_html=True)
-        
-    for index, row in report_data.iterrows():
-        st.markdown(f"**Player:** {row['Player']}")
-        st.markdown(f"**Scout:** {row['Scout']}")
-        st.markdown(f"**Fixture:** {row['Score']}")
-        st.markdown(f"**Date of Report:** {row['Date of report']}")
-        st.markdown(f"**Verdict:** {row['Player Level - Score']}")
-        st.markdown(f"**Comments:** {row['Comments']}")
-        st.markdown("---")  # Add a separator
+            st.pyplot(fig2)
 
 def searchable_reports():
     
