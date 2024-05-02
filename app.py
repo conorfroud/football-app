@@ -1113,7 +1113,7 @@ def streamlit_interface(df2):
 
     # Display report data from data1
     report_data = filtered_data1[['Player', 'Date of report', 'Fixture Date', 'Match Performance', 'Player Level', 'Scout', 'Score', 'Player Level - Score', 'Comments']].tail(10)
-    
+
     # Convert 'Match Performance' column to numeric
     report_data['Match Performance'] = pd.to_numeric(report_data['Match Performance'])
 
@@ -1126,8 +1126,8 @@ def streamlit_interface(df2):
     else:
         with col4:
             fig = px.scatter(report_data, x='Fixture Date', y='Match Performance',
-                         labels={'Fixture Date': 'Fixture Date', 'Player Level': 'Player Level', 'Match Performance': 'Match Performance', 'Scout': 'Scout'},
-                         hover_data={'Player Level': True, 'Scout': True, 'Score': True})
+                     labels={'Fixture Date': 'Fixture Date', 'Player Level': 'Player Level', 'Match Performance': 'Match Performance', 'Scout': 'Scout'},
+                     hover_data={'Player Level': True, 'Scout': True, 'Score': True})
 
             fig.update_traces(marker=dict(size=12, color='#7EC0EE'))  # Customize marker color and size
 
@@ -1143,72 +1143,102 @@ def streamlit_interface(df2):
                     font=dict(size=10),
                     xshift=5,  # Adjust the position horizontally
                     yshift=15,  # Adjust the position vertically
-                )
-
-            st.plotly_chart(fig)  # Display the plot
-
-        with col6:
-
-            params = selected_df.columns[1:]
-            values1 = selected_df.iloc[0, 1:]  # Assuming you want metrics for the first player
-
-            # Instantiate PyPizza class
-            baker = PyPizza(
-                params=params,
-                background_color="#FFFFFF",
-                straight_line_color="#222222",
-                straight_line_lw=1,
-                last_circle_lw=1,
-                last_circle_color="#222222",
-                other_circle_ls="-.",
-                other_circle_lw=1
             )
 
-            if selected_player_df.empty:
-                st.write("Player data not available")
-            else:
-                # Create the pizza plot
-                fig2, ax = baker.make_pizza(
-                    values1,
-                    figsize=(8, 8),
-                    kwargs_slices=dict(
-                        facecolor="#7EC0EE", edgecolor="#222222",
-                        zorder=1, linewidth=1
-                    ),
-                    kwargs_compare=dict(
-                        facecolor="#7EC0EE", edgecolor="#222222",
-                        zorder=2, linewidth=1,
-                    ),
-                    kwargs_params=dict(
-                        color="#000000", fontsize=8, va="center", 
-                    ),
-                    kwargs_values=dict(
-                        color="#000000", fontsize=12, zorder=3,
-                        bbox=dict(
-                            edgecolor="#000000", facecolor="#7EC0EE",
-                            boxstyle="round,pad=0.2", lw=1
-                        ),
+        st.plotly_chart(fig)  # Display the plot
 
+    with col6:
+        # Define selected_df here
+        selected_player_id = filtered_data['Statsbomb ID'].iloc[0]
+        selected_player_name = filtered_data['Player'].iloc[0]
+
+        selected_player_df = df2[df2["player_id"] == selected_player_id]
+
+        if selected_player_df.empty:
+            st.sidebar.write("Player data not available")
+            return
+
+        # Filter the available profiles based on the allowed score types
+        available_profiles = selected_player_df[selected_player_df["Score Type"].isin(allowed_score_types)]["Score Type"].unique()
+
+        selected_profile = st.sidebar.selectbox(
+            "Select a Profile:",
+            options=available_profiles,
+            index=0  # Set the default index to the first profile
+        )
+
+        # Define 'columns' based on the selected profile
+        if selected_profile == "Striker":
+            columns = ["Player Name", "xG (ST)", "Non-Penalty Goals (ST)", "Shots (ST)", "OBV Shot (ST)", "Open Play xA (ST)", "OBV Dribble & Carry (ST)", "PAdj Pressures (ST)", "Average Distance Percentile", "Top 5 PSV-99 Percentile"]
+            plot_title = f"Forward Metrics for {selected_player}"
+        elif selected_profile == "Winger":
+            columns = ["Player Name", "xG (W)", "Non-Penalty Goals (W)", "Shots (W)", "OBV Pass (W)", "Open Play xA (W)",  "Successful Dribbles (W)", "OBV Dribble & Carry (W)", "Distance (W)", "Top 5 PSV (W)"]
+            plot_title = f"Winger Metric Percentiles for {selected_player}"
+        # Add other profile conditions...
+
+        # Assuming selected_df is your DataFrame containing the data
+        selected_df = selected_player_df[selected_player_df["Score Type"] == selected_profile][columns[0:]]  # Exclude the "Player Name" column
+
+        params = selected_df.columns[1:]
+        values1 = selected_df.iloc[0, 1:]  # Assuming you want metrics for the first player
+
+        # Instantiate PyPizza class
+        baker = PyPizza(
+            params=params,
+            background_color="#FFFFFF",
+            straight_line_color="#222222",
+            straight_line_lw=1,
+            last_circle_lw=1,
+            last_circle_color="#222222",
+            other_circle_ls="-.",
+            other_circle_lw=1
+        )
+
+        if selected_player_df.empty:
+            st.write("Player data not available")
+        else:
+            # Create the pizza plot
+            fig2, ax = baker.make_pizza(
+                values1,
+                figsize=(8, 8),
+                kwargs_slices=dict(
+                    facecolor="#7EC0EE", edgecolor="#222222",
+                    zorder=1, linewidth=1
+                ),
+                kwargs_compare=dict(
+                    facecolor="#7EC0EE", edgecolor="#222222",
+                    zorder=2, linewidth=1,
+                ),
+                kwargs_params=dict(
+                    color="#000000", fontsize=8, va="center", 
+                ),
+                kwargs_values=dict(
+                    color="#000000", fontsize=12, zorder=3,
+                    bbox=dict(
+                        edgecolor="#000000", facecolor="#7EC0EE",
+                        boxstyle="round,pad=0.2", lw=1
                     ),
-                    kwargs_compare_values=dict(
-                        color="#000000", fontsize=12, zorder=3,
-                        bbox=dict(edgecolor="#000000", facecolor="#7EC0EE", boxstyle="round,pad=0.2", lw=1),
-                        weight="bold"
-                    )
+
+                ),
+                kwargs_compare_values=dict(
+                    color="#000000", fontsize=12, zorder=3,
+                    bbox=dict(edgecolor="#000000", facecolor="#7EC0EE", boxstyle="round,pad=0.2", lw=1),
+                    weight="bold"
                 )
+            )
 
-                st.pyplot(fig2)
+            st.pyplot(fig2)
 
-        st.markdown(f"### Player Reports ###", unsafe_allow_html=True)
+    st.markdown(f"### Player Reports ###", unsafe_allow_html=True)
             
-        for index, row in report_data.iterrows():
-            st.markdown(f"**Player:** {row['Player']}")
-            st.markdown(f"**Scout:** {row['Scout']}")
-            st.markdown(f"**Fixture:** {row['Score']}")
-            st.markdown(f"**Date of Report:** {row['Date of report']}")
-            st.markdown(f"**Verdict:** {row['Player Level - Score']}")
-            st.markdown(f"**Comments:** {row['Comments']}")
-            st.markdown("---")  # Add a separator
+    for index, row in report_data.iterrows():
+        st.markdown(f"**Player:** {row['Player']}")
+        st.markdown(f"**Scout:** {row['Scout']}")
+        st.markdown(f"**Fixture:** {row['Score']}")
+        st.markdown(f"**Date of Report:** {row['Date of report']}")
+        st.markdown(f"**Verdict:** {row['Player Level - Score']}")
+        st.markdown(f"**Comments:** {row['Comments']}")
+        st.markdown("---")  # Add a separator
         
 def searchable_reports():
     
