@@ -1255,7 +1255,7 @@ def streamlit_interface(df2):
 
     # Splitting the player performance plot into two columns
     col7, col8 = st.columns([3, 3])
-
+    
     with col7:
 
         fig, ax = plt.subplots(figsize=(8, 6))
@@ -1273,7 +1273,7 @@ def streamlit_interface(df2):
 
         # Show the plot
         plt.tight_layout()
-        plt.show()
+        st.pyplot(fig)  # Display the plot
 
     # Display report data from data1
     report_data = filtered_data1[['Player', 'Scout', 'Comments', 'Date of report', 'Player Level - Score', 'Score']]
