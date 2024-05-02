@@ -1154,7 +1154,6 @@ def streamlit_interface(df2):
 
         if selected_player_df.empty:
             st.write("Player data not available")
-            return
 
         allowed_score_types = ["Striker", "Winger", "Stretch 9", "Attacking Midfield", "Central Midfield", "Defensive Midfield", "Left Back", "Right Back", "Centre Back"]  # Add other score types as needed
 
