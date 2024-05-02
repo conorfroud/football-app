@@ -1117,9 +1117,9 @@ def streamlit_interface(df2):
     report_data['Match Performance'] = pd.to_numeric(report_data['Match Performance'])
 
     # Splitting the player performance plot into two columns
-    col4, col5, col6 = st.columns([1, 5, 1])
+    col4, col5, col6 = st.columns([3, 1, 3])
     
-    with col5:
+    with col4:
         fig = px.scatter(report_data, x='Fixture Date', y='Match Performance',
                      labels={'Fixture Date': 'Fixture Date', 'Player Level': 'Player Level', 'Match Performance': 'Match Performance', 'Scout': 'Scout'},
                      hover_data={'Player Level': True, 'Scout': True, 'Score': True})
@@ -1212,9 +1212,8 @@ def streamlit_interface(df2):
     font_path1 = "Roboto-Regular.ttf"
     prop1 = font_manager.FontProperties(fname=font_path1)
 
-    col1, col2, col3, col4, col5 = st.columns([1, 1, 5, 1, 1])
-
-    with col3:
+    with col6:
+        
         params = selected_df.columns[1:]
         values1 = selected_df.iloc[0, 1:]  # Assuming you want metrics for the first player
 
