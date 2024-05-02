@@ -1253,31 +1253,20 @@ def streamlit_interface(df2):
 
             st.pyplot(fig2)
 
-    # Sidebar select box filter for Player Name
-    selected_player = st.sidebar.selectbox("Select Player", data['Player'].unique().tolist())
-
-    # Filter data based on selected player name
-    filtered_data2 = data[data['Player'] == selected_player]
-
-    # Filter data1 based on the selected player's Transfermarkt URL
-    player_url1 = filtered_data2['Transfermarkt URL'].iloc[0]
-    filtered_data3 = data1[data1['Transfermarkt URL'] == player_url1]
-
-    # Splitting the player performance plot into two columns
-    col7 = st.columns([3])
-
-    with col7:
+    # Display report data from data1
+    report_data = filtered_data1[['Player', 'Scout', 'Comments', 'Date of report', 'Player Level - Score', 'Score']]
+    report_data = report_data[::-1]  # Reverse the DataFrame to show most recent reports first
+    
+    st.markdown(f"### Player Reports ###", unsafe_allow_html=True)
         
-        st.markdown(f"### Player Reports ###", unsafe_allow_html=True)
-        
-        for index, row in filtered_data3.iterrows():
-            st.markdown(f"**Player:** {row['Player']}")
-            st.markdown(f"**Scout:** {row['Scout']}")
-            st.markdown(f"**Fixture:** {row['Score']}")
-            st.markdown(f"**Date of Report:** {row['Date of report']}")
-            st.markdown(f"**Verdict:** {row['Player Level - Score']}")
-            st.markdown(f"**Comments:** {row['Comments']}")
-            st.markdown("---")  # Add a separator
+    for index, row in report_data.iterrows():
+        st.markdown(f"**Player:** {row['Player']}")
+        st.markdown(f"**Scout:** {row['Scout']}")
+        st.markdown(f"**Fixture:** {row['Score']}")
+        st.markdown(f"**Date of Report:** {row['Date of report']}")
+        st.markdown(f"**Verdict:** {row['Player Level - Score']}")
+        st.markdown(f"**Comments:** {row['Comments']}")
+        st.markdown("---")  # Add a separator
 
 def searchable_reports():
     
