@@ -1152,6 +1152,10 @@ def streamlit_interface(df2):
 
         selected_player_df = df2[df2["player_id"] == selected_player_id]
 
+        if selected_player_df.empty:
+            st.write("Player data not available")
+            return
+
         allowed_score_types = ["Striker", "Winger", "Stretch 9", "Attacking Midfield", "Central Midfield", "Defensive Midfield", "Left Back", "Right Back", "Centre Back"]  # Add other score types as needed
 
         # Filter the available profiles based on the allowed score types
@@ -1248,31 +1252,22 @@ def streamlit_interface(df2):
             )
 
             st.pyplot(fig2)
+
+    # Splitting the player performance plot into two columns
+    col7 = st.columns([3])
+
+    with col7:
     
     st.markdown(f"### Player Reports ###", unsafe_allow_html=True)
-
-    # Check if there's player data available
-    if not filtered_data1.empty:
-        # If player data is available, display reports for that player
-        for index, row in filtered_data1.iterrows():
-            st.markdown(f"**Player:** {row['Player']}")
-            st.markdown(f"**Scout:** {row['Scout']}")
-            st.markdown(f"**Fixture:** {row['Score']}")
-            st.markdown(f"**Date of Report:** {row['Date of report']}")
-            st.markdown(f"**Verdict:** {row['Player Level - Score']}")
-            st.markdown(f"**Comments:** {row['Comments']}")
-            st.markdown("---")  # Add a separator
-    else:
-        # If player data is unavailable, still display reports
-        st.write("Player data not available. However, here are the reports:")
-        for index, row in filtered_data1.iterrows():
-            st.markdown(f"**Player:** {row['Player']}")
-            st.markdown(f"**Scout:** {row['Scout']}")
-            st.markdown(f"**Fixture:** {row['Score']}")
-            st.markdown(f"**Date of Report:** {row['Date of report']}")
-            st.markdown(f"**Verdict:** {row['Player Level - Score']}")
-            st.markdown(f"**Comments:** {row['Comments']}")
-            st.markdown("---")  # Add a separator
+    
+    for index, row in filtered_data1.iterrows():
+        st.markdown(f"**Player:** {row['Player']}")
+        st.markdown(f"**Scout:** {row['Scout']}")
+        st.markdown(f"**Fixture:** {row['Score']}")
+        st.markdown(f"**Date of Report:** {row['Date of report']}")
+        st.markdown(f"**Verdict:** {row['Player Level - Score']}")
+        st.markdown(f"**Comments:** {row['Comments']}")
+        st.markdown("---")  # Add a separator
 
 def searchable_reports():
     
