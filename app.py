@@ -1125,6 +1125,7 @@ def streamlit_interface(df2):
         st.markdown("### No report data available ###")
     else:
         with col4:
+            
             fig = px.scatter(report_data, x='Fixture Date', y='Match Performance',
                      labels={'Fixture Date': 'Fixture Date', 'Player Level': 'Player Level', 'Match Performance': 'Match Performance', 'Scout': 'Scout'},
                      hover_data={'Player Level': True, 'Scout': True, 'Score': True})
@@ -1148,6 +1149,7 @@ def streamlit_interface(df2):
         st.plotly_chart(fig)  # Display the plot
 
     with col6:
+        
         # Define selected_df here
         selected_player_id = filtered_data['Statsbomb ID'].iloc[0]
         selected_player_name = filtered_data['Player'].iloc[0]
@@ -1157,6 +1159,8 @@ def streamlit_interface(df2):
         if selected_player_df.empty:
             st.sidebar.write("Player data not available")
             return
+
+        allowed_score_types = ["Striker", "Winger", "Stretch 9", "Attacking Midfield", "Central Midfield", "Defensive Midfield", "Left Back", "Right Back", "Centre Back"]  # Add other score types as needed
 
         # Filter the available profiles based on the allowed score types
         available_profiles = selected_player_df[selected_player_df["Score Type"].isin(allowed_score_types)]["Score Type"].unique()
