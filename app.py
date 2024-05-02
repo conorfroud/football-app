@@ -1146,13 +1146,10 @@ def streamlit_interface(df2):
     allowed_score_types = ["Striker", "Winger", "Stretch 9", "Attacking Midfield", "Central Midfield", "Defensive Midfield", "Left Back", "Right Back", "Centre Back"]  # Add other score types as needed
 
     # Select a player and profile
-    selected_player = st.sidebar.selectbox(
-        "Select a Player:",
-        options=df2["Player Name"].unique(),
-        index=0  # Set the default index to the first player
-    )
+    selected_player_id = filtered_data['Statsbomb ID'].iloc[0]
+    selected_player_name = filtered_data['Player'].iloc[0]
 
-    selected_player_df = df2[df2["Player Name"] == selected_player]
+    selected_player_df = df2[df2["player_id"] == selected_player_id]
 
     # Filter the available profiles based on the allowed score types
     available_profiles = selected_player_df[selected_player_df["Score Type"].isin(allowed_score_types)]["Score Type"].unique()
