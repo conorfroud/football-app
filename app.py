@@ -1144,7 +1144,7 @@ def streamlit_interface(df2):
                      hover_data={'Player Level': True, 'Scout': True, 'Score': True})
 
             # Highlight points with 'Sign' verdict
-            sign_points = filtered_data[filtered_data['Verdict'] == 'Sign']
+            sign_points = report_data[report_data['Verdict'] == 'Sign']
             fig.add_trace(px.scatter(sign_points, x='Fixture Date', y='Match Performance').data[0])
 
             fig.update_traces(marker=dict(size=12, color='#7EC0EE'))  # Customize marker color and size
