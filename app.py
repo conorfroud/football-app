@@ -1120,11 +1120,7 @@ def streamlit_interface(df2):
     # Splitting the player performance plot into two columns
     col4, col5, col6 = st.columns([3, 2, 3])
 
-    # Check if report data is empty
-    if report_data.empty:
-        st.markdown("### No report data available ###")
-    else:
-        with col4:
+    with col4:
             
             fig = px.scatter(report_data, x='Fixture Date', y='Match Performance',
                      labels={'Fixture Date': 'Fixture Date', 'Player Level': 'Player Level', 'Match Performance': 'Match Performance', 'Scout': 'Scout'},
