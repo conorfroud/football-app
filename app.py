@@ -1201,7 +1201,7 @@ def streamlit_interface(df2):
         plot_title = f"Default Profile Metrics for {selected_player}"
 
     # Assuming selected_df is your DataFrame containing the data
-    selected_df = selected_player_df[selected_player_df["Score Type"] == selected_profile][columns[0:]]
+    selected_df = selected_player_df2[selected_player_df2["Score Type"] == selected_profile][columns[0:]]
 
     # Extract only the metrics used in the pizza visualization for similarity calculation
     selected_metrics = selected_df.select_dtypes(include='number').values
