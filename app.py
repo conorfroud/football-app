@@ -1120,28 +1120,27 @@ def streamlit_interface(df2):
     col4, col5, col6 = st.columns([1, 5, 1])
     
     with col5:
-    
-       fig = px.scatter(report_data, x='Fixture Date', y='Match Performance',
+        fig = px.scatter(report_data, x='Fixture Date', y='Match Performance',
                      labels={'Fixture Date': 'Fixture Date', 'Player Level': 'Player Level', 'Match Performance': 'Match Performance', 'Scout': 'Scout'},
                      hover_data={'Player Level': True, 'Scout': True, 'Score': True})
 
-       fig.update_traces(marker=dict(size=12, color='#7EC0EE'))  # Customize marker color and size
+        fig.update_traces(marker=dict(size=12, color='#7EC0EE'))  # Customize marker color and size
 
-       fig.update_layout(width=800, height=600, yaxis=dict(range=[0, 10]))  # Set plot size and y-axis range
-    
-       # Add annotations for each point
-       for i, row in report_data.iterrows():
-         fig.add_annotation(
-            x=row['Fixture Date'],
-            y=row['Match Performance'],
-            text=f"{row['Player Level - Score']}",
-            showarrow=False,
-            font=dict(size=10),
-            xshift=5,  # Adjust the position horizontally
-            yshift=15,  # Adjust the position vertically
-        )
+        fig.update_layout(width=800, height=600, yaxis=dict(range=[0, 10]))  # Set plot size and y-axis range
 
-       st.plotly_chart(fig)  # Display the plot
+        # Add annotations for each point
+        for i, row in report_data.iterrows():
+            fig.add_annotation(
+                x=row['Fixture Date'],
+                y=row['Match Performance'],
+                text=f"{row['Player Level - Score']}",
+                showarrow=False,
+                font=dict(size=10),
+                xshift=5,  # Adjust the position horizontally
+                yshift=15,  # Adjust the position vertically
+            )
+
+        st.plotly_chart(fig)  # Display the plot
 
     allowed_score_types = ["Striker", "Winger", "Stretch 9", "Attacking Midfield", "Central Midfield", "Defensive Midfield", "Left Back", "Right Back", "Centre Back"]  # Add other score types as needed
 
@@ -1216,55 +1215,55 @@ def streamlit_interface(df2):
     col1, col2, col3, col4, col5 = st.columns([1, 1, 5, 1, 1])
 
     with col3:
-    params = selected_df.columns[1:]
-    values1 = selected_df.iloc[0, 1:]  # Assuming you want metrics for the first player
+        params = selected_df.columns[1:]
+        values1 = selected_df.iloc[0, 1:]  # Assuming you want metrics for the first player
 
-    # Instantiate PyPizza class
-    baker = PyPizza(
-        params=params,
-        background_color="#FFFFFF",
-        straight_line_color="#222222",
-        straight_line_lw=1,
-        last_circle_lw=1,
-        last_circle_color="#222222",
-        other_circle_ls="-.",
-        other_circle_lw=1
-    )
-
-    if selected_player_df.empty:
-        st.write("Player data not available")
-    else:
-        # Create the pizza plot
-        fig2, ax = baker.make_pizza(
-            values1,
-            figsize=(8, 8),
-            kwargs_slices=dict(
-                facecolor="#7EC0EE", edgecolor="#222222",
-                zorder=1, linewidth=1
-            ),
-            kwargs_compare=dict(
-                facecolor="#7EC0EE", edgecolor="#222222",
-                zorder=2, linewidth=1,
-            ),
-            kwargs_params=dict(
-                color="#000000", fontsize=8, va="center", 
-            ),
-            kwargs_values=dict(
-                color="#000000", fontsize=12, zorder=3,
-                bbox=dict(
-                    edgecolor="#000000", facecolor="#7EC0EE",
-                    boxstyle="round,pad=0.2", lw=1
-                ),
-    
-            ),
-            kwargs_compare_values=dict(
-                color="#000000", fontsize=12, zorder=3,
-                bbox=dict(edgecolor="#000000", facecolor="#7EC0EE", boxstyle="round,pad=0.2", lw=1),
-                weight="bold"
-            )
+        # Instantiate PyPizza class
+        baker = PyPizza(
+            params=params,
+            background_color="#FFFFFF",
+            straight_line_color="#222222",
+            straight_line_lw=1,
+            last_circle_lw=1,
+            last_circle_color="#222222",
+            other_circle_ls="-.",
+            other_circle_lw=1
         )
 
-        st.pyplot(fig2)
+        if selected_player_df.empty:
+            st.write("Player data not available")
+        else:
+            # Create the pizza plot
+            fig2, ax = baker.make_pizza(
+                values1,
+                figsize=(8, 8),
+                kwargs_slices=dict(
+                    facecolor="#7EC0EE", edgecolor="#222222",
+                    zorder=1, linewidth=1
+                ),
+                kwargs_compare=dict(
+                    facecolor="#7EC0EE", edgecolor="#222222",
+                    zorder=2, linewidth=1,
+                ),
+                kwargs_params=dict(
+                    color="#000000", fontsize=8, va="center", 
+                ),
+                kwargs_values=dict(
+                    color="#000000", fontsize=12, zorder=3,
+                    bbox=dict(
+                        edgecolor="#000000", facecolor="#7EC0EE",
+                        boxstyle="round,pad=0.2", lw=1
+                    ),
+    
+                ),
+                kwargs_compare_values=dict(
+                    color="#000000", fontsize=12, zorder=3,
+                    bbox=dict(edgecolor="#000000", facecolor="#7EC0EE", boxstyle="round,pad=0.2", lw=1),
+                    weight="bold"
+                )
+            )
+
+            st.pyplot(fig2)
         
 def searchable_reports():
     
