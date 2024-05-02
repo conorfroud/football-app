@@ -1145,23 +1145,27 @@ def streamlit_interface(df2):
 
     allowed_score_types = ["Striker", "Winger", "Stretch 9", "Attacking Midfield", "Central Midfield", "Defensive Midfield", "Left Back", "Right Back", "Centre Back"]  # Add other score types as needed
 
-    # Select a player and profile
-    selected_player = st.sidebar.selectbox(
-        "Select a Player:",
-        options=df2["Player Name"].unique(),
-        index=0  # Set the default index to the first player
+    # Select a player from the 'data' DataFrame
+    selected_player_name = st.sidebar.selectbox(
+       "Select a Player:",
+       options=data['Player'].unique(),
+       index=0  # Set the default index to the first player
     )
 
-    selected_player_df = df2[df2["Player Name"] == selected_player]
+    # Find the corresponding player URL in 'data'
+    player_url = data[data['Player'] == selected_player_name]['Transfermarkt URL'].iloc[0]
+
+    # Filter 'df2' using the selected player's Transfermarkt URL
+    selected_player_df2 = df2[df2["player_id"] == player_url]
 
     # Filter the available profiles based on the allowed score types
-    available_profiles = selected_player_df[selected_player_df["Score Type"].isin(allowed_score_types)]["Score Type"].unique()
+    available_profiles = selected_player_df2[selected_player_df2["Score Type"].isin(allowed_score_types)]["Score Type"].unique()
 
     selected_profile = st.sidebar.selectbox(
-        "Select a Profile:",
-        options=available_profiles,
-        index=0  # Set the default index to the first profile
-    )
+       "Select a Profile:",
+       options=available_profiles,
+       index=0  # Set the default index to the first profile
+   )
 
     # Define 'columns' based on the selected profile
     if selected_profile == "Striker":
