@@ -1120,43 +1120,30 @@ def streamlit_interface(df2):
     col4, col5, col6 = st.columns([1, 5, 1])
     
     with col5:
-        if filtered_data.empty:
-            st.write("Player data not available")
-        else:
-            fig = px.scatter(report_data, x='Fixture Date', y='Match Performance',
-                         labels={'Fixture Date': 'Fixture Date', 'Player Level': 'Player Level', 'Match Performance': 'Match Performance', 'Scout': 'Scout'},
-                         hover_data={'Player Level': True, 'Scout': True, 'Score': True})
+    
+       fig = px.scatter(report_data, x='Fixture Date', y='Match Performance',
+                     labels={'Fixture Date': 'Fixture Date', 'Player Level': 'Player Level', 'Match Performance': 'Match Performance', 'Scout': 'Scout'},
+                     hover_data={'Player Level': True, 'Scout': True, 'Score': True})
 
-            fig.update_traces(marker=dict(size=12, color='#7EC0EE'))  # Customize marker color and size
+       fig.update_traces(marker=dict(size=12, color='#7EC0EE'))  # Customize marker color and size
 
-            fig.update_layout(width=800, height=600, yaxis=dict(range=[0, 10]))  # Set plot size and y-axis range
+       fig.update_layout(width=800, height=600, yaxis=dict(range=[0, 10]))  # Set plot size and y-axis range
+    
+       # Add annotations for each point
+       for i, row in report_data.iterrows():
+         fig.add_annotation(
+            x=row['Fixture Date'],
+            y=row['Match Performance'],
+            text=f"{row['Player Level - Score']}",
+            showarrow=False,
+            font=dict(size=10),
+            xshift=5,  # Adjust the position horizontally
+            yshift=15,  # Adjust the position vertically
+        )
 
-            # Add annotations for each point
-            for i, row in report_data.iterrows():
-                fig.add_annotation(
-                    x=row['Fixture Date'],
-                    y=row['Match Performance'],
-                    text=f"{row['Player Level - Score']}",
-                    showarrow=False,
-                    font=dict(size=10),
-                    xshift=5,  # Adjust the position horizontally
-                    yshift=15,  # Adjust the position vertically
-                )
-
-            st.plotly_chart(fig)  # Display the plot
+       st.plotly_chart(fig)  # Display the plot
 
     allowed_score_types = ["Striker", "Winger", "Stretch 9", "Attacking Midfield", "Central Midfield", "Defensive Midfield", "Left Back", "Right Back", "Centre Back"]  # Add other score types as needed
-
-    # Display report data from data1 regardless of player data availability
-    st.markdown(f"### Player Reports ###", unsafe_allow_html=True)
-    for index, row in report_data.iterrows():
-        st.markdown(f"**Player:** {row['Player']}")
-        st.markdown(f"**Scout:** {row['Scout']}")
-        st.markdown(f"**Fixture:** {row['Score']}")
-        st.markdown(f"**Date of Report:** {row['Date of report']}")
-        st.markdown(f"**Verdict:** {row['Player Level - Score']}")
-        st.markdown(f"**Comments:** {row['Comments']}")
-        st.markdown("---")  # Add a separator
 
     # Select a player and profile
     selected_player_id = filtered_data['Statsbomb ID'].iloc[0]
@@ -1176,7 +1163,7 @@ def streamlit_interface(df2):
         options=available_profiles,
         index=0  # Set the default index to the first profile
     )
-
+    
     # Define 'columns' based on the selected profile
     if selected_profile == "Striker":
         columns = ["Player Name", "xG (ST)", "Non-Penalty Goals (ST)", "Shots (ST)", "OBV Shot (ST)", "Open Play xA (ST)", "OBV Dribble & Carry (ST)", "PAdj Pressures (ST)", "Average Distance Percentile", "Top 5 PSV-99 Percentile"]
@@ -1211,60 +1198,74 @@ def streamlit_interface(df2):
         plot_title = f"Default Profile Metrics for {selected_player}"
 
     # Assuming selected_df is your DataFrame containing the data
-    selected_df = selected_player_df[selected_player_df["Score Type"] == selected_profile][columns[0:]]
+    selected_df = selected_player_df[selected_player_df["Score Type"] == selected_profile][columns[0:]]  # Exclude the "Player Name" column
+
+    # Display selected DataFrame details
+    #st.subheader("Selected DataFrame Details")
+    #st.write(selected_df)
 
     # Extract only the metrics used in the pizza visualization for similarity calculation
     selected_metrics = selected_df.select_dtypes(include='number').values
 
-    with col5:
-        if selected_df.empty:
-            st.write("Player data not available")
-        else:
-            params = selected_df.columns[1:]
-            values1 = selected_df.iloc[0, 1:]
+    # Load the Roboto font
+    font_path = "Roboto-Bold.ttf"  # Replace with the actual path to the Roboto font
+    prop = font_manager.FontProperties(fname=font_path)
+    font_path1 = "Roboto-Regular.ttf"
+    prop1 = font_manager.FontProperties(fname=font_path1)
 
-            # Instantiate PyPizza class
-            baker = PyPizza(
-                params=params,
-                background_color="#FFFFFF",
-                straight_line_color="#222222",
-                straight_line_lw=1,
-                last_circle_lw=1,
-                last_circle_color="#222222",
-                other_circle_ls="-.",
-                other_circle_lw=1
+    col1, col2, col3, col4, col5 = st.columns([1, 1, 5, 1, 1])
+
+    with col3:
+        params = selected_df.columns[1:]
+        values1 = selected_df.iloc[0, 1:]  # Assuming you want metrics for the first player
+
+        # Instantiate PyPizza class
+        baker = PyPizza(
+            params=params,
+            background_color="#FFFFFF",
+            straight_line_color="#222222",
+            straight_line_lw=1,
+            last_circle_lw=1,
+            last_circle_color="#222222",
+            other_circle_ls="-.",
+            other_circle_lw=1
+        )
+
+        # Create the pizza plot
+        fig2, ax = baker.make_pizza(
+            values1,
+            figsize=(8, 8),
+            kwargs_slices=dict(
+                facecolor="#7EC0EE", edgecolor="#222222",
+                zorder=1, linewidth=1
+            ),
+            kwargs_compare=dict(
+                facecolor="#7EC0EE", edgecolor="#222222",
+                zorder=2, linewidth=1,
+            ),
+            kwargs_params=dict(
+                color="#000000", fontsize=8, va="center", 
+            ),
+            kwargs_values=dict(
+                color="#000000", fontsize=12, zorder=3,
+                bbox=dict(
+                    edgecolor="#000000", facecolor="#7EC0EE",
+                    boxstyle="round,pad=0.2", lw=1
+                ),
+    
+            ),
+            kwargs_compare_values=dict(
+                color="#000000", fontsize=12, zorder=3,
+                bbox=dict(edgecolor="#000000", facecolor="#7EC0EE", boxstyle="round,pad=0.2", lw=1),
+                weight="bold"
             )
+        )
 
-            # Create the pizza plot
-            fig2, ax = baker.make_pizza(
-                values1,
-                figsize=(8, 8),
-                kwargs_slices=dict(
-                    facecolor="#7EC0EE", edgecolor="#222222",
-                    zorder=1, linewidth=1
-                ),
-                kwargs_compare=dict(
-                    facecolor="#7EC0EE", edgecolor="#222222",
-                    zorder=2, linewidth=1,
-                ),
-                kwargs_params=dict(
-                    color="#000000", fontsize=8, va="center", 
-                ),
-                kwargs_values=dict(
-                    color="#000000", fontsize=12, zorder=3,
-                    bbox=dict(
-                        edgecolor="#000000", facecolor="#7EC0EE",
-                        boxstyle="round,pad=0.2", lw=1
-                    ),
-                ),
-                kwargs_compare_values=dict(
-                    color="#000000", fontsize=12, zorder=3,
-                    bbox=dict(edgecolor="#000000", facecolor="#7EC0EE", boxstyle="round,pad=0.2", lw=1),
-                    weight="bold"
-                )
-            )
+        st.pyplot(fig2)
 
-            st.pyplot(fig2)
+
+
+
 
 def searchable_reports():
     
