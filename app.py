@@ -1128,8 +1128,6 @@ def streamlit_interface(df2):
 
             fig.update_traces(marker=dict(size=12, color='#7EC0EE'))  # Customize marker color and size
 
-            fig.update_layout(width=800, height=600, yaxis=dict(range=[0, 10]))  # Set plot size and y-axis range
-
             # Add annotations for each point
             for i, row in report_data.iterrows():
                 fig.add_annotation(
