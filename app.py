@@ -1117,7 +1117,7 @@ def streamlit_interface(df2):
     report_data['Match Performance'] = pd.to_numeric(report_data['Match Performance'])
 
     # Splitting the player performance plot into two columns
-    col4, col5 = st.columns([3, 3])
+    col4, col5, col6 = st.columns([3, 1, 3])
     
     with col4:
     
@@ -1199,7 +1199,7 @@ def streamlit_interface(df2):
     # Extract only the metrics used in the pizza visualization for similarity calculation
     selected_metrics = selected_df.select_dtypes(include='number').values
 
-    with col5:
+    with col6:
     
        params = selected_df.columns[1:]
        values1 = selected_df.iloc[0, 1:]
