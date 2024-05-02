@@ -1112,7 +1112,7 @@ def streamlit_interface(df2):
     st.markdown("---")  # Add a separator
 
     # Display report data from data1
-    report_data = filtered_data1[['Date of report', 'Fixture Date', 'Match Performance', 'Player Level', 'Scout', 'Score', 'Player Level - Score']].tail(10)
+    report_data = filtered_data1[['Player', 'Date of report', 'Fixture Date', 'Match Performance', 'Player Level', 'Scout', 'Score', 'Player Level - Score']].tail(10)
     
     # Convert 'Match Performance' column to numeric
     report_data['Match Performance'] = pd.to_numeric(report_data['Match Performance'])
