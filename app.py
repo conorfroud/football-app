@@ -1349,7 +1349,7 @@ if selected_tab == "Stoke Score - Wyscout":
 if selected_tab == "Confidence Scores":
     display_data()
 if selected_tab == "Player Profile":
-    streamlit_interface()
+    streamlit_interface(df2)
 if selected_tab == "Report Search":
     searchable_reports()
 elif selected_tab == "Multi Player Comparison Tab":
