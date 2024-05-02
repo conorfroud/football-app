@@ -1216,6 +1216,10 @@ def streamlit_interface(df2):
     col1, col2, col3, col4, col5 = st.columns([1, 1, 5, 1, 1])
 
     with col3:
+        
+    if selected_player_df.empty:
+        st.write("Player data not available")
+    else:
         params = selected_df.columns[1:]
         values1 = selected_df.iloc[0, 1:]  # Assuming you want metrics for the first player
 
@@ -1262,10 +1266,6 @@ def streamlit_interface(df2):
         )
 
         st.pyplot(fig2)
-
-
-
-
 
 def searchable_reports():
     
