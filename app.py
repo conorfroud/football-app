@@ -1256,7 +1256,32 @@ def streamlit_interface(df2):
     # Splitting the player performance plot into two columns
     col7, col8 = st.columns([3, 3])
 
-    with col7, col8:
+    with col7:
+
+        fig, ax = plt.subplots(figsize=(8, 6))
+
+        # Create horizontal bar chart
+        ax.barh(params, values1, color="#7EC0EE", edgecolor="#222222")
+
+        # Remove spines
+        ax.spines['top'].set_visible(False)
+        ax.spines['right'].set_visible(False)
+        ax.spines['bottom'].set_visible(False)
+        ax.spines['left'].set_visible(False)
+
+        # Add labels and title
+        ax.set_xlabel('Metrics')
+        ax.set_ylabel('Values')
+        ax.set_title(f"Physical Data for {selected_player}")
+
+        # Invert y-axis for better visualization
+        ax.invert_yaxis()
+
+        # Show the plot
+        plt.tight_layout()
+        st.pyplot(fig)  # Display the plot
+
+    with col8:
 
         fig, ax = plt.subplots(figsize=(8, 6))
 
