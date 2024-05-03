@@ -1053,9 +1053,11 @@ def streamlit_interface(df2):
     
     url = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?usp=sharing"
     url1 = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit#gid=1930222963"
+    url2 = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit#gid=155686186"
     conn = st.connection("gsheets", type=GSheetsConnection)
     data = conn.read(spreadsheet=url)
     data1 = conn.read(spreadsheet=url1)
+    data2 = conn.read(spreadsheet=url2)
     
     # Sidebar select box filter for Player Name
     selected_player = st.sidebar.selectbox("Select Player", data['Player'].unique().tolist())
@@ -1352,6 +1354,24 @@ def streamlit_interface(df2):
         st.markdown(f"**Verdict:** {row['Player Level - Score']}")
         st.markdown(f"**Comments:** {row['Comments']}")
         st.markdown("---")  # Add a separator
+
+    # Filter data1 based on the selected player's Transfermarkt URL
+    player_url = filtered_data['Transfermarkt URL'].iloc[0]
+    filtered_data1 = data2[data2['Player Transfermarkt URL'] == player_url]
+
+    # Extract the relevant technical & tactical ratings columns
+    technical_tactical_columns = [
+        'CF Technical & Tactical Ratings >> Hold up play',
+        'CF Technical & Tactical Ratings >> Link up play',
+        'CF Technical & Tactical Ratings >> 1st touch'
+    ]
+    
+    # Calculate the average of the selected columns
+    average_scores = filtered_data3[technical_tactical_columns].mean()
+    
+    # Display the average scores
+    st.write("Average Scores:")
+    st.write(average_scores) 
 
 def searchable_reports():
     
