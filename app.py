@@ -1356,9 +1356,14 @@ def streamlit_interface(df2):
         st.markdown("---")  # Add a separator
 
     # Filter data1 based on the selected player's Transfermarkt URL
-    player_url = filtered_data['Transfermarkt URL'].iloc[0]
+    player_url = df2[df2['Player'] == selected_player]['Transfermarkt URL'].iloc[0]
     filtered_data2 = data2[data2['Player Transfermarkt URL'] == player_url]
-
+    
+    # Check if any data is returned for the selected player
+    if filtered_data2.empty:
+        st.write("No data found for the selected player in data2.")
+        return
+    
     # Print available columns
     st.write("Available Columns in data2:")
     st.write(filtered_data2.columns.tolist())
@@ -1370,12 +1375,28 @@ def streamlit_interface(df2):
         'CF Technical & Tactical Ratings >> 1st touch'
     ]
     
+    # Convert columns to numeric and handle NaNs
+    for column in technical_tactical_columns:
+        filtered_data2[column] = pd.to_numeric(filtered_data2[column], errors='coerce')
+    
+    # Drop rows with NaN values
+    filtered_data2.dropna(subset=technical_tactical_columns, inplace=True)
+    
+    # Check if any rows are remaining after dropping NaNs
+    if filtered_data2.empty:
+        st.write("No valid data found for the selected player in data2.")
+        return
+    
     # Calculate the average of the selected columns
     average_scores = filtered_data2[technical_tactical_columns].mean()
     
     # Display the average scores
     st.write("Average Scores:")
     st.write(average_scores)
+    
+    # Display the scores for the selected player in a separate DataFrame
+    st.write("Scores for Selected Player:")
+    st.write(filtered_data2[technical_tactical_columns])
 
 def searchable_reports():
     
