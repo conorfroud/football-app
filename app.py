@@ -1377,7 +1377,7 @@ def streamlit_interface(df2):
         'CF Technical & Tactical Ratings >> Pressing',	
         'CF Technical & Tactical Ratings >> Getting across near post',
         'CF Technical & Tactical Ratings >> Movement in box',
-        'CF Technical & Tactical Ratings >> Poacher's instinct',
+        'CF Technical & Tactical Ratings >> Poachers instinct',
         'CF Physical Ratings >> Pace (over distance)'
         'CF Physical Ratings >> Quick (over 2-3yds)'
         'CF Physical Ratings >> Sharpness / agility',
