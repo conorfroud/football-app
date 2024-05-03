@@ -1363,16 +1363,34 @@ def streamlit_interface(df2):
     if filtered_data2.empty:
         st.write("No data found for the selected player in data2.")
         return
-    
-    # Print available columns
-    st.write("Available Columns in data2:")
-    st.write(filtered_data2.columns.tolist())
-    
+        
     # Extract the relevant technical & tactical ratings columns
     technical_tactical_columns = [
-        'CF Technical & Tactical Ratings >> Hold up play',
+        'CF Technical & Tactical Ratings >> Hold up play',	
         'CF Technical & Tactical Ratings >> Link up play',
-        'CF Technical & Tactical Ratings >> 1st touch'
+        'CF Technical & Tactical Ratings >> 1st touch',
+        'CF Technical & Tactical Ratings >> Coming short to receive',
+        'CF Technical & Tactical Ratings >> Aerial ability',
+        'CF Technical & Tactical Ratings >> Finishing',
+        'CF Technical & Tactical Ratings >> Ball striking',
+        'CF Technical & Tactical Ratings >> Running in behind',
+        'CF Technical & Tactical Ratings >> Pressing',	
+        'CF Technical & Tactical Ratings >> Getting across near post',
+        'CF Technical & Tactical Ratings >> Movement in box',
+        'CF Technical & Tactical Ratings >> Poacher's instinct',
+        'CF Physical Ratings >> Pace (over distance)'
+        'CF Physical Ratings >> Quick (over 2-3yds)'
+        'CF Physical Ratings >> Sharpness / agility',
+        'CF Physical Ratings >> Strength',
+        'CF Physical Ratings >> Power',
+        'CF Physical Ratings >> Leap',
+        'CF Physical Ratings >> Legs & energy',
+        'CF Mental Ratings >> Leadership',
+        'CF Mental Ratings >> Communication',
+        'CF Mental Ratings >> Bravery',
+        'CF Mental Ratings >> Aggression',
+        'CF Mental Ratings >> Decision making',
+        'CF Mental Ratings >> Work Rate'
     ]
     
     # Convert columns to numeric and handle NaNs
