@@ -1167,6 +1167,8 @@ def streamlit_interface(df2):
 
             # Add more vertical spacing if needed
             st.markdown("")  # Empty line for spacing
+
+            st.markdown("")  # Empty line for spacing
                 
             st.plotly_chart(fig)  # Display the plot
 
