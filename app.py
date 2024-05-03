@@ -1466,9 +1466,9 @@ def streamlit_interface(df2):
     # Sort the average scores in descending order
     bottom_5_scores = average_scores.sort_values(ascending=True).head(5)
 
-    # Display the top 5 scores using st.markdown
+    # Display the bottom 5 scores using st.markdown
     st.markdown("### Bottom 5 Average Scores")
-    for index, score in top_5_scores.iteritems():
+    for index, score in bottom_5_scores.iteritems():
         st.markdown(f"**{index}**: {score}")
 
     st.markdown("---")  # Add a separator
