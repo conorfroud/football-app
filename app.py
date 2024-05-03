@@ -1359,6 +1359,10 @@ def streamlit_interface(df2):
     player_url = filtered_data['Transfermarkt URL'].iloc[0]
     filtered_data2 = data2[data2['Player Transfermarkt URL'] == player_url]
 
+    # Print available columns
+    st.write("Available Columns in data2:")
+    st.write(filtered_data2.columns.tolist())
+    
     # Extract the relevant technical & tactical ratings columns
     technical_tactical_columns = [
         'CF Technical & Tactical Ratings >> Hold up play',
