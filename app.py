@@ -1397,11 +1397,15 @@ def streamlit_interface(df2):
     
     # Calculate the average of the selected columns
     average_scores = filtered_data2[technical_tactical_columns].mean()
-    
-    # Display the average scores
-    st.write("Average Scores:")
-    st.write(average_scores)
 
+    # Sort the average scores in descending order
+    top_5_scores = average_scores.sort_values(ascending=False).head(5)
+
+    # Display the top 5 scores using st.markdown
+    st.markdown("### Top 5 Average Scores:")
+    for index, score in top_5_scores.iteritems():
+        st.markdown(f"- **{index}**: {score}")
+    
     # Display report data from data1
     report_data = filtered_data1[['Player', 'Scout', 'Comments', 'Date of report', 'Player Level - Score', 'Score']]
     report_data = report_data[::-1]  # Reverse the DataFrame to show most recent reports first
