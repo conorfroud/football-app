@@ -1356,7 +1356,7 @@ def streamlit_interface(df2):
         st.markdown("---")  # Add a separator
 
     # Filter data1 based on the selected player's Transfermarkt URL
-    player_url = df2[df2['Player'] == selected_player]['Transfermarkt URL'].iloc[0]
+    player_url = filtered_data['Transfermarkt URL'].iloc[0]
     filtered_data2 = data2[data2['Player Transfermarkt URL'] == player_url]
     
     # Check if any data is returned for the selected player
