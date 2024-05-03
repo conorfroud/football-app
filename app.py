@@ -1340,6 +1340,8 @@ def streamlit_interface(df2):
         plt.tight_layout()
         st.pyplot(fig)  # Display the plot
 
+    st.markdown("---")  # Add a separator
+
     # Splitting the player performance plot into two columns
     col10, col11, col12 = st.columns([3, 1, 3])
 
@@ -1404,7 +1406,9 @@ def streamlit_interface(df2):
     # Display the top 5 scores using st.markdown
     st.markdown("### Top 5 Average Scores:")
     for index, score in top_5_scores.iteritems():
-        st.markdown(f"- **{index}**: {score}")
+        st.markdown(f"**{index}**: {score}")
+
+    st.markdown("---")  # Add a separator
     
     # Display report data from data1
     report_data = filtered_data1[['Player', 'Scout', 'Comments', 'Date of report', 'Player Level - Score', 'Score']]
