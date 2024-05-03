@@ -1164,6 +1164,9 @@ def streamlit_interface(df2):
                     xshift=5,  # Adjust the position horizontally
                     yshift=15,  # Adjust the position vertically
             )
+
+            # Add more vertical spacing if needed
+            st.markdown("")  # Empty line for spacing
                 
             st.plotly_chart(fig)  # Display the plot
 
