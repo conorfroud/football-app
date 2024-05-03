@@ -1340,32 +1340,22 @@ def streamlit_interface(df2):
         plt.tight_layout()
         st.pyplot(fig)  # Display the plot
 
-    # Display report data from data1
-    report_data = filtered_data1[['Player', 'Scout', 'Comments', 'Date of report', 'Player Level - Score', 'Score']]
-    report_data = report_data[::-1]  # Reverse the DataFrame to show most recent reports first
-    
-    st.markdown(f"### Player Reports ###", unsafe_allow_html=True)
-        
-    for index, row in report_data.iterrows():
-        st.markdown(f"**Player:** {row['Player']}")
-        st.markdown(f"**Scout:** {row['Scout']}")
-        st.markdown(f"**Fixture:** {row['Score']}")
-        st.markdown(f"**Date of Report:** {row['Date of report']}")
-        st.markdown(f"**Verdict:** {row['Player Level - Score']}")
-        st.markdown(f"**Comments:** {row['Comments']}")
-        st.markdown("---")  # Add a separator
+    # Splitting the player performance plot into two columns
+    col10, col11, col12 = st.columns([3, 1, 3])
 
-    # Filter data1 based on the selected player's Transfermarkt URL
-    player_url = filtered_data['Transfermarkt URL'].iloc[0]
-    filtered_data2 = data2[data2['Player Transfermarkt URL'] == player_url]
-    
-    # Check if any data is returned for the selected player
-    if filtered_data2.empty:
-        st.write("No data found for the selected player in data2.")
-        return
+    with col10:
         
-    # Extract the relevant technical & tactical ratings columns
-    technical_tactical_columns = [
+        # Filter data1 based on the selected player's Transfermarkt URL
+        player_url = filtered_data['Transfermarkt URL'].iloc[0]
+        filtered_data2 = data2[data2['Player Transfermarkt URL'] == player_url]
+        
+        # Check if any data is returned for the selected player
+        if filtered_data2.empty:
+            st.write("No data found for the selected player in data2.")
+            return
+            
+        # Extract the relevant technical & tactical ratings columns
+        technical_tactical_columns = [
         'CF Technical & Tactical Ratings >> Hold up play',	
         'CF Technical & Tactical Ratings >> Link up play',
         'CF Technical & Tactical Ratings >> 1st touch',
@@ -1411,11 +1401,22 @@ def streamlit_interface(df2):
     # Display the average scores
     st.write("Average Scores:")
     st.write(average_scores)
-    
-    # Display the scores for the selected player in a separate DataFrame
-    st.write("Scores for Selected Player:")
-    st.write(filtered_data2[technical_tactical_columns])
 
+    # Display report data from data1
+    report_data = filtered_data1[['Player', 'Scout', 'Comments', 'Date of report', 'Player Level - Score', 'Score']]
+    report_data = report_data[::-1]  # Reverse the DataFrame to show most recent reports first
+    
+    st.markdown(f"### Player Reports ###", unsafe_allow_html=True)
+        
+    for index, row in report_data.iterrows():
+        st.markdown(f"**Player:** {row['Player']}")
+        st.markdown(f"**Scout:** {row['Scout']}")
+        st.markdown(f"**Fixture:** {row['Score']}")
+        st.markdown(f"**Date of Report:** {row['Date of report']}")
+        st.markdown(f"**Verdict:** {row['Player Level - Score']}")
+        st.markdown(f"**Comments:** {row['Comments']}")
+        st.markdown("---")  # Add a separator
+  
 def searchable_reports():
     
     url1 = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit#gid=155686186"
