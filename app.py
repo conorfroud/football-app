@@ -1385,6 +1385,38 @@ def streamlit_interface(df2):
             'CF Mental Ratings >> Work Rate'
         ]
 
+        # Define a dictionary to map old column names to new column names
+        column_mapping = {
+        'CF Technical & Tactical Ratings >> Hold up play': 'Hold up play',
+        'CF Technical & Tactical Ratings >> Link up play': 'Link up play',
+        'CF Technical & Tactical Ratings >> 1st touch': '1st touch',
+        'CF Technical & Tactical Ratings >> Coming short to receive': 'Coming short to receive',
+        'CF Technical & Tactical Ratings >> Aerial ability': 'Aerial ability',
+        'CF Technical & Tactical Ratings >> Finishing': 'Finishing',
+        'CF Technical & Tactical Ratings >> Ball striking': 'Ball striking',
+        'CF Technical & Tactical Ratings >> Running in behind': 'Running in behind',
+        'CF Technical & Tactical Ratings >> Pressing': 'Pressing',
+        'CF Technical & Tactical Ratings >> Getting across near post': 'Getting across near post',
+        'CF Technical & Tactical Ratings >> Movement in box': 'Movement in box',
+        'CF Technical & Tactical Ratings >> Poachers instinct': 'Poachers instinct',
+        'CF Physical Ratings >> Pace (over distance)': 'Pace (over distance)',
+        'CF Physical Ratings >> Quick (over 2-3yds)': 'Quick (over 2-3yds)',
+        'CF Physical Ratings >> Sharpness / agility': 'Sharpness / agility',
+        'CF Physical Ratings >> Strength': 'Strength',
+        'CF Physical Ratings >> Power': 'Power',
+        'CF Physical Ratings >> Leap': 'Leap',
+        'CF Physical Ratings >> Legs & energy': 'Legs & energy',
+        'CF Mental Ratings >> Leadership': 'Leadership',
+        'CF Mental Ratings >> Communication': 'Communication',
+        'CF Mental Ratings >> Bravery': 'Bravery',
+        'CF Mental Ratings >> Aggression': 'Aggression',
+        'CF Mental Ratings >> Decision making': 'Decision making',
+        'CF Mental Ratings >> Work Rate': 'Work Rate'
+    }
+
+        # Rename the columns
+        filtered_data2.rename(columns=column_mapping, inplace=True)
+
         # Convert columns to numeric and handle NaNs
         for column in technical_tactical_columns:
             filtered_data2[column] = pd.to_numeric(filtered_data2[column], errors='coerce')
@@ -1400,14 +1432,16 @@ def streamlit_interface(df2):
         # Calculate the average of the selected columns
         average_scores = filtered_data2[technical_tactical_columns].mean()
 
+        # Round the average scores to two decimal places
+        average_scores = average_scores.round(2)
+
         # Sort the average scores in descending order
         top_5_scores = average_scores.sort_values(ascending=False).head(5)
 
         # Display the top 5 scores using st.markdown
         st.markdown("### Top 5 Average Scores")
         for index, score in top_5_scores.iteritems():
-            st.markdown(f"**{index}**: {score}")
-            
+            st.markdown(f"**{index}**: {score}")      
             
     with col12:
         
