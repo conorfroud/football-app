@@ -1344,7 +1344,7 @@ def streamlit_interface(df2):
 
     # Splitting the player performance plot into two columns
     col10, col11, col12 = st.columns([3, 1, 3])
-
+    
     with col10:
         
         # Filter data1 based on the selected player's Transfermarkt URL
@@ -1358,119 +1358,67 @@ def streamlit_interface(df2):
             
         # Extract the relevant technical & tactical ratings columns
         technical_tactical_columns = [
-        'CF Technical & Tactical Ratings >> Hold up play',	
-        'CF Technical & Tactical Ratings >> Link up play',
-        'CF Technical & Tactical Ratings >> 1st touch',
-        'CF Technical & Tactical Ratings >> Coming short to receive',
-        'CF Technical & Tactical Ratings >> Aerial ability',
-        'CF Technical & Tactical Ratings >> Finishing',
-        'CF Technical & Tactical Ratings >> Ball striking',
-        'CF Technical & Tactical Ratings >> Running in behind',
-        'CF Technical & Tactical Ratings >> Pressing',	
-        'CF Technical & Tactical Ratings >> Getting across near post',
-        'CF Technical & Tactical Ratings >> Movement in box',
-        'CF Technical & Tactical Ratings >> Poachers instinct',
-        'CF Physical Ratings >> Pace (over distance)',
-        'CF Physical Ratings >> Quick (over 2-3yds)',
-        'CF Physical Ratings >> Sharpness / agility',
-        'CF Physical Ratings >> Strength',
-        'CF Physical Ratings >> Power',
-        'CF Physical Ratings >> Leap',
-        'CF Physical Ratings >> Legs & energy',
-        'CF Mental Ratings >> Leadership',
-        'CF Mental Ratings >> Communication',
-        'CF Mental Ratings >> Bravery',
-        'CF Mental Ratings >> Aggression',
-        'CF Mental Ratings >> Decision making',
-        'CF Mental Ratings >> Work Rate'
-    ]
-    
-    # Convert columns to numeric and handle NaNs
-    for column in technical_tactical_columns:
-        filtered_data2[column] = pd.to_numeric(filtered_data2[column], errors='coerce')
-    
-    # Drop rows with NaN values
-    filtered_data2.dropna(subset=technical_tactical_columns, inplace=True)
-    
-    # Check if any rows are remaining after dropping NaNs
-    if filtered_data2.empty:
-        st.write("No valid data found for the selected player in data2.")
-        return
-    
-    # Calculate the average of the selected columns
-    average_scores = filtered_data2[technical_tactical_columns].mean()
+            'CF Technical & Tactical Ratings >> Hold up play',    
+            'CF Technical & Tactical Ratings >> Link up play',
+            'CF Technical & Tactical Ratings >> 1st touch',
+            'CF Technical & Tactical Ratings >> Coming short to receive',
+            'CF Technical & Tactical Ratings >> Aerial ability',
+            'CF Technical & Tactical Ratings >> Finishing',
+            'CF Technical & Tactical Ratings >> Ball striking',
+            'CF Technical & Tactical Ratings >> Running in behind',
+            'CF Technical & Tactical Ratings >> Pressing',    
+            'CF Technical & Tactical Ratings >> Getting across near post',
+            'CF Technical & Tactical Ratings >> Movement in box',
+            'CF Technical & Tactical Ratings >> Poachers instinct',
+            'CF Physical Ratings >> Pace (over distance)',
+            'CF Physical Ratings >> Quick (over 2-3yds)',
+            'CF Physical Ratings >> Sharpness / agility',
+            'CF Physical Ratings >> Strength',
+            'CF Physical Ratings >> Power',
+            'CF Physical Ratings >> Leap',
+            'CF Physical Ratings >> Legs & energy',
+            'CF Mental Ratings >> Leadership',
+            'CF Mental Ratings >> Communication',
+            'CF Mental Ratings >> Bravery',
+            'CF Mental Ratings >> Aggression',
+            'CF Mental Ratings >> Decision making',
+            'CF Mental Ratings >> Work Rate'
+        ]
 
-    # Sort the average scores in descending order
-    top_5_scores = average_scores.sort_values(ascending=False).head(5)
+        # Convert columns to numeric and handle NaNs
+        for column in technical_tactical_columns:
+            filtered_data2[column] = pd.to_numeric(filtered_data2[column], errors='coerce')
+            
+        # Drop rows with NaN values
+        filtered_data2.dropna(subset=technical_tactical_columns, inplace=True)
+    
+        # Check if any rows are remaining after dropping NaNs
+        if filtered_data2.empty:
+            st.write("No valid data found for the selected player in data2.")
+            return
+        
+        # Calculate the average of the selected columns
+        average_scores = filtered_data2[technical_tactical_columns].mean()
 
-    # Display the top 5 scores using st.markdown
-    st.markdown("### Top 5 Average Scores")
-    for index, score in top_5_scores.iteritems():
-        st.markdown(f"**{index}**: {score}")
+        # Sort the average scores in descending order
+        top_5_scores = average_scores.sort_values(ascending=False).head(5)
 
+        # Display the top 5 scores using st.markdown
+        st.markdown("### Top 5 Average Scores")
+        for index, score in top_5_scores.iteritems():
+            st.markdown(f"**{index}**: {score}")
+            
+            
     with col12:
         
-        # Filter data1 based on the selected player's Transfermarkt URL
-        player_url = filtered_data['Transfermarkt URL'].iloc[0]
-        filtered_data2 = data2[data2['Player Transfermarkt URL'] == player_url]
+        # Sort the average scores in descending order
+        bottom_5_scores = average_scores.sort_values(ascending=True).head(5)
         
-        # Check if any data is returned for the selected player
-        if filtered_data2.empty:
-            st.write("No data found for the selected player in data2.")
-            return
+        # Display the bottom 5 scores using st.markdown
+        st.markdown("### Bottom 5 Average Scores")
+        for index, score in bottom_5_scores.iteritems():
+            st.markdown(f"**{index}**: {score}")
             
-        # Extract the relevant technical & tactical ratings columns
-        technical_tactical_columns = [
-        'CF Technical & Tactical Ratings >> Hold up play',	
-        'CF Technical & Tactical Ratings >> Link up play',
-        'CF Technical & Tactical Ratings >> 1st touch',
-        'CF Technical & Tactical Ratings >> Coming short to receive',
-        'CF Technical & Tactical Ratings >> Aerial ability',
-        'CF Technical & Tactical Ratings >> Finishing',
-        'CF Technical & Tactical Ratings >> Ball striking',
-        'CF Technical & Tactical Ratings >> Running in behind',
-        'CF Technical & Tactical Ratings >> Pressing',	
-        'CF Technical & Tactical Ratings >> Getting across near post',
-        'CF Technical & Tactical Ratings >> Movement in box',
-        'CF Technical & Tactical Ratings >> Poachers instinct',
-        'CF Physical Ratings >> Pace (over distance)',
-        'CF Physical Ratings >> Quick (over 2-3yds)',
-        'CF Physical Ratings >> Sharpness / agility',
-        'CF Physical Ratings >> Strength',
-        'CF Physical Ratings >> Power',
-        'CF Physical Ratings >> Leap',
-        'CF Physical Ratings >> Legs & energy',
-        'CF Mental Ratings >> Leadership',
-        'CF Mental Ratings >> Communication',
-        'CF Mental Ratings >> Bravery',
-        'CF Mental Ratings >> Aggression',
-        'CF Mental Ratings >> Decision making',
-        'CF Mental Ratings >> Work Rate'
-    ]
-    
-    # Convert columns to numeric and handle NaNs
-    for column in technical_tactical_columns:
-        filtered_data2[column] = pd.to_numeric(filtered_data2[column], errors='coerce')
-    
-    # Drop rows with NaN values
-    filtered_data2.dropna(subset=technical_tactical_columns, inplace=True)
-    
-    # Check if any rows are remaining after dropping NaNs
-    if filtered_data2.empty:
-        st.write("No valid data found for the selected player in data2.")
-        return
-    
-    # Calculate the average of the selected columns
-    average_scores = filtered_data2[technical_tactical_columns].mean()
-
-    # Sort the average scores in descending order
-    bottom_5_scores = average_scores.sort_values(ascending=True).head(5)
-
-    # Display the bottom 5 scores using st.markdown
-    st.markdown("### Bottom 5 Average Scores")
-    for index, score in bottom_5_scores.iteritems():
-        st.markdown(f"**{index}**: {score}")
-
     st.markdown("---")  # Add a separator
     
     # Display report data from data1
