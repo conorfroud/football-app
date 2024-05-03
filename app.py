@@ -1406,8 +1406,8 @@ def streamlit_interface(df2):
         # Sort the average scores in descending order
         top_10_scores = average_scores.sort_values(ascending=False).head(10)
 
-        # Display the top 5 scores using st.markdown
-        st.markdown("### Top 5 Average Scores")
+        # Display the top 10 scores using st.markdown
+        st.markdown("### Top 10 Average Scores")
         for index, score in top_10_scores.iteritems():
             st.markdown(f"**{index}**: {score}")      
             
@@ -1416,8 +1416,8 @@ def streamlit_interface(df2):
         # Sort the average scores in descending order
         bottom_10_scores = average_scores.sort_values(ascending=True).head(10)
         
-        # Display the bottom 5 scores using st.markdown
-        st.markdown("### Bottom 5 Average Scores")
+        # Display the bottom 10 scores using st.markdown
+        st.markdown("### Bottom 10 Average Scores")
         for index, score in bottom_10_scores.iteritems():
             st.markdown(f"**{index}**: {score}")
    
