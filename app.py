@@ -1357,7 +1357,7 @@ def streamlit_interface(df2):
 
     # Filter data1 based on the selected player's Transfermarkt URL
     player_url = filtered_data['Transfermarkt URL'].iloc[0]
-    filtered_data1 = data2[data2['Player Transfermarkt URL'] == player_url]
+    filtered_data2 = data2[data2['Player Transfermarkt URL'] == player_url]
 
     # Extract the relevant technical & tactical ratings columns
     technical_tactical_columns = [
@@ -1367,11 +1367,11 @@ def streamlit_interface(df2):
     ]
     
     # Calculate the average of the selected columns
-    average_scores = filtered_data3[technical_tactical_columns].mean()
+    average_scores = filtered_data2[technical_tactical_columns].mean()
     
     # Display the average scores
     st.write("Average Scores:")
-    st.write(average_scores) 
+    st.write(average_scores)
 
 def searchable_reports():
     
