@@ -137,27 +137,26 @@ def main_tab(df2):
     # Update the selected columns to include 'Score Type' and 'Season'
     selected_columns = score_type_column_mapping.get(selected_score_type, [])
 
-    # Modify the filtering condition to include selected primary positions
-    # Modify the filtering condition for the 'Season' column to treat '2023' as a single entity
+    # Further down in your DataFrame filtering section, modify the 'Season' filtering condition
     filtered_df = df2[
-      (df2['League'].isin(selected_leagues)) &
-      (df2['Season'].astype(str) == str(selected_season)) &  # Convert to string for exact match
-      (df2['Score Type'] == selected_score_type) &
-      (df2['Age'] >= age_range[0]) &
-      (df2['Age'] <= age_range[1]) &
-      (df2['Contract expires'].isin(selected_contract_expiry_years)) &
-      (df2['Market value (millions)'] >= player_market_value_range[0]) &
-      (df2['Market value (millions)'] <= player_market_value_range[1]) &
-      (df2['Stoke Score'] >= stoke_range[0]) &
-      (df2['Stoke Score'] <= stoke_range[1]) &
-      (df2[selected_columns[6]].ge(avg_distance_percentile_range[0])) &
-      (df2[selected_columns[6]].le(avg_distance_percentile_range[1])) &
-      (df2[selected_columns[7]].ge(top_5_psv_99_percentile_range[0])) &
-      (df2[selected_columns[7]].le(top_5_psv_99_percentile_range[1])) &
-      (df2['L/R Footedness %'].ge(lr_footedness_range[0])) &
-      (df2['L/R Footedness %'].le(lr_footedness_range[1])) &
-      (df2['Primary Position'].isin(selected_primary_positions))  # Include selected primary positions
-  ]
+    (df2['League'].isin(selected_leagues)) &
+    (df2['Season'].isin(selected_seasons)) &  # Adjusted to handle multiple seasons
+    (df2['Score Type'] == selected_score_type) &
+    (df2['Age'] >= age_range[0]) &
+    (df2['Age'] <= age_range[1]) &
+    (df2['Contract expires'].isin(selected_contract_expiry_years)) &
+    (df2['Market value (millions)'] >= player_market_value_range[0]) &
+    (df2['Market value (millions)'] <= player_market_value_range[1]) &
+    (df2['Stoke Score'] >= stoke_range[0]) &
+    (df2['Stoke Score'] <= stoke_range[1]) &
+    (df2[selected_columns[6]].ge(avg_distance_percentile_range[0])) &
+    (df2[selected_columns[6]].le(avg_distance_percentile_range[1])) &
+    (df2[selected_columns[7]].ge(top_5_psv_99_percentile_range[0])) &
+    (df2[selected_columns[7]].le(top_5_psv_99_percentile_range[1])) &
+    (df2['L/R Footedness %'].ge(lr_footedness_range[0])) &
+    (df2['L/R Footedness %'].le(lr_footedness_range[1])) &
+    (df2['Primary Position'].isin(selected_primary_positions))
+]
 
     # Sort the filtered DataFrame by "Stoke Score" column in descending order
     filtered_df = filtered_df.sort_values(by='Stoke Score', ascending=False)
