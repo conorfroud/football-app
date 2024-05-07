@@ -70,14 +70,20 @@ def main_tab(df2):
     # Add a sidebar multiselect box for leagues with default selections
     selected_leagues = st.sidebar.multiselect("Select Leagues", league_options, default=['English Championship'])
 
-    # Filter seasons based on selected leagues
-    filtered_season_options = df2[df2['League'].isin(selected_leagues)]['Season'].unique()
+    # Assuming the 'Season' data might be in a different type, convert all to string for consistent handling
+    filtered_season_options = [str(season) for season in df2[df2['League'].isin(selected_leagues)]['Season'].unique()]
+    filtered_season_options.reverse()  # Reverse the order if needed
 
-    # Reverse the order of the filtered seasons
-    filtered_season_options = filtered_season_options[::-1]
+    # Prioritize certain seasons in the multiselect and set them as default if they exist
+    priority_seasons = ['2023/24', '2024']
+    default_seasons = [season for season in priority_seasons if season in filtered_season_options]
 
-    # Add a sidebar multiselect box for seasons
-    selected_seasons = st.sidebar.multiselect("Select Seasons", filtered_season_options, default=filtered_season_options)
+    # Ensure that if the priority seasons are not present, some default is still provided
+    if not default_seasons:  # If priority seasons are not found, fallback to other available seasons
+        default_seasons = filtered_season_options[:1]  # Default to the first available season if priority ones are absent
+
+    # Add a sidebar multiselect box for seasons with default selections prioritized
+    selected_seasons = st.sidebar.multiselect("Select Seasons", filtered_season_options, default=default_seasons)
 
     # Add a sidebar dropdown box for score types
     selected_score_type = st.sidebar.selectbox("Select a Score Type", score_type_options)
