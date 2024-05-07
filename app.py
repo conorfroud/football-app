@@ -31,7 +31,6 @@ pd.set_option("display.width", None)  # None means no width limit
 # Create a function for each tab's content
 
 def main_tab(df2):
-    
     # Create a list of league options
     league_options = df2['League'].unique()
     
@@ -47,28 +46,8 @@ def main_tab(df2):
     # Concatenate the custom ordered leagues and remaining leagues
     league_options_ordered = custom_ordered_leagues + remaining_leagues
 
-    # Create a list of score type options
-    score_type_options = df2['Score Type'].unique()
-
-    # Get the minimum and maximum age values from the DataFrame
-    min_age = int(df2['Age'].min())
-    max_age = int(df2['Age'].max())
-
-    # Get the unique contract expiry years from the DataFrame
-    contract_expiry_years = sorted(df2['Contract expires'].unique())
-
-    # Create a list of primary position options
-    primary_position_options = df2['Primary Position'].unique()
-
-    # Get the minimum and maximum player market value (in euros) from the DataFrame
-    min_player_market_value = int(df2['Market value (millions)'].min())
-    max_player_market_value = int(df2['Market value (millions)'].max())
-
-    min_stoke_score = 0.0
-    max_stoke_score = 100.0
-
     # Add a sidebar multiselect box for leagues with default selections
-    selected_leagues = st.sidebar.multiselect("Select Leagues", league_options, default=['English Championship'])
+    selected_leagues = st.sidebar.multiselect("Select Leagues", league_options_ordered, default=['English Championship'])
 
     # Filter seasons based on selected leagues
     filtered_season_options = df2[df2['League'].isin(selected_leagues)]['Season'].unique()
@@ -76,11 +55,11 @@ def main_tab(df2):
     # Reverse the order of the filtered seasons to make the most recent season come first
     filtered_season_options = filtered_season_options[::-1]
 
-    # Set the first item (most recent season) as the default if available
-    default_season = filtered_season_options[0] if filtered_season_options.size > 0 else None
+    # Define default seasons
+    default_seasons = ['2023/24', '2024']
 
-    # Add a sidebar multiselect box for seasons, auto-selecting the most recent season
-    selected_seasons = st.sidebar.multiselect("Select Seasons", filtered_season_options, default=[default_season] if default_season else [])
+    # Add a sidebar multiselect box for seasons
+    selected_seasons = st.sidebar.multiselect("Select Seasons", filtered_season_options, default=default_seasons)
 
     # Add a sidebar dropdown box for score types
     selected_score_type = st.sidebar.selectbox("Select a Score Type", score_type_options)
