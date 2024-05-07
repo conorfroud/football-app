@@ -77,7 +77,7 @@ def main_tab(df2):
     filtered_season_options = filtered_season_options[::-1]
 
     # Prioritize certain seasons in the multiselect and set them as default if they exist
-    priority_seasons = ['2023/24', '2024']
+    priority_seasons = ['2023/24', 2024]
     default_seasons = [season for season in priority_seasons if season in filtered_season_options]
 
     # Ensure that if the priority seasons are not present, some default is still provided
