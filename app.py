@@ -56,7 +56,7 @@ def main_tab(df2):
     filtered_season_options = filtered_season_options[::-1]
 
     # Define default seasons
-    default_seasons = ['2023/24', '2024']
+    default_seasons = ['2023/24', 2024]
 
     # Add a sidebar multiselect box for seasons
     selected_seasons = st.sidebar.multiselect("Select Seasons", filtered_season_options, default=default_seasons)
