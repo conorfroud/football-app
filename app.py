@@ -49,14 +49,17 @@ def main_tab(df2):
     # Add a sidebar multiselect box for leagues with default selections
     selected_leagues = st.sidebar.multiselect("Select Leagues", league_options_ordered, default=['English Championship'])
 
+    # Convert season values to strings to handle mixed types
+    df2['Season'] = df2['Season'].astype(str)
+
     # Filter seasons based on selected leagues
     filtered_season_options = df2[df2['League'].isin(selected_leagues)]['Season'].unique()
 
     # Reverse the order of the filtered seasons to make the most recent season come first
     filtered_season_options = filtered_season_options[::-1]
 
-    # Define default seasons
-    default_seasons = ['2023/24', 2024]
+    # Define default seasons as strings
+    default_seasons = ['2023/24', '2024']
 
     # Add a sidebar multiselect box for seasons
     selected_seasons = st.sidebar.multiselect("Select Seasons", filtered_season_options, default=default_seasons)
