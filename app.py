@@ -73,19 +73,14 @@ def main_tab(df2):
     # Filter seasons based on selected leagues
     filtered_season_options = df2[df2['League'].isin(selected_leagues)]['Season'].unique()
 
-    # Reverse the order of the filtered seasons
+    # Reverse the order of the filtered seasons to make the most recent season come first
     filtered_season_options = filtered_season_options[::-1]
 
-    # Prioritize certain seasons in the multiselect and set them as default if they exist
-    priority_seasons = ['2023/24', '2024']
-    default_seasons = [season for season in priority_seasons if season in filtered_season_options]
+    # Set the first item (most recent season) as the default if available
+    default_season = filtered_season_options[0] if filtered_season_options.size > 0 else None
 
-    # Ensure that if the priority seasons are not present, some default is still provided
-    if not default_seasons:  # If priority seasons are not found, fallback to other available seasons
-        default_seasons = filtered_season_options[:1]  # Default to the first available season if priority ones are absent
-
-    # Add a sidebar multiselect box for seasons with default selections prioritized
-    selected_seasons = st.sidebar.multiselect("Select Seasons", filtered_season_options, default=default_seasons)
+    # Add a sidebar multiselect box for seasons, auto-selecting the most recent season
+    selected_seasons = st.sidebar.multiselect("Select Seasons", filtered_season_options, default=[default_season] if default_season else [])
 
     # Add a sidebar dropdown box for score types
     selected_score_type = st.sidebar.selectbox("Select a Score Type", score_type_options)
