@@ -1125,7 +1125,7 @@ def streamlit_interface(df2):
         st.markdown(f"**No. of Detailed Reports:** {filtered_data['No. of Detailed Reports'].iloc[0]}")
         st.markdown(f"**Sign Verdicts:** {filtered_data['Sign Verdicts'].iloc[0]}")
         st.markdown(f"**Monitor Closely Verdicts:** {filtered_data['Monitor Closely Verdicts'].iloc[0]}")
-        st.markdown(f"**Average Player Performance:** {filtered_data['Average Player Performance'].iloc[0]}")
+        st.markdown(f"**Average Player Performance:** {filtered_data['Weighted Average Player Performance'].iloc[0]}")
 
     st.markdown("---")  # Add a separator
 
