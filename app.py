@@ -786,10 +786,6 @@ def player_stat_search(df):
     # Convert the data to pandas DataFrames
     df1 = pd.DataFrame(data)
     df2 = pd.DataFrame(data1)
-
-    # Display the top 10 rows of df2 for inspection
-    st.write("Top 10 rows of df2:")
-    st.write(df2.head(10))
     
     # Extract the relevant technical & tactical ratings columns
     technical_tactical_columns = [
@@ -825,10 +821,6 @@ def player_stat_search(df):
 
     # Merge the resulting df2 with df on 'Statsbomb ID' and 'player_id'
     unified_df = df.merge(df2, left_on='player_id', right_on='Statsbomb ID', how='left')
-
-    # Display the top 10 rows of the unified dataset for inspection
-    st.write("Top 10 rows of the unified dataset:")
-    st.write(unified_df.head(10))
 
     # Sidebar for filtering by 'minutes' played
     min_minutes = int(unified_df['Player Season Minutes'].min())
