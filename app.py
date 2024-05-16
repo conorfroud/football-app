@@ -778,6 +778,11 @@ def player_stat_search(df):
     url = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit#gid=155686186"
     conn = st.connection("gsheets", type=GSheetsConnection)
     data = conn.read(spreadsheet=url)
+    url1 = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?usp=sharing"
+    data1 = conn.read(spreadsheet=url1)
+
+    df2 = pd.DataFrame(data1)
+    st.write(df2.head(10))
     
     # Convert the data to a pandas DataFrame (assuming conn.read returns a list of dictionaries or similar structure)
     df1 = pd.DataFrame(data)
