@@ -774,6 +774,16 @@ def player_similarity_app(df2):
 
 def player_stat_search(df):
 
+    url = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit#gid=155686186"
+    conn = st.connection("gsheets", type=GSheetsConnection)
+    data = conn.read(spreadsheet=url)
+
+    # Convert the data to a pandas DataFrame (assuming conn.read returns a list of dictionaries or similar structure)
+    df = pd.DataFrame(data)
+
+    # Display the top 10 rows of the DataFrame
+    st.write(df.head(10))
+
     # Sidebar for filtering by 'minutes' played
     min_minutes = int(df['Player Season Minutes'].min())
     max_minutes = int(df['Player Season Minutes'].max())
