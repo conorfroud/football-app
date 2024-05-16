@@ -780,11 +780,7 @@ def player_stat_search(df):
     data = conn.read(spreadsheet=url)
     
     # Convert the data to a pandas DataFrame (assuming conn.read returns a list of dictionaries or similar structure)
-    df = pd.DataFrame(data)
-
-    # Display the top 10 rows of the DataFrame
-    st.write("Top 10 rows of the data:")
-    st.write(df.head(10))
+    df1 = pd.DataFrame(data)
 
     # Extract the relevant technical & tactical ratings columns
     technical_tactical_columns = [
@@ -795,17 +791,17 @@ def player_stat_search(df):
 
     # Convert columns to numeric and handle NaNs
     for column in technical_tactical_columns:
-        df[column] = pd.to_numeric(df[column], errors='coerce')
+        df1[column] = pd.to_numeric(df1[column], errors='coerce')
 
     # Drop rows with NaN values
-    df.dropna(subset=technical_tactical_columns, inplace=True)
+    df1.dropna(subset=technical_tactical_columns, inplace=True)
 
     # Check if any rows are remaining after dropping NaNs
-    if df.empty:
+    if df1.empty:
         st.write("No valid data found.")
     else:
         # Calculate the average of the selected columns for each player
-        average_scores = df.groupby('Player Transfermarkt URL')[technical_tactical_columns].mean().reset_index()
+        average_scores = df1.groupby('Player Transfermarkt URL')[technical_tactical_columns].mean().reset_index()
         
         # Round the average scores to two decimal places
         average_scores = average_scores.round(2)
