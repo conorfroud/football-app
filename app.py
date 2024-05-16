@@ -774,19 +774,23 @@ def player_similarity_app(df2):
 
 def player_stat_search(df):
     
-    # Define the Google Sheets URL
+    # Define the Google Sheets URLs
     url = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit#gid=155686186"
+    url1 = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?usp=sharing"
+    
+    # Connect to Google Sheets using Streamlit's connection feature
     conn = st.connection("gsheets", type=GSheetsConnection)
     data = conn.read(spreadsheet=url)
-    url1 = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?usp=sharing"
     data1 = conn.read(spreadsheet=url1)
 
+    # Convert the data to pandas DataFrames
+    df1 = pd.DataFrame(data)
     df2 = pd.DataFrame(data1)
+
+    # Display the top 10 rows of df2 for inspection
+    st.write("Top 10 rows of df2:")
     st.write(df2.head(10))
     
-    # Convert the data to a pandas DataFrame (assuming conn.read returns a list of dictionaries or similar structure)
-    df1 = pd.DataFrame(data)
-
     # Extract the relevant technical & tactical ratings columns
     technical_tactical_columns = [
        'CF Technical & Tactical Ratings >> Hold up play',    
@@ -807,6 +811,7 @@ def player_stat_search(df):
     else:
         # Calculate the average of the selected columns for each player
         average_scores = df1.groupby('Player Transfermarkt URL')[technical_tactical_columns].mean().reset_index()
+        average_scores['Average Player Attribute rating'] = average_scores.mean(axis=1)
         
         # Round the average scores to two decimal places
         average_scores = average_scores.round(2)
@@ -815,25 +820,31 @@ def player_stat_search(df):
         st.write("Average scores for each player:")
         st.write(average_scores)
 
+    # Merge df2 with average_scores on 'Transfermarkt URL'
+    df2 = df2.merge(average_scores, left_on='Transfermarkt URL', right_on='Player Transfermarkt URL', how='left')
+
+    # Merge the resulting df2 with df on 'Statsbomb ID' and 'player_id'
+    unified_df = df.merge(df2, left_on='player_id', right_on='Statsbomb ID', how='left')
+
     # Sidebar for filtering by 'minutes' played
-    min_minutes = int(df['Player Season Minutes'].min())
-    max_minutes = int(df['Player Season Minutes'].max())
+    min_minutes = int(unified_df['Player Season Minutes'].min())
+    max_minutes = int(unified_df['Player Season Minutes'].max())
     selected_minutes = st.sidebar.slider('Select Minutes Played Range', min_value=min_minutes, max_value=max_minutes, value=(300, max_minutes))
 
     # Sidebar for filtering by 'age'
-    min_age = int(df['Age'].min())
-    max_age = int(df['Age'].max())
+    min_age = int(unified_df['Age'].min())
+    max_age = int(unified_df['Age'].max())
     selected_age = st.sidebar.slider('Select Age Range', min_value=min_age, max_value=max_age, value=(min_age, max_age))
 
     # Create a multi-select dropdown for filtering by primary_position
-    selected_positions = st.sidebar.multiselect('Filter by Primary Position', df['position_1'].unique())
+    selected_positions = st.sidebar.multiselect('Filter by Primary Position', unified_df['position_1'].unique())
 
     # Create a multi-select dropdown for selecting leagues with 'English Championship' pre-selected
     default_leagues = ['English Championship']
-    selected_leagues = st.sidebar.multiselect('Select Leagues', df['League'].unique(), default=default_leagues)
+    selected_leagues = st.sidebar.multiselect('Select Leagues', unified_df['League'].unique(), default=default_leagues)
 
     # Get the list of all columns in the DataFrame
-    all_columns = df.columns.tolist()
+    all_columns = unified_df.columns.tolist()
 
     # Ensure that these columns are always included in selected_stats
     always_included_columns = ["Player Name", "Age", "Team", "Player Season Minutes", "League"]
@@ -845,8 +856,8 @@ def player_stat_search(df):
     selected_stats.extend(always_included_columns)
 
     # Filter the DataFrame based on selected filters
-    filtered_df = df[(df['Player Season Minutes'] >= selected_minutes[0]) & (df['Player Season Minutes'] <= selected_minutes[1])]
-    filtered_df = filtered_df[(df['Age'] >= selected_age[0]) & (df['Age'] <= selected_age[1])]
+    filtered_df = unified_df[(unified_df['Player Season Minutes'] >= selected_minutes[0]) & (unified_df['Player Season Minutes'] <= selected_minutes[1])]
+    filtered_df = filtered_df[(unified_df['Age'] >= selected_age[0]) & (unified_df['Age'] <= selected_age[1])]
     if selected_positions:
         filtered_df = filtered_df[filtered_df['position_1'].isin(selected_positions)]
     if selected_leagues:
