@@ -776,7 +776,7 @@ def player_stat_search(df):
     
     # Define the Google Sheets URL
     url = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit#gid=155686186"
-    conn = st.connection("gsheets", type="GSheetsConnection")
+    conn = st.connection("gsheets", type=GSheetsConnection)
     data = conn.read(spreadsheet=url)
     
     # Convert the data to a pandas DataFrame (assuming conn.read returns a list of dictionaries or similar structure)
