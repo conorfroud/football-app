@@ -861,7 +861,7 @@ def player_stat_search(df):
 
     # Filter the DataFrame based on selected filters
     filtered_df = unified_df[(unified_df['Player Season Minutes'] >= selected_minutes[0]) & (unified_df['Player Season Minutes'] <= selected_minutes[1])]
-    filtered_df = filtered_df[(unified_df['Age'] >= selected_age[0]) & (unified_df['Age'] <= selected_age[1])]
+    filtered_df = filtered_df[(unified_df['Age_x'] >= selected_age[0]) & (unified_df['Age_x'] <= selected_age[1])]
     if selected_positions:
         filtered_df = filtered_df[filtered_df['position_1'].isin(selected_positions)]
     if selected_leagues:
