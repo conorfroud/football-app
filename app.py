@@ -812,10 +812,6 @@ def player_stat_search(df):
         # Round the average scores to two decimal places
         average_scores = average_scores.round(2)
 
-        # Display the average scores in the Streamlit app
-        st.write("Average scores for each player:")
-        st.write(average_scores)
-
     # Merge df2 with average_scores on 'Transfermarkt URL'
     df2 = df2.merge(average_scores, left_on='Transfermarkt URL', right_on='Player Transfermarkt URL', how='left')
 
