@@ -836,8 +836,8 @@ def player_stat_search(df):
     selected_minutes = st.sidebar.slider('Select Minutes Played Range', min_value=min_minutes, max_value=max_minutes, value=(300, max_minutes))
 
     # Sidebar for filtering by 'age'
-    min_age = int(unified_df['Age'].min())
-    max_age = int(unified_df['Age'].max())
+    min_age = int(unified_df['Age_x'].min())
+    max_age = int(unified_df['Age_x'].max())
     selected_age = st.sidebar.slider('Select Age Range', min_value=min_age, max_value=max_age, value=(min_age, max_age))
 
     # Create a multi-select dropdown for filtering by primary_position
@@ -851,7 +851,7 @@ def player_stat_search(df):
     all_columns = unified_df.columns.tolist()
 
     # Ensure that these columns are always included in selected_stats
-    always_included_columns = ["Player Name", "Age", "Team", "Player Season Minutes", "League"]
+    always_included_columns = ["Player Name", "Age_x", "Team", "Player Season Minutes", "League"]
     
     # Create a multiselect for stat selection
     selected_stats = st.multiselect("Select Columns", [col for col in all_columns if col not in always_included_columns], default=[])
