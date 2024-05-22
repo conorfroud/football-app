@@ -1481,11 +1481,41 @@ def streamlit_interface(df2):
           'Winger - Mental Ratings >> Work Rate'
         ]
 
+        am_columns = [
+            'No10 Technical & Tactical Ratings >> Final ball',
+            'No10 Technical & Tactical Ratings >> Pocket play',
+            'No10 Technical & Tactical Ratings >> Creativity',
+            'No10 Technical & Tactical Ratings >> Goal threat',
+            'No10 Technical & Tactical Ratings >> 1st touch',
+            'No10 Technical & Tactical Ratings >> Flair',
+            'No10 Technical & Tactical Ratings >> Staying on the ball',
+            'No10 Technical & Tactical Ratings >> Off ball runs',
+            'No10 Technical & Tactical Ratings >> Making the box',
+            'No10 Technical & Tactical Ratings >> Pressing',
+            'No10 Technical & Tactical Ratings >> Recovery runs',
+            'No10 Technical & Tactical Ratings >> Stepping onto the ball',
+            'No10 Physical Ratings >> Pace (over distance)',
+            'No10 Physical Ratings >> Quick (over 2-3yds)',
+            'No10 Physical Ratings >> Sharpness / agility',
+            'No10 Physical Ratings >> Strength',
+            'No10 Physical Ratings >> Power',
+            'No10 Physical Ratings >> Leap',
+            'No10 Physical Ratings >> Legs & energy',
+            'No10 Mental Ratings >> Leadership',
+            'No10 Mental Ratings >> Communication',
+            'No10 Mental Ratings >> Bravery',
+            'No10 Mental Ratings >> Aggression',
+            'No10 Mental Ratings >> Decision making',
+            'No10 Mental Ratings >> Work Rate'
+        ]
+        
         # Select columns based on position
         if position in ['LW', 'RW']:
             selected_columns = winger_columns
         elif position == 'CF':
             selected_columns = cf_columns
+        elif position == 'AM':
+            selected_columns = am_columns
         else:
             st.write("Position not supported for average calculation.")
             return
