@@ -1209,6 +1209,9 @@ def streamlit_interface(df2):
             fig = px.scatter(report_data, x='Fixture Date', y='Match Performance',
                      labels={'Fixture Date': 'Fixture Date', 'Player Level': 'Player Level', 'Match Performance': 'Match Performance', 'Scout': 'Scout'},
                      hover_data={'Player Level': True, 'Scout': True, 'Score': True})
+
+            # Customize the marker color and size
+            fig.update_traces(marker=dict(size=12, color='#7EC0EE'))
         
             # Add annotations for each point
             for i, row in report_data.iterrows():
