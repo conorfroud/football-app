@@ -1676,9 +1676,9 @@ def streamlit_interface(df2):
     st.markdown("---")  # Add a separator
 
     # Splitting the player performance plot into two columns
-    col13, col14 = st.columns([6, 1])
+    col13, col14, col15 = st.columns([0.25, 6, 0.25])
 
-    with col13:
+    with col14:
         
         # Display report data from the filtered data
         report_data = filtered_data1[['Player', 'Scout', 'Comments', 'Date of report', 'Player Level - Score', 'Score']]
