@@ -1479,9 +1479,6 @@ def streamlit_interface(df2):
         for column in technical_tactical_columns:
             filtered_data2[column] = pd.to_numeric(filtered_data2[column], errors='coerce')
             
-        # Drop rows with NaN values
-        filtered_data2.dropna(subset=technical_tactical_columns, inplace=True)
-
         # Check if any rows are remaining after dropping NaNs
         if filtered_data2.empty:
             st.write("No valid data found for the selected player in data2.")
