@@ -1134,6 +1134,15 @@ def streamlit_interface(df2):
     player_url = filtered_data['Transfermarkt URL'].iloc[0]
     filtered_data1 = data1[data1['Transfermarkt URL'] == player_url]
 
+    # Assuming 'filtered_data' is a DataFrame containing the necessary data
+    # Calculate the percentage of A/B Verdicts
+    total_verdicts = filtered_data['A Verdicts'].iloc[0] + filtered_data['B Verdicts'].iloc[0]
+    no_of_reports = filtered_data['No. of Reports'].iloc[0]
+    if no_of_reports > 0:
+        ab_verdicts_percentage = (total_verdicts / no_of_reports) * 100
+    else:
+        ab_verdicts_percentage = 0
+
     # Display player info card visualization
     st.markdown(f"### {selected_player} ###", unsafe_allow_html=True)
 
@@ -1184,7 +1193,7 @@ def streamlit_interface(df2):
 
     # Display additional player information in the third column
     with col3:
-        st.markdown(f"**No. of Reports:** {filtered_data['No. of Reports'].iloc[0]}")
+        st.markdown(f"**No. of Reports:** {filtered_data['No. of Reports'].iloc[0]} ({ab_verdicts_percentage:.2f}%)")
         st.markdown(f"**A Verdicts:** {filtered_data['A Verdicts'].iloc[0]}")
         st.markdown(f"**B Verdicts:** {filtered_data['B Verdicts'].iloc[0]}")
         st.markdown(f"**ET Verdicts:** {filtered_data['ET Verdicts'].iloc[0]}")
