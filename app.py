@@ -1595,7 +1595,7 @@ def streamlit_interface(df2):
         selected_scouts = st.multiselect('Select Scouts', scouts, default=scouts)
 
         # Filter the report data based on the selected scout
-        filtered_reports = filtered_data1[filtered_data1['Scout'] == selected_scout]
+        filtered_reports = filtered_data1[filtered_data1['Scout'] == selected_scouts]
 
         # Display report data from the filtered data
         report_data = filtered_reports[['Player', 'Scout', 'Comments', 'Date of report', 'Player Level - Score', 'Score']]
