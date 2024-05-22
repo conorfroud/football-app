@@ -1209,17 +1209,7 @@ def streamlit_interface(df2):
             fig = px.scatter(report_data, x='Fixture Date', y='Match Performance',
                      labels={'Fixture Date': 'Fixture Date', 'Player Level': 'Player Level', 'Match Performance': 'Match Performance', 'Scout': 'Scout'},
                      hover_data={'Player Level': True, 'Scout': True, 'Score': True})
-
-            # Highlight points with 'Sign' verdict
-            sign_points = report_data[report_data['Verdict'] == 'Sign']
-            fig.add_trace(px.scatter(sign_points, x='Fixture Date', y='Match Performance').data[0])
-
-            fig.update_traces(marker=dict(size=12, color='#7EC0EE'))  # Customize marker color and size
-
-            fig.update_traces(marker=dict(color='red'), selector=dict(type='scatter', mode='markers', name='Sign'))
-
-            fig.update_layout(width=600, height=500, yaxis=dict(range=[0, 10]))
-
+        
             # Add annotations for each point
             for i, row in report_data.iterrows():
                 fig.add_annotation(
