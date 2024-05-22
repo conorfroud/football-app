@@ -1524,10 +1524,10 @@ def streamlit_interface(df2):
     # Splitting the player performance plot into two columns
     col13, col14 = st.columns([6, 1])
 
-    with col12:
+    with col13:
         
         # Display report data from data1
-        report_data = filtered_data[['Player', 'Scout', 'Comments', 'Date of report', 'Player Level - Score', 'Score']]
+        report_data = filtered_data1[['Player', 'Scout', 'Comments', 'Date of report', 'Player Level - Score', 'Score']]
         report_data = report_data[::-1]  # Reverse the DataFrame to show most recent reports first
 
         st.markdown("### Player Reports")
