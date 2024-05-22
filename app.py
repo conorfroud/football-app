@@ -1462,23 +1462,23 @@ def streamlit_interface(df2):
           'Winger - Technical & Tactical Ratings >> Ball striking',
           'Winger - Technical & Tactical Ratings >> Pocket play',
           'Winger - Technical & Tactical Ratings >> Receiving on the half turn',
-          'Winger - Technical & Tactical Ratings >> Movement',
+          'Winger - Technical & Tactical Ratings >> Movement ',
           'Winger - Technical & Tactical Ratings >> Pressing',
           'Winger - Technical & Tactical Ratings >> Recovery runs',
           'Winger - Technical & Tactical Ratings >> Stepping onto the ball',
-          'Winger - Physical Ratings >> Pace (over distance)',
+          'Winger - Physical Ratings >> Pace (over distance) ',
           'Winger - Physical Ratings >> Quick (over 2-3yds)',
           'Winger - Physical Ratings >> Sharpness / agility',
           'Winger - Physical Ratings >> Strength',
           'Winger - Physical Ratings >> Power',
-          'Winger - Physical Ratings >> Leap',
+          'Winger - Physical Ratings >> Leap ',
           'Winger - Physical Ratings >> Legs & energy',
           'Winger - Mental Ratings >> Leadership',
           'Winger - Mental Ratings >> Communication',
           'Winger - Mental Ratings >> Bravery',
           'Winger - Mental Ratings >> Aggression',
           'Winger - Mental Ratings >> Decision making',
-          'Winger - Mental Ratings >> Work Rate'
+          'Winger - Mental Ratings >> Work Rate '
         ]
 
         # Select columns based on position
