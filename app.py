@@ -1521,6 +1521,9 @@ def streamlit_interface(df2):
         for index, score in bottom_10_scores.iteritems():
             st.markdown(f"**{index}**: {score}")
 
+    # Splitting the player performance plot into two columns
+    col13 = st.columns([6])
+
     with col13:
         
         st.markdown("---")  # Add a separator
