@@ -1415,14 +1415,14 @@ def streamlit_interface(df2):
         # Filter data1 based on the selected player's Transfermarkt URL
         player_url = filtered_data['Transfermarkt URL'].iloc[0]
         filtered_data2 = data2[data2['Player Transfermarkt URL'] == player_url]
-
+        
         # Check if any data is returned for the selected player
         if filtered_data2.empty:
             st.write("No data found for the selected player in data2.")
             return
 
-        # Determine the position of the player
-        position = filtered_data2['Position'].iloc[0]
+        # Determine the position of the player from filtered_data
+        position = filtered_data['Position'].iloc[0]
 
         # Define the columns for CF and Winger
         cf_columns = [
