@@ -1193,7 +1193,7 @@ def streamlit_interface(df2):
 
     # Display additional player information in the third column
     with col3:
-        st.markdown(f"**No. of Reports:** {filtered_data['No. of Reports'].iloc[0]} ({ab_verdicts_percentage:.2f}%)")
+        st.markdown(f"**No. of Reports:** {filtered_data['No. of Reports'].iloc[0]} ({ab_verdicts_percentage:.2f}%) **A/B's**")
         st.markdown(f"**A Verdicts:** {filtered_data['A Verdicts'].iloc[0]}")
         st.markdown(f"**B Verdicts:** {filtered_data['B Verdicts'].iloc[0]}")
         st.markdown(f"**ET Verdicts:** {filtered_data['ET Verdicts'].iloc[0]}")
