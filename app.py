@@ -1458,7 +1458,7 @@ def streamlit_interface(df2):
             'Winger - Technical & Tactical Ratings >> Receiving on the half turn',
             'Winger - Technical & Tactical Ratings >> Movement ',
             'Winger - Technical & Tactical Ratings >> Pressing',
-            'Winger - Technical & Tactical Ratings >> Recovery runs'
+            'Winger - Technical & Tactical Ratings >> Recovery runs',
             'Winger - Technical & Tactical Ratings >> Stepping onto the ball',
             'Winger - Physical Ratings >> Pace (over distance)',
             'Winger - Physical Ratings >> Quick (over 2-3yds)',
