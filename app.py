@@ -1415,77 +1415,92 @@ def streamlit_interface(df2):
         # Filter data1 based on the selected player's Transfermarkt URL
         player_url = filtered_data['Transfermarkt URL'].iloc[0]
         filtered_data2 = data2[data2['Player Transfermarkt URL'] == player_url]
-    
+
         # Check if any data is returned for the selected player
         if filtered_data2.empty:
             st.write("No data found for the selected player in data2.")
             return
-            
-        # Extract the relevant technical & tactical ratings columns
-        technical_tactical_columns = [
-            'CF Technical & Tactical Ratings >> Hold up play',    
-            'CF Technical & Tactical Ratings >> Link up play',
-            'CF Technical & Tactical Ratings >> 1st touch',
-            'CF Technical & Tactical Ratings >> Coming short to receive',
-            'CF Technical & Tactical Ratings >> Aerial ability',
-            'CF Technical & Tactical Ratings >> Finishing',
-            'CF Technical & Tactical Ratings >> Ball striking',
-            'CF Technical & Tactical Ratings >> Running in behind',
-            'CF Technical & Tactical Ratings >> Pressing',    
-            'CF Technical & Tactical Ratings >> Getting across near post',
-            'CF Technical & Tactical Ratings >> Movement in box',
-            'CF Technical & Tactical Ratings >> Poachers instinct',
-            'CF Physical Ratings >> Pace (over distance)',
-            'CF Physical Ratings >> Quick (over 2-3yds)',
-            'CF Physical Ratings >> Sharpness / agility',
-            'CF Physical Ratings >> Strength',
-            'CF Physical Ratings >> Power',
-            'CF Physical Ratings >> Leap',
-            'CF Physical Ratings >> Legs & energy',
-            'CF Mental Ratings >> Leadership',
-            'CF Mental Ratings >> Communication',
-            'CF Mental Ratings >> Bravery',
-            'CF Mental Ratings >> Aggression',
-            'CF Mental Ratings >> Decision making',
-            'CF Mental Ratings >> Work Rate',
-            'Winger - Technical & Tactical Ratings >> Cross quality',
-            'Winger - Technical & Tactical Ratings >> Ball carrying',
-            'Winger - Technical & Tactical Ratings >> 1v1 ability',
-            'Winger - Technical & Tactical Ratings >> Creativity',
-            'Winger - Technical & Tactical Ratings >> Goal threat',
-            'Winger - Technical & Tactical Ratings >> Ball striking',
-            'Winger - Technical & Tactical Ratings >> Pocket play',
-            'Winger - Technical & Tactical Ratings >> Receiving on the half turn',
-            'Winger - Technical & Tactical Ratings >> Movement ',
-            'Winger - Technical & Tactical Ratings >> Pressing',
-            'Winger - Technical & Tactical Ratings >> Recovery runs',
-            'Winger - Technical & Tactical Ratings >> Stepping onto the ball',
-            'Winger - Physical Ratings >> Pace (over distance) ',
-            'Winger - Physical Ratings >> Quick (over 2-3yds)',
-            'Winger - Physical Ratings >> Sharpness / agility',
-            'Winger - Physical Ratings >> Strength',
-            'Winger - Physical Ratings >> Power',
-            'Winger - Physical Ratings >> Leap ',
-            'Winger - Physical Ratings >> Legs & energy',
-            'Winger - Mental Ratings >> Leadership',
-            'Winger - Mental Ratings >> Communication',
-            'Winger - Mental Ratings >> Bravery',
-            'Winger - Mental Ratings >> Aggression',
-            'Winger - Mental Ratings >> Decision making',
-            'Winger - Mental Ratings >> Work Rate '
+
+        # Determine the position of the player
+        position = filtered_data2['Position'].iloc[0]
+
+        # Define the columns for CF and Winger
+        cf_columns = [
+          'CF Technical & Tactical Ratings >> Hold up play',
+          'CF Technical & Tactical Ratings >> Link up play',
+          'CF Technical & Tactical Ratings >> 1st touch',
+          'CF Technical & Tactical Ratings >> Coming short to receive',
+          'CF Technical & Tactical Ratings >> Aerial ability',
+          'CF Technical & Tactical Ratings >> Finishing',
+          'CF Technical & Tactical Ratings >> Ball striking',
+          'CF Technical & Tactical Ratings >> Running in behind',
+          'CF Technical & Tactical Ratings >> Pressing',
+          'CF Technical & Tactical Ratings >> Getting across near post',
+          'CF Technical & Tactical Ratings >> Movement in box',
+          'CF Technical & Tactical Ratings >> Poachers instinct',
+          'CF Physical Ratings >> Pace (over distance)',
+          'CF Physical Ratings >> Quick (over 2-3yds)',
+          'CF Physical Ratings >> Sharpness / agility',
+          'CF Physical Ratings >> Strength',
+          'CF Physical Ratings >> Power',
+          'CF Physical Ratings >> Leap',
+          'CF Physical Ratings >> Legs & energy',
+          'CF Mental Ratings >> Leadership',
+          'CF Mental Ratings >> Communication',
+          'CF Mental Ratings >> Bravery',
+          'CF Mental Ratings >> Aggression',
+          'CF Mental Ratings >> Decision making',
+          'CF Mental Ratings >> Work Rate'
         ]
 
+        winger_columns = [
+          'Winger - Technical & Tactical Ratings >> Cross quality',
+          'Winger - Technical & Tactical Ratings >> Ball carrying',
+          'Winger - Technical & Tactical Ratings >> 1v1 ability',
+          'Winger - Technical & Tactical Ratings >> Creativity',
+          'Winger - Technical & Tactical Ratings >> Goal threat',
+          'Winger - Technical & Tactical Ratings >> Ball striking',
+          'Winger - Technical & Tactical Ratings >> Pocket play',
+          'Winger - Technical & Tactical Ratings >> Receiving on the half turn',
+          'Winger - Technical & Tactical Ratings >> Movement',
+          'Winger - Technical & Tactical Ratings >> Pressing',
+          'Winger - Technical & Tactical Ratings >> Recovery runs',
+          'Winger - Technical & Tactical Ratings >> Stepping onto the ball',
+          'Winger - Physical Ratings >> Pace (over distance)',
+          'Winger - Physical Ratings >> Quick (over 2-3yds)',
+          'Winger - Physical Ratings >> Sharpness / agility',
+          'Winger - Physical Ratings >> Strength',
+          'Winger - Physical Ratings >> Power',
+          'Winger - Physical Ratings >> Leap',
+          'Winger - Physical Ratings >> Legs & energy',
+          'Winger - Mental Ratings >> Leadership',
+          'Winger - Mental Ratings >> Communication',
+          'Winger - Mental Ratings >> Bravery',
+          'Winger - Mental Ratings >> Aggression',
+          'Winger - Mental Ratings >> Decision making',
+          'Winger - Mental Ratings >> Work Rate'
+        ]
+
+        # Select columns based on position
+        if position in ['LW', 'RW']:
+            selected_columns = winger_columns
+        elif position == 'CF':
+            selected_columns = cf_columns
+        else:
+            st.write("Position not supported for average calculation.")
+            return
+
         # Convert columns to numeric and handle NaNs
-        for column in technical_tactical_columns:
+        for column in selected_columns:
             filtered_data2[column] = pd.to_numeric(filtered_data2[column], errors='coerce')
-            
+
         # Check if any rows are remaining after dropping NaNs
         if filtered_data2.empty:
             st.write("No valid data found for the selected player in data2.")
             return
-        
+            
         # Calculate the average of the selected columns
-        average_scores = filtered_data2[technical_tactical_columns].mean()
+        average_scores = filtered_data2[selected_columns].mean()
 
         # Round the average scores to two decimal places
         average_scores = average_scores.round(2)
@@ -1496,34 +1511,24 @@ def streamlit_interface(df2):
         # Display the top 10 scores using st.markdown
         st.markdown("### Top 10 Average Attribute Scores")
         for index, score in top_10_scores.iteritems():
-            st.markdown(f"**{index}**: {score}")      
-            
-    with col12:
-        
-        # Sort the average scores in descending order
-        bottom_10_scores = average_scores.sort_values(ascending=True).head(10)
-        
-        # Display the bottom 10 scores using st.markdown
-        st.markdown("### Bottom 10 Average Attribute Scores")
-        for index, score in bottom_10_scores.iteritems():
             st.markdown(f"**{index}**: {score}")
    
-    st.markdown("---")  # Add a separator
-    
-    # Display report data from data1
-    report_data = filtered_data1[['Player', 'Scout', 'Comments', 'Date of report', 'Player Level - Score', 'Score']]
-    report_data = report_data[::-1]  # Reverse the DataFrame to show most recent reports first
-    
-    st.markdown(f"### Player Reports ###", unsafe_allow_html=True)
-        
-    for index, row in report_data.iterrows():
-        st.markdown(f"**Player:** {row['Player']}")
-        st.markdown(f"**Scout:** {row['Scout']}")
-        st.markdown(f"**Fixture:** {row['Score']}")
-        st.markdown(f"**Date of Report:** {row['Date of report']}")
-        st.markdown(f"**Verdict:** {row['Player Level - Score']}")
-        st.markdown(f"**Comments:** {row['Comments']}")
         st.markdown("---")  # Add a separator
+    
+        # Display report data from data1
+        report_data = filtered_data1[['Player', 'Scout', 'Comments', 'Date of report', 'Player Level - Score', 'Score']]
+        report_data = report_data[::-1]  # Reverse the DataFrame to show most recent reports first
+    
+        st.markdown(f"### Player Reports ###", unsafe_allow_html=True)
+        
+        for index, row in report_data.iterrows():
+            st.markdown(f"**Player:** {row['Player']}")
+            st.markdown(f"**Scout:** {row['Scout']}")
+            st.markdown(f"**Fixture:** {row['Score']}")
+            st.markdown(f"**Date of Report:** {row['Date of report']}")
+            st.markdown(f"**Verdict:** {row['Player Level - Score']}")
+            st.markdown(f"**Comments:** {row['Comments']}")
+            st.markdown("---")  # Add a separator
   
 def searchable_reports():
     
