@@ -1554,6 +1554,62 @@ def streamlit_interface(df2):
             'No6 Mental Ratings >> Decision making',
             'No6 Mental Ratings >> Work Rate'
         ]
+        
+        fb_columns = [
+            'FB Technical & Tactical Ratings >> Defending 1v1',
+            'FB Technical & Tactical Ratings >> Getting up to the ball',
+            'FB Technical & Tactical Ratings >> Stopping crosses',
+            'FB Technical & Tactical Ratings >> Aerial ability',
+            'FB Technical & Tactical Ratings >> Defending far post',
+            'FB Technical & Tactical Ratings >> Secure in possession',
+            'FB Technical & Tactical Ratings >> Longer passing',
+            'FB Technical & Tactical Ratings >> Ball carrying',
+            'FB Technical & Tactical Ratings >> Final ball / end product',
+            'FB Technical & Tactical Ratings >> Pressing',
+            'FB Technical & Tactical Ratings >> Recovery runs',
+            'FB Technical & Tactical Ratings >> Stepping onto the ball', 
+            'FB Physical Ratings >> Pace (over distance)',
+            'FB Physical Ratings >> Quick (over 2-3yds)',
+            'FB Physical Ratings >> Sharpness / agility',
+            'FB Physical Ratings >> Strength',
+            'FB Physical Ratings >> Power',
+            'FB Physical Ratings >> Leap',
+            'FB Physical Ratings >> Legs & energy',
+            'FB Mental Ratings >> Leadership',
+            'FB Mental Ratings >> Communication',
+            'FB Mental Ratings >> Bravery',
+            'FB Mental Ratings >> Aggression',
+            'FB Mental Ratings >> Decision making',
+            'FB Mental Ratings >> Work Rate'
+        ]
+        
+        cb_columns = [
+            'CB Technical & Tactical Ratings >> Passing short',
+            'CB Technical & Tactical Ratings >> Passing long',
+            'CB Technical & Tactical Ratings >> Ability to break lines',
+            'CB Technical & Tactical Ratings >> Driving the gap',
+            'CB Technical & Tactical Ratings >> Stepping onto the ball',
+            'CB Technical & Tactical Ratings >> Aerial Ability',
+            'CB Technical & Tactical Ratings >> Defending the box',
+            'CB Technical & Tactical Ratings >> Defending the space & wide 1v1',
+            'CB Technical & Tactical Ratings >> Defending high (front foot)',
+            'CB Technical & Tactical Ratings >> Defensive decision making',
+            'CB Technical & Tactical Ratings >> On ball decision making',
+            'CB Technical & Tactical Ratings >> Reading the game',
+            'CB Technical & Tactical Ratings >> Defensive body shape',
+            'CB Physical Ratings >> Pace (over distance)',
+            'CB Physical Ratings >> Quick (over 2-3yds)',
+            'CB Physical Ratings >> Sharpness / agility',
+            'CB Physical Ratings >> Strength',
+            'CB Physical Ratings >> Power',
+            'CB Physical Ratings >> Leap',
+            'CB Physical Ratings >> Legs & energy',
+            'CB Mental Ratings >> Leadership',
+            'CB Mental Ratings >> Communication',
+            'CB Mental Ratings >> Bravery',
+            'CB Mental Ratings >> Aggression',
+            'CB Mental Ratings >> Work Rate'
+        ]
 
         # Select columns based on position
         if position in ['LW', 'RW']:
@@ -1566,6 +1622,10 @@ def streamlit_interface(df2):
             selected_columns = cm_columns
         elif position == 'CDM':
             selected_columns = cdm_columns
+        elif position in ['LB', 'RB']:
+            selected_columns = fb_columns
+        elif position == 'CB':
+            selected_columns = cb_columns
         else:
             st.write("Position not supported for average calculation.")
             return
