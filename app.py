@@ -1239,7 +1239,12 @@ def streamlit_interface(df2):
                 
             st.plotly_chart(fig)  # Display the plot
 
-    with col6:
+    st.markdown("---")  # Add a separator
+
+    # Splitting the player performance plot into two columns
+    col7, col8, col9 = st.columns([3, 3, 3])
+
+    with col7:
         
         # Define selected_df here
         selected_player_id = filtered_data['Statsbomb ID'].iloc[0]
@@ -1350,12 +1355,7 @@ def streamlit_interface(df2):
             
             st.pyplot(fig2)
 
-    st.markdown("---")  # Add a separator
-
-    # Splitting the player performance plot into two columns
-    col7, col8, col9 = st.columns([3, 1, 3])
-
-    with col7:
+    with col8:
 
         fig, ax = plt.subplots(figsize=(8, 6))
 
