@@ -1507,6 +1507,7 @@ def streamlit_interface(df2):
 
         # Sort the average scores in descending order
         top_10_scores = average_scores.sort_values(ascending=False).head(10)
+        bottom_10_scores = average_scores.sort_values(ascending=True).head(10)
 
         # Display the top 10 scores using st.markdown
         st.markdown("### Top 10 Average Attribute Scores")
@@ -1529,6 +1530,13 @@ def streamlit_interface(df2):
             st.markdown(f"**Verdict:** {row['Player Level - Score']}")
             st.markdown(f"**Comments:** {row['Comments']}")
             st.markdown("---")  # Add a separator
+            
+    with col12:
+        
+        # Display the bottom 10 scores using st.markdown in col12
+        st.markdown("### Bottom 10 Average Attribute Scores")
+        for index, score in bottom_10_scores.iteritems():
+            st.markdown(f"**{index}**: {score}")
   
 def searchable_reports():
     
