@@ -1521,27 +1521,21 @@ def streamlit_interface(df2):
         for index, score in bottom_10_scores.iteritems():
             st.markdown(f"**{index}**: {score}")
 
-    # Splitting the player performance plot into two columns
-    col13 = st.columns([6])
+    st.markdown("---")  # Add a separator
 
-    with col13:
-        
+    # Display report data from data1
+    report_data = filtered_data[['Player', 'Scout', 'Comments', 'Date of report', 'Player Level - Score', 'Score']]
+    report_data = report_data[::-1]  # Reverse the DataFrame to show most recent reports first
+
+    st.markdown("### Player Reports")
+    for index, row in report_data.iterrows():
+        st.markdown(f"**Player:** {row['Player']}")
+        st.markdown(f"**Scout:** {row['Scout']}")
+        st.markdown(f"**Fixture:** {row['Score']}")
+        st.markdown(f"**Date of Report:** {row['Date of report']}")
+        st.markdown(f"**Verdict:** {row['Player Level - Score']}")
+        st.markdown(f"**Comments:** {row['Comments']}")
         st.markdown("---")  # Add a separator
-    
-        # Display report data from data1
-        report_data = filtered_data1[['Player', 'Scout', 'Comments', 'Date of report', 'Player Level - Score', 'Score']]
-        report_data = report_data[::-1]  # Reverse the DataFrame to show most recent reports first
-    
-        st.markdown(f"### Player Reports ###", unsafe_allow_html=True)
-        
-        for index, row in report_data.iterrows():
-            st.markdown(f"**Player:** {row['Player']}")
-            st.markdown(f"**Scout:** {row['Scout']}")
-            st.markdown(f"**Fixture:** {row['Score']}")
-            st.markdown(f"**Date of Report:** {row['Date of report']}")
-            st.markdown(f"**Verdict:** {row['Player Level - Score']}")
-            st.markdown(f"**Comments:** {row['Comments']}")
-            st.markdown("---")  # Add a separator
   
 def searchable_reports():
     
