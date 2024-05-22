@@ -1465,14 +1465,14 @@ def streamlit_interface(df2):
             'Winger - Physical Ratings >> Sharpness / agility',
             'Winger - Physical Ratings >> Strength',
             'Winger - Physical Ratings >> Power',
-            'Winger - Physical Ratings >> Leap',
+            'Winger - Physical Ratings >> Leap ',
             'Winger - Physical Ratings >> Legs & energy',
             'Winger - Mental Ratings >> Leadership',
             'Winger - Mental Ratings >> Communication',
             'Winger - Mental Ratings >> Bravery',
             'Winger - Mental Ratings >> Aggression',
             'Winger - Mental Ratings >> Decision making',
-            'Winger - Mental Ratings >> Work Rate'
+            'Winger - Mental Ratings >> Work Rate '
         ]
 
         # Convert columns to numeric and handle NaNs
