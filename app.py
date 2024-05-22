@@ -1557,11 +1557,12 @@ def streamlit_interface(df2):
     col13, col14 = st.columns([6, 1])
 
     with col13:
+        
         # Extract unique scouts for the dropdown filter
         scouts = filtered_data1['Scout'].unique()
-        
-        # Add a dropdown to select a scout
-        selected_scout = st.selectbox('Select Scout', scouts)
+    
+        # Add a multiselect to select scouts, default to all scouts
+        selected_scouts = st.multiselect('Select Scouts', scouts, default=scouts)
 
         # Filter the report data based on the selected scout
         filtered_reports = filtered_data1[filtered_data1['Scout'] == selected_scout]
