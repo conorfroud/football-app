@@ -1527,6 +1527,34 @@ def streamlit_interface(df2):
             'No8 Mental Ratings >> Work Rate'
         ]
         
+        cdm_columns = [
+            'No6 Technical & Tactical Ratings >> Passing short',
+            'No6 Technical & Tactical Ratings >> Passing long',
+            'No6 Technical & Tactical Ratings >> Ability to break lines',
+            'No6 Technical & Tactical Ratings >> Availability to Receive',
+            'No6 Technical & Tactical Ratings >> Secure in possession',
+            'No6 Technical & Tactical Ratings >> Ball winning',
+            'No6 Technical & Tactical Ratings >> 2nd balls',
+            'No6 Technical & Tactical Ratings >> Reading the game',
+            'No6 Technical & Tactical Ratings >> Aerial ability',
+            'No6 Technical & Tactical Ratings >> Defensive positioning',
+            'No6 Technical & Tactical Ratings >> Tracking runners',
+            'No6 Technical & Tactical Ratings >> Recovery runs',
+            'No6 Physical Ratings >> Pace (over distance)',
+            'No6 Physical Ratings >> Quick (over 2-3yds)',
+            'No6 Physical Ratings >> Sharpness / agility',
+            'No6 Physical Ratings >> Strength',
+            'No6 Physical Ratings >> Power',
+            'No6 Physical Ratings >> Leap',
+            'No6 Physical Ratings >> Legs & energy',
+            'No6 Mental Ratings >> Leadership',
+            'No6 Mental Ratings >> Communication',
+            'No6 Mental Ratings >> Bravery',
+            'No6 Mental Ratings >> Aggression',
+            'No6 Mental Ratings >> Decision making',
+            'No6 Mental Ratings >> Work Rate'
+        ]
+
         # Select columns based on position
         if position in ['LW', 'RW']:
             selected_columns = winger_columns
@@ -1536,6 +1564,8 @@ def streamlit_interface(df2):
             selected_columns = am_columns
         elif position == 'CM':
             selected_columns = cm_columns
+        elif position == 'CDM':
+            selected_columns = cdm_columns
         else:
             st.write("Position not supported for average calculation.")
             return
