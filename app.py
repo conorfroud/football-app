@@ -1513,7 +1513,16 @@ def streamlit_interface(df2):
         st.markdown("### Top 10 Average Attribute Scores")
         for index, score in top_10_scores.iteritems():
             st.markdown(f"**{index}**: {score}")
-   
+            
+    with col12:
+        
+        # Display the bottom 10 scores using st.markdown in col12
+        st.markdown("### Bottom 10 Average Attribute Scores")
+        for index, score in bottom_10_scores.iteritems():
+            st.markdown(f"**{index}**: {score}")
+
+    with col13:
+        
         st.markdown("---")  # Add a separator
     
         # Display report data from data1
@@ -1530,13 +1539,6 @@ def streamlit_interface(df2):
             st.markdown(f"**Verdict:** {row['Player Level - Score']}")
             st.markdown(f"**Comments:** {row['Comments']}")
             st.markdown("---")  # Add a separator
-            
-    with col12:
-        
-        # Display the bottom 10 scores using st.markdown in col12
-        st.markdown("### Bottom 10 Average Attribute Scores")
-        for index, score in bottom_10_scores.iteritems():
-            st.markdown(f"**{index}**: {score}")
   
 def searchable_reports():
     
