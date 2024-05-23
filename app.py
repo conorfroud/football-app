@@ -1175,8 +1175,8 @@ def streamlit_interface(df2):
                     st.image(response.content, width=200)
                 else:
                     st.write("Image not available")
-                else:
-                    st.write("No image available")
+            else:
+                st.write("No image available")
                     
         with col1_3:
             # Add content in the third nested column if needed
@@ -1189,15 +1189,15 @@ def streamlit_interface(df2):
         parent_club = filtered_data['Parent Club (If applicable)'].iloc[0]
         if parent_club != 'NA' and not pd.isnull(parent_club):
             team_info += f" (Parent Club: {parent_club})"
-            st.markdown(f"**Team:** {team_info}")
-            st.markdown(f"**Age:** {filtered_data['Age'].iloc[0]}")
-            st.markdown(f"**Position:** {filtered_data['Position'].iloc[0]}")
-            st.markdown(f"**Contract:** {filtered_data['Contract'].iloc[0]}")
-            st.markdown(f"**Nationality:** {filtered_data['Nationality'].iloc[0]}")
-            st.markdown(f"**Agent:** {filtered_data['Agent'].iloc[0]}")
-            st.markdown(f"**Height:** {filtered_data['Average Height'].iloc[0]}")
-            st.markdown(f"**Foot:** {filtered_data['Foot'].iloc[0]}")
-            st.markdown(f"**Transfermarkt:** {filtered_data['Transfermarkt URL'].iloc[0]}")
+        st.markdown(f"**Team:** {team_info}")
+        st.markdown(f"**Age:** {filtered_data['Age'].iloc[0]}")
+        st.markdown(f"**Position:** {filtered_data['Position'].iloc[0]}")
+        st.markdown(f"**Contract:** {filtered_data['Contract'].iloc[0]}")
+        st.markdown(f"**Nationality:** {filtered_data['Nationality'].iloc[0]}")
+        st.markdown(f"**Agent:** {filtered_data['Agent'].iloc[0]}")
+        st.markdown(f"**Height:** {filtered_data['Average Height'].iloc[0]}")
+        st.markdown(f"**Foot:** {filtered_data['Foot'].iloc[0]}")
+        st.markdown(f"**Transfermarkt:** {filtered_data['Transfermarkt URL'].iloc[0]}")
 
     # Display additional player information in the third column
     with col3:
