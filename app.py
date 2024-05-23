@@ -1410,6 +1410,9 @@ def streamlit_interface(df2):
             label_x_pos = width + 1  # Adjust the position slightly to avoid overlap
             ax.text(label_x_pos, bar.get_y() + bar.get_height()/2, f'{width:.1f}', va='center')
 
+        # Set x-axis ticks between 0 and 100 in increments of 10
+        ax.set_xticks(range(0, 101, 10))
+
         # Invert y-axis for better visualization
         ax.invert_yaxis()
 
@@ -1440,6 +1443,9 @@ def streamlit_interface(df2):
             width = bar.get_width()
             label_x_pos = width + 1  # Adjust the position slightly to avoid overlap
             ax.text(label_x_pos, bar.get_y() + bar.get_height()/2, f'{width:.1f}', va='center')
+
+        # Set x-axis ticks between 0 and 100 in increments of 10
+        ax.set_xticks(range(0, 101, 10))
 
         # Invert y-axis for better visualization
         ax.invert_yaxis()
