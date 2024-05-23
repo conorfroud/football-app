@@ -1290,22 +1290,22 @@ def streamlit_interface(df2):
             plot_title_physical = f"Attacking Midfield Physical Metrics for {selected_player_name}"
         elif selected_profile == "Central Midfield":
             columns_technical = ["Player Name", "xG (8)", "Non-Penalty Goals (8)", "OBV Pass (8)", "Open Play xA (8)", "Deep Progressions (8)", "Successful Dribbles (8)", "OBV Dribble & Carry (8)", "Average Distance (8)", "Top 5 PSV-99 (8)"]
-            columns_physical = ["Player Name", "Average Distance Percentile", "Running Distance Percentile", "Sprinting Distance Percentile", "Count HSR Percentile", "Count Sprint Percentile", "Count High Acceleration Percentile", "Top 5 PSV-99 Percentile"]
+            columns_physical = ["Player Name", "Average Distance (8)", "Running Distance Percentile", "Sprinting Distance Percentile", "Count HSR Percentile", "Count Sprint Percentile", "Count High Acceleration Percentile", "Top 5 PSV-99 (8)"]
             plot_title_technical = f"Central Midfield Technical Metrics for {selected_player_name}"
             plot_title_physical = f"Central Midfield Physical Metrics for {selected_player_name}"
         elif selected_profile == "Defensive Midfield":
             columns_technical = ["Player Name", "Deep Progressions (6)", "OBV Pass (6)", "OBV Dribble & Carry (6)", "Pass Forward % (6)", "PAdj Tackles & Interceptions (6)", "Tackle/Dribbled Past % (6)", "OBV Defensive Action (6)", "Ball Recoveries (6)", "Average Distance (6)", "Top 5 PSV-99 (6)"]
-            columns_physical = ["Player Name", "Average Distance Percentile", "Running Distance Percentile", "Sprinting Distance Percentile", "Count HSR Percentile", "Count Sprint Percentile", "Count High Acceleration Percentile", "Top 5 PSV-99 Percentile"]
+            columns_physical = ["Player Name", "Average Distance (6)", "Running Distance Percentile", "Sprinting Distance Percentile", "Count HSR Percentile", "Count Sprint Percentile", "Count High Acceleration Percentile", "Top 5 PSV-99 (6)"]
             plot_title_technical = f"Defensive Midfield Technical Metrics for {selected_player_name}"
             plot_title_physical = f"Defensive Midfield Physical Metrics for {selected_player_name}"
         elif selected_profile == "Left Back":
             columns_technical = ["Player Name", "PAdj Tackles & Interceptions (LB)", "Tackle/Dribbled Past (LB)", "OBV Defensive Action (LB)", "Dribbled Past (LB)", "OBV Dribble & Carry (LB)", "Successful Crosses (LB)", "Open Play xA (LB)", "OBV Pass (LB)", "Aerial Win % (LB)", "Average Distance (LB)", "Top 5 PSV-99 (LB)"]
-            columns_physical = ["Player Name", "Average Distance Percentile", "Running Distance Percentile", "Sprinting Distance Percentile", "Count HSR Percentile", "Count Sprint Percentile", "Count High Acceleration Percentile", "Top 5 PSV-99 Percentile"]
+            columns_physical = ["Player Name", "Average Distance (LB)", "Running Distance Percentile", "Sprinting Distance Percentile", "Count HSR Percentile", "Count Sprint Percentile", "Count High Acceleration Percentile", "Top 5 PSV-99 (LB)"]
             plot_title_technical = f"Left Back Technical Metrics for {selected_player_name}"
             plot_title_physical = f"Left Back Physical Metrics for {selected_player_name}"
         elif selected_profile == "Right Back":
             columns_technical = ["Player Name", "PAdj Tackles & Interceptions (RB)", "Tackle/Dribbled Past (RB)", "OBV Defensive Action (RB)", "Dribbled Past (RB)", "OBV Dribble & Carry (RB)", "Successful Crosses (RB)", "Open Play xA (RB)", "OBV Pass (RB)", "Aerial Win % (RB)", "Average Distance (RB)", "Top 5 PSV-99 (RB)"]
-            columns_physical = ["Player Name", "Average Distance Percentile", "Running Distance Percentile", "Sprinting Distance Percentile", "Count HSR Percentile", "Count Sprint Percentile", "Count High Acceleration Percentile", "Top 5 PSV-99 Percentile"]
+            columns_physical = ["Player Name", "Average Distance (RB)", "Running Distance Percentile", "Sprinting Distance Percentile", "Count HSR Percentile", "Count Sprint Percentile", "Count High Acceleration Percentile", "Top 5 PSV-99 (RB)"]
             plot_title_technical = f"Right Back Technical Metrics for {selected_player_name}"
             plot_title_physical = f"Right Back Physical Metrics for {selected_player_name}"
         elif selected_profile == "Centre Back":
