@@ -1310,7 +1310,7 @@ def streamlit_interface(df2):
             plot_title_physical = f"Right Back Physical Metrics for {selected_player_name}"
         elif selected_profile == "Centre Back":
             columns_technical = ["Player Name", "Aerial Wins (CB)", "Aerial Win % (CB)", "PAdj Tackles & Interceptions (CB)", "Tackle / Dribbled Past % (CB)", "OBV Defensive Action (CB)", "Blocks per Shot (CB)", "Deep Progressions (CB)", "OBV Pass (CB)", "Pressure Change in Passing % (CB)", "OBV Dribble & Carry (CB)", "Top 5 PSV-99 (CB)"]
-            columns_physical = ["Player Name", "Average Distance Percentile", "Running Distance Percentile", "Sprinting Distance Percentile", "Count HSR Percentile", "Count Sprint Percentile", "Count High Acceleration Percentile", "Top 5 PSV-99 Percentile"]
+            columns_physical = ["Player Name", "Average Distance (CB)",	"Running Distance Percentile", "Sprinting Distance Percentile", "Count HSR Percentile", "Count Sprint Percentile", "Count High Acceleration Percentile", "Top 5 PSV-99 (CB)"]
             plot_title_technical = f"Centre Back Technical Metrics for {selected_player_name}"
             plot_title_physical = f"Centre Back Physical Metrics for {selected_player_name}"
         elif selected_profile == "Stretch 9":
