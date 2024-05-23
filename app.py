@@ -1284,7 +1284,7 @@ def streamlit_interface(df2):
             plot_title_technical = f"Winger Technical Metrics for {selected_player_name}"
             plot_title_physical = f"Winger Physical Metrics for {selected_player_name}"
         elif selected_profile == "Attacking Midfield":
-            columns_technical = ["Player Name", "xG (CAM)", "Non-Penalty Goals (CAM)", "Shots (CAM)", "OBV Pass (CAM)", "Open Play xA (CAM)", "Throughballs (CAM)", "OBV Dribble & Carry (W)", "Average Distance (CAM)", "Top 5 PSV (CAM)"]
+            columns_technical = ["Player Name", "xG (CAM)", "Non-Penalty Goals (CAM)", "Shots (CAM)", "OBV Pass (CAM)", "Open Play xA (CAM)", "Throughballs (CAM)", "OBV Dribble & Carry (CAM)", "Average Distance (CAM)", "Top 5 PSV (CAM)"]
             columns_physical = ["Player Name", "Average Distance (CAM)", "Running Distance Percentile", "Sprinting Distance Percentile", "Count HSR Percentile", "Count Sprint Percentile", "Count High Acceleration Percentile", "Top 5 PSV (CAM)"]
             plot_title_technical = f"Attacking Midfield Technical Metrics for {selected_player_name}"
             plot_title_physical = f"Attacking Midfield Physical Metrics for {selected_player_name}"
