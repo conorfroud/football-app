@@ -1275,7 +1275,7 @@ def streamlit_interface(df2):
         # Define 'columns' based on the selected profile
         if selected_profile == "Striker":
             columns_technical = ["Player Name", "xG (ST)", "Non-Penalty Goals (ST)", "Shots (ST)", "OBV Shot (ST)", "Open Play xA (ST)", "OBV Dribble & Carry (ST)", "PAdj Pressures (ST)", "Average Distance Percentile", "Top 5 PSV-99 Percentile"]
-            columns_physical = ["Player Name", "PAdj Pressures (ST)", "Average Distance Percentile", "Top 5 PSV-99 Percentile"]
+            columns_physical = ["Player Name", "Average Distance Percentile", "Running Distance Percentile", "Sprinting Distance Percentile", "Count HSR Percentile", "Count Sprint Percentile", "Count High Acceleration Percentile", "Top 5 PSV-99 Percentile"]
             plot_title_technical = f"Forward Technical Metrics for {selected_player_name}"
             plot_title_physical = f"Forward Physical Metrics for {selected_player_name}"
         elif selected_profile == "Winger":
