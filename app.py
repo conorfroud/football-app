@@ -1732,7 +1732,8 @@ def streamlit_interface(df2):
             st.markdown(f"**Fixture:** {row['Score']}")
             st.markdown(f"**Date of Report:** {row['Date of report']}")
             st.markdown(f"**Verdict:** {row['Player Level - Score']}")
-            st.markdown(f"**Comments:** {row['Comments']}")
+            with st.expander("Comments"):
+                st.markdown(row['Comments'])
             st.markdown("---")  # Add a separator
   
 def searchable_reports():
