@@ -1274,47 +1274,47 @@ def streamlit_interface(df2):
 
         # Define 'columns' based on the selected profile
         if selected_profile == "Striker":
-            columns_technical = ["Player Name", "xG (ST)", "Non-Penalty Goals (ST)", "Shots (ST)", "OBV Shot (ST)", "Open Play xA (ST)", "OBV Dribble & Carry (ST)"]
+            columns_technical = ["Player Name", "xG (ST)", "Non-Penalty Goals (ST)", "Shots (ST)", "OBV Shot (ST)", "Open Play xA (ST)", "OBV Dribble & Carry (ST)", "PAdj Pressures (ST)", "Average Distance Percentile", "Top 5 PSV-99 Percentile"]
             columns_physical = ["Player Name", "PAdj Pressures (ST)", "Average Distance Percentile", "Top 5 PSV-99 Percentile"]
             plot_title_technical = f"Forward Technical Metrics for {selected_player_name}"
             plot_title_physical = f"Forward Physical Metrics for {selected_player_name}"
         elif selected_profile == "Winger":
-            columns_technical = ["Player Name", "xG (W)", "Non-Penalty Goals (W)", "Shots (W)", "OBV Pass (W)", "Open Play xA (W)", "Successful Dribbles (W)"]
+            columns_technical = ["Player Name", "xG (W)", "Non-Penalty Goals (W)", "Shots (W)", "OBV Pass (W)", "Open Play xA (W)", "Successful Dribbles (W)", "OBV Dribble & Carry (W)", "Distance (W)", "Top 5 PSV (W)"]
             columns_physical = ["Player Name", "OBV Dribble & Carry (W)", "Distance (W)", "Top 5 PSV (W)"]
             plot_title_technical = f"Winger Technical Metrics for {selected_player_name}"
             plot_title_physical = f"Winger Physical Metrics for {selected_player_name}"
         elif selected_profile == "Attacking Midfield":
-            columns_technical = ["Player Name", "xG (CAM)", "Non-Penalty Goals (CAM)", "Shots (CAM)", "OBV Pass (CAM)", "Open Play xA (CAM)", "Throughballs (CAM)"]
+            columns_technical = ["Player Name", "xG (CAM)", "Non-Penalty Goals (CAM)", "Shots (CAM)", "OBV Pass (CAM)", "Open Play xA (CAM)", "Throughballs (CAM)", "OBV Dribble & Carry (W)", "Distance (W)", "Top 5 PSV (W)"]
             columns_physical = ["Player Name", "Successful Dribbles (CAM)", "OBV Dribble & Carry (CAM)", "Average Distance (CAM)", "Top 5 PSV (CAM)"]
             plot_title_technical = f"Attacking Midfield Technical Metrics for {selected_player_name}"
             plot_title_physical = f"Attacking Midfield Physical Metrics for {selected_player_name}"
         elif selected_profile == "Central Midfield":
-            columns_technical = ["Player Name", "xG (8)", "Non-Penalty Goals (8)", "OBV Pass (8)", "Open Play xA (8)", "Deep Progressions (8)"]
+            columns_technical = ["Player Name", "xG (8)", "Non-Penalty Goals (8)", "OBV Pass (8)", "Open Play xA (8)", "Deep Progressions (8)", "Successful Dribbles (8)", "OBV Dribble & Carry (8)", "Average Distance (8)", "Top 5 PSV-99 (8)"]
             columns_physical = ["Player Name", "Successful Dribbles (8)", "OBV Dribble & Carry (8)", "Average Distance (8)", "Top 5 PSV-99 (8)"]
             plot_title_technical = f"Central Midfield Technical Metrics for {selected_player_name}"
             plot_title_physical = f"Central Midfield Physical Metrics for {selected_player_name}"
         elif selected_profile == "Defensive Midfield":
-            columns_technical = ["Player Name", "Deep Progressions (6)", "OBV Pass (6)", "OBV Dribble & Carry (6)", "Pass Forward % (6)", "PAdj Pressures (6)"]
+            columns_technical = ["Player Name", "Deep Progressions (6)", "OBV Pass (6)", "OBV Dribble & Carry (6)", "Pass Forward % (6)", "PAdj Tackles & Interceptions (6)", "Tackle/Dribbled Past % (6)", "OBV Defensive Action (6)", "Ball Recoveries (6)", "Average Distance (6)", "Top 5 PSV-99 (6)"]
             columns_physical = ["Player Name", "Pressure Regains (6)", "PAdj Tackles & Interceptions (6)", "Tackle/Dribbled Past % (6)", "OBV Defensive Action (6)", "Ball Recoveries (6)", "Average Distance (6)", "Top 5 PSV-99 (6)"]
             plot_title_technical = f"Defensive Midfield Technical Metrics for {selected_player_name}"
             plot_title_physical = f"Defensive Midfield Physical Metrics for {selected_player_name}"
         elif selected_profile == "Left Back":
-            columns_technical = ["Player Name", "PAdj Tackles & Interceptions (LB)", "Tackle/Dribbled Past (LB)", "OBV Defensive Action (LB)", "Dribbled Past (LB)"]
+            columns_technical = ["Player Name", "PAdj Tackles & Interceptions (LB)", "Tackle/Dribbled Past (LB)", "OBV Defensive Action (LB)", "Dribbled Past (LB)", "OBV Dribble & Carry (LB)", "Successful Crosses (LB)", "Open Play xA (LB)", "OBV Pass (LB)", "Aerial Win % (LB)", "Average Distance (LB)", "Top 5 PSV-99 (LB)"]
             columns_physical = ["Player Name", "OBV Dribble & Carry (LB)", "Successful Crosses (LB)", "Open Play xA (LB)", "OBV Pass (LB)", "Aerial Win % (LB)", "Average Distance (LB)", "Top 5 PSV-99 (LB)"]
             plot_title_technical = f"Left Back Technical Metrics for {selected_player_name}"
             plot_title_physical = f"Left Back Physical Metrics for {selected_player_name}"
         elif selected_profile == "Right Back":
-            columns_technical = ["Player Name", "PAdj Tackles & Interceptions (RB)", "Tackle/Dribbled Past (RB)", "OBV Defensive Action (RB)", "Dribbled Past (RB)"]
+            columns_technical = ["Player Name", "PAdj Tackles & Interceptions (RB)", "Tackle/Dribbled Past (RB)", "OBV Defensive Action (RB)", "Dribbled Past (RB)", "OBV Dribble & Carry (RB)", "Successful Crosses (RB)", "Open Play xA (RB)", "OBV Pass (RB)", "Aerial Win % (RB)", "Average Distance (RB)", "Top 5 PSV-99 (RB)"]
             columns_physical = ["Player Name", "OBV Dribble & Carry (RB)", "Successful Crosses (RB)", "Open Play xA (RB)", "OBV Pass (RB)", "Aerial Win % (RB)", "Average Distance (RB)", "Top 5 PSV-99 (RB)"]
             plot_title_technical = f"Right Back Technical Metrics for {selected_player_name}"
             plot_title_physical = f"Right Back Physical Metrics for {selected_player_name}"
         elif selected_profile == "Centre Back":
-            columns_technical = ["Player Name", "Aerial Wins (CB)", "Aerial Win % (CB)", "PAdj Tackles & Interceptions (CB)", "Tackle / Dribbled Past % (CB)"]
+            columns_technical = ["Player Name", "Aerial Wins (CB)", "Aerial Win % (CB)", "PAdj Tackles & Interceptions (CB)", "Tackle / Dribbled Past % (CB)", "OBV Defensive Action (CB)", "Blocks per Shot (CB)", "Deep Progressions (CB)", "OBV Pass (CB)", "Pressure Change in Passing % (CB)", "OBV Dribble & Carry (CB)", "Top 5 PSV-99 (CB)"]
             columns_physical = ["Player Name", "OBV Defensive Action (CB)", "Blocks per Shot (CB)", "Deep Progressions (CB)", "OBV Pass (CB)", "Pressure Change in Passing % (CB)", "OBV Dribble & Carry (CB)", "Top 5 PSV-99 (CB)"]
             plot_title_technical = f"Centre Back Technical Metrics for {selected_player_name}"
             plot_title_physical = f"Centre Back Physical Metrics for {selected_player_name}"
         elif selected_profile == "Stretch 9":
-            columns_technical = ["Player Name", "xG (S9)", "Non-Penalty Goals (S9)", "Shots (S9)", "OBV Shot (S9)", "Open Play xA (S9)"]
+            columns_technical = ["Player Name", "xG (S9)", "Non-Penalty Goals (S9)", "Shots (S9)", "OBV Shot (S9)", "Open Play xA (S9)", "Runs in Behind (S9)", "Threat of Runs in Behind (S9)", "Average Distance (S9)", "Top 5 PSV-99 (S9)"]
             columns_physical = ["Player Name", "Runs in Behind (S9)", "Threat of Runs in Behind (S9)", "Average Distance (S9)", "Top 5 PSV-99 (S9)"]
             plot_title_technical = f"Stretch 9 Technical Metrics for {selected_player_name}"
             plot_title_physical = f"Stretch 9 Physical Metrics for {selected_player_name}"
