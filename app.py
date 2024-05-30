@@ -1389,7 +1389,6 @@ def streamlit_interface(df2):
     # Check and display the technical metrics bar plot
     if not selected_df_technical.empty:
         with col7:
-            st.markdown("### Technical Metrics")
             fig, ax = plt.subplots(figsize=(8, 6))
 
             # Create horizontal bar chart for technical metrics
@@ -1427,8 +1426,7 @@ def streamlit_interface(df2):
         with col9:
             params_physical = selected_df_physical.columns
             values_physical = selected_df_physical.iloc[0]  # Assuming you want metrics for the first player
-            
-            st.markdown("### Physical Metrics")
+        
             fig, ax = plt.subplots(figsize=(8, 6))
 
             # Create horizontal bar chart for physical metrics
