@@ -1376,82 +1376,83 @@ def streamlit_interface(df2):
             plt.title(f"Data Profile - {selected_profile}", fontsize=14, y=1.10, fontweight='bold')
         
             st.pyplot(fig2)
-            
-        else:
-        
-            st.write("Technical or physical data not available for the selected player.")
 
-    st.markdown("---")  # Add a separator
+            st.markdown("---")  # Add a separator
 
-    # Splitting the player performance plot into two columns
-    col7, col8, col9 = st.columns([3, 1, 3])
+            # Splitting the player performance plot into two columns
+            col7, col8, col9 = st.columns([3, 1, 3])
 
-    with col7:
-        fig, ax = plt.subplots(figsize=(8, 6))
+            with col7:
+                
+                fig, ax = plt.subplots(figsize=(8, 6))
     
-        # Create horizontal bar chart
-        bars = ax.barh(params_technical, values_technical, color="#7EC0EE", edgecolor="#222222")
+                # Create horizontal bar chart
+                bars = ax.barh(params_technical, values_technical, color="#7EC0EE", edgecolor="#222222")
 
-        # Remove spines
-        ax.spines['top'].set_visible(False)
-        ax.spines['right'].set_visible(False)
-        ax.spines['bottom'].set_visible(False)
-        ax.spines['left'].set_visible(False)
+                # Remove spines
+                ax.spines['top'].set_visible(False)
+                ax.spines['right'].set_visible(False)
+                ax.spines['bottom'].set_visible(False)
+                ax.spines['left'].set_visible(False)
 
-        # Add labels and title
-        ax.set_xlabel('Percentile')
-        ax.set_ylabel('Metrics')
-        ax.set_title(plot_title_technical, fontweight='bold')
+                # Add labels and title
+                ax.set_xlabel('Percentile')
+                ax.set_ylabel('Metrics')
+                ax.set_title(plot_title_technical, fontweight='bold')
 
-        # Add percentile labels at the end of the bars
-        for bar in bars:
-            width = bar.get_width()
-            label_x_pos = width + 1  # Adjust the position slightly to avoid overlap
-            ax.text(label_x_pos, bar.get_y() + bar.get_height()/2, f'{width:.1f}', va='center')
+                # Add percentile labels at the end of the bars
+                for bar in bars:
+                    width = bar.get_width()
+                    label_x_pos = width + 1  # Adjust the position slightly to avoid overlap
+                    ax.text(label_x_pos, bar.get_y() + bar.get_height()/2, f'{width:.1f}', va='center')
 
-        # Set x-axis ticks between 0 and 100 in increments of 10
-        ax.set_xticks(range(0, 101, 10))
+                # Set x-axis ticks between 0 and 100 in increments of 10
+                ax.set_xticks(range(0, 101, 10))
 
-        # Invert y-axis for better visualization
-        ax.invert_yaxis()
+                # Invert y-axis for better visualization
+                ax.invert_yaxis()
 
-        # Show the plot
-        plt.tight_layout()
-        st.pyplot(fig)  # Display the plot
+                # Show the plot
+                plt.tight_layout()
+                st.pyplot(fig)  # Display the plot
 
-    with col9:
-        
-        fig, ax = plt.subplots(figsize=(8, 6))
+            with col9:
+                
+                fig, ax = plt.subplots(figsize=(8, 6))
 
-        # Create horizontal bar chart
-        bars = ax.barh(params_physical, values_physical, color="#7EC0EE", edgecolor="#222222")
+                # Create horizontal bar chart
+                bars = ax.barh(params_physical, values_physical, color="#7EC0EE", edgecolor="#222222")
 
-        # Remove spines
-        ax.spines['top'].set_visible(False)
-        ax.spines['right'].set_visible(False)
-        ax.spines['bottom'].set_visible(False)
-        ax.spines['left'].set_visible(False)
+                # Remove spines
+                ax.spines['top'].set_visible(False)
+                ax.spines['right'].set_visible(False)
+                ax.spines['bottom'].set_visible(False)
+                ax.spines['left'].set_visible(False)
 
-        # Add labels and title
-        ax.set_xlabel('Percentile')
-        ax.set_ylabel('Metrics')
-        ax.set_title(plot_title_physical, fontweight='bold')
+                # Add labels and title
+                ax.set_xlabel('Percentile')
+                ax.set_ylabel('Metrics')
+                ax.set_title(plot_title_physical, fontweight='bold')
 
-        # Add percentile labels at the end of the bars
-        for bar in bars:
-            width = bar.get_width()
-            label_x_pos = width + 1  # Adjust the position slightly to avoid overlap
-            ax.text(label_x_pos, bar.get_y() + bar.get_height()/2, f'{width:.1f}', va='center')
+                # Add percentile labels at the end of the bars
+                for bar in bars:
+                    width = bar.get_width()
+                    label_x_pos = width + 1  # Adjust the position slightly to avoid overlap
+                    ax.text(label_x_pos, bar.get_y() + bar.get_height()/2, f'{width:.1f}', va='center')
 
-        # Set x-axis ticks between 0 and 100 in increments of 10
-        ax.set_xticks(range(0, 101, 10))
+                # Set x-axis ticks between 0 and 100 in increments of 10
+                ax.set_xticks(range(0, 101, 10))
 
-        # Invert y-axis for better visualization
-        ax.invert_yaxis()
+                # Invert y-axis for better visualization
+                ax.invert_yaxis()
 
-        # Show the plot
-        plt.tight_layout()
-        st.pyplot(fig)  # Display the plot
+                # Show the plot
+                plt.tight_layout()
+                st.pyplot(fig)  # Display the plot
+
+        else:
+            
+            st.write("Technical or physical data not available for the selected player.")
 
     st.markdown("---")  # Add a separator
 
