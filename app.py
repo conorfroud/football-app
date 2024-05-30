@@ -1325,10 +1325,11 @@ def streamlit_interface(df2):
         selected_df_technical = selected_player_df[selected_player_df["Score Type"] == selected_profile][columns_technical[1:]]  # Exclude the "Player Name" column
         selected_df_physical = selected_player_df[selected_player_df["Score Type"] == selected_profile][columns_physical[1:]]  # Exclude the "Player Name" column
 
-        params_technical = selected_df_technical.columns
-        params_physical = selected_df_physical.columns
-        values_technical = selected_df_technical.iloc[0]  # Assuming you want metrics for the first player
-        values_physical = selected_df_physical.iloc[0]  # Assuming you want metrics for the first player
+        if not selected_df_technical.empty and not selected_df_physical.empty:
+            params_technical = selected_df_technical.columns
+            params_physical = selected_df_physical.columns
+            values_technical = selected_df_technical.iloc[0]  # Assuming you want metrics for the first player
+            values_physical = selected_df_physical.iloc[0]  # Assuming you want metrics for the first player
 
         # Instantiate PyPizza class
         baker = PyPizza(
@@ -1378,6 +1379,10 @@ def streamlit_interface(df2):
             plt.title(f"Data Profile - {selected_profile}", fontsize=14, y=1.10, fontweight='bold')
         
             st.pyplot(fig2)
+            
+        else:
+        
+            st.write("Technical or physical data not available for the selected player.")
 
     st.markdown("---")  # Add a separator
 
