@@ -1331,21 +1331,18 @@ def streamlit_interface(df2):
             values_technical = selected_df_technical.iloc[0]  # Assuming you want metrics for the first player
             values_physical = selected_df_physical.iloc[0]  # Assuming you want metrics for the first player
 
-        # Instantiate PyPizza class
-        baker = PyPizza(
-            params=params_technical,
-            background_color="#FFFFFF",
-            straight_line_color="#222222",
-            straight_line_lw=1,
-            last_circle_lw=1,
-            last_circle_color="#222222",
-            other_circle_ls="-.",
-            other_circle_lw=1
-        )
-
-        if selected_player_df.empty:
-            st.write("Player data not available")
-        else:
+            # Instantiate PyPizza class
+            baker = PyPizza(
+                params=params_technical,
+                background_color="#FFFFFF",
+                straight_line_color="#222222",
+                straight_line_lw=1,
+                last_circle_lw=1,
+                last_circle_color="#222222",
+                other_circle_ls="-.",
+                other_circle_lw=1
+            )
+        
             # Create the pizza plot
             fig2, ax = baker.make_pizza(
                 values_technical,
