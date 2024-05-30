@@ -73,11 +73,8 @@ def main_tab(df2):
     # Filter seasons based on selected leagues
     filtered_season_options = df2[df2['League'].isin(selected_leagues)]['Season'].unique()
 
-    # Reverse the order of the filtered seasons
-    filtered_season_options = filtered_season_options[::-1]
-
     # Add a sidebar multiselect box for seasons
-    selected_seasons = st.sidebar.multiselect("Select Seasons", filtered_season_options, default=filtered_season_options)
+    selected_seasons = st.sidebar.selectbox("Select Seasons", filtered_season_options, default=filtered_season_options)
 
     # Add a sidebar dropdown box for score types
     selected_score_type = st.sidebar.selectbox("Select a Score Type", score_type_options)
