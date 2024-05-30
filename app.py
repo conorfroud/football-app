@@ -1240,6 +1240,9 @@ def streamlit_interface(df2):
                     yshift=15,  # Adjust the position vertically
             )
 
+            # Set the y-axis range from 0 to 10
+            fig.update_yaxes(range=[0, 10])
+
             # Add more vertical spacing if needed
             st.markdown("")  # Empty line for spacing
 
