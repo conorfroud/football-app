@@ -496,7 +496,7 @@ def scatter_plot(df):
         y_variable = st.sidebar.selectbox('Y-axis variable', df.columns, index=df.columns.get_loc('Open Play xG Assisted'))
 
         # Checkbox for multiplying metrics by 'Player Season Minutes / 90'
-        multiply_by_minutes = st.sidebar.checkbox('Multiply by (Player Season Minutes / 90)')
+        multiply_by_minutes = st.sidebar.checkbox('Season Totals')
 
         # Create a multi-select dropdown for filtering by primary_position
         selected_positions = st.sidebar.multiselect('Filter by Primary Position', df['position_1'].unique())
