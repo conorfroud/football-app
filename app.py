@@ -483,9 +483,9 @@ def similarity_score(df2):
         )
 
         st.pyplot(fig2)
-
+   
 def scatter_plot(df):
-    
+
     # Create three columns layout
     col1, col2, col3 = st.columns([1, 5, 1])
 
@@ -494,6 +494,9 @@ def scatter_plot(df):
         st.sidebar.header('Select Variables')
         x_variable = st.sidebar.selectbox('X-axis variable', df.columns, index=df.columns.get_loc('xG'))
         y_variable = st.sidebar.selectbox('Y-axis variable', df.columns, index=df.columns.get_loc('Open Play xG Assisted'))
+
+        # Checkbox for multiplying metrics by 'Player Season Minutes / 90'
+        multiply_by_minutes = st.sidebar.checkbox('Multiply by (Player Season Minutes / 90)')
 
         # Create a multi-select dropdown for filtering by primary_position
         selected_positions = st.sidebar.multiselect('Filter by Primary Position', df['position_1'].unique())
@@ -512,6 +515,11 @@ def scatter_plot(df):
                          (df['Player Season Minutes'] >= selected_minutes[0]) &
                          (df['Player Season Minutes'] <= selected_minutes[1]) &
                          (df['League'].isin(selected_leagues) | (len(selected_leagues) == 0))]
+
+        # Multiply the metrics by ('Player Season Minutes' / 90) if the checkbox is checked
+        if multiply_by_minutes:
+            filtered_df[x_variable] = filtered_df[x_variable] * (filtered_df['Player Season Minutes'] / 90)
+            filtered_df[y_variable] = filtered_df[y_variable] * (filtered_df['Player Season Minutes'] / 90)
 
         # Calculate Z-scores for the variables
         filtered_df['z_x'] = (filtered_df[x_variable] - filtered_df[x_variable].mean()) / filtered_df[x_variable].std()
@@ -566,6 +574,7 @@ def scatter_plot(df):
 
         # Display the plot in Streamlit
         st.plotly_chart(fig)
+
     
 def comparison_tab(df):
 
