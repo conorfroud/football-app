@@ -977,9 +977,6 @@ def player_stat_search(df):
     for column in technical_tactical_columns:
         df1[column] = pd.to_numeric(df1[column], errors='coerce')
 
-    # Drop rows with NaN values
-    df1.dropna(subset=technical_tactical_columns, inplace=True)
-
     # Check if any rows are remaining after dropping NaNs
     if df1.empty:
         st.write("No valid data found.")
