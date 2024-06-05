@@ -1015,7 +1015,7 @@ def player_stat_search(df):
     all_columns = unified_df.columns.tolist()
 
     # Ensure that these columns are always included in selected_stats
-    always_included_columns = ["Player Name", "Age_x", "Team", "Player Season Minutes", "League"]
+    always_included_columns = ["Player Name", "Age_x", "Team", "position_1", "Player Season Minutes", "League"]
     
     # Create a multiselect for stat selection
     selected_stats = st.multiselect("Select Columns", [col for col in all_columns if col not in always_included_columns], default=[])
