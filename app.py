@@ -995,7 +995,7 @@ def player_stat_search(df):
     unified_df = df.merge(df2, left_on='player_id', right_on='Statsbomb ID', how='left')
 
     # Sidebar for filtering by 'season_name'
-    available_seasons = unified_df['season_name'].unique()
+    available_seasons = unified_df['Season'].unique()
     selected_season = st.sidebar.selectbox('Select Season', available_seasons)
 
     # Sidebar for filtering by 'minutes' played
@@ -1019,7 +1019,7 @@ def player_stat_search(df):
     all_columns = unified_df.columns.tolist()
 
     # Ensure that these columns are always included in selected_stats
-    always_included_columns = ["Player Name", "Age_x", "Team", "position_1", "season_name", "Player Season Minutes", "League"]
+    always_included_columns = ["Player Name", "Age_x", "Team", "position_1", "Season", "Player Season Minutes", "League"]
     
     # Create a multiselect for stat selection
     selected_stats = st.multiselect("Select Columns", [col for col in all_columns if col not in always_included_columns], default=[])
@@ -1030,7 +1030,7 @@ def player_stat_search(df):
     # Filter the DataFrame based on selected filters
     filtered_df = unified_df[(unified_df['Player Season Minutes'] >= selected_minutes[0]) & (unified_df['Player Season Minutes'] <= selected_minutes[1])]
     filtered_df = filtered_df[(unified_df['Age_x'] >= selected_age[0]) & (unified_df['Age_x'] <= selected_age[1])]
-    filtered_df = filtered_df[filtered_df['season_name'] == selected_season]
+    filtered_df = filtered_df[filtered_df['Season'] == selected_season]
     if selected_positions:
         filtered_df = filtered_df[filtered_df['position_1'].isin(selected_positions)]
     if selected_leagues:
