@@ -502,6 +502,9 @@ def scatter_plot(df):
         # Checkbox for multiplying metrics by 'Player Season Minutes / 90'
         multiply_by_minutes = st.sidebar.checkbox('Season Totals')
 
+        # Stats to exclude from Season Totals calculation
+        exclude_from_totals = ['Average Distance', 'Top 5 PSV-99']
+
         # Create a multi-select dropdown for filtering by primary_position
         selected_positions = st.sidebar.multiselect('Filter by Primary Position', df['position_1'].unique())
 
@@ -526,8 +529,10 @@ def scatter_plot(df):
 
         # Multiply the metrics by ('Player Season Minutes' / 90) if the checkbox is checked
         if multiply_by_minutes:
-            filtered_df[x_variable] = filtered_df[x_variable] * (filtered_df['Player Season Minutes'] / 90)
-            filtered_df[y_variable] = filtered_df[y_variable] * (filtered_df['Player Season Minutes'] / 90)
+            if x_variable not in exclude_from_totals:
+                filtered_df[x_variable] = filtered_df[x_variable] * (filtered_df['Player Season Minutes'] / 90)
+            if y_variable not in exclude_from_totals:
+                filtered_df[y_variable] = filtered_df[y_variable] * (filtered_df['Player Season Minutes'] / 90)
 
         # Calculate Z-scores for the variables
         filtered_df['z_x'] = (filtered_df[x_variable] - filtered_df[x_variable].mean()) / filtered_df[x_variable].std()
