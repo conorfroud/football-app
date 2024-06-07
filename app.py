@@ -492,8 +492,12 @@ def scatter_plot(df):
     with col2:
         # Sidebar with variable selection
         st.sidebar.header('Select Variables')
-        x_variable = st.sidebar.selectbox('X-axis variable', df.columns, index=df.columns.get_loc('xG'))
-        y_variable = st.sidebar.selectbox('Y-axis variable', df.columns, index=df.columns.get_loc('Open Play xG Assisted'))
+
+        # Filter out non-stat columns
+        stat_columns = [col for col in df.columns if col not in ['Player Name', 'player_id', 'Season']]
+
+        x_variable = st.sidebar.selectbox('X-axis variable', stat_columns, index=stat_columns.index('xG'))
+        y_variable = st.sidebar.selectbox('Y-axis variable', stat_columns, index=stat_columns.index('Open Play xG Assisted'))
 
         # Checkbox for multiplying metrics by 'Player Season Minutes / 90'
         multiply_by_minutes = st.sidebar.checkbox('Season Totals')
@@ -575,7 +579,6 @@ def scatter_plot(df):
         # Display the plot in Streamlit
         st.plotly_chart(fig)
 
-    
 def comparison_tab(df):
 
     # Filter the DataFrame based on selected players
