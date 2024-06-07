@@ -508,7 +508,7 @@ def scatter_plot(df):
         # Sidebar for filtering by 'minutes' played
         min_minutes = int(df['Player Season Minutes'].min())
         max_minutes = int(df['Player Season Minutes'].max())
-        selected_minutes = st.sidebar.slider('Select Minutes Played Range', min_value=min_minutes, max_value=max_minutes, value=(300, max_minutes))
+        selected_minutes = st.sidebar.slider('Select Minutes Played Range', min_value=min_minutes, max_value=max_minutes, value=(600, max_minutes))
 
         # Filter data based on user-selected positions, minutes played, and leagues
         filtered_df = df[(df['position_1'].isin(selected_positions) | (len(selected_positions) == 0)) &
