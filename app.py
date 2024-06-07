@@ -509,16 +509,20 @@ def scatter_plot(df):
         default_leagues = ['English Championship']
         selected_leagues = st.sidebar.multiselect('Select Leagues', df['League'].unique(), default=default_leagues)
 
+        # Create a multi-select dropdown for selecting seasons
+        selected_seasons = st.sidebar.multiselect('Select Seasons', df['Season'].unique())
+
         # Sidebar for filtering by 'minutes' played
         min_minutes = int(df['Player Season Minutes'].min())
         max_minutes = int(df['Player Season Minutes'].max())
         selected_minutes = st.sidebar.slider('Select Minutes Played Range', min_value=min_minutes, max_value=max_minutes, value=(600, max_minutes))
 
-        # Filter data based on user-selected positions, minutes played, and leagues
+        # Filter data based on user-selected positions, minutes played, leagues, and seasons
         filtered_df = df[(df['position_1'].isin(selected_positions) | (len(selected_positions) == 0)) &
                          (df['Player Season Minutes'] >= selected_minutes[0]) &
                          (df['Player Season Minutes'] <= selected_minutes[1]) &
-                         (df['League'].isin(selected_leagues) | (len(selected_leagues) == 0))]
+                         (df['League'].isin(selected_leagues) | (len(selected_leagues) == 0)) &
+                         (df['Season'].isin(selected_seasons) | (len(selected_seasons) == 0))]
 
         # Multiply the metrics by ('Player Season Minutes' / 90) if the checkbox is checked
         if multiply_by_minutes:
