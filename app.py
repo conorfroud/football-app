@@ -1230,20 +1230,7 @@ def display_data():
     top_5_right_footed_cb_players = right_footed_cb_data.sort_values(by='Confidence Score', ascending=False).head(5)  # New: Top 5 right-footed CBs
 
     # Plot the top 5 players for each position on the pitch visualization
-    plot_players_on_pitch(
-        top_5_rb_players['Player'], 
-        top_5_lb_players['Player'], 
-        top_5_lw_players['Player'], 
-        top_5_rw_players['Player'], 
-        top_5_dm_players['Player'], 
-        top_5_cm_players['Player'], 
-        top_5_am_players['Player'], 
-        top_5_st_players['Player'], 
-        top_5_left_footed_cb_players['Player'], 
-        top_5_right_footed_cb_players['Player'], 
-        filtered_data, 
-        data.columns
-    )
+    plot_players_on_pitch(top_5_rb_players, top_5_lb_players, top_5_lw_players, top_5_rw_players, top_5_dm_players, top_5_cm_players, top_5_am_players, top_5_st_players, top_5_left_footed_cb_players, top_5_right_footed_cb_players, filtered_data, data.columns)
 
     # Filter and select desired columns
     selected_columns = ["Player", "Current Club", "Position", "Contract", "Confidence Score Last Month"]
