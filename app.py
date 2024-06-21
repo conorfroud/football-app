@@ -1250,7 +1250,7 @@ def display_data():
     st.markdown("<h3 style='text-align: center;'>Confidence Score Last Month</h3>", unsafe_allow_html=True)
 
     # Create three columns with adjusted widths
-    col1, col2, col3 = st.columns([0.75, 3, 1])
+    col1, col2, col3 = st.columns([0.8, 3, 1])
 
     # Display the table in the middle column
     with col2:
