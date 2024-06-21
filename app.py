@@ -1297,7 +1297,7 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
     ax.get_yaxis().set_visible(False)
 
     # Create three columns with adjusted widths
-    col1, col2, col3 = st.columns([1, 5, 1])
+    col1, col2, col3 = st.columns([0.8, 5, 0.8])
 
     # Display the pitch plot in the middle column
     with col2:
