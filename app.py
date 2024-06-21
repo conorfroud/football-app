@@ -1239,11 +1239,18 @@ def display_data():
     # Sort the data by 'Confidence Score Last Month'
     sorted_original_data = filtered_data.sort_values(by='Confidence Score Last Month', ascending=False)
 
+    # Filter and select desired columns
+    selected_columns = ["Player", "Current Club", "Position", "Contract", "Confidence Score Last Month"]
+    filtered_data = data[selected_columns]
+
+    # Sort the data by 'Confidence Score Last Month'
+    sorted_original_data = filtered_data.sort_values(by='Confidence Score Last Month', ascending=False)
+
     # Center align the text using HTML
     st.markdown("<h3 style='text-align: center;'>Confidence Score Last Month</h3>", unsafe_allow_html=True)
 
-    # Create three columns
-    col1, col2, col3 = st.columns([0.5, 5, 0.5])
+    # Create three columns with adjusted widths
+    col1, col2, col3 = st.columns([1, 3, 1])
 
     # Display the table in the middle column
     with col2:
