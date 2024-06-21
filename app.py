@@ -1236,12 +1236,18 @@ def display_data():
     selected_columns = ["Player", "Current Club", "Position", "Contract", "Confidence Score Last Month"]
     filtered_data = data[selected_columns]
 
-    # Display a table below the filtered table for original data sorted by 'Confidence Score Last Month'
-    st.markdown("**Confidence Score Last Month**")
+    # Sort the data by 'Confidence Score Last Month'
     sorted_original_data = filtered_data.sort_values(by='Confidence Score Last Month', ascending=False)
 
-    # Display the filtered DataFrame with selected columns
-    st.dataframe(sorted_original_data, hide_index=True)
+    # Display a table below the filtered table for original data sorted by 'Confidence Score Last Month'
+    st.markdown("**Confidence Score Last Month**")
+
+    # Create three columns
+    col1, col2, col3 = st.columns([1, 2, 1])
+
+    # Display the table in the middle column
+    with col2:
+        st.dataframe(sorted_original_data, hide_index=True)
 
 # Plotting function
 def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_players_data, dm_players_data, cm_players_data, am_players_data, st_players_data, left_cb_players_data, right_cb_players_data, data, column_names):
