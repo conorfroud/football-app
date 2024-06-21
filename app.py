@@ -1296,7 +1296,12 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
     ax.get_xaxis().set_visible(False)
     ax.get_yaxis().set_visible(False)
 
-    st.pyplot(fig)
+    # Create three columns with adjusted widths
+    col1, col2, col3 = st.columns([1, 3, 1])
+
+    # Display the pitch plot in the middle column
+    with col2:
+        st.pyplot(fig)
 
 def streamlit_interface(df2):
     
