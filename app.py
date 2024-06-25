@@ -2008,14 +2008,25 @@ def scouting_data():
     # Assuming 'GSheetsConnection' is defined somewhere else in your code
     conn = st.connection("gsheets", type=GSheetsConnection)
 
-    # Read specific columns from the spreadsheet
-    data = conn.read(spreadsheet=url, usecols=[1, 2, 9, 10, 22])
+    # Read specific columns from the spreadsheet, including columns for 'Position' & 'Level'
+    data = conn.read(spreadsheet=url, usecols=[1, 2, 9, 10, 22])  # Adjust usecols as needed to include the correct columns for 'Position' and 'Level'
 
-    # Sort the data by 'Confidence Score' column, adjust 'Column_name' to match the actual name in your DataFrame
-    data_sorted = data.sort_values('Confidence Score', ascending=False)  # Change 'Column_name' to the actual column name
+    # Drop-down selector for 'Position'
+    positions = data['Position'].unique()  # Replace 'Position' with the actual column name
+    selected_position = st.selectbox('Select Position', positions)
 
-    # Display the sorted data in a Streamlit app, hiding the index
-    st.dataframe(data_sorted, hide_index=True)
+    # Drop-down selector for 'Level'
+    levels = data['Level'].unique()  # Replace 'Level' with the actual column name
+    selected_level = st.selectbox('Select Level', levels)
+
+    # Filter data based on selections
+    filtered_data = data[(data['Position'] == selected_position) & (data['Level'] == selected_level)]
+
+    # Sort the filtered data by 'Confidence Score' column, adjust 'Column_name' to match the actual name in your DataFrame
+    filtered_data_sorted = filtered_data.sort_values('Confidence Score', ascending=False)  # Change 'Column_name' to the actual column name
+
+    # Display the sorted and filtered data in a Streamlit app, hiding the index
+    st.dataframe(filtered_data_sorted, hide_index=True)
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
