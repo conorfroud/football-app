@@ -2001,6 +2001,19 @@ def searchable_reports():
     # Display the filtered DataFrame
     st.write("Filtered Data:", filtered_data[selected_columns])
 
+
+# Function to read data from Google Sheets and display it
+def scouting_data():
+    
+    # Create a connection object.
+    url = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?usp=sharing"
+
+    conn = st.connection("gsheets", type=GSheetsConnection)
+
+    data = conn.read(spreadsheet=url)
+
+    st.dataframe(data, hide_index=True)
+
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
 df2 = pd.read_csv("championshipscores.csv")
