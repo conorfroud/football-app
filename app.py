@@ -2001,18 +2001,21 @@ def searchable_reports():
     # Display the filtered DataFrame
     st.write("Filtered Data:", filtered_data[selected_columns])
 
-
-# Function to read data from Google Sheets and display it
 def scouting_data():
-    
-    # Create a connection object.
+    # URL to your Google Sheets document
     url = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?usp=sharing"
 
+    # Assuming 'GSheetsConnection' is defined somewhere else in your code
     conn = st.connection("gsheets", type=GSheetsConnection)
 
+    # Read specific columns from the spreadsheet
     data = conn.read(spreadsheet=url, usecols=[1, 2, 9, 10, 22])
 
-    st.dataframe(data, hide_index=True)
+    # Sort the data by 'Confidence Score' column, adjust 'Column_name' to match the actual name in your DataFrame
+    data_sorted = data.sort_values('Confidence Score', ascending=False)  # Change 'Column_name' to the actual column name
+
+    # Display the sorted data in a Streamlit app, hiding the index
+    st.dataframe(data_sorted, hide_index=True)
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
