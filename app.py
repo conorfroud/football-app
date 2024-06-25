@@ -2043,5 +2043,7 @@ if selected_tab == "Player Profile":
     streamlit_interface(df2)
 if selected_tab == "Report Search":
     searchable_reports()
+if selected_tab == "Player Database":
+    scouting_data()
 elif selected_tab == "Multi Player Comparison Tab":
     comparison_tab(df)
