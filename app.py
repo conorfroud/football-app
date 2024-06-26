@@ -2016,7 +2016,7 @@ def scouting_data():
     selected_positions = st.multiselect('Select Position(s)', positions, default=list(positions))
 
     # Multiselect for 'Level' with all options selected by default
-    levels = data['Level']..unique()  # Replace 'Level' with the actual column name
+    levels = data['Level'].unique()  # Replace 'Level' with the actual column name
     selected_levels = st.multiselect('Select Level(s)', levels, default=list(levels))
 
     # Filter data based on selections
