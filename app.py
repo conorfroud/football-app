@@ -2011,16 +2011,16 @@ def scouting_data():
     # Read specific columns from the spreadsheet, including columns for 'Position' & 'Level'
     data = conn.read(spreadsheet=url, usecols=[1, 2, 9, 10, 22])  # Adjust usecols as needed to include the correct columns for 'Position' and 'Level'
 
-    # Drop-down selector for 'Position'
+    # Multiselect for 'Position' with all options selected by default
     positions = data['Position'].unique()  # Replace 'Position' with the actual column name
-    selected_position = st.selectbox('Select Position', positions)
+    selected_positions = st.multiselect('Select Position(s)', positions, default=list(positions))
 
-    # Drop-down selector for 'Level'
-    levels = data['Level'].unique()  # Replace 'Level' with the actual column name
-    selected_level = st.selectbox('Select Level', levels)
+    # Multiselect for 'Level' with all options selected by default
+    levels = data['Level']..unique()  # Replace 'Level' with the actual column name
+    selected_levels = st.multiselect('Select Level(s)', levels, default=list(levels))
 
     # Filter data based on selections
-    filtered_data = data[(data['Position'] == selected_position) & (data['Level'] == selected_level)]
+    filtered_data = data[data['Position'].isin(selected_positions) & data['Level'].isin(selected_levels)]
 
     # Sort the filtered data by 'Confidence Score' column, adjust 'Column_name' to match the actual name in your DataFrame
     filtered_data_sorted = filtered_data.sort_values('Confidence Score', ascending=False)  # Change 'Column_name' to the actual column name
