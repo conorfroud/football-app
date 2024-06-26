@@ -2011,13 +2011,13 @@ def scouting_data():
     # Read specific columns from the spreadsheet, including columns for 'Position' & 'Level'
     data = conn.read(spreadsheet=url, usecols=[1, 2, 9, 10, 22])  # Adjust usecols as needed to include the correct columns for 'Position' and 'Level'
 
-    # Multiselect for 'Position' with all options selected by default
+    # Sidebar multiselect for 'Position' with all options selected by default
     positions = data['Position'].unique()  # Replace 'Position' with the actual column name
-    selected_positions = st.multiselect('Select Position(s)', positions, default=list(positions))
+    selected_positions = st.sidebar.multiselect('Select Position(s)', positions, default=list(positions))
 
-    # Multiselect for 'Level' with all options selected by default
+    # Sidebar multiselect for 'Level' with all options selected by default
     levels = data['Level'].unique()  # Replace 'Level' with the actual column name
-    selected_levels = st.multiselect('Select Level(s)', levels, default=list(levels))
+    selected_levels = st.sidebar.multiselect('Select Level(s)', levels, default=list(levels))
 
     # Filter data based on selections
     filtered_data = data[data['Position'].isin(selected_positions) & data['Level'].isin(selected_levels)]
