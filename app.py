@@ -2002,7 +2002,7 @@ def scouting_data():
     conn = st.connection("gsheets", type=GSheetsConnection)
 
     # Read specific columns from the spreadsheet, including columns for 'Position' & 'Level'
-    data = conn.read(spreadsheet=url, usecols=[1, 2, 9, 10, 22])  # Adjust usecols as needed to include the correct columns for 'Position' and 'Level'
+    data = conn.read(spreadsheet=url)  # Adjust usecols as needed to include the correct columns for 'Position' and 'Level'
 
     # Sidebar multiselect for 'Position' with all options selected by default
     positions = data['Position'].unique()  # Replace 'Position' with the actual column name
