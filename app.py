@@ -1998,11 +1998,14 @@ def scouting_data():
     # URL to your Google Sheets document
     url = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?usp=sharing"
 
+    # Define the columns you want to use
+    use_cols = ["Player", "Current Club", "Position", "Contract", "Confidence Score", "Age", "Level"]
+
     # Assuming 'GSheetsConnection' is defined somewhere else in your code
     conn = st.connection("gsheets", type=GSheetsConnection)
 
     # Read specific columns from the spreadsheet, including columns for 'Position' & 'Level'
-    data = conn.read(spreadsheet=url)  # Adjust usecols as needed to include the correct columns for 'Position' and 'Level'
+    data = conn.read(spreadsheet=url, usecols=use_cols)  # Adjust usecols as needed to include the correct columns for 'Position' and 'Level'
 
     # Sidebar multiselect for 'Position' with all options selected by default
     positions = data['Position'].unique()  # Replace 'Position' with the actual column name
