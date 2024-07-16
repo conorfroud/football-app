@@ -1994,7 +1994,6 @@ def searchable_reports():
     # Display the filtered DataFrame
     st.write("Filtered Data:", filtered_data[selected_columns])
 
-# Function to retrieve scouting data
 def scouting_data():
     # URL to your Google Sheets document
     url = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?usp=sharing"
@@ -2003,28 +2002,25 @@ def scouting_data():
     use_cols = ["Player", "Current Club", "Position", "Contract", "Confidence Score", "Age", "Level"]
 
     # Assuming 'GSheetsConnection' is defined somewhere else in your code
-    conn = connect()
+    conn = st.connection("gsheets", type=GSheetsConnection)
 
     # Read specific columns from the spreadsheet
-    data = conn.execute(f'SELECT {", ".join(use_cols)} FROM "{url}"').fetchall()
-
-    # Convert data to DataFrame
-    df = pd.DataFrame(data, columns=use_cols)
+    data = conn.read(spreadsheet=url, usecols=use_cols)  # Adjust usecols as needed to include the correct columns for 'Position' and 'Level'
 
     # Sidebar multiselect for 'Position' with all options selected by default
-    positions = df['Position'].unique()
+    positions = data['Position'].unique()  # Replace 'Position' with the actual column name
     selected_positions = st.sidebar.multiselect('Select Position(s)', positions, default=list(positions))
 
     # Sidebar multiselect for 'Level' with all options selected by default
-    levels = df['Level'].unique()
+    levels = data['Level'].unique()  # Replace 'Level' with the actual column name
     selected_levels = st.sidebar.multiselect('Select Level(s)', levels, default=list(levels))
 
     # Sidebar multiselect for 'Contract' with all options selected by default
-    contracts = df['Contract'].unique()
+    contracts = data['Contract'].unique()  # Replace 'Contract' with the actual column name
     selected_contracts = st.sidebar.multiselect('Select Contract(s)', contracts, default=list(contracts))
 
     # Filter data based on selections
-    filtered_data = df[df['Position'].isin(selected_positions) & df['Level'].isin(selected_levels) & df['Contract'].isin(selected_contracts)]
+    filtered_data = data[data['Position'].isin(selected_positions) & data['Level'].isin(selected_levels) & data['Contract'].isin(selected_contracts)]
 
     # Sort the filtered data by 'Confidence Score' column
     filtered_data_sorted = filtered_data.sort_values('Confidence Score', ascending=False)
