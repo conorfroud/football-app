@@ -1239,13 +1239,6 @@ def display_data():
     # Sort the data by 'Confidence Score Last Month'
     sorted_original_data = filtered_data.sort_values(by='Confidence Score Last Month', ascending=False)
 
-    # Filter and select desired columns
-    selected_columns = ["Player", "Current Club", "Position", "Contract", "Confidence Score Last Month"]
-    filtered_data = data[selected_columns]
-
-    # Sort the data by 'Confidence Score Last Month'
-    sorted_original_data = filtered_data.sort_values(by='Confidence Score Last Month', ascending=False)
-
     # Center align the text using HTML
     st.markdown("<h3 style='text-align: center;'>Confidence Score Last Month</h3>", unsafe_allow_html=True)
 
@@ -1274,21 +1267,21 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
     # Annotate players for each position
     for position, players_data in zip(['RB', 'LB', 'LW', 'RW', 'CDM', 'CM', 'AM', 'CF'], [rb_players_data, lb_players_data, lw_players_data, rw_players_data, dm_players_data, cm_players_data, am_players_data, st_players_data]):
         for index, player in players_data.iterrows():
-            ax.annotate(player[column_names[0]], xy=(positions_x[position], start_y[position]), xytext=(positions_x[position], start_y[position]),
+            ax.annotate(player['Player'], xy=(positions_x[position], start_y[position]), xytext=(positions_x[position], start_y[position]),
                         textcoords="offset points", ha='center', va='center', color='black', fontsize=6)
             start_y[position] -= 3  
 
     # Annotate left-footed CBs
     offset_left_cb = 0
     for index, player in left_cb_players_data.iterrows():
-        ax.annotate(player[column_names[0]], xy=(23, 30), xytext=(23, 30 + offset_left_cb),
+        ax.annotate(player['Player'], xy=(23, 30), xytext=(23, 30 + offset_left_cb),
                     textcoords="offset points", ha='center', va='center', color='black', fontsize=6)
         offset_left_cb -= 15  # Adjust the offset for left-footed CBs
 
     # Annotate right-footed CBs
     offset_right_cb = 0
     for index, player in right_cb_players_data.iterrows():
-        ax.annotate(player[column_names[0]], xy=(42, 30), xytext=(42, 30 + offset_right_cb),
+        ax.annotate(player['Player'], xy=(42, 30), xytext=(42, 30 + offset_right_cb),
                     textcoords="offset points", ha='center', va='center', color='black', fontsize=6)
         offset_right_cb -= 15  # Adjust the offset for right-footed CBs
 
