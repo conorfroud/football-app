@@ -2019,8 +2019,19 @@ def scouting_data():
     contracts = data['Contract'].unique()  # Replace 'Contract' with the actual column name
     selected_contracts = st.sidebar.multiselect('Select Contract(s)', contracts, default=list(contracts))
 
+    # Sidebar checkbox for 'Without Club'
+    without_club = st.sidebar.checkbox('Show only players without club')
+
     # Filter data based on selections
-    filtered_data = data[data['Position'].isin(selected_positions) & data['Level'].isin(selected_levels) & data['Contract'].isin(selected_contracts)]
+    filtered_data = data[
+        data['Position'].isin(selected_positions) &
+        data['Level'].isin(selected_levels) &
+        data['Contract'].isin(selected_contracts)
+    ]
+
+    # Apply additional filter if checkbox is checked
+    if without_club:
+        filtered_data = filtered_data[filtered_data['Current Club'] == 'Without Club']
 
     # Sort the filtered data by 'Confidence Score' column
     filtered_data_sorted = filtered_data.sort_values('Confidence Score', ascending=False)
