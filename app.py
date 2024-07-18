@@ -344,12 +344,6 @@ def about_tab(df2):
             ),
         )
 
-        # Add a title to the plot with customized formatting
-        title = f"Comparison of {selected_player_1} vs {selected_player_2}"
-        
-        # Set the title with custom formatting
-        fig.suptitle(title, fontsize=16, fontproperties=prop1, color='black')
-
         # Highlight the players' names in blue and pink
         fig.text(
             0.35, 0.95,  # Positioning: adjust as needed
@@ -359,6 +353,16 @@ def about_tab(df2):
             fontsize=16, 
             fontproperties=prop1, 
             color='#7EC0EE'
+        )
+        # Highlight the players' names in blue and pink
+        fig.text(
+            0.5, 0.95,  # Positioning: adjust as needed
+            f"vs", 
+            ha='center', 
+            va='top', 
+            fontsize=16, 
+            fontproperties=prop1, 
+            color='black'
         )
         fig.text(
             0.65, 0.95,  # Positioning: adjust as needed
