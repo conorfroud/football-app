@@ -359,6 +359,20 @@ def about_tab(df2):
             ha="center"  # Horizontal alignment set to center
         )
 
+        # Add a title to the plot with customized formatting
+        sub_title = f"Percentile Rank vs Band 2 Leagues Strikers"
+
+        # Use fig_text to set the title with highlighted player names, centered
+        fig_text(
+            x=0.5, y=1,  # Centered alignment
+            s=sub_title, 
+            color='black', 
+            family="Roboto", 
+            fontsize=20, 
+            fontweight="bold",
+            ha="center"  # Horizontal alignment set to center
+        )
+
         st.pyplot(fig)
 
 # Function to calculate similarity against 'Striker' profiles
