@@ -382,18 +382,18 @@ def about_tab(df2):
             f"{selected_player_1}: {minutes_1} minutes", 
             ha='center', 
             va='center', 
-            fontsize=8, 
+            fontsize=12, 
             fontproperties=prop1, 
-            color='#4CA1DC'
+            color='black'
         )
         fig.text(
             0.75, 0.02, 
             f"{selected_player_2}: {minutes_2} minutes", 
             ha='center', 
             va='center', 
-            fontsize=8, 
+            fontsize=12, 
             fontproperties=prop1, 
-            color='#FF34B3'
+            color='black'
         )
 
         st.pyplot(fig)
