@@ -344,34 +344,18 @@ def about_tab(df2):
             ),
         )
 
-        # Highlight the players' names in blue and pink
-        fig.text(
-            0.35, 0.95,  # Positioning: adjust as needed
-            f"{selected_player_1}", 
-            ha='center', 
-            va='top', 
-            fontsize=16, 
-            fontproperties=prop1, 
-            color='#7EC0EE'
-        )
-        # Highlight the players' names in blue and pink
-        fig.text(
-            0.5, 0.95,  # Positioning: adjust as needed
-            f"vs", 
-            ha='center', 
-            va='top', 
-            fontsize=16, 
-            fontproperties=prop1, 
-            color='black'
-        )
-        fig.text(
-            0.65, 0.95,  # Positioning: adjust as needed
-            f"{selected_player_2}", 
-            ha='center', 
-            va='top', 
-            fontsize=16, 
-            fontproperties=prop1, 
-            color='#FF34B3'
+        # Add a title to the plot with customized formatting
+        title = f"<{selected_player_1}> vs <{selected_player_2}>"
+
+        # Use fig_text to set the title with highlighted player names
+        fig_text(
+            x=0.28, y=1, 
+            s=title, 
+            color='black',  
+            highlight_textprops=[{"color": '#4CA1DC'}, {"color": '#FF34B3'}], 
+            family="Roboto", 
+            fontsize=20, 
+            fontweight="bold"
         )
 
         st.pyplot(fig)
