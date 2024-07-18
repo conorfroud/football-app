@@ -271,10 +271,10 @@ def about_tab(df2):
         plot_title_2 = f"Centre Back Metric Percentiles for {selected_player_2}"
 
     elif selected_profile == "Stretch 9":
-        columns_1 = ["Player Name", "xG (S9)", "Non-Penalty Goals (S9)", "Shots (S9)", "OBV Shot (S9)", "Open Play xA (S9)", "OBV Dribble & Carry (S9)", "Top 5 PSV-99 (S9)", "Runs in Behind (S9)", "Threat of Runs in Behind (S9)"]
+        columns_1 = ["Player Name", "xG (S9)", "Non-Penalty Goals (S9)", "Shots (S9)", "OBV Shot (S9)", "Open Play xA (S9)", "OBV Dribble & Carry (S9)", "Runs in Behind (S9)", "Threat of Runs in Behind (S9)",  "Top 5 PSV-99 (S9)"]
         plot_title_1 = f"Stretch 9 Metric Percentiles for {selected_player_1}"
 
-        columns_2 = ["Player Name", "xG (S9)", "Non-Penalty Goals (S9)", "Shots (S9)", "OBV Shot (S9)", "Open Play xA (S9)", "OBV Dribble & Carry (S9)", "Top 5 PSV-99 (S9)", "Runs in Behind (S9)", "Threat of Runs in Behind (S9)"]
+        columns_2 = ["Player Name", "xG (S9)", "Non-Penalty Goals (S9)", "Shots (S9)", "OBV Shot (S9)", "Open Play xA (S9)", "OBV Dribble & Carry (S9)", "Runs in Behind (S9)", "Threat of Runs in Behind (S9)", "Top 5 PSV-99 (S9)"]
         plot_title_2 = f"Stretch 9 Metric Percentiles for {selected_player_2}"
 
     # Filter DataFrames based on the selected profile
