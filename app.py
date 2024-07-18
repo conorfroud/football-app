@@ -349,7 +349,7 @@ def about_tab(df2):
 
         # Use fig_text to set the title with highlighted player names
         fig_text(
-            x=0.28, y=1, 
+            x=0.18, y=1, 
             s=title, 
             color='black',  
             highlight_textprops=[{"color": '#4CA1DC'}, {"color": '#FF34B3'}], 
