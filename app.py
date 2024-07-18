@@ -347,15 +347,16 @@ def about_tab(df2):
         # Add a title to the plot with customized formatting
         title = f"<{selected_player_1}> vs <{selected_player_2}>"
 
-        # Use fig_text to set the title with highlighted player names
+        # Use fig_text to set the title with highlighted player names, centered
         fig_text(
-            x=0.18, y=1, 
+            x=0.5, y=1.05,  # Centered alignment
             s=title, 
             color='black',  
             highlight_textprops=[{"color": '#4CA1DC'}, {"color": '#FF34B3'}], 
             family="Roboto", 
             fontsize=20, 
-            fontweight="bold"
+            fontweight="bold",
+            ha="center"  # Horizontal alignment set to center
         )
 
         st.pyplot(fig)
