@@ -357,14 +357,14 @@ def about_tab(df2):
         # Highlight the player's name in pink if they are selected
         if selected_player_2:
             fig.suptitle(
-                f"Comparison of {selected_player_1} (Blue) vs ", 
+                f"Comparison of {selected_player_1} vs ", 
                 fontsize=16, 
                 fontproperties=prop1, 
-                color='black'
+                color='#7EC0EE'
             )
             fig.text(
                 0.5, 0.95, 
-                f"{selected_player_2} (Pink)", 
+                f"{selected_player_2}", 
                 ha='center', 
                 va='top', 
                 fontsize=16, 
