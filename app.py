@@ -368,7 +368,7 @@ def about_tab(df2):
             s=sub_title, 
             color='black', 
             family="Roboto", 
-            fontsize=16,
+            fontsize=14,
             ha="center"  # Horizontal alignment set to center
         )
 
