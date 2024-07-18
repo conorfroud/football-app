@@ -344,6 +344,9 @@ def about_tab(df2):
             ),
         )
 
+        # Add a title to the plot
+        fig.suptitle(f"Comparison of {selected_player_1} (Blue) vs {selected_player_2} (Pink)", fontsize=16, fontproperties=prop1)
+
         st.pyplot(fig)
 
 # Function to calculate similarity against 'Striker' profiles
