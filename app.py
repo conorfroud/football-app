@@ -345,32 +345,30 @@ def about_tab(df2):
         )
 
         # Add a title to the plot with customized formatting
-        title = f"Comparison of "
-        title += f"{selected_player_1} " if selected_player_1 else ""
-        title += f" vs "
-        title += f"{selected_player_2} " if selected_player_2 else ""
-        title += f""
+        title = f"Comparison of {selected_player_1} vs {selected_player_2}"
         
         # Set the title with custom formatting
-        fig.suptitle(title, fontsize=16, fontproperties=prop1)
-        
-        # Highlight the player's name in pink if they are selected
-        if selected_player_2:
-            fig.suptitle(
-                f"Comparison of {selected_player_1} vs ", 
-                fontsize=16, 
-                fontproperties=prop1, 
-                color='#7EC0EE'
-            )
-            fig.text(
-                0.5, 0.95, 
-                f"{selected_player_2}", 
-                ha='center', 
-                va='top', 
-                fontsize=16, 
-                fontproperties=prop1, 
-                color='#FF34B3'
-            )
+        fig.suptitle(title, fontsize=16, fontproperties=prop1, color='black')
+
+        # Highlight the players' names in blue and pink
+        fig.text(
+            0.35, 0.95,  # Positioning: adjust as needed
+            f"{selected_player_1}", 
+            ha='center', 
+            va='top', 
+            fontsize=16, 
+            fontproperties=prop1, 
+            color='#7EC0EE'
+        )
+        fig.text(
+            0.65, 0.95,  # Positioning: adjust as needed
+            f"{selected_player_2}", 
+            ha='center', 
+            va='top', 
+            fontsize=16, 
+            fontproperties=prop1, 
+            color='#FF34B3'
+        )
 
         st.pyplot(fig)
 
