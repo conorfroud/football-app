@@ -347,9 +347,9 @@ def about_tab(df2):
         # Add a title to the plot with customized formatting
         title = f"Comparison of "
         title += f"{selected_player_1} " if selected_player_1 else ""
-        title += f"(Blue) vs "
+        title += f" vs "
         title += f"{selected_player_2} " if selected_player_2 else ""
-        title += f"(Pink)"
+        title += f""
         
         # Set the title with custom formatting
         fig.suptitle(title, fontsize=16, fontproperties=prop1)
