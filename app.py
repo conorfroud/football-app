@@ -437,10 +437,6 @@ def calculate_similarity(selected_df, df2, columns):
     
     return similarity_df
 
-import streamlit as st
-from matplotlib import font_manager
-from py_pizza import PyPizza, fig_text
-
 # Main function for the Streamlit app
 def similarity_score(df2):
 
