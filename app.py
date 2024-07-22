@@ -173,8 +173,13 @@ def main_tab(df2):
             on_click=None,  # You can add a function to handle click events if needed
         )
         
-def about_tab(df2):
+import streamlit as st
+import pandas as pd
+from matplotlib import font_manager
+from mplsoccer import PyPizza, FontManager
+from highlight_text import fig_text
 
+def about_tab(df2):
     df2 = df2[df2['League'] != 'Band 2 Leagues']
 
     # Define the allowed score types
@@ -187,8 +192,23 @@ def about_tab(df2):
         index=0  # Set the default index to the first player
     )
 
+    # Filter DataFrame based on selected player 1
+    player_1_teams = df2[df2['Player Name'] == selected_player_1]["Team"].unique()
+
+    # Select team for player 1 if they have played for multiple teams
+    if len(player_1_teams) > 1:
+        selected_team_1 = st.sidebar.selectbox(
+            "Select Team for Player 1:",
+            options=player_1_teams,
+            index=0
+        )
+        # Filter DataFrame for selected team
+        selected_player_df_1 = df2[(df2["Player Name"] == selected_player_1) & (df2["Team"] == selected_team_1)]
+    else:
+        selected_player_df_1 = df2[df2["Player Name"] == selected_player_1]
+
     # Filter available players for Player 2 based on the 'Score Type' of Player 1
-    available_players_2 = df2[df2["Score Type"] == df2[df2["Player Name"] == selected_player_1]["Score Type"].values[0]]["Player Name"].unique()
+    available_players_2 = df2[df2["Score Type"] == selected_player_df_1["Score Type"].values[0]]["Player Name"].unique()
 
     # Select player 2
     selected_player_2 = st.sidebar.selectbox(
@@ -197,11 +217,20 @@ def about_tab(df2):
         index=1  # Set the default index to the second player
     )
 
-    # Player 1 DataFrame
-    selected_player_df_1 = df2[df2["Player Name"] == selected_player_1]
+    # Filter DataFrame based on selected player 2
+    player_2_teams = df2[df2['Player Name'] == selected_player_2]["Team"].unique()
 
-    # Player 2 DataFrame
-    selected_player_df_2 = df2[df2["Player Name"] == selected_player_2]
+    # Select team for player 2 if they have played for multiple teams
+    if len(player_2_teams) > 1:
+        selected_team_2 = st.sidebar.selectbox(
+            "Select Team for Player 2:",
+            options=player_2_teams,
+            index=0
+        )
+        # Filter DataFrame for selected team
+        selected_player_df_2 = df2[(df2["Player Name"] == selected_player_2) & (df2["Team"] == selected_team_2)]
+    else:
+        selected_player_df_2 = df2[df2["Player Name"] == selected_player_2]
 
     # Profile options based on Player 1
     profile_options = selected_player_df_1[selected_player_df_1["Score Type"].isin(allowed_score_types)]["Score Type"].unique()
