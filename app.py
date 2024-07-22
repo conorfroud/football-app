@@ -173,12 +173,6 @@ def main_tab(df2):
             on_click=None,  # You can add a function to handle click events if needed
         )
         
-import streamlit as st
-import pandas as pd
-from matplotlib import font_manager
-from mplsoccer import PyPizza, FontManager
-from highlight_text import fig_text
-
 def about_tab(df2):
     df2 = df2[df2['League'] != 'Band 2 Leagues']
 
@@ -561,6 +555,48 @@ def similarity_score(df2):
                 bbox=dict(edgecolor="#000000", facecolor="#7EC0EE", boxstyle="round,pad=0.2", lw=1),
                 weight="bold"
             )
+        )
+
+        # Add a title to the plot with customized formatting
+        title = f"<{selected_player_1}>"
+
+        # Use fig_text to set the title with highlighted player names, centered
+        fig_text(
+            x=0.5, y=1.05,  # Centered alignment
+            s=title, 
+            color='black',  
+            highlight_textprops=[{"color": '#4CA1DC'}, {"color": '#FF34B3'}], 
+            family="Roboto", 
+            fontsize=20, 
+            fontweight="bold",
+            ha="center"  # Horizontal alignment set to center
+        )
+
+        # Add a title to the plot with customized formatting
+        sub_title = f"Percentile Rank vs Band 2 Leagues Strikers"
+
+        # Use fig_text to set the title with highlighted player names, centered
+        fig_text(
+            x=0.5, y=1,  # Centered alignment
+            s=sub_title, 
+            color='black', 
+            family="Roboto", 
+            fontsize=14,
+            ha="center"  # Horizontal alignment set to center
+        )
+
+        # Get minutes for each player
+        minutes_1 = selected_player_df_1["Player Season Minutes"].values[0]
+
+        # Add player minutes to the bottom of the plot
+        fig.text(
+            0.25, 0.02, 
+            f"{selected_player_1}: {minutes_1} minutes", 
+            ha='center', 
+            va='center', 
+            fontsize=12, 
+            fontproperties=prop1, 
+            color='black'
         )
 
         st.pyplot(fig2)
