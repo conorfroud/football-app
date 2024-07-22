@@ -565,7 +565,6 @@ def similarity_score(df2):
             x=0.5, y=1.05,  # Centered alignment
             s=title, 
             color='black',  
-            highlight_textprops=[{"color": '#4CA1DC'}, {"color": '#FF34B3'}], 
             family="Roboto", 
             fontsize=20, 
             fontweight="bold",
