@@ -437,6 +437,10 @@ def calculate_similarity(selected_df, df2, columns):
     
     return similarity_df
 
+import streamlit as st
+from matplotlib import font_manager
+from py_pizza import PyPizza, fig_text
+
 # Main function for the Streamlit app
 def similarity_score(df2):
 
@@ -558,7 +562,7 @@ def similarity_score(df2):
         )
 
         # Add a title to the plot with customized formatting
-        title = f"<{selected_player_1}>"
+        title = f"<{selected_player}>"
 
         # Use fig_text to set the title with highlighted player names, centered
         fig_text(
@@ -586,12 +590,12 @@ def similarity_score(df2):
         )
 
         # Get minutes for each player
-        minutes_1 = selected_player_df_1["Player Season Minutes"].values[0]
+        minutes_1 = selected_player_df["Player Season Minutes"].values[0]
 
         # Add player minutes to the bottom of the plot
-        fig.text(
+        fig2.text(
             0.25, 0.02, 
-            f"{selected_player_1}: {minutes_1} minutes", 
+            f"{selected_player}: {minutes_1} minutes", 
             ha='center', 
             va='center', 
             fontsize=12, 
