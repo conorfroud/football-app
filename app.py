@@ -64,10 +64,6 @@ def main_tab(df2):
     min_player_market_value = int(df2['Market value (millions)'].min())
     max_player_market_value = int(df2['Market value (millions)'].max())
 
-    # Get the minimum and maximum player season minutes
-    min_player_minutes = int(df2['Player Season Minutes'].min())
-    max_player_minutes = int(df2['Player Season Minutes'].max())
-
     min_stoke_score = 0.0
     max_stoke_score = 100.0
 
@@ -106,6 +102,15 @@ def main_tab(df2):
 
     # Add a slider for selecting the Top 5 PSV-99 Percentile range
     top_5_psv_99_percentile_range = st.sidebar.slider("Select Top 5 PSV-99 Percentile Range", min_value=0, max_value=100, value=(0, 100))
+
+    # Calculate the min and max player season minutes based on selected leagues
+    if selected_leagues:
+        league_filtered_df = df2[df2['League'].isin(selected_leagues)]
+        min_player_minutes = int(league_filtered_df['Player Season Minutes'].min())
+        max_player_minutes = int(league_filtered_df['Player Season Minutes'].max())
+    else:
+        min_player_minutes = int(df2['Player Season Minutes'].min())
+        max_player_minutes = int(df2['Player Season Minutes'].max())
 
     # Add a slider for selecting the Player Season Minutes range
     player_minutes_range = st.sidebar.slider("Select Player Season Minutes Range", min_value=min_player_minutes, max_value=max_player_minutes, value=(min_player_minutes, max_player_minutes))
