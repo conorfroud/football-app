@@ -64,6 +64,10 @@ def main_tab(df2):
     min_player_market_value = int(df2['Market value (millions)'].min())
     max_player_market_value = int(df2['Market value (millions)'].max())
 
+    # Get the minimum and maximum player season minutes
+    min_player_minutes = int(df2['Player Season Minutes'].min())
+    max_player_minutes = int(df2['Player Season Minutes'].max())
+
     min_stoke_score = 0.0
     max_stoke_score = 100.0
 
@@ -102,6 +106,9 @@ def main_tab(df2):
 
     # Add a slider for selecting the Top 5 PSV-99 Percentile range
     top_5_psv_99_percentile_range = st.sidebar.slider("Select Top 5 PSV-99 Percentile Range", min_value=0, max_value=100, value=(0, 100))
+
+    # Add a slider for selecting the Player Season Minutes range
+    player_minutes_range = st.sidebar.slider("Select Player Season Minutes Range", min_value=min_player_minutes, max_value=max_player_minutes, value=(min_player_minutes, max_player_minutes))
 
     # Define a dictionary that maps 'Score Type' to columns
     score_type_column_mapping = {
@@ -153,7 +160,9 @@ def main_tab(df2):
     (df2[selected_columns[7]].le(top_5_psv_99_percentile_range[1])) &
     (df2['L/R Footedness %'].ge(lr_footedness_range[0])) &
     (df2['L/R Footedness %'].le(lr_footedness_range[1])) &
-    (df2['Primary Position'].isin(selected_primary_positions))
+    (df2['Primary Position'].isin(selected_primary_positions)) &
+    (df2['Player Season Minutes'] >= player_minutes_range[0]) & 
+    (df2['Player Season Minutes'] <= player_minutes_range[1])
 ]
 
     # Sort the filtered DataFrame by "Stoke Score" column in descending order
