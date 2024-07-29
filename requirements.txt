@@ -7,4 +7,3 @@ streamlit
 mplsoccer
 scikit-learn
 numpy==1.24.3
-st-gsheets-connection
