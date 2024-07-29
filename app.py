@@ -2178,7 +2178,8 @@ def shortlist_eleven():
 
     data = conn.read(spreadsheet=url)
 
-    filtered_data = data
+    # Filter data for players with 'Add to Shortlist' = 'Yes'
+    filtered_data = data[data['Add to Shortlist'] == 'Yes']
 
     # Filter data for RB, LB, LW, RW, DM, CM, AM, and ST positions
     rb_data = filtered_data[filtered_data['Position'] == 'RB']
