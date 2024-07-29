@@ -2227,7 +2227,7 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
     start_y = {'RB': 38, 'LB': 38, 'LW': 80, 'RW': 80, 'CDM': 48, 'CM': 65, 'AM': 67, 'CF': 94, 'CB': 56}  
 
     # Set the y-coordinate for the position labels
-    position_label_y = {'RB': 40, 'LB': 40, 'LW': 82, 'RW': 82, 'CDM': 50, 'CM': 67, 'AM': 69, 'CF': 96, 'CB': 58}
+    position_label_y = {'RB': 41, 'LB': 41, 'LW': 83, 'RW': 83, 'CDM': 51, 'CM': 68, 'AM': 70, 'CF': 97, 'CB': 59}
 
     # Annotate positions
     for position in ['RB', 'LB', 'LW', 'RW', 'CDM', 'CM', 'AM', 'CF']:
@@ -2239,7 +2239,7 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
         for index, player in players_data.iterrows():
             ax.annotate(player['Player'], xy=(positions_x[position], start_y[position]), xytext=(positions_x[position], start_y[position]),
                         textcoords="offset points", ha='center', va='center', color='black', fontsize=5)
-            start_y[position] -= 3
+            start_y[position] -= 2.5
 
     # Annotate left-footed CBs
     offset_left_cb = 0
