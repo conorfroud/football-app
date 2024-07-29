@@ -2221,10 +2221,10 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
     fig.set_facecolor(background)
 
     # Set the X-coordinate of the center of the pitch for each position
-    positions_x = {'RB': 58, 'LB': 8, 'LW': 8, 'RW': 58, 'CDM': 33, 'CM': 48, 'AM': 19, 'CF': 33, 'CB': 33}  
+    positions_x = {'RB': 58, 'LB': 8, 'LW': 8, 'RW': 58, 'CDM': 33, 'CM': 48, 'AM': 20, 'CF': 33, 'CB': 33}  
 
     # Set the starting y-coordinate for each position
-    start_y = {'RB': 38, 'LB': 38, 'LW': 80, 'RW': 80, 'CDM': 48, 'CM': 65, 'AM': 69, 'CF': 94, 'CB': 56}  
+    start_y = {'RB': 38, 'LB': 38, 'LW': 80, 'RW': 80, 'CDM': 48, 'CM': 65, 'AM': 67, 'CF': 94, 'CB': 56}  
 
     # Set the y-coordinate for the position labels
     position_label_y = {'RB': 41, 'LB': 41, 'LW': 83, 'RW': 83, 'CDM': 51, 'CM': 68, 'AM': 70, 'CF': 96, 'CB': 59}
