@@ -2211,23 +2211,6 @@ def shortlist_eleven():
     # Plot the top 5 players for each position on the pitch visualization
     plot_players_on_pitch(top_5_rb_players, top_5_lb_players, top_5_lw_players, top_5_rw_players, top_5_dm_players, top_5_cm_players, top_5_am_players, top_5_st_players, top_5_left_footed_cb_players, top_5_right_footed_cb_players, filtered_data, data.columns)
 
-    # Filter and select desired columns
-    selected_columns = ["Player", "Current Club", "Position", "Contract", "Confidence Score Last Month"]
-    filtered_data = data[selected_columns]
-
-    # Sort the data by 'Confidence Score Last Month'
-    sorted_original_data = filtered_data.sort_values(by='Confidence Score Last Month', ascending=False)
-
-    # Center align the text using HTML
-    st.markdown("<h3 style='text-align: center;'>Confidence Score Last Month</h3>", unsafe_allow_html=True)
-
-    # Create three columns with adjusted widths
-    col1, col2, col3 = st.columns([0.8, 3, 0.8])
-
-    # Display the table in the middle column
-    with col2:
-        st.dataframe(sorted_original_data, hide_index=True)
-
 # Plotting function
 def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_players_data, dm_players_data, cm_players_data, am_players_data, st_players_data, left_cb_players_data, right_cb_players_data, data, column_names):
     pitch = VerticalPitch(pitch_type='statsbomb', pitch_color='#ffffff', stripe=False, line_zorder=2, pad_top=0.1)
