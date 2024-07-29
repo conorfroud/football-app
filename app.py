@@ -2178,47 +2178,7 @@ def shortlist_eleven():
 
     data = conn.read(spreadsheet=url)
 
-    # Convert 'Contract' column to a consistent type (e.g., string)
-    data['Contract'] = data['Contract'].astype(str)
-
-    # Extract unique entries in 'Contract' column
-    unique_contracts = data['Contract'].unique()
-
-    # Set the default selected expiry date to 2030
-    selected_expiry_date = '2030'  # Assuming '2030' is a valid contract expiry date in your data
-
-    # Add a sidebar dropdown box for selecting contract expiry date
-    selected_expiry_date = st.sidebar.selectbox("Contract Expiry Before", sorted(unique_contracts), index=unique_contracts.tolist().index(selected_expiry_date))
-
-    # Add a sidebar checkbox to select or exclude players from Stoke City
-    include_stoke_city = st.sidebar.checkbox("Include Stoke City players", False)
-
-    # Add a sidebar checkbox to select only players available for loan
-    only_loan_available = st.sidebar.checkbox("Select only players available for loan", False)
-
-    # Add a sidebar slider for selecting age range
-    min_age, max_age = st.sidebar.slider("Select Age Range", min_value=data['Age'].min(), max_value=data['Age'].max(), value=(data['Age'].min(), data['Age'].max()))
-
-    # Add a sidebar checkbox for selecting only domestic players
-    domestic_only = st.sidebar.checkbox("Domestic players only?", False, help="Check to include only domestic players")
-
-    # Filter data for players with contract expiry before selected date
-    filtered_data = data[data['Contract'] < selected_expiry_date]
-
-    # Filter data to include or exclude Stoke City players based on user choice
-    if not include_stoke_city:
-        filtered_data = filtered_data[filtered_data['Current Club'] != 'Stoke City']
-
-    # Filter data by age range
-    filtered_data = filtered_data[(filtered_data['Age'] >= min_age) & (filtered_data['Age'] <= max_age)]
-
-    # Filter data based on 'Domestic / Abroad' column
-    if domestic_only:
-        filtered_data = filtered_data[filtered_data['Domestic / Abroad'] == 'Domestic']
-
-    # Filter data to include only players available for loan if checkbox is checked
-    if only_loan_available:
-        filtered_data = filtered_data[filtered_data['Available for Loan?'] == 'Yes']
+    filtered_data = data
 
     # Filter data for RB, LB, LW, RW, DM, CM, AM, and ST positions
     rb_data = filtered_data[filtered_data['Position'] == 'RB']
