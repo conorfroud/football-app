@@ -2197,16 +2197,16 @@ def shortlist_eleven():
     right_footed_cb_data = cb_data[cb_data['Foot'] == 'R']
 
     # Select top 5 players for each position based on some criteria (for example, confidence score)
-    top_5_rb_players = rb_data.sort_values(by='Confidence Score', ascending=False).head(5)
-    top_5_lb_players = lb_data.sort_values(by='Confidence Score', ascending=False).head(5)
-    top_5_lw_players = lw_data.sort_values(by='Confidence Score', ascending=False).head(5)
-    top_5_rw_players = rw_data.sort_values(by='Confidence Score', ascending=False).head(5)
-    top_5_dm_players = dm_data.sort_values(by='Confidence Score', ascending=False).head(5)
-    top_5_cm_players = cm_data.sort_values(by='Confidence Score', ascending=False).head(5)
-    top_5_am_players = am_data.sort_values(by='Confidence Score', ascending=False).head(5)
-    top_5_st_players = st_data.sort_values(by='Confidence Score', ascending=False).head(5)
-    top_5_left_footed_cb_players = left_footed_cb_data.sort_values(by='Confidence Score', ascending=False).head(5)  # New: Top 5 left-footed CBs
-    top_5_right_footed_cb_players = right_footed_cb_data.sort_values(by='Confidence Score', ascending=False).head(5)  # New: Top 5 right-footed CBs
+    top_5_rb_players = rb_data.sort_values(by='Confidence Score', ascending=False).head(10)
+    top_5_lb_players = lb_data.sort_values(by='Confidence Score', ascending=False).head(10)
+    top_5_lw_players = lw_data.sort_values(by='Confidence Score', ascending=False).head(10)
+    top_5_rw_players = rw_data.sort_values(by='Confidence Score', ascending=False).head(10)
+    top_5_dm_players = dm_data.sort_values(by='Confidence Score', ascending=False).head(10)
+    top_5_cm_players = cm_data.sort_values(by='Confidence Score', ascending=False).head(10)
+    top_5_am_players = am_data.sort_values(by='Confidence Score', ascending=False).head(10)
+    top_5_st_players = st_data.sort_values(by='Confidence Score', ascending=False).head(20)
+    top_5_left_footed_cb_players = left_footed_cb_data.sort_values(by='Confidence Score', ascending=False).head(10)  # New: Top 5 left-footed CBs
+    top_5_right_footed_cb_players = right_footed_cb_data.sort_values(by='Confidence Score', ascending=False).head(10)  # New: Top 5 right-footed CBs
 
     # Plot the top 5 players for each position on the pitch visualization
     plot_players_on_pitch(top_5_rb_players, top_5_lb_players, top_5_lw_players, top_5_rw_players, top_5_dm_players, top_5_cm_players, top_5_am_players, top_5_st_players, top_5_left_footed_cb_players, top_5_right_footed_cb_players, filtered_data, data.columns)
@@ -2230,14 +2230,14 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
     for position, players_data in zip(['RB', 'LB', 'LW', 'RW', 'CDM', 'CM', 'AM', 'CF'], [rb_players_data, lb_players_data, lw_players_data, rw_players_data, dm_players_data, cm_players_data, am_players_data, st_players_data]):
         for index, player in players_data.iterrows():
             ax.annotate(player['Player'], xy=(positions_x[position], start_y[position]), xytext=(positions_x[position], start_y[position]),
-                        textcoords="offset points", ha='center', va='center', color='black', fontsize=6)
+                        textcoords="offset points", ha='center', va='center', color='black', fontsize=4)
             start_y[position] -= 3  
 
     # Annotate left-footed CBs
     offset_left_cb = 0
     for index, player in left_cb_players_data.iterrows():
         ax.annotate(player['Player'], xy=(23, 30), xytext=(23, 30 + offset_left_cb),
-                    textcoords="offset points", ha='center', va='center', color='black', fontsize=6)
+                    textcoords="offset points", ha='center', va='center', color='black', fontsize=4)
         offset_left_cb -= 15  # Adjust the offset for left-footed CBs
 
     # Annotate right-footed CBs
