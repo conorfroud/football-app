@@ -2239,7 +2239,7 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
         for index, player in players_data.iterrows():
             ax.annotate(player['Player'], xy=(positions_x[position], start_y[position]), xytext=(positions_x[position], start_y[position]),
                         textcoords="offset points", ha='center', va='center', color='black', fontsize=5)
-            start_y[position] -= 3  
+            start_y[position] -= 2 
 
     # Annotate left-footed CBs
     offset_left_cb = 0
