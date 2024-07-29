@@ -2227,7 +2227,7 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
     start_y = {'RB': 38, 'LB': 38, 'LW': 80, 'RW': 80, 'CDM': 48, 'CM': 65, 'AM': 67, 'CF': 94, 'CB': 56}  
 
     # Set the y-coordinate for the position labels
-    position_label_y = {'RB': 42, 'LB': 42, 'LW': 84, 'RW': 84, 'CDM': 52, 'CM': 69, 'AM': 71, 'CF': 96, 'CB': 60}
+    position_label_y = {'RB': 40, 'LB': 40, 'LW': 82, 'RW': 82, 'CDM': 50, 'CM': 67, 'AM': 69, 'CF': 96, 'CB': 58}
 
     # Annotate positions
     for position in ['RB', 'LB', 'LW', 'RW', 'CDM', 'CM', 'AM', 'CF']:
