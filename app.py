@@ -2269,22 +2269,25 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
         st.pyplot(fig)
 
 def team_scatter_plot(df4):
-    
     # Create three columns layout
     col1, col2, col3 = st.columns([1, 5, 1])
 
     with col2:
         # Sidebar with variable selection
-        st.sidebar.header('Select Variables')
+        st.sidebar.header('Select Variables and Filters')
+
+        # Add a sidebar filter for 'competition_name'
+        competitions = df4['competition_name'].unique()
+        selected_competition = st.sidebar.selectbox('Select Competition', competitions)
+
+        # Filter dataframe based on selected competition
+        filtered_df = df4[df4['competition_name'] == selected_competition]
 
         # Filter out non-stat columns
-        stat_columns = [col for col in df4.columns if col not in ['team_name', 'team_id', 'season_id']]
+        stat_columns = [col for col in filtered_df.columns if col not in ['team_name', 'team_id', 'season_id', 'competition_name']]
 
         x_variable = st.sidebar.selectbox('X-axis variable', stat_columns, index=stat_columns.index('xG'))
         y_variable = st.sidebar.selectbox('Y-axis variable', stat_columns, index=stat_columns.index('team_season_np_xg_conceded_pg'))
-
-        # Make a copy of df4 for calculations
-        filtered_df = df4.copy()
 
         # Calculate Z-scores for the variables
         filtered_df['z_x'] = (filtered_df[x_variable] - filtered_df[x_variable].mean()) / filtered_df[x_variable].std()
