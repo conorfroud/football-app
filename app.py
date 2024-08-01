@@ -2293,6 +2293,14 @@ def team_scatter_plot(df4):
         # Set the plot size, title, and reverse the y-axis for 'xG Conceded'
         fig1.update_layout(yaxis=dict(autorange='reversed'), width=800, height=600, title="Scatter Plot of xG vs xG Conceded")
 
+        # Add a dotted line at x=y
+        fig1.add_shape(
+            type='line',
+            x0=min(filtered_df['xG']), y0=min(filtered_df['xG']),
+            x1=max(filtered_df['xG']), y1=max(filtered_df['xG']),
+            line=dict(dash='dot', color='red')
+        )
+
         # Label all teams
         fig1.add_trace(
             go.Scatter(
@@ -2317,6 +2325,14 @@ def team_scatter_plot(df4):
 
         # Set the plot size and title
         fig2.update_layout(width=800, height=600, title="Scatter Plot of Goals per Game vs Goals Conceded per Game")
+
+        # Add a dotted line at x=y
+        fig2.add_shape(
+            type='line',
+            x0=min(filtered_df['team_season_goals_pg']), y0=min(filtered_df['team_season_goals_pg']),
+            x1=max(filtered_df['team_season_goals_pg']), y1=max(filtered_df['team_season_goals_pg']),
+            line=dict(dash='dot', color='red')
+        )
 
         # Label all teams
         fig2.add_trace(
@@ -2343,6 +2359,14 @@ def team_scatter_plot(df4):
         # Set the plot size and title
         fig3.update_layout(width=800, height=600, title="Scatter Plot of xG vs Goals per Game")
 
+        # Add a dotted line at x=y
+        fig3.add_shape(
+            type='line',
+            x0=min(filtered_df['xG']), y0=min(filtered_df['xG']),
+            x1=max(filtered_df['xG']), y1=max(filtered_df['xG']),
+            line=dict(dash='dot', color='red')
+        )
+
         # Label all teams
         fig3.add_trace(
             go.Scatter(
@@ -2357,6 +2381,105 @@ def team_scatter_plot(df4):
 
         # Display the third plot in Streamlit
         st.plotly_chart(fig3)
+
+        # Fourth scatter plot
+        fig4 = px.scatter(filtered_df, x='xG Conceded', y='team_season_goals_conceded_pg',
+                          hover_data={'team_name': True, 'xG Conceded': True, 'team_season_goals_conceded_pg': True})
+
+        # Customize the marker color and size for the fourth plot
+        fig4.update_traces(marker=dict(size=12, color='#FFA07A'))
+
+        # Set the plot size and title
+        fig4.update_layout(width=800, height=600, title="Scatter Plot of xG Conceded vs Goals Conceded per Game")
+
+        # Add a dotted line at x=y
+        fig4.add_shape(
+            type='line',
+            x0=min(filtered_df['xG Conceded']), y0=min(filtered_df['xG Conceded']),
+            x1=max(filtered_df['xG Conceded']), y1=max(filtered_df['xG Conceded']),
+            line=dict(dash='dot', color='red')
+        )
+
+        # Label all teams
+        fig4.add_trace(
+            go.Scatter(
+                text=filtered_df['team_name'],
+                x=filtered_df['xG Conceded'],
+                y=filtered_df['team_season_goals_conceded_pg'],
+                mode='text',
+                showlegend=False,
+                textposition='top center'
+            )
+        )
+
+        # Display the fourth plot in Streamlit
+        st.plotly_chart(fig4)
+
+        # Fifth scatter plot
+        fig5 = px.scatter(filtered_df, x='team_season_directness', y='team_season_pace_towards_goal',
+                          hover_data={'team_name': True, 'team_season_directness': True, 'team_season_pace_towards_goal': True})
+
+        # Customize the marker color and size for the fifth plot
+        fig5.update_traces(marker=dict(size=12, color='#8A2BE2'))
+
+        # Set the plot size and title
+        fig5.update_layout(width=800, height=600, title="Scatter Plot of Directness vs Pace Towards Goal")
+
+        # Add a dotted line at x=y
+        fig5.add_shape(
+            type='line',
+            x0=min(filtered_df['team_season_directness']), y0=min(filtered_df['team_season_directness']),
+            x1=max(filtered_df['team_season_directness']), y1=max(filtered_df['team_season_directness']),
+            line=dict(dash='dot', color='red')
+        )
+
+        # Label all teams
+        fig5.add_trace(
+            go.Scatter(
+                text=filtered_df['team_name'],
+                x=filtered_df['team_season_directness'],
+                y=filtered_df['team_season_pace_towards_goal'],
+                mode='text',
+                showlegend=False,
+                textposition='top center'
+            )
+        )
+
+        # Display the fifth plot in Streamlit
+        st.plotly_chart(fig5)
+
+        # Sixth scatter plot
+        fig6 = px.scatter(filtered_df, x='team_season_ppda', y='team_season_defensive_distance',
+                          hover_data={'team_name': True, 'team_season_ppda': True, 'team_season_defensive_distance': True})
+
+        # Customize the marker color and size for the sixth plot
+        fig6.update_traces(marker=dict(size=12, color='#00CED1'))
+
+        # Set the plot size and title
+        fig6.update_layout(width=800, height=600, title="Scatter Plot of PPDA vs Defensive Distance")
+
+        # Add a dotted line at x=y
+        fig6.add_shape(
+            type='line',
+            x0=min(filtered_df['team_season_ppda']), y0=min(filtered_df['team_season_ppda']),
+            x1=max(filtered_df['team_season_ppda']), y1=max(filtered_df['team_season_ppda']),
+            line=dict(dash='dot', color='red')
+        )
+
+        # Label all teams
+        fig6.add_trace(
+            go.Scatter(
+                text=filtered_df['team_name'],
+                x=filtered_df['team_season_ppda'],
+                y=filtered_df['team_season_defensive_distance'],
+                mode='text',
+                showlegend=False,
+                textposition='top center'
+            )
+        )
+
+        # Display the sixth plot in Streamlit
+        st.plotly_chart(fig6)
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
