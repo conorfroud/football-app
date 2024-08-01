@@ -2304,7 +2304,7 @@ def team_scatter_plot(df4):
         fig.update_traces(marker=dict(size=12, color='#7EC0EE'))
 
         # Set the plot size and reverse the y-axis if the y_variable is 'team_season_np_xg_conceded_pg'
-        if y_variable == 'team_season_np_xg_conceded_pg':
+        if y_variable == 'xG Conceded':
             fig.update_layout(yaxis=dict(autorange='reversed'))
         fig.update_layout(width=800, height=600)
 
