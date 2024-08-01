@@ -2310,9 +2310,9 @@ def team_scatter_plot(df4):
 
         fig.add_trace(
             go.Scatter(
+                text=outliers['team_name'],
                 x=outliers[x_variable],
                 y=outliers[y_variable],
-                text=outliers['team_name'],
                 mode='text',
                 showlegend=False,
                 textposition='top center'
