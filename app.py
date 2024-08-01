@@ -2448,7 +2448,7 @@ def team_scatter_plot(df4):
         # Display the fourth plot in Streamlit
         st.plotly_chart(fig4)
 
-        # Fifth scatter plot
+        # Fifth scatter plot (same x and y, but invert axes)
         x_mean = filtered_df['Passes Per Possession'].mean()
         y_mean = filtered_df['Pace Towards Goal'].mean()
         fig5 = px.scatter(filtered_df, x='Passes Per Possession', y='Pace Towards Goal',
@@ -2458,7 +2458,7 @@ def team_scatter_plot(df4):
         fig5.update_traces(marker=dict(size=12, color=filtered_df['team_name'].apply(highlight_color)))
 
         # Set the plot size and title
-        fig5.update_layout(width=800, height=600, title="Build-Up Style")
+        fig5.update_layout(width=800, height=600, title="Build-Up Style", yaxis=dict(autorange="reversed"))
 
         # Add mean lines
         fig5 = add_mean_lines(fig5, x_mean, y_mean, 'Passes Per Possession', 'Pace Towards Goal')
@@ -2478,7 +2478,7 @@ def team_scatter_plot(df4):
         # Display the fifth plot in Streamlit
         st.plotly_chart(fig5)
 
-        # Sixth scatter plot
+        # Sixth scatter plot (same x and y, but invert axes)
         x_mean = filtered_df['Passes Per Defensive Action'].mean()
         y_mean = filtered_df['Defensive Distance'].mean()
         fig6 = px.scatter(filtered_df, x='Passes Per Defensive Action', y='Defensive Distance',
@@ -2488,7 +2488,7 @@ def team_scatter_plot(df4):
         fig6.update_traces(marker=dict(size=12, color=filtered_df['team_name'].apply(highlight_color)))
 
         # Set the plot size and title
-        fig6.update_layout(width=800, height=600, title="Pressing")
+        fig6.update_layout(width=800, height=600, title="Pressing", yaxis=dict(autorange="reversed"))
 
         # Add mean lines
         fig6 = add_mean_lines(fig6, x_mean, y_mean, 'Passes Per Defensive Action', 'Defensive Distance')
