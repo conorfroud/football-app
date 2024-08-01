@@ -2384,7 +2384,7 @@ def team_scatter_plot(df4):
         fig3.update_traces(marker=dict(size=12, color=filtered_df['team_name'].apply(highlight_color)))
 
         # Set the plot size and title
-        fig3.update_layout(width=800, height=600, title="Attacking Over/Under Performance", yaxis=dict(autorange="reversed"), xaxis=dict(autorange="reversed"))
+        fig3.update_layout(width=800, height=600, title="Attacking Over/Under Performance")
 
         # Add a y=x line
         fig3.add_trace(
@@ -2420,7 +2420,7 @@ def team_scatter_plot(df4):
         fig4.update_traces(marker=dict(size=12, color=filtered_df['team_name'].apply(highlight_color)))
 
         # Set the plot size and title
-        fig4.update_layout(width=800, height=600, title="Defensive Over/Under Performance")
+        fig4.update_layout(width=800, height=600, title="Defensive Over/Under Performance", yaxis=dict(autorange="reversed"), xaxis=dict(autorange="reversed"))
 
         # Add a y=x line
         fig4.add_trace(
@@ -2488,7 +2488,7 @@ def team_scatter_plot(df4):
         fig6.update_traces(marker=dict(size=12, color=filtered_df['team_name'].apply(highlight_color)))
 
         # Set the plot size and title
-        fig6.update_layout(width=800, height=600, title="Pressing", yaxis=dict(autorange="reversed"))
+        fig6.update_layout(width=800, height=600, title="Pressing", xaxis=dict(autorange="reversed"))
 
         # Add mean lines
         fig6 = add_mean_lines(fig6, x_mean, y_mean, 'Passes Per Defensive Action', 'Defensive Distance')
