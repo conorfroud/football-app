@@ -2356,7 +2356,7 @@ def team_scatter_plot(df4):
         fig2.update_traces(marker=dict(size=12, color=filtered_df['team_name'].apply(highlight_color)))
 
         # Set the plot size and title
-        fig2.update_layout(width=800, height=600, title="Goals Performance")
+        fig2.update_layout(width=800, height=600, title="Goals Performance", yaxis=dict(autorange="reversed"))
 
         # Add mean lines
         fig2 = add_mean_lines(fig2, x_mean, y_mean, 'Non-Penalty Goals Scored', 'Non-Penalty Goals Conceded')
