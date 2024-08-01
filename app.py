@@ -2283,19 +2283,16 @@ def team_scatter_plot(df4):
         # Filter dataframe based on selected competition
         filtered_df = df4[df4['competition_name'] == selected_competition]
 
-        highlight_teams_green = ['Ipswich Town', 'Leicester City', 'Southampton']
-        highlight_teams_orange = ['Stoke City']
-        highlight_teams_red = ['Rotherham United', 'Birmingham City', 'Huddersfield Town']
-
-        def highlight_color(team):
-            if team in highlight_teams_green:
+        def highlight_color(row):
+            if row['Promoted?'] == 'Yes':
                 return '#90EE90'  # light green
-            elif team in highlight_teams_orange:
-                return '#FFA07A'  # light orange
-            elif team in highlight_teams_red:
+            elif row['Relegated?'] == 'Yes':
                 return '#FF8080'  # light red
             else:
                 return 'grey'
+
+        # Filter dataframe for season '2023/2024'
+        label_df = filtered_df[filtered_df['season_name'] == '2023/2024']
 
         # Function to add mean lines to a figure
         def add_mean_lines(fig, x_mean, y_mean, x_col, y_col):
@@ -2323,7 +2320,7 @@ def team_scatter_plot(df4):
         fig1 = px.scatter(filtered_df, x='xG', y='xG Conceded', hover_data={'team_name': True, 'xG': True, 'xG Conceded': True})
 
         # Customize the marker color and size
-        fig1.update_traces(marker=dict(size=12, color=filtered_df['team_name'].apply(highlight_color)))
+        fig1.update_traces(marker=dict(size=12, color=filtered_df.apply(highlight_color, axis=1)))
 
         # Set the plot size, title, and reverse the y-axis for 'xG Conceded'
         fig1.update_layout(yaxis=dict(autorange='reversed'), width=800, height=600, title="xG Performance")
@@ -2331,12 +2328,12 @@ def team_scatter_plot(df4):
         # Add mean lines
         fig1 = add_mean_lines(fig1, x_mean, y_mean, 'xG', 'xG Conceded')
 
-        # Label all teams
+        # Label teams only from '2023/2024' season
         fig1.add_trace(
             go.Scatter(
-                text=filtered_df['team_name'],
-                x=filtered_df['xG'],
-                y=filtered_df['xG Conceded'],
+                text=label_df['team_name'],
+                x=label_df['xG'],
+                y=label_df['xG Conceded'],
                 mode='text',
                 showlegend=False,
                 textposition='top center'
@@ -2353,7 +2350,7 @@ def team_scatter_plot(df4):
                           hover_data={'team_name': True, 'Non-Penalty Goals Scored': True, 'Non-Penalty Goals Conceded': True})
 
         # Customize the marker color and size for the second plot
-        fig2.update_traces(marker=dict(size=12, color=filtered_df['team_name'].apply(highlight_color)))
+        fig2.update_traces(marker=dict(size=12, color=filtered_df.apply(highlight_color, axis=1)))
 
         # Set the plot size and title
         fig2.update_layout(width=800, height=600, title="Goals Performance", yaxis=dict(autorange="reversed"))
@@ -2361,12 +2358,12 @@ def team_scatter_plot(df4):
         # Add mean lines
         fig2 = add_mean_lines(fig2, x_mean, y_mean, 'Non-Penalty Goals Scored', 'Non-Penalty Goals Conceded')
 
-        # Label all teams
+        # Label teams only from '2023/2024' season
         fig2.add_trace(
             go.Scatter(
-                text=filtered_df['team_name'],
-                x=filtered_df['Non-Penalty Goals Scored'],
-                y=filtered_df['Non-Penalty Goals Conceded'],
+                text=label_df['team_name'],
+                x=label_df['Non-Penalty Goals Scored'],
+                y=label_df['Non-Penalty Goals Conceded'],
                 mode='text',
                 showlegend=False,
                 textposition='top center'
@@ -2381,7 +2378,7 @@ def team_scatter_plot(df4):
                           hover_data={'team_name': True, 'xG': True, 'Non-Penalty Goals Scored': True})
 
         # Customize the marker color and size for the third plot
-        fig3.update_traces(marker=dict(size=12, color=filtered_df['team_name'].apply(highlight_color)))
+        fig3.update_traces(marker=dict(size=12, color=filtered_df.apply(highlight_color, axis=1)))
 
         # Set the plot size and title
         fig3.update_layout(width=800, height=600, title="Attacking Over/Under Performance")
@@ -2397,12 +2394,12 @@ def team_scatter_plot(df4):
             )
         )
 
-        # Label all teams
+        # Label teams only from '2023/2024' season
         fig3.add_trace(
             go.Scatter(
-                text=filtered_df['team_name'],
-                x=filtered_df['xG'],
-                y=filtered_df['Non-Penalty Goals Scored'],
+                text=label_df['team_name'],
+                x=label_df['xG'],
+                y=label_df['Non-Penalty Goals Scored'],
                 mode='text',
                 showlegend=False,
                 textposition='top center'
@@ -2417,7 +2414,7 @@ def team_scatter_plot(df4):
                           hover_data={'team_name': True, 'xG Conceded': True, 'Non-Penalty Goals Conceded': True})
 
         # Customize the marker color and size for the fourth plot
-        fig4.update_traces(marker=dict(size=12, color=filtered_df['team_name'].apply(highlight_color)))
+        fig4.update_traces(marker=dict(size=12, color=filtered_df.apply(highlight_color, axis=1)))
 
         # Set the plot size and title
         fig4.update_layout(width=800, height=600, title="Defensive Over/Under Performance", yaxis=dict(autorange="reversed"), xaxis=dict(autorange="reversed"))
@@ -2433,12 +2430,12 @@ def team_scatter_plot(df4):
             )
         )
 
-        # Label all teams
+        # Label teams only from '2023/2024' season
         fig4.add_trace(
             go.Scatter(
-                text=filtered_df['team_name'],
-                x=filtered_df['xG Conceded'],
-                y=filtered_df['Non-Penalty Goals Conceded'],
+                text=label_df['team_name'],
+                x=label_df['xG Conceded'],
+                y=label_df['Non-Penalty Goals Conceded'],
                 mode='text',
                 showlegend=False,
                 textposition='top center'
@@ -2455,7 +2452,7 @@ def team_scatter_plot(df4):
                           hover_data={'team_name': True, 'Passes Per Possession': True, 'Pace Towards Goal': True})
 
         # Customize the marker color and size for the fifth plot
-        fig5.update_traces(marker=dict(size=12, color=filtered_df['team_name'].apply(highlight_color)))
+        fig5.update_traces(marker=dict(size=12, color=filtered_df.apply(highlight_color, axis=1)))
 
         # Set the plot size and title
         fig5.update_layout(width=800, height=600, title="Build-Up Style", yaxis=dict(autorange="reversed"))
@@ -2463,12 +2460,12 @@ def team_scatter_plot(df4):
         # Add mean lines
         fig5 = add_mean_lines(fig5, x_mean, y_mean, 'Passes Per Possession', 'Pace Towards Goal')
 
-        # Label all teams
+        # Label teams only from '2023/2024' season
         fig5.add_trace(
             go.Scatter(
-                text=filtered_df['team_name'],
-                x=filtered_df['Passes Per Possession'],
-                y=filtered_df['Pace Towards Goal'],
+                text=label_df['team_name'],
+                x=label_df['Passes Per Possession'],
+                y=label_df['Pace Towards Goal'],
                 mode='text',
                 showlegend=False,
                 textposition='top center'
@@ -2478,14 +2475,14 @@ def team_scatter_plot(df4):
         # Display the fifth plot in Streamlit
         st.plotly_chart(fig5)
 
-        # Sixth scatter plot (same x and y, but invert axes)
+        # Sixth scatter plot
         x_mean = filtered_df['Passes Per Defensive Action'].mean()
         y_mean = filtered_df['Defensive Distance'].mean()
         fig6 = px.scatter(filtered_df, x='Passes Per Defensive Action', y='Defensive Distance',
                           hover_data={'team_name': True, 'Passes Per Defensive Action': True, 'Defensive Distance': True})
 
         # Customize the marker color and size for the sixth plot
-        fig6.update_traces(marker=dict(size=12, color=filtered_df['team_name'].apply(highlight_color)))
+        fig6.update_traces(marker=dict(size=12, color=filtered_df.apply(highlight_color, axis=1)))
 
         # Set the plot size and title
         fig6.update_layout(width=800, height=600, title="Pressing", xaxis=dict(autorange="reversed"))
@@ -2493,12 +2490,12 @@ def team_scatter_plot(df4):
         # Add mean lines
         fig6 = add_mean_lines(fig6, x_mean, y_mean, 'Passes Per Defensive Action', 'Defensive Distance')
 
-        # Label all teams
+        # Label teams only from '2023/2024' season
         fig6.add_trace(
             go.Scatter(
-                text=filtered_df['team_name'],
-                x=filtered_df['Passes Per Defensive Action'],
-                y=filtered_df['Defensive Distance'],
+                text=label_df['team_name'],
+                x=label_df['Passes Per Defensive Action'],
+                y=label_df['Defensive Distance'],
                 mode='text',
                 showlegend=False,
                 textposition='top center'
