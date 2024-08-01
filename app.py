@@ -2281,8 +2281,8 @@ def team_scatter_plot(df4):
         # Filter out non-stat columns
         stat_columns = [col for col in df4.columns if col not in ['team_name', 'team_id', 'season_id']]
 
-        x_variable = st.sidebar.selectbox('X-axis variable', stat_columns, index=stat_columns.index('team_season_np_xg_pg'))
-        y_variable = st.sidebar.selectbox('Y-axis variable', stat_columns, index=stat_columns.index('team_season_op_xg_pg'))
+        x_variable = st.sidebar.selectbox('X-axis variable', stat_columns, index=stat_columns.index('xG'))
+        y_variable = st.sidebar.selectbox('Y-axis variable', stat_columns, index=stat_columns.index('team_season_np_xg_conceded_pg'))
 
         # Make a copy of df4 for calculations
         filtered_df = df4.copy()
