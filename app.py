@@ -2297,14 +2297,14 @@ def team_scatter_plot(df4):
         # Define a threshold for labeling outliers (you can customize this threshold)
         threshold = st.sidebar.slider('Label Threshold', min_value=0.1, max_value=5.0, value=2.0)
 
-        # Create a scatter plot using Plotly with the filtered data
+        # Create the first scatter plot using Plotly with the filtered data
         hover_data_fields = {'team_name': True, x_variable: True, y_variable: True, 'z_x': False, 'z_y': False}
         fig1 = px.scatter(filtered_df, x=x_variable, y=y_variable, hover_data=hover_data_fields)
 
         # Customize the marker color and size
         fig1.update_traces(marker=dict(size=12, color='#7EC0EE'))
 
-        # Set the plot size and reverse the y-axis if the y_variable is 'team_season_np_xg_conceded_pg'
+        # Set the plot size and reverse the y-axis if the y_variable is 'xG Conceded'
         if y_variable == 'xG Conceded':
             fig1.update_layout(yaxis=dict(autorange='reversed'))
         fig1.update_layout(width=800, height=600)
@@ -2338,6 +2338,19 @@ def team_scatter_plot(df4):
 
         # Display the second plot in Streamlit
         st.plotly_chart(fig2)
+
+        # Third scatter plot
+        fig3 = px.scatter(filtered_df, x='xG', y='team_season_goals_pg',
+                          hover_data={'team_name': True, 'xG': True, 'team_season_goals_pg': True})
+
+        # Customize the marker color and size for the third plot
+        fig3.update_traces(marker=dict(size=12, color='#90EE90'))
+
+        # Set the plot size
+        fig3.update_layout(width=800, height=600)
+
+        # Display the third plot in Streamlit
+        st.plotly_chart(fig3)
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
