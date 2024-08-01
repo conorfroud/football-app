@@ -2286,10 +2286,6 @@ def team_scatter_plot(df4):
         # Make a copy of df4 for calculations
         filtered_df = df4.copy()
 
-        # Check if y_variable is 'team_season_np_xg_conceded_pg' and invert it
-        if y_variable == 'team_season_np_xg_conceded_pg':
-            filtered_df[y_variable] = -filtered_df[y_variable]
-
         # Calculate Z-scores for the variables
         filtered_df['z_x'] = (filtered_df[x_variable] - filtered_df[x_variable].mean()) / filtered_df[x_variable].std()
         filtered_df['z_y'] = (filtered_df[y_variable] - filtered_df[y_variable].mean()) / filtered_df[y_variable].std()
@@ -2304,7 +2300,9 @@ def team_scatter_plot(df4):
         # Customize the marker color and size
         fig.update_traces(marker=dict(size=12, color='#7EC0EE'))
 
-        # Set the plot size
+        # Set the plot size and reverse the y-axis if the y_variable is 'team_season_np_xg_conceded_pg'
+        if y_variable == 'team_season_np_xg_conceded_pg':
+            fig.update_layout(yaxis=dict(autorange='reversed'))
         fig.update_layout(width=800, height=600)
 
         # Filter and label outliers
