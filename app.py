@@ -2290,15 +2290,8 @@ def team_scatter_plot(df4):
         x_variable = st.sidebar.selectbox('X-axis variable', stat_columns, index=stat_columns.index('xG'))
         y_variable = st.sidebar.selectbox('Y-axis variable', stat_columns, index=stat_columns.index('xG Conceded'))
 
-        # Calculate Z-scores for the variables
-        filtered_df['z_x'] = (filtered_df[x_variable] - filtered_df[x_variable].mean()) / filtered_df[x_variable].std()
-        filtered_df['z_y'] = (filtered_df[y_variable] - filtered_df[y_variable].mean()) / filtered_df[y_variable].std()
-
-        # Define a threshold for labeling outliers (you can customize this threshold)
-        threshold = st.sidebar.slider('Label Threshold', min_value=0.1, max_value=5.0, value=2.0)
-
         # Create the first scatter plot using Plotly with the filtered data
-        hover_data_fields = {'team_name': True, x_variable: True, y_variable: True, 'z_x': False, 'z_y': False}
+        hover_data_fields = {'team_name': True, x_variable: True, y_variable: True}
         fig1 = px.scatter(filtered_df, x=x_variable, y=y_variable, hover_data=hover_data_fields)
 
         # Customize the marker color and size
@@ -2309,14 +2302,12 @@ def team_scatter_plot(df4):
             fig1.update_layout(yaxis=dict(autorange='reversed'))
         fig1.update_layout(width=800, height=600)
 
-        # Filter and label outliers
-        outliers = filtered_df[(filtered_df['z_x'].abs() > threshold) | (filtered_df['z_y'].abs() > threshold)]
-
+        # Label all teams
         fig1.add_trace(
             go.Scatter(
-                text=outliers['team_name'],
-                x=outliers[x_variable],
-                y=outliers[y_variable],
+                text=filtered_df['team_name'],
+                x=filtered_df[x_variable],
+                y=filtered_df[y_variable],
                 mode='text',
                 showlegend=False,
                 textposition='top center'
@@ -2336,6 +2327,18 @@ def team_scatter_plot(df4):
         # Set the plot size
         fig2.update_layout(width=800, height=600)
 
+        # Label all teams
+        fig2.add_trace(
+            go.Scatter(
+                text=filtered_df['team_name'],
+                x=filtered_df['team_season_goals_pg'],
+                y=filtered_df['team_season_goals_conceded_pg'],
+                mode='text',
+                showlegend=False,
+                textposition='top center'
+            )
+        )
+
         # Display the second plot in Streamlit
         st.plotly_chart(fig2)
 
@@ -2348,6 +2351,18 @@ def team_scatter_plot(df4):
 
         # Set the plot size
         fig3.update_layout(width=800, height=600)
+
+        # Label all teams
+        fig3.add_trace(
+            go.Scatter(
+                text=filtered_df['team_name'],
+                x=filtered_df['xG'],
+                y=filtered_df['team_season_goals_pg'],
+                mode='text',
+                showlegend=False,
+                textposition='top center'
+            )
+        )
 
         # Display the third plot in Streamlit
         st.plotly_chart(fig3)
