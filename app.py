@@ -2344,10 +2344,10 @@ def team_scatter_plot(df4):
         st.plotly_chart(fig1)
 
         # Second scatter plot
-        x_mean = filtered_df['Goals Scored'].mean()
-        y_mean = filtered_df['Goals Conceded'].mean()
-        fig2 = px.scatter(filtered_df, x='Goals Scored', y='Goals Conceded',
-                          hover_data={'team_name': True, 'Goals Scored': True, 'Goals Conceded': True})
+        x_mean = filtered_df['Non-Penalty Goals Scored'].mean()
+        y_mean = filtered_df['Non-Penalty Goals Conceded'].mean()
+        fig2 = px.scatter(filtered_df, x='Non-Penalty Goals Scored', y='Non-Penalty Goals Conceded',
+                          hover_data={'team_name': True, 'Non-Penalty Goals Scored': True, 'Non-Penalty Goals Conceded': True})
 
         # Customize the marker color and size for the second plot
         fig2.update_traces(marker=dict(size=12, color=filtered_df['team_name'].apply(highlight_color)))
@@ -2356,14 +2356,14 @@ def team_scatter_plot(df4):
         fig2.update_layout(width=800, height=600, title="Goals Performance")
 
         # Add mean lines
-        fig2 = add_mean_lines(fig2, x_mean, y_mean, 'Goals Scored', 'Goals Conceded')
+        fig2 = add_mean_lines(fig2, x_mean, y_mean, 'Non-Penalty Goals Scored', 'Non-Penalty Goals Conceded')
 
         # Label all teams
         fig2.add_trace(
             go.Scatter(
                 text=filtered_df['team_name'],
-                x=filtered_df['Goals Scored'],
-                y=filtered_df['Goals Conceded'],
+                x=filtered_df['Non-Penalty Goals Scored'],
+                y=filtered_df['Non-Penalty Goals Conceded'],
                 mode='text',
                 showlegend=False,
                 textposition='top center'
@@ -2375,9 +2375,9 @@ def team_scatter_plot(df4):
 
         # Third scatter plot
         x_mean = filtered_df['xG'].mean()
-        y_mean = filtered_df['Goals Scored'].mean()
-        fig3 = px.scatter(filtered_df, x='xG', y='Goals Scored',
-                          hover_data={'team_name': True, 'xG': True, 'Goals Scored': True})
+        y_mean = filtered_df['Non-Penalty Goals Scored'].mean()
+        fig3 = px.scatter(filtered_df, x='xG', y='Non-Penalty Goals Scored',
+                          hover_data={'team_name': True, 'xG': True, 'Non-Penalty Goals Scored': True})
 
         # Customize the marker color and size for the third plot
         fig3.update_traces(marker=dict(size=12, color=filtered_df['team_name'].apply(highlight_color)))
@@ -2386,14 +2386,14 @@ def team_scatter_plot(df4):
         fig3.update_layout(width=800, height=600, title="Attacking Over/Under Performance")
 
         # Add mean lines
-        fig3 = add_mean_lines(fig3, x_mean, y_mean, 'xG', 'Goals Scored')
+        fig3 = add_mean_lines(fig3, x_mean, y_mean, 'xG', 'Non-Penalty Goals Scored')
 
         # Label all teams
         fig3.add_trace(
             go.Scatter(
                 text=filtered_df['team_name'],
                 x=filtered_df['xG'],
-                y=filtered_df['Goals Scored'],
+                y=filtered_df['Non-Penalty Goals Scored'],
                 mode='text',
                 showlegend=False,
                 textposition='top center'
@@ -2406,8 +2406,8 @@ def team_scatter_plot(df4):
         # Fourth scatter plot
         x_mean = filtered_df['xG Conceded'].mean()
         y_mean = filtered_df['Goals Conceded'].mean()
-        fig4 = px.scatter(filtered_df, x='xG Conceded', y='Goals Conceded',
-                          hover_data={'team_name': True, 'xG Conceded': True, 'Goals Conceded': True})
+        fig4 = px.scatter(filtered_df, x='xG Conceded', y='Non-Penalty Goals Conceded',
+                          hover_data={'team_name': True, 'xG Conceded': True, 'Non-Penalty Goals Conceded': True})
 
         # Customize the marker color and size for the fourth plot
         fig4.update_traces(marker=dict(size=12, color=filtered_df['team_name'].apply(highlight_color)))
@@ -2416,14 +2416,14 @@ def team_scatter_plot(df4):
         fig4.update_layout(width=800, height=600, title="Defensive Over/Under Performance")
 
         # Add mean lines
-        fig4 = add_mean_lines(fig4, x_mean, y_mean, 'xG Conceded', 'Goals Conceded')
+        fig4 = add_mean_lines(fig4, x_mean, y_mean, 'xG Conceded', 'Non-Penalty Goals Conceded')
 
         # Label all teams
         fig4.add_trace(
             go.Scatter(
                 text=filtered_df['team_name'],
                 x=filtered_df['xG Conceded'],
-                y=filtered_df['Goals Conceded'],
+                y=filtered_df['Non-Penalty Goals Conceded'],
                 mode='text',
                 showlegend=False,
                 textposition='top center'
@@ -2434,10 +2434,10 @@ def team_scatter_plot(df4):
         st.plotly_chart(fig4)
 
         # Fifth scatter plot
-        x_mean = filtered_df['team_season_directness'].mean()
+        x_mean = filtered_df['Passes Per Possession'].mean()
         y_mean = filtered_df['Pace Towards Goal'].mean()
-        fig5 = px.scatter(filtered_df, x='team_season_directness', y='Pace Towards Goal',
-                          hover_data={'team_name': True, 'team_season_directness': True, 'Pace Towards Goal': True})
+        fig5 = px.scatter(filtered_df, x='Passes Per Possession', y='Pace Towards Goal',
+                          hover_data={'team_name': True, 'Passes Per Possession': True, 'Pace Towards Goal': True})
 
         # Customize the marker color and size for the fifth plot
         fig5.update_traces(marker=dict(size=12, color=filtered_df['team_name'].apply(highlight_color)))
@@ -2446,13 +2446,13 @@ def team_scatter_plot(df4):
         fig5.update_layout(width=800, height=600, title="Build-Up Style")
 
         # Add mean lines
-        fig5 = add_mean_lines(fig5, x_mean, y_mean, 'team_season_directness', 'Pace Towards Goal')
+        fig5 = add_mean_lines(fig5, x_mean, y_mean, 'Passes Per Possession', 'Pace Towards Goal')
 
         # Label all teams
         fig5.add_trace(
             go.Scatter(
                 text=filtered_df['team_name'],
-                x=filtered_df['team_season_directness'],
+                x=filtered_df['Passes Per Possession'],
                 y=filtered_df['Pace Towards Goal'],
                 mode='text',
                 showlegend=False,
