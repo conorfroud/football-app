@@ -2379,7 +2379,7 @@ df3 = pd.read_csv("nonpriorityleaguesdata.csv")
 df4 = pd.read_csv("teamseasondata.csv")
 
 # Create the navigation menu in the sidebar
-selected_tab = st.sidebar.radio("Navigation", ["Shortlist XI", "Stoke Score", "Player Radar Single", "Player Radar Comparison", "Scatter Plot", "Multi Player Comparison Tab", "Similarity Score", "Stat Search", "Stoke Score - Wyscout", "Confidence Scores", "Report Search"])
+selected_tab = st.sidebar.radio("Navigation", ["Shortlist XI", "Stoke Score", "Player Radar Single", "Player Radar Comparison", "Scatter Plot", "Multi Player Comparison Tab", "Similarity Score", "Stat Search", "Stoke Score - Wyscout", "Confidence Scores", "Report Search", "Team Data"])
 
 # Based on the selected tab, display the corresponding content
 if selected_tab == "Stoke Score":
@@ -2406,5 +2406,7 @@ if selected_tab == "Shortlist XI":
     shortlist_eleven()
 if selected_tab == "Player Database":
     scouting_data()
+if selected_tab == "Team Data":
+    team_scatter_plot(df4)
 elif selected_tab == "Multi Player Comparison Tab":
     comparison_tab(df)
