@@ -2268,10 +2268,6 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
     with col2:
         st.pyplot(fig)
 
-import plotly.express as px
-import plotly.graph_objects as go
-import streamlit as st
-
 def team_scatter_plot(df4):
     # Create three columns layout
     col1, col2, col3 = st.columns([1, 5, 1])
@@ -2299,7 +2295,7 @@ def team_scatter_plot(df4):
         fig1.update_traces(marker=dict(size=12, color=filtered_df['team_name'].apply(highlight_color)))
 
         # Set the plot size, title, and reverse the y-axis for 'xG Conceded'
-        fig1.update_layout(yaxis=dict(autorange='reversed'), width=800, height=600, title="Scatter Plot of xG vs xG Conceded")
+        fig1.update_layout(yaxis=dict(autorange='reversed'), width=800, height=600, title="xG Performance")
 
         # Label all teams
         fig1.add_trace(
@@ -2324,7 +2320,7 @@ def team_scatter_plot(df4):
         fig2.update_traces(marker=dict(size=12, color=filtered_df['team_name'].apply(highlight_color)))
 
         # Set the plot size and title
-        fig2.update_layout(width=800, height=600, title="Scatter Plot of Goals per Game vs Goals Conceded per Game")
+        fig2.update_layout(width=800, height=600, title="Goals Performance")
 
         # Label all teams
         fig2.add_trace(
@@ -2342,21 +2338,21 @@ def team_scatter_plot(df4):
         st.plotly_chart(fig2)
 
         # Third scatter plot
-        fig3 = px.scatter(filtered_df, x='xG', y='team_season_goals_pg',
-                          hover_data={'team_name': True, 'xG': True, 'team_season_goals_pg': True})
+        fig3 = px.scatter(filtered_df, x='xG', y='Goals Scored',
+                          hover_data={'team_name': True, 'xG': True, 'Goals Scored': True})
 
         # Customize the marker color and size for the third plot
         fig3.update_traces(marker=dict(size=12, color=filtered_df['team_name'].apply(highlight_color)))
 
         # Set the plot size and title
-        fig3.update_layout(width=800, height=600, title="Scatter Plot of xG vs Goals per Game")
+        fig3.update_layout(width=800, height=600, title="Attacking Over/Under Performance")
 
         # Label all teams
         fig3.add_trace(
             go.Scatter(
                 text=filtered_df['team_name'],
                 x=filtered_df['xG'],
-                y=filtered_df['team_season_goals_pg'],
+                y=filtered_df['Goals Scored'],
                 mode='text',
                 showlegend=False,
                 textposition='top center'
@@ -2374,7 +2370,7 @@ def team_scatter_plot(df4):
         fig4.update_traces(marker=dict(size=12, color=filtered_df['team_name'].apply(highlight_color)))
 
         # Set the plot size and title
-        fig4.update_layout(width=800, height=600, title="Scatter Plot of xG Conceded vs Goals Conceded per Game")
+        fig4.update_layout(width=800, height=600, title="Defensive Over/Under Performance")
 
         # Label all teams
         fig4.add_trace(
@@ -2399,7 +2395,7 @@ def team_scatter_plot(df4):
         fig5.update_traces(marker=dict(size=12, color=filtered_df['team_name'].apply(highlight_color)))
 
         # Set the plot size and title
-        fig5.update_layout(width=800, height=600, title="Scatter Plot of Directness vs Pace Towards Goal")
+        fig5.update_layout(width=800, height=600, title="Build-Up Style")
 
         # Label all teams
         fig5.add_trace(
@@ -2424,7 +2420,7 @@ def team_scatter_plot(df4):
         fig6.update_traces(marker=dict(size=12, color=filtered_df['team_name'].apply(highlight_color)))
 
         # Set the plot size and title
-        fig6.update_layout(width=800, height=600, title="Scatter Plot of PPDA vs Defensive Distance")
+        fig6.update_layout(width=800, height=600, title="Pressing")
 
         # Label all teams
         fig6.add_trace(
