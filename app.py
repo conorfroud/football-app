@@ -2268,10 +2268,115 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
     with col2:
         st.pyplot(fig)
 
+def team_scatter_plot(df4):
+
+    # Create three columns layout
+    col1, col2, col3 = st.columns([1, 5, 1])
+
+    with col2:
+        # Sidebar with variable selection
+        st.sidebar.header('Select Variables')
+
+        # Filter out non-stat columns
+        stat_columns = [col for col in df.columns if col not in ['Player Name', 'player_id', 'Season']]
+
+        x_variable = st.sidebar.selectbox('X-axis variable', stat_columns, index=stat_columns.index('xG'))
+        y_variable = st.sidebar.selectbox('Y-axis variable', stat_columns, index=stat_columns.index('Open Play xG Assisted'))
+
+        # Checkbox for multiplying metrics by 'Player Season Minutes / 90'
+        multiply_by_minutes = st.sidebar.checkbox('Season Totals')
+
+        # Stats to exclude from Season Totals calculation
+        exclude_from_totals = ['Average Distance', 'Top 5 PSV-99']
+
+        # Create a multi-select dropdown for filtering by primary_position
+        selected_positions = st.sidebar.multiselect('Filter by Primary Position', df['position_1'].unique())
+
+        # Create a multi-select dropdown for selecting leagues with 'English Championship' pre-selected
+        default_leagues = ['English Championship']
+        selected_leagues = st.sidebar.multiselect('Select Leagues', df['League'].unique(), default=default_leagues)
+
+        # Create a multi-select dropdown for selecting seasons
+        selected_seasons = st.sidebar.multiselect('Select Seasons', df['Season'].unique())
+
+        # Sidebar for filtering by 'minutes' played
+        min_minutes = int(df['Player Season Minutes'].min())
+        max_minutes = int(df['Player Season Minutes'].max())
+        selected_minutes = st.sidebar.slider('Select Minutes Played Range', min_value=min_minutes, max_value=max_minutes, value=(600, max_minutes))
+
+        # Filter data based on user-selected positions, minutes played, leagues, and seasons
+        filtered_df = df[(df['position_1'].isin(selected_positions) | (len(selected_positions) == 0)) &
+                         (df['Player Season Minutes'] >= selected_minutes[0]) &
+                         (df['Player Season Minutes'] <= selected_minutes[1]) &
+                         (df['League'].isin(selected_leagues) | (len(selected_leagues) == 0)) &
+                         (df['Season'].isin(selected_seasons) | (len(selected_seasons) == 0))]
+
+        # Multiply the metrics by ('Player Season Minutes' / 90) if the checkbox is checked
+        if multiply_by_minutes:
+            if x_variable not in exclude_from_totals:
+                filtered_df[x_variable] = filtered_df[x_variable] * (filtered_df['Player Season Minutes'] / 90)
+            if y_variable not in exclude_from_totals:
+                filtered_df[y_variable] = filtered_df[y_variable] * (filtered_df['Player Season Minutes'] / 90)
+
+        # Calculate Z-scores for the variables
+        filtered_df['z_x'] = (filtered_df[x_variable] - filtered_df[x_variable].mean()) / filtered_df[x_variable].std()
+        filtered_df['z_y'] = (filtered_df[y_variable] - filtered_df[y_variable].mean()) / filtered_df[y_variable].std()
+
+        # Define a threshold for labeling outliers (you can customize this threshold)
+        threshold = st.sidebar.slider('Label Threshold', min_value=0.1, max_value=5.0, value=2.0)
+
+        # Create a scatter plot using Plotly with the filtered data
+        hover_data_fields = {'Player Name': True, 'Team': True, 'Age': True, 'Player Season Minutes': True, x_variable: False, y_variable: False, 'z_x': False, 'z_y': False}
+        fig = px.scatter(filtered_df, x=x_variable, y=y_variable, hover_data=hover_data_fields)
+
+        # Customize the marker color and size
+        fig.update_traces(marker=dict(size=12, color='#7EC0EE'))
+
+        # Set the plot size
+        fig.update_layout(width=800, height=600)
+
+        # Filter and label outliers
+        outliers = filtered_df[(filtered_df['z_x'].abs() > threshold) | (filtered_df['z_y'].abs() > threshold)]
+
+        fig.add_trace(
+            go.Scatter(
+                x=outliers[x_variable],
+                y=outliers[y_variable],
+                text=outliers['Player Name'],
+                mode='text',
+                showlegend=False,
+                textposition='top center'
+            )
+        )
+
+        # Create a multi-select dropdown for selecting players
+        selected_players = st.sidebar.multiselect('Select Players', filtered_df['Player Name'].unique())
+
+        # Create a trace for selected players and customize hover labels
+        if selected_players:
+            selected_df = filtered_df[filtered_df['Player Name'].isin(selected_players)]
+            selected_trace = go.Scatter(
+                x=selected_df[x_variable],
+                y=selected_df[y_variable],
+                mode='markers+text',  # Combine markers and text
+                marker=dict(size=12, color='red'),
+                name='Selected Players',
+                text=selected_df['Player Name'],  # Display player name as text label
+                textposition='top center'
+            )
+
+            # Customize hover data for selected trace
+            hover_data_fields_selected = {'Player Name': True, 'Team': True, 'Age': True, 'Minutes': True, x_variable: False, y_variable: False, 'z_x': False, 'z_y': False}
+            fig.add_trace(selected_trace).update_traces(hoverinfo="text+x+y")
+
+        # Display the plot in Streamlit
+        st.plotly_chart(fig)
+
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
 df2 = pd.read_csv("championshipscores.csv")
 df3 = pd.read_csv("nonpriorityleaguesdata.csv")
+df4 = pd.read_csv("teamseasondata.csv")
 
 # Create the navigation menu in the sidebar
 selected_tab = st.sidebar.radio("Navigation", ["Shortlist XI", "Stoke Score", "Player Radar Single", "Player Radar Comparison", "Scatter Plot", "Multi Player Comparison Tab", "Similarity Score", "Stat Search", "Stoke Score - Wyscout", "Confidence Scores", "Report Search"])
