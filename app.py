@@ -2269,6 +2269,7 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
         st.pyplot(fig)
 
 def team_scatter_plot(df4):
+    
     # Create three columns layout
     col1, col2, col3 = st.columns([1, 5, 1])
 
@@ -2321,26 +2322,6 @@ def team_scatter_plot(df4):
                 textposition='top center'
             )
         )
-
-        # Create a multi-select dropdown for selecting players
-        selected_teams = st.sidebar.multiselect('Select Team', df['team_name'].unique())
-
-        # Create a trace for selected players and customize hover labels
-        if selected_players:
-            selected_df = filtered_df[filtered_df['Player Name'].isin(selected_players)]
-            selected_trace = go.Scatter(
-                x=selected_df[x_variable],
-                y=selected_df[y_variable],
-                mode='markers+text',  # Combine markers and text
-                marker=dict(size=12, color='red'),
-                name='Selected Players',
-                text=selected_df['Player Name'],  # Display player name as text label
-                textposition='top center'
-            )
-
-            # Customize hover data for selected trace
-            hover_data_fields_selected = {'Player Name': True, 'Team': True, 'Age': True, 'Minutes': True, x_variable: False, y_variable: False, 'z_x': False, 'z_y': False}
-            fig.add_trace(selected_trace).update_traces(hoverinfo="text+x+y")
         
         # Display the plot in Streamlit
         st.plotly_chart(fig)
