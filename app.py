@@ -2268,6 +2268,10 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
     with col2:
         st.pyplot(fig)
 
+import plotly.express as px
+import plotly.graph_objects as go
+import streamlit as st
+
 def team_scatter_plot(df4):
     # Create three columns layout
     col1, col2, col3 = st.columns([1, 5, 1])
@@ -2283,12 +2287,40 @@ def team_scatter_plot(df4):
         # Filter dataframe based on selected competition
         filtered_df = df4[df4['competition_name'] == selected_competition]
 
-        highlight_teams = ['Ipswich Town', 'Leicester City', 'Southampton']
+        highlight_teams_green = ['Ipswich Town', 'Leicester City', 'Southampton']
+        highlight_teams_orange = ['Stoke City']
 
         def highlight_color(team):
-            return '#90EE90' if team in highlight_teams else 'grey'
+            if team in highlight_teams_green:
+                return '#90EE90'  # light green
+            elif team in highlight_teams_orange:
+                return '#FFA07A'  # light orange
+            else:
+                return 'grey'
+
+        # Function to add mean lines to a figure
+        def add_mean_lines(fig, x_mean, y_mean):
+            fig.add_shape(
+                type='line',
+                x0=x_mean,
+                x1=x_mean,
+                y0=filtered_df['y'].min(),
+                y1=filtered_df['y'].max(),
+                line=dict(dash='dot', color='red')
+            )
+            fig.add_shape(
+                type='line',
+                x0=filtered_df['x'].min(),
+                x1=filtered_df['x'].max(),
+                y0=y_mean,
+                y1=y_mean,
+                line=dict(dash='dot', color='red')
+            )
+            return fig
 
         # Create the first scatter plot using Plotly with the filtered data
+        x_mean = filtered_df['xG'].mean()
+        y_mean = filtered_df['xG Conceded'].mean()
         fig1 = px.scatter(filtered_df, x='xG', y='xG Conceded', hover_data={'team_name': True, 'xG': True, 'xG Conceded': True})
 
         # Customize the marker color and size
@@ -2296,6 +2328,9 @@ def team_scatter_plot(df4):
 
         # Set the plot size, title, and reverse the y-axis for 'xG Conceded'
         fig1.update_layout(yaxis=dict(autorange='reversed'), width=800, height=600, title="xG Performance")
+
+        # Add mean lines
+        fig1 = add_mean_lines(fig1, x_mean, y_mean)
 
         # Label all teams
         fig1.add_trace(
@@ -2313,6 +2348,8 @@ def team_scatter_plot(df4):
         st.plotly_chart(fig1)
 
         # Second scatter plot
+        x_mean = filtered_df['Goals Scored'].mean()
+        y_mean = filtered_df['Goals Conceded'].mean()
         fig2 = px.scatter(filtered_df, x='Goals Scored', y='Goals Conceded',
                           hover_data={'team_name': True, 'Goals Scored': True, 'Goals Conceded': True})
 
@@ -2321,6 +2358,9 @@ def team_scatter_plot(df4):
 
         # Set the plot size and title
         fig2.update_layout(width=800, height=600, title="Goals Performance")
+
+        # Add mean lines
+        fig2 = add_mean_lines(fig2, x_mean, y_mean)
 
         # Label all teams
         fig2.add_trace(
@@ -2338,6 +2378,8 @@ def team_scatter_plot(df4):
         st.plotly_chart(fig2)
 
         # Third scatter plot
+        x_mean = filtered_df['xG'].mean()
+        y_mean = filtered_df['Goals Scored'].mean()
         fig3 = px.scatter(filtered_df, x='xG', y='Goals Scored',
                           hover_data={'team_name': True, 'xG': True, 'Goals Scored': True})
 
@@ -2346,6 +2388,9 @@ def team_scatter_plot(df4):
 
         # Set the plot size and title
         fig3.update_layout(width=800, height=600, title="Attacking Over/Under Performance")
+
+        # Add mean lines
+        fig3 = add_mean_lines(fig3, x_mean, y_mean)
 
         # Label all teams
         fig3.add_trace(
@@ -2363,6 +2408,8 @@ def team_scatter_plot(df4):
         st.plotly_chart(fig3)
 
         # Fourth scatter plot
+        x_mean = filtered_df['xG Conceded'].mean()
+        y_mean = filtered_df['Goals Conceded'].mean()
         fig4 = px.scatter(filtered_df, x='xG Conceded', y='Goals Conceded',
                           hover_data={'team_name': True, 'xG Conceded': True, 'Goals Conceded': True})
 
@@ -2371,6 +2418,9 @@ def team_scatter_plot(df4):
 
         # Set the plot size and title
         fig4.update_layout(width=800, height=600, title="Defensive Over/Under Performance")
+
+        # Add mean lines
+        fig4 = add_mean_lines(fig4, x_mean, y_mean)
 
         # Label all teams
         fig4.add_trace(
@@ -2388,6 +2438,8 @@ def team_scatter_plot(df4):
         st.plotly_chart(fig4)
 
         # Fifth scatter plot
+        x_mean = filtered_df['team_season_directness'].mean()
+        y_mean = filtered_df['Pace Towards Goal'].mean()
         fig5 = px.scatter(filtered_df, x='team_season_directness', y='Pace Towards Goal',
                           hover_data={'team_name': True, 'team_season_directness': True, 'Pace Towards Goal': True})
 
@@ -2396,6 +2448,9 @@ def team_scatter_plot(df4):
 
         # Set the plot size and title
         fig5.update_layout(width=800, height=600, title="Build-Up Style")
+
+        # Add mean lines
+        fig5 = add_mean_lines(fig5, x_mean, y_mean)
 
         # Label all teams
         fig5.add_trace(
@@ -2413,6 +2468,8 @@ def team_scatter_plot(df4):
         st.plotly_chart(fig5)
 
         # Sixth scatter plot
+        x_mean = filtered_df['Passes Per Defensive Action'].mean()
+        y_mean = filtered_df['Defensive Distance'].mean()
         fig6 = px.scatter(filtered_df, x='Passes Per Defensive Action', y='Defensive Distance',
                           hover_data={'team_name': True, 'Passes Per Defensive Action': True, 'Defensive Distance': True})
 
@@ -2421,6 +2478,9 @@ def team_scatter_plot(df4):
 
         # Set the plot size and title
         fig6.update_layout(width=800, height=600, title="Pressing")
+
+        # Add mean lines
+        fig6 = add_mean_lines(fig6, x_mean, y_mean)
 
         # Label all teams
         fig6.add_trace(
