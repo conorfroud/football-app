@@ -2302,7 +2302,7 @@ def team_scatter_plot(df4):
                 x1=x_mean,
                 y0=filtered_df[y_col].min(),
                 y1=filtered_df[y_col].max(),
-                line=dict(dash='dot', color='red')
+                line=dict(dash='dot', color='black')
             )
             fig.add_shape(
                 type='line',
