@@ -2384,7 +2384,7 @@ def team_scatter_plot(df4):
         fig3.update_traces(marker=dict(size=12, color=filtered_df['team_name'].apply(highlight_color)))
 
         # Set the plot size and title
-        fig3.update_layout(width=800, height=600, title="Attacking Over/Under Performance")
+        fig3.update_layout(width=800, height=600, title="Attacking Over/Under Performance", yaxis=dict(autorange="reversed"), xaxis=dict(autorange="reversed"))
 
         # Add a y=x line
         fig3.add_trace(
