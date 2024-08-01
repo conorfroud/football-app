@@ -2389,7 +2389,7 @@ def team_scatter_plot(df4):
                 x=[filtered_df['xG'].min(), filtered_df['xG'].max()],
                 y=[filtered_df['xG'].min(), filtered_df['xG'].max()],
                 mode='lines',
-                line=dict(color='red', dash='dash'),
+                line=dict(color='black', dash='dash'),
                 showlegend=False
             )
         )
@@ -2425,7 +2425,7 @@ def team_scatter_plot(df4):
                 x=[filtered_df['xG Conceded'].min(), filtered_df['xG Conceded'].max()],
                 y=[filtered_df['xG Conceded'].min(), filtered_df['xG Conceded'].max()],
                 mode='lines',
-                line=dict(color='red', dash='dash'),
+                line=dict(color='black', dash='dash'),
                 showlegend=False
             )
         )
