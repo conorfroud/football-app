@@ -2293,14 +2293,6 @@ def team_scatter_plot(df4):
         # Set the plot size, title, and reverse the y-axis for 'xG Conceded'
         fig1.update_layout(yaxis=dict(autorange='reversed'), width=800, height=600, title="Scatter Plot of xG vs xG Conceded")
 
-        # Add a dotted line at x=y
-        fig1.add_shape(
-            type='line',
-            x0=min(filtered_df['xG']), y0=min(filtered_df['xG']),
-            x1=max(filtered_df['xG']), y1=max(filtered_df['xG']),
-            line=dict(dash='dot', color='red')
-        )
-
         # Label all teams
         fig1.add_trace(
             go.Scatter(
@@ -2325,14 +2317,6 @@ def team_scatter_plot(df4):
 
         # Set the plot size and title
         fig2.update_layout(width=800, height=600, title="Scatter Plot of Goals per Game vs Goals Conceded per Game")
-
-        # Add a dotted line at x=y
-        fig2.add_shape(
-            type='line',
-            x0=min(filtered_df['team_season_goals_pg']), y0=min(filtered_df['team_season_goals_pg']),
-            x1=max(filtered_df['team_season_goals_pg']), y1=max(filtered_df['team_season_goals_pg']),
-            line=dict(dash='dot', color='red')
-        )
 
         # Label all teams
         fig2.add_trace(
@@ -2359,14 +2343,6 @@ def team_scatter_plot(df4):
         # Set the plot size and title
         fig3.update_layout(width=800, height=600, title="Scatter Plot of xG vs Goals per Game")
 
-        # Add a dotted line at x=y
-        fig3.add_shape(
-            type='line',
-            x0=min(filtered_df['xG']), y0=min(filtered_df['xG']),
-            x1=max(filtered_df['xG']), y1=max(filtered_df['xG']),
-            line=dict(dash='dot', color='red')
-        )
-
         # Label all teams
         fig3.add_trace(
             go.Scatter(
@@ -2391,14 +2367,6 @@ def team_scatter_plot(df4):
 
         # Set the plot size and title
         fig4.update_layout(width=800, height=600, title="Scatter Plot of xG Conceded vs Goals Conceded per Game")
-
-        # Add a dotted line at x=y
-        fig4.add_shape(
-            type='line',
-            x0=min(filtered_df['xG Conceded']), y0=min(filtered_df['xG Conceded']),
-            x1=max(filtered_df['xG Conceded']), y1=max(filtered_df['xG Conceded']),
-            line=dict(dash='dot', color='red')
-        )
 
         # Label all teams
         fig4.add_trace(
@@ -2425,14 +2393,6 @@ def team_scatter_plot(df4):
         # Set the plot size and title
         fig5.update_layout(width=800, height=600, title="Scatter Plot of Directness vs Pace Towards Goal")
 
-        # Add a dotted line at x=y
-        fig5.add_shape(
-            type='line',
-            x0=min(filtered_df['team_season_directness']), y0=min(filtered_df['team_season_directness']),
-            x1=max(filtered_df['team_season_directness']), y1=max(filtered_df['team_season_directness']),
-            line=dict(dash='dot', color='red')
-        )
-
         # Label all teams
         fig5.add_trace(
             go.Scatter(
@@ -2457,14 +2417,6 @@ def team_scatter_plot(df4):
 
         # Set the plot size and title
         fig6.update_layout(width=800, height=600, title="Scatter Plot of PPDA vs Defensive Distance")
-
-        # Add a dotted line at x=y
-        fig6.add_shape(
-            type='line',
-            x0=min(filtered_df['team_season_ppda']), y0=min(filtered_df['team_season_ppda']),
-            x1=max(filtered_df['team_season_ppda']), y1=max(filtered_df['team_season_ppda']),
-            line=dict(dash='dot', color='red')
-        )
 
         # Label all teams
         fig6.add_trace(
