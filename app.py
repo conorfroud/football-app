@@ -2268,10 +2268,6 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
     with col2:
         st.pyplot(fig)
 
-import streamlit as st
-import plotly.express as px
-import plotly.graph_objects as go
-
 def team_scatter_plot(df4):
     # Create three columns layout
     col1, col2, col3 = st.columns([1, 5, 1])
@@ -2297,7 +2293,7 @@ def team_scatter_plot(df4):
             elif team in highlight_teams_orange:
                 return '#FFA07A'  # light orange
             elif team in highlight_teams_red:
-                return '#FFB6C1'  # light red
+                return '#FF8080'  # light red
             else:
                 return 'grey'
 
