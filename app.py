@@ -2268,10 +2268,6 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
     with col2:
         st.pyplot(fig)
 
-import plotly.express as px
-import plotly.graph_objects as go
-import streamlit as st
-
 def team_scatter_plot(df4):
     # Create three columns layout
     col1, col2, col3 = st.columns([1, 5, 1])
@@ -2299,19 +2295,19 @@ def team_scatter_plot(df4):
                 return 'grey'
 
         # Function to add mean lines to a figure
-        def add_mean_lines(fig, x_mean, y_mean):
+        def add_mean_lines(fig, x_mean, y_mean, x_col, y_col):
             fig.add_shape(
                 type='line',
                 x0=x_mean,
                 x1=x_mean,
-                y0=filtered_df['y'].min(),
-                y1=filtered_df['y'].max(),
+                y0=filtered_df[y_col].min(),
+                y1=filtered_df[y_col].max(),
                 line=dict(dash='dot', color='red')
             )
             fig.add_shape(
                 type='line',
-                x0=filtered_df['x'].min(),
-                x1=filtered_df['x'].max(),
+                x0=filtered_df[x_col].min(),
+                x1=filtered_df[x_col].max(),
                 y0=y_mean,
                 y1=y_mean,
                 line=dict(dash='dot', color='red')
@@ -2330,7 +2326,7 @@ def team_scatter_plot(df4):
         fig1.update_layout(yaxis=dict(autorange='reversed'), width=800, height=600, title="xG Performance")
 
         # Add mean lines
-        fig1 = add_mean_lines(fig1, x_mean, y_mean)
+        fig1 = add_mean_lines(fig1, x_mean, y_mean, 'xG', 'xG Conceded')
 
         # Label all teams
         fig1.add_trace(
@@ -2360,7 +2356,7 @@ def team_scatter_plot(df4):
         fig2.update_layout(width=800, height=600, title="Goals Performance")
 
         # Add mean lines
-        fig2 = add_mean_lines(fig2, x_mean, y_mean)
+        fig2 = add_mean_lines(fig2, x_mean, y_mean, 'Goals Scored', 'Goals Conceded')
 
         # Label all teams
         fig2.add_trace(
@@ -2390,7 +2386,7 @@ def team_scatter_plot(df4):
         fig3.update_layout(width=800, height=600, title="Attacking Over/Under Performance")
 
         # Add mean lines
-        fig3 = add_mean_lines(fig3, x_mean, y_mean)
+        fig3 = add_mean_lines(fig3, x_mean, y_mean, 'xG', 'Goals Scored')
 
         # Label all teams
         fig3.add_trace(
@@ -2420,7 +2416,7 @@ def team_scatter_plot(df4):
         fig4.update_layout(width=800, height=600, title="Defensive Over/Under Performance")
 
         # Add mean lines
-        fig4 = add_mean_lines(fig4, x_mean, y_mean)
+        fig4 = add_mean_lines(fig4, x_mean, y_mean, 'xG Conceded', 'Goals Conceded')
 
         # Label all teams
         fig4.add_trace(
@@ -2450,7 +2446,7 @@ def team_scatter_plot(df4):
         fig5.update_layout(width=800, height=600, title="Build-Up Style")
 
         # Add mean lines
-        fig5 = add_mean_lines(fig5, x_mean, y_mean)
+        fig5 = add_mean_lines(fig5, x_mean, y_mean, 'team_season_directness', 'Pace Towards Goal')
 
         # Label all teams
         fig5.add_trace(
@@ -2480,7 +2476,7 @@ def team_scatter_plot(df4):
         fig6.update_layout(width=800, height=600, title="Pressing")
 
         # Add mean lines
-        fig6 = add_mean_lines(fig6, x_mean, y_mean)
+        fig6 = add_mean_lines(fig6, x_mean, y_mean, 'Passes Per Defensive Action', 'Defensive Distance')
 
         # Label all teams
         fig6.add_trace(
