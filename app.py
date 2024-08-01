@@ -2269,12 +2269,11 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
         st.pyplot(fig)
 
 def team_scatter_plot(df4):
-
+    
     # Create three columns layout
     col1, col2, col3 = st.columns([1, 5, 1])
 
     with col2:
-        
         # Sidebar with variable selection
         st.sidebar.header('Select Variables')
 
@@ -2286,6 +2285,10 @@ def team_scatter_plot(df4):
 
         # Make a copy of df4 for calculations
         filtered_df = df4.copy()
+
+        # Check if y_variable is 'team_season_np_xg_conceded_pg' and invert it
+        if y_variable == 'team_season_np_xg_conceded_pg':
+            filtered_df[y_variable] = -filtered_df[y_variable]
 
         # Calculate Z-scores for the variables
         filtered_df['z_x'] = (filtered_df[x_variable] - filtered_df[x_variable].mean()) / filtered_df[x_variable].std()
