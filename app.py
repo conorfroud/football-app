@@ -2287,7 +2287,7 @@ def team_scatter_plot(df4):
         stat_columns = [col for col in filtered_df.columns if col not in ['team_name', 'team_id', 'season_id', 'competition_name']]
 
         x_variable = st.sidebar.selectbox('X-axis variable', stat_columns, index=stat_columns.index('xG'))
-        y_variable = st.sidebar.selectbox('Y-axis variable', stat_columns, index=stat_columns.index('team_season_np_xg_conceded_pg'))
+        y_variable = st.sidebar.selectbox('Y-axis variable', stat_columns, index=stat_columns.index('xG Conceded'))
 
         # Calculate Z-scores for the variables
         filtered_df['z_x'] = (filtered_df[x_variable] - filtered_df[x_variable].mean()) / filtered_df[x_variable].std()
