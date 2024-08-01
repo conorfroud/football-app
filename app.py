@@ -2278,7 +2278,7 @@ def team_scatter_plot(df4):
         st.sidebar.header('Select Variables')
 
         # Filter out non-stat columns
-        stat_columns = [col for col in df.columns if col not in ['Player Name', 'player_id', 'Season']]
+        stat_columns = [col for col in df4.columns if col not in ['Player Name', 'player_id', 'Season']]
 
         x_variable = st.sidebar.selectbox('X-axis variable', stat_columns, index=stat_columns.index('xG'))
         y_variable = st.sidebar.selectbox('Y-axis variable', stat_columns, index=stat_columns.index('Open Play xG Assisted'))
@@ -2290,26 +2290,26 @@ def team_scatter_plot(df4):
         exclude_from_totals = ['Average Distance', 'Top 5 PSV-99']
 
         # Create a multi-select dropdown for filtering by primary_position
-        selected_positions = st.sidebar.multiselect('Filter by Primary Position', df['position_1'].unique())
+        selected_positions = st.sidebar.multiselect('Filter by Primary Position', df4['position_1'].unique())
 
         # Create a multi-select dropdown for selecting leagues with 'English Championship' pre-selected
         default_leagues = ['English Championship']
-        selected_leagues = st.sidebar.multiselect('Select Leagues', df['League'].unique(), default=default_leagues)
+        selected_leagues = st.sidebar.multiselect('Select Leagues', df4['League'].unique(), default=default_leagues)
 
         # Create a multi-select dropdown for selecting seasons
-        selected_seasons = st.sidebar.multiselect('Select Seasons', df['Season'].unique())
+        selected_seasons = st.sidebar.multiselect('Select Seasons', df4['Season'].unique())
 
         # Sidebar for filtering by 'minutes' played
-        min_minutes = int(df['Player Season Minutes'].min())
-        max_minutes = int(df['Player Season Minutes'].max())
+        min_minutes = int(df4['Player Season Minutes'].min())
+        max_minutes = int(df4['Player Season Minutes'].max())
         selected_minutes = st.sidebar.slider('Select Minutes Played Range', min_value=min_minutes, max_value=max_minutes, value=(600, max_minutes))
 
         # Filter data based on user-selected positions, minutes played, leagues, and seasons
-        filtered_df = df[(df['position_1'].isin(selected_positions) | (len(selected_positions) == 0)) &
-                         (df['Player Season Minutes'] >= selected_minutes[0]) &
-                         (df['Player Season Minutes'] <= selected_minutes[1]) &
-                         (df['League'].isin(selected_leagues) | (len(selected_leagues) == 0)) &
-                         (df['Season'].isin(selected_seasons) | (len(selected_seasons) == 0))]
+        filtered_df = df4[(df4['position_1'].isin(selected_positions) | (len(selected_positions) == 0)) &
+                         (df4['Player Season Minutes'] >= selected_minutes[0]) &
+                         (df4['Player Season Minutes'] <= selected_minutes[1]) &
+                         (df4['League'].isin(selected_leagues) | (len(selected_leagues) == 0)) &
+                         (df4['Season'].isin(selected_seasons) | (len(selected_seasons) == 0))]
 
         # Multiply the metrics by ('Player Season Minutes' / 90) if the checkbox is checked
         if multiply_by_minutes:
@@ -2379,7 +2379,7 @@ df3 = pd.read_csv("nonpriorityleaguesdata.csv")
 df4 = pd.read_csv("teamseasondata.csv")
 
 # Create the navigation menu in the sidebar
-selected_tab = st.sidebar.radio("Navigation", ["Shortlist XI", "Stoke Score", "Player Radar Single", "Player Radar Comparison", "Scatter Plot", "Multi Player Comparison Tab", "Similarity Score", "Stat Search", "Stoke Score - Wyscout", "Confidence Scores", "Report Search", "Team Data"])
+selected_tab = st.sidebar.radio("Navigation", ["Shortlist XI", "Player Profile", "Stoke Score", "Player Radar Single", "Player Radar Comparison", "Scatter Plot", "Multi Player Comparison Tab", "Similarity Score", "Stat Search", "Stoke Score - Wyscout", "Confidence Scores", "Report Search", "Team Data"])
 
 # Based on the selected tab, display the corresponding content
 if selected_tab == "Stoke Score":
