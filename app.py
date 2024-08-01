@@ -2284,6 +2284,9 @@ def team_scatter_plot(df4):
         x_variable = st.sidebar.selectbox('X-axis variable', stat_columns, index=stat_columns.index('team_season_np_xg_pg'))
         y_variable = st.sidebar.selectbox('Y-axis variable', stat_columns, index=stat_columns.index('team_season_op_xg_pg'))
 
+        # Make a copy of df4 for calculations
+        filtered_df = df4.copy()
+
         # Calculate Z-scores for the variables
         filtered_df['z_x'] = (filtered_df[x_variable] - filtered_df[x_variable].mean()) / filtered_df[x_variable].std()
         filtered_df['z_y'] = (filtered_df[y_variable] - filtered_df[y_variable].mean()) / filtered_df[y_variable].std()
@@ -2308,7 +2311,7 @@ def team_scatter_plot(df4):
             go.Scatter(
                 x=outliers[x_variable],
                 y=outliers[y_variable],
-                text=outliers['Player Name'],
+                text=outliers['team_name'],
                 mode='text',
                 showlegend=False,
                 textposition='top center'
