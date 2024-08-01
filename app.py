@@ -2295,7 +2295,7 @@ def team_scatter_plot(df4):
         threshold = st.sidebar.slider('Label Threshold', min_value=0.1, max_value=5.0, value=2.0)
 
         # Create a scatter plot using Plotly with the filtered data
-        hover_data_fields = {'team_name': True, x_variable: False, y_variable: False, 'z_x': False, 'z_y': False}
+        hover_data_fields = {'team_name': True, x_variable: True, y_variable: True, 'z_x': False, 'z_y': False}
         fig = px.scatter(filtered_df, x=x_variable, y=y_variable, hover_data=hover_data_fields)
 
         # Customize the marker color and size
