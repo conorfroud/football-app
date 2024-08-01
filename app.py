@@ -2269,7 +2269,7 @@ def plot_players_on_pitch(rb_players_data, lb_players_data, lw_players_data, rw_
         st.pyplot(fig)
 
 def team_scatter_plot(df4):
-    
+
     # Create three columns layout
     col1, col2, col3 = st.columns([1, 5, 1])
 
@@ -2299,20 +2299,20 @@ def team_scatter_plot(df4):
 
         # Create a scatter plot using Plotly with the filtered data
         hover_data_fields = {'team_name': True, x_variable: True, y_variable: True, 'z_x': False, 'z_y': False}
-        fig = px.scatter(filtered_df, x=x_variable, y=y_variable, hover_data=hover_data_fields)
+        fig1 = px.scatter(filtered_df, x=x_variable, y=y_variable, hover_data=hover_data_fields)
 
         # Customize the marker color and size
-        fig.update_traces(marker=dict(size=12, color='#7EC0EE'))
+        fig1.update_traces(marker=dict(size=12, color='#7EC0EE'))
 
         # Set the plot size and reverse the y-axis if the y_variable is 'team_season_np_xg_conceded_pg'
         if y_variable == 'xG Conceded':
-            fig.update_layout(yaxis=dict(autorange='reversed'))
-        fig.update_layout(width=800, height=600)
+            fig1.update_layout(yaxis=dict(autorange='reversed'))
+        fig1.update_layout(width=800, height=600)
 
         # Filter and label outliers
         outliers = filtered_df[(filtered_df['z_x'].abs() > threshold) | (filtered_df['z_y'].abs() > threshold)]
 
-        fig.add_trace(
+        fig1.add_trace(
             go.Scatter(
                 text=outliers['team_name'],
                 x=outliers[x_variable],
@@ -2323,8 +2323,21 @@ def team_scatter_plot(df4):
             )
         )
         
-        # Display the plot in Streamlit
-        st.plotly_chart(fig)
+        # Display the first plot in Streamlit
+        st.plotly_chart(fig1)
+
+        # Second scatter plot
+        fig2 = px.scatter(filtered_df, x='team_season_goals_pg', y='team_season_goals_conceded_pg',
+                          hover_data={'team_name': True, 'team_season_goals_pg': True, 'team_season_goals_conceded_pg': True})
+
+        # Customize the marker color and size for the second plot
+        fig2.update_traces(marker=dict(size=12, color='#FF7F50'))
+
+        # Set the plot size
+        fig2.update_layout(width=800, height=600)
+
+        # Display the second plot in Streamlit
+        st.plotly_chart(fig2)
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
