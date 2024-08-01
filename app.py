@@ -2284,30 +2284,21 @@ def team_scatter_plot(df4):
         # Filter dataframe based on selected competition
         filtered_df = df4[df4['competition_name'] == selected_competition]
 
-        # Filter out non-stat columns
-        stat_columns = [col for col in filtered_df.columns if col not in ['team_name', 'team_id', 'season_id', 'competition_name']]
-
-        x_variable = st.sidebar.selectbox('X-axis variable', stat_columns, index=stat_columns.index('xG'))
-        y_variable = st.sidebar.selectbox('Y-axis variable', stat_columns, index=stat_columns.index('xG Conceded'))
-
         # Create the first scatter plot using Plotly with the filtered data
-        hover_data_fields = {'team_name': True, x_variable: True, y_variable: True}
-        fig1 = px.scatter(filtered_df, x=x_variable, y=y_variable, hover_data=hover_data_fields)
+        fig1 = px.scatter(filtered_df, x='xG', y='xG Conceded', hover_data={'team_name': True, 'xG': True, 'xG Conceded': True})
 
         # Customize the marker color and size
         fig1.update_traces(marker=dict(size=12, color='#7EC0EE'))
 
-        # Set the plot size and reverse the y-axis if the y_variable is 'xG Conceded'
-        if y_variable == 'xG Conceded':
-            fig1.update_layout(yaxis=dict(autorange='reversed'))
-        fig1.update_layout(width=800, height=600)
+        # Set the plot size, title, and reverse the y-axis for 'xG Conceded'
+        fig1.update_layout(yaxis=dict(autorange='reversed'), width=800, height=600, title="Scatter Plot of xG vs xG Conceded")
 
         # Label all teams
         fig1.add_trace(
             go.Scatter(
                 text=filtered_df['team_name'],
-                x=filtered_df[x_variable],
-                y=filtered_df[y_variable],
+                x=filtered_df['xG'],
+                y=filtered_df['xG Conceded'],
                 mode='text',
                 showlegend=False,
                 textposition='top center'
@@ -2324,8 +2315,8 @@ def team_scatter_plot(df4):
         # Customize the marker color and size for the second plot
         fig2.update_traces(marker=dict(size=12, color='#FF7F50'))
 
-        # Set the plot size
-        fig2.update_layout(width=800, height=600)
+        # Set the plot size and title
+        fig2.update_layout(width=800, height=600, title="Scatter Plot of Goals per Game vs Goals Conceded per Game")
 
         # Label all teams
         fig2.add_trace(
@@ -2349,8 +2340,8 @@ def team_scatter_plot(df4):
         # Customize the marker color and size for the third plot
         fig3.update_traces(marker=dict(size=12, color='#90EE90'))
 
-        # Set the plot size
-        fig3.update_layout(width=800, height=600)
+        # Set the plot size and title
+        fig3.update_layout(width=800, height=600, title="Scatter Plot of xG vs Goals per Game")
 
         # Label all teams
         fig3.add_trace(
