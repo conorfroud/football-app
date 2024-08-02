@@ -2507,11 +2507,94 @@ def team_scatter_plot(df4):
         # Display the sixth plot in Streamlit
         st.plotly_chart(fig6)
 
+def team_rolling_averages(df5):
+    # Define thresholds for each metric
+    thresholds = {
+        'our_metrics': {
+            'player_match_np_xg': {'green_threshold': 1.15, 'orange_threshold': 1.05},
+            'player_match_np_xg_per_shot': {'green_threshold': 0.95, 'orange_threshold': 0.85},
+            'player_match_np_shots': {'green_threshold': 12, 'orange_threshold': 11},
+            'player_match_deep_progressions': {'green_threshold': 44, 'orange_threshold': 40}
+            # Add more metrics as needed
+        },
+        'oppo_metrics': {
+            'player_match_np_xg': {'green_threshold': 1, 'orange_threshold': 1.1}
+            # Add more metrics as needed
+        }
+    }
+
+    # Function to create the visualization
+    def create_visualization(df, metric, team, window, file_path, title_suffix, vline_xpos=None, is_opponent=False, green_threshold=1.2, orange_threshold=1.05):
+        avg = df["sum"].mean()
+        rolling = df["sum"].rolling(window).mean()
+        
+        fig, ax = plt.subplots(figsize=(12, 6))
+        fig.set_facecolor('White')
+        ax.patch.set_facecolor('White')
+        
+        ax.spines['right'].set_visible(False)
+        ax.spines['top'].set_visible(False)
+        ax.spines['left'].set_color('#ccc8c8')
+        ax.spines['bottom'].set_color('#ccc8c8')
+        
+        bars = df.iloc[:, 1]
+        x_pos = np.arange(len(df))
+        
+        ax.bar(x_pos, df["sum"], color='black', alpha=0.75)
+        ax.set_xticks(range(len(df)))
+        ax.set_xticklabels(bars, rotation=90)
+        ax.plot(rolling, lw=3, color='red', markersize=5, zorder=10, label=f"{window} match rolling average")
+        ax.grid(ls='dotted', lw=0.5, color='Black', zorder=1, alpha=0.4)
+        
+        # Adding x and y axis labels
+        ax.set_xlabel('Games', fontsize=12, color='Black')
+        metric_label = metric.replace('_', ' ').title()
+        ax.set_ylabel(metric_label, fontsize=12, color='Black')
+        
+        # Highlight areas based on custom thresholds
+        if is_opponent:
+            ax.axhspan(green_threshold, df["sum"].max(), facecolor='red', alpha=0.1)
+            ax.axhspan(orange_threshold, green_threshold, facecolor='orange', alpha=0.1)
+            ax.axhspan(0, orange_threshold, facecolor='green', alpha=0.1)
+        else:
+            ax.axhspan(green_threshold, df["sum"].max(), facecolor='green', alpha=0.1)
+            ax.axhspan(orange_threshold, green_threshold, facecolor='orange', alpha=0.1)
+            ax.axhspan(0, orange_threshold, facecolor='red', alpha=0.1)
+        
+        # Adding vertical dotted line at a specific x-axis point
+        if vline_xpos is not None:
+            ax.axvline(vline_xpos, color='blue', linestyle='--', lw=1)
+        
+        # Adjust title based on whether it's for our team or opponent
+        title_context = "Opposition" if is_opponent else "Our"
+        fig.suptitle(f"{team} Trendline | {title_context} {metric.replace('_', ' ').title()}", color='Black', family="Roboto", fontsize=20, fontweight="bold", x=0.52, y=0.96)
+        
+        plt.savefig(f'{file_path}{metric}.png', dpi=1000, bbox_inches='tight')
+
+    # Plot for opposition metrics
+    for metric in oppo_metrics:
+        df = data.groupby(['game_week', 'team_name']).agg({metric: ['sum']})
+        df.columns = df.columns.droplevel()
+        df = df.reset_index()
+        df = df[df["team_name"] != team].reset_index(drop=True)
+        metric_thresholds = thresholds['oppo_metrics'].get(metric, {'green_threshold': 1.2, 'orange_threshold': 1.05})
+        create_visualization(df, metric, team, window, file_path, "Opposition trendline", vline_xpos=15, is_opponent=True, **metric_thresholds)  # Set your x-axis point and thresholds here
+
+    # Plot for our metrics
+    for metric in our_metrics:
+        df = data.groupby(['game_week', 'opponent']).agg({metric: ['sum']})
+        df.columns = df.columns.droplevel()
+        df = df.reset_index()
+        df = df[df["opponent"] != team].reset_index(drop=True)
+        metric_thresholds = thresholds['our_metrics'].get(metric, {'green_threshold': 1.2, 'orange_threshold': 1.05})
+        create_visualization(df, metric, team, window, file_path, "trendline", vline_xpos=15, is_opponent=False, **metric_thresholds)  # Set your x-axis point and thresholds here
+        
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
 df2 = pd.read_csv("championshipscores.csv")
 df3 = pd.read_csv("nonpriorityleaguesdata.csv")
 df4 = pd.read_csv("teamseasondata.csv")
+df5 = pd.read_csv("seasonmatchdata.csv")
 
 # Create the navigation menu in the sidebar
 selected_tab = st.sidebar.radio("Navigation", ["Shortlist XI", "Player Profile", "Stoke Score", "Player Radar Single", "Player Radar Comparison", "Scatter Plot", "Multi Player Comparison Tab", "Similarity Score", "Stat Search", "Stoke Score - Wyscout", "Confidence Scores", "Report Search", "Team Data"])
