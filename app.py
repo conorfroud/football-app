@@ -2581,8 +2581,8 @@ def team_rolling_averages(data):
                 ax.axvline(21.5, color='black', linestyle='--', lw=1)
             
             # Adjust title based on whether it's for our team or opponent
-            title_context = "Opposition" if is_opponent else "Our"
-            fig.suptitle(f"{title_context} {metric.replace('_', ' ').title()}", color='Black', family="Roboto", fontsize=20, fontweight="bold", x=0.52, y=0.96)
+            title_context = "Against" if is_opponent else "For"
+            fig.suptitle(f"{metric.replace('_', ' ').title()} {title_context}", color='Black', family="Roboto", fontsize=20, fontweight="bold", x=0.52, y=0.96)
             
             st.pyplot(fig)
             plt.close(fig)
@@ -2594,7 +2594,7 @@ def team_rolling_averages(data):
         df = df.reset_index()
         df = df[df["team_name"] != team].reset_index(drop=True)
         metric_thresholds = thresholds['oppo_metrics'].get(metric, {'green_threshold': 1.2, 'orange_threshold': 1.05})
-        create_visualization(df, metric, team, window, "Opposition trendline", vline_xpos=15, is_opponent=True, **metric_thresholds)  # Set your x-axis point and thresholds here
+        create_visualization(df, metric, team, window, "Against trendline", vline_xpos=15, is_opponent=True, **metric_thresholds)  # Set your x-axis point and thresholds here
 
     # Plot for our metrics
     for metric in our_metrics:
@@ -2603,7 +2603,7 @@ def team_rolling_averages(data):
         df = df.reset_index()
         df = df[df["opponent"] != team].reset_index(drop=True)
         metric_thresholds = thresholds['our_metrics'].get(metric, {'green_threshold': 1.2, 'orange_threshold': 1.05})
-        create_visualization(df, metric, team, window, "trendline", vline_xpos=15, is_opponent=False, **metric_thresholds)  # Set your x-axis point and thresholds here
+        create_visualization(df, metric, team, window, "For trendline", vline_xpos=15, is_opponent=False, **metric_thresholds)  # Set your x-axis point and thresholds here
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
