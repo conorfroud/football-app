@@ -2514,7 +2514,7 @@ def team_rolling_averages(data):
     oppo_metrics = ["Non-Penalty xG"]  # Add as many metrics as you want here.
 
     # Metrics to analyse what focus team did
-    our_metrics = ["Non-Penalty xG", "player_match_np_xg_per_shot", "player_match_np_shots", "player_match_deep_progressions", "player_match_deep_completions"]  # Add as many metrics as you want here.
+    our_metrics = ["Non-Penalty xG", "xG Per Shot", "Shots", "Deep Progressions", "Deep Completions"]  # Add as many metrics as you want here.
 
     team = "Stoke City"  # Team name, as it appears in IQ
     window = 5  # Rolling average window
@@ -2524,9 +2524,10 @@ def team_rolling_averages(data):
     thresholds = {
         'our_metrics': {
             'Non-Penalty xG': {'green_threshold': 1.15, 'orange_threshold': 1.05},
-            'player_match_np_xg_per_shot': {'green_threshold': 0.95, 'orange_threshold': 0.85},
-            'player_match_np_shots': {'green_threshold': 12, 'orange_threshold': 11},
-            'player_match_deep_progressions': {'green_threshold': 44, 'orange_threshold': 40}
+            'xG Per Shot': {'green_threshold': 0.95, 'orange_threshold': 0.85},
+            'Shots': {'green_threshold': 12, 'orange_threshold': 11},
+            'Deep Progressions': {'green_threshold': 44, 'orange_threshold': 40}
+            'Deep Completions': {'green_threshold': 44, 'orange_threshold': 40}
             # Add more metrics as needed
         },
         'oppo_metrics': {
