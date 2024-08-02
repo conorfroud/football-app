@@ -2511,10 +2511,10 @@ def team_rolling_averages(data):
     # Define thresholds for each metric
 
     # Metrics to analyse what the opposition did
-    oppo_metrics = ["player_match_np_xg"]  # Add as many metrics as you want here.
+    oppo_metrics = ["Non-Penalty xG"]  # Add as many metrics as you want here.
 
     # Metrics to analyse what focus team did
-    our_metrics = ["player_match_np_xg", "player_match_np_xg_per_shot", "player_match_np_shots", "player_match_deep_progressions", "player_match_deep_completions"]  # Add as many metrics as you want here.
+    our_metrics = ["Non-Penalty xG", "player_match_np_xg_per_shot", "player_match_np_shots", "player_match_deep_progressions", "player_match_deep_completions"]  # Add as many metrics as you want here.
 
     team = "Stoke City"  # Team name, as it appears in IQ
     window = 5  # Rolling average window
@@ -2530,7 +2530,7 @@ def team_rolling_averages(data):
             # Add more metrics as needed
         },
         'oppo_metrics': {
-            'player_match_np_xg': {'green_threshold': 1, 'orange_threshold': 1.1}
+            'Non-Penalty xG': {'green_threshold': 1, 'orange_threshold': 1.1}
             # Add more metrics as needed
         }
     }
