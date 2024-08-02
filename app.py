@@ -2575,7 +2575,7 @@ def team_rolling_averages(data):
         
         # Adding vertical dotted line at a specific x-axis point
         if vline_xpos is not None:
-            ax.axvline(vline_xpos, color='blue', linestyle='--', lw=1)
+            ax.axvline(21.5, color='black', linestyle='--', lw=1)
         
         # Adjust title based on whether it's for our team or opponent
         title_context = "Opposition" if is_opponent else "Our"
