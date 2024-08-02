@@ -2523,7 +2523,7 @@ def team_rolling_averages(data):
     
     thresholds = {
         'our_metrics': {
-            'player_match_np_xg': {'green_threshold': 1.15, 'orange_threshold': 1.05},
+            'Non-Penalty xG': {'green_threshold': 1.15, 'orange_threshold': 1.05},
             'player_match_np_xg_per_shot': {'green_threshold': 0.95, 'orange_threshold': 0.85},
             'player_match_np_shots': {'green_threshold': 12, 'orange_threshold': 11},
             'player_match_deep_progressions': {'green_threshold': 44, 'orange_threshold': 40}
