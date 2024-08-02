@@ -2634,6 +2634,6 @@ if selected_tab == "Player Database":
 if selected_tab == "Team Data":
     team_scatter_plot(df4)
 if selected_tab == "Rolling Average Data":
-    team_rolling_averages(df5)
+    team_rolling_averages(data)
 elif selected_tab == "Multi Player Comparison Tab":
     comparison_tab(df)
