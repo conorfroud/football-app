@@ -2537,6 +2537,11 @@ def team_rolling_averages(data):
     
     # Function to create the visualization
     def create_visualization(df, metric, team, window, title_suffix, vline_xpos=None, is_opponent=False, green_threshold=1.2, orange_threshold=1.05):
+
+        col1, col2, col3 = st.columns([1, 5, 1])
+
+        with col2:
+
         avg = df["sum"].mean()
         rolling = df["sum"].rolling(window).mean()
         
