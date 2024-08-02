@@ -2536,6 +2536,10 @@ def team_rolling_averages(data):
         }
     }
     
+    # Sidebar for metric selection
+    selected_our_metrics = st.sidebar.multiselect('Select Our Metrics', our_metrics, our_metrics)
+    selected_oppo_metrics = st.sidebar.multiselect('Select Opponent Metrics', oppo_metrics, oppo_metrics)
+    
     # Function to create the visualization
     def create_visualization(df, metric, team, window, title_suffix, vline_xpos=None, is_opponent=False, green_threshold=1.2, orange_threshold=1.05):
         col1, col2, col3 = st.columns([1, 5, 1])
@@ -2588,7 +2592,7 @@ def team_rolling_averages(data):
             plt.close(fig)
 
     # Plot for opposition metrics
-    for metric in oppo_metrics:
+    for metric in selected_oppo_metrics:
         df = data.groupby(['game_week', 'team_name']).agg({metric: ['sum']})
         df.columns = df.columns.droplevel()
         df = df.reset_index()
@@ -2597,7 +2601,7 @@ def team_rolling_averages(data):
         create_visualization(df, metric, team, window, "Against trendline", vline_xpos=15, is_opponent=True, **metric_thresholds)  # Set your x-axis point and thresholds here
 
     # Plot for our metrics
-    for metric in our_metrics:
+    for metric in selected_our_metrics:
         df = data.groupby(['game_week', 'opponent']).agg({metric: ['sum']})
         df.columns = df.columns.droplevel()
         df = df.reset_index()
