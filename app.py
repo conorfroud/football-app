@@ -2516,6 +2516,8 @@ def team_rolling_averages(data):
     #metrics to analyse what focus team did. See PDF at bottom of this page for list of metrics you can use
     our_metrics=["player_match_np_xg", "player_match_np_xg_per_shot", "player_match_np_shots", "player_match_deep_progressions", "player_match_deep_completions"] #add as many metrics as you want here.
 
+    team="Stoke City" #team name, as it appears in IQ
+    
     thresholds = {
         'our_metrics': {
             'player_match_np_xg': {'green_threshold': 1.15, 'orange_threshold': 1.05},
@@ -2529,7 +2531,7 @@ def team_rolling_averages(data):
             # Add more metrics as needed
         }
     }
-
+    
     # Function to create the visualization
     def create_visualization(df, metric, team, window, file_path, title_suffix, vline_xpos=None, is_opponent=False, green_threshold=1.2, orange_threshold=1.05):
         avg = df["sum"].mean()
