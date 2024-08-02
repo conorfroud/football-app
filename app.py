@@ -2517,6 +2517,10 @@ def team_rolling_averages(data):
     our_metrics=["player_match_np_xg", "player_match_np_xg_per_shot", "player_match_np_shots", "player_match_deep_progressions", "player_match_deep_completions"] #add as many metrics as you want here.
 
     team="Stoke City" #team name, as it appears in IQ
+    window=5 #rolling average window
+    team_color1="#FF6601"
+    team_color2="green"
+    file_path="/Users/conorfroud/Downloads/" #replace with file path where you want to save images
     
     thresholds = {
         'our_metrics': {
