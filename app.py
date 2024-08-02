@@ -2507,7 +2507,7 @@ def team_scatter_plot(df4):
         # Display the sixth plot in Streamlit
         st.plotly_chart(fig6)
 
-def team_rolling_averages(df5):
+def team_rolling_averages(data):
     # Define thresholds for each metric
 
     #metrics to analyse what the opposition did. See PDF at bottom of this page for list of metrics you can use
@@ -2601,7 +2601,7 @@ df = pd.read_csv("belgiumdata.csv")
 df2 = pd.read_csv("championshipscores.csv")
 df3 = pd.read_csv("nonpriorityleaguesdata.csv")
 df4 = pd.read_csv("teamseasondata.csv")
-df5 = pd.read_csv("seasonmatchdata.csv")
+data = pd.read_csv("seasonmatchdata.csv")
 
 # Create the navigation menu in the sidebar
 selected_tab = st.sidebar.radio("Navigation", ["Shortlist XI", "Player Profile", "Stoke Score", "Player Radar Single", "Player Radar Comparison", "Scatter Plot", "Multi Player Comparison Tab", "Similarity Score", "Stat Search", "Stoke Score - Wyscout", "Confidence Scores", "Report Search", "Team Data", "Rolling Average Data"])
