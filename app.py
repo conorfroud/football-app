@@ -2507,10 +2507,6 @@ def team_scatter_plot(df4):
         # Display the sixth plot in Streamlit
         st.plotly_chart(fig6)
 
-import numpy as np
-import matplotlib.pyplot as plt
-import streamlit as st
-
 def team_rolling_averages(data):
     # Define thresholds for each metric
 
@@ -2585,7 +2581,7 @@ def team_rolling_averages(data):
             
             # Adjust title based on whether it's for our team or opponent
             title_context = "Opposition" if is_opponent else "Our"
-            fig.suptitle(f"{team} Trendline | {title_context} {metric.replace('_', ' ').title()}", color='Black', family="Roboto", fontsize=20, fontweight="bold", x=0.52, y=0.96)
+            fig.suptitle(f"{title_context} {metric.replace('_', ' ').title()}", color='Black', family="Roboto", fontsize=20, fontweight="bold", x=0.52, y=0.96)
             
             st.pyplot(fig)
             plt.close(fig)
