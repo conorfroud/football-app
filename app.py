@@ -2510,17 +2510,16 @@ def team_scatter_plot(df4):
 def team_rolling_averages(data):
     # Define thresholds for each metric
 
-    #metrics to analyse what the opposition did. See PDF at bottom of this page for list of metrics you can use
-    oppo_metrics=["player_match_np_xg"] #add as many metrics as you want here.
+    # Metrics to analyse what the opposition did
+    oppo_metrics = ["player_match_np_xg"]  # Add as many metrics as you want here.
 
-    #metrics to analyse what focus team did. See PDF at bottom of this page for list of metrics you can use
-    our_metrics=["player_match_np_xg", "player_match_np_xg_per_shot", "player_match_np_shots", "player_match_deep_progressions", "player_match_deep_completions"] #add as many metrics as you want here.
+    # Metrics to analyse what focus team did
+    our_metrics = ["player_match_np_xg", "player_match_np_xg_per_shot", "player_match_np_shots", "player_match_deep_progressions", "player_match_deep_completions"]  # Add as many metrics as you want here.
 
-    team="Stoke City" #team name, as it appears in IQ
-    window=5 #rolling average window
-    team_color1="#FF6601"
-    team_color2="green"
-    file_path="/Users/conorfroud/Downloads/" #replace with file path where you want to save images
+    team = "Stoke City"  # Team name, as it appears in IQ
+    window = 5  # Rolling average window
+    team_color1 = "#FF6601"
+    team_color2 = "green"
     
     thresholds = {
         'our_metrics': {
@@ -2537,7 +2536,7 @@ def team_rolling_averages(data):
     }
     
     # Function to create the visualization
-    def create_visualization(df, metric, team, window, file_path, title_suffix, vline_xpos=None, is_opponent=False, green_threshold=1.2, orange_threshold=1.05):
+    def create_visualization(df, metric, team, window, title_suffix, vline_xpos=None, is_opponent=False, green_threshold=1.2, orange_threshold=1.05):
         avg = df["sum"].mean()
         rolling = df["sum"].rolling(window).mean()
         
@@ -2582,7 +2581,8 @@ def team_rolling_averages(data):
         title_context = "Opposition" if is_opponent else "Our"
         fig.suptitle(f"{team} Trendline | {title_context} {metric.replace('_', ' ').title()}", color='Black', family="Roboto", fontsize=20, fontweight="bold", x=0.52, y=0.96)
         
-        plt.savefig(f'{file_path}{metric}.png', dpi=1000, bbox_inches='tight')
+        st.pyplot(fig)
+        plt.close(fig)
 
     # Plot for opposition metrics
     for metric in oppo_metrics:
@@ -2591,7 +2591,7 @@ def team_rolling_averages(data):
         df = df.reset_index()
         df = df[df["team_name"] != team].reset_index(drop=True)
         metric_thresholds = thresholds['oppo_metrics'].get(metric, {'green_threshold': 1.2, 'orange_threshold': 1.05})
-        create_visualization(df, metric, team, window, file_path, "Opposition trendline", vline_xpos=15, is_opponent=True, **metric_thresholds)  # Set your x-axis point and thresholds here
+        create_visualization(df, metric, team, window, "Opposition trendline", vline_xpos=15, is_opponent=True, **metric_thresholds)  # Set your x-axis point and thresholds here
 
     # Plot for our metrics
     for metric in our_metrics:
@@ -2600,7 +2600,7 @@ def team_rolling_averages(data):
         df = df.reset_index()
         df = df[df["opponent"] != team].reset_index(drop=True)
         metric_thresholds = thresholds['our_metrics'].get(metric, {'green_threshold': 1.2, 'orange_threshold': 1.05})
-        create_visualization(df, metric, team, window, file_path, "trendline", vline_xpos=15, is_opponent=False, **metric_thresholds)  # Set your x-axis point and thresholds here
+        create_visualization(df, metric, team, window, "trendline", vline_xpos=15, is_opponent=False, **metric_thresholds)  # Set your x-axis point and thresholds here
         
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
