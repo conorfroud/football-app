@@ -2509,6 +2509,13 @@ def team_scatter_plot(df4):
 
 def team_rolling_averages(df5):
     # Define thresholds for each metric
+
+    #metrics to analyse what the opposition did. See PDF at bottom of this page for list of metrics you can use
+    oppo_metrics=["player_match_np_xg"] #add as many metrics as you want here.
+
+    #metrics to analyse what focus team did. See PDF at bottom of this page for list of metrics you can use
+    our_metrics=["player_match_np_xg", "player_match_np_xg_per_shot", "player_match_np_shots", "player_match_deep_progressions", "player_match_deep_completions"] #add as many metrics as you want here.
+
     thresholds = {
         'our_metrics': {
             'player_match_np_xg': {'green_threshold': 1.15, 'orange_threshold': 1.05},
