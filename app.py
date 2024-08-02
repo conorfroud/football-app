@@ -2507,8 +2507,11 @@ def team_scatter_plot(df4):
         # Display the sixth plot in Streamlit
         st.plotly_chart(fig6)
 
+import numpy as np
+import matplotlib.pyplot as plt
+import streamlit as st
+
 def team_rolling_averages(data):
-    
     # Define thresholds for each metric
 
     # Metrics to analyse what the opposition did
@@ -2538,57 +2541,54 @@ def team_rolling_averages(data):
     
     # Function to create the visualization
     def create_visualization(df, metric, team, window, title_suffix, vline_xpos=None, is_opponent=False, green_threshold=1.2, orange_threshold=1.05):
-
-    col1, col2, col3 = st.columns([1, 5, 1])
-
-    with col2:
-
-        avg = df["sum"].mean()
-        rolling = df["sum"].rolling(window).mean()
-        
-        fig, ax = plt.subplots(figsize=(12, 6))
-        fig.set_facecolor('White')
-        ax.patch.set_facecolor('White')
-        
-        ax.spines['right'].set_visible(False)
-        ax.spines['top'].set_visible(False)
-        ax.spines['left'].set_color('#ccc8c8')
-        ax.spines['bottom'].set_color('#ccc8c8')
-        
-        bars = df.iloc[:, 1]
-        x_pos = np.arange(len(df))
-        
-        ax.bar(x_pos, df["sum"], color='black', alpha=0.75)
-        ax.set_xticks(range(len(df)))
-        ax.set_xticklabels(bars, rotation=90)
-        ax.plot(rolling, lw=3, color='red', markersize=5, zorder=10, label=f"{window} match rolling average")
-        ax.grid(ls='dotted', lw=0.5, color='Black', zorder=1, alpha=0.4)
-        
-        # Adding x and y axis labels
-        ax.set_xlabel('Games', fontsize=12, color='Black')
-        metric_label = metric.replace('_', ' ').title()
-        ax.set_ylabel(metric_label, fontsize=12, color='Black')
-        
-        # Highlight areas based on custom thresholds
-        if is_opponent:
-            ax.axhspan(green_threshold, df["sum"].max(), facecolor='red', alpha=0.1)
-            ax.axhspan(orange_threshold, green_threshold, facecolor='orange', alpha=0.1)
-            ax.axhspan(0, orange_threshold, facecolor='green', alpha=0.1)
-        else:
-            ax.axhspan(green_threshold, df["sum"].max(), facecolor='green', alpha=0.1)
-            ax.axhspan(orange_threshold, green_threshold, facecolor='orange', alpha=0.1)
-            ax.axhspan(0, orange_threshold, facecolor='red', alpha=0.1)
-        
-        # Adding vertical dotted line at a specific x-axis point
-        if vline_xpos is not None:
-            ax.axvline(21.5, color='black', linestyle='--', lw=1)
-        
-        # Adjust title based on whether it's for our team or opponent
-        title_context = "Opposition" if is_opponent else "Our"
-        fig.suptitle(f"{team} Trendline | {title_context} {metric.replace('_', ' ').title()}", color='Black', family="Roboto", fontsize=20, fontweight="bold", x=0.52, y=0.96)
-        
-        st.pyplot(fig)
-        plt.close(fig)
+        col1, col2, col3 = st.columns([1, 5, 1])
+        with col2:
+            avg = df["sum"].mean()
+            rolling = df["sum"].rolling(window).mean()
+            
+            fig, ax = plt.subplots(figsize=(12, 6))
+            fig.set_facecolor('White')
+            ax.patch.set_facecolor('White')
+            
+            ax.spines['right'].set_visible(False)
+            ax.spines['top'].set_visible(False)
+            ax.spines['left'].set_color('#ccc8c8')
+            ax.spines['bottom'].set_color('#ccc8c8')
+            
+            bars = df.iloc[:, 1]
+            x_pos = np.arange(len(df))
+            
+            ax.bar(x_pos, df["sum"], color='black', alpha=0.75)
+            ax.set_xticks(range(len(df)))
+            ax.set_xticklabels(bars, rotation=90)
+            ax.plot(rolling, lw=3, color='red', markersize=5, zorder=10, label=f"{window} match rolling average")
+            ax.grid(ls='dotted', lw=0.5, color='Black', zorder=1, alpha=0.4)
+            
+            # Adding x and y axis labels
+            ax.set_xlabel('Games', fontsize=12, color='Black')
+            metric_label = metric.replace('_', ' ').title()
+            ax.set_ylabel(metric_label, fontsize=12, color='Black')
+            
+            # Highlight areas based on custom thresholds
+            if is_opponent:
+                ax.axhspan(green_threshold, df["sum"].max(), facecolor='red', alpha=0.1)
+                ax.axhspan(orange_threshold, green_threshold, facecolor='orange', alpha=0.1)
+                ax.axhspan(0, orange_threshold, facecolor='green', alpha=0.1)
+            else:
+                ax.axhspan(green_threshold, df["sum"].max(), facecolor='green', alpha=0.1)
+                ax.axhspan(orange_threshold, green_threshold, facecolor='orange', alpha=0.1)
+                ax.axhspan(0, orange_threshold, facecolor='red', alpha=0.1)
+            
+            # Adding vertical dotted line at a specific x-axis point
+            if vline_xpos is not None:
+                ax.axvline(21.5, color='black', linestyle='--', lw=1)
+            
+            # Adjust title based on whether it's for our team or opponent
+            title_context = "Opposition" if is_opponent else "Our"
+            fig.suptitle(f"{team} Trendline | {title_context} {metric.replace('_', ' ').title()}", color='Black', family="Roboto", fontsize=20, fontweight="bold", x=0.52, y=0.96)
+            
+            st.pyplot(fig)
+            plt.close(fig)
 
     # Plot for opposition metrics
     for metric in oppo_metrics:
@@ -2607,7 +2607,7 @@ def team_rolling_averages(data):
         df = df[df["opponent"] != team].reset_index(drop=True)
         metric_thresholds = thresholds['our_metrics'].get(metric, {'green_threshold': 1.2, 'orange_threshold': 1.05})
         create_visualization(df, metric, team, window, "trendline", vline_xpos=15, is_opponent=False, **metric_thresholds)  # Set your x-axis point and thresholds here
-        
+
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
 df2 = pd.read_csv("championshipscores.csv")
