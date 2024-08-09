@@ -2600,13 +2600,16 @@ def team_rolling_averages(data):
             metric_label = metric.replace('_', ' ').title()
             ax.set_ylabel(metric_label, fontsize=12, color='Black')
             
-            # Highlight areas based on custom thresholds
+            # Getting the y-axis maximum value after plotting
+            ymax = ax.get_ylim()[1]
+            
+            # Highlight areas based on custom thresholds, extending the top area to ymax
             if is_opponent:
-                ax.axhspan(green_threshold, df["sum"].max(), facecolor='red', alpha=0.1)
+                ax.axhspan(green_threshold, ymax, facecolor='red', alpha=0.1)
                 ax.axhspan(orange_threshold, green_threshold, facecolor='orange', alpha=0.1)
                 ax.axhspan(0, orange_threshold, facecolor='green', alpha=0.1)
             else:
-                ax.axhspan(green_threshold, df["sum"].max(), facecolor='green', alpha=0.1)
+                ax.axhspan(green_threshold, ymax, facecolor='green', alpha=0.1)
                 ax.axhspan(orange_threshold, green_threshold, facecolor='orange', alpha=0.1)
                 ax.axhspan(0, orange_threshold, facecolor='red', alpha=0.1)
             
