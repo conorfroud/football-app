@@ -2541,24 +2541,6 @@ def team_rolling_averages(data):
     # Sidebar for metric category selection
     metric_category = st.sidebar.selectbox('Select Metric Category', ['Attacking Metrics', 'In Possession Metrics', 'Defensive Metrics', 'xG Difference Performance'])
     
-    # Determine the metrics to use based on the selected category
-    if metric_category == 'Attacking Metrics':
-        selected_metrics = ['Non-Penalty xG', 'xG Per Shot', 'Shots']
-        metric_type = 'attacking_metrics'
-        is_opponent = False
-    elif metric_category == 'In Possession Metrics':
-        selected_metrics = ['Deep Progressions', 'Deep Completions', 'player_match_obv_pass', 'player_match_box_cross_ratio']
-        metric_type = 'in_possession_metrics'
-        is_opponent = False
-    elif metric_category == 'Defensive Metrics':
-        selected_metrics = ['Non-Penalty xG', 'xG Per Shot', 'Shots', 'Deep Progressions']
-        metric_type = 'defensive_metrics'
-        is_opponent = True
-    elif metric_category == 'xG Difference Performance':
-        selected_metrics = []
-        create_combined_xg_plot(data, team, window)
-        return  # Return early since we don't need to plot other metrics
-
     # Function to properly format xG labels
     def format_xg_label(metric):
         # Define replacements for specific cases
@@ -2674,17 +2656,19 @@ def team_rolling_averages(data):
             st.pyplot(fig)
             plt.close(fig)
 
-    # Plot for selected metrics
-    for metric in selected_metrics:
-        df = data.groupby(['game_week', 'team_name' if is_opponent else 'opponent']).agg({metric: ['sum']})
-        df.columns = df.columns.droplevel()
-        df = df.reset_index()
-        df = df[df["team_name" if is_opponent else "opponent"] != team].reset_index(drop=True)
-        metric_thresholds = thresholds[metric_type].get(metric, {'green_threshold': 1.2, 'orange_threshold': 1.05})
-        create_visualization(df, metric, team, window, "Against trendline" if is_opponent else "For trendline", vline_xpos=15, is_opponent=is_opponent, **metric_thresholds)
-    
-    # Create the combined Non-Penalty xG plot
-    create_combined_xg_plot(data, team, window)
+    # Generate plots based on the selected metric category
+    if metric_category == 'xG Difference Performance':
+        # Create the combined Non-Penalty xG plot
+        create_combined_xg_plot(data, team, window)
+    else:
+        # Plot for selected metrics
+        for metric in selected_metrics:
+            df = data.groupby(['game_week', 'team_name' if is_opponent else 'opponent']).agg({metric: ['sum']})
+            df.columns = df.columns.droplevel()
+            df = df.reset_index()
+            df = df[df["team_name" if is_opponent else "opponent"] != team].reset_index(drop=True)
+            metric_thresholds = thresholds[metric_type].get(metric, {'green_threshold': 1.2, 'orange_threshold': 1.05})
+            create_visualization(df, metric, team, window, "Against trendline" if is_opponent else "For trendline", vline_xpos=15, is_opponent=is_opponent, **metric_thresholds)
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
