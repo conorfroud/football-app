@@ -2627,6 +2627,38 @@ def team_rolling_averages(data):
             
             st.pyplot(fig)
             plt.close(fig)
+    
+    # Function to create the combined 'Non-Penalty xG' plot for our team and opponent
+    def create_combined_xg_plot(data, team, window):
+        col1, col2, col3 = st.columns([1, 5, 1])
+        with col2:
+            # Prepare data for both team and opponent
+            df_our = data[data['team_name'] == team].groupby('game_week').agg({'Non-Penalty xG': 'sum'}).rolling(window).mean().reset_index()
+            df_oppo = data[data['opponent'] == team].groupby('game_week').agg({'Non-Penalty xG': 'sum'}).rolling(window).mean().reset_index()
+            
+            fig, ax = plt.subplots(figsize=(12, 6))
+            fig.set_facecolor('White')
+            ax.patch.set_facecolor('White')
+            
+            ax.spines['right'].set_visible(False)
+            ax.spines['top'].set_visible(False)
+            ax.spines['left'].set_color('#ccc8c8')
+            ax.spines['bottom'].set_color('#ccc8c8')
+            
+            ax.plot(df_our['game_week'], df_our['Non-Penalty xG'], lw=3, color='blue', label=f"{window} match rolling average (Our Team)")
+            ax.plot(df_oppo['game_week'], df_oppo['Non-Penalty xG'], lw=3, color='red', label=f"{window} match rolling average (Opponent)")
+            ax.grid(ls='dotted', lw=0.5, color='Black', zorder=1, alpha=0.4)
+            
+            # Adding x and y axis labels
+            ax.set_xlabel('Games', fontsize=12, color='Black')
+            ax.set_ylabel('Non-Penalty xG', fontsize=12, color='Black')
+            
+            # Title for the combined plot
+            fig.suptitle(f"Non-Penalty xG For and Against (Rolling {window} Matches)", color='Black', family="Roboto", fontsize=20, fontweight="bold", x=0.52, y=0.96)
+            
+            ax.legend()
+            st.pyplot(fig)
+            plt.close(fig)
 
     # Plot for selected metrics
     for metric in selected_metrics:
@@ -2636,6 +2668,9 @@ def team_rolling_averages(data):
         df = df[df["team_name" if is_opponent else "opponent"] != team].reset_index(drop=True)
         metric_thresholds = thresholds[metric_type].get(metric, {'green_threshold': 1.2, 'orange_threshold': 1.05})
         create_visualization(df, metric, team, window, "Against trendline" if is_opponent else "For trendline", vline_xpos=15, is_opponent=is_opponent, **metric_thresholds)
+    
+    # Create the combined Non-Penalty xG plot
+    create_combined_xg_plot(data, team, window)
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
