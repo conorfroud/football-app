@@ -2508,46 +2508,51 @@ def team_scatter_plot(df4):
         st.plotly_chart(fig6)
 
 def team_rolling_averages(data):
+    
     # Define thresholds for each metric
-
-    # Metrics to analyse what the opposition did
-    oppo_metrics = ["Non-Penalty xG", "xG Per Shot", "Shots", "Deep Progressions"]  # Add as many metrics as you want here.
-
-    # Metrics to analyse what focus team did
-    our_metrics = ["Non-Penalty xG", "xG Per Shot", "Shots", "Deep Progressions", "Deep Completions", "player_match_obv_pass", "player_match_box_cross_ratio"]  # Add as many metrics as you want here.
-
     team = "Stoke City"  # Team name, as it appears in IQ
     window = 5  # Rolling average window
     team_color1 = "#FF6601"
     team_color2 = "green"
     
     thresholds = {
-        'our_metrics': {
+        'attacking_metrics': {
             'Non-Penalty xG': {'green_threshold': 1.15, 'orange_threshold': 1.05},
             'xG Per Shot': {'green_threshold': 0.95, 'orange_threshold': 0.85},
-            'Shots': {'green_threshold': 12, 'orange_threshold': 11},
+            'Shots': {'green_threshold': 12, 'orange_threshold': 11}
+            # Add more metrics as needed
+        },
+        'in_possession_metrics': {
             'Deep Progressions': {'green_threshold': 44, 'orange_threshold': 40},
             'Deep Completions': {'green_threshold': 4, 'orange_threshold': 3.5},
             'player_match_obv_pass': {'green_threshold': 4, 'orange_threshold': 3.5},
             'player_match_box_cross_ratio': {'green_threshold': 4, 'orange_threshold': 3.5}
             # Add more metrics as needed
         },
-        'oppo_metrics': {
+        'defensive_metrics': {
             'Non-Penalty xG': {'green_threshold': 1, 'orange_threshold': 1.1},
             'xG Per Shot': {'green_threshold': 0.95, 'orange_threshold': 0.85},
-            'Shots': {'green_threshold': 12, 'orange_threshold': 11},
-            'Deep Progressions': {'green_threshold': 44, 'orange_threshold': 40}
+            'Shots': {'green_threshold': 12, 'orange_threshold': 11}
             # Add more metrics as needed
         }
     }
     
     # Sidebar for metric category selection
-    metric_category = st.sidebar.selectbox('Select Metric Category', ['Attacking Metrics', 'Defensive Metrics'])
+    metric_category = st.sidebar.selectbox('Select Metric Category', ['Attacking Metrics', 'In Possession Metrics', 'Defensive Metrics'])
     
+    # Determine the metrics to use based on the selected category
     if metric_category == 'Attacking Metrics':
-        selected_metrics = our_metrics
-    else:
-        selected_metrics = oppo_metrics
+        selected_metrics = ['Non-Penalty xG', 'xG Per Shot', 'Shots']
+        metric_type = 'attacking_metrics'
+        is_opponent = False
+    elif metric_category == 'In Possession Metrics':
+        selected_metrics = ['Deep Progressions', 'Deep Completions', 'player_match_obv_pass', 'player_match_box_cross_ratio']
+        metric_type = 'in_possession_metrics'
+        is_opponent = False
+    else:  # Defensive Metrics
+        selected_metrics = ['Non-Penalty xG', 'xG Per Shot', 'Shots']
+        metric_type = 'defensive_metrics'
+        is_opponent = True
     
     # Function to create the visualization
     def create_visualization(df, metric, team, window, title_suffix, vline_xpos=None, is_opponent=False, green_threshold=1.2, orange_threshold=1.05):
@@ -2601,23 +2606,13 @@ def team_rolling_averages(data):
             plt.close(fig)
 
     # Plot for selected metrics
-    if metric_category == 'Defensive Metrics':
-        for metric in selected_metrics:
-            df = data.groupby(['game_week', 'team_name']).agg({metric: ['sum']})
-            df.columns = df.columns.droplevel()
-            df = df.reset_index()
-            df = df[df["team_name"] != team].reset_index(drop=True)
-            metric_thresholds = thresholds['oppo_metrics'].get(metric, {'green_threshold': 1.2, 'orange_threshold': 1.05})
-            create_visualization(df, metric, team, window, "Against trendline", vline_xpos=15, is_opponent=True, **metric_thresholds)  # Set your x-axis point and thresholds here
-
-    else:
-        for metric in selected_metrics:
-            df = data.groupby(['game_week', 'opponent']).agg({metric: ['sum']})
-            df.columns = df.columns.droplevel()
-            df = df.reset_index()
-            df = df[df["opponent"] != team].reset_index(drop=True)
-            metric_thresholds = thresholds['our_metrics'].get(metric, {'green_threshold': 1.2, 'orange_threshold': 1.05})
-            create_visualization(df, metric, team, window, "For trendline", vline_xpos=15, is_opponent=False, **metric_thresholds)  # Set your x-axis point and thresholds here
+    for metric in selected_metrics:
+        df = data.groupby(['game_week', 'team_name' if is_opponent else 'opponent']).agg({metric: ['sum']})
+        df.columns = df.columns.droplevel()
+        df = df.reset_index()
+        df = df[df["team_name" if is_opponent else "opponent"] != team].reset_index(drop=True)
+        metric_thresholds = thresholds[metric_type].get(metric, {'green_threshold': 1.2, 'orange_threshold': 1.05})
+        create_visualization(df, metric, team, window, "Against trendline" if is_opponent else "For trendline", vline_xpos=15, is_opponent=is_opponent, **metric_thresholds)
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
