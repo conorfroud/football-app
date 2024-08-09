@@ -2600,10 +2600,10 @@ def team_rolling_averages(data):
             metric_label = metric.replace('_', ' ').title()
             ax.set_ylabel(metric_label, fontsize=12, color='Black')
             
-            # Getting the y-axis maximum value after plotting
-            ymax = ax.get_ylim()[1]
+            # Getting the y-axis limits after plotting
+            ymin, ymax = ax.get_ylim()
             
-            # Highlight areas based on custom thresholds, extending the top area to ymax
+            # Highlight areas based on custom thresholds, extending the top area to ymax without changing the axis limit
             if is_opponent:
                 ax.axhspan(green_threshold, ymax, facecolor='red', alpha=0.1)
                 ax.axhspan(orange_threshold, green_threshold, facecolor='orange', alpha=0.1)
@@ -2612,6 +2612,9 @@ def team_rolling_averages(data):
                 ax.axhspan(green_threshold, ymax, facecolor='green', alpha=0.1)
                 ax.axhspan(orange_threshold, green_threshold, facecolor='orange', alpha=0.1)
                 ax.axhspan(0, orange_threshold, facecolor='red', alpha=0.1)
+
+            # Restore the original y-axis limits to prevent extension
+            ax.set_ylim(ymin, ymax)
             
             # Adding vertical dotted line at a specific x-axis point
             if vline_xpos is not None:
