@@ -2555,6 +2555,21 @@ def team_rolling_averages(data):
         metric_type = 'defensive_metrics'
         is_opponent = True
     
+    # Function to properly format xG labels
+    def format_xg_label(metric):
+        # Define replacements for specific cases
+        replacements = {
+            'Non-Penalty Xg': 'Non-Penalty xG',
+            'Xg Per Shot': 'xG Per Shot'
+        }
+        
+        # Replace the metric label with the formatted version if it exists
+        for key, value in replacements.items():
+            if key in metric:
+                metric = metric.replace(key, value)
+        
+        return metric
+
     # Function to create the visualization
     def create_visualization(df, metric, team, window, title_suffix, vline_xpos=None, is_opponent=False, green_threshold=1.2, orange_threshold=1.05):
         col1, col2, col3 = st.columns([1, 5, 1])
@@ -2601,7 +2616,8 @@ def team_rolling_averages(data):
             
             # Adjust title based on whether it's for our team or opponent
             title_context = "Against" if is_opponent else "For"
-            fig.suptitle(f"{metric.replace('_', ' ').title()} {title_context}", color='Black', family="Roboto", fontsize=20, fontweight="bold", x=0.52, y=0.96)
+            formatted_metric = format_xg_label(metric.replace('_', ' ').title())
+            fig.suptitle(f"{formatted_metric} {title_context}", color='Black', family="Roboto", fontsize=20, fontweight="bold", x=0.52, y=0.96)
             
             st.pyplot(fig)
             plt.close(fig)
