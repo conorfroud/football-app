@@ -2524,7 +2524,7 @@ def team_rolling_averages(data):
         },
         'in_possession_metrics': {
             'Deep Progressions': {'green_threshold': 44, 'orange_threshold': 40},
-            'Deep Completions': {'green_threshold': 4, 'orange_threshold': 3.5},
+            'Deep Completions': {'green_threshold': 4.6, 'orange_threshold': 4.2},
             'player_match_obv_pass': {'green_threshold': 0.9, 'orange_threshold': 0.8},
             'player_match_box_cross_ratio': {'green_threshold': 3.2, 'orange_threshold': 3}
             # Add more metrics as needed
