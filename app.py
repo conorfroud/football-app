@@ -2636,6 +2636,9 @@ def team_rolling_averages(data):
             df_our = data[data['team_name'] == team].groupby('game_week').agg({'Non-Penalty xG': 'sum'}).rolling(window).mean().reset_index()
             df_oppo = data[data['opponent'] == team].groupby('game_week').agg({'Non-Penalty xG': 'sum'}).rolling(window).mean().reset_index()
             
+            # Merge the dataframes on game_week to ensure alignment
+            df_combined = df_our.merge(df_oppo, on='game_week', suffixes=('_our', '_oppo'))
+            
             fig, ax = plt.subplots(figsize=(12, 6))
             fig.set_facecolor('White')
             ax.patch.set_facecolor('White')
@@ -2645,9 +2648,13 @@ def team_rolling_averages(data):
             ax.spines['left'].set_color('#ccc8c8')
             ax.spines['bottom'].set_color('#ccc8c8')
             
-            ax.plot(df_our['game_week'], df_our['Non-Penalty xG'], lw=3, color='blue', label=f"{window} match rolling average (Our Team)")
-            ax.plot(df_oppo['game_week'], df_oppo['Non-Penalty xG'], lw=3, color='red', label=f"{window} match rolling average (Opponent)")
+            ax.plot(df_combined['game_week'], df_combined['Non-Penalty xG_our'], lw=3, color='blue', label=f"{window} match rolling average (Our Team)")
+            ax.plot(df_combined['game_week'], df_combined['Non-Penalty xG_oppo'], lw=3, color='red', label=f"{window} match rolling average (Opponent)")
             ax.grid(ls='dotted', lw=0.5, color='Black', zorder=1, alpha=0.4)
+            
+            # Set the x-axis to display specific games
+            ax.set_xticks(df_combined['game_week'])
+            ax.set_xticklabels(df_combined['game_week'], rotation=90)
             
             # Adding x and y axis labels
             ax.set_xlabel('Games', fontsize=12, color='Black')
