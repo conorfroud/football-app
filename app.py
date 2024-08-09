@@ -2532,6 +2532,9 @@ def team_rolling_averages(data):
         },
         'oppo_metrics': {
             'Non-Penalty xG': {'green_threshold': 1, 'orange_threshold': 1.1}
+            'xG Per Shot': {'green_threshold': 0.95, 'orange_threshold': 0.85},
+            'Shots': {'green_threshold': 12, 'orange_threshold': 11},
+            'Deep Progressions': {'green_threshold': 44, 'orange_threshold': 40},
             # Add more metrics as needed
         }
     }
