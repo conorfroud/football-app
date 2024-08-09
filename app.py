@@ -2539,7 +2539,7 @@ def team_rolling_averages(data):
     }
     
     # Sidebar for metric category selection
-    metric_category = st.sidebar.selectbox('Select Metric Category', ['Attacking Metrics', 'In Possession Metrics', 'Defensive Metrics'])
+    metric_category = st.sidebar.selectbox('Select Metric Category', ['Attacking Metrics', 'In Possession Metrics', 'Defensive Metrics', 'xG Difference Performance'])
     
     # Determine the metrics to use based on the selected category
     if metric_category == 'Attacking Metrics':
@@ -2550,11 +2550,15 @@ def team_rolling_averages(data):
         selected_metrics = ['Deep Progressions', 'Deep Completions', 'player_match_obv_pass', 'player_match_box_cross_ratio']
         metric_type = 'in_possession_metrics'
         is_opponent = False
-    else:  # Defensive Metrics
+    elif metric_category == 'Defensive Metrics':
         selected_metrics = ['Non-Penalty xG', 'xG Per Shot', 'Shots', 'Deep Progressions']
         metric_type = 'defensive_metrics'
         is_opponent = True
-    
+    elif metric_category == 'xG Difference Performance':
+        selected_metrics = []
+        create_combined_xg_plot(data, team, window)
+        return  # Return early since we don't need to plot other metrics
+
     # Function to properly format xG labels
     def format_xg_label(metric):
         # Define replacements for specific cases
@@ -2655,6 +2659,9 @@ def team_rolling_averages(data):
             # Set the x-axis to display specific games
             ax.set_xticks(df_combined['game_week'])
             ax.set_xticklabels(df_combined['game_week'], rotation=90)
+            
+            # Set the y-axis lower limit to 0
+            ax.set_ylim(0, ax.get_ylim()[1])
             
             # Adding x and y axis labels
             ax.set_xlabel('Games', fontsize=12, color='Black')
