@@ -2532,7 +2532,8 @@ def team_rolling_averages(data):
         'defensive_metrics': {
             'Non-Penalty xG': {'green_threshold': 1, 'orange_threshold': 1.1},
             'xG Per Shot': {'green_threshold': 1, 'orange_threshold': 0.9},
-            'Shots': {'green_threshold': 12, 'orange_threshold': 11}
+            'Shots': {'green_threshold': 12, 'orange_threshold': 11},
+            'Deep Progressions': {'green_threshold': 36, 'orange_threshold': 39}
             # Add more metrics as needed
         }
     }
