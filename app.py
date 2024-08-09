@@ -2539,7 +2539,7 @@ def team_rolling_averages(data):
     }
     
     # Sidebar for metric category selection
-    metric_category = st.sidebar.selectbox('Select Metric Category', ['Attacking Metrics', 'In Possession Metrics', 'Defensive Metrics', 'xG Difference Performance'])
+    metric_category = st.sidebar.selectbox('Select Metric Category', ['xG Difference Performance', 'Attacking Metrics', 'In Possession Metrics', 'Defensive Metrics'])
     
     # Function to properly format xG labels
     def format_xg_label(metric):
