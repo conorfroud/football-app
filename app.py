@@ -2514,7 +2514,7 @@ def team_rolling_averages(data):
     oppo_metrics = ["Non-Penalty xG", "xG Per Shot", "Shots", "Deep Progressions"]  # Add as many metrics as you want here.
 
     # Metrics to analyse what focus team did
-    our_metrics = ["Non-Penalty xG", "xG Per Shot", "Shots", "Deep Progressions", "Deep Completions"]  # Add as many metrics as you want here.
+    our_metrics = ["Non-Penalty xG", "xG Per Shot", "Shots", "Deep Progressions", "Deep Completions", "player_match_obv_pass", "player_match_box_cross_ratio"]  # Add as many metrics as you want here.
 
     team = "Stoke City"  # Team name, as it appears in IQ
     window = 5  # Rolling average window
