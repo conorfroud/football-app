@@ -2527,7 +2527,9 @@ def team_rolling_averages(data):
             'xG Per Shot': {'green_threshold': 0.95, 'orange_threshold': 0.85},
             'Shots': {'green_threshold': 12, 'orange_threshold': 11},
             'Deep Progressions': {'green_threshold': 44, 'orange_threshold': 40},
-            'Deep Completions': {'green_threshold': 4, 'orange_threshold': 3.5}
+            'Deep Completions': {'green_threshold': 4, 'orange_threshold': 3.5},
+            'player_match_obv_pass': {'green_threshold': 4, 'orange_threshold': 3.5},
+            'player_match_box_cross_ratio': {'green_threshold': 4, 'orange_threshold': 3.5}
             # Add more metrics as needed
         },
         'oppo_metrics': {
