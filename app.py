@@ -2550,7 +2550,7 @@ def team_rolling_averages(data):
         metric_type = 'in_possession_metrics'
         is_opponent = False
     else:  # Defensive Metrics
-        selected_metrics = ['Non-Penalty xG', 'xG Per Shot', 'Shots']
+        selected_metrics = ['Non-Penalty xG', 'xG Per Shot', 'Shots', 'Deep Progressions']
         metric_type = 'defensive_metrics'
         is_opponent = True
     
