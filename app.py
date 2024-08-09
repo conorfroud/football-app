@@ -2511,7 +2511,7 @@ def team_rolling_averages(data):
     # Define thresholds for each metric
 
     # Metrics to analyse what the opposition did
-    oppo_metrics = ["Non-Penalty xG"]  # Add as many metrics as you want here.
+    oppo_metrics = ["Non-Penalty xG", "xG Per Shot", "Shots", "Deep Progressions"]  # Add as many metrics as you want here.
 
     # Metrics to analyse what focus team did
     our_metrics = ["Non-Penalty xG", "xG Per Shot", "Shots", "Deep Progressions", "Deep Completions"]  # Add as many metrics as you want here.
