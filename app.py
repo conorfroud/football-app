@@ -2540,6 +2540,20 @@ def team_rolling_averages(data):
     
     # Sidebar for metric category selection
     metric_category = st.sidebar.selectbox('Select Metric Category', ['xG Difference Performance', 'Attacking Metrics', 'In Possession Metrics', 'Defensive Metrics'])
+
+    # Define selected_metrics based on the metric_category
+    if metric_category == 'Attacking Metrics':
+        selected_metrics = thresholds['attacking_metrics'].keys()
+        metric_type = 'attacking_metrics'
+    elif metric_category == 'In Possession Metrics':
+        selected_metrics = thresholds['in_possession_metrics'].keys()
+        metric_type = 'in_possession_metrics'
+    elif metric_category == 'Defensive Metrics':
+        selected_metrics = thresholds['defensive_metrics'].keys()
+        metric_type = 'defensive_metrics'
+    else:
+        selected_metrics = []
+        metric_type = None
     
     # Function to properly format xG labels
     def format_xg_label(metric):
@@ -2669,7 +2683,7 @@ def team_rolling_averages(data):
             df = df[df["team_name" if is_opponent else "opponent"] != team].reset_index(drop=True)
             metric_thresholds = thresholds[metric_type].get(metric, {'green_threshold': 1.2, 'orange_threshold': 1.05})
             create_visualization(df, metric, team, window, "Against trendline" if is_opponent else "For trendline", vline_xpos=15, is_opponent=is_opponent, **metric_thresholds)
-
+            
 # Load the DataFrame
 df = pd.read_csv("belgiumdata.csv")
 df2 = pd.read_csv("championshipscores.csv")
