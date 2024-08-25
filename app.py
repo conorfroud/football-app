@@ -14,7 +14,6 @@ import plotly.graph_objs as go
 from math import pi
 from mplsoccer import Pitch
 from mplsoccer import PyPizza
-from streamlit_gsheets import GSheetsConnection
 from PIL import Image
 from sklearn.metrics.pairwise import cosine_similarity
 from mplsoccer.pitch import Pitch, VerticalPitch
