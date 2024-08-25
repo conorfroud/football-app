@@ -2505,7 +2505,7 @@ def team_scatter_plot(df4):
 
         # Display the sixth plot in Streamlit
         st.plotly_chart(fig6)
-
+        
 def team_rolling_averages(data):
     
     # Define thresholds for each metric
@@ -2544,15 +2544,19 @@ def team_rolling_averages(data):
     if metric_category == 'Attacking Metrics':
         selected_metrics = thresholds['attacking_metrics'].keys()
         metric_type = 'attacking_metrics'
+        is_opponent = False
     elif metric_category == 'In Possession Metrics':
         selected_metrics = thresholds['in_possession_metrics'].keys()
         metric_type = 'in_possession_metrics'
+        is_opponent = False
     elif metric_category == 'Defensive Metrics':
         selected_metrics = thresholds['defensive_metrics'].keys()
         metric_type = 'defensive_metrics'
+        is_opponent = True  # Assuming defensive metrics should be viewed from the opponent's perspective
     else:
         selected_metrics = []
         metric_type = None
+        is_opponent = False
     
     # Function to properly format xG labels
     def format_xg_label(metric):
