@@ -2538,7 +2538,7 @@ def team_rolling_averages(data):
     }
     
     # Sidebar for metric category selection
-    metric_category = st.sidebar.selectbox('Select Metric Category', ['xG Difference Performance', 'Attacking Metrics', 'In Possession Metrics', 'Defensive Metrics'])
+    metric_category = st.sidebar.selectbox('Select Metric Category', ['Attacking Metrics', 'In Possession Metrics', 'Defensive Metrics'])
 
     # Define selected_metrics based on the metric_category
     if metric_category == 'Attacking Metrics':
