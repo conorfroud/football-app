@@ -97,9 +97,6 @@ def main_tab(df2):
     # Add a slider for selecting the player market value (in euros) range
     player_market_value_range = st.sidebar.slider("Select Player Market Value Range (Euro)", min_value=min_player_market_value, max_value=max_player_market_value, value=(min_player_market_value, max_player_market_value))
 
-    # Add a slider for selecting the Average Distance Percentile range
-    avg_distance_percentile_range = st.sidebar.slider("Select Average Distance Percentile Range", min_value=0, max_value=100, value=(0, 100))
-
     # Add a slider for selecting the Top 5 PSV-99 Percentile range
     top_5_psv_99_percentile_range = st.sidebar.slider("Select Top 5 PSV-99 Percentile Range", min_value=0, max_value=100, value=(0, 100))
 
@@ -127,7 +124,7 @@ def main_tab(df2):
     # Update the selected columns to include 'Score Type' and 'Season'
     selected_columns = score_type_column_mapping.get(selected_score_type, [])
 
-    # Further down in your DataFrame filtering section, modify the 'Season' filtering condition
+    # Filter the DataFrame based on selected criteria without the average distance filters
     filtered_df = df2[
         (df2['League'].isin(selected_leagues)) &
         (df2['Season'].isin(selected_seasons)) &  
@@ -139,8 +136,6 @@ def main_tab(df2):
         (df2['Market value (millions)'] <= player_market_value_range[1]) &
         (df2['Stoke Score'] >= stoke_range[0]) &
         (df2['Stoke Score'] <= stoke_range[1]) &
-        (df2[selected_columns[6]].ge(avg_distance_percentile_range[0])) &
-        (df2[selected_columns[6]].le(avg_distance_percentile_range[1])) &
         (df2[selected_columns[7]].ge(top_5_psv_99_percentile_range[0])) &
         (df2[selected_columns[7]].le(top_5_psv_99_percentile_range[1])) &
         (df2['Player Season Minutes'] >= player_minutes_range[0]) &
@@ -150,6 +145,7 @@ def main_tab(df2):
         (df2['L/R Footedness %'] <= lr_footedness_range[1])
     ]
 
+    # Display the filtered DataFrame
     st.dataframe(filtered_df[selected_columns])
         
 def about_tab(df2):
