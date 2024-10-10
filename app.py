@@ -383,6 +383,13 @@ def about_tab(df2):
         # Add a title to the plot with customized formatting
         title = f"<{selected_player_1}> vs <{selected_player_2}>"
 
+        # Add title with fig_text
+        fig_text(
+            0.5, 0.97, title, size=16, fig=fig,
+            highlight_textprops=[{"color": "#7EC0EE"}, {"color": "#FF34B3"}],
+            ha="center", fontproperties=prop
+        )
+
         st.pyplot(fig)
 
 # Function to calculate similarity against 'Striker' profiles
