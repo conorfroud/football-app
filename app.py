@@ -167,7 +167,7 @@ def main_tab(df2):
 
     # Display the filtered DataFrame
     st.dataframe(filtered_df[selected_columns])
-        
+
 def about_tab(df2):
     df2 = df2[df2['League'] != 'Band 2 Leagues']
 
@@ -196,6 +196,15 @@ def about_tab(df2):
     else:
         selected_player_df_1 = df2[df2["Player Name"] == selected_player_1]
 
+    # Add a season filter for Player 1
+    available_seasons_1 = selected_player_df_1["Season"].unique()
+    selected_season_1 = st.sidebar.selectbox(
+        "Select Season for Player 1:",
+        options=available_seasons_1,
+        index=0
+    )
+    selected_player_df_1 = selected_player_df_1[selected_player_df_1["Season"] == selected_season_1]
+
     # Filter available players for Player 2 based on the 'Score Type' of Player 1
     available_players_2 = df2[df2["Score Type"] == selected_player_df_1["Score Type"].values[0]]["Player Name"].unique()
 
@@ -220,6 +229,15 @@ def about_tab(df2):
         selected_player_df_2 = df2[(df2["Player Name"] == selected_player_2) & (df2["Team"] == selected_team_2)]
     else:
         selected_player_df_2 = df2[df2["Player Name"] == selected_player_2]
+
+    # Add a season filter for Player 2
+    available_seasons_2 = selected_player_df_2["Season"].unique()
+    selected_season_2 = st.sidebar.selectbox(
+        "Select Season for Player 2:",
+        options=available_seasons_2,
+        index=0
+    )
+    selected_player_df_2 = selected_player_df_2[selected_player_df_2["Season"] == selected_season_2]
 
     # Profile options based on Player 1
     profile_options = selected_player_df_1[selected_player_df_1["Score Type"].isin(allowed_score_types)]["Score Type"].unique()
@@ -365,53 +383,21 @@ def about_tab(df2):
         # Add a title to the plot with customized formatting
         title = f"<{selected_player_1}> vs <{selected_player_2}>"
 
-        # Use fig_text to set the title with highlighted player names, centered
+        # Use fig_text to set the title with highlighted player names
         fig_text(
-            x=0.5, y=1.05,  # Centered alignment
-            s=title, 
-            color='black',  
-            highlight_textprops=[{"color": '#4CA1DC'}, {"color": '#FF34B3'}], 
-            family="Roboto", 
-            fontsize=20, 
-            fontweight="bold",
-            ha="center"  # Horizontal alignment set to center
+            0.515, 0.99, title, size=14, fig=fig, highlight_textprops=[{"color": "#7EC0EE"}, {"color": "#FF34B3"}],
+            ha="center", fontproperties=prop
         )
 
-        # Add a title to the plot with customized formatting
-        sub_title = f"Percentile Rank vs Band 2 Leagues Strikers"
-
-        # Use fig_text to set the title with highlighted player names, centered
+        # Add subtitle with profile details
+        subtitle = f"{plot_title_1} and {plot_title_2} Percentiles"
         fig_text(
-            x=0.5, y=1,  # Centered alignment
-            s=sub_title, 
-            color='black', 
-            family="Roboto", 
-            fontsize=14,
-            ha="center"  # Horizontal alignment set to center
-        )
-
-        # Get minutes for each player
-        minutes_1 = selected_player_df_1["Player Season Minutes"].values[0]
-        minutes_2 = selected_player_df_2["Player Season Minutes"].values[0]
-
-        # Add player minutes to the bottom of the plot
-        fig.text(
-            0.25, 0.02, 
-            f"{selected_player_1}: {minutes_1} minutes", 
-            ha='center', 
-            va='center', 
-            fontsize=12, 
-            fontproperties=prop1, 
-            color='black'
-        )
-        fig.text(
-            0.75, 0.02, 
-            f"{selected_player_2}: {minutes_2} minutes", 
-            ha='center', 
-            va='center', 
-            fontsize=12, 
-            fontproperties=prop1, 
-            color='black'
+            0.515, 0.942,
+            subtitle,
+            size=12,
+            fig=fig,
+            ha="center",
+            fontproperties=prop1
         )
 
         st.pyplot(fig)
