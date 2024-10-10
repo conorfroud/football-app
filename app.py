@@ -169,7 +169,7 @@ def main_tab(df2):
     filtered_df = filtered_df[selected_columns].reset_index(drop=True)
 
     # Display the filtered DataFrame without numbers in the index
-    st.dataframe(filtered_df)
+    st.dataframe(filtered_df, hide_index=True)
 
 def about_tab(df2):
     df2 = df2[df2['League'] != 'Band 2 Leagues']
