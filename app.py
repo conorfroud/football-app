@@ -165,8 +165,11 @@ def main_tab(df2):
         (df2['L/R Footedness %'] <= lr_footedness_range[1])
     ]
 
-    # Display the filtered DataFrame
-    st.dataframe(filtered_df[selected_columns])
+    # Reset the index of the filtered dataframe before displaying it
+    filtered_df = filtered_df[selected_columns].reset_index(drop=True)
+
+    # Display the filtered DataFrame without numbers in the index
+    st.dataframe(filtered_df)
 
 def about_tab(df2):
     df2 = df2[df2['League'] != 'Band 2 Leagues']
