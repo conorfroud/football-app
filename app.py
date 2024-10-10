@@ -904,242 +904,29 @@ def player_similarity_app(df2):
 
 def player_stat_search(df):
     
-    # Define the Google Sheets URLs
-    url = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit#gid=155686186"
-    url1 = "https://docs.google.com/spreadsheets/d/1GAghNSTYJTVVl4I9Q-qOv_PGikuj_TQIgSp2sGXz5XM/edit?usp=sharing"
-    
-    # Connect to Google Sheets using Streamlit's connection feature
-    conn = st.connection("gsheets", type=GSheetsConnection)
-    data = conn.read(spreadsheet=url)
-    data1 = conn.read(spreadsheet=url1)
-
-    # Convert the data to pandas DataFrames
-    df1 = pd.DataFrame(data)
-    df2 = pd.DataFrame(data1)
-    
-    # Extract the relevant technical & tactical ratings columns
-    technical_tactical_columns = [
-            'CF Technical & Tactical Ratings >> Hold up play',    
-            'CF Technical & Tactical Ratings >> Link up play',
-            'CF Technical & Tactical Ratings >> 1st touch',
-            'CF Technical & Tactical Ratings >> Coming short to receive',
-            'CF Technical & Tactical Ratings >> Aerial ability',
-            'CF Technical & Tactical Ratings >> Finishing',
-            'CF Technical & Tactical Ratings >> Ball striking',
-            'CF Technical & Tactical Ratings >> Running in behind',
-            'CF Technical & Tactical Ratings >> Pressing',    
-            'CF Technical & Tactical Ratings >> Getting across near post',
-            'CF Technical & Tactical Ratings >> Movement in box',
-            'CF Technical & Tactical Ratings >> Poachers instinct',
-            'CF Physical Ratings >> Pace (over distance)',
-            'CF Physical Ratings >> Quick (over 2-3yds)',
-            'CF Physical Ratings >> Sharpness / agility',
-            'CF Physical Ratings >> Strength',
-            'CF Physical Ratings >> Power',
-            'CF Physical Ratings >> Leap',
-            'CF Physical Ratings >> Legs & energy',
-            'CF Mental Ratings >> Leadership',
-            'CF Mental Ratings >> Communication',
-            'CF Mental Ratings >> Bravery',
-            'CF Mental Ratings >> Aggression',
-            'CF Mental Ratings >> Decision making',
-            'CF Mental Ratings >> Work Rate',
-            'Winger - Technical & Tactical Ratings >> Cross quality',
-            'Winger - Technical & Tactical Ratings >> Ball carrying',
-            'Winger - Technical & Tactical Ratings >> 1v1 ability',
-            'Winger - Technical & Tactical Ratings >> Creativity',
-            'Winger - Technical & Tactical Ratings >> Goal threat',
-            'Winger - Technical & Tactical Ratings >> Ball striking',
-            'Winger - Technical & Tactical Ratings >> Pocket play',
-            'Winger - Technical & Tactical Ratings >> Receiving on the half turn',
-            'Winger - Technical & Tactical Ratings >> Movement',
-            'Winger - Technical & Tactical Ratings >> Pressing',
-            'Winger - Technical & Tactical Ratings >> Recovery runs',
-            'Winger - Technical & Tactical Ratings >> Stepping onto the ball',
-            'Winger - Physical Ratings >> Pace (over distance)',
-            'Winger - Physical Ratings >> Quick (over 2-3yds)',
-            'Winger - Physical Ratings >> Sharpness / agility',
-            'Winger - Physical Ratings >> Strength',
-            'Winger - Physical Ratings >> Power',
-            'Winger - Physical Ratings >> Leap',
-            'Winger - Physical Ratings >> Legs & energy',
-            'Winger - Mental Ratings >> Leadership',
-            'Winger - Mental Ratings >> Communication',
-            'Winger - Mental Ratings >> Bravery',
-            'Winger - Mental Ratings >> Aggression',
-            'Winger - Mental Ratings >> Decision making',
-            'Winger - Mental Ratings >> Work Rate',
-            'No10 Technical & Tactical Ratings >> Final ball',
-            'No10 Technical & Tactical Ratings >> Pocket play',
-            'No10 Technical & Tactical Ratings >> Creativity',
-            'No10 Technical & Tactical Ratings >> Goal threat',
-            'No10 Technical & Tactical Ratings >> 1st touch',
-            'No10 Technical & Tactical Ratings >> Flair',
-            'No10 Technical & Tactical Ratings >> Staying on the ball',
-            'No10 Technical & Tactical Ratings >> Off ball runs',
-            'No10 Technical & Tactical Ratings >> Making the box',
-            'No10 Technical & Tactical Ratings >> Pressing',
-            'No10 Technical & Tactical Ratings >> Recovery runs',
-            'No10 Technical & Tactical Ratings >> Stepping onto the ball',
-            'No10 Physical Ratings >> Pace (over distance)',
-            'No10 Physical Ratings >> Quick (over 2-3yds)',
-            'No10 Physical Ratings >> Sharpness / agility',
-            'No10 Physical Ratings >> Strength',
-            'No10 Physical Ratings >> Power',
-            'No10 Physical Ratings >> Leap',
-            'No10 Physical Ratings >> Legs & energy',
-            'No10 Mental Ratings >> Leadership',
-            'No10 Mental Ratings >> Communication',
-            'No10 Mental Ratings >> Bravery',
-            'No10 Mental Ratings >> Aggression',
-            'No10 Mental Ratings >> Decision making',
-            'No10 Mental Ratings >> Work Rate',
-            'No8 Technical & Tactical Ratings >> Passing short',
-            'No8 Technical & Tactical Ratings >> Passing long',
-            'No8 Technical & Tactical Ratings >> Ball carrying',
-            'No8 Technical & Tactical Ratings >> Securing possession',
-            'No8 Technical & Tactical Ratings >> Forward runs',
-            'No8 Technical & Tactical Ratings >> Making box & goal threat',
-            'No8 Technical & Tactical Ratings >> Ball winning',
-            'No8 Technical & Tactical Ratings >> Pressing',
-            'No8 Technical & Tactical Ratings >> Aerial ability',
-            'No8 Technical & Tactical Ratings >> Recovery runs',
-            'No8 Technical & Tactical Ratings >> Tracking runners',
-            'No8 Technical & Tactical Ratings >> Stepping onto the ball',
-            'No8 Physical Ratings >> Pace (over distance)',
-            'No8 Physical Ratings >> Quick (over 2-3yds)',
-            'No8 Physical Ratings >> Sharpness / agility',
-            'No8 Physical Ratings >> Strength',
-            'No8 Physical Ratings >> Power',
-            'No8 Physical Ratings >> Leap',
-            'No8 Physical Ratings >> Legs & energy',
-            'No8 Mental Ratings >> Leadership',
-            'No8 Mental Ratings >> Communication',
-            'No8 Mental Ratings >> Bravery',
-            'No8 Mental Ratings >> Aggression',
-            'No8 Mental Ratings >> Decision making',
-            'No8 Mental Ratings >> Work Rate',
-            'No6 Technical & Tactical Ratings >> Passing short',
-            'No6 Technical & Tactical Ratings >> Passing long',
-            'No6 Technical & Tactical Ratings >> Ability to break lines',
-            'No6 Technical & Tactical Ratings >> Availability to Receive',
-            'No6 Technical & Tactical Ratings >> Secure in possession',
-            'No6 Technical & Tactical Ratings >> Ball winning',
-            'No6 Technical & Tactical Ratings >> 2nd balls',
-            'No6 Technical & Tactical Ratings >> Reading the game',
-            'No6 Technical & Tactical Ratings >> Aerial ability',
-            'No6 Technical & Tactical Ratings >> Defensive positioning',
-            'No6 Technical & Tactical Ratings >> Tracking runners',
-            'No6 Technical & Tactical Ratings >> Recovery runs',
-            'No6 Physical Ratings >> Pace (over distance)',
-            'No6 Physical Ratings >> Quick (over 2-3yds)',
-            'No6 Physical Ratings >> Sharpness / agility',
-            'No6 Physical Ratings >> Strength',
-            'No6 Physical Ratings >> Power',
-            'No6 Physical Ratings >> Leap',
-            'No6 Physical Ratings >> Legs & energy',
-            'No6 Mental Ratings >> Leadership',
-            'No6 Mental Ratings >> Communication',
-            'No6 Mental Ratings >> Bravery',
-            'No6 Mental Ratings >> Aggression',
-            'No6 Mental Ratings >> Decision making',
-            'No6 Mental Ratings >> Work Rate',
-            'FB Technical & Tactical Ratings >> Defending 1v1',
-            'FB Technical & Tactical Ratings >> Getting up to the ball',
-            'FB Technical & Tactical Ratings >> Stopping crosses',
-            'FB Technical & Tactical Ratings >> Aerial ability',
-            'FB Technical & Tactical Ratings >> Defending far post',
-            'FB Technical & Tactical Ratings >> Secure in possession',
-            'FB Technical & Tactical Ratings >> Longer passing',
-            'FB Technical & Tactical Ratings >> Ball carrying',
-            'FB Technical & Tactical Ratings >> Final ball / end product',
-            'FB Technical & Tactical Ratings >> Pressing',
-            'FB Technical & Tactical Ratings >> Recovery runs',
-            'FB Technical & Tactical Ratings >> Stepping onto the ball', 
-            'FB Physical Ratings >> Pace (over distance)',
-            'FB Physical Ratings >> Quick (over 2-3yds)',
-            'FB Physical Ratings >> Sharpness / agility',
-            'FB Physical Ratings >> Strength',
-            'FB Physical Ratings >> Power',
-            'FB Physical Ratings >> Leap',
-            'FB Physical Ratings >> Legs & energy',
-            'FB Mental Ratings >> Leadership',
-            'FB Mental Ratings >> Communication',
-            'FB Mental Ratings >> Bravery',
-            'FB Mental Ratings >> Aggression',
-            'FB Mental Ratings >> Decision making',
-            'FB Mental Ratings >> Work Rate',
-            'CB Technical & Tactical Ratings >> Passing short',
-            'CB Technical & Tactical Ratings >> Passing long',
-            'CB Technical & Tactical Ratings >> Ability to break lines',
-            'CB Technical & Tactical Ratings >> Driving the gap',
-            'CB Technical & Tactical Ratings >> Stepping onto the ball',
-            'CB Technical & Tactical Ratings >> Aerial Ability',
-            'CB Technical & Tactical Ratings >> Defending the box',
-            'CB Technical & Tactical Ratings >> Defending the space & wide 1v1',
-            'CB Technical & Tactical Ratings >> Defending high (front foot)',
-            'CB Technical & Tactical Ratings >> Defensive decision making',
-            'CB Technical & Tactical Ratings >> On ball decision making',
-            'CB Technical & Tactical Ratings >> Reading the game',
-            'CB Technical & Tactical Ratings >> Defensive body shape',
-            'CB Physical Ratings >> Pace (over distance)',
-            'CB Physical Ratings >> Quick (over 2-3yds)',
-            'CB Physical Ratings >> Sharpness / agility',
-            'CB Physical Ratings >> Strength',
-            'CB Physical Ratings >> Power',
-            'CB Physical Ratings >> Leap',
-            'CB Physical Ratings >> Legs & energy',
-            'CB Mental Ratings >> Leadership',
-            'CB Mental Ratings >> Communication',
-            'CB Mental Ratings >> Bravery',
-            'CB Mental Ratings >> Aggression',
-            'CB Mental Ratings >> Work Rate'
-        ]
-
-    # Convert columns to numeric and handle NaNs
-    for column in technical_tactical_columns:
-        df1[column] = pd.to_numeric(df1[column], errors='coerce')
-
-    # Check if any rows are remaining after dropping NaNs
-    if df1.empty:
-        st.write("No valid data found.")
-    else:
-        # Calculate the average of the selected columns for each player
-        average_scores = df1.groupby('Player Transfermarkt URL')[technical_tactical_columns].mean().reset_index()
-        average_scores['Average Player Attribute rating'] = average_scores.mean(axis=1)
-        
-        # Round the average scores to two decimal places
-        average_scores = average_scores.round(2)
-
-    # Merge df2 with average_scores on 'Transfermarkt URL'
-    df2 = df2.merge(average_scores, left_on='Transfermarkt URL', right_on='Player Transfermarkt URL', how='left')
-
-    # Merge the resulting df2 with df on 'Statsbomb ID' and 'player_id'
-    unified_df = df.merge(df2, left_on='player_id', right_on='Statsbomb ID', how='left')
-
     # Sidebar for filtering by 'season_name'
-    available_seasons = unified_df['Season'].unique()
+    available_seasons = df['Season'].unique()
     selected_season = st.sidebar.selectbox('Select Season', available_seasons)
 
     # Sidebar for filtering by 'minutes' played
-    min_minutes = int(unified_df['Player Season Minutes'].min())
-    max_minutes = int(unified_df['Player Season Minutes'].max())
+    min_minutes = int(df['Player Season Minutes'].min())
+    max_minutes = int(df['Player Season Minutes'].max())
     selected_minutes = st.sidebar.slider('Select Minutes Played Range', min_value=min_minutes, max_value=max_minutes, value=(300, max_minutes))
 
     # Sidebar for filtering by 'age'
-    min_age = int(unified_df['Age_x'].min())
-    max_age = int(unified_df['Age_x'].max())
+    min_age = int(df['Age_x'].min())
+    max_age = int(df['Age_x'].max())
     selected_age = st.sidebar.slider('Select Age Range', min_value=min_age, max_value=max_age, value=(min_age, max_age))
 
     # Create a multi-select dropdown for filtering by primary_position
-    selected_positions = st.sidebar.multiselect('Filter by Primary Position', unified_df['position_1'].unique())
+    selected_positions = st.sidebar.multiselect('Filter by Primary Position', df['position_1'].unique())
 
     # Create a multi-select dropdown for selecting leagues with 'English Championship' pre-selected
     default_leagues = ['English Championship']
-    selected_leagues = st.sidebar.multiselect('Select Leagues', unified_df['League'].unique(), default=default_leagues)
+    selected_leagues = st.sidebar.multiselect('Select Leagues', df['League'].unique(), default=default_leagues)
 
     # Get the list of all columns in the DataFrame
-    all_columns = unified_df.columns.tolist()
+    all_columns = df.columns.tolist()
 
     # Ensure that these columns are always included in selected_stats
     always_included_columns = ["Player Name", "Age_x", "Team", "position_1", "Season", "Player Season Minutes", "League"]
@@ -1151,8 +938,8 @@ def player_stat_search(df):
     selected_stats.extend(always_included_columns)
 
     # Filter the DataFrame based on selected filters
-    filtered_df = unified_df[(unified_df['Player Season Minutes'] >= selected_minutes[0]) & (unified_df['Player Season Minutes'] <= selected_minutes[1])]
-    filtered_df = filtered_df[(unified_df['Age_x'] >= selected_age[0]) & (unified_df['Age_x'] <= selected_age[1])]
+    filtered_df = df[(df['Player Season Minutes'] >= selected_minutes[0]) & (df['Player Season Minutes'] <= selected_minutes[1])]
+    filtered_df = filtered_df[(df['Age_x'] >= selected_age[0]) & (df['Age_x'] <= selected_age[1])]
     filtered_df = filtered_df[filtered_df['Season'] == selected_season]
     if selected_positions:
         filtered_df = filtered_df[filtered_df['position_1'].isin(selected_positions)]
