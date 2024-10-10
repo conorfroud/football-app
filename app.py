@@ -444,10 +444,24 @@ def similarity_score(df2):
         index=0  # Set the default index to the first player
     )
 
+    # Filter data for the selected player
     selected_player_df = df2[df2["Player Name"] == selected_player]
 
+    # Get unique seasons for the selected player
+    available_seasons = selected_player_df["Season"].unique()
+
+    # Add a dynamic Season filter based on available seasons for the selected player
+    selected_season = st.sidebar.selectbox(
+        "Select a Season:",
+        options=available_seasons,
+        index=0  # Set the default index to the first season
+    )
+
+    # Filter the data further by the selected season
+    selected_player_season_df = selected_player_df[selected_player_df["Season"] == selected_season]
+
     # Filter the available profiles based on the allowed score types
-    available_profiles = selected_player_df[selected_player_df["Score Type"].isin(allowed_score_types)]["Score Type"].unique()
+    available_profiles = selected_player_season_df[selected_player_season_df["Score Type"].isin(allowed_score_types)]["Score Type"].unique()
 
     selected_profile = st.sidebar.selectbox(
         "Select a Profile:",
@@ -488,8 +502,8 @@ def similarity_score(df2):
         columns = []
         plot_title = f"Default Profile Metrics for {selected_player}"
 
-    # Assuming selected_df is your DataFrame containing the data
-    selected_df = selected_player_df[selected_player_df["Score Type"] == selected_profile][columns[0:]]  # Exclude the "Player Name" column
+    # Filter the selected data based on profile and columns
+    selected_df = selected_player_season_df[selected_player_season_df["Score Type"] == selected_profile][columns[0:]]
 
     # Display selected DataFrame details
     #st.subheader("Selected DataFrame Details")
@@ -580,7 +594,7 @@ def similarity_score(df2):
         )
 
         # Get minutes for each player
-        minutes_1 = selected_player_df["Player Season Minutes"].values[0]
+        minutes_1 = selected_player_season_df["Player Season Minutes"].values[0]
 
         # Add player minutes to the bottom of the plot
         fig2.text(
@@ -594,7 +608,7 @@ def similarity_score(df2):
         )
 
         st.pyplot(fig2)
-   
+        
 def scatter_plot(df):
 
     # Create three columns layout
