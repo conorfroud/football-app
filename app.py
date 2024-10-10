@@ -2671,7 +2671,7 @@ def team_rolling_averages(data):
             create_visualization(df, metric, team, window, "Against trendline" if is_opponent else "For trendline", vline_xpos=15, is_opponent=is_opponent, **metric_thresholds)
             
 # Load the DataFrame
-df = pd.read_csv("belgiumdata.csv")
+df = pd.read_csv("belgiumdata2024.csv")
 df2 = pd.read_csv("championshipscores.csv")
 df3 = pd.read_csv("nonpriorityleaguesdata.csv")
 df4 = pd.read_csv("teamseasondata.csv")
