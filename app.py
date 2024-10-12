@@ -896,6 +896,10 @@ def player_similarity_app(df2):
     else:
         st.error("Player not found in the selected position.")
 
+import pandas as pd
+import streamlit as st
+from scipy.stats import percentileofscore
+
 def player_stat_search(df):
     
     # Sidebar for filtering by 'season_name'
@@ -966,15 +970,24 @@ def player_stat_search(df):
             # Append the percentile ranks to total_scores for averaging
             total_scores.append(filtered_df[f'{stat} Percentile'])
 
+    # Calculate the Striker Score
+    filtered_df['Striker Score'] = (filtered_df['xG'] * 0.175 + 
+                                     filtered_df['Non-Penalty Goals'] * 0.225 + 
+                                     filtered_df['Shots'] * 0.05)
+
+    # Calculate the percentile rank for Striker Score
+    filtered_df['Striker Score Percentile'] = filtered_df['Striker Score'].apply(lambda x: percentileofscore(filtered_df['Striker Score'], x))
+
     # Create a total score by averaging percentile ranks and scaling to 100
     if total_scores:  # Check if there are any selected stats
         filtered_df['Total Score'] = sum(total_scores) / len(total_scores)
+        filtered_df['Total Score'] = (filtered_df['Total Score'] + filtered_df['Striker Score Percentile']) / 2  # Include Striker Score in total
     else:
-        filtered_df['Total Score'] = 0  # Default value if no stats selected
+        filtered_df['Total Score'] = filtered_df['Striker Score Percentile']  # Default to Striker Score Percentile if no other stats selected
 
     # Display the customized table with 'Age' as a constant column without index numbering
     selected_stats_ordered = always_included_columns + [col for col in selected_stats if col not in always_included_columns]
-    st.dataframe(filtered_df[selected_stats_ordered + ['Total Score']], hide_index=True)
+    st.dataframe(filtered_df[selected_stats_ordered + ['Total Score', 'Striker Score', 'Striker Score Percentile']], hide_index=True)
 
 def stoke_score_wyscout(df3):
     
