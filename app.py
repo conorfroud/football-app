@@ -895,6 +895,10 @@ def player_similarity_app(df2):
     else:
         st.error("Player not found in the selected position.")
 
+import pandas as pd
+import streamlit as st
+from scipy.stats import percentileofscore
+
 def player_stat_search(df):
     
     # Sidebar for filtering by 'season_name'
@@ -956,9 +960,21 @@ def player_stat_search(df):
     for stat, (min_val, max_val) in slider_filters.items():
         filtered_df = filtered_df[(filtered_df[stat] >= min_val) & (filtered_df[stat] <= max_val)]
 
+    # Calculate percentile ranks for each selected stat
+    total_scores = {}
+    for stat in selected_stats:
+        if stat not in always_included_columns and stat in filtered_df.columns:
+            # Calculate the percentile rank of each player's stat
+            filtered_df[f'{stat} Percentile'] = filtered_df[stat].apply(lambda x: percentileofscore(filtered_df[stat], x))
+            # Optionally, accumulate scores in total_scores
+            total_scores[stat] = filtered_df[f'{stat} Percentile']
+
+    # Create a total score by summing percentile ranks
+    filtered_df['Total Score'] = sum(filtered_df[f'{stat} Percentile'] for stat in selected_stats if stat not in always_included_columns)
+
     # Display the customized table with 'Age' as a constant column without index numbering
     selected_stats_ordered = always_included_columns + [col for col in selected_stats if col not in always_included_columns]
-    st.dataframe(filtered_df[selected_stats_ordered], hide_index=True)
+    st.dataframe(filtered_df[selected_stats_ordered + ['Total Score']], hide_index=True)
 
 def stoke_score_wyscout(df3):
     
