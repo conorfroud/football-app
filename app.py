@@ -957,41 +957,25 @@ def player_stat_search(df):
     for stat, (min_val, max_val) in slider_filters.items():
         filtered_df = filtered_df[(filtered_df[stat] >= min_val) & (filtered_df[stat] <= max_val)]
 
-    # Create sliders for weighting each selected stat
-    weight_adjusters = {}
-    total_weight = 0
-    for stat in selected_stats:
-        if stat not in always_included_columns and stat in filtered_df.columns:
-            weight_adjusters[stat] = st.sidebar.slider(f'Weight for {stat}', min_value=0, max_value=100, value=10)
-            total_weight += weight_adjusters[stat]  # Sum the weights
-
-    # Normalize the weights to sum to 100
-    if total_weight > 0:
-        normalized_weights = {stat: (weight / total_weight) * 100 for stat, weight in weight_adjusters.items()}
-    else:
-        # Handle case where all weights are zero (assign equal weight to each)
-        normalized_weights = {stat: 100 / len(weight_adjusters) for stat in weight_adjusters}
-
     # Calculate percentile ranks for each selected stat
     total_scores = []
     for stat in selected_stats:
         if stat not in always_included_columns and stat in filtered_df.columns:
             # Calculate the percentile rank of each player's stat
             filtered_df[f'{stat} Percentile'] = filtered_df[stat].apply(lambda x: percentileofscore(filtered_df[stat], x))
-            # Append the weighted percentile ranks to total_scores for averaging
-            weighted_percentile = filtered_df[f'{stat} Percentile'] * (normalized_weights[stat] / 100)
-            total_scores.append(weighted_percentile)
+            # Append the percentile ranks to total_scores for averaging
+            total_scores.append(filtered_df[f'{stat} Percentile'])
 
-    # Create a total score by summing weighted percentile ranks
+    # Create a total score by averaging percentile ranks and scaling to 100
     if total_scores:  # Check if there are any selected stats
-        filtered_df['Total Score'] = sum(total_scores)
+        filtered_df['Total Score'] = sum(total_scores) / len(total_scores)
     else:
         filtered_df['Total Score'] = 0  # Default value if no stats selected
 
     # Display the customized table with 'Age' as a constant column without index numbering
     selected_stats_ordered = always_included_columns + [col for col in selected_stats if col not in always_included_columns]
     st.dataframe(filtered_df[selected_stats_ordered + ['Total Score']], hide_index=True)
-
+    
 def stoke_score_wyscout(df3):
     
     # Create a list of league options
