@@ -51,7 +51,7 @@ def main_tab(df2):
     max_age = int(df2['Age'].max())
 
     # Create a list of primary position options
-    primary_position_options = df2['Primary Position'].unique()
+    position_options = df2['Position'].unique()
 
     # Get the minimum and maximum player market value (in euros) from the DataFrame
     min_player_market_value = int(df2['Market value (millions)'].min())
@@ -83,11 +83,10 @@ def main_tab(df2):
     # Add a slider for selecting the L/R Footedness % range
     lr_footedness_range = st.sidebar.slider("Select L/R Footedness % Range", min_value=0, max_value=100, value=(0, 100))
 
-    # Add a multiselect box for selecting primary positions
-    selected_primary_positions = st.sidebar.multiselect("Select Primary Positions", primary_position_options, default=primary_position_options)
-
-    # Add a slider for selecting the player market value (in euros) range
-    player_market_value_range = st.sidebar.slider("Select Player Market Value Range (Euro)", min_value=min_player_market_value, max_value=max_player_market_value, value=(min_player_market_value, max_player_market_value))
+    selected_positions = st.sidebar.multiselect(
+    "Select Positions",
+    position_options,
+    default=position_options)
 
     # Add a slider for selecting the Top 5 PSV-99 Percentile range
     top_5_psv_99_percentile_range = st.sidebar.slider("Select Top 5 PSV-99 Percentile Range", min_value=0, max_value=100, value=(0, 100))
@@ -106,14 +105,14 @@ def main_tab(df2):
 
     # Define a dictionary that maps 'Score Type' to columns
     score_type_column_mapping = {
-        'Striker': ['Player Name', 'Age', 'Team', 'League', 'Primary Position', 'Player Season Minutes', 'Stoke Score', 'Average Distance Percentile', 'Top 5 PSV-99 Percentile', 'xG (ST)', 'Non-Penalty Goals (ST)', 'Shots (ST)', 'OBV Shot (ST)', 'Open Play xA (ST)', 'OBV Dribble & Carry (ST)', 'PAdj Pressures (ST)', 'Aerial Wins (ST)', 'Aerial Win % (ST)', 'L/R Footedness %'],
-        'Winger': ['Player Name', 'Age', 'Team', 'League', 'Primary Position', 'Player Season Minutes', 'Stoke Score', 'Distance (W)', 'Top 5 PSV (W)', 'xG (W)', 'Non-Penalty Goals (W)', 'Shots (W)', 'OBV Pass (W)', 'Open Play xA (W)', 'Successful Dribbles (W)', 'OBV Dribble & Carry (W)', 'L/R Footedness %'],
-        'Attacking Midfield': ['Player Name', 'Age', 'Team', 'League', 'Primary Position', 'Player Season Minutes', 'Stoke Score', 'Average Distance (CAM)',	'Top 5 PSV (CAM)', 'xG (CAM)', 'Non-Penalty Goals (CAM)', 'Shots (CAM)', 'OBV Pass (CAM)', 'Open Play xA (CAM)', 'Key Passes (CAM)', 'Throughballs (CAM)', 'Successful Dribbles (CAM)', 'OBV Dribble & Carry (CAM)', 'L/R Footedness %'],
-        'Central Midfield': ['Player Name', 'Age', 'Team', 'League', 'Primary Position', 'Player Season Minutes', 'Stoke Score', 'Average Distance (8)',	'Top 5 PSV-99 (8)', 'xG (8)', 'Non-Penalty Goals (8)', 'OBV Pass (8)', 'Open Play xA (8)', 'Deep Progressions (8)', 'Successful Dribbles (8)', 'OBV Dribble & Carry (8)', 'L/R Footedness %'],
-        'Defensive Midfield': ['Player Name', 'Age', 'Team', 'League', 'Primary Position', 'Player Season Minutes', 'Stoke Score', 'Average Distance (6)', 'Top 5 PSV-99 (6)', 'Deep Progressions (6)', 'OBV Pass (6)', 'OBV Dribble & Carry (6)', 'PAdj Tackles (6)', 'PAdj Interceptions (6)', 'Tackle/Dribbled Past % (6)', 'OBV Defensive Action (6)', 'L/R Footedness %'],
-        'Left Back': ['Player Name', 'Age', 'Team', 'League', 'Primary Position', 'Player Season Minutes', 'Stoke Score', 'Average Distance (LB)', 'Top 5 PSV-99 (LB)', 'PAdj Tackles (LB)', 'PAdj Interceptions (LB)', 'OBV Defensive Action (LB)', 'Tackle/Dribbled Past (LB)', 'Dribbled Past (LB)', 'OBV Dribble & Carry (LB)', 'Successful Dribbles (LB)', 'OBV Pass (LB)', 'Open Play xA (LB)', 'Key Passes (LB)', 'Successful Crosses (LB)', 'L/R Footedness %'],
-        'Right Back': ['Player Name', 'Age', 'Team', 'League', 'Primary Position', 'Player Season Minutes', 'Stoke Score', 'Average Distance (RB)', 'Top 5 PSV-99 (RB)', 'PAdj Tackles (RB)', 'PAdj Interceptions (RB)', 'OBV Defensive Action (RB)', 'Tackle/Dribbled Past (RB)', 'Dribbled Past (RB)', 'OBV Dribble & Carry (RB)', 'Successful Dribbles (RB)', 'OBV Pass (RB)', 'Open Play xA (RB)', 'Key Passes (RB)', 'Successful Crosses (RB)', 'L/R Footedness %'],
-        'Centre Back': ['Player Name', 'Age', 'Team', 'League', 'Primary Position', 'Player Season Minutes', 'Stoke Score', 'Average Distance (CB)',	'Top 5 PSV-99 (CB)', 'Aerial Wins (CB)', 'Aerial Win % (CB)', 'PAdj Interceptions (CB)', 'PAdj Tackles (CB)', 'OBV Pass (CB)', 'Deep Progressions (CB)', 'OBV Dribble & Carry (CB)', 'OBV Defensive Action (CB)', 'L/R Footedness %']
+        'Striker': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score', 'Average Distance Percentile', 'Top 5 PSV-99 Percentile', 'xG (ST)', 'Non-Penalty Goals (ST)', 'Shots (ST)', 'OBV Shot (ST)', 'Open Play xA (ST)', 'OBV Dribble & Carry (ST)', 'PAdj Pressures (ST)', 'Aerial Wins (ST)', 'Aerial Win % (ST)', 'L/R Footedness %'],
+        'Winger': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score', 'Distance (W)', 'Top 5 PSV (W)', 'xG (W)', 'Non-Penalty Goals (W)', 'Shots (W)', 'OBV Pass (W)', 'Open Play xA (W)', 'Successful Dribbles (W)', 'OBV Dribble & Carry (W)', 'L/R Footedness %'],
+        'Attacking Midfield': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score', 'Average Distance (CAM)',	'Top 5 PSV (CAM)', 'xG (CAM)', 'Non-Penalty Goals (CAM)', 'Shots (CAM)', 'OBV Pass (CAM)', 'Open Play xA (CAM)', 'Key Passes (CAM)', 'Throughballs (CAM)', 'Successful Dribbles (CAM)', 'OBV Dribble & Carry (CAM)', 'L/R Footedness %'],
+        'Central Midfield': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score', 'Average Distance (8)',	'Top 5 PSV-99 (8)', 'xG (8)', 'Non-Penalty Goals (8)', 'OBV Pass (8)', 'Open Play xA (8)', 'Deep Progressions (8)', 'Successful Dribbles (8)', 'OBV Dribble & Carry (8)', 'L/R Footedness %'],
+        'Defensive Midfield': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score', 'Average Distance (6)', 'Top 5 PSV-99 (6)', 'Deep Progressions (6)', 'OBV Pass (6)', 'OBV Dribble & Carry (6)', 'PAdj Tackles (6)', 'PAdj Interceptions (6)', 'Tackle/Dribbled Past % (6)', 'OBV Defensive Action (6)', 'L/R Footedness %'],
+        'Left Back': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score', 'Average Distance (LB)', 'Top 5 PSV-99 (LB)', 'PAdj Tackles (LB)', 'PAdj Interceptions (LB)', 'OBV Defensive Action (LB)', 'Tackle/Dribbled Past (LB)', 'Dribbled Past (LB)', 'OBV Dribble & Carry (LB)', 'Successful Dribbles (LB)', 'OBV Pass (LB)', 'Open Play xA (LB)', 'Key Passes (LB)', 'Successful Crosses (LB)', 'L/R Footedness %'],
+        'Right Back': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score', 'Average Distance (RB)', 'Top 5 PSV-99 (RB)', 'PAdj Tackles (RB)', 'PAdj Interceptions (RB)', 'OBV Defensive Action (RB)', 'Tackle/Dribbled Past (RB)', 'Dribbled Past (RB)', 'OBV Dribble & Carry (RB)', 'Successful Dribbles (RB)', 'OBV Pass (RB)', 'Open Play xA (RB)', 'Key Passes (RB)', 'Successful Crosses (RB)', 'L/R Footedness %'],
+        'Centre Back': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score', 'Average Distance (CB)',	'Top 5 PSV-99 (CB)', 'Aerial Wins (CB)', 'Aerial Win % (CB)', 'PAdj Interceptions (CB)', 'PAdj Tackles (CB)', 'OBV Pass (CB)', 'Deep Progressions (CB)', 'OBV Dribble & Carry (CB)', 'OBV Defensive Action (CB)', 'L/R Footedness %']
     }
 
     # Update the selected columns to include 'Score Type' and 'Season'
@@ -132,7 +131,7 @@ def main_tab(df2):
         (df2[selected_columns[7]].le(top_5_psv_99_percentile_range[1])) &
         (df2['Player Season Minutes'] >= player_minutes_range[0]) &
         (df2['Player Season Minutes'] <= player_minutes_range[1]) &
-        (df2['Primary Position'].isin(selected_primary_positions)) &
+        (df2['Position'].isin(selected_positions)) &
         (df2['L/R Footedness %'] >= lr_footedness_range[0]) &
         (df2['L/R Footedness %'] <= lr_footedness_range[1])
     ]
