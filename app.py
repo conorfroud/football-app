@@ -32,7 +32,7 @@ def main_tab(df2):
     league_options = df2['League'].unique()
     
     # Define the custom order for leagues
-    custom_league_order = ['English Championship', 'Belgian Jupiler Pro League', 'Dutch Eredivisie', 'Portuguese Primeira Liga', 'Band 2']
+    custom_league_order = ['Championship', 'Belgian Jupiler Pro League', 'Dutch Eredivisie', 'Portuguese Primeira Liga', 'Band 2']
     
     # Filter out the custom ordered leagues and sort them alphabetically
     custom_ordered_leagues = sorted([league for league in custom_league_order if league in league_options])
@@ -57,7 +57,7 @@ def main_tab(df2):
     max_stoke_score = 100.0
 
     # Add a sidebar multiselect box for leagues with default selections
-    selected_leagues = st.sidebar.multiselect("Select Leagues", league_options, default=['English Championship'])
+    selected_leagues = st.sidebar.multiselect("Select Leagues", league_options, default=['Championship'])
 
     # Filter seasons based on selected leagues
     filtered_season_options = df2[df2['League'].isin(selected_leagues)]['Season'].unique()
