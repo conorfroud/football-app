@@ -76,16 +76,10 @@ def main_tab(df2):
     # Add a slider for selecting the age range
     age_range = st.sidebar.slider("Select Age Range", min_value=min_age, max_value=max_age, value=(min_age, max_age))
 
-    # Add a slider for selecting the L/R Footedness % range
-    lr_footedness_range = st.sidebar.slider("Select L/R Footedness % Range", min_value=0, max_value=100, value=(0, 100))
-
     selected_positions = st.sidebar.multiselect(
     "Select Positions",
     position_options,
     default=position_options)
-
-    # Add a slider for selecting the Top 5 PSV-99 Percentile range
-    top_5_psv_99_percentile_range = st.sidebar.slider("Select Top 5 PSV-99 Percentile Range", min_value=0, max_value=100, value=(0, 100))
 
     # Calculate the min and max player season minutes based on selected leagues
     if selected_leagues:
