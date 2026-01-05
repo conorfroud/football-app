@@ -53,10 +53,6 @@ def main_tab(df2):
     # Create a list of primary position options
     position_options = df2['Position'].unique()
 
-    # Get the minimum and maximum player market value (in euros) from the DataFrame
-    min_player_market_value = int(df2['Market value (millions)'].min())
-    max_player_market_value = int(df2['Market value (millions)'].max())
-
     min_stoke_score = 0.0
     max_stoke_score = 100.0
 
