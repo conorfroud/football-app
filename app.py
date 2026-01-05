@@ -12,11 +12,8 @@ import pandas as pd
 from scipy import stats
 import plotly.graph_objs as go
 from math import pi
-from mplsoccer import Pitch
-from mplsoccer import PyPizza
 from PIL import Image
 from sklearn.metrics.pairwise import cosine_similarity
-from mplsoccer.pitch import Pitch, VerticalPitch
 import io
 import base64
 import requests
