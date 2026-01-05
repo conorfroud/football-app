@@ -117,13 +117,9 @@ def main_tab(df2):
         (df2['Age'] <= age_range[1]) &
         (df2['Stoke Score'] >= stoke_range[0]) &
         (df2['Stoke Score'] <= stoke_range[1]) &
-        (df2[selected_columns[7]].ge(top_5_psv_99_percentile_range[0])) &
-        (df2[selected_columns[7]].le(top_5_psv_99_percentile_range[1])) &
         (df2['Player Season Minutes'] >= player_minutes_range[0]) &
         (df2['Player Season Minutes'] <= player_minutes_range[1]) &
-        (df2['Position'].isin(selected_positions)) &
-        (df2['L/R Footedness %'] >= lr_footedness_range[0]) &
-        (df2['L/R Footedness %'] <= lr_footedness_range[1])
+        (df2['Position'].isin(selected_positions))
     ]
 
     # Reset the index of the filtered dataframe before displaying it
