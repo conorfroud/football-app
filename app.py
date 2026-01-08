@@ -19,6 +19,8 @@ import base64
 import requests
 from io import BytesIO
 from scipy.stats import percentileofscore
+import streamlit.components.v1 as components
+
 
 st.set_page_config(layout="wide")
 
