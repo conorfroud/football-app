@@ -2291,6 +2291,26 @@ PITCH_LAYOUT_PX = {
     "Right Back":             {"x": 1020, "y": 600},
 }
 
+import streamlit as st
+import streamlit.components.v1 as components
+
+# Fixed pitch canvas size (px) and card anchor points (px)
+PITCH_LAYOUT_PX = {
+    "Centre Forward":         {"x": 600, "y": 90},
+    "Left Wing":              {"x": 260, "y": 120},
+    "Right Wing":             {"x": 940, "y": 120},
+
+    "Attacking Midfield":     {"x": 600, "y": 240},
+    "Central Midfield":       {"x": 430, "y": 330},
+    "Defensive Midfield":     {"x": 770, "y": 330},
+
+    "Left Back":              {"x": 180, "y": 600},
+    "Left Centre Back":       {"x": 430, "y": 575},
+    "Right Centre Back":      {"x": 770, "y": 575},
+    "Right Back":             {"x": 1020, "y": 600},
+}
+
+
 def render_pitch_view(
     df2,
     player_col: str = "Player Name",
@@ -2298,6 +2318,17 @@ def render_pitch_view(
     score_col: str = "Stoke Score",
     team_col: str = "Team",
 ):
+    """
+    Render a pitch view showing players per position, sorted by Stoke Score.
+
+    Pass your filtered dataframe (df2) into this function:
+        render_pitch_view(df2)
+
+    Required columns: player_col, position_col, score_col
+    Optional column: team_col
+    """
+
+    # Validate input
     required = {player_col, position_col, score_col}
     missing = [c for c in required if c not in df2.columns]
     if missing:
@@ -2309,6 +2340,7 @@ def render_pitch_view(
     st.subheader("Pitch View")
     max_per_position = st.slider("Players shown per position", 1, 5, 2)
 
+    # Map dataset positions -> pitch buckets
     POSITION_MAP = {
         "CF": "Centre Forward", "ST": "Centre Forward", "Striker": "Centre Forward", "Centre Forward": "Centre Forward",
         "LW": "Left Wing", "Left Wing": "Left Wing",
@@ -2323,6 +2355,7 @@ def render_pitch_view(
     }
     df["Pitch Position"] = df[position_col].map(POSITION_MAP).fillna(df[position_col])
 
+    # Build position cards
     cards_html = []
     for pos, coord in PITCH_LAYOUT_PX.items():
         sub = (
@@ -2338,9 +2371,10 @@ def render_pitch_view(
             for _, r in sub.iterrows():
                 name = str(r.get(player_col, ""))
                 team = str(r.get(team_col, "")) if team_col in df.columns else ""
+
+                score_txt = ""
                 try:
-                    score = float(r.get(score_col, ""))
-                    score_txt = f"{score:.1f}"
+                    score_txt = f"{float(r.get(score_col, '')):.1f}"
                 except Exception:
                     score_txt = ""
 
@@ -2355,6 +2389,7 @@ def render_pitch_view(
                     </div>
                     """
                 )
+
             players_html = "\n".join(rows)
 
         cards_html.append(
@@ -2366,7 +2401,6 @@ def render_pitch_view(
             """
         )
 
-    # Fixed pitch canvas = consistent spacing; scaled down to fit container width.
     html = f"""
     <div class="wrap">
       <div class="pitch-scale">
@@ -2384,10 +2418,9 @@ def render_pitch_view(
       :root {{
         --pitch-w: 1200px;
         --pitch-h: 720px;
-        --card-w: 255px;
+        --card-w: 220px; /* smaller cards */
       }}
 
-      /* Use a clean font inside the iframe */
       .wrap {{
         font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
         width: 100%;
@@ -2395,7 +2428,6 @@ def render_pitch_view(
         justify-content: center;
       }}
 
-      /* Scale the fixed canvas to fit the Streamlit column width */
       .pitch-scale {{
         width: 100%;
         max-width: var(--pitch-w);
@@ -2410,7 +2442,6 @@ def render_pitch_view(
         overflow: hidden;
         box-shadow: 0 12px 36px rgba(0,0,0,0.18);
         transform-origin: top left;
-        /* scale down to container width */
         transform: scale(calc(min(1, (100vw - 80px) / 1200)));
       }}
 
@@ -2457,16 +2488,16 @@ def render_pitch_view(
 
       .pos-title {{
         font-weight: 700;
-        font-size: 16px;
-        padding: 10px 12px;
+        font-size: 15px;
+        padding: 9px 11px;
         background: rgba(255,255,255,0.55);
         border-bottom: 1px solid rgba(0,0,0,0.06);
       }}
 
       .pos-body {{
-        padding: 10px 12px 12px;
-        max-height: 160px;       /* prevents giant cards */
-        overflow: auto;          /* scroll if you show more players */
+        padding: 8px 10px 10px;
+        max-height: 140px;
+        overflow: auto;
       }}
 
       .player-row {{
@@ -2474,41 +2505,39 @@ def render_pitch_view(
         align-items: center;
         justify-content: space-between;
         gap: 10px;
-        padding: 10px 10px;
+        padding: 7px 8px;
         border-radius: 12px;
         background: rgba(255,255,255,0.65);
         border: 1px solid rgba(0,0,0,0.06);
-        margin-bottom: 10px;
+        margin-bottom: 8px;
       }}
 
-      .player-main {{
-        min-width: 0;
-      }}
+      .player-main {{ min-width: 0; }}
 
       .player-name {{
         font-weight: 650;
-        font-size: 15px;
+        font-size: 14px;
         line-height: 1.15;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        max-width: 170px;
+        max-width: 150px;
       }}
 
       .player-team {{
-        font-size: 12.5px;
+        font-size: 12px;
         opacity: 0.75;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        max-width: 170px;
+        max-width: 150px;
         margin-top: 2px;
       }}
 
       .player-score {{
         font-weight: 800;
         font-variant-numeric: tabular-nums;
-        font-size: 15px;
+        font-size: 14px;
         opacity: 0.95;
       }}
 
@@ -2518,7 +2547,7 @@ def render_pitch_view(
         padding: 10px 2px 12px;
       }}
 
-      /* Make scrollbars subtle */
+      /* Subtle scrollbars */
       .pos-body::-webkit-scrollbar {{ width: 8px; }}
       .pos-body::-webkit-scrollbar-thumb {{
         background: rgba(0,0,0,0.18);
@@ -2527,8 +2556,16 @@ def render_pitch_view(
     </style>
     """
 
-    # Height: give enough room; the pitch is scaled but still needs space
     components.html(html, height=820, scrolling=False)
+
+
+# -----------------------------
+# Example usage inside your app
+# -----------------------------
+# st.set_page_config(layout="wide")
+# tab1, tab2 = st.tabs(["Stoke Score", "Pitch View"])
+# with tab2:
+#     render_pitch_view(df2)
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata2024.csv")
