@@ -2311,18 +2311,44 @@ PITCH_LAYOUT_PX = {
 }
 
 
+import streamlit as st
+import streamlit.components.v1 as components
+
+# -----------------------------
+# Fixed pitch canvas size (px) and card anchor points (px)
+# -----------------------------
+PITCH_LAYOUT_PX = {
+    "Centre Forward":         {"x": 600, "y": 90},
+    "Left Wing":              {"x": 260, "y": 120},
+    "Right Wing":             {"x": 940, "y": 120},
+
+    "Attacking Midfield":     {"x": 600, "y": 240},
+    "Central Midfield":       {"x": 430, "y": 330},
+    "Defensive Midfield":     {"x": 770, "y": 330},
+
+    "Left Back":              {"x": 180, "y": 600},
+    "Left Centre Back":       {"x": 430, "y": 575},
+    "Right Centre Back":      {"x": 770, "y": 575},
+    "Right Back":             {"x": 1020, "y": 600},
+}
+
+
+# -----------------------------
+# Core pitch renderer (expects a dataframe already filtered)
+# -----------------------------
 def render_pitch_view(
     df2,
     player_col: str = "Player Name",
     position_col: str = "Position",
     score_col: str = "Stoke Score",
     team_col: str = "Team",
+    max_per_position: int = 5,   # fixed at 5 by default
 ):
     """
-    Render a pitch view showing players per position, sorted by Stoke Score.
+    Render a pitch view showing top N players per position, sorted by Stoke Score.
 
-    Pass your filtered dataframe (df2) into this function:
-        render_pitch_view(df2)
+    Pass your (optionally filtered) dataframe into this function:
+        render_pitch_view(filtered_df2)
 
     Required columns: player_col, position_col, score_col
     Optional column: team_col
@@ -2336,9 +2362,6 @@ def render_pitch_view(
         st.stop()
 
     df = df2.copy()
-
-    st.subheader("Pitch View")
-    max_per_position = st.slider("Players shown per position", 1, 5, 2)
 
     # Map dataset positions -> pitch buckets
     POSITION_MAP = {
@@ -2355,12 +2378,16 @@ def render_pitch_view(
     }
     df["Pitch Position"] = df[position_col].map(POSITION_MAP).fillna(df[position_col])
 
+    # Make sure score is numeric for sorting
+    df[score_col] = st.session_state.get("_pitch_tmp_score", df[score_col])
+    df[score_col] = df[score_col].apply(lambda x: float(x) if str(x).strip() != "" else None)
+
     # Build position cards
     cards_html = []
     for pos, coord in PITCH_LAYOUT_PX.items():
         sub = (
             df[df["Pitch Position"] == pos]
-            .sort_values(score_col, ascending=False)
+            .sort_values(score_col, ascending=False, na_position="last")
             .head(max_per_position)
         )
 
@@ -2372,24 +2399,20 @@ def render_pitch_view(
                 name = str(r.get(player_col, ""))
                 team = str(r.get(team_col, "")) if team_col in df.columns else ""
 
-                score_txt = ""
-                try:
-                    score_txt = f"{float(r.get(score_col, '')):.1f}"
-                except Exception:
-                    score_txt = ""
+                score_val = r.get(score_col, None)
+                score_txt = f"{score_val:.1f}" if isinstance(score_val, (int, float)) else ""
 
                 rows.append(
                     f"""
                     <div class="player-row">
                       <div class="player-main">
-                        <div class="player-name">{name}</div>
-                        <div class="player-team">{team}</div>
+                        <div class="player-name" title="{name}">{name}</div>
+                        <div class="player-team" title="{team}">{team}</div>
                       </div>
                       <div class="player-score">{score_txt}</div>
                     </div>
                     """
                 )
-
             players_html = "\n".join(rows)
 
         cards_html.append(
@@ -2418,7 +2441,7 @@ def render_pitch_view(
       :root {{
         --pitch-w: 1200px;
         --pitch-h: 720px;
-        --card-w: 220px; /* smaller cards */
+        --card-w: 220px;
       }}
 
       .wrap {{
@@ -2547,7 +2570,6 @@ def render_pitch_view(
         padding: 10px 2px 12px;
       }}
 
-      /* Subtle scrollbars */
       .pos-body::-webkit-scrollbar {{ width: 8px; }}
       .pos-body::-webkit-scrollbar-thumb {{
         background: rgba(0,0,0,0.18);
@@ -2560,14 +2582,55 @@ def render_pitch_view(
 
 
 # -----------------------------
-# Example usage inside your app
+# Pitch tab wrapper (ONLY League + Season + Score Type filters)
 # -----------------------------
-# st.set_page_config(layout="wide")
-# tab1, tab2 = st.tabs(["Stoke Score", "Pitch View"])
-# with tab2:
-#     render_pitch_view(df2)
+def pitch_tab(df2):
+    st.subheader("Pitch View")
 
+    # Sidebar filters (simple, no stoke score/minutes)
+    st.sidebar.subheader("Pitch Filters")
 
+    # League filter (multi)
+    if "League" in df2.columns:
+        leagues = sorted(df2["League"].dropna().unique().tolist())
+        default_leagues = ["Championship"] if "Championship" in leagues else (leagues[:1] if leagues else [])
+        selected_leagues = st.sidebar.multiselect("Select Leagues", leagues, default=default_leagues)
+    else:
+        selected_leagues = []
+
+    # Season filter (depends on league selection)
+    if "Season" in df2.columns:
+        if selected_leagues and "League" in df2.columns:
+            season_options = sorted(df2[df2["League"].isin(selected_leagues)]["Season"].dropna().unique().tolist())
+        else:
+            season_options = sorted(df2["Season"].dropna().unique().tolist())
+
+        default_season = "2024/2025" if "2024/2025" in season_options else (season_options[:1] if season_options else [])
+        selected_seasons = st.sidebar.multiselect("Select Seasons", season_options, default=default_season)
+    else:
+        selected_seasons = []
+
+    # Score type (single)
+    if "Score Type" in df2.columns:
+        score_types = sorted(df2["Score Type"].dropna().unique().tolist())
+        selected_score_type = st.sidebar.selectbox("Select a Score Type", score_types) if score_types else None
+    else:
+        selected_score_type = None
+
+    # Apply filters
+    filtered_df2 = df2.copy()
+
+    if selected_leagues and "League" in filtered_df2.columns:
+        filtered_df2 = filtered_df2[filtered_df2["League"].isin(selected_leagues)]
+
+    if selected_seasons and "Season" in filtered_df2.columns:
+        filtered_df2 = filtered_df2[filtered_df2["Season"].isin(selected_seasons)]
+
+    if selected_score_type and "Score Type" in filtered_df2.columns:
+        filtered_df2 = filtered_df2[filtered_df2["Score Type"] == selected_score_type]
+
+    # Render pitch (top 5 fixed)
+    render_pitch_view(filtered_df2, max_per_position=5)
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata2024.csv")
