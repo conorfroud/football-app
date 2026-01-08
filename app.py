@@ -2242,62 +2242,125 @@ def dashboard_tab():
         st.markdown("</div></div>", unsafe_allow_html=True)
 
 
-def render_pitch_view(df2):
+PITCH_LAYOUT = {
+    "Centre Forward":         {"left": 50, "top": 10},
+    "Left Wing":              {"left": 20, "top": 14},
+    "Right Wing":             {"left": 80, "top": 14},
+    "Attacking Midfield":     {"left": 50, "top": 33},
+    "Central Midfield":       {"left": 35, "top": 48},
+    "Defensive Midfield":     {"left": 65, "top": 48},
+    "Left Back":              {"left": 12, "top": 82},
+    "Left Centre Back":       {"left": 35, "top": 78},
+    "Right Centre Back":      {"left": 65, "top": 78},
+    "Right Back":             {"left": 88, "top": 82},
+}
+
+# -----------------------------
+# Helpers
+# -----------------------------
+def score_color(score: float | None) -> str:
+    """Map Stoke Score to a soft background color."""
+    if score is None:
+        return "#f2f2f2"
+    if score >= 75:
+        return "#d1fae5"  # light green
+    if score >= 60:
+        return "#fef9c3"  # light yellow
+    return "#fee2e2"      # light red
+
+
+def render_pitch_view(
+    df2,
+    player_col: str = "Player Name",
+    position_col: str = "Position",
+    score_col: str = "Stoke Score",
+    team_col: str = "Team",
+):
     """
-    Expects df with at least:
-    - 'Player Name'
-    - 'Position'
-    - 'Stoke Score'
-    (optional: 'Team')
+    Render a pitch view showing players per position, sorted by Stoke Score.
+
+    df2: your filtered dataframe (IMPORTANT: pass df2 in)
+    Required columns: player_col, position_col, score_col
+    Optional column: team_col
     """
+
+    # Defensive checks
+    required = {player_col, position_col, score_col}
+    missing = [c for c in required if c not in df2.columns]
+    if missing:
+        st.error(f"Pitch view missing required columns in df2: {missing}")
+        st.stop()
+
+    df = df2.copy()
 
     st.subheader("Pitch View")
-
     max_per_position = st.slider("Players shown per position", 1, 5, 2)
 
-    # Normalize positions to match your layout keys (adjust mappings to your data)
+    # Map whatever your dataset uses -> pitch bucket names
     POSITION_MAP = {
         "CF": "Centre Forward",
         "ST": "Centre Forward",
+        "Striker": "Centre Forward",
         "Centre Forward": "Centre Forward",
+
         "LW": "Left Wing",
         "Left Wing": "Left Wing",
+
         "RW": "Right Wing",
         "Right Wing": "Right Wing",
+
         "AM": "Attacking Midfield",
+        "CAM": "Attacking Midfield",
         "Attacking Midfield": "Attacking Midfield",
+
         "CM": "Central Midfield",
         "Central Midfield": "Central Midfield",
+
         "DM": "Defensive Midfield",
+        "CDM": "Defensive Midfield",
         "Defensive Midfield": "Defensive Midfield",
+
         "LB": "Left Back",
         "Left Back": "Left Back",
+
         "LCB": "Left Centre Back",
         "Left Centre Back": "Left Centre Back",
+
         "RCB": "Right Centre Back",
         "Right Centre Back": "Right Centre Back",
+
         "RB": "Right Back",
         "Right Back": "Right Back",
     }
 
-    df = df.copy()
-    df["Pitch Position"] = df["Position"].map(POSITION_MAP).fillna(df["Position"])
+    df["Pitch Position"] = df[position_col].map(POSITION_MAP).fillna(df[position_col])
 
-    # build cards html
+    # Build cards HTML
     cards_html = []
     for pos, coord in PITCH_LAYOUT.items():
-        sub = df[df["Pitch Position"] == pos].sort_values("Stoke Score", ascending=False).head(max_per_position)
+        sub = (
+            df[df["Pitch Position"] == pos]
+            .sort_values(score_col, ascending=False)
+            .head(max_per_position)
+        )
 
         if sub.empty:
             players_html = '<div class="empty">No players</div>'
         else:
             rows = []
             for _, r in sub.iterrows():
-                name = r.get("Player Name", "")
-                team = r.get("Team", "")
-                score = r.get("Stoke Score", None)
-                score_txt = "" if score is None else f"{float(score):.1f}"
-                bg = score_color(None if score is None else float(score))
+                name = str(r.get(player_col, ""))
+                team = str(r.get(team_col, "")) if team_col in df.columns else ""
+                score_val = r.get(score_col, None)
+                score = None
+                try:
+                    score = None if score_val is None else float(score_val)
+                except Exception:
+                    score = None
+
+                score_txt = "" if score is None else f"{score:.1f}"
+                bg = score_color(score)
+
                 rows.append(
                     f"""
                     <div class="player-row" style="background:{bg}">
@@ -2340,7 +2403,7 @@ def render_pitch_view(df2):
         overflow: hidden;
         box-shadow: 0 10px 30px rgba(0,0,0,0.15);
       }}
-      /* simple pitch lines */
+      /* pitch lines */
       .pitch:before {{
         content:"";
         position:absolute; inset: 5%;
@@ -2407,7 +2470,6 @@ def render_pitch_view(df2):
         padding: 8px 2px 10px;
       }}
 
-      /* mobile: cards stack a bit more nicely */
       @media (max-width: 900px) {{
         .pos-card {{ width: 34%; }}
       }}
@@ -2419,7 +2481,6 @@ def render_pitch_view(df2):
 
     components.html(html, height=650, scrolling=False)
 
-               
 # Load the DataFrame
 df = pd.read_csv("belgiumdata2024.csv")
 df2 = pd.read_csv("championshipscores.csv")
