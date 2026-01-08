@@ -2574,6 +2574,7 @@ def render_pitch_view(
     # Slightly taller component height to match the new pitch
     components.html(html, height=980, scrolling=False)
 
+
     
 # -----------------------------
 # Pitch tab wrapper (ONLY League + Season + Score Type filters)
