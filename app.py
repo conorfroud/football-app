@@ -2333,28 +2333,15 @@ PITCH_LAYOUT_PX = {
 }
 
 
-# -----------------------------
-# Core pitch renderer (expects a dataframe already filtered)
-# -----------------------------
 def render_pitch_view(
     df2,
     player_col: str = "Player Name",
     position_col: str = "Position",
     score_col: str = "Stoke Score",
     team_col: str = "Team",
-    max_per_position: int = 5,   # fixed at 5 by default
+    score_type_col: str = "Score Type",   # ✅ add this
+    max_per_position: int = 5,
 ):
-    """
-    Render a pitch view showing top N players per position, sorted by Stoke Score.
-
-    Pass your (optionally filtered) dataframe into this function:
-        render_pitch_view(filtered_df2)
-
-    Required columns: player_col, position_col, score_col
-    Optional column: team_col
-    """
-
-    # Validate input
     required = {player_col, position_col, score_col}
     missing = [c for c in required if c not in df2.columns]
     if missing:
@@ -2364,65 +2351,67 @@ def render_pitch_view(
     df = df2.copy()
 
     POSITION_MAP = {
-    # ---- Strikers ----
-    "CF": "Centre Forward",
-    "ST": "Centre Forward",
-    "Striker": "Centre Forward",
-    "Centre Forward": "Centre Forward",
-    "Left Centre Forward": "Centre Forward",
-    "Right Centre Forward": "Centre Forward",
+        # ---- Strikers ----
+        "CF": "Centre Forward",
+        "ST": "Centre Forward",
+        "Striker": "Centre Forward",
+        "Centre Forward": "Centre Forward",
+        "Left Centre Forward": "Centre Forward",
+        "Right Centre Forward": "Centre Forward",
 
-    # ---- Wingers ----
-    "LW": "Left Wing",
-    "Left Wing": "Left Wing",
-    "LAM": "Left Wing",
-    "Left Attacking Midfielder": "Left Wing",
+        # ---- Wingers ----
+        "LW": "Left Wing",
+        "Left Wing": "Left Wing",
+        "LAM": "Left Wing",
+        "Left Attacking Midfielder": "Left Wing",
 
-    "RW": "Right Wing",
-    "Right Wing": "Right Wing",
-    "RAM": "Right Wing",
-    "Right Attacking Midfielder": "Right Wing",
+        "RW": "Right Wing",
+        "Right Wing": "Right Wing",
+        "RAM": "Right Wing",
+        "Right Attacking Midfielder": "Right Wing",
 
-    # ---- Attacking / Central Midfield ----
-    "AM": "Attacking Midfield",
-    "CAM": "Attacking Midfield",
-    "Attacking Midfield": "Attacking Midfield",
+        # ---- Midfield ----
+        "AM": "Attacking Midfield",
+        "CAM": "Attacking Midfield",
+        "Attacking Midfield": "Attacking Midfield",
 
-    "CM": "Central Midfield",
-    "Central Midfield": "Central Midfield",
+        "CM": "Central Midfield",
+        "Central Midfield": "Central Midfield",
 
-    # ---- Defensive Midfield ----
-    "DM": "Defensive Midfield",
-    "CDM": "Defensive Midfield",
-    "Defensive Midfield": "Defensive Midfield",
+        "DM": "Defensive Midfield",
+        "CDM": "Defensive Midfield",
+        "Defensive Midfield": "Defensive Midfield",
 
-    # ---- Defence ----
-    "LB": "Left Back",
-    "Left Back": "Left Back",
+        # ---- Defence ----
+        "LB": "Left Back",
+        "Left Back": "Left Back",
 
-    "LCB": "Left Centre Back",
-    "Left Centre Back": "Left Centre Back",
+        "LCB": "Left Centre Back",
+        "Left Centre Back": "Left Centre Back",
 
-    "RCB": "Right Centre Back",
-    "Right Centre Back": "Right Centre Back",
+        "RCB": "Right Centre Back",
+        "Right Centre Back": "Right Centre Back",
 
-    "RB": "Right Back",
-    "Right Back": "Right Back",
-}
+        "RB": "Right Back",
+        "Right Back": "Right Back",
+    }
 
     df["Pitch Position"] = df[position_col].map(POSITION_MAP).fillna(df[position_col])
 
-    # Make sure score is numeric for sorting
-    df[score_col] = st.session_state.get("_pitch_tmp_score", df[score_col])
+    # Ensure numeric sorting
     df[score_col] = df[score_col].apply(lambda x: float(x) if str(x).strip() != "" else None)
 
-    # Build position cards
     cards_html = []
     for pos, coord in PITCH_LAYOUT_PX.items():
+        sub = df[df["Pitch Position"] == pos]
+
+        # ✅ Key rule: only show wingers in the winger slots
+        if pos in ("Left Wing", "Right Wing") and score_type_col in sub.columns:
+            sub = sub[sub[score_type_col] == "Winger"]
+
         sub = (
-            df[df["Pitch Position"] == pos]
-            .sort_values(score_col, ascending=False, na_position="last")
-            .head(max_per_position)
+            sub.sort_values(score_col, ascending=False, na_position="last")
+               .head(max_per_position)
         )
 
         if sub.empty:
@@ -2432,7 +2421,6 @@ def render_pitch_view(
             for _, r in sub.iterrows():
                 name = str(r.get(player_col, ""))
                 team = str(r.get(team_col, "")) if team_col in df.columns else ""
-
                 score_val = r.get(score_col, None)
                 score_txt = f"{score_val:.1f}" if isinstance(score_val, (int, float)) else ""
 
@@ -2470,149 +2458,11 @@ def render_pitch_view(
         </div>
       </div>
     </div>
-
-    <style>
-      :root {{
-        --pitch-w: 1200px;
-        --pitch-h: 720px;
-        --card-w: 220px;
-      }}
-
-      .wrap {{
-        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-        width: 100%;
-        display: flex;
-        justify-content: center;
-      }}
-
-      .pitch-scale {{
-        width: 100%;
-        max-width: var(--pitch-w);
-      }}
-
-      .pitch {{
-        position: relative;
-        width: var(--pitch-w);
-        height: var(--pitch-h);
-        background: #1f7f49;
-        border-radius: 22px;
-        overflow: hidden;
-        box-shadow: 0 12px 36px rgba(0,0,0,0.18);
-        transform-origin: top left;
-        transform: scale(calc(min(1, (100vw - 80px) / 1200)));
-      }}
-
-      /* Pitch markings */
-      .midline {{
-        position:absolute;
-        left:0; right:0;
-        top:50%;
-        height:2px;
-        background: rgba(255,255,255,0.45);
-      }}
-      .circle {{
-        position:absolute;
-        left:50%; top:50%;
-        width:170px; height:170px;
-        border: 2px solid rgba(255,255,255,0.45);
-        border-radius: 999px;
-        transform: translate(-50%, -50%);
-      }}
-      .box {{
-        position:absolute;
-        left:50%;
-        width: 520px;
-        height: 170px;
-        border: 2px solid rgba(255,255,255,0.45);
-        transform: translateX(-50%);
-        border-radius: 16px;
-      }}
-      .box.top {{ top: 40px; }}
-      .box.bottom {{ bottom: 40px; }}
-
-      /* Cards */
-      .pos-card {{
-        position: absolute;
-        width: var(--card-w);
-        transform: translate(-50%, -50%);
-        background: rgba(255,255,255,0.92);
-        border: 1px solid rgba(0,0,0,0.08);
-        border-radius: 16px;
-        box-shadow: 0 10px 28px rgba(0,0,0,0.14);
-        backdrop-filter: blur(6px);
-        overflow: hidden;
-      }}
-
-      .pos-title {{
-        font-weight: 700;
-        font-size: 15px;
-        padding: 9px 11px;
-        background: rgba(255,255,255,0.55);
-        border-bottom: 1px solid rgba(0,0,0,0.06);
-      }}
-
-      .pos-body {{
-        padding: 8px 10px 10px;
-        max-height: 140px;
-        overflow: auto;
-      }}
-
-      .player-row {{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-        padding: 7px 8px;
-        border-radius: 12px;
-        background: rgba(255,255,255,0.65);
-        border: 1px solid rgba(0,0,0,0.06);
-        margin-bottom: 8px;
-      }}
-
-      .player-main {{ min-width: 0; }}
-
-      .player-name {{
-        font-weight: 650;
-        font-size: 14px;
-        line-height: 1.15;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 150px;
-      }}
-
-      .player-team {{
-        font-size: 12px;
-        opacity: 0.75;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 150px;
-        margin-top: 2px;
-      }}
-
-      .player-score {{
-        font-weight: 800;
-        font-variant-numeric: tabular-nums;
-        font-size: 14px;
-        opacity: 0.95;
-      }}
-
-      .empty {{
-        font-size: 13px;
-        opacity: 0.7;
-        padding: 10px 2px 12px;
-      }}
-
-      .pos-body::-webkit-scrollbar {{ width: 8px; }}
-      .pos-body::-webkit-scrollbar-thumb {{
-        background: rgba(0,0,0,0.18);
-        border-radius: 999px;
-      }}
-    </style>
+    ... (keep your existing CSS/html exactly the same) ...
     """
 
     components.html(html, height=820, scrolling=False)
+
 
 
 # -----------------------------
