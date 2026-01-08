@@ -106,7 +106,12 @@ def main_tab(df2):
         'Right Back': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score', 'PAdj Tackles (RB)', 'PAdj Interceptions (RB)', 'OBV Defensive Action (RB)', 'Tackle/Dribbled Past (RB)', 'Dribbled Past (RB)', 'OBV Dribble & Carry (RB)', 'Successful Dribbles (RB)', 'OBV Pass (RB)', 'Open Play xA (RB)', 'Key Passes (RB)', 'Successful Crosses (RB)', 'L/R Footedness %'],
         'Centre Back': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score', 'Aerial Wins (CB)', 'Aerial Win % (CB)', 'PAdj Interceptions (CB)', 'PAdj Tackles (CB)', 'OBV Pass (CB)', 'Deep Progressions (CB)', 'OBV Dribble & Carry (CB)', 'OBV Defensive Action (CB)', 'L/R Footedness %'],
         'Stretch 9': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'],
-        'Box Crashing Midfielder': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score']
+        'Box Crashing Midfielder': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'],
+        'Dribbling Winger': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'],
+        'Creative Winger': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'],
+        'Goalscoring Wide Forward': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'],
+        'Creative 10': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'],
+        'Progressive 8': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score']
     }
 
     # Update the selected columns to include 'Score Type' and 'Season'
