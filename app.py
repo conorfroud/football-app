@@ -2653,7 +2653,7 @@ df4 = pd.read_csv("teamseasondata.csv")
 data = pd.read_csv("seasonmatchdata2024.csv")
 
 # Create the navigation menu in the sidebar
-selected_tab = st.sidebar.radio("Navigation", ["Stoke Score", "Scatter Plot", "Multi Player Comparison Tab", "Stat Search", "Pitch View"])
+selected_tab = st.sidebar.radio("Navigation", ["Hull City Score", "Pitch View", "Scatter Plot", "Multi Player Comparison Tab", "Stat Search"])
 
 # Based on the selected tab, display the corresponding content
 if selected_tab == "Stoke Score":
