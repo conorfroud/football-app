@@ -2291,29 +2291,43 @@ PITCH_LAYOUT_PX = {
 }
 
 
+import streamlit as st
+import streamlit.components.v1 as components
+
+# Fixed pitch canvas size (px) and card anchor points (px)
+PITCH_LAYOUT_PX = {
+    "Centre Forward":         {"x": 600, "y": 90},
+    "Left Wing":              {"x": 260, "y": 120},
+    "Right Wing":             {"x": 940, "y": 120},
+
+    "Attacking Midfield":     {"x": 600, "y": 240},
+    "Central Midfield":       {"x": 430, "y": 330},
+    "Defensive Midfield":     {"x": 770, "y": 330},
+
+    "Left Back":              {"x": 180, "y": 600},
+    "Left Centre Back":       {"x": 430, "y": 575},
+    "Right Centre Back":      {"x": 770, "y": 575},
+    "Right Back":             {"x": 1020, "y": 600},
+}
+
+
 def render_pitch_view(
     df2,
     player_col: str = "Player Name",
     position_col: str = "Position",
     score_col: str = "Stoke Score",
     team_col: str = "Team",
-    score_type_col: str = "Score Type",  # used to prevent duplicates in winger slots
+    score_type_col: str = "Score Type",
     max_per_position: int = 5,
 ):
     """
-    Render a pitch view showing top N players per pitch slot, sorted by Stoke Score.
-
-    Allocation to pitch slots is done via `Position` (mapped by POSITION_MAP).
-    Special rule requested:
-      - Left Wing & Right Wing slots ONLY show rows where Score Type == 'Winger'
-        (prevents same player showing twice via other score-type rows)
-
-    Required columns: player_col, position_col, score_col
-    Optional: team_col, score_type_col
+    Pitch allocation rules (to avoid duplicates with multi-row players):
+      - Eligibility is primarily based on Score Type matching the pitch slot.
+      - Wingers also require side (Left/Right) based on Position.
+      - A player can appear only once across the entire pitch.
     """
 
-    # Validate input columns
-    required = {player_col, position_col, score_col}
+    required = {player_col, position_col, score_col, score_type_col}
     missing = [c for c in required if c not in df2.columns]
     if missing:
         st.error(f"Pitch view missing required columns in df2: {missing}")
@@ -2321,72 +2335,76 @@ def render_pitch_view(
 
     df = df2.copy()
 
-    # Position -> Pitch slot mapping
-    POSITION_MAP = {
-        # ---- Strikers ----
-        "CF": "Centre Forward",
-        "ST": "Centre Forward",
-        "Striker": "Centre Forward",
-        "Centre Forward": "Centre Forward",
-        "Left Centre Forward": "Centre Forward",
-        "Right Centre Forward": "Centre Forward",
+    # Ensure numeric score for sorting
+    def _to_float(x):
+        try:
+            return float(x)
+        except Exception:
+            return None
 
-        # ---- Wingers (includes wide AMs) ----
-        "LW": "Left Wing",
-        "Left Wing": "Left Wing",
-        "LAM": "Left Wing",
-        "Left Attacking Midfielder": "Left Wing",
+    df[score_col] = df[score_col].apply(_to_float)
 
-        "RW": "Right Wing",
-        "Right Wing": "Right Wing",
-        "RAM": "Right Wing",
-        "Right Attacking Midfielder": "Right Wing",
+    # Side position sets for winger slots
+    LEFT_WING_POS = {"LW", "LAM", "Left Wing", "Left Attacking Midfielder"}
+    RIGHT_WING_POS = {"RW", "RAM", "Right Wing", "Right Attacking Midfielder"}
 
-        # ---- Midfield ----
-        "AM": "Attacking Midfield",
-        "CAM": "Attacking Midfield",
-        "Attacking Midfield": "Attacking Midfield",
+    # Position sets for CB split (if your source Position uses CB/LCB/RCB etc.)
+    LEFT_CB_POS = {"LCB", "Left Centre Back", "Left Center Back"}
+    RIGHT_CB_POS = {"RCB", "Right Centre Back", "Right Center Back"}
 
-        "CM": "Central Midfield",
-        "Central Midfield": "Central Midfield",
+    # Score Type -> pitch slot rules
+    # (Edit these strings if your Score Type labels differ)
+    SLOT_RULES = {
+        "Centre Forward": lambda d: d[d[score_type_col].eq("Striker")],
 
-        "DM": "Defensive Midfield",
-        "CDM": "Defensive Midfield",
-        "Defensive Midfield": "Defensive Midfield",
+        "Left Wing": lambda d: d[d[score_type_col].eq("Winger") & d[position_col].isin(LEFT_WING_POS)],
+        "Right Wing": lambda d: d[d[score_type_col].eq("Winger") & d[position_col].isin(RIGHT_WING_POS)],
 
-        # ---- Defence ----
-        "LB": "Left Back",
-        "Left Back": "Left Back",
+        "Attacking Midfield": lambda d: d[d[score_type_col].eq("Attacking Midfield")],
+        "Central Midfield": lambda d: d[d[score_type_col].eq("Central Midfield")],
+        "Defensive Midfield": lambda d: d[d[score_type_col].eq("Defensive Midfield")],
 
-        "LCB": "Left Centre Back",
-        "Left Centre Back": "Left Centre Back",
+        "Left Back": lambda d: d[d[score_type_col].eq("Left Back")],
+        "Right Back": lambda d: d[d[score_type_col].eq("Right Back")],
 
-        "RCB": "Right Centre Back",
-        "Right Centre Back": "Right Centre Back",
-
-        "RB": "Right Back",
-        "Right Back": "Right Back",
+        # If your CB score type is "Centre Back", we split left/right by Position.
+        "Left Centre Back": lambda d: d[d[score_type_col].eq("Centre Back") & d[position_col].isin(LEFT_CB_POS)],
+        "Right Centre Back": lambda d: d[d[score_type_col].eq("Centre Back") & d[position_col].isin(RIGHT_CB_POS)],
     }
 
-    df["Pitch Position"] = df[position_col].map(POSITION_MAP).fillna(df[position_col])
+    # If your CB data sometimes just says "CB" (no L/R), you can choose where it goes.
+    # Here we do: if left slot is empty, allow generic CBs to fill it, otherwise right.
+    GENERIC_CB_POS = {"CB", "Centre Back", "Center Back"}
 
-    # Ensure score is numeric for correct sorting
-    df[score_col] = df[score_col].apply(lambda x: float(x) if str(x).strip() != "" else None)
-
-    # Build position cards HTML
+    used_players = set()  # prevents duplicates across all slots
     cards_html = []
-    for pos, coord in PITCH_LAYOUT_PX.items():
-        sub = df[df["Pitch Position"] == pos]
 
-        # ✅ rule: winger slots only show rows with Score Type == 'Winger'
-        if pos in ("Left Wing", "Right Wing") and score_type_col in sub.columns:
-            sub = sub[sub[score_type_col] == "Winger"]
+    for slot_name, coord in PITCH_LAYOUT_PX.items():
+        # base candidates for slot
+        if slot_name in SLOT_RULES:
+            sub = SLOT_RULES[slot_name](df)
+        else:
+            sub = df.iloc[0:0].copy()
 
+        # Special handling: allow generic CB rows (Position == CB) to fill CB slots if needed
+        if slot_name in ("Left Centre Back", "Right Centre Back"):
+            generic_cb = df[df[score_type_col].eq("Centre Back") & df[position_col].isin(GENERIC_CB_POS)]
+            sub = pd.concat([sub, generic_cb], ignore_index=True)
+
+        # remove already-used players (global de-dupe)
+        sub = sub[~sub[player_col].isin(used_players)]
+
+        # per-player best row inside the slot (in case multiple rows still exist)
         sub = (
             sub.sort_values(score_col, ascending=False, na_position="last")
+               .drop_duplicates(subset=[player_col], keep="first")
                .head(max_per_position)
         )
 
+        # mark used
+        used_players.update(sub[player_col].astype(str).tolist())
+
+        # Build HTML for this slot card
         if sub.empty:
             players_html = '<div class="empty">No players</div>'
         else:
@@ -2394,7 +2412,6 @@ def render_pitch_view(
             for _, r in sub.iterrows():
                 name = str(r.get(player_col, ""))
                 team = str(r.get(team_col, "")) if team_col in df.columns else ""
-
                 score_val = r.get(score_col, None)
                 score_txt = f"{score_val:.1f}" if isinstance(score_val, (int, float)) else ""
 
@@ -2409,13 +2426,12 @@ def render_pitch_view(
                     </div>
                     """
                 )
-
             players_html = "\n".join(rows)
 
         cards_html.append(
             f"""
             <div class="pos-card" style="left:{coord['x']}px; top:{coord['y']}px;">
-              <div class="pos-title">{pos}</div>
+              <div class="pos-title">{slot_name}</div>
               <div class="pos-body">{players_html}</div>
             </div>
             """
@@ -2567,7 +2583,6 @@ def render_pitch_view(
         padding: 10px 2px 12px;
       }}
 
-      /* Subtle scrollbars */
       .pos-body::-webkit-scrollbar {{ width: 8px; }}
       .pos-body::-webkit-scrollbar-thumb {{
         background: rgba(0,0,0,0.18);
