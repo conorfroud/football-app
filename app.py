@@ -2311,24 +2311,44 @@ PITCH_LAYOUT_PX = {
 }
 
 
+import streamlit as st
+import streamlit.components.v1 as components
+
+# -----------------------------
+# Pitch layout (px coords on a fixed 1200x820 canvas)
+# Made taller to create more vertical space (esp CF -> midfield gap)
+# -----------------------------
+PITCH_LAYOUT_PX = {
+    "Centre Forward":         {"x": 600, "y": 95},
+    "Left Wing":              {"x": 260, "y": 140},
+    "Right Wing":             {"x": 940, "y": 140},
+
+    "Attacking Midfield":     {"x": 600, "y": 285},
+    "Central Midfield":       {"x": 430, "y": 385},
+    "Defensive Midfield":     {"x": 770, "y": 385},
+
+    "Left Back":              {"x": 180, "y": 720},
+    "Left Centre Back":       {"x": 430, "y": 690},
+    "Right Centre Back":      {"x": 770, "y": 690},
+    "Right Back":             {"x": 1020, "y": 720},
+}
+
+
 def render_pitch_view(
     df2,
+    league_col: str = "League",
+    selected_league: str | None = None,
     player_col: str = "Player Name",
     position_col: str = "Position",
     score_col: str = "Stoke Score",
     team_col: str = "Team",
 ):
     """
-    Render a pitch view showing players per position, sorted by Stoke Score.
-
-    Pass your filtered dataframe (df2) into this function:
-        render_pitch_view(df2)
-
-    Required columns: player_col, position_col, score_col
-    Optional column: team_col
+    Pitch view:
+    - always shows top 5 per position (by Stoke Score)
+    - optional league filtering via selected_league (handled in sidebar)
     """
 
-    # Validate input
     required = {player_col, position_col, score_col}
     missing = [c for c in required if c not in df2.columns]
     if missing:
@@ -2337,8 +2357,11 @@ def render_pitch_view(
 
     df = df2.copy()
 
-    st.subheader("Pitch View")
-    max_per_position = st.slider("Players shown per position", 1, 5, 2)
+    # Apply league filter (if provided and column exists)
+    if selected_league and league_col in df.columns:
+        df = df[df[league_col] == selected_league]
+
+    max_per_position = 5  # fixed, no UI control
 
     # Map dataset positions -> pitch buckets
     POSITION_MAP = {
@@ -2355,7 +2378,7 @@ def render_pitch_view(
     }
     df["Pitch Position"] = df[position_col].map(POSITION_MAP).fillna(df[position_col])
 
-    # Build position cards
+    # Build cards HTML
     cards_html = []
     for pos, coord in PITCH_LAYOUT_PX.items():
         sub = (
@@ -2389,7 +2412,6 @@ def render_pitch_view(
                     </div>
                     """
                 )
-
             players_html = "\n".join(rows)
 
         cards_html.append(
@@ -2401,6 +2423,7 @@ def render_pitch_view(
             """
         )
 
+    # Taller pitch: 1200 x 820
     html = f"""
     <div class="wrap">
       <div class="pitch-scale">
@@ -2417,8 +2440,8 @@ def render_pitch_view(
     <style>
       :root {{
         --pitch-w: 1200px;
-        --pitch-h: 720px;
-        --card-w: 220px; /* smaller cards */
+        --pitch-h: 820px;   /* was 720 */
+        --card-w: 220px;
       }}
 
       .wrap {{
@@ -2456,7 +2479,7 @@ def render_pitch_view(
       .circle {{
         position:absolute;
         left:50%; top:50%;
-        width:170px; height:170px;
+        width:180px; height:180px;
         border: 2px solid rgba(255,255,255,0.45);
         border-radius: 999px;
         transform: translate(-50%, -50%);
@@ -2465,13 +2488,13 @@ def render_pitch_view(
         position:absolute;
         left:50%;
         width: 520px;
-        height: 170px;
+        height: 190px;
         border: 2px solid rgba(255,255,255,0.45);
         transform: translateX(-50%);
         border-radius: 16px;
       }}
-      .box.top {{ top: 40px; }}
-      .box.bottom {{ bottom: 40px; }}
+      .box.top {{ top: 45px; }}
+      .box.bottom {{ bottom: 45px; }}
 
       /* Cards */
       .pos-card {{
@@ -2496,7 +2519,7 @@ def render_pitch_view(
 
       .pos-body {{
         padding: 8px 10px 10px;
-        max-height: 140px;
+        max-height: 160px;   /* slightly more room for 5 players */
         overflow: auto;
       }}
 
@@ -2547,7 +2570,6 @@ def render_pitch_view(
         padding: 10px 2px 12px;
       }}
 
-      /* Subtle scrollbars */
       .pos-body::-webkit-scrollbar {{ width: 8px; }}
       .pos-body::-webkit-scrollbar-thumb {{
         background: rgba(0,0,0,0.18);
@@ -2556,16 +2578,23 @@ def render_pitch_view(
     </style>
     """
 
-    components.html(html, height=820, scrolling=False)
+    components.html(html, height=920, scrolling=False)
 
 
 # -----------------------------
-# Example usage inside your app
+# Example Streamlit usage
 # -----------------------------
-# st.set_page_config(layout="wide")
-# tab1, tab2 = st.tabs(["Stoke Score", "Pitch View"])
-# with tab2:
-#     render_pitch_view(df2)
+# Assume df2 already exists in your app (after any of your other filters)
+
+# Sidebar league dropdown (requested)
+if "League" in df2.columns:
+    leagues = sorted([x for x in df2["League"].dropna().unique().tolist()])
+    selected_league = st.sidebar.selectbox("League", ["All"] + leagues, index=0)
+    league_value = None if selected_league == "All" else selected_league
+else:
+    selected_league = "All"
+    league_value = None
+    st.sidebar.info("No 'League' column found in df2.")
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata2024.csv")
