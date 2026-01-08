@@ -2656,7 +2656,7 @@ data = pd.read_csv("seasonmatchdata2024.csv")
 selected_tab = st.sidebar.radio("Navigation", ["Hull City Score", "Pitch View", "Scatter Plot", "Multi Player Comparison Tab", "Stat Search"])
 
 # Based on the selected tab, display the corresponding content
-if selected_tab == "Stoke Score":
+if selected_tab == "Hull City Score":
     main_tab(df2)
 if selected_tab == "Player Radar Comparison":
     about_tab(df2)  # Pass the DataFrame to the about_tab function
