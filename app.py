@@ -2674,6 +2674,6 @@ if selected_tab == "Rolling Average Data":
 if selected_tab == "Dashboard":
     dashboard_tab()
 if selected_tab == "Pitch View":
-    render_pitch_view(df2)
+    pitch_tab(df2)
 elif selected_tab == "Multi Player Comparison Tab":
     comparison_tab(df)
