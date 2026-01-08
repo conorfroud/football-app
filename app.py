@@ -2271,139 +2271,308 @@ def score_color(score: float | None) -> str:
     return "#fee2e2"      # light red
 
 
+import pandas as pd
 import streamlit as st
 import streamlit.components.v1 as components
 
+# -----------------------------
+# Taller pitch layout (px coords on a fixed 1200x900 canvas)
+# More vertical space so CF / AM / CM-DM are easier to read
+# -----------------------------
 PITCH_LAYOUT_PX = {
-    "Centre Forward":         {"x": 600, "y": 90},
-    "Left Wing":              {"x": 260, "y": 150},
-    "Right Wing":             {"x": 940, "y": 150},
-    "Attacking Midfield":     {"x": 600, "y": 340},
-    "Central Midfield":       {"x": 430, "y": 500},
-    "Defensive Midfield":     {"x": 770, "y": 500},
-    "Left Back":              {"x": 180, "y": 880},
-    "Left Centre Back":       {"x": 430, "y": 830},
-    "Right Centre Back":      {"x": 770, "y": 830},
-    "Right Back":             {"x": 1020, "y": 880},
+    "Centre Forward":         {"x": 600, "y": 105},
+
+    "Left Wing":              {"x": 260, "y": 160},
+    "Right Wing":             {"x": 940, "y": 160},
+
+    "Attacking Midfield":     {"x": 600, "y": 320},
+    "Central Midfield":       {"x": 430, "y": 440},
+    "Defensive Midfield":     {"x": 770, "y": 440},
+
+    "Left Back":              {"x": 180, "y": 780},
+    "Left Centre Back":       {"x": 430, "y": 745},
+    "Right Centre Back":      {"x": 770, "y": 745},
+    "Right Back":             {"x": 1020, "y": 780},
 }
 
+
 def render_pitch_view(
-    df,
-    player_col="Player Name",
-    position_col="Position",
-    score_col="Stoke Score",
-    team_col="Team",
-    score_type_col="Score Type",
-    max_per_position=5,
+    df2,
+    player_col: str = "Player Name",
+    position_col: str = "Position",
+    score_col: str = "Stoke Score",
+    team_col: str = "Team",
+    score_type_col: str = "Score Type",
+    max_per_position: int = 5,
 ):
+    """
+    Pitch allocation rules:
+      - Eligibility is based on Score Type matching the pitch slot.
+      - Wingers also require side (Left/Right) based on Position.
+      - No duplicates across the entire pitch (a player can appear only once).
+    """
+
+    required = {player_col, position_col, score_col, score_type_col}
+    missing = [c for c in required if c not in df2.columns]
+    if missing:
+        st.error(f"Pitch view missing required columns in df2: {missing}")
+        st.stop()
+
+    df = df2.copy()
+
+    # Ensure numeric score for sorting
+    def _to_float(x):
+        try:
+            return float(x)
+        except Exception:
+            return None
+
+    df[score_col] = df[score_col].apply(_to_float)
+
+    # Side position sets for winger slots
+    LEFT_WING_POS = {"LW", "LAM", "Left Wing", "Left Attacking Midfielder"}
+    RIGHT_WING_POS = {"RW", "RAM", "Right Wing", "Right Attacking Midfielder"}
+
+    # CB side sets (if present)
+    LEFT_CB_POS = {"LCB", "Left Centre Back", "Left Center Back"}
+    RIGHT_CB_POS = {"RCB", "Right Centre Back", "Right Center Back"}
+    GENERIC_CB_POS = {"CB", "Centre Back", "Center Back"}
+
+    # Score Type -> pitch slot rules
     SLOT_RULES = {
-        "Centre Forward": {"Striker"},
-        "Left Wing": {"Winger"},
-        "Right Wing": {"Winger"},
-        "Attacking Midfield": {"Attacking Midfield"},
-        "Central Midfield": {"Central Midfield"},
-        "Defensive Midfield": {"Defensive Midfield"},
-        "Left Back": {"Left Back"},
-        "Right Back": {"Right Back"},
-        "Left Centre Back": {"Centre Back"},
-        "Right Centre Back": {"Centre Back"},
-    }
+        "Centre Forward": lambda d: d[d[score_type_col].eq("Striker")],
 
-    POSITION_SIDE = {
-        "Left Wing": {"LW", "Left Wing", "Left Attacking Midfielder"},
-        "Right Wing": {"RW", "Right Wing", "Right Attacking Midfielder"},
-        "Left Centre Back": {"LCB", "Left Centre Back"},
-        "Right Centre Back": {"RCB", "Right Centre Back"},
-    }
+        "Left Wing": lambda d: d[d[score_type_col].eq("Winger") & d[position_col].isin(LEFT_WING_POS)],
+        "Right Wing": lambda d: d[d[score_type_col].eq("Winger") & d[position_col].isin(RIGHT_WING_POS)],
 
-    df = df.copy()
-    df[score_col] = df[score_col].astype(float)
-    df = df.sort_values(score_col, ascending=False)
+        "Attacking Midfield": lambda d: d[d[score_type_col].eq("Attacking Midfield")],
+        "Central Midfield": lambda d: d[d[score_type_col].eq("Central Midfield")],
+        "Defensive Midfield": lambda d: d[d[score_type_col].eq("Defensive Midfield")],
+
+        "Left Back": lambda d: d[d[score_type_col].eq("Left Back")],
+        "Right Back": lambda d: d[d[score_type_col].eq("Right Back")],
+
+        # Split CBs by side if possible; allow generic CBs to fill if needed
+        "Left Centre Back": lambda d: d[d[score_type_col].eq("Centre Back") & d[position_col].isin(LEFT_CB_POS)],
+        "Right Centre Back": lambda d: d[d[score_type_col].eq("Centre Back") & d[position_col].isin(RIGHT_CB_POS)],
+    }
 
     used_players = set()
     cards_html = []
 
-    for slot, coord in PITCH_LAYOUT_PX.items():
-        sub = df[df[score_type_col].isin(SLOT_RULES.get(slot, set()))]
+    for slot_name, coord in PITCH_LAYOUT_PX.items():
+        # Candidates for slot
+        sub = SLOT_RULES.get(slot_name, lambda d: d.iloc[0:0])(df)
 
-        if slot in POSITION_SIDE:
-            sub = sub[sub[position_col].isin(POSITION_SIDE[slot])]
+        # Allow generic CB rows to fill CB slots (optional convenience)
+        if slot_name in ("Left Centre Back", "Right Centre Back"):
+            generic_cb = df[df[score_type_col].eq("Centre Back") & df[position_col].isin(GENERIC_CB_POS)]
+            sub = pd.concat([sub, generic_cb], ignore_index=True)
 
-        sub = sub[~sub[player_col].isin(used_players)]
-        sub = sub.drop_duplicates(player_col).head(max_per_position)
-        used_players.update(sub[player_col])
+        # Global de-dupe
+        sub = sub[~sub[player_col].astype(str).isin(used_players)]
 
+        # Keep best row per player inside the slot, then top N
+        sub = (
+            sub.sort_values(score_col, ascending=False, na_position="last")
+               .drop_duplicates(subset=[player_col], keep="first")
+               .head(max_per_position)
+        )
+
+        used_players.update(sub[player_col].astype(str).tolist())
+
+        # Build rows HTML
         if sub.empty:
-            body = '<div class="empty">No players</div>'
+            players_html = '<div class="empty">No players</div>'
         else:
-            body = "".join(
-                f"""
-                <div class="player-row">
-                    <div>
-                        <div class="player-name">{r[player_col]}</div>
-                        <div class="player-team">{r.get(team_col,"")}</div>
+            rows = []
+            for _, r in sub.iterrows():
+                name = str(r.get(player_col, ""))
+                team = str(r.get(team_col, "")) if team_col in df.columns else ""
+                score_val = r.get(score_col, None)
+                score_txt = f"{score_val:.1f}" if isinstance(score_val, (int, float)) else ""
+
+                rows.append(
+                    f"""
+                    <div class="player-row">
+                      <div class="player-main">
+                        <div class="player-name" title="{name}">{name}</div>
+                        <div class="player-team" title="{team}">{team}</div>
+                      </div>
+                      <div class="player-score">{score_txt}</div>
                     </div>
-                    <div class="player-score">{r[score_col]:.1f}</div>
-                </div>
-                """
-                for _, r in sub.iterrows()
-            )
+                    """
+                )
+            players_html = "\n".join(rows)
 
         cards_html.append(
             f"""
             <div class="pos-card" style="left:{coord['x']}px; top:{coord['y']}px;">
-                <div class="pos-title">{slot}</div>
-                <div class="pos-body">{body}</div>
+              <div class="pos-title">{slot_name}</div>
+              <div class="pos-body">{players_html}</div>
             </div>
             """
         )
 
+    # NOTE: Removed the Streamlit title/subheader entirely (no "Pitch View" text)
+    # Taller pitch: 1200 x 900
     html = f"""
-    <div class="pitch">
-        {''.join(cards_html)}
-        <div class="midline"></div>
-        <div class="circle"></div>
+    <div class="wrap">
+      <div class="pitch-scale">
+        <div class="pitch">
+          {''.join(cards_html)}
+          <div class="midline"></div>
+          <div class="circle"></div>
+          <div class="box top"></div>
+          <div class="box bottom"></div>
+        </div>
+      </div>
     </div>
 
     <style>
-        .pitch {{
-            position: relative;
-            width: 1200px;
-            height: 1000px;
-            background: #1f7f49;
-            border-radius: 20px;
-        }}
-        .midline {{
-            position:absolute; top:50%; left:0; right:0;
-            height:2px; background: rgba(255,255,255,.4);
-        }}
-        .circle {{
-            position:absolute; top:50%; left:50%;
-            width:180px; height:180px;
-            border:2px solid rgba(255,255,255,.4);
-            border-radius:50%;
-            transform:translate(-50%,-50%);
-        }}
-        .pos-card {{
-            position:absolute;
-            width:210px;
-            transform:translate(-50%,-50%);
-            background:white;
-            border-radius:14px;
-            padding:8px;
-        }}
-        .pos-title {{ font-weight:700; margin-bottom:6px; }}
-        .player-row {{
-            display:flex; justify-content:space-between;
-            font-size:13px; margin-bottom:4px;
-        }}
-        .player-score {{ font-weight:700; }}
-        .empty {{ font-size:12px; opacity:.6; }}
+      :root {{
+        --pitch-w: 1200px;
+        --pitch-h: 900px;   /* taller */
+        --card-w: 220px;
+      }}
+
+      .wrap {{
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }}
+
+      .pitch-scale {{
+        width: 100%;
+        max-width: var(--pitch-w);
+      }}
+
+      .pitch {{
+        position: relative;
+        width: var(--pitch-w);
+        height: var(--pitch-h);
+        background: #1f7f49;
+        border-radius: 22px;
+        overflow: hidden;
+        box-shadow: 0 12px 36px rgba(0,0,0,0.18);
+        transform-origin: top left;
+        transform: scale(calc(min(1, (100vw - 80px) / 1200)));
+      }}
+
+      /* Pitch markings */
+      .midline {{
+        position:absolute;
+        left:0; right:0;
+        top:50%;
+        height:2px;
+        background: rgba(255,255,255,0.45);
+      }}
+      .circle {{
+        position:absolute;
+        left:50%; top:50%;
+        width:190px; height:190px;
+        border: 2px solid rgba(255,255,255,0.45);
+        border-radius: 999px;
+        transform: translate(-50%, -50%);
+      }}
+      .box {{
+        position:absolute;
+        left:50%;
+        width: 560px;
+        height: 190px;
+        border: 2px solid rgba(255,255,255,0.45);
+        transform: translateX(-50%);
+        border-radius: 16px;
+      }}
+      .box.top {{ top: 55px; }}
+      .box.bottom {{ bottom: 55px; }}
+
+      /* Cards */
+      .pos-card {{
+        position: absolute;
+        width: var(--card-w);
+        transform: translate(-50%, -50%);
+        background: rgba(255,255,255,0.92);
+        border: 1px solid rgba(0,0,0,0.08);
+        border-radius: 16px;
+        box-shadow: 0 10px 28px rgba(0,0,0,0.14);
+        backdrop-filter: blur(6px);
+        overflow: hidden;
+      }}
+
+      .pos-title {{
+        font-weight: 700;
+        font-size: 15px;
+        padding: 9px 11px;
+        background: rgba(255,255,255,0.55);
+        border-bottom: 1px solid rgba(0,0,0,0.06);
+      }}
+
+      .pos-body {{
+        padding: 8px 10px 10px;
+        max-height: 150px;
+        overflow: auto;
+      }}
+
+      .player-row {{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 7px 8px;
+        border-radius: 12px;
+        background: rgba(255,255,255,0.65);
+        border: 1px solid rgba(0,0,0,0.06);
+        margin-bottom: 8px;
+      }}
+
+      .player-main {{ min-width: 0; }}
+
+      .player-name {{
+        font-weight: 650;
+        font-size: 14px;
+        line-height: 1.15;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 150px;
+      }}
+
+      .player-team {{
+        font-size: 12px;
+        opacity: 0.75;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 150px;
+        margin-top: 2px;
+      }}
+
+      .player-score {{
+        font-weight: 800;
+        font-variant-numeric: tabular-nums;
+        font-size: 14px;
+        opacity: 0.95;
+      }}
+
+      .empty {{
+        font-size: 13px;
+        opacity: 0.7;
+        padding: 10px 2px 12px;
+      }}
+
+      /* Subtle scrollbars */
+      .pos-body::-webkit-scrollbar {{ width: 8px; }}
+      .pos-body::-webkit-scrollbar-thumb {{
+        background: rgba(0,0,0,0.18);
+        border-radius: 999px;
+      }}
     </style>
     """
 
-    components.html(html, height=1080)
-
+    # Slightly taller component height to match the new pitch
+    components.html(html, height=980, scrolling=False)
     
 # -----------------------------
 # Pitch tab wrapper (ONLY League + Season + Score Type filters)
@@ -2467,7 +2636,7 @@ def pitch_tab(df2):
         filtered_df2 = filtered_df2[filtered_df2["Season"].isin(selected_seasons)]
 
     # -------- Render pitch (always top 5) --------
-    render_pitch_view(filtered_df2, max_per_position=5)
+    render_pitch_view(filtered_df2, max_per_position=15)
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata2024.csv")
