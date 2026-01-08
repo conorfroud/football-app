@@ -2591,8 +2591,6 @@ def pitch_tab(df2):
     - Season (multi-select)
     """
 
-    st.subheader("Pitch View")
-
     # Sidebar filters
     st.sidebar.subheader("Pitch Filters")
 
