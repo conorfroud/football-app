@@ -2240,6 +2240,185 @@ def dashboard_tab():
             )
 
         st.markdown("</div></div>", unsafe_allow_html=True)
+
+
+def render_pitch_view(df2):
+    """
+    Expects df with at least:
+    - 'Player Name'
+    - 'Position'
+    - 'Stoke Score'
+    (optional: 'Team')
+    """
+
+    st.subheader("Pitch View")
+
+    max_per_position = st.slider("Players shown per position", 1, 5, 2)
+
+    # Normalize positions to match your layout keys (adjust mappings to your data)
+    POSITION_MAP = {
+        "CF": "Centre Forward",
+        "ST": "Centre Forward",
+        "Centre Forward": "Centre Forward",
+        "LW": "Left Wing",
+        "Left Wing": "Left Wing",
+        "RW": "Right Wing",
+        "Right Wing": "Right Wing",
+        "AM": "Attacking Midfield",
+        "Attacking Midfield": "Attacking Midfield",
+        "CM": "Central Midfield",
+        "Central Midfield": "Central Midfield",
+        "DM": "Defensive Midfield",
+        "Defensive Midfield": "Defensive Midfield",
+        "LB": "Left Back",
+        "Left Back": "Left Back",
+        "LCB": "Left Centre Back",
+        "Left Centre Back": "Left Centre Back",
+        "RCB": "Right Centre Back",
+        "Right Centre Back": "Right Centre Back",
+        "RB": "Right Back",
+        "Right Back": "Right Back",
+    }
+
+    df = df.copy()
+    df["Pitch Position"] = df["Position"].map(POSITION_MAP).fillna(df["Position"])
+
+    # build cards html
+    cards_html = []
+    for pos, coord in PITCH_LAYOUT.items():
+        sub = df[df["Pitch Position"] == pos].sort_values("Stoke Score", ascending=False).head(max_per_position)
+
+        if sub.empty:
+            players_html = '<div class="empty">No players</div>'
+        else:
+            rows = []
+            for _, r in sub.iterrows():
+                name = r.get("Player Name", "")
+                team = r.get("Team", "")
+                score = r.get("Stoke Score", None)
+                score_txt = "" if score is None else f"{float(score):.1f}"
+                bg = score_color(None if score is None else float(score))
+                rows.append(
+                    f"""
+                    <div class="player-row" style="background:{bg}">
+                      <div class="player-name">{name}</div>
+                      <div class="player-meta">{team}</div>
+                      <div class="player-score">{score_txt}</div>
+                    </div>
+                    """
+                )
+            players_html = "\n".join(rows)
+
+        cards_html.append(
+            f"""
+            <div class="pos-card" style="left:{coord['left']}%; top:{coord['top']}%;">
+              <div class="pos-title">{pos}</div>
+              <div class="pos-body">{players_html}</div>
+            </div>
+            """
+        )
+
+    html = f"""
+    <div class="pitch-wrap">
+      <div class="pitch">
+        {''.join(cards_html)}
+      </div>
+    </div>
+
+    <style>
+      .pitch-wrap {{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }}
+      .pitch {{
+        position: relative;
+        width: min(1100px, 100%);
+        aspect-ratio: 16 / 9;
+        background: #1f8a4c;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      }}
+      /* simple pitch lines */
+      .pitch:before {{
+        content:"";
+        position:absolute; inset: 5%;
+        border: 2px solid rgba(255,255,255,0.65);
+        border-radius: 14px;
+      }}
+      .pitch:after {{
+        content:"";
+        position:absolute;
+        left: 50%; top: 50%;
+        width: 18%; height: 18%;
+        border: 2px solid rgba(255,255,255,0.65);
+        border-radius: 999px;
+        transform: translate(-50%, -50%);
+      }}
+
+      .pos-card {{
+        position: absolute;
+        transform: translate(-50%, -50%);
+        width: 22%;
+        min-width: 190px;
+        background: rgba(255,255,255,0.94);
+        border-radius: 12px;
+        border: 1px solid rgba(0,0,0,0.06);
+        box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        overflow: hidden;
+      }}
+      .pos-title {{
+        font-weight: 700;
+        padding: 10px 12px;
+        border-bottom: 1px solid rgba(0,0,0,0.06);
+      }}
+      .pos-body {{
+        padding: 8px 10px 10px;
+      }}
+      .player-row {{
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 2px 10px;
+        padding: 7px 8px;
+        border-radius: 10px;
+        margin-bottom: 8px;
+        border: 1px solid rgba(0,0,0,0.06);
+      }}
+      .player-name {{
+        font-weight: 650;
+        line-height: 1.1;
+      }}
+      .player-meta {{
+        grid-column: 1 / 2;
+        font-size: 12px;
+        opacity: 0.75;
+      }}
+      .player-score {{
+        grid-row: 1 / 3;
+        grid-column: 2 / 3;
+        align-self: center;
+        font-weight: 800;
+        font-variant-numeric: tabular-nums;
+      }}
+      .empty {{
+        font-size: 13px;
+        opacity: 0.7;
+        padding: 8px 2px 10px;
+      }}
+
+      /* mobile: cards stack a bit more nicely */
+      @media (max-width: 900px) {{
+        .pos-card {{ width: 34%; }}
+      }}
+      @media (max-width: 650px) {{
+        .pos-card {{ width: 46%; min-width: 160px; }}
+      }}
+    </style>
+    """
+
+    components.html(html, height=650, scrolling=False)
+
                
 # Load the DataFrame
 df = pd.read_csv("belgiumdata2024.csv")
@@ -2249,7 +2428,7 @@ df4 = pd.read_csv("teamseasondata.csv")
 data = pd.read_csv("seasonmatchdata2024.csv")
 
 # Create the navigation menu in the sidebar
-selected_tab = st.sidebar.radio("Navigation", ["Stoke Score", "Scatter Plot", "Multi Player Comparison Tab", "Stat Search", "Dashboard"])
+selected_tab = st.sidebar.radio("Navigation", ["Stoke Score", "Scatter Plot", "Multi Player Comparison Tab", "Stat Search", "Pitch View"])
 
 # Based on the selected tab, display the corresponding content
 if selected_tab == "Stoke Score":
@@ -2282,5 +2461,7 @@ if selected_tab == "Rolling Average Data":
     team_rolling_averages(data)
 if selected_tab == "Dashboard":
     dashboard_tab()
+if selected_tab == "Pitch View":
+    render_pitch_view(df2)
 elif selected_tab == "Multi Player Comparison Tab":
     comparison_tab(df)
