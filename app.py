@@ -2363,19 +2363,53 @@ def render_pitch_view(
 
     df = df2.copy()
 
-    # Map dataset positions -> pitch buckets
     POSITION_MAP = {
-        "CF": "Centre Forward", "ST": "Centre Forward", "Striker": "Centre Forward", "Centre Forward": "Centre Forward",
-        "LW": "Left Wing", "Left Wing": "Left Wing",
-        "RW": "Right Wing", "Right Wing": "Right Wing",
-        "AM": "Attacking Midfield", "CAM": "Attacking Midfield", "Attacking Midfield": "Attacking Midfield",
-        "CM": "Central Midfield", "Central Midfield": "Central Midfield",
-        "DM": "Defensive Midfield", "CDM": "Defensive Midfield", "Defensive Midfield": "Defensive Midfield",
-        "LB": "Left Back", "Left Back": "Left Back",
-        "LCB": "Left Centre Back", "Left Centre Back": "Left Centre Back",
-        "RCB": "Right Centre Back", "Right Centre Back": "Right Centre Back",
-        "RB": "Right Back", "Right Back": "Right Back",
-    }
+    # ---- Strikers ----
+    "CF": "Centre Forward",
+    "ST": "Centre Forward",
+    "Striker": "Centre Forward",
+    "Centre Forward": "Centre Forward",
+    "Left Centre Forward": "Centre Forward",
+    "Right Centre Forward": "Centre Forward",
+
+    # ---- Wingers ----
+    "LW": "Left Wing",
+    "Left Wing": "Left Wing",
+    "LAM": "Left Wing",
+    "Left Attacking Midfielder": "Left Wing",
+
+    "RW": "Right Wing",
+    "Right Wing": "Right Wing",
+    "RAM": "Right Wing",
+    "Right Attacking Midfielder": "Right Wing",
+
+    # ---- Attacking / Central Midfield ----
+    "AM": "Attacking Midfield",
+    "CAM": "Attacking Midfield",
+    "Attacking Midfield": "Attacking Midfield",
+
+    "CM": "Central Midfield",
+    "Central Midfield": "Central Midfield",
+
+    # ---- Defensive Midfield ----
+    "DM": "Defensive Midfield",
+    "CDM": "Defensive Midfield",
+    "Defensive Midfield": "Defensive Midfield",
+
+    # ---- Defence ----
+    "LB": "Left Back",
+    "Left Back": "Left Back",
+
+    "LCB": "Left Centre Back",
+    "Left Centre Back": "Left Centre Back",
+
+    "RCB": "Right Centre Back",
+    "Right Centre Back": "Right Centre Back",
+
+    "RB": "Right Back",
+    "Right Back": "Right Back",
+}
+
     df["Pitch Position"] = df[position_col].map(POSITION_MAP).fillna(df[position_col])
 
     # Make sure score is numeric for sorting
