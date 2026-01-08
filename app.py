@@ -2274,21 +2274,13 @@ def score_color(score: float | None) -> str:
 import streamlit as st
 import streamlit.components.v1 as components
 
-# -----------------------------
-# Pitch layout (px coords on a fixed 1200x1000 canvas)
-# Taller + more vertical separation for the central 3 positions
-# -----------------------------
 PITCH_LAYOUT_PX = {
     "Centre Forward":         {"x": 600, "y": 90},
-
     "Left Wing":              {"x": 260, "y": 150},
     "Right Wing":             {"x": 940, "y": 150},
-
     "Attacking Midfield":     {"x": 600, "y": 340},
-
     "Central Midfield":       {"x": 430, "y": 500},
     "Defensive Midfield":     {"x": 770, "y": 500},
-
     "Left Back":              {"x": 180, "y": 880},
     "Left Centre Back":       {"x": 430, "y": 830},
     "Right Centre Back":      {"x": 770, "y": 830},
@@ -2296,365 +2288,122 @@ PITCH_LAYOUT_PX = {
 }
 
 def render_pitch_view(
-    df2,
-    player_col: str = "Player Name",
-    position_col: str = "Position",
-    score_col: str = "Stoke Score",
-    team_col: str = "Team",
-    league_col: str = "League",
-    season_col: str = "Season",
-    score_type_col: str = "Score Type",
-    max_per_position: int = 5,   # fixed (no slider)
+    df,
+    player_col="Player Name",
+    position_col="Position",
+    score_col="Stoke Score",
+    team_col="Team",
+    score_type_col="Score Type",
+    max_per_position=5,
 ):
-    """
-    Render a pitch view showing top players per pitch position, sorted by Stoke Score.
-
-    - Sidebar filters: League, Season (optional; applied only if columns exist)
-    - No 'Pitch View' heading at the top
-    - Ensures Score Type matches the slot (e.g. Winger only fills LW/RW)
-    - Avoids duplicates: a player can only appear once (best matching slot)
-
-    Expected df2 columns (at minimum):
-      - Player Name, Position, Stoke Score
-    Recommended:
-      - Team, League, Season, Score Type
-    """
-
-    # -----------------------------
-    # Validate input
-    # -----------------------------
-    required = {player_col, position_col, score_col}
-    missing = [c for c in required if c not in df2.columns]
-    if missing:
-        st.error(f"Pitch view missing required columns in df2: {missing}")
-        st.stop()
-
-    df = df2.copy()
-
-    # -----------------------------
-    # Sidebar filters (simple)
-    # -----------------------------
-    with st.sidebar:
-        st.markdown("### Pitch View Filters")
-
-        # League filter (multiselect, like your Stoke Score tab vibe)
-        selected_leagues = None
-        if league_col in df.columns:
-            league_options = df[league_col].dropna().unique().tolist()
-            league_options_sorted = sorted(league_options)
-            selected_leagues = st.multiselect(
-                "Select Leagues",
-                league_options_sorted,
-                default=["Championship"] if "Championship" in league_options_sorted else league_options_sorted[:1],
-            )
-            if selected_leagues:
-                df = df[df[league_col].isin(selected_leagues)]
-
-        # Season filter (multiselect, only if column exists)
-        selected_seasons = None
-        if season_col in df.columns:
-            season_options = df[season_col].dropna().unique().tolist()
-            season_options_sorted = sorted(season_options)
-            # sensible default
-            default_season = "2024/2025" if "2024/2025" in season_options_sorted else (season_options_sorted[:1] if season_options_sorted else [])
-            selected_seasons = st.multiselect(
-                "Select Seasons",
-                season_options_sorted,
-                default=default_season,
-            )
-            if selected_seasons:
-                df = df[df[season_col].isin(selected_seasons)]
-
-    # -----------------------------
-    # Position mapping / slot rules
-    # -----------------------------
-    # Slot names must match keys in PITCH_LAYOUT_PX
-    # We also encode which Score Type is allowed to populate each slot
     SLOT_RULES = {
-        "Centre Forward": {
-            "allowed_score_types": {"Striker"},
-            "positions": {"CF", "ST", "Centre Forward", "Striker", "Left Centre Forward", "Right Centre Forward"},
-        },
-        "Left Wing": {
-            "allowed_score_types": {"Winger"},
-            "positions": {"LW", "Left Wing", "Left Attacking Midfielder"},
-        },
-        "Right Wing": {
-            "allowed_score_types": {"Winger"},
-            "positions": {"RW", "Right Wing", "Right Attacking Midfielder"},
-        },
-        "Attacking Midfield": {
-            "allowed_score_types": {"Attacking Midfield"},
-            "positions": {"AM", "CAM", "Attacking Midfield"},
-        },
-        "Central Midfield": {
-            "allowed_score_types": {"Central Midfield"},
-            "positions": {"CM", "Central Midfield"},
-        },
-        "Defensive Midfield": {
-            "allowed_score_types": {"Defensive Midfield"},
-            "positions": {"DM", "CDM", "Defensive Midfield"},
-        },
-        "Left Back": {
-            "allowed_score_types": {"Left Back"},
-            "positions": {"LB", "Left Back"},
-        },
-        "Left Centre Back": {
-            "allowed_score_types": {"Centre Back"},
-            "positions": {"LCB", "Left Centre Back"},
-        },
-        "Right Centre Back": {
-            "allowed_score_types": {"Centre Back"},
-            "positions": {"RCB", "Right Centre Back"},
-        },
-        "Right Back": {
-            "allowed_score_types": {"Right Back"},
-            "positions": {"RB", "Right Back"},
-        },
+        "Centre Forward": {"Striker"},
+        "Left Wing": {"Winger"},
+        "Right Wing": {"Winger"},
+        "Attacking Midfield": {"Attacking Midfield"},
+        "Central Midfield": {"Central Midfield"},
+        "Defensive Midfield": {"Defensive Midfield"},
+        "Left Back": {"Left Back"},
+        "Right Back": {"Right Back"},
+        "Left Centre Back": {"Centre Back"},
+        "Right Centre Back": {"Centre Back"},
     }
 
-    # Helper: choose which slot a row belongs to, based on (Score Type + Position)
-    # We enforce Score Type match to avoid the same player appearing multiple times across slots.
-    def infer_slot(row) -> str | None:
-        pos_val = str(row.get(position_col, "")).strip()
-        stype_val = str(row.get(score_type_col, "")).strip() if score_type_col in df.columns else ""
+    POSITION_SIDE = {
+        "Left Wing": {"LW", "Left Wing", "Left Attacking Midfielder"},
+        "Right Wing": {"RW", "Right Wing", "Right Attacking Midfielder"},
+        "Left Centre Back": {"LCB", "Left Centre Back"},
+        "Right Centre Back": {"RCB", "Right Centre Back"},
+    }
 
-        for slot, rule in SLOT_RULES.items():
-            # if Score Type column exists, enforce it
-            if score_type_col in df.columns:
-                if stype_val not in rule["allowed_score_types"]:
-                    continue
+    df = df.copy()
+    df[score_col] = df[score_col].astype(float)
+    df = df.sort_values(score_col, ascending=False)
 
-            # position membership
-            if pos_val in rule["positions"]:
-                return slot
-
-            # also accept if the dataset already has the slot name as position
-            if pos_val == slot:
-                return slot
-
-        return None
-
-    df["Pitch Slot"] = df.apply(infer_slot, axis=1)
-    df = df[df["Pitch Slot"].notna()].copy()
-
-    # Ensure score is numeric for sorting
-    df[score_col] = df[score_col].apply(lambda x: float(x) if str(x).strip() != "" else None)
-
-    # -----------------------------
-    # Deduplicate players across ALL slots
-    # Keep only their best (highest Stoke Score) row after filtering
-    # -----------------------------
-    # Sort high-to-low so first occurrence per player is best
-    df = df.sort_values(score_col, ascending=False, na_position="last")
-    df = df.drop_duplicates(subset=[player_col], keep="first")
-
-    # -----------------------------
-    # Build cards HTML
-    # -----------------------------
+    used_players = set()
     cards_html = []
+
     for slot, coord in PITCH_LAYOUT_PX.items():
-        sub = (
-            df[df["Pitch Slot"] == slot]
-            .sort_values(score_col, ascending=False, na_position="last")
-            .head(max_per_position)
-        )
+        sub = df[df[score_type_col].isin(SLOT_RULES.get(slot, set()))]
+
+        if slot in POSITION_SIDE:
+            sub = sub[sub[position_col].isin(POSITION_SIDE[slot])]
+
+        sub = sub[~sub[player_col].isin(used_players)]
+        sub = sub.drop_duplicates(player_col).head(max_per_position)
+        used_players.update(sub[player_col])
 
         if sub.empty:
-            players_html = '<div class="empty">No players</div>'
+            body = '<div class="empty">No players</div>'
         else:
-            rows = []
-            for _, r in sub.iterrows():
-                name = str(r.get(player_col, "")).strip()
-                team = str(r.get(team_col, "")).strip() if team_col in df.columns else ""
-
-                score_txt = ""
-                try:
-                    score_txt = f"{float(r.get(score_col, 0)):.1f}"
-                except Exception:
-                    score_txt = ""
-
-                rows.append(
-                    f"""
-                    <div class="player-row">
-                      <div class="player-main">
-                        <div class="player-name">{name}</div>
-                        <div class="player-team">{team}</div>
-                      </div>
-                      <div class="player-score">{score_txt}</div>
+            body = "".join(
+                f"""
+                <div class="player-row">
+                    <div>
+                        <div class="player-name">{r[player_col]}</div>
+                        <div class="player-team">{r.get(team_col,"")}</div>
                     </div>
-                    """
-                )
-            players_html = "\n".join(rows)
+                    <div class="player-score">{r[score_col]:.1f}</div>
+                </div>
+                """
+                for _, r in sub.iterrows()
+            )
 
         cards_html.append(
             f"""
             <div class="pos-card" style="left:{coord['x']}px; top:{coord['y']}px;">
-              <div class="pos-title">{slot}</div>
-              <div class="pos-body">{players_html}</div>
+                <div class="pos-title">{slot}</div>
+                <div class="pos-body">{body}</div>
             </div>
             """
         )
 
-    # -----------------------------
-    # Render HTML/CSS pitch
-    # -----------------------------
     html = f"""
-    <div class="wrap">
-      <div class="pitch-scale">
-        <div class="pitch">
-          {''.join(cards_html)}
-          <div class="midline"></div>
-          <div class="circle"></div>
-          <div class="box top"></div>
-          <div class="box bottom"></div>
-        </div>
-      </div>
+    <div class="pitch">
+        {''.join(cards_html)}
+        <div class="midline"></div>
+        <div class="circle"></div>
     </div>
 
     <style>
-      :root {{
-        --pitch-w: 1200px;
-        --pitch-h: 1000px;   /* taller */
-        --card-w: 210px;     /* slightly smaller */
-      }}
-
-      .wrap {{
-        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-        width: 100%;
-        display: flex;
-        justify-content: center;
-      }}
-
-      .pitch-scale {{
-        width: 100%;
-        max-width: var(--pitch-w);
-      }}
-
-      .pitch {{
-        position: relative;
-        width: var(--pitch-w);
-        height: var(--pitch-h);
-        background: #1f7f49;
-        border-radius: 22px;
-        overflow: hidden;
-        box-shadow: 0 12px 36px rgba(0,0,0,0.18);
-        transform-origin: top left;
-        transform: scale(calc(min(1, (100vw - 80px) / 1200)));
-      }}
-
-      /* Pitch markings */
-      .midline {{
-        position:absolute;
-        left:0; right:0;
-        top:50%;
-        height:2px;
-        background: rgba(255,255,255,0.45);
-      }}
-      .circle {{
-        position:absolute;
-        left:50%; top:50%;
-        width:190px; height:190px;
-        border: 2px solid rgba(255,255,255,0.45);
-        border-radius: 999px;
-        transform: translate(-50%, -50%);
-      }}
-      .box {{
-        position:absolute;
-        left:50%;
-        width: 520px;
-        height: 190px;
-        border: 2px solid rgba(255,255,255,0.45);
-        transform: translateX(-50%);
-        border-radius: 16px;
-      }}
-      .box.top {{ top: 55px; }}
-      .box.bottom {{ bottom: 55px; }}
-
-      /* Cards */
-      .pos-card {{
-        position: absolute;
-        width: var(--card-w);
-        transform: translate(-50%, -50%);
-        background: rgba(255,255,255,0.92);
-        border: 1px solid rgba(0,0,0,0.08);
-        border-radius: 16px;
-        box-shadow: 0 10px 28px rgba(0,0,0,0.14);
-        backdrop-filter: blur(6px);
-        overflow: hidden;
-      }}
-
-      .pos-title {{
-        font-weight: 700;
-        font-size: 15px;
-        padding: 9px 11px;
-        background: rgba(255,255,255,0.55);
-        border-bottom: 1px solid rgba(0,0,0,0.06);
-      }}
-
-      .pos-body {{
-        padding: 8px 10px 10px;
-        max-height: 130px;  /* slightly smaller */
-        overflow: auto;
-      }}
-
-      .player-row {{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-        padding: 6px 7px;     /* tighter */
-        border-radius: 12px;
-        background: rgba(255,255,255,0.65);
-        border: 1px solid rgba(0,0,0,0.06);
-        margin-bottom: 6px;   /* tighter */
-      }}
-
-      .player-main {{ min-width: 0; }}
-
-      .player-name {{
-        font-weight: 650;
-        font-size: 13px;      /* smaller */
-        line-height: 1.15;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 150px;
-      }}
-
-      .player-team {{
-        font-size: 11px;      /* smaller */
-        opacity: 0.75;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 150px;
-        margin-top: 2px;
-      }}
-
-      .player-score {{
-        font-weight: 800;
-        font-variant-numeric: tabular-nums;
-        font-size: 13px;      /* smaller */
-        opacity: 0.95;
-      }}
-
-      .empty {{
-        font-size: 13px;
-        opacity: 0.7;
-        padding: 10px 2px 12px;
-      }}
-
-      .pos-body::-webkit-scrollbar {{ width: 8px; }}
-      .pos-body::-webkit-scrollbar-thumb {{
-        background: rgba(0,0,0,0.18);
-        border-radius: 999px;
-      }}
+        .pitch {{
+            position: relative;
+            width: 1200px;
+            height: 1000px;
+            background: #1f7f49;
+            border-radius: 20px;
+        }}
+        .midline {{
+            position:absolute; top:50%; left:0; right:0;
+            height:2px; background: rgba(255,255,255,.4);
+        }}
+        .circle {{
+            position:absolute; top:50%; left:50%;
+            width:180px; height:180px;
+            border:2px solid rgba(255,255,255,.4);
+            border-radius:50%;
+            transform:translate(-50%,-50%);
+        }}
+        .pos-card {{
+            position:absolute;
+            width:210px;
+            transform:translate(-50%,-50%);
+            background:white;
+            border-radius:14px;
+            padding:8px;
+        }}
+        .pos-title {{ font-weight:700; margin-bottom:6px; }}
+        .player-row {{
+            display:flex; justify-content:space-between;
+            font-size:13px; margin-bottom:4px;
+        }}
+        .player-score {{ font-weight:700; }}
+        .empty {{ font-size:12px; opacity:.6; }}
     </style>
     """
 
-    # Height should be a bit bigger than pitch height because Streamlit wraps it
-    components.html(html, height=1080, scrolling=False)
+    components.html(html, height=1080)
+
     
 # -----------------------------
 # Pitch tab wrapper (ONLY League + Season + Score Type filters)
