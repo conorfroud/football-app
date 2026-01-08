@@ -2271,43 +2271,28 @@ def score_color(score: float | None) -> str:
     return "#fee2e2"      # light red
 
 
+import pandas as pd
 import streamlit as st
 import streamlit.components.v1 as components
 
-# Fixed pitch canvas size (px) and card anchor points (px)
+# -----------------------------
+# Taller pitch layout (px coords on a fixed 1200x900 canvas)
+# More vertical space so CF / AM / CM-DM are easier to read
+# -----------------------------
 PITCH_LAYOUT_PX = {
-    "Centre Forward":         {"x": 600, "y": 90},
-    "Left Wing":              {"x": 260, "y": 120},
-    "Right Wing":             {"x": 940, "y": 120},
+    "Centre Forward":         {"x": 600, "y": 105},
 
-    "Attacking Midfield":     {"x": 600, "y": 240},
-    "Central Midfield":       {"x": 430, "y": 330},
-    "Defensive Midfield":     {"x": 770, "y": 330},
+    "Left Wing":              {"x": 260, "y": 160},
+    "Right Wing":             {"x": 940, "y": 160},
 
-    "Left Back":              {"x": 180, "y": 600},
-    "Left Centre Back":       {"x": 430, "y": 575},
-    "Right Centre Back":      {"x": 770, "y": 575},
-    "Right Back":             {"x": 1020, "y": 600},
-}
+    "Attacking Midfield":     {"x": 600, "y": 320},
+    "Central Midfield":       {"x": 430, "y": 440},
+    "Defensive Midfield":     {"x": 770, "y": 440},
 
-
-import streamlit as st
-import streamlit.components.v1 as components
-
-# Fixed pitch canvas size (px) and card anchor points (px)
-PITCH_LAYOUT_PX = {
-    "Centre Forward":         {"x": 600, "y": 90},
-    "Left Wing":              {"x": 260, "y": 120},
-    "Right Wing":             {"x": 940, "y": 120},
-
-    "Attacking Midfield":     {"x": 600, "y": 240},
-    "Central Midfield":       {"x": 430, "y": 330},
-    "Defensive Midfield":     {"x": 770, "y": 330},
-
-    "Left Back":              {"x": 180, "y": 600},
-    "Left Centre Back":       {"x": 430, "y": 575},
-    "Right Centre Back":      {"x": 770, "y": 575},
-    "Right Back":             {"x": 1020, "y": 600},
+    "Left Back":              {"x": 180, "y": 780},
+    "Left Centre Back":       {"x": 430, "y": 745},
+    "Right Centre Back":      {"x": 770, "y": 745},
+    "Right Back":             {"x": 1020, "y": 780},
 }
 
 
@@ -2321,10 +2306,10 @@ def render_pitch_view(
     max_per_position: int = 5,
 ):
     """
-    Pitch allocation rules (to avoid duplicates with multi-row players):
-      - Eligibility is primarily based on Score Type matching the pitch slot.
+    Pitch allocation rules:
+      - Eligibility is based on Score Type matching the pitch slot.
       - Wingers also require side (Left/Right) based on Position.
-      - A player can appear only once across the entire pitch.
+      - No duplicates across the entire pitch (a player can appear only once).
     """
 
     required = {player_col, position_col, score_col, score_type_col}
@@ -2348,12 +2333,12 @@ def render_pitch_view(
     LEFT_WING_POS = {"LW", "LAM", "Left Wing", "Left Attacking Midfielder"}
     RIGHT_WING_POS = {"RW", "RAM", "Right Wing", "Right Attacking Midfielder"}
 
-    # Position sets for CB split (if your source Position uses CB/LCB/RCB etc.)
+    # CB side sets (if present)
     LEFT_CB_POS = {"LCB", "Left Centre Back", "Left Center Back"}
     RIGHT_CB_POS = {"RCB", "Right Centre Back", "Right Center Back"}
+    GENERIC_CB_POS = {"CB", "Centre Back", "Center Back"}
 
     # Score Type -> pitch slot rules
-    # (Edit these strings if your Score Type labels differ)
     SLOT_RULES = {
         "Centre Forward": lambda d: d[d[score_type_col].eq("Striker")],
 
@@ -2367,44 +2352,36 @@ def render_pitch_view(
         "Left Back": lambda d: d[d[score_type_col].eq("Left Back")],
         "Right Back": lambda d: d[d[score_type_col].eq("Right Back")],
 
-        # If your CB score type is "Centre Back", we split left/right by Position.
+        # Split CBs by side if possible; allow generic CBs to fill if needed
         "Left Centre Back": lambda d: d[d[score_type_col].eq("Centre Back") & d[position_col].isin(LEFT_CB_POS)],
         "Right Centre Back": lambda d: d[d[score_type_col].eq("Centre Back") & d[position_col].isin(RIGHT_CB_POS)],
     }
 
-    # If your CB data sometimes just says "CB" (no L/R), you can choose where it goes.
-    # Here we do: if left slot is empty, allow generic CBs to fill it, otherwise right.
-    GENERIC_CB_POS = {"CB", "Centre Back", "Center Back"}
-
-    used_players = set()  # prevents duplicates across all slots
+    used_players = set()
     cards_html = []
 
     for slot_name, coord in PITCH_LAYOUT_PX.items():
-        # base candidates for slot
-        if slot_name in SLOT_RULES:
-            sub = SLOT_RULES[slot_name](df)
-        else:
-            sub = df.iloc[0:0].copy()
+        # Candidates for slot
+        sub = SLOT_RULES.get(slot_name, lambda d: d.iloc[0:0])(df)
 
-        # Special handling: allow generic CB rows (Position == CB) to fill CB slots if needed
+        # Allow generic CB rows to fill CB slots (optional convenience)
         if slot_name in ("Left Centre Back", "Right Centre Back"):
             generic_cb = df[df[score_type_col].eq("Centre Back") & df[position_col].isin(GENERIC_CB_POS)]
             sub = pd.concat([sub, generic_cb], ignore_index=True)
 
-        # remove already-used players (global de-dupe)
-        sub = sub[~sub[player_col].isin(used_players)]
+        # Global de-dupe
+        sub = sub[~sub[player_col].astype(str).isin(used_players)]
 
-        # per-player best row inside the slot (in case multiple rows still exist)
+        # Keep best row per player inside the slot, then top N
         sub = (
             sub.sort_values(score_col, ascending=False, na_position="last")
                .drop_duplicates(subset=[player_col], keep="first")
                .head(max_per_position)
         )
 
-        # mark used
         used_players.update(sub[player_col].astype(str).tolist())
 
-        # Build HTML for this slot card
+        # Build rows HTML
         if sub.empty:
             players_html = '<div class="empty">No players</div>'
         else:
@@ -2437,6 +2414,8 @@ def render_pitch_view(
             """
         )
 
+    # NOTE: Removed the Streamlit title/subheader entirely (no "Pitch View" text)
+    # Taller pitch: 1200 x 900
     html = f"""
     <div class="wrap">
       <div class="pitch-scale">
@@ -2453,7 +2432,7 @@ def render_pitch_view(
     <style>
       :root {{
         --pitch-w: 1200px;
-        --pitch-h: 720px;
+        --pitch-h: 900px;   /* taller */
         --card-w: 220px;
       }}
 
@@ -2492,7 +2471,7 @@ def render_pitch_view(
       .circle {{
         position:absolute;
         left:50%; top:50%;
-        width:170px; height:170px;
+        width:190px; height:190px;
         border: 2px solid rgba(255,255,255,0.45);
         border-radius: 999px;
         transform: translate(-50%, -50%);
@@ -2500,14 +2479,14 @@ def render_pitch_view(
       .box {{
         position:absolute;
         left:50%;
-        width: 520px;
-        height: 170px;
+        width: 560px;
+        height: 190px;
         border: 2px solid rgba(255,255,255,0.45);
         transform: translateX(-50%);
         border-radius: 16px;
       }}
-      .box.top {{ top: 40px; }}
-      .box.bottom {{ bottom: 40px; }}
+      .box.top {{ top: 55px; }}
+      .box.bottom {{ bottom: 55px; }}
 
       /* Cards */
       .pos-card {{
@@ -2532,7 +2511,7 @@ def render_pitch_view(
 
       .pos-body {{
         padding: 8px 10px 10px;
-        max-height: 140px;
+        max-height: 150px;
         overflow: auto;
       }}
 
@@ -2583,6 +2562,7 @@ def render_pitch_view(
         padding: 10px 2px 12px;
       }}
 
+      /* Subtle scrollbars */
       .pos-body::-webkit-scrollbar {{ width: 8px; }}
       .pos-body::-webkit-scrollbar-thumb {{
         background: rgba(0,0,0,0.18);
@@ -2591,7 +2571,9 @@ def render_pitch_view(
     </style>
     """
 
-    components.html(html, height=820, scrolling=False)
+    # Slightly taller component height to match the new pitch
+    components.html(html, height=980, scrolling=False)
+
     
 # -----------------------------
 # Pitch tab wrapper (ONLY League + Season + Score Type filters)
