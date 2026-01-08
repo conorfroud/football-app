@@ -2271,6 +2271,26 @@ def score_color(score: float | None) -> str:
     return "#fee2e2"      # light red
 
 
+import streamlit as st
+import streamlit.components.v1 as components
+
+# Layout coords are now px-based to keep spacing consistent.
+# Pitch is 1200 x 720 in the HTML below.
+PITCH_LAYOUT_PX = {
+    "Centre Forward":         {"x": 600, "y": 90},
+    "Left Wing":              {"x": 260, "y": 120},
+    "Right Wing":             {"x": 940, "y": 120},
+
+    "Attacking Midfield":     {"x": 600, "y": 240},
+    "Central Midfield":       {"x": 430, "y": 330},
+    "Defensive Midfield":     {"x": 770, "y": 330},
+
+    "Left Back":              {"x": 180, "y": 600},
+    "Left Centre Back":       {"x": 430, "y": 575},
+    "Right Centre Back":      {"x": 770, "y": 575},
+    "Right Back":             {"x": 1020, "y": 600},
+}
+
 def render_pitch_view(
     df2,
     player_col: str = "Player Name",
@@ -2278,15 +2298,6 @@ def render_pitch_view(
     score_col: str = "Stoke Score",
     team_col: str = "Team",
 ):
-    """
-    Render a pitch view showing players per position, sorted by Stoke Score.
-
-    df2: your filtered dataframe (IMPORTANT: pass df2 in)
-    Required columns: player_col, position_col, score_col
-    Optional column: team_col
-    """
-
-    # Defensive checks
     required = {player_col, position_col, score_col}
     missing = [c for c in required if c not in df2.columns]
     if missing:
@@ -2298,48 +2309,22 @@ def render_pitch_view(
     st.subheader("Pitch View")
     max_per_position = st.slider("Players shown per position", 1, 5, 2)
 
-    # Map whatever your dataset uses -> pitch bucket names
     POSITION_MAP = {
-        "CF": "Centre Forward",
-        "ST": "Centre Forward",
-        "Striker": "Centre Forward",
-        "Centre Forward": "Centre Forward",
-
-        "LW": "Left Wing",
-        "Left Wing": "Left Wing",
-
-        "RW": "Right Wing",
-        "Right Wing": "Right Wing",
-
-        "AM": "Attacking Midfield",
-        "CAM": "Attacking Midfield",
-        "Attacking Midfield": "Attacking Midfield",
-
-        "CM": "Central Midfield",
-        "Central Midfield": "Central Midfield",
-
-        "DM": "Defensive Midfield",
-        "CDM": "Defensive Midfield",
-        "Defensive Midfield": "Defensive Midfield",
-
-        "LB": "Left Back",
-        "Left Back": "Left Back",
-
-        "LCB": "Left Centre Back",
-        "Left Centre Back": "Left Centre Back",
-
-        "RCB": "Right Centre Back",
-        "Right Centre Back": "Right Centre Back",
-
-        "RB": "Right Back",
-        "Right Back": "Right Back",
+        "CF": "Centre Forward", "ST": "Centre Forward", "Striker": "Centre Forward", "Centre Forward": "Centre Forward",
+        "LW": "Left Wing", "Left Wing": "Left Wing",
+        "RW": "Right Wing", "Right Wing": "Right Wing",
+        "AM": "Attacking Midfield", "CAM": "Attacking Midfield", "Attacking Midfield": "Attacking Midfield",
+        "CM": "Central Midfield", "Central Midfield": "Central Midfield",
+        "DM": "Defensive Midfield", "CDM": "Defensive Midfield", "Defensive Midfield": "Defensive Midfield",
+        "LB": "Left Back", "Left Back": "Left Back",
+        "LCB": "Left Centre Back", "Left Centre Back": "Left Centre Back",
+        "RCB": "Right Centre Back", "Right Centre Back": "Right Centre Back",
+        "RB": "Right Back", "Right Back": "Right Back",
     }
-
     df["Pitch Position"] = df[position_col].map(POSITION_MAP).fillna(df[position_col])
 
-    # Build cards HTML
     cards_html = []
-    for pos, coord in PITCH_LAYOUT.items():
+    for pos, coord in PITCH_LAYOUT_PX.items():
         sub = (
             df[df["Pitch Position"] == pos]
             .sort_values(score_col, ascending=False)
@@ -2353,21 +2338,19 @@ def render_pitch_view(
             for _, r in sub.iterrows():
                 name = str(r.get(player_col, ""))
                 team = str(r.get(team_col, "")) if team_col in df.columns else ""
-                score_val = r.get(score_col, None)
-                score = None
                 try:
-                    score = None if score_val is None else float(score_val)
+                    score = float(r.get(score_col, ""))
+                    score_txt = f"{score:.1f}"
                 except Exception:
-                    score = None
-
-                score_txt = "" if score is None else f"{score:.1f}"
-                bg = score_color(score)
+                    score_txt = ""
 
                 rows.append(
                     f"""
-                    <div class="player-row" style="background:{bg}">
-                      <div class="player-name">{name}</div>
-                      <div class="player-meta">{team}</div>
+                    <div class="player-row">
+                      <div class="player-main">
+                        <div class="player-name">{name}</div>
+                        <div class="player-team">{team}</div>
+                      </div>
                       <div class="player-score">{score_txt}</div>
                     </div>
                     """
@@ -2376,112 +2359,176 @@ def render_pitch_view(
 
         cards_html.append(
             f"""
-            <div class="pos-card" style="left:{coord['left']}%; top:{coord['top']}%;">
+            <div class="pos-card" style="left:{coord['x']}px; top:{coord['y']}px;">
               <div class="pos-title">{pos}</div>
               <div class="pos-body">{players_html}</div>
             </div>
             """
         )
 
+    # Fixed pitch canvas = consistent spacing; scaled down to fit container width.
     html = f"""
-    <div class="pitch-wrap">
-      <div class="pitch">
-        {''.join(cards_html)}
+    <div class="wrap">
+      <div class="pitch-scale">
+        <div class="pitch">
+          {''.join(cards_html)}
+          <div class="midline"></div>
+          <div class="circle"></div>
+          <div class="box top"></div>
+          <div class="box bottom"></div>
+        </div>
       </div>
     </div>
 
     <style>
-      .pitch-wrap {{
+      :root {{
+        --pitch-w: 1200px;
+        --pitch-h: 720px;
+        --card-w: 255px;
+      }}
+
+      /* Use a clean font inside the iframe */
+      .wrap {{
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
         width: 100%;
         display: flex;
         justify-content: center;
       }}
+
+      /* Scale the fixed canvas to fit the Streamlit column width */
+      .pitch-scale {{
+        width: 100%;
+        max-width: var(--pitch-w);
+      }}
+
       .pitch {{
         position: relative;
-        width: min(1100px, 100%);
-        aspect-ratio: 16 / 9;
-        background: #1f8a4c;
-        border-radius: 18px;
+        width: var(--pitch-w);
+        height: var(--pitch-h);
+        background: #1f7f49;
+        border-radius: 22px;
         overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        box-shadow: 0 12px 36px rgba(0,0,0,0.18);
+        transform-origin: top left;
+        /* scale down to container width */
+        transform: scale(calc(min(1, (100vw - 80px) / 1200)));
       }}
-      /* pitch lines */
-      .pitch:before {{
-        content:"";
-        position:absolute; inset: 5%;
-        border: 2px solid rgba(255,255,255,0.65);
-        border-radius: 14px;
-      }}
-      .pitch:after {{
-        content:"";
+
+      /* Pitch markings */
+      .midline {{
         position:absolute;
-        left: 50%; top: 50%;
-        width: 18%; height: 18%;
-        border: 2px solid rgba(255,255,255,0.65);
+        left:0; right:0;
+        top:50%;
+        height:2px;
+        background: rgba(255,255,255,0.45);
+      }}
+      .circle {{
+        position:absolute;
+        left:50%; top:50%;
+        width:170px; height:170px;
+        border: 2px solid rgba(255,255,255,0.45);
         border-radius: 999px;
         transform: translate(-50%, -50%);
       }}
+      .box {{
+        position:absolute;
+        left:50%;
+        width: 520px;
+        height: 170px;
+        border: 2px solid rgba(255,255,255,0.45);
+        transform: translateX(-50%);
+        border-radius: 16px;
+      }}
+      .box.top {{ top: 40px; }}
+      .box.bottom {{ bottom: 40px; }}
 
+      /* Cards */
       .pos-card {{
         position: absolute;
+        width: var(--card-w);
         transform: translate(-50%, -50%);
-        width: 22%;
-        min-width: 190px;
-        background: rgba(255,255,255,0.94);
-        border-radius: 12px;
-        border: 1px solid rgba(0,0,0,0.06);
-        box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        background: rgba(255,255,255,0.92);
+        border: 1px solid rgba(0,0,0,0.08);
+        border-radius: 16px;
+        box-shadow: 0 10px 28px rgba(0,0,0,0.14);
+        backdrop-filter: blur(6px);
         overflow: hidden;
       }}
+
       .pos-title {{
         font-weight: 700;
+        font-size: 16px;
         padding: 10px 12px;
+        background: rgba(255,255,255,0.55);
         border-bottom: 1px solid rgba(0,0,0,0.06);
       }}
+
       .pos-body {{
-        padding: 8px 10px 10px;
+        padding: 10px 12px 12px;
+        max-height: 160px;       /* prevents giant cards */
+        overflow: auto;          /* scroll if you show more players */
       }}
+
       .player-row {{
-        display: grid;
-        grid-template-columns: 1fr auto;
-        gap: 2px 10px;
-        padding: 7px 8px;
-        border-radius: 10px;
-        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 10px 10px;
+        border-radius: 12px;
+        background: rgba(255,255,255,0.65);
         border: 1px solid rgba(0,0,0,0.06);
+        margin-bottom: 10px;
       }}
+
+      .player-main {{
+        min-width: 0;
+      }}
+
       .player-name {{
         font-weight: 650;
-        line-height: 1.1;
+        font-size: 15px;
+        line-height: 1.15;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 170px;
       }}
-      .player-meta {{
-        grid-column: 1 / 2;
-        font-size: 12px;
+
+      .player-team {{
+        font-size: 12.5px;
         opacity: 0.75;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 170px;
+        margin-top: 2px;
       }}
+
       .player-score {{
-        grid-row: 1 / 3;
-        grid-column: 2 / 3;
-        align-self: center;
         font-weight: 800;
         font-variant-numeric: tabular-nums;
+        font-size: 15px;
+        opacity: 0.95;
       }}
+
       .empty {{
         font-size: 13px;
         opacity: 0.7;
-        padding: 8px 2px 10px;
+        padding: 10px 2px 12px;
       }}
 
-      @media (max-width: 900px) {{
-        .pos-card {{ width: 34%; }}
-      }}
-      @media (max-width: 650px) {{
-        .pos-card {{ width: 46%; min-width: 160px; }}
+      /* Make scrollbars subtle */
+      .pos-body::-webkit-scrollbar {{ width: 8px; }}
+      .pos-body::-webkit-scrollbar-thumb {{
+        background: rgba(0,0,0,0.18);
+        border-radius: 999px;
       }}
     </style>
     """
 
-    components.html(html, height=650, scrolling=False)
+    # Height: give enough room; the pitch is scaled but still needs space
+    components.html(html, height=820, scrolling=False)
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata2024.csv")
