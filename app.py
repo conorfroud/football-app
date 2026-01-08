@@ -2585,39 +2585,55 @@ def render_pitch_view(
 # Pitch tab wrapper (ONLY League + Season + Score Type filters)
 # -----------------------------
 def pitch_tab(df2):
+    """
+    Pitch View with sidebar filters:
+    - League (multi-select)
+    - Season (multi-select)
+    """
+
     st.subheader("Pitch View")
 
-    # Sidebar filters (simple, no stoke score/minutes)
+    # Sidebar filters
     st.sidebar.subheader("Pitch Filters")
 
-    # League filter (multi)
+    # -------- League filter --------
+    selected_leagues = []
     if "League" in df2.columns:
-        leagues = sorted(df2["League"].dropna().unique().tolist())
-        default_leagues = ["Championship"] if "Championship" in leagues else (leagues[:1] if leagues else [])
-        selected_leagues = st.sidebar.multiselect("Select Leagues", leagues, default=default_leagues)
-    else:
-        selected_leagues = []
+        league_options = sorted(df2["League"].dropna().unique().tolist())
+        default_leagues = ["Championship"] if "Championship" in league_options else (
+            league_options[:1] if league_options else []
+        )
+        selected_leagues = st.sidebar.multiselect(
+            "Select Leagues",
+            league_options,
+            default=default_leagues
+        )
 
-    # Season filter (depends on league selection)
+    # -------- Season filter (depends on league) --------
+    selected_seasons = []
     if "Season" in df2.columns:
         if selected_leagues and "League" in df2.columns:
-            season_options = sorted(df2[df2["League"].isin(selected_leagues)]["Season"].dropna().unique().tolist())
+            season_options = sorted(
+                df2[df2["League"].isin(selected_leagues)]["Season"]
+                .dropna()
+                .unique()
+                .tolist()
+            )
         else:
             season_options = sorted(df2["Season"].dropna().unique().tolist())
 
-        default_season = "2024/2025" if "2024/2025" in season_options else (season_options[:1] if season_options else [])
-        selected_seasons = st.sidebar.multiselect("Select Seasons", season_options, default=default_season)
-    else:
-        selected_seasons = []
+        default_season = (
+            ["2024/2025"] if "2024/2025" in season_options else
+            (season_options[:1] if season_options else [])
+        )
 
-    # Score type (single)
-    if "Score Type" in df2.columns:
-        score_types = sorted(df2["Score Type"].dropna().unique().tolist())
-        selected_score_type = st.sidebar.selectbox("Select a Score Type", score_types) if score_types else None
-    else:
-        selected_score_type = None
+        selected_seasons = st.sidebar.multiselect(
+            "Select Seasons",
+            season_options,
+            default=default_season
+        )
 
-    # Apply filters
+    # -------- Apply filters --------
     filtered_df2 = df2.copy()
 
     if selected_leagues and "League" in filtered_df2.columns:
@@ -2626,10 +2642,7 @@ def pitch_tab(df2):
     if selected_seasons and "Season" in filtered_df2.columns:
         filtered_df2 = filtered_df2[filtered_df2["Season"].isin(selected_seasons)]
 
-    if selected_score_type and "Score Type" in filtered_df2.columns:
-        filtered_df2 = filtered_df2[filtered_df2["Score Type"] == selected_score_type]
-
-    # Render pitch (top 5 fixed)
+    # -------- Render pitch (always top 5) --------
     render_pitch_view(filtered_df2, max_per_position=5)
 
 # Load the DataFrame
