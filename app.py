@@ -111,7 +111,15 @@ def main_tab(df2):
         'Creative Winger': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'],
         'Goalscoring Wide Forward': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'],
         'Creative 10': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'],
-        'Progressive 8': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score']
+        'Progressive 8': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'],
+        'Progressive 6': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'],
+        'Defensive 6': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'],
+        'Attacking LB': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'],
+        'Defensive LB': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'],
+        'Attacking RB': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'],
+        'Defensive RB': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'], 
+        'Ball Playing Centre Back': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'],
+        'Dominant Centre Back': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score']
     }
 
     # Update the selected columns to include 'Score Type' and 'Season'
