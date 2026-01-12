@@ -97,14 +97,14 @@ def main_tab(df2):
 
     # Define a dictionary that maps 'Score Type' to columns
     score_type_column_mapping = {
-        'Striker': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score', 'xG (ST)', 'Non-Penalty Goals (ST)', 'Shots (ST)', 'OBV Shot (ST)', 'Open Play xA (ST)', 'OBV Dribble & Carry (ST)', 'PAdj Pressures (ST)', 'Aerial Wins (ST)', 'Aerial Win % (ST)', 'L/R Footedness %'],
-        'Winger': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score', 'xG (W)', 'Non-Penalty Goals (W)', 'Shots (W)', 'OBV Pass (W)', 'Open Play xA (W)', 'Successful Dribbles (W)', 'OBV Dribble & Carry (W)', 'L/R Footedness %'],
-        'Attacking Midfield': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score', 'xG (CAM)', 'Non-Penalty Goals (CAM)', 'Shots (CAM)', 'OBV Pass (CAM)', 'Open Play xA (CAM)', 'Key Passes (CAM)', 'Throughballs (CAM)', 'Successful Dribbles (CAM)', 'OBV Dribble & Carry (CAM)', 'L/R Footedness %'],
-        'Central Midfield': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score', 'xG (8)', 'Non-Penalty Goals (8)', 'OBV Pass (8)', 'Open Play xA (8)', 'Deep Progressions (8)', 'Successful Dribbles (8)', 'OBV Dribble & Carry (8)', 'L/R Footedness %'],
-        'Defensive Midfield': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score', 'Deep Progressions (6)', 'OBV Pass (6)', 'OBV Dribble & Carry (6)', 'PAdj Tackles (6)', 'PAdj Interceptions (6)', 'Tackle/Dribbled Past % (6)', 'OBV Defensive Action (6)', 'L/R Footedness %'],
+        'Striker': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score', 'L/R Footedness %'],
+        'Winger': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score', 'L/R Footedness %'],
+        'Attacking Midfield': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score', 'L/R Footedness %'],
+        'Central Midfield': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score', 'L/R Footedness %'],
+        'Defensive Midfield': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score', 'L/R Footedness %'],
         'Left Back': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'],
-        'Right Back': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score', 'PAdj Tackles (RB)', 'PAdj Interceptions (RB)', 'OBV Defensive Action (RB)', 'Tackle/Dribbled Past (RB)', 'Dribbled Past (RB)', 'OBV Dribble & Carry (RB)', 'Successful Dribbles (RB)', 'OBV Pass (RB)', 'Open Play xA (RB)', 'Key Passes (RB)', 'Successful Crosses (RB)', 'L/R Footedness %'],
-        'Centre Back': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score', 'Aerial Wins (CB)', 'Aerial Win % (CB)', 'PAdj Interceptions (CB)', 'PAdj Tackles (CB)', 'OBV Pass (CB)', 'Deep Progressions (CB)', 'OBV Dribble & Carry (CB)', 'OBV Defensive Action (CB)', 'L/R Footedness %'],
+        'Right Back': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score', 'L/R Footedness %'],
+        'Centre Back': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score', 'L/R Footedness %'],
         'Stretch 9': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'],
         'Box Crashing Midfielder': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'],
         'Dribbling Winger': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'],
