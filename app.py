@@ -59,7 +59,7 @@ def main_tab(df2):
     max_stoke_score = 100.0
 
     # Add a sidebar multiselect box for leagues with default selections
-    selected_leagues = st.sidebar.multiselect("Select Leagues", league_options, default=['Championship'])
+    selected_leagues = st.sidebar.multiselect("Select Leagues", league_options, default=['English Championship'])
 
     # Filter seasons based on selected leagues
     filtered_season_options = df2[df2['League'].isin(selected_leagues)]['Season'].unique()
