@@ -921,7 +921,7 @@ def player_stat_search(df):
     selected_positions = st.sidebar.multiselect('Filter by Primary Position', df['position_1'].unique())
 
     # Create a multi-select dropdown for selecting leagues with 'English Championship' pre-selected
-    default_leagues = ['Championship']
+    default_leagues = ['English Championship']
     selected_leagues = st.sidebar.multiselect('Select Leagues', df['League'].unique(), default=default_leagues)
 
     # Get the list of all columns in the DataFrame
