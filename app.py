@@ -65,7 +65,7 @@ def main_tab(df2):
     selected_leagues = st.sidebar.multiselect(
         "Select Leagues",
         league_options_ordered,
-        default=["Championship"] if "Championship" in league_options_ordered else list(league_options_ordered)[:1]
+        default=["English Championship"] if "English Championship" in league_options_ordered else list(league_options_ordered)[:1]
     )
 
     # Seasons depend on selected leagues
