@@ -73,8 +73,6 @@ def main_tab(df2):
     # Add a sidebar dropdown box for score types
     selected_score_type = st.sidebar.selectbox("Select a Score Type", score_type_options)
 
-    stoke_range = st.sidebar.slider("Select Stoke Score Range", min_value=min_stoke_score, max_value=max_stoke_score, value=(min_stoke_score, max_stoke_score))
-
     # Add a slider for selecting the age range
     age_range = st.sidebar.slider("Select Age Range", min_value=min_age, max_value=max_age, value=(min_age, max_age))
 
@@ -97,29 +95,29 @@ def main_tab(df2):
 
     # Define a dictionary that maps 'Score Type' to columns
     score_type_column_mapping = {
-        'Striker': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score', 'L/R Footedness %'],
-        'Winger': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score', 'L/R Footedness %'],
-        'Attacking Midfield': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score', 'L/R Footedness %'],
-        'Central Midfield': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score', 'L/R Footedness %'],
-        'Defensive Midfield': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score', 'L/R Footedness %'],
-        'Left Back': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'],
-        'Right Back': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score', 'L/R Footedness %'],
-        'Centre Back': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score', 'L/R Footedness %'],
-        'Stretch 9': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'],
-        'Box Crashing Midfielder': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'],
-        'Dribbling Winger': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'],
-        'Creative Winger': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'],
-        'Goalscoring Wide Forward': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'],
-        'Creative 10': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'],
-        'Progressive 8': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'],
-        'Progressive 6': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'],
-        'Defensive 6': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'],
-        'Attacking LB': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'],
-        'Defensive LB': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'],
-        'Attacking RB': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'],
-        'Defensive RB': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'], 
-        'Ball Playing Centre Back': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score'],
-        'Dominant Centre Back': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Stoke Score']
+        'Striker': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score', 'L/R Footedness %'],
+        'Winger': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score', 'L/R Footedness %'],
+        'Attacking Midfield': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score', 'L/R Footedness %'],
+        'Central Midfield': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score', 'L/R Footedness %'],
+        'Defensive Midfield': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score', 'L/R Footedness %'],
+        'Left Back': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score'],
+        'Right Back': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score', 'L/R Footedness %'],
+        'Centre Back': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score', 'L/R Footedness %'],
+        'Stretch 9': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score'],
+        'Box Crashing Midfielder': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score'],
+        'Dribbling Winger': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score'],
+        'Creative Winger': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score'],
+        'Goalscoring Wide Forward': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score'],
+        'Creative 10': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score'],
+        'Progressive 8': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score'],
+        'Progressive 6': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score'],
+        'Defensive 6': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score'],
+        'Attacking LB': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score'],
+        'Defensive LB': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score'],
+        'Attacking RB': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score'],
+        'Defensive RB': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score'], 
+        'Ball Playing Centre Back': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score'],
+        'Dominant Centre Back': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score']
     }
 
     # Update the selected columns to include 'Score Type' and 'Season'
@@ -132,8 +130,6 @@ def main_tab(df2):
         (df2['Score Type'] == selected_score_type) &
         (df2['Age'] >= age_range[0]) &
         (df2['Age'] <= age_range[1]) &
-        (df2['Stoke Score'] >= stoke_range[0]) &
-        (df2['Stoke Score'] <= stoke_range[1]) &
         (df2['Player Season Minutes'] >= player_minutes_range[0]) &
         (df2['Player Season Minutes'] <= player_minutes_range[1]) &
         (df2['Position'].isin(selected_positions))
