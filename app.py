@@ -125,6 +125,17 @@ def main_tab(df2):
         default=expiry_year_options
     )
 
+    # ---- Market Value filter ----
+    min_market_value = float(df2["Market Value"].min())
+    max_market_value = float(df2["Market Value"].max())
+
+    market_value_range = st.sidebar.slider(
+        "Select Market Value Range",
+        min_value=min_market_value,
+        max_value=max_market_value,
+        value=(min_market_value, max_market_value)
+)
+
     # ---- Column mapping ----
     score_type_column_mapping = {
         "Striker": ["Player Name", "Age", "Team", "League", "Position", "Player Season Minutes", "Hull City Score", "L/R Footedness %", "Contract Expires", "Market Value"],
@@ -156,15 +167,17 @@ def main_tab(df2):
 
     # ---- Apply filters ----
     filtered_df = df2[
-        (df2["League"].isin(selected_leagues)) &
-        (df2["Season"].isin(selected_seasons)) &
-        (df2["Score Type"] == selected_score_type) &
-        (df2["Age"] >= age_range[0]) &
-        (df2["Age"] <= age_range[1]) &
-        (df2["Player Season Minutes"] >= player_minutes_range[0]) &
-        (df2["Player Season Minutes"] <= player_minutes_range[1]) &
-        (df2["Position"].isin(selected_positions)) &
-        (df2["Contract Expires Year"].isin(selected_expiry_years))
+    (df2["League"].isin(selected_leagues)) &
+    (df2["Season"].isin(selected_seasons)) &
+    (df2["Score Type"] == selected_score_type) &
+    (df2["Age"] >= age_range[0]) &
+    (df2["Age"] <= age_range[1]) &
+    (df2["Player Season Minutes"] >= player_minutes_range[0]) &
+    (df2["Player Season Minutes"] <= player_minutes_range[1]) &
+    (df2["Position"].isin(selected_positions)) &
+    (df2["Contract Expires Year"].isin(selected_expiry_years)) &
+    (df2["Market Value"] >= market_value_range[0]) &
+    (df2["Market Value"] <= market_value_range[1])
     ]
 
     # ---- Display ----
