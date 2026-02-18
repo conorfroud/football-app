@@ -29,116 +29,146 @@ pd.set_option("display.width", None)  # None means no width limit
 # Create a function for each tab's content
 
 def main_tab(df2):
-    
-    # Create a list of league options
-    league_options = df2['League'].unique()
-    
-    # Define the custom order for leagues
-    custom_league_order = ['Championship', 'Belgian Jupiler Pro League', 'Dutch Eredivisie', 'Portuguese Primeira Liga', 'Band 2']
-    
-    # Filter out the custom ordered leagues and sort them alphabetically
-    custom_ordered_leagues = sorted([league for league in custom_league_order if league in league_options])
-    
-    # Add the remaining leagues in their original order
-    remaining_leagues = [league for league in league_options if league not in custom_ordered_leagues]
-    
-    # Concatenate the custom ordered leagues and remaining leagues
-    league_options_ordered = custom_ordered_leagues + remaining_leagues
+    df2 = df2.copy()
 
-    # Create a list of score type options
-    score_type_options = df2['Score Type'].unique()
+    # ---- Parse Contract Expires and create a Year column ----
+    df2["Contract Expires Date"] = pd.to_datetime(
+        df2["Contract Expires"],
+        format="%d %B %Y",   # e.g. "30 June 2027"
+        errors="coerce"
+    )
+    df2["Contract Expires Year"] = df2["Contract Expires Date"].dt.year
 
-    # Get the minimum and maximum age values from the DataFrame
-    min_age = int(df2['Age'].min())
-    max_age = int(df2['Age'].max())
+    # ---- Options ----
+    league_options = df2["League"].dropna().unique()
 
-    # Create a list of primary position options
-    position_options = df2['Position'].unique()
-
-    min_stoke_score = 0.0
-    max_stoke_score = 100.0
-
-    # Add a sidebar multiselect box for leagues with default selections
-    selected_leagues = st.sidebar.multiselect("Select Leagues", league_options, default=['English Championship'])
-
-    # Filter seasons based on selected leagues
-    filtered_season_options = df2[df2['League'].isin(selected_leagues)]['Season'].unique()
-    
-    # Set '2024/2025' as the default season if available
-    default_season = '2024/2025' if '2024/2025' in filtered_season_options else (filtered_season_options[0] if len(filtered_season_options) > 0 else None)
-
-    # Add a sidebar multiselect box for seasons with the default season
-    selected_seasons = st.sidebar.multiselect("Select Seasons", filtered_season_options, default=[default_season] if default_season else [])
-
-    # Add a sidebar dropdown box for score types
-    selected_score_type = st.sidebar.selectbox("Select a Score Type", score_type_options)
-
-    # Add a slider for selecting the age range
-    age_range = st.sidebar.slider("Select Age Range", min_value=min_age, max_value=max_age, value=(min_age, max_age))
-
-    selected_positions = st.sidebar.multiselect(
-    "Select Positions",
-    position_options,
-    default=position_options)
-
-    # Calculate the min and max player season minutes based on selected leagues
-    if selected_leagues:
-        league_filtered_df = df2[df2['League'].isin(selected_leagues)]
-        min_player_minutes = int(league_filtered_df['Player Season Minutes'].min())
-        max_player_minutes = int(league_filtered_df['Player Season Minutes'].max())
-    else:
-        min_player_minutes = int(df2['Player Season Minutes'].min())
-        max_player_minutes = int(df2['Player Season Minutes'].max())
-
-    # Add a slider for selecting the Player Season Minutes range
-    player_minutes_range = st.sidebar.slider("Select Player Season Minutes Range", min_value=min_player_minutes, max_value=max_player_minutes, value=(min_player_minutes, max_player_minutes))
-
-    # Define a dictionary that maps 'Score Type' to columns
-    score_type_column_mapping = {
-        'Striker': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score', 'L/R Footedness %', 'Contract Expires', 'Market Value'],
-        'Winger': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score', 'L/R Footedness %', 'Contract Expires', 'Market Value'],
-        'Attacking Midfield': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score', 'L/R Footedness %', 'Contract Expires', 'Market Value'],
-        'Central Midfield': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score', 'L/R Footedness %', 'Contract Expires', 'Market Value'],
-        'Defensive Midfield': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score', 'L/R Footedness %', 'Contract Expires', 'Market Value'],
-        'Left Back': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score', 'Contract Expires', 'Market Value'],
-        'Right Back': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score', 'L/R Footedness %', 'Contract Expires', 'Market Value'],
-        'Centre Back': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score', 'L/R Footedness %', 'Contract Expires', 'Market Value'],
-        'Stretch 9': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score', 'Contract Expires', 'Market Value'],
-        'Box Crashing Midfielder': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score', 'Contract Expires', 'Market Value'],
-        'Dribbling Winger': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score', 'Contract Expires', 'Market Value'],
-        'Creative Winger': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score', 'Contract Expires', 'Market Value'],
-        'Goalscoring Wide Forward': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score', 'Contract Expires', 'Market Value'],
-        'Creative 10': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score', 'Contract Expires', 'Market Value'],
-        'Progressive 8': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score', 'Contract Expires', 'Market Value'],
-        'Progressive 6': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score', 'Contract Expires', 'Market Value'],
-        'Defensive 6': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score', 'Contract Expires', 'Market Value'],
-        'Attacking LB': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score', 'Contract Expires', 'Market Value'],
-        'Defensive LB': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score', 'Contract Expires', 'Market Value'],
-        'Attacking RB': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score', 'Contract Expires', 'Market Value'],
-        'Defensive RB': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score', 'Contract Expires', 'Market Value'], 
-        'Ball Playing Centre Back': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score', 'Contract Expires', 'Market Value'],
-        'Dominant Centre Back': ['Player Name', 'Age', 'Team', 'League', 'Position', 'Player Season Minutes', 'Hull City Score', 'Contract Expires', 'Market Value']
-    }
-
-    # Update the selected columns to include 'Score Type' and 'Season'
-    selected_columns = score_type_column_mapping.get(selected_score_type, [])
-
-    # Filter the DataFrame based on selected criteria without the average distance filters
-    filtered_df = df2[
-        (df2['League'].isin(selected_leagues)) &
-        (df2['Season'].isin(selected_seasons)) &  
-        (df2['Score Type'] == selected_score_type) &
-        (df2['Age'] >= age_range[0]) &
-        (df2['Age'] <= age_range[1]) &
-        (df2['Player Season Minutes'] >= player_minutes_range[0]) &
-        (df2['Player Season Minutes'] <= player_minutes_range[1]) &
-        (df2['Position'].isin(selected_positions))
+    custom_league_order = [
+        "Championship",
+        "Belgian Jupiler Pro League",
+        "Dutch Eredivisie",
+        "Portuguese Primeira Liga",
+        "Band 2"
     ]
 
-    # Reset the index of the filtered dataframe before displaying it
-    filtered_df = filtered_df[selected_columns].reset_index(drop=True)
+    custom_ordered_leagues = [l for l in custom_league_order if l in league_options]
+    remaining_leagues = [l for l in league_options if l not in custom_ordered_leagues]
+    league_options_ordered = custom_ordered_leagues + remaining_leagues
 
-    # Display the filtered DataFrame without numbers in the index
+    score_type_options = df2["Score Type"].dropna().unique()
+
+    min_age = int(df2["Age"].min())
+    max_age = int(df2["Age"].max())
+
+    position_options = df2["Position"].dropna().unique()
+
+    # ---- Sidebar filters ----
+    selected_leagues = st.sidebar.multiselect(
+        "Select Leagues",
+        league_options_ordered,
+        default=["Championship"] if "Championship" in league_options_ordered else list(league_options_ordered)[:1]
+    )
+
+    # Seasons depend on selected leagues
+    filtered_season_options = df2[df2["League"].isin(selected_leagues)]["Season"].dropna().unique()
+    filtered_season_options = list(filtered_season_options)
+
+    default_season = (
+        "2024/2025" if "2024/2025" in filtered_season_options
+        else (filtered_season_options[0] if len(filtered_season_options) > 0 else None)
+    )
+
+    selected_seasons = st.sidebar.multiselect(
+        "Select Seasons",
+        filtered_season_options,
+        default=[default_season] if default_season else []
+    )
+
+    selected_score_type = st.sidebar.selectbox("Select a Score Type", score_type_options)
+
+    age_range = st.sidebar.slider(
+        "Select Age Range",
+        min_value=min_age,
+        max_value=max_age,
+        value=(min_age, max_age)
+    )
+
+    selected_positions = st.sidebar.multiselect(
+        "Select Positions",
+        position_options,
+        default=list(position_options)
+    )
+
+    # Player Season Minutes range depends on selected leagues
+    if selected_leagues:
+        league_filtered_df = df2[df2["League"].isin(selected_leagues)]
+        min_player_minutes = int(league_filtered_df["Player Season Minutes"].min())
+        max_player_minutes = int(league_filtered_df["Player Season Minutes"].max())
+    else:
+        min_player_minutes = int(df2["Player Season Minutes"].min())
+        max_player_minutes = int(df2["Player Season Minutes"].max())
+
+    player_minutes_range = st.sidebar.slider(
+        "Select Player Season Minutes Range",
+        min_value=min_player_minutes,
+        max_value=max_player_minutes,
+        value=(min_player_minutes, max_player_minutes)
+    )
+
+    # ---- NEW: Contract expiry year filter (multiselect) ----
+    expiry_year_options = sorted(
+        df2["Contract Expires Year"].dropna().unique().astype(int)
+    )
+
+    selected_expiry_years = st.sidebar.multiselect(
+        "Select Contract Expiry Year(s)",
+        expiry_year_options,
+        default=expiry_year_options
+    )
+
+    # ---- Column mapping ----
+    score_type_column_mapping = {
+        "Striker": ["Player Name", "Age", "Team", "League", "Position", "Player Season Minutes", "Hull City Score", "L/R Footedness %", "Contract Expires", "Market Value"],
+        "Winger": ["Player Name", "Age", "Team", "League", "Position", "Player Season Minutes", "Hull City Score", "L/R Footedness %", "Contract Expires", "Market Value"],
+        "Attacking Midfield": ["Player Name", "Age", "Team", "League", "Position", "Player Season Minutes", "Hull City Score", "L/R Footedness %", "Contract Expires", "Market Value"],
+        "Central Midfield": ["Player Name", "Age", "Team", "League", "Position", "Player Season Minutes", "Hull City Score", "L/R Footedness %", "Contract Expires", "Market Value"],
+        "Defensive Midfield": ["Player Name", "Age", "Team", "League", "Position", "Player Season Minutes", "Hull City Score", "L/R Footedness %", "Contract Expires", "Market Value"],
+        "Left Back": ["Player Name", "Age", "Team", "League", "Position", "Player Season Minutes", "Hull City Score", "Contract Expires", "Market Value"],
+        "Right Back": ["Player Name", "Age", "Team", "League", "Position", "Player Season Minutes", "Hull City Score", "L/R Footedness %", "Contract Expires", "Market Value"],
+        "Centre Back": ["Player Name", "Age", "Team", "League", "Position", "Player Season Minutes", "Hull City Score", "L/R Footedness %", "Contract Expires", "Market Value"],
+        "Stretch 9": ["Player Name", "Age", "Team", "League", "Position", "Player Season Minutes", "Hull City Score", "Contract Expires", "Market Value"],
+        "Box Crashing Midfielder": ["Player Name", "Age", "Team", "League", "Position", "Player Season Minutes", "Hull City Score", "Contract Expires", "Market Value"],
+        "Dribbling Winger": ["Player Name", "Age", "Team", "League", "Position", "Player Season Minutes", "Hull City Score", "Contract Expires", "Market Value"],
+        "Creative Winger": ["Player Name", "Age", "Team", "League", "Position", "Player Season Minutes", "Hull City Score", "Contract Expires", "Market Value"],
+        "Goalscoring Wide Forward": ["Player Name", "Age", "Team", "League", "Position", "Player Season Minutes", "Hull City Score", "Contract Expires", "Market Value"],
+        "Creative 10": ["Player Name", "Age", "Team", "League", "Position", "Player Season Minutes", "Hull City Score", "Contract Expires", "Market Value"],
+        "Progressive 8": ["Player Name", "Age", "Team", "League", "Position", "Player Season Minutes", "Hull City Score", "Contract Expires", "Market Value"],
+        "Progressive 6": ["Player Name", "Age", "Team", "League", "Position", "Player Season Minutes", "Hull City Score", "Contract Expires", "Market Value"],
+        "Defensive 6": ["Player Name", "Age", "Team", "League", "Position", "Player Season Minutes", "Hull City Score", "Contract Expires", "Market Value"],
+        "Attacking LB": ["Player Name", "Age", "Team", "League", "Position", "Player Season Minutes", "Hull City Score", "Contract Expires", "Market Value"],
+        "Defensive LB": ["Player Name", "Age", "Team", "League", "Position", "Player Season Minutes", "Hull City Score", "Contract Expires", "Market Value"],
+        "Attacking RB": ["Player Name", "Age", "Team", "League", "Position", "Player Season Minutes", "Hull City Score", "Contract Expires", "Market Value"],
+        "Defensive RB": ["Player Name", "Age", "Team", "League", "Position", "Player Season Minutes", "Hull City Score", "Contract Expires", "Market Value"],
+        "Ball Playing Centre Back": ["Player Name", "Age", "Team", "League", "Position", "Player Season Minutes", "Hull City Score", "Contract Expires", "Market Value"],
+        "Dominant Centre Back": ["Player Name", "Age", "Team", "League", "Position", "Player Season Minutes", "Hull City Score", "Contract Expires", "Market Value"],
+    }
+
+    selected_columns = score_type_column_mapping.get(selected_score_type, [])
+
+    # ---- Apply filters ----
+    filtered_df = df2[
+        (df2["League"].isin(selected_leagues)) &
+        (df2["Season"].isin(selected_seasons)) &
+        (df2["Score Type"] == selected_score_type) &
+        (df2["Age"] >= age_range[0]) &
+        (df2["Age"] <= age_range[1]) &
+        (df2["Player Season Minutes"] >= player_minutes_range[0]) &
+        (df2["Player Season Minutes"] <= player_minutes_range[1]) &
+        (df2["Position"].isin(selected_positions)) &
+        (df2["Contract Expires Year"].isin(selected_expiry_years))
+    ]
+
+    # ---- Display ----
+    filtered_df = filtered_df[selected_columns].reset_index(drop=True)
     st.dataframe(filtered_df, hide_index=True)
 
 def about_tab(df2):
