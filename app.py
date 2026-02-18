@@ -91,13 +91,7 @@ def main_tab(df2):
         max_value=max_age,
         value=(min_age, max_age)
     )
-
-    selected_positions = st.sidebar.multiselect(
-        "Select Positions",
-        position_options,
-        default=list(position_options)
-    )
-
+    
     # Player Season Minutes range depends on selected leagues
     if selected_leagues:
         league_filtered_df = df2[df2["League"].isin(selected_leagues)]
@@ -174,7 +168,6 @@ def main_tab(df2):
     (df2["Age"] <= age_range[1]) &
     (df2["Player Season Minutes"] >= player_minutes_range[0]) &
     (df2["Player Season Minutes"] <= player_minutes_range[1]) &
-    (df2["Position"].isin(selected_positions)) &
     (df2["Contract Expires Year"].isin(selected_expiry_years)) &
     (df2["Market Value"] >= market_value_range[0]) &
     (df2["Market Value"] <= market_value_range[1])
