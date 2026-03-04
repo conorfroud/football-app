@@ -901,8 +901,11 @@ def player_similarity_app(df2):
     else:
         st.error("Player not found in the selected position.")
         
+import streamlit as st
+from scipy.stats import percentileofscore
+
 def player_stat_search(df):
-    
+
     # Sidebar for filtering by 'season_name'
     available_seasons = df['Season'].unique()
     selected_season = st.sidebar.selectbox('Select Season', available_seasons)
@@ -910,12 +913,22 @@ def player_stat_search(df):
     # Sidebar for filtering by 'minutes' played
     min_minutes = int(df['Player Season Minutes'].min())
     max_minutes = int(df['Player Season Minutes'].max())
-    selected_minutes = st.sidebar.slider('Select Minutes Played Range', min_value=min_minutes, max_value=max_minutes, value=(200, max_minutes))
+    selected_minutes = st.sidebar.slider(
+        'Select Minutes Played Range',
+        min_value=min_minutes,
+        max_value=max_minutes,
+        value=(200, max_minutes)
+    )
 
     # Sidebar for filtering by 'age'
     min_age = int(df['Age'].min())
     max_age = int(df['Age'].max())
-    selected_age = st.sidebar.slider('Select Age Range', min_value=min_age, max_value=max_age, value=(min_age, max_age))
+    selected_age = st.sidebar.slider(
+        'Select Age Range',
+        min_value=min_age,
+        max_value=max_age,
+        value=(min_age, max_age)
+    )
 
     # Create a multi-select dropdown for filtering by primary_position
     selected_positions = st.sidebar.multiselect('Filter by Primary Position', df['position_1'].unique())
@@ -928,18 +941,29 @@ def player_stat_search(df):
     all_columns = df.columns.tolist()
 
     # Ensure that these columns are always included in selected_stats
-    always_included_columns = ["Player Name", "Age", "Team", "position_1", "Season", "Player Season Minutes", "League"]
-    
+    always_included_columns = [
+        "Player Name", "Age", "Team", "position_1",
+        "Season", "Player Season Minutes", "League"
+    ]
+
     # Create a multiselect for stat selection
-    selected_stats = st.multiselect("Select Columns", [col for col in all_columns if col not in always_included_columns], default=[])
+    selected_stats = st.multiselect(
+        "Select Columns",
+        [col for col in all_columns if col not in always_included_columns],
+        default=[]
+    )
 
     # Add the always included columns to the selected_stats
     selected_stats.extend(always_included_columns)
 
     # Filter the DataFrame based on selected filters
-    filtered_df = df[(df['Player Season Minutes'] >= selected_minutes[0]) & (df['Player Season Minutes'] <= selected_minutes[1])]
-    filtered_df = filtered_df[(df['Age'] >= selected_age[0]) & (df['Age'] <= selected_age[1])]
+    filtered_df = df[
+        (df['Player Season Minutes'] >= selected_minutes[0]) &
+        (df['Player Season Minutes'] <= selected_minutes[1])
+    ]
+    filtered_df = filtered_df[(filtered_df['Age'] >= selected_age[0]) & (filtered_df['Age'] <= selected_age[1])]
     filtered_df = filtered_df[filtered_df['Season'] == selected_season]
+
     if selected_positions:
         filtered_df = filtered_df[filtered_df['position_1'].isin(selected_positions)]
     if selected_leagues:
@@ -949,35 +973,47 @@ def player_stat_search(df):
     stat_min_max = {}
     for stat in selected_stats:
         if stat not in always_included_columns:
-            min_stat = float(filtered_df[stat].min())  # Convert numpy.float64 to Python float
-            max_stat = float(filtered_df[stat].max())  # Convert numpy.float64 to Python float
+            min_stat = float(filtered_df[stat].min())
+            max_stat = float(filtered_df[stat].max())
             stat_min_max[stat] = (min_stat, max_stat)
 
     # Create sliders for selected_stats using computed min and max values
     slider_filters = {}
     for stat, (min_val, max_val) in stat_min_max.items():
-        slider_filters[stat] = st.sidebar.slider(f'Select {stat} Range', min_value=min_val, max_value=max_val, value=(min_val, max_val))
+        slider_filters[stat] = st.sidebar.slider(
+            f'Select {stat} Range',
+            min_value=min_val,
+            max_value=max_val,
+            value=(min_val, max_val)
+        )
 
     # Apply filters based on selected stat sliders
     for stat, (min_val, max_val) in slider_filters.items():
         filtered_df = filtered_df[(filtered_df[stat] >= min_val) & (filtered_df[stat] <= max_val)]
 
+    # --- Inversion configuration (lower is better) ---
+    lower_is_better = {"timetosprint_top3"}
+
     # Calculate percentile ranks for each selected stat
     total_scores = []
     for stat in selected_stats:
         if stat not in always_included_columns and stat in filtered_df.columns:
-            # Calculate the percentile rank of each player's stat
-            filtered_df[f'{stat} Percentile'] = filtered_df[stat].apply(lambda x: percentileofscore(filtered_df[stat], x))
-            # Append the percentile ranks to total_scores for averaging
-            total_scores.append(filtered_df[f'{stat} Percentile'])
+            # Percentile 0..100 where larger stat => larger percentile
+            p = filtered_df[stat].apply(
+                lambda x: percentileofscore(filtered_df[stat], x, kind="rank")
+            )
 
-    # Create a total score by averaging percentile ranks and scaling to 100
-    if total_scores:  # Check if there are any selected stats
-        filtered_df['Total Score'] = sum(total_scores) / len(total_scores)
-    else:
-        filtered_df['Total Score'] = 0  # Default value if no stats selected
+            # Invert percentile for "lower is better" stats
+            if stat in lower_is_better:
+                p = 100 - p
 
-    # Display the customized table with 'Age' as a constant column without index numbering
+            filtered_df[f'{stat} Percentile'] = p
+            total_scores.append(p)
+
+    # Create a total score by averaging percentile ranks
+    filtered_df['Total Score'] = (sum(total_scores) / len(total_scores)) if total_scores else 0
+
+    # Display the customized table without index numbering
     selected_stats_ordered = always_included_columns + [col for col in selected_stats if col not in always_included_columns]
     st.dataframe(filtered_df[selected_stats_ordered + ['Total Score']], hide_index=True)
     
