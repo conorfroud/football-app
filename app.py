@@ -992,7 +992,7 @@ def player_stat_search(df):
         filtered_df = filtered_df[(filtered_df[stat] >= min_val) & (filtered_df[stat] <= max_val)]
 
     # --- Inversion configuration (lower is better) ---
-    lower_is_better = {"timetosprint_top3"}
+    lower_is_better = {"Top 3 Time to Sprint"}
 
     # Calculate percentile ranks for each selected stat
     total_scores = []
