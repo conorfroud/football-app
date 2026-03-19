@@ -905,14 +905,20 @@ import streamlit as st
 from scipy.stats import percentileofscore
 
 def player_stat_search(df):
-    
     import pandas as pd
     import streamlit as st
     from scipy.stats import percentileofscore
 
-    # Optional: make sure contract expiry is datetime for filtering/display
+    df = df.copy()
+
+    # ---- Parse Contract Expires and create a Year column ----
     if 'Contract Expires' in df.columns:
-        df['Contract Expires'] = pd.to_datetime(df['Contract Expires'], errors='coerce')
+        df["Contract Expires Date"] = pd.to_datetime(
+            df["Contract Expires"],
+            format="%d %B %Y",   # e.g. "30 June 2027"
+            errors="coerce"
+        )
+        df["Contract Expires Year"] = df["Contract Expires Date"].dt.year
 
     # Sidebar for filtering by 'Season'
     available_seasons = df['Season'].dropna().unique()
@@ -939,6 +945,7 @@ def player_stat_search(df):
     )
 
     # Sidebar for filtering by Market Value
+    selected_market_value = None
     if 'Market Value' in df.columns:
         market_value_series = pd.to_numeric(df['Market Value'], errors='coerce')
         min_market_value = float(market_value_series.min())
@@ -950,22 +957,19 @@ def player_stat_search(df):
             max_value=max_market_value,
             value=(min_market_value, max_market_value)
         )
-    else:
-        selected_market_value = None
 
-    # Sidebar for filtering by Contract Expires
-    if 'Contract Expires' in df.columns and df['Contract Expires'].notna().any():
-        min_contract = df['Contract Expires'].min().date()
-        max_contract = df['Contract Expires'].max().date()
-
-        selected_contract_range = st.sidebar.date_input(
-            'Select Contract Expiry Range',
-            value=(min_contract, max_contract),
-            min_value=min_contract,
-            max_value=max_contract
+    # Sidebar for filtering by Contract Expires Year
+    selected_expiry_years = []
+    if 'Contract Expires Year' in df.columns:
+        expiry_year_options = sorted(
+            df['Contract Expires Year'].dropna().unique().astype(int)
         )
-    else:
-        selected_contract_range = None
+
+        selected_expiry_years = st.sidebar.multiselect(
+            'Select Contract Expiry Year(s)',
+            expiry_year_options,
+            default=expiry_year_options
+        )
 
     # Create a multi-select dropdown for filtering by primary_position
     selected_positions = st.sidebar.multiselect(
@@ -973,41 +977,43 @@ def player_stat_search(df):
         df['position_1'].dropna().unique()
     )
 
-    # Create a multi-select dropdown for selecting leagues with 'English Championship' pre-selected
+    # Create a multi-select dropdown for selecting leagues
     default_leagues = ['English Championship']
+    available_leagues = df['League'].dropna().unique()
+
     selected_leagues = st.sidebar.multiselect(
         'Select Leagues',
-        df['League'].dropna().unique(),
-        default=default_leagues
+        available_leagues,
+        default=[l for l in default_leagues if l in available_leagues]
     )
 
     # Get the list of all columns in the DataFrame
     all_columns = df.columns.tolist()
 
-    # Ensure that these columns are always included in selected_stats
+    # Ensure that these columns are always included
     always_included_columns = [
         "Player Name", "Age", "Team", "position_1",
         "Season", "Player Season Minutes", "League",
         "Market Value", "Contract Expires"
     ]
 
-    # Only keep always included columns that actually exist
+    # Only keep columns that actually exist
     always_included_columns = [col for col in always_included_columns if col in all_columns]
 
     # Create a multiselect for stat selection
     selected_stats = st.multiselect(
         "Select Columns",
-        [col for col in all_columns if col not in always_included_columns],
+        [col for col in all_columns if col not in always_included_columns and col != "Contract Expires Year" and col != "Contract Expires Date"],
         default=[]
     )
 
-    # Add the always included columns to the selected_stats
+    # Add always included columns
     selected_stats.extend(always_included_columns)
 
     # Remove duplicates while preserving order
     selected_stats = list(dict.fromkeys(selected_stats))
 
-    # Filter the DataFrame based on selected filters
+    # ---- Apply base filters ----
     filtered_df = df[
         (df['Player Season Minutes'] >= selected_minutes[0]) &
         (df['Player Season Minutes'] <= selected_minutes[1])
@@ -1033,10 +1039,9 @@ def player_stat_search(df):
             )
         ]
 
-    if selected_contract_range is not None and len(selected_contract_range) == 2:
-        start_date, end_date = selected_contract_range
+    if selected_expiry_years:
         filtered_df = filtered_df[
-            filtered_df['Contract Expires'].dt.date.between(start_date, end_date)
+            filtered_df['Contract Expires Year'].isin(selected_expiry_years)
         ]
 
     # Compute minimum and maximum values for selected stats based on filtered players
@@ -1049,7 +1054,7 @@ def player_stat_search(df):
                 max_stat = float(numeric_stat.max())
                 stat_min_max[stat] = (min_stat, max_stat)
 
-    # Create sliders for selected_stats using computed min and max values
+    # Create sliders for selected stats
     slider_filters = {}
     for stat, (min_val, max_val) in stat_min_max.items():
         slider_filters[stat] = st.sidebar.slider(
@@ -1059,7 +1064,7 @@ def player_stat_search(df):
             value=(min_val, max_val)
         )
 
-    # Apply filters based on selected stat sliders
+    # Apply stat slider filters
     for stat, (min_val, max_val) in slider_filters.items():
         numeric_stat = pd.to_numeric(filtered_df[stat], errors='coerce')
         filtered_df = filtered_df[numeric_stat.between(min_val, max_val)]
@@ -1067,7 +1072,7 @@ def player_stat_search(df):
     # --- Inversion configuration (lower is better) ---
     lower_is_better = {"Top 3 Time to Sprint"}
 
-    # Calculate percentile ranks for each selected stat
+    # Calculate percentile ranks
     total_scores = []
     for stat in selected_stats:
         if stat not in always_included_columns and stat in filtered_df.columns:
@@ -1084,19 +1089,18 @@ def player_stat_search(df):
                 filtered_df[f'{stat} Percentile'] = p
                 total_scores.append(p)
 
-    # Create a total score by averaging percentile ranks
+    # Create total score
     filtered_df['Total Score'] = (sum(total_scores) / len(total_scores)) if total_scores else 0
 
-    # Optional: nicer display for contract date
-    if 'Contract Expires' in filtered_df.columns:
-        filtered_df['Contract Expires'] = filtered_df['Contract Expires'].dt.strftime('%Y-%m-%d')
-
-    # Display the customized table without index numbering
+    # Display table
     selected_stats_ordered = always_included_columns + [
         col for col in selected_stats if col not in always_included_columns
     ]
 
-    st.dataframe(filtered_df[selected_stats_ordered + ['Total Score']], hide_index=True)
+    st.dataframe(
+        filtered_df[selected_stats_ordered + ['Total Score']],
+        hide_index=True
+    )
     
 def stoke_score_wyscout(df3):
     
