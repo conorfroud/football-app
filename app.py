@@ -2803,7 +2803,8 @@ def pitch_tab(df2):
 
     # -------- Render pitch (always top 5) --------
     render_pitch_view(filtered_df2, max_per_position=15)
-    def player_similarity_search(df):
+
+def player_similarity_search(df):
     import pandas as pd
     import numpy as np
     import streamlit as st
