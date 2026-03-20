@@ -2821,11 +2821,12 @@ def player_similarity_search(df):
         )
         df["Contract Expires Year"] = df["Contract Expires Date"].dt.year
 
-    # Sidebar for filtering by 'Season'
+    # -----------------------------
+    # Sidebar filters
+    # -----------------------------
     available_seasons = sorted(df['Season'].dropna().unique())
     selected_season = st.sidebar.selectbox('Select Season', available_seasons)
 
-    # Sidebar for filtering by minutes played
     min_minutes = int(df['Player Season Minutes'].min())
     max_minutes = int(df['Player Season Minutes'].max())
     selected_minutes = st.sidebar.slider(
@@ -2835,7 +2836,6 @@ def player_similarity_search(df):
         value=(200, max_minutes)
     )
 
-    # Sidebar for filtering by age
     min_age = int(df['Age'].min())
     max_age = int(df['Age'].max())
     selected_age = st.sidebar.slider(
@@ -2845,7 +2845,6 @@ def player_similarity_search(df):
         value=(min_age, max_age)
     )
 
-    # Sidebar for filtering by Market Value
     selected_market_value = None
     if 'Market Value' in df.columns:
         market_value_series = pd.to_numeric(df['Market Value'], errors='coerce')
@@ -2860,13 +2859,11 @@ def player_similarity_search(df):
                 value=(min_market_value, max_market_value)
             )
 
-    # Sidebar for filtering by Contract Expires Year
     selected_expiry_years = []
     if 'Contract Expires Year' in df.columns:
         expiry_year_options = sorted(
             df['Contract Expires Year'].dropna().unique().astype(int)
         )
-
         if len(expiry_year_options) > 0:
             selected_expiry_years = st.sidebar.multiselect(
                 'Select Contract Expiry Year(s)',
@@ -2874,22 +2871,22 @@ def player_similarity_search(df):
                 default=expiry_year_options
             )
 
-    # Filter by primary position
     selected_positions = st.sidebar.multiselect(
         'Filter by Primary Position',
         sorted(df['position_1'].dropna().unique())
     )
 
-    # Filter by leagues
     default_leagues = ['English Championship']
     available_leagues = sorted(df['League'].dropna().unique())
-
     selected_leagues = st.sidebar.multiselect(
         'Select Leagues',
         available_leagues,
         default=[l for l in default_leagues if l in available_leagues]
     )
 
+    # -----------------------------
+    # Stat selection
+    # -----------------------------
     all_columns = df.columns.tolist()
 
     always_included_columns = [
@@ -2906,7 +2903,7 @@ def player_similarity_search(df):
     ]
 
     selected_stats = st.multiselect(
-        "Select statistics for similarity search",
+        "Select statistics for similarity",
         selectable_stats,
         default=[]
     )
@@ -2915,7 +2912,9 @@ def player_similarity_search(df):
         st.warning("Please select at least one statistic.")
         return
 
-    # ---- Apply base filters ----
+    # -----------------------------
+    # Apply base filters
+    # -----------------------------
     filtered_df = df[
         (df['Player Season Minutes'] >= selected_minutes[0]) &
         (df['Player Season Minutes'] <= selected_minutes[1])
@@ -2950,72 +2949,80 @@ def player_similarity_search(df):
         st.warning("No players found with the current filters.")
         return
 
-    # ---- Optional stat sliders ----
-    stat_min_max = {}
-    for stat in selected_stats:
-        if stat in filtered_df.columns:
-            numeric_stat = pd.to_numeric(filtered_df[stat], errors='coerce')
-            if numeric_stat.notna().any():
-                stat_min_max[stat] = (float(numeric_stat.min()), float(numeric_stat.max()))
+    # -----------------------------
+    # Select the single target player
+    # -----------------------------
+    st.subheader("Select Target Player")
 
-    slider_filters = {}
-    for stat, (min_val, max_val) in stat_min_max.items():
-        slider_filters[stat] = st.sidebar.slider(
-            f'Select {stat} Range',
-            min_value=min_val,
-            max_value=max_val,
-            value=(min_val, max_val)
-        )
+    player_options = (
+        filtered_df[['Player Name', 'Team', 'Season']]
+        .drop_duplicates()
+        .sort_values(['Player Name', 'Team'])
+    )
 
-    for stat, (min_val, max_val) in slider_filters.items():
-        numeric_stat = pd.to_numeric(filtered_df[stat], errors='coerce')
-        filtered_df = filtered_df[numeric_stat.between(min_val, max_val)]
+    player_labels = player_options.apply(
+        lambda x: f"{x['Player Name']} | {x['Team']} | {x['Season']}",
+        axis=1
+    ).tolist()
 
-    if filtered_df.empty:
-        st.warning("No players remain after applying stat range filters.")
+    selected_player_label = st.selectbox(
+        "Choose one player to find similar players",
+        player_labels
+    )
+
+    selected_player_row = player_options.iloc[player_labels.index(selected_player_label)]
+
+    target_df = filtered_df[
+        (filtered_df['Player Name'] == selected_player_row['Player Name']) &
+        (filtered_df['Team'] == selected_player_row['Team']) &
+        (filtered_df['Season'] == selected_player_row['Season'])
+    ].copy()
+
+    if target_df.empty:
+        st.warning("Target player not found after filtering.")
         return
 
-    # --- Inversion configuration (lower is better) ---
+    target_row = target_df.iloc[0]
+
+    # -----------------------------
+    # Percentiles
+    # -----------------------------
     lower_is_better = {"Top 3 Time to Sprint"}
 
-    # ---- Build percentile columns ----
     valid_stats = []
     for stat in selected_stats:
-        if stat in filtered_df.columns:
-            numeric_stat = pd.to_numeric(filtered_df[stat], errors='coerce')
+        numeric_stat = pd.to_numeric(filtered_df[stat], errors='coerce')
+        if numeric_stat.notna().sum() > 1:
+            percentiles = numeric_stat.apply(
+                lambda x: percentileofscore(numeric_stat.dropna(), x, kind="rank")
+                if pd.notna(x) else np.nan
+            )
 
-            if numeric_stat.notna().sum() > 1:
-                percentiles = numeric_stat.apply(
-                    lambda x: percentileofscore(numeric_stat.dropna(), x, kind="rank")
-                    if pd.notna(x) else np.nan
-                )
+            if stat in lower_is_better:
+                percentiles = 100 - percentiles
 
-                if stat in lower_is_better:
-                    percentiles = 100 - percentiles
-
-                filtered_df[f"{stat} Percentile"] = percentiles
-                valid_stats.append(stat)
+            filtered_df[f"{stat} Percentile"] = percentiles
+            valid_stats.append(stat)
 
     if not valid_stats:
-        st.warning("None of the selected stats contain enough valid numeric data.")
+        st.warning("No valid numeric stats available for similarity.")
         return
 
     percentile_cols = [f"{stat} Percentile" for stat in valid_stats]
 
-    # ---- Optional weights ----
+    # -----------------------------
+    # Weights
+    # -----------------------------
     st.subheader("Stat Weights")
     weights = {}
-    cols = st.columns(min(4, len(valid_stats)))
-    for i, stat in enumerate(valid_stats):
-        with cols[i % len(cols)]:
-            weights[stat] = st.number_input(
-                f"{stat}",
-                min_value=0.0,
-                value=1.0,
-                step=0.1
-            )
+    for stat in valid_stats:
+        weights[stat] = st.number_input(
+            f"{stat} weight",
+            min_value=0.0,
+            value=1.0,
+            step=0.1
+        )
 
-    # Remove zero-weight stats
     valid_stats = [stat for stat in valid_stats if weights[stat] > 0]
     percentile_cols = [f"{stat} Percentile" for stat in valid_stats]
 
@@ -3023,76 +3030,61 @@ def player_similarity_search(df):
         st.warning("All stat weights are zero.")
         return
 
-    # ---- Choose target player ----
-    player_options = filtered_df['Player Name'].dropna().unique().tolist()
-    player_options = sorted(player_options)
+    # Refresh target row after percentile columns were created
+    target_row = filtered_df.loc[target_df.index[0]]
 
-    target_player = st.selectbox("Select target player", player_options)
-
-    # If duplicate names exist, let user pick the row
-    target_rows = filtered_df[filtered_df['Player Name'] == target_player].copy()
-
-    if len(target_rows) > 1:
-        target_idx = st.selectbox(
-            "Multiple rows found for this player, select one",
-            target_rows.index.tolist(),
-            format_func=lambda idx: (
-                f"{filtered_df.loc[idx, 'Player Name']} | "
-                f"{filtered_df.loc[idx, 'Team']} | "
-                f"{filtered_df.loc[idx, 'Season']}"
-            )
-        )
-        target_row = filtered_df.loc[target_idx]
-    else:
-        target_row = target_rows.iloc[0]
-
-    # ---- Similarity calculation ----
-    # Weighted Euclidean distance on percentile profile
-    weight_array = np.array([weights[stat] for stat in valid_stats], dtype=float)
+    # -----------------------------
+    # Similarity score
+    # Using weighted mean absolute percentile difference
+    # -----------------------------
     target_vector = target_row[percentile_cols].astype(float).values
+    weight_array = np.array([weights[stat] for stat in valid_stats], dtype=float)
 
     similarity_scores = []
-    stat_differences = []
-
-    max_possible_distance = np.sqrt(np.sum(weight_array * (100 ** 2)))
+    avg_diffs = []
 
     for idx, row in filtered_df.iterrows():
         player_vector = row[percentile_cols].astype(float).values
 
-        # Handle missing values pairwise
         valid_mask = ~np.isnan(target_vector) & ~np.isnan(player_vector)
         if valid_mask.sum() == 0:
             similarity_scores.append(np.nan)
-            stat_differences.append(np.nan)
+            avg_diffs.append(np.nan)
             continue
 
-        local_weights = weight_array[valid_mask]
         local_target = target_vector[valid_mask]
         local_player = player_vector[valid_mask]
+        local_weights = weight_array[valid_mask]
 
-        distance = np.sqrt(np.sum(local_weights * ((local_target - local_player) ** 2)))
+        abs_diff = np.abs(local_target - local_player)
+        weighted_diff = np.average(abs_diff, weights=local_weights)
 
-        local_max_distance = np.sqrt(np.sum(local_weights * (100 ** 2)))
-        similarity = 100 * (1 - distance / local_max_distance) if local_max_distance > 0 else np.nan
+        similarity = 100 - weighted_diff
 
         similarity_scores.append(similarity)
-        stat_differences.append(np.mean(np.abs(local_target - local_player)))
+        avg_diffs.append(weighted_diff)
 
     filtered_df['Similarity Score'] = similarity_scores
-    filtered_df['Avg Percentile Difference'] = stat_differences
+    filtered_df['Avg Percentile Difference'] = avg_diffs
 
-    # Exclude target player itself
-    result_df = filtered_df.copy()
-    result_df = result_df[result_df.index != target_row.name]
+    # Remove the selected player from the results
+    result_df = filtered_df.drop(index=target_row.name, errors='ignore')
 
-    # Sort by most similar
+    # Optional: only compare against same position
+    same_position_only = st.checkbox("Only compare against same primary position", value=False)
+    if same_position_only:
+        result_df = result_df[result_df['position_1'] == target_row['position_1']]
+
+    # Sort most similar first
     result_df = result_df.sort_values(
         by=['Similarity Score', 'Avg Percentile Difference'],
         ascending=[False, True]
     )
 
-    # ---- Show target player percentile profile ----
-    st.subheader(f"Target Player: {target_row['Player Name']}")
+    # -----------------------------
+    # Outputs
+    # -----------------------------
+    st.subheader("Selected Player Profile")
     profile_df = pd.DataFrame({
         "Stat": valid_stats,
         "Percentile": [target_row[f"{stat} Percentile"] for stat in valid_stats],
@@ -3100,15 +3092,15 @@ def player_similarity_search(df):
     })
     st.dataframe(profile_df, hide_index=True)
 
-    # ---- Show most similar players ----
     st.subheader("Most Similar Players")
+    top_n = st.slider("Number of similar players to show", 5, 50, 10)
 
-    display_columns = always_included_columns + ['Similarity Score', 'Avg Percentile Difference']
-    display_columns += percentile_cols
+    display_columns = always_included_columns + [
+        'Similarity Score',
+        'Avg Percentile Difference'
+    ] + percentile_cols
 
     display_columns = [col for col in display_columns if col in result_df.columns]
-
-    top_n = st.slider("Number of similar players to show", 5, 50, 10)
 
     st.dataframe(
         result_df[display_columns].head(top_n),
