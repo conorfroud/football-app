@@ -2803,6 +2803,316 @@ def pitch_tab(df2):
 
     # -------- Render pitch (always top 5) --------
     render_pitch_view(filtered_df2, max_per_position=15)
+    def player_similarity_search(df):
+    import pandas as pd
+    import numpy as np
+    import streamlit as st
+    from scipy.stats import percentileofscore
+
+    df = df.copy()
+
+    # ---- Parse Contract Expires and create a Year column ----
+    if 'Contract Expires' in df.columns:
+        df["Contract Expires Date"] = pd.to_datetime(
+            df["Contract Expires"],
+            format="%d %B %Y",
+            errors="coerce"
+        )
+        df["Contract Expires Year"] = df["Contract Expires Date"].dt.year
+
+    # Sidebar for filtering by 'Season'
+    available_seasons = sorted(df['Season'].dropna().unique())
+    selected_season = st.sidebar.selectbox('Select Season', available_seasons)
+
+    # Sidebar for filtering by minutes played
+    min_minutes = int(df['Player Season Minutes'].min())
+    max_minutes = int(df['Player Season Minutes'].max())
+    selected_minutes = st.sidebar.slider(
+        'Select Minutes Played Range',
+        min_value=min_minutes,
+        max_value=max_minutes,
+        value=(200, max_minutes)
+    )
+
+    # Sidebar for filtering by age
+    min_age = int(df['Age'].min())
+    max_age = int(df['Age'].max())
+    selected_age = st.sidebar.slider(
+        'Select Age Range',
+        min_value=min_age,
+        max_value=max_age,
+        value=(min_age, max_age)
+    )
+
+    # Sidebar for filtering by Market Value
+    selected_market_value = None
+    if 'Market Value' in df.columns:
+        market_value_series = pd.to_numeric(df['Market Value'], errors='coerce')
+        if market_value_series.notna().any():
+            min_market_value = float(market_value_series.min())
+            max_market_value = float(market_value_series.max())
+
+            selected_market_value = st.sidebar.slider(
+                'Select Market Value Range',
+                min_value=min_market_value,
+                max_value=max_market_value,
+                value=(min_market_value, max_market_value)
+            )
+
+    # Sidebar for filtering by Contract Expires Year
+    selected_expiry_years = []
+    if 'Contract Expires Year' in df.columns:
+        expiry_year_options = sorted(
+            df['Contract Expires Year'].dropna().unique().astype(int)
+        )
+
+        if len(expiry_year_options) > 0:
+            selected_expiry_years = st.sidebar.multiselect(
+                'Select Contract Expiry Year(s)',
+                expiry_year_options,
+                default=expiry_year_options
+            )
+
+    # Filter by primary position
+    selected_positions = st.sidebar.multiselect(
+        'Filter by Primary Position',
+        sorted(df['position_1'].dropna().unique())
+    )
+
+    # Filter by leagues
+    default_leagues = ['English Championship']
+    available_leagues = sorted(df['League'].dropna().unique())
+
+    selected_leagues = st.sidebar.multiselect(
+        'Select Leagues',
+        available_leagues,
+        default=[l for l in default_leagues if l in available_leagues]
+    )
+
+    all_columns = df.columns.tolist()
+
+    always_included_columns = [
+        "Player Name", "Age", "Team", "position_1",
+        "Season", "Player Season Minutes", "League",
+        "Market Value", "Contract Expires"
+    ]
+    always_included_columns = [col for col in always_included_columns if col in all_columns]
+
+    selectable_stats = [
+        col for col in all_columns
+        if col not in always_included_columns
+        and col not in ["Contract Expires Year", "Contract Expires Date"]
+    ]
+
+    selected_stats = st.multiselect(
+        "Select statistics for similarity search",
+        selectable_stats,
+        default=[]
+    )
+
+    if not selected_stats:
+        st.warning("Please select at least one statistic.")
+        return
+
+    # ---- Apply base filters ----
+    filtered_df = df[
+        (df['Player Season Minutes'] >= selected_minutes[0]) &
+        (df['Player Season Minutes'] <= selected_minutes[1])
+    ]
+
+    filtered_df = filtered_df[
+        (filtered_df['Age'] >= selected_age[0]) &
+        (filtered_df['Age'] <= selected_age[1])
+    ]
+
+    filtered_df = filtered_df[filtered_df['Season'] == selected_season]
+
+    if selected_positions:
+        filtered_df = filtered_df[filtered_df['position_1'].isin(selected_positions)]
+
+    if selected_leagues:
+        filtered_df = filtered_df[filtered_df['League'].isin(selected_leagues)]
+
+    if selected_market_value is not None:
+        filtered_df = filtered_df[
+            pd.to_numeric(filtered_df['Market Value'], errors='coerce').between(
+                selected_market_value[0], selected_market_value[1]
+            )
+        ]
+
+    if selected_expiry_years and 'Contract Expires Year' in filtered_df.columns:
+        filtered_df = filtered_df[
+            filtered_df['Contract Expires Year'].isin(selected_expiry_years)
+        ]
+
+    if filtered_df.empty:
+        st.warning("No players found with the current filters.")
+        return
+
+    # ---- Optional stat sliders ----
+    stat_min_max = {}
+    for stat in selected_stats:
+        if stat in filtered_df.columns:
+            numeric_stat = pd.to_numeric(filtered_df[stat], errors='coerce')
+            if numeric_stat.notna().any():
+                stat_min_max[stat] = (float(numeric_stat.min()), float(numeric_stat.max()))
+
+    slider_filters = {}
+    for stat, (min_val, max_val) in stat_min_max.items():
+        slider_filters[stat] = st.sidebar.slider(
+            f'Select {stat} Range',
+            min_value=min_val,
+            max_value=max_val,
+            value=(min_val, max_val)
+        )
+
+    for stat, (min_val, max_val) in slider_filters.items():
+        numeric_stat = pd.to_numeric(filtered_df[stat], errors='coerce')
+        filtered_df = filtered_df[numeric_stat.between(min_val, max_val)]
+
+    if filtered_df.empty:
+        st.warning("No players remain after applying stat range filters.")
+        return
+
+    # --- Inversion configuration (lower is better) ---
+    lower_is_better = {"Top 3 Time to Sprint"}
+
+    # ---- Build percentile columns ----
+    valid_stats = []
+    for stat in selected_stats:
+        if stat in filtered_df.columns:
+            numeric_stat = pd.to_numeric(filtered_df[stat], errors='coerce')
+
+            if numeric_stat.notna().sum() > 1:
+                percentiles = numeric_stat.apply(
+                    lambda x: percentileofscore(numeric_stat.dropna(), x, kind="rank")
+                    if pd.notna(x) else np.nan
+                )
+
+                if stat in lower_is_better:
+                    percentiles = 100 - percentiles
+
+                filtered_df[f"{stat} Percentile"] = percentiles
+                valid_stats.append(stat)
+
+    if not valid_stats:
+        st.warning("None of the selected stats contain enough valid numeric data.")
+        return
+
+    percentile_cols = [f"{stat} Percentile" for stat in valid_stats]
+
+    # ---- Optional weights ----
+    st.subheader("Stat Weights")
+    weights = {}
+    cols = st.columns(min(4, len(valid_stats)))
+    for i, stat in enumerate(valid_stats):
+        with cols[i % len(cols)]:
+            weights[stat] = st.number_input(
+                f"{stat}",
+                min_value=0.0,
+                value=1.0,
+                step=0.1
+            )
+
+    # Remove zero-weight stats
+    valid_stats = [stat for stat in valid_stats if weights[stat] > 0]
+    percentile_cols = [f"{stat} Percentile" for stat in valid_stats]
+
+    if not valid_stats:
+        st.warning("All stat weights are zero.")
+        return
+
+    # ---- Choose target player ----
+    player_options = filtered_df['Player Name'].dropna().unique().tolist()
+    player_options = sorted(player_options)
+
+    target_player = st.selectbox("Select target player", player_options)
+
+    # If duplicate names exist, let user pick the row
+    target_rows = filtered_df[filtered_df['Player Name'] == target_player].copy()
+
+    if len(target_rows) > 1:
+        target_idx = st.selectbox(
+            "Multiple rows found for this player, select one",
+            target_rows.index.tolist(),
+            format_func=lambda idx: (
+                f"{filtered_df.loc[idx, 'Player Name']} | "
+                f"{filtered_df.loc[idx, 'Team']} | "
+                f"{filtered_df.loc[idx, 'Season']}"
+            )
+        )
+        target_row = filtered_df.loc[target_idx]
+    else:
+        target_row = target_rows.iloc[0]
+
+    # ---- Similarity calculation ----
+    # Weighted Euclidean distance on percentile profile
+    weight_array = np.array([weights[stat] for stat in valid_stats], dtype=float)
+    target_vector = target_row[percentile_cols].astype(float).values
+
+    similarity_scores = []
+    stat_differences = []
+
+    max_possible_distance = np.sqrt(np.sum(weight_array * (100 ** 2)))
+
+    for idx, row in filtered_df.iterrows():
+        player_vector = row[percentile_cols].astype(float).values
+
+        # Handle missing values pairwise
+        valid_mask = ~np.isnan(target_vector) & ~np.isnan(player_vector)
+        if valid_mask.sum() == 0:
+            similarity_scores.append(np.nan)
+            stat_differences.append(np.nan)
+            continue
+
+        local_weights = weight_array[valid_mask]
+        local_target = target_vector[valid_mask]
+        local_player = player_vector[valid_mask]
+
+        distance = np.sqrt(np.sum(local_weights * ((local_target - local_player) ** 2)))
+
+        local_max_distance = np.sqrt(np.sum(local_weights * (100 ** 2)))
+        similarity = 100 * (1 - distance / local_max_distance) if local_max_distance > 0 else np.nan
+
+        similarity_scores.append(similarity)
+        stat_differences.append(np.mean(np.abs(local_target - local_player)))
+
+    filtered_df['Similarity Score'] = similarity_scores
+    filtered_df['Avg Percentile Difference'] = stat_differences
+
+    # Exclude target player itself
+    result_df = filtered_df.copy()
+    result_df = result_df[result_df.index != target_row.name]
+
+    # Sort by most similar
+    result_df = result_df.sort_values(
+        by=['Similarity Score', 'Avg Percentile Difference'],
+        ascending=[False, True]
+    )
+
+    # ---- Show target player percentile profile ----
+    st.subheader(f"Target Player: {target_row['Player Name']}")
+    profile_df = pd.DataFrame({
+        "Stat": valid_stats,
+        "Percentile": [target_row[f"{stat} Percentile"] for stat in valid_stats],
+        "Weight": [weights[stat] for stat in valid_stats]
+    })
+    st.dataframe(profile_df, hide_index=True)
+
+    # ---- Show most similar players ----
+    st.subheader("Most Similar Players")
+
+    display_columns = always_included_columns + ['Similarity Score', 'Avg Percentile Difference']
+    display_columns += percentile_cols
+
+    display_columns = [col for col in display_columns if col in result_df.columns]
+
+    top_n = st.slider("Number of similar players to show", 5, 50, 10)
+
+    st.dataframe(
+        result_df[display_columns].head(top_n),
+        hide_index=True
+    )
 
 # Load the DataFrame
 df = pd.read_csv("belgiumdata2024.csv")
@@ -2812,7 +3122,7 @@ df4 = pd.read_csv("teamseasondata.csv")
 data = pd.read_csv("seasonmatchdata2024.csv")
 
 # Create the navigation menu in the sidebar
-selected_tab = st.sidebar.radio("Navigation", ["Hull City Score", "Scatter Plot", "Multi Player Comparison Tab", "Stat Search"])
+selected_tab = st.sidebar.radio("Navigation", ["Hull City Score", "Scatter Plot", "Multi Player Comparison Tab", "Stat Search", "Similarity Search"])
 
 # Based on the selected tab, display the corresponding content
 if selected_tab == "Hull City Score":
@@ -2847,5 +3157,7 @@ if selected_tab == "Dashboard":
     dashboard_tab()
 if selected_tab == "Pitch View":
     pitch_tab(df2)
+if selected_tab == "Similarity Search":
+    player_similarity_search(df)
 elif selected_tab == "Multi Player Comparison Tab":
     comparison_tab(df)
