@@ -978,7 +978,7 @@ def player_stat_search(df):
     )
 
     # Create a multi-select dropdown for selecting leagues
-    default_leagues = ['English Championship']
+    default_leagues = ['English Premier League']
     available_leagues = df['League'].dropna().unique()
 
     selected_leagues = st.sidebar.multiselect(
