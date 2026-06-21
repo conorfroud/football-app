@@ -43,10 +43,6 @@ def main_tab(df2):
     league_options = df2["League"].dropna().unique()
 
     custom_league_order = [
-        "Championship",
-        "Belgian Jupiler Pro League",
-        "Dutch Eredivisie",
-        "Portuguese Primeira Liga",
         "Band 2"
     ]
 
