@@ -58,9 +58,16 @@ def main_tab(df2):
     position_options = df2["Position"].dropna().unique()
 
     # ---- Sidebar filters ----
+    default_leagues = (
+    ["English Premier League"]
+    if "English Premier League" in league_options_ordered
+    else []
+    )
+    
     selected_leagues = st.sidebar.multiselect(
         "Select Leagues",
-        league_options_ordered
+        league_options_ordered,
+        default=default_leagues
     )
 
     # Seasons depend on selected leagues
