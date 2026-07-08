@@ -405,7 +405,7 @@ def about_tab(df2):
 
 # Function to calculate similarity against 'Striker' profiles
 
-    POSITION_METRICS = {
+POSITION_METRICS = {
 
     "GK": [
         "save_ratio",
