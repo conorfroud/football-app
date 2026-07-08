@@ -478,13 +478,28 @@ def player_similarity_app(df):
 
     st.title("Player Similarity Score")
 
+    # League filter
+    leagues = ["All Leagues"] + sorted(df["League"].dropna().unique())
+
+    selected_league = st.selectbox(
+        "Select League",
+        leagues
+    )
+
+    # Filter dataframe
+    if selected_league == "All Leagues":
+        filtered_df = df.copy()
+    else:
+        filtered_df = df[df["League"] == selected_league].copy()
+
+    # Player selector
     selected_player = st.selectbox(
-        "Select player",
-        sorted(df["Player Name"].dropna().unique())
+        "Select Player",
+        sorted(filtered_df["Player Name"].dropna().unique())
     )
 
     similar_players = find_similar_players(
-        df=df,
+        df=filtered_df,
         player_name=selected_player,
         top_n=10
     )
