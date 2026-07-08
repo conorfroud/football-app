@@ -3184,6 +3184,6 @@ if selected_tab == "Dashboard":
 if selected_tab == "Pitch View":
     pitch_tab(df2)
 if selected_tab == "Similarity Search":
-    find_similar_players(df)
+    find_similar_players(df, selected_player)
 elif selected_tab == "Multi Player Comparison Tab":
     comparison_tab(df)
