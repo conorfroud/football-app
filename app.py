@@ -403,135 +403,97 @@ def about_tab(df2):
 
         st.pyplot(fig)
 
-# Function to calculate similarity against 'Striker' profiles
-
-POSITION_METRICS = {
-
-    "GK": [
-        "save_ratio",
-        "gsaa_90",
-        "np_psxg_faced_90",
-        "Long Ball %",
-        "pass_into_pressure_ratio",
-        "obv_gk_90"
-    ],
-
-    "CB": [
-        "PAdj Tackles & Interceptions",
-        "Aerial Win %",
-        "Clearances",
-        "Pass OBV",
-        "Open Play Passes",
-        "Deep Progressions"
-    ],
-
-    "FB": [
-        "Successful Crosses",
-        "Open Play Passes into Box",
-        "Deep Progressions",
-        "Successful Dribbles",
-        "PAdj Tackles & Interceptions",
-        "Pass OBV"
-    ],
-
-    "DM": [
-        "Pass OBV",
-        "Deep Progressions",
-        "PAdj Tackles & Interceptions",
-        "Ball Recoveries",
-        "Open Play Passes",
-        "Defensive Action OBV"
-    ],
-
-    "CM": [
-        "Pass OBV",
-        "Deep Progressions",
-        "Open Play Key Passes",
-        "xgbuildup_90",
-        "Dribble & Carry OBV",
-        "Open Play Passes"
-    ],
-
-    "AM": [
-        "Open Play Key Passes",
-        "Assists",
-        "Passes into Box",
-        "Pass OBV",
-        "Dribble & Carry OBV",
-        "npxgxa_90"
-    ],
-
-    "W": [
-        "Successful Dribbles",
-        "Open Play Key Passes",
-        "Passes into Box",
-        "Touches Inside Box",
-        "xG",
-        "Dribble & Carry OBV"
-    ],
-
-    "ST": [
-        "Non-Penalty Goals",
-        "xG",
-        "xG Per Shot",
-        "Shots",
-        "Touches Inside Box",
-        "shot_on_target_ratio"
-    ]
-}
-
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics.pairwise import cosine_similarity
 
-def find_similar_players(player_name, top_n=10):
+def find_similar_players(df, player_name, top_n=10):
 
-    player = df[df["Player Name"] == player_name].iloc[0]
+    metrics = [
+        "xG",
+        "Shots",
+        "xG Per Shot",
+        "Open Play Key Passes",
+        "Assists",
+        "Passes into Box",
+        "Touches Inside Box",
+        "Successful Dribbles",
+        "PAdj Tackles & Interceptions",
+        "Aerial Win %",
+        "Aerial Wins",
+        "Open Play Passes",
+        "Forward Pass %",
+        "Long Ball %",
+        "Deep Progressions",
+        "OBV Pass",
+        "OBV Dribble & Carry",
+        "Top 5 PSV-99"
+    ]
 
-    position = player["position_1"]      # or primary_position
-
-    metrics = POSITION_METRICS.get(position)
-
-    if metrics is None:
-        st.error(f"No metrics defined for {position}")
-        return pd.DataFrame()
-
-    # Only keep metrics that actually exist
     metrics = [m for m in metrics if m in df.columns]
 
-    # Compare only players in same position
-    comparison_df = df[df["position_1"] == position].copy()
+    comparison_df = df[df["Player Name"].notna()].copy()
 
-    X = comparison_df[metrics].fillna(
-        comparison_df[metrics].median()
-    )
+    X = comparison_df[metrics].apply(pd.to_numeric, errors="coerce")
+    X = X.fillna(X.median())
 
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(X)
 
-    player_index = comparison_df.index.get_loc(player.name)
+    player_row = comparison_df[comparison_df["Player Name"] == player_name]
+
+    if player_row.empty:
+        st.error("Player not found.")
+        return pd.DataFrame()
+
+    player_index = comparison_df.index.get_loc(player_row.index[0])
 
     similarity = cosine_similarity(
         X_scaled[player_index].reshape(1, -1),
         X_scaled
     )[0]
 
-    comparison_df["Similarity Score"] = (
-        ((similarity + 1) / 2) * 100
-    ).round(1)
+    comparison_df["Similarity Score"] = (((similarity + 1) / 2) * 100).round(1)
 
-    comparison_df = comparison_df.drop(player.name)
+    comparison_df = comparison_df.drop(player_row.index[0])
 
-    return comparison_df[
-        [
-            "Player Name",
-            "Team",
-            "Age",
-            "Similarity Score"
-        ]
-    ].sort_values(
+    output_cols = [
+        "Player Name",
+        "Age",
+        "Team",
+        "League",
+        "position_1",
+        "Score Type",
+        "Player Season Minutes",
+        "Similarity Score"
+    ]
+
+    output_cols = [c for c in output_cols if c in comparison_df.columns]
+
+    return comparison_df[output_cols].sort_values(
         "Similarity Score",
         ascending=False
     ).head(top_n)
+
+def player_similarity_app(df):
+
+    st.title("Player Similarity Score")
+
+    selected_player = st.selectbox(
+        "Select player",
+        sorted(df["Player Name"].dropna().unique())
+    )
+
+    similar_players = find_similar_players(
+        df=df,
+        player_name=selected_player,
+        top_n=10
+    )
+
+    st.dataframe(
+        similar_players,
+        hide_index=True,
+        use_container_width=True
+    )
         
 def scatter_plot(df):
 
